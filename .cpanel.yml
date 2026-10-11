@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/sufktgte/public_html/website_2794d452/
+    - /bin/cp -Rf ./* $DEPLOYPATH

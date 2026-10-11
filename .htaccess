@@ -1,0 +1,27 @@
+# Milton Keynes Driveways & Landscaping
+# One canonical host: https://miltonkeynesdriveways.co.uk (no www)
+RewriteEngine On
+
+# Force HTTPS and strip www in a single 301 hop
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://miltonkeynesdriveways.co.uk/$1 [L,R=301]
+
+# /index.html -> / (only for direct requests, not internal rewrites)
+RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+RewriteRule ^index\.html$ https://miltonkeynesdriveways.co.uk/ [L,R=301]
+
+ErrorDocument 404 /index.html
+
+# Caching for static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/xml image/svg+xml
+</IfModule>
