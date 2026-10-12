@@ -11,12 +11,13 @@ RewriteRule ^(.*)$ https://miltonkeynesdriveways.co.uk/$1 [L,R=301]
 RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
 RewriteRule ^index\.html$ https://miltonkeynesdriveways.co.uk/ [L,R=301]
 
-ErrorDocument 404 /index.html
+ErrorDocument 404 /404.html
 
 # Caching for static assets
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
