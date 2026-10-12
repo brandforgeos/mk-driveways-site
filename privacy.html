@@ -378,6 +378,34 @@ img{height:auto}
     <h2>Privacy notice</h2>
     <div class="rule-acc"></div>
     <p class="note"><strong>Received a letter from us?</strong> We wrote because your property recently received planning approval for work we carry out. To stop any further contact, email <a href="mailto:info@miltonkeynesdriveways.co.uk">info@miltonkeynesdriveways.co.uk</a> or call 01908 104408, quoting the reference on your letter. We will add your address to our do-not-contact list straight away.</p>
+    <form id="optout" class="optout" novalidate style="margin-top:22px;border:1px solid rgba(255,255,255,.14);padding:22px">
+      <h3 style="margin:0 0 6px">Stop letters online</h3>
+      <p style="margin:0 0 16px;font-size:15px">Enter the reference from the top right of your letter (it starts with L) and the postcode it was sent to. Your address goes straight onto our do-not-contact list.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end">
+        <label style="flex:1 1 140px;display:flex;flex-direction:column;gap:6px;font-size:13px">Letter reference
+          <input name="ref" required autocomplete="off" placeholder="e.g. L1234" maxlength="10" style="padding:12px;background:transparent;border:1px solid rgba(255,255,255,.3);color:inherit;font:inherit;font-size:16px"></label>
+        <label style="flex:1 1 140px;display:flex;flex-direction:column;gap:6px;font-size:13px">Postcode
+          <input name="postcode" required autocomplete="postal-code" placeholder="e.g. MK16 0AB" maxlength="10" style="padding:12px;background:transparent;border:1px solid rgba(255,255,255,.3);color:inherit;font:inherit;font-size:16px;text-transform:uppercase"></label>
+        <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+        <button class="btn" type="submit" style="flex:0 0 auto">Stop letters</button>
+      </div>
+      <p id="optout-msg" role="status" aria-live="polite" style="margin:14px 0 0;font-size:15px;min-height:1px"></p>
+    </form>
+    <script>
+    (function(){
+      var f=document.getElementById('optout'),m=document.getElementById('optout-msg');
+      f.addEventListener('submit',function(e){
+        e.preventDefault();
+        var b=f.querySelector('button'),ref=f.ref.value.trim(),pc=f.postcode.value.trim();
+        if(!ref||!pc){m.textContent='Please enter both the reference and the postcode.';return;}
+        b.disabled=true;m.textContent='Checking…';
+        fetch('https://pxojpslsvoxruzdrqeyq.supabase.co/functions/v1/optout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:ref,postcode:pc,website:f.website.value})})
+          .then(function(r){return r.json();})
+          .then(function(j){m.textContent=j.message||(j.ok?'Done.':'Something went wrong.');m.style.color=j.ok?'var(--bronze)':'';if(j.ok){f.ref.disabled=true;f.postcode.disabled=true;}else{b.disabled=false;}})
+          .catch(function(){m.textContent='Something went wrong. Please email or call us quoting your reference and we will remove you straight away.';b.disabled=false;});
+      });
+    })();
+    </script>
     <h3 style="margin-top:30px;margin-bottom:8px">Who we are</h3>
     <p>Milton Keynes Driveways &amp; Landscaping Ltd (&ldquo;we&rdquo;, &ldquo;us&rdquo;) is the data controller for the information described here. Registered in England &amp; Wales, company number 17432451. Registered office: 16 Gun Lane, Newport Pagnell, MK16 9PE. Contact: <a href="mailto:info@miltonkeynesdriveways.co.uk">info@miltonkeynesdriveways.co.uk</a>, 01908 104408.</p>
     <h3 style="margin-top:30px;margin-bottom:8px">Information we collect</h3>
