@@ -393,12 +393,13 @@ img{height:auto}
         <p class="muted">There is no charge for a visit and no obligation
         afterwards. We do not do same-day pressure pricing and we will not ring
         you every week to chase.</p>
-        <form class="form" method="POST" action="https://api.web3forms.com/submit"
+        <form class="form" id="enqForm" method="POST" action="https://api.web3forms.com/submit"
           style="margin-top:26px">
           <input type="hidden" name="access_key" value="87308923-6e68-4c9a-892f-1519065741b8">
           <input type="hidden" name="subject"
             value="New enquiry from miltonkeynesdriveways.co.uk">
           <input type="hidden" name="from_name" value="MK Driveways website">
+          <input type="hidden" name="letter_reference" id="letterRefField" value="">
           <input type="hidden" name="redirect"
             value="https://miltonkeynesdriveways.co.uk/thank-you.html">
           <input type="checkbox" name="botcheck" tabindex="-1"
@@ -532,6 +533,31 @@ img{height:auto}
     var open=n.classList.toggle('open');
     b.setAttribute('aria-expanded',open);
   });
+})();
+</script>
+<script>
+/* Letter tracking: QR codes on our planning letters open this page with ?ref=L1234 */
+(function(){
+  var ref='';
+  try{ref=(new URLSearchParams(location.search).get('ref')||'').toUpperCase().replace(/\s/g,'');}catch(e){}
+  if(/^L\d{3,6}$/.test(ref)){try{sessionStorage.setItem('letterRef',ref);}catch(e){}}
+  else{try{ref=sessionStorage.getItem('letterRef')||'';}catch(e){ref='';}}
+  window.__letterRef=/^L\d{3,6}$/.test(ref)?ref:'';
+  window.__letterTrack=function(ev,extra){
+    if(!window.__letterRef)return;
+    var b=JSON.stringify(Object.assign({ref:window.__letterRef,event:ev},extra||{}));
+    try{ if(navigator.sendBeacon){navigator.sendBeacon('https://pxojpslsvoxruzdrqeyq.supabase.co/functions/v1/letter-track',b);return;} }catch(e){}
+    try{fetch('https://pxojpslsvoxruzdrqeyq.supabase.co/functions/v1/letter-track',{method:'POST',body:b,keepalive:true,headers:{'Content-Type':'application/json'}});}catch(e){}
+  };
+  if(window.__letterRef && /[?&]ref=/i.test(location.search)) window.__letterTrack('visit');
+})();
+</script>
+<script>
+(function(){
+  var f=document.getElementById('enqForm'); if(!f||!window.__letterRef)return;
+  document.getElementById('letterRefField').value=window.__letterRef;
+  var subj=f.querySelector('input[name=subject]'); if(subj) subj.value='Letter enquiry '+window.__letterRef+' from miltonkeynesdriveways.co.uk';
+  f.addEventListener('submit',function(){ window.__letterTrack('enquiry',{name:(f.elements['name']||{}).value||'',postcode:(f.elements['postcode']||{}).value||''}); });
 })();
 </script>
 </body>
