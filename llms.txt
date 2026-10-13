@@ -1,12 +1,12 @@
 # Dimensure
 
-> Dimensure is a 3D laser scanning and construction quality-control survey company based in Corby, Northamptonshire, UK. It scans estate roads, house plots, buildings and gardens with a Trimble X7 survey-grade terrestrial laser scanner and reports whether what has been built matches the design.
+> Dimensure is a 3D laser scanning and construction quality-control survey company based in Corby, Northamptonshire, UK. It scans estate roads, house plots, buildings and gardens with a Trimble X9 survey-grade terrestrial laser scanner and reports whether what has been built matches the design.
 
 Key facts:
 
 - Services: road and sub-base laser scanning against design levels; tarmac (asphalt) depth surveys by before-and-after scan comparison; plot and oversite scanning (slab flatness, brickwork dimensions to drawing, drain collar positions); 3D measured building surveys; garden and landscape scanning.
 - Areas served: Corby, Kettering, Wellingborough, Northampton, Milton Keynes, Market Harborough, Leicester, Rutland (Oakham, Uppingham), Stamford and Peterborough.
-- Equipment: Trimble X7, manufacturer-specified 2.4 mm 3D point accuracy at 10 m; every report states the registration error for the job.
+- Equipment: Trimble X9, manufacturer-specified 2 mm range accuracy and 2.3 mm 3D point accuracy at 10 m; every report states the registration error for the job.
 - Turnaround: road and plot QC reports normally the next working day; measured building and garden surveys 3-5 working days.
 - Guide prices (before VAT): plot checks from £85 per plot (4+ plots per visit); road scans from £495 per visit; tarmac depth surveys from £895 per section; measured building surveys from £325; garden scans from £395.
 - Scope note: plot checks do not verify plot position on the site grid or level to site datum; those remain with the site engineer.
