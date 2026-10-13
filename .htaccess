@@ -1,0 +1,7 @@
+# Preview copy of dimensure.co.uk - keep it out of search results
+<IfModule mod_headers.c>
+Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+RedirectMatch 404 /\.git
+DirectoryIndex index.html
+ErrorDocument 404 /dimensure/404.html
