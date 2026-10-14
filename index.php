@@ -4,17 +4,22 @@
 declare(strict_types=1);
 
 /* Two homes for the same code: the Build Bro preview, and George's own hosting. */
-const PREVIEW = true;                                    // noindex until the real domain is live
-if (str_contains(__DIR__, '/clients/rapid-recovery/')) {
+define('ON_BUILDBRO', str_contains(__DIR__, '/clients/rapid-recovery/'));
+if (ON_BUILDBRO) {
   define('BASE', '/clients/rapid-recovery/site/');
   define('SITE_URL', 'https://buildbro.app/clients/rapid-recovery/site'); // no trailing slash
   define('LEADS_DIR', '/home1/sufktgte/buildbro-intake/rapid-recovery-leads');
+  define('CONFIG_FILE', '');
 } else {
   $home = preg_match('#^(/home\d*/[^/]+)/#', __DIR__, $m) ? $m[1] : dirname(__DIR__, 2);   // account home, never inside public_html
   define('BASE', '/');
   define('SITE_URL', 'https://' . preg_replace('/[^a-z0-9.\-]/i', '', (string)($_SERVER['HTTP_HOST'] ?? 'localhost')));
   define('LEADS_DIR', "$home/rapid-recovery-leads");
+  define('CONFIG_FILE', "$home/rapid-recovery-config.php");   // outside public_html; set 'live' => true at go-live
 }
+$CFG = (CONFIG_FILE !== '' && is_file(CONFIG_FILE)) ? (include CONFIG_FILE) : [];
+define('PREVIEW', ON_BUILDBRO || !is_array($CFG) || empty($CFG['live']));   // noindex until the real domain is live
+if (PREVIEW) header('X-Robots-Tag: noindex, nofollow');
 
 $D = __DIR__ . '/data';
 $S = json_decode(file_get_contents("$D/site.json"), true);
@@ -128,6 +133,10 @@ if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   header('Content-Type: application/json'); header('Cache-Control: no-store');
   $f = fn($k, $n = 500) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
   if ($f('website') !== '' || $f('name') === '' || $f('phone') === '') { echo '{"ok":false}'; exit; }
+  if (!is_dir(LEADS_DIR . '/rate')) @mkdir(LEADS_DIR . '/rate', 0700, true);   // max 10 enquiries per hour from one address
+  $rf = LEADS_DIR . '/rate/' . md5(preg_replace('/[^0-9a-f:.]/i', '', $_SERVER['REMOTE_ADDR'] ?? 'x') . '|' . gmdate('YmdH'));
+  $rn = (int)@file_get_contents($rf) + 1; @file_put_contents($rf, (string)$rn);
+  if ($rn > 10) { echo '{"ok":false}'; exit; }
   $lead = ['received' => gmdate('c'), 'page' => $f('page', 200), 'name' => $f('name', 100), 'phone' => $f('phone', 40), 'service' => $f('service', 60), 'location' => $f('location', 300), 'vehicle' => $f('vehicle', 120), 'message' => $f('message', 2000)];
   if (!is_dir(LEADS_DIR)) @mkdir(LEADS_DIR, 0700, true);
   $ok = @file_put_contents(LEADS_DIR . '/' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.json', json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) !== false;
@@ -366,7 +375,7 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
       <p>Call and tell us where you are. We'll give you a price and an arrival time on the phone.</p>
       <a class="btn btn-call" href="<?= h($tel) ?>">Call <?= h($S['phone']) ?></a>
       <a class="btn btn-ghost-d" href="<?= h($wa) ?>" rel="noopener">Send your location on WhatsApp</a>
-      <ul class="ticks"><li>Open 24/7, 365 days</li><li>PAS 43 &amp; ISO 9001 accredited</li><li>Goods in transit &amp; public liability insured</li><li>Card, bank transfer or cash</li></ul>
+      <ul class="ticks"><li>Open 24/7, 365 days</li><li>PAS 43 &amp; ISO 9001 accredited</li><li>Goods in transit &amp; public liability insured</li><?= $svc === 'scrap-car-collection' ? '<li>Scrap cars paid by bank transfer</li>' : '<li>Pay for recovery by card, transfer or cash</li>' ?></ul>
     </div>
   </aside>
 </div>

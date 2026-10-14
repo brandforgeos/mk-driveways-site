@@ -1,7 +1,6 @@
 Options -Indexes
 DirectoryIndex index.php
 <IfModule mod_headers.c>
-Header set X-Robots-Tag "noindex, nofollow"
 <FilesMatch "\.(webp|png|jpg|svg|css)$">
 Header set Cache-Control "public, max-age=2592000"
 </FilesMatch>
