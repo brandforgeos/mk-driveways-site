@@ -270,9 +270,9 @@ function daily_jobs(array $S, array $REM): void {
   run_reminders($S, $REM);
 }
 
-/* cron: php index.php cron  (cPanel cron, once a day) */
+/* cron: php index.php cron  (cPanel cron runs it hourly; the daily jobs only run once, after 9am UK time) */
 if (PHP_SAPI === 'cli') {
-  if (($argv[1] ?? '') === 'cron') { @file_put_contents(store_path('logs') . '/last-daily.txt', date('Y-m-d'), LOCK_EX); echo json_encode(run_reminders($S, $REM)), "\n"; }
+  if (($argv[1] ?? '') === 'cron') daily_jobs($S, $REM);
   exit;
 }
 if ($_SERVER['REQUEST_METHOD'] === 'GET') daily_jobs($S, $REM);
