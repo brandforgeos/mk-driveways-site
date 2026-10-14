@@ -1,124 +1,393 @@
 === hub
-title: Vehicle Recovery Great Oakley | 24/7 Breakdown Recovery Near Corby | Rapid Recovery
-desc: 24/7 vehicle recovery in Great Oakley, south of Corby. Breakdown recovery on the A43 and A6003, car transport, jump starts and free scrap car collection.
-h1: Vehicle recovery in Great Oakley
-lead: Great Oakley sits on the southern edge of Corby, close to the A43 and A6003. Our trucks can be with you in no time.
+title: Vehicle Recovery Great Oakley | 24/7 Car Recovery South of Corby | Rapid Recovery
+desc: Vehicle recovery in Great Oakley, 24/7. Breakdown recovery, car transport, jump starts and free scrap collection from a local Corby team. Call 07598 314366.
+h1: Vehicle recovery in Great Oakley, on Corby's southern edge
+lead: Broken down in Great Oakley, Oakley Vale or at Oakley Hay? Our Corby-based trucks run day and night, and the village is a short run from base.
+answer: Rapid Recovery Corby provides 24/7 vehicle recovery in Great Oakley, including breakdown recovery from a £60 minimum, jump starts from a £40 minimum, car transport and free scrap car collection. Call or WhatsApp 07598 314366.
+img: vehicle-recovery-nissan-qashqai
+img_alt: Nissan Qashqai loaded on a Rapid Recovery truck ready to be taken from a residential street to a garage
 ---
-## Village and town in one
+## Vehicle recovery in Great Oakley: who we help
 
-Great Oakley is an old village that now sits right up against Corby's southern estates and the Oakley Hay industrial area. That mix means our work here covers everything from cars broken down on quiet village lanes to vans that won't start at the industrial estate first thing in the morning.
+Great Oakley is an old village that has ended up joined to the town. Its stone cottages sit on Corby's southern edge, with Oakley Vale's newer homes on one side and the Oakley Hay industrial area close by. That gives us a real mix of call-outs from one small patch of map.
 
-The village is also close to where the A43 and A6003 head south towards Kettering, two busy roads that see their share of breakdowns and accidents.
+On a typical week our vehicle recovery work in Great Oakley might include a family car that won't start on a village driveway, a delivery van that has died in an Oakley Hay yard and a commuter car that has stopped on the A43 or A6003 heading towards Kettering. We are based in Corby, so none of these is a long trip for us.
 
-## Our services in Great Oakley
+## The three Great Oakleys we cover
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and scrap car collection. Choose a service below or call 07598 314366.
+**The old village.** Narrow streets, older houses and cars parked close together. A big truck is not always the right tool here, so we bring the van with dollies and skates when access is tight or a car has seized wheels.
+
+**Oakley Vale.** A large residential area with driveways, cul-de-sacs and shared parking courts. Most jobs here are flat batteries, non-runners on drives and cars that need taking to a garage for repair.
+
+**Oakley Hay.** Business units, delivery traffic and staff car parks. We recover vans up to 3.5 tonnes, move pool cars and fleet vehicles, and can invoice businesses by arrangement.
+
+## Which service do you need?
+
+| Problem | Best service | Starting point |
+| --- | --- | --- |
+| Car won't start, clicking or dim lights | [Jump start and battery fitting](/jump-start/great-oakley) | £40 minimum |
+| Breakdown or accident, car can't be driven | [Breakdown recovery](/breakdown-recovery/great-oakley) | £60 minimum locally |
+| Car needs moving to a garage, dealer or buyer | [Car transport](/car-transport/great-oakley) | Fixed price per job |
+| Old car or van not worth fixing | [Scrap car collection](/scrap-car-collection/great-oakley) | Free collection, we pay you |
+
+If you are not sure which one fits, ring us and describe what the car is doing. We will tell you honestly whether it sounds like a jump start or a tow.
+
+## The roads around Great Oakley
+
+The A43 and the A6003 both head south from Corby towards Kettering, and Great Oakley sits close to them. They carry commuters, vans and lorries throughout the day. If you break down on either, pull as far left as you safely can, put your hazards on and get everyone out on the side away from the traffic. Stand behind a barrier if there is one.
+
+If you cannot get out of a live lane safely, call 999 first. Once you are safe, call us and we will arrange the recovery. Our [what to do if you break down guide](/guides/what-to-do-if-you-break-down) covers this step by step.
+
+## Help us find you quickly
+
+Great Oakley, Oakley Vale and Oakley Hay can be confusing if you are not local, and a lot of drivers who call us are visiting or making deliveries. The quickest way to share your location is a WhatsApp live location sent to 07598 314366. A what3words reference also works well.
+
+On the main roads, tell us your direction of travel and the nearest junction, roundabout or landmark. On the industrial estate, the name on the unit you are parked outside is useful.
+
+## What we bring and how we work
+
+We run a fleet of five-plus recovery vehicles: spec lift tow trucks, beavertail tilt-and-slide transporters and a van with dollies and skates. Some trucks can carry one car and tow a second on a dolly, which helps when a business needs two vehicles moved.
+
+We hold PAS 43, the national safety standard for breakdown, recovery and roadside work, and ISO 9001 for quality management. We carry goods in transit, public liability and road risks insurance, and we are careful with every car we load. If your car cannot go straight to a garage, we can keep it in our secure storage yard.
+
+## Prices and payment
+
+Local breakdown recovery has a £60 minimum charge and jump starts have a £40 minimum. Everything else is priced on the phone before we set off, so you know the cost first. You can pay by card on the day, bank transfer or cash. Scrap cars are always paid for by bank transfer. See [all our cost guides](/costs) for what affects each price.
+
+## Nearby areas
+
+We also cover the rest of [Corby](/areas/corby), [Kettering](/areas/kettering), [Geddington](/areas/geddington) and [Stanion](/areas/stanion). For anything else, call 07598 314366, day or night.
 ---
-Q: Do you cover Oakley Vale and Oakley Hay as well?
-A: Yes. We cover Great Oakley, Oakley Vale and the Oakley Hay industrial area, along with the rest of Corby.
-Q: How quickly can you get to Great Oakley?
-A: Great Oakley is right on the edge of Corby, so it is quick for us to reach. We give you an arrival time when you call.
+Q: Do you cover Oakley Vale and the Oakley Hay industrial area?
+A: Yes. We cover the old village of Great Oakley, the Oakley Vale estates and the Oakley Hay industrial area, along with the rest of Corby, 24 hours a day.
+Q: How quickly can you reach Great Oakley?
+A: Great Oakley is a short run from our Corby base, so it is usually quick. We give you a realistic arrival time when you call, based on where our trucks are at that moment.
+Q: Can you recover a car from a tight street in the old village?
+A: Yes. If a truck cannot get close, we use our van with dollies and skates to move the car out to where it can be loaded safely.
+Q: Do you work with businesses at Oakley Hay?
+A: Yes. We recover vans up to 3.5 tonnes, move fleet and pool cars, and offer business invoicing by arrangement.
+Q: How much does vehicle recovery cost in Great Oakley?
+A: Local breakdown recovery starts from a £60 minimum charge. Longer or more involved jobs are priced on the phone before we set off.
+Q: Are you open at night and on bank holidays?
+A: Yes. Rapid Recovery Corby is open 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
 
 === breakdown-recovery
-title: Breakdown Recovery Great Oakley | A43 & A6003 Recovery 24/7 | Rapid Recovery
-desc: Broken down in Great Oakley or on the A43 or A6003 near Corby? Fast 24/7 breakdown and accident recovery from a local, PAS 43 accredited team. From £60.
+title: Breakdown Recovery Great Oakley | Car Recovery & Tow Truck 24/7 | Rapid Recovery
+desc: Breakdown recovery in Great Oakley and on the A43 and A6003. 24/7 tow trucks, accident recovery and van recovery from £60. Call Rapid Recovery on 07598 314366.
 h1: Breakdown recovery in Great Oakley
-lead: Stuck in Great Oakley or on the roads heading south from Corby? We're just up the road and can get a truck to you fast.
+lead: Car or van stopped in Great Oakley, Oakley Vale or on the roads south of Corby? We send a recovery truck any time of day or night.
+answer: Rapid Recovery Corby offers 24/7 breakdown recovery in Great Oakley, covering the village, Oakley Vale, Oakley Hay and the nearby A43 and A6003. Local recovery has a £60 minimum charge. Call or WhatsApp 07598 314366.
 img: breakdown-recovery-ford-focus-beavertail
+img_alt: Broken down Ford Focus secured on the bed of a beavertail recovery truck after a breakdown call-out
 ---
-## The roads south of Corby
+## Breakdown recovery in Great Oakley, from a team just up the road
 
-The A43 and A6003 carry most of the traffic between Corby and Kettering, and Great Oakley sits right beside both. We regularly recover cars from these roads after breakdowns and bumps. If you stop on one, get as far off the road as you safely can, switch on your hazards and wait well away from the traffic.
+When your car stops in Great Oakley, you want a recovery truck from somebody local, not a call centre that has never heard of the village. Rapid Recovery is based in Corby and has been recovering vehicles for over five years. We know how the old village, Oakley Vale and Oakley Hay fit together, which saves time when you call.
 
-## Industrial estate breakdowns
+We recover cars, vans up to 3.5 tonnes, 4x4s and SUVs, motorbikes, campervans and classic cars. Once your vehicle is loaded we can take it home, to your own garage, to a dealer or to our secure yard.
 
-The Oakley Hay industrial area is full of vans, work vehicles and staff cars. When something won't start or a van gives up mid-delivery, we can recover it to your garage or our secure yard so your day isn't completely lost.
+## Typical breakdowns we deal with here
 
-## In the village
+**Commuter breakdowns on the A43 and A6003.** Both roads run south from Corby towards Kettering, close to Great Oakley. Clutch failures, overheating, punctures and electrical faults are common, especially at busy times when engines sit in queues.
 
-Great Oakley's older streets are quieter, but parking can still be tight. If we can't reach your car with the truck, we'll move it on dollies or skates first.
+**Vans and work vehicles at Oakley Hay.** A van that won't start in a yard, or one that cuts out halfway through a delivery round, costs a business money every hour it sits there. We recover it to your chosen garage so the repair can start.
 
-Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+**Non-runners on driveways.** Cars that have been sitting for months, failed engines and cars with seized brakes are all common in Oakley Vale and the village. Our beavertail trucks winch them on without fuss.
+
+**Accident recovery.** After a collision we clear the vehicle from the scene and can work with your insurer or accident management company.
+
+## What to do if you break down on the A43 or A6003 near Great Oakley
+
+1. Move as far left as you safely can, onto the verge or into a lay-by if one is close.
+2. Switch on your hazard lights. At night, have your sidelights on too.
+3. Get everyone out on the side away from traffic and stand behind a barrier if there is one. Wear a high-vis if you have one.
+4. If you are stuck in a live lane and cannot get out safely, call 999.
+5. Then call us on 07598 314366 with your direction of travel and the nearest junction or landmark.
+
+Do not try to restart an engine that has stalled in floodwater, and do not open a hot radiator cap. Both can turn a small repair into a big one. Our [what to do if you break down guide](/guides/what-to-do-if-you-break-down) has more detail.
+
+## Tight spots and low car parks
+
+Some of the older streets in Great Oakley have cars parked on both sides. Not every car breaks down somewhere a truck can reach easily either. For low car parks, narrow access and cars with locked or seized wheels, we use our van with dollies and skates. We roll the car out carefully, then load it onto a truck where there is room.
+
+## How much does breakdown recovery cost in Great Oakley?
+
+Local breakdown recovery starts from a **£60 minimum charge**. Longer journeys, accident recovery, winching and more involved jobs are priced on the phone before we set off. You will always know the price before we move.
+
+You can pay by card on the day, bank transfer or cash, and business invoicing is available by arrangement. Our [breakdown recovery cost guide](/costs/breakdown-recovery) explains what changes the price.
+
+## Why drivers in Great Oakley call us
+
+- We answer the phone, day and night, including weekends and bank holidays.
+- We are PAS 43 accredited, the national safety standard for recovery and roadside work, and ISO 9001 certified.
+- We carry goods in transit, public liability and road risks insurance.
+- We take real care loading and strapping every vehicle.
+- Our prices are fair and agreed up front.
+
+## Breakdowns at night and in bad weather
+
+Plenty of our Great Oakley call-outs come after dark, when shift workers leave Oakley Hay or commuters head home along the A43. If you are waiting at night, keep your sidelights and hazards on so other drivers can see the car. Wait somewhere safe and visible rather than sitting inside on a fast road. In heavy rain, watch for standing water on low sections of road, and if the engine cuts out in floodwater, leave it switched off until we arrive.
+
+## Have this ready when you call
+
+Your location, the make and model, the registration, what happened, and where you want the vehicle taken. If the car is a van, tell us roughly how loaded it is. If there are passengers, tell us how many need a lift.
+
+## Related help in and around Great Oakley
+
+If your car simply won't start, you may only need a [jump start in Great Oakley](/jump-start/great-oakley). If the repair is not worth doing, look at [scrap car collection in Great Oakley](/scrap-car-collection/great-oakley). We also provide [breakdown recovery in Corby](/breakdown-recovery/corby) and [breakdown recovery in Kettering](/breakdown-recovery/kettering).
 ---
-Q: Can you recover a work van from Oakley Hay?
-A: Yes. We recover vans up to 3.5 tonnes from industrial estates and business parks, at any time of day.
+Q: Do you recover vans from the Oakley Hay industrial area?
+A: Yes. We recover vans up to 3.5 tonnes from industrial estates and business parks at any time of day, and can invoice businesses by arrangement.
 Q: What should I do if I break down on the A6003 near Great Oakley?
-A: Pull as far off the road as is safe, put your hazards on, get everyone out on the verge side and call us with your direction of travel and the nearest landmark.
+A: Pull as far left as is safe, put your hazards on, get everyone out on the side away from traffic and call us with your direction of travel and nearest landmark. If you are stuck in a live lane, call 999 first.
+Q: How much is breakdown recovery in Great Oakley?
+A: Local breakdown recovery starts from a £60 minimum charge. Longer or more complex jobs are priced on the phone before we set off.
+Q: Can you take my car to my own garage?
+A: Yes. We can take it to any garage, dealer, your home or our secure storage yard if the garage is closed.
+Q: Do you handle accident recovery for insurance claims?
+A: Yes. We recover accident-damaged vehicles and carry out insurance and accident management work.
+Q: Can you recover a car with seized wheels from a narrow street?
+A: Yes. We use dollies and skates to move cars with seized or locked wheels out of tight spaces before loading them.
 
 === car-transport
-title: Car Transport Great Oakley | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport in Great Oakley. Garage runs, dealer collections, private sale pick-ups and UK-wide vehicle delivery from a local, fully insured firm.
+title: Car Transport Great Oakley | Vehicle Transport & Car Transporter | Rapid Recovery
+desc: Car transport in Great Oakley. Dealer, auction and private sale collections, garage runs and UK-wide vehicle transport at a fixed price. Call 07598 314366.
 h1: Car transport in Great Oakley
-lead: Need a car collecting or delivering in Great Oakley? We move cars locally and across the UK, fully insured, with a fixed price up front.
+lead: Need a car moved to or from Great Oakley? We collect and deliver locally and across the UK on open transporters, with a fixed price agreed first.
+answer: Rapid Recovery Corby provides car transport in Great Oakley and across the UK on open transporters, for dealers, auctions, private sales, garage runs and non-runners. Each move has a fixed price agreed before booking. Call 07598 314366.
 img: two-car-recovery-touran-and-clio
+img_alt: VW Touran on a recovery truck with a Renault Clio towed behind on a dolly, two cars moved in one trip
 ---
-## For businesses at Oakley Hay
+## Car transport in Great Oakley for homes and businesses
 
-Firms on the industrial estate often need vehicles moved: pool cars to a service centre, vans to a body shop or a replacement vehicle collected from a dealer. We can handle one-off jobs or regular runs, and move two vehicles at once where possible.
+Not every vehicle move is an emergency. Plenty of people in Great Oakley simply need a car taken from A to B without driving it themselves. It might be a car bought online, a car going in for an MOT, or a fleet vehicle heading back to a dealer. Our car transport service covers all of these, locally and anywhere in the UK.
 
-## For Great Oakley residents
+We use open beavertail transporters and spec lift trucks. Open transport suits everyday cars, vans, 4x4s, classic cars and prestige cars, and it means we can usually fit you in quickly.
 
-Bought a car privately in another part of the country? Need a car taken to a specialist garage? We'll collect and deliver it, so you don't have to.
+## Jobs we do for Great Oakley residents
 
-## Non-runners welcome
+**Private sale pick-ups.** You have found a car on the other side of the country and do not want a long train journey and a drive back. We collect it and bring it to your door in Great Oakley or Oakley Vale.
 
-Our beavertail trucks can winch on cars that don't run, so a project car or a car with a failed engine is no problem.
+**Garage and MOT runs.** If your car is not road legal, or you just cannot take time off work, we take it to the garage and bring it home afterwards.
 
-Every move gets a fixed price before it's booked. See the [car transport cost guide](/costs/car-transport).
+**Auction collections.** We collect from auction sites and deliver to your address, ready for you to inspect.
+
+**House moves.** Moving into or out of the area with more cars than drivers? We move the extra one for you.
+
+**Project cars and non-runners.** Cars that do not start are winched onto the beavertail without needing to be driven.
+
+## Vehicle transport for Oakley Hay businesses
+
+The Oakley Hay industrial area is home to firms that run vans and company cars. Vehicles need taking to service centres, body shops and dealers, and replacements need collecting. We handle one-off moves and repeat work for garages, car dealers and fleet operators.
+
+Some of our trucks can carry one car and tow a second on a dolly. When two vehicles need moving on the same route, that can save you a second trip. Business invoicing is available by arrangement.
+
+## How a car transport booking works
+
+1. Call or WhatsApp 07598 314366 with the collection and delivery addresses.
+2. Tell us the make and model, whether it runs, and any access issues at either end.
+3. We give you a fixed price for the whole job.
+4. We agree a collection time that suits you and whoever is handing the car over.
+5. The car is loaded, strapped down and delivered. We let you know when it is on its way.
+
+## How much does car transport cost from Great Oakley?
+
+Car transport is priced per job, and you get a **fixed price before you book**. The main things that affect it are the distance, whether the car runs, the size of the vehicle and any waiting time or difficult access. A short local garage run will cost much less than a long-distance auction collection.
+
+You can pay by card, bank transfer or cash. Our [car transport cost guide](/costs/car-transport) goes into more detail.
+
+## Looking after your car on the way
+
+We are careful with every vehicle we carry. Cars are loaded slowly, strapped through the wheels and checked again before we set off. We hold goods in transit, public liability and road risks insurance, and we work to PAS 43 and ISO 9001. If a delivery cannot be made the same day, the car can stay in our secure storage yard until it can.
+
+## Before collection day
+
+- Make sure the keys and any locking wheel nut key travel with the car.
+- Remove valuables and loose items from inside.
+- Tell us if the car is lowered, has a low front spoiler or has a flat tyre.
+- If the car is coming from a private seller, make sure they know we are collecting and have agreed the time.
+
+## Other ways we can help in Great Oakley
+
+If the car you need moving is actually broken down, book [breakdown recovery in Great Oakley](/breakdown-recovery/great-oakley). If it is not worth moving at all, we offer [scrap car collection in Great Oakley](/scrap-car-collection/great-oakley). We also run [car transport from Corby](/car-transport/corby) and [car transport in Kettering](/car-transport/kettering). If the car you are collecting has stopped starting, our [car won't start guide](/guides/car-wont-start) is worth a read before collection day.
+
+## Garage-to-garage moves
+
+Sometimes a car is already at one garage and needs to go to another, perhaps a specialist for a gearbox or bodywork. We collect from the first garage and deliver to the second, so you do not need to take time off or arrange a lift. Tell us the opening hours at both ends and we will plan the collection around them. Classic and prestige cars get the same careful handling, with extra time taken over loading where ground clearance is low.
 ---
-Q: Do you do regular vehicle moves for businesses?
-A: Yes. We work with garages, dealers and fleet operators. Call us to talk about what you need.
+Q: Do you offer enclosed car transport?
+A: No. We provide open car transport only, using beavertail transporters and spec lift trucks, which suits most cars, vans, classics and prestige vehicles.
+Q: Can you collect a car I have bought privately and bring it to Great Oakley?
+A: Yes. We collect private sale cars from anywhere in the UK and deliver them to your address, at a fixed price agreed before booking.
 Q: Can you move a car that does not run?
-A: Yes. Non-runners are winched onto our beavertail trucks.
+A: Yes. Non-runners are winched onto our beavertail transporters, so the car does not need to start.
+Q: Do you do regular vehicle moves for businesses at Oakley Hay?
+A: Yes. We work with garages, car dealers and fleet operators, and business invoicing is available by arrangement.
+Q: How much does car transport cost?
+A: Each job is priced individually. You get a fixed price before booking, based mainly on distance, vehicle type and whether it runs.
 
 === jump-start
-title: Jump Start Great Oakley | Mobile Battery Fitting from £40 | Rapid Recovery Corby
-desc: Car won't start in Great Oakley? Mobile jump starts from £40, new batteries fitted on the spot and wheel changes, 24 hours a day.
-h1: Jump starts in Great Oakley
-lead: Flat battery at home or at work in Great Oakley? We'll come out with a jump pack and replacement batteries.
-img: night-breakdown-recovery-honda-civic
+title: Jump Start Great Oakley | Flat Battery & Mobile Battery Fitting | Rapid Recovery
+desc: Flat battery in Great Oakley? Jump starts from £40, new batteries fitted on the spot and spare wheel changes, 24/7. Call Rapid Recovery on 07598 314366.
+h1: Jump starts and batteries in Great Oakley
+lead: Car dead on the drive or in the car park at work? We come out with jump packs and replacement batteries, day or night.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Great Oakley from a £40 minimum charge, plus mobile battery fitting and spare wheel changes. Call or WhatsApp 07598 314366 and we come to you.
+img: early-morning-recovery-renault-clio
+img_alt: Renault Clio being attended to by a recovery truck in early morning light after failing to start
 ---
-## At home or at work
+## Jump start near me in Great Oakley
 
-We jump start cars on driveways in the village and in the car parks at the Oakley Hay industrial area. If your car won't start at the end of a shift, we can get you going without leaving you stuck for hours.
+A flat battery is one of the most common reasons a car will not start, and it always seems to happen at the worst time. In Great Oakley that is usually first thing in the morning on a driveway in Oakley Vale, or at the end of a long day in a car park at Oakley Hay. Our jump start service comes to you, wherever the car is sitting.
 
-## Is it the battery?
+We bring professional jump packs and a stock of replacement batteries. If your battery has simply gone flat, we get the engine running. If it has failed, we can fit a new one on the spot.
 
-A clicking noise, dim dashboard lights or a slow, struggling start usually point to the battery. We'll check it when we arrive and either jump start it or fit a new one on the spot. If the problem is something else, such as the starter motor, we can recover the car to a garage instead.
+## Signs your battery is the problem
 
-## Flat tyres
+- The engine turns over slowly or sounds weak.
+- You hear clicking when you turn the key or press start.
+- Dashboard lights are dim, flicker or do not come on at all.
+- The car has been parked up for a long time without being used.
+- Cold mornings make it noticeably harder to start.
 
-We also change wheels onto spares and space savers.
+If the engine turns over normally but will not fire, the problem may be fuel, ignition or something else. Our [car won't start guide](/guides/car-wont-start) can help you narrow it down before you call.
 
-Jump starts have a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+## Why batteries go flat around Great Oakley
+
+Many of the cars we see here do short trips: the school run, a quick drive to Corby town centre, a few minutes to work at Oakley Hay. Short journeys do not give the alternator long enough to recharge the battery. Over a cold week that can be enough to stop a tired battery starting the car.
+
+Cars left parked for a holiday, or second cars that only come out at weekends, are also common call-outs. Lights or an interior lamp left on overnight will do it too.
+
+## What happens when we arrive
+
+1. We check the battery and connections.
+2. We jump start the car with a jump pack, which avoids the risk of connecting to another car.
+3. If the battery will not hold charge, we tell you and quote for a replacement.
+4. If you agree, we fit the new battery there and then.
+5. If the fault is not the battery, such as a starter motor, we can recover the car to a garage instead.
+
+## Flat tyre? We can change the wheel
+
+As well as batteries, we change wheels onto your spare or space saver. If the locking wheel nut key is missing, or there is no usable spare, we can recover the car instead so you are not left stuck. Keep the space saver within its speed limit and get the tyre repaired or replaced soon.
+
+## How much is a jump start in Great Oakley?
+
+Jump starts have a **£40 minimum charge**. New batteries are priced by the battery your car needs, and we confirm the price before we fit anything. You can pay by card, bank transfer or cash. See our [jump start cost guide](/costs/jump-start) for what affects the price.
+
+## Helpful details when you call
+
+- Where the car is: driveway, roadside or car park, and roughly how we get to it.
+- The make, model and registration, so we can check which battery fits.
+- What happens when you try to start it.
+- Whether you have a spare wheel and the locking wheel nut key, if it is a tyre problem.
+
+## After a jump start
+
+Drive the car for a reasonable distance rather than switching off straight away, so the battery gets some charge back. If it goes flat again within a day or two, the battery or charging system needs looking at.
+
+## Keeping your battery healthy
+
+A few simple habits can help a battery last. Take the car for a longer drive now and then, particularly in winter, rather than only short hops around Oakley Vale. Check nothing is left on when you lock up, such as interior lights or a phone charger in a socket that stays live. If the car is going to stand for weeks, ask your garage about a battery maintainer. Most batteries give some warning before they fail, so a slow start on a cold morning is worth acting on.
+
+## More help in Great Oakley
+
+If the car still will not go, we provide [breakdown recovery in Great Oakley](/breakdown-recovery/great-oakley). Our van and trucks also cover [jump starts in Corby](/jump-start/corby) and [jump starts in Stanion](/jump-start/stanion). If an old car is costing more than it is worth, consider [scrap car collection in Great Oakley](/scrap-car-collection/great-oakley).
 ---
-Q: Can you jump start my car in a works car park?
-A: Yes. We attend driveways, workplaces and car parks, 24 hours a day.
-Q: What if it isn't the battery?
-A: We will tell you what we think the problem is and can recover the car to a garage if it needs a repair.
+Q: How much is a jump start in Great Oakley?
+A: A jump start has a £40 minimum charge. If you need a new battery, it is priced by the battery your car needs and confirmed before fitting.
+Q: Can you fit a new car battery at my house?
+A: Yes. We carry replacement batteries and can fit one on your driveway or at the roadside once you have agreed the price.
+Q: Can you jump start my car in a works car park at Oakley Hay?
+A: Yes. We attend driveways, workplaces and car parks 24 hours a day, 7 days a week.
+Q: What if my car still won't start after a jump start?
+A: We will explain what we think the fault is and can recover the car to a garage of your choice.
+Q: Do you change flat tyres?
+A: Yes. We change wheels onto your spare or space saver. If there is no usable spare, we can recover the car instead.
 
 === scrap-car-collection
 title: Scrap My Car Great Oakley | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car or van in Great Oakley. Free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+desc: Scrap your car in Great Oakley. Free collection, paid by bank transfer, non-runners and no MOT accepted, Certificate of Destruction issued. Call 07598 314366.
 h1: Scrap car collection in Great Oakley
-lead: Old car or van in Great Oakley that's not worth fixing? We'll pay for it, collect it for free and handle the paperwork.
+lead: Old car or van taking up space in Great Oakley? We buy it, collect it for free and take it to a licensed Authorised Treatment Facility.
+answer: Rapid Recovery Corby offers free scrap car collection in Great Oakley and pays by bank transfer. We take non-runners, cars with no MOT and accident-damaged vehicles, and a licensed ATF issues the Certificate of Destruction. Call 07598 314366.
 img: scrap-car-collection-citroen-picasso
+img_alt: Old Citroen Picasso being collected for scrap on a recovery truck, on its way to an Authorised Treatment Facility
 ---
-## Cars and vans
+## Scrap my car in Great Oakley: how it works
 
-As well as household cars, we collect old vans and work vehicles from businesses around Oakley Hay. Non-runners, MOT failures and accident-damaged vehicles are all accepted.
+Most homes in Oakley Vale and the old village have limited parking, so a dead car on the drive soon becomes a problem. Businesses at Oakley Hay end up with the same issue when an old van is not worth repairing. Our scrap car collection takes these vehicles off your hands, legally, and pays you for them.
 
-## Done legally
+We buy scrap and unwanted cars, vans and motorbikes. Collection is free, and we bring the right truck or dollies to move a vehicle that has not turned a wheel in years.
 
-We hold a waste carrier licence and a scrap metal collector's licence. Payment is by bank transfer, as the law requires, and each vehicle goes to a licensed Authorised Treatment Facility, which issues the Certificate of Destruction and notifies the DVLA.
+## What we accept
 
-## What you'll need
+- Non-runners and cars with engine or gearbox failure.
+- Cars with no MOT or no tax.
+- Accident-damaged and written-off vehicles.
+- Old vans and work vehicles, up to 3.5 tonnes.
+- Motorbikes.
+- Vehicles with no V5C logbook, as long as you can show proof of ID.
 
-The V5C logbook if you have it and your ID. Business vehicles may need the company's details too.
+## How we decide the price
 
-See what affects the price in our [scrap car cost guide](/costs/scrap-car-collection).
+The price for a scrap car is based on:
+
+| Factor | Why it matters |
+| --- | --- |
+| Weight | Most of the value comes from the metal |
+| Scrap metal prices | These move up and down over time |
+| Make and model | Some parts are worth more than others |
+| Completeness | Missing engines, catalytic converters or wheels lower the value |
+| Condition | Heavy damage or stripping affects it |
+
+Tell us these details when you call and we will give you a price. Our [scrap car cost guide](/costs/scrap-car-collection) explains each factor in more depth.
+
+## Why payment is always by bank transfer
+
+The Scrap Metal Dealers Act 2013 makes it illegal to pay cash for scrap vehicles. That protects you as well as us, because there is a record of who bought the car and when. We pay by bank transfer every time, so please have your account details ready.
+
+## Licensed and above board
+
+We hold a waste carrier licence and a scrap metal collector's licence. Every scrap vehicle we collect goes to a licensed Authorised Treatment Facility (ATF). The ATF issues the Certificate of Destruction and notifies the DVLA that the car has been scrapped.
+
+Once the DVLA knows, any full months of vehicle tax left are refunded to you automatically. You do not need to apply separately.
+
+## What to have ready on collection day
+
+1. Your photo ID and proof of address.
+2. The V5C logbook, if you have it.
+3. Any keys for the vehicle.
+4. Your bank details for payment.
+5. Personal belongings removed from the car, including the boot and glovebox.
+
+For a company van from Oakley Hay, have the business details ready too, as the vehicle will usually be registered to the firm.
+
+## Collection from tight spots
+
+Old cars are often parked in awkward places: tucked down the side of a house, at the back of a parking court or blocked in by other cars. If a car has flat tyres or seized wheels, we use dollies and skates to move it to the truck without damaging anything around it.
+
+## Arranging a collection time
+
+Tell us when you, or someone with ID, can be at the car. We agree a time and stick to it, and if anything changes on the day we ring ahead. Evening and weekend collections are possible, which helps if you work during the day. When we arrive we check the vehicle matches what you described, check the paperwork and ID, load it and arrange payment. If the car turns out to be very different from the description, such as missing its engine, we tell you before loading so there are no surprises.
+
+## Is it worth scrapping, or worth repairing?
+
+If the repair bill is more than the car is worth, or an MOT failure needs expensive work, scrapping is often the sensible choice. If you are unsure, tell us what is wrong and we will give you a scrap price to compare against the garage quote. Our [how to scrap a car guide](/guides/how-to-scrap-a-car) walks through the full process.
+
+Keep a copy of the Certificate of Destruction details once the ATF has processed the car. It is your proof that the vehicle has been scrapped properly and that the DVLA has been told, which matters if any letters about the car arrive later.
+
+## Related services
+
+If the car just needs moving rather than scrapping, see [car transport in Great Oakley](/car-transport/great-oakley) or [breakdown recovery in Great Oakley](/breakdown-recovery/great-oakley). We also collect from [Corby](/scrap-car-collection/corby) and [Geddington](/scrap-car-collection/geddington).
 ---
-Q: Do you buy old company vans?
-A: Yes. We collect and pay for scrap vans as well as cars.
-Q: Is there a charge for collection in Great Oakley?
-A: No, collection is free.
+Q: Is scrap car collection in Great Oakley free?
+A: Yes. Collection is free, and we pay you for the vehicle by bank transfer.
+Q: Can I scrap my car without the V5C logbook?
+A: Yes. We can collect a car with no V5C as long as you can show proof of ID.
+Q: Why can't you pay cash for my scrap car?
+A: The Scrap Metal Dealers Act 2013 bans cash payments for scrap vehicles, so we always pay by bank transfer.
+Q: Will I get my car tax back when I scrap my car?
+A: Yes. Once the ATF notifies the DVLA, any full months of vehicle tax remaining are refunded to you automatically.
+Q: Do you buy old company vans from Oakley Hay?
+A: Yes. We collect and pay for scrap vans up to 3.5 tonnes, as well as cars and motorbikes.
+Q: How much will I get for my scrap car?
+A: It depends on the weight, current scrap metal prices, the make and model, how complete it is and its condition. Call us with the details for a price.

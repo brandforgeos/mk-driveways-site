@@ -1,124 +1,440 @@
 === hub
-title: Vehicle Recovery Gretton | 24/7 Breakdown Recovery Near Corby | Rapid Recovery
-desc: 24/7 vehicle recovery in Gretton, north of Corby above the Welland valley. Breakdown recovery, car transport, jump starts and free scrap car collection.
+title: Vehicle Recovery Gretton | 24/7 Breakdown and Towing | Rapid Recovery
+desc: 24/7 vehicle recovery in Gretton. Breakdown recovery, car transport, jump starts and free scrap car collection from a local Corby team. Call 07598 314366.
 h1: Vehicle recovery in Gretton
-lead: Gretton sits on the ridge north of Corby, looking out over the Welland valley. We cover the village and the lanes around it 24 hours a day.
+lead: Gretton sits high above the Welland valley, just north of Corby. We cover the village, its steep lanes and the roads towards the Rutland border, day and night.
+answer: Rapid Recovery Corby provides 24/7 vehicle recovery in Gretton, including breakdown recovery from a £60 minimum, jump starts from a £40 minimum, car transport and free scrap car collection. Call or WhatsApp 07598 314366.
+img: early-morning-recovery-renault-clio
+img_alt: Renault Clio being loaded onto a Rapid Recovery truck in early morning light, a typical cold-start call-out in a hilltop village like Gretton
 ---
-## Hilltop village, steep lanes
+## Vehicle recovery in Gretton, on the hill above the Welland valley
 
-Gretton is a short drive north of Corby, but it feels a long way from town. The village sits high above the Welland valley, and the roads down towards Harringworth and the Rutland border are steep, narrow and often muddy. In winter they can be icy, and that's when we get called out most.
+If you need vehicle recovery in Gretton, you are calling a team that is based just down the hill in Corby. Rapid Recovery Corby has been recovering cars, vans and motorbikes for over five years, and Gretton is one of the villages we know well. We work 24 hours a day, every day of the year.
 
-Typical jobs here include cars that have slid onto verges, flat batteries on cold mornings, breakdowns on the lanes between Gretton, Kirby Hall and Corby, and old cars that need collecting for scrap.
+Gretton is not like the estates in town. It sits on high, open ground, and the lanes that drop away towards Harringworth and the Rutland border are steep and narrow. That shapes the kind of help people here need, and the kit we bring.
 
-## Our services in Gretton
+## What goes wrong for drivers in Gretton
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+Most of our Gretton jobs fall into a few patterns. Knowing them helps us send the right vehicle first time.
+
+- **Cold mornings on the hill.** The village is exposed, so winter frosts bite harder up here. Tired batteries often give up on the first properly cold morning of the year.
+- **Ice on the steep lanes.** The roads down into the Welland valley can be icy when town roads are clear. Cars slide onto verges or into ditches, and some need a winch to come out.
+- **Driveway non-runners.** Older stone cottages and tight village driveways mean a car that has sat for months can be awkward to reach.
+- **Visitors heading for Kirby Hall.** People exploring the area sometimes find their car won't start when they get back to it.
+
+## How we handle a call from Gretton
+
+When you ring 07598 314366, George or the team will ask where the car is, what happened and whether it rolls freely. On a hill, that last question matters. A car with seized brakes or a locked gearbox on a slope needs a different approach to one that rolls.
+
+We then tell you which vehicle is coming and give you a realistic arrival time. Our fleet includes spec lift tow trucks, beavertail tilt-and-slide transporters, and a van with dollies and skates for cars with seized wheels or in tight spots.
+
+### Kit that suits village and valley work
+
+| Situation in Gretton | What we usually send |
+| --- | --- |
+| Car in a ditch or on a soft verge | Truck with a winch |
+| Non-runner on a narrow driveway | Van with dollies and skates, or a beavertail |
+| Flat battery on a frosty morning | Jump start or a new battery fitted on the spot |
+| Car to a garage in Corby or Kettering | Beavertail transporter |
+
+## Services available in Gretton
+
+Every service we offer is available in the village. Each has its own page with local detail:
+
+- [Breakdown recovery in Gretton](/breakdown-recovery/gretton) for roadside breakdowns, accidents, ditch and verge recoveries.
+- [Car transport from Gretton](/car-transport/gretton) for auction collections, garage runs and moving a car you have bought or sold.
+- [Jump starts and batteries in Gretton](/jump-start/gretton) for flat batteries and wheel changes onto a spare.
+- [Scrap car collection in Gretton](/scrap-car-collection/gretton) for free collection of unwanted cars, paid by bank transfer.
+
+## Staying safe while you wait
+
+If you break down on one of the lanes out of the village, find somewhere as wide and visible as you can before you stop. Put your hazards on, and at night your sidelights too. Get everyone out on the side away from traffic, and wear a high-vis if you have one. Our guide on [what to do if you break down](/guides/what-to-do-if-you-break-down) covers this in more detail.
+
+Rural lanes rarely have house numbers. Sharing your WhatsApp live location or a what3words reference gets us to you without guesswork.
+
+## Paying and getting a price
+
+Local breakdown recovery starts from £60 and jump starts from £40. Everything else is priced on the phone before we set off. We take card on the day, bank transfer or cash, and scrap cars are always paid for by bank transfer.
+
+## Nearby areas we also cover
+
+Gretton sits between several places we work in every week. We regularly cover [Rockingham](/areas/rockingham), [Weldon](/areas/weldon), [Deenethorpe](/areas/deenethorpe) and of course [Corby](/areas/corby). Prices for each service are set out in our [costs section](/costs).
 ---
-Q: Do you cover the lanes between Gretton and Harringworth?
-A: Yes. We cover Gretton and the surrounding lanes, including the routes down towards the Welland valley.
-Q: Can you reach Gretton in snow or ice?
-A: We will always try. In bad weather we will give you an honest arrival time and tell you if conditions mean we need to approach a different way.
+Q: Do you cover Gretton at night and on weekends?
+A: Yes. We work 24 hours a day, 7 days a week, including nights, weekends and bank holidays. Call or WhatsApp 07598 314366 whenever you need us.
+Q: How long will it take you to reach Gretton?
+A: Gretton is a short run from our Corby base. We give you a realistic arrival time when you call, based on where our trucks are at that moment.
+Q: Can you get a recovery truck down the narrow lanes around Gretton?
+A: Usually, yes. We have tow trucks, beavertail transporters and a smaller van with dollies and skates, so we can pick the vehicle that suits the lane. Tell us about the access when you call.
+Q: Can you pull my car out of a ditch near Gretton?
+A: Yes. We carry out off-road and ditch recovery with a winch. Tell us how the car is stuck and whether anyone is hurt, and call 999 first if anyone is injured.
+Q: What does breakdown recovery cost in Gretton?
+A: Local breakdown recovery has a £60 minimum charge. Anything beyond a local job is priced on the phone before we set off, so you know the cost in advance.
+Q: Do you recover vans and motorbikes from Gretton?
+A: Yes. We recover cars, vans up to 3.5 tonnes, 4x4s, motorbikes, campervans and classic cars.
 
 === breakdown-recovery
-title: Breakdown Recovery Gretton | 24/7 Recovery Near Corby | Rapid Recovery
-desc: Broken down in Gretton or on the lanes north of Corby? 24/7 breakdown recovery and winching from a PAS 43 accredited local team. From £60.
+title: Breakdown Recovery Gretton | Car Recovery and Winching | Rapid Recovery
+desc: Broken down in Gretton or on the lanes into the Welland valley? 24/7 breakdown recovery and winching from a PAS 43 Corby team, from £60. Call 07598 314366.
 h1: Breakdown recovery in Gretton
-lead: Stuck in Gretton or on one of the steep lanes nearby? We'll get a truck to you from Corby and recover you safely.
-img: breakdown-recovery-jaguar-x-type
+lead: Stuck on an icy lane below Gretton, or your car has died on the drive? We recover from the village, the valley roads and the verges around it, any time.
+answer: Rapid Recovery Corby offers 24/7 breakdown recovery in Gretton, including ditch and verge recovery with a winch. Local breakdown recovery has a £60 minimum charge. Call or WhatsApp 07598 314366.
+img: 4x4-recovery-nissan-x-trail
+img_alt: Nissan X-Trail 4x4 secured on a recovery truck after a rural breakdown, the kind of job common on the hilly lanes around Gretton
 ---
-## Hills, bends and verges
+## Breakdown recovery in Gretton when the hill works against you
 
-Gretton's roads are steep and twisty, especially heading down into the Welland valley. A car that loses grip or breaks down on a hill or bend is awkward to recover, and that's exactly the kind of job we're kitted out for. We use winches to pull cars back off verges and out of ditches, and we'll position the truck so the job is done safely.
+Breakdown recovery in Gretton is a little different from a call in the middle of Corby. The village is on high ground, the lanes off it are steep, and in winter they can be icy long after the town has thawed. Rapid Recovery Corby is local, works 24/7, and brings the right truck for slopes, verges and soft ground.
 
-## Breaking down on a hill
+We are PAS 43 accredited, which is the national safety standard for breakdown, recovery and roadside work. We are also ISO 9001 certified for quality management, and fully insured for goods in transit, public liability and road risks.
 
-If you stop on a steep lane, put the handbrake on hard, switch your hazards on and get everyone out to a safe spot away from the road, well back from any bend. Then call us with where you are, or share your location on WhatsApp.
+## Common breakdowns around Gretton
 
-## In the village
+These are the situations we get called to most often in and around the village.
 
-For a car that's simply stopped working at home, we'll recover it to your garage in Corby or further afield.
+### Sliding off on ice
 
-Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+The lanes running down towards Harringworth and the Rutland border catch drivers out on frosty mornings. A car that slides onto a verge or into a ditch often can't be driven out, even if it has no damage. We use a winch to pull it back onto firm ground, check it over, and either let you drive on or take it to a garage.
+
+### Engine or clutch failure on a climb
+
+Steep roads put strain on clutches, cooling systems and gearboxes. If the engine overheats on the climb back into the village, pull in, switch off and leave the bonnet shut until it cools. Never open a hot radiator cap. We can then recover the car to a garage of your choice.
+
+### Accident recovery
+
+After a collision we clear the vehicle from the road and take it to our secure storage yard, a garage, or home. We handle insurance and accident management work too, so we are used to dealing with the paperwork side.
+
+### Cars that won't start on the drive
+
+Not every breakdown happens on the road. Many Gretton calls are for cars that have failed on a driveway or outside a cottage. Our van with dollies and skates can move cars with seized wheels out of tight spaces.
+
+## What to do if you break down near Gretton
+
+Your safety comes before the car. On any road with fast traffic, follow these steps:
+
+1. Pull as far left, onto the verge or into a gateway, as you safely can.
+2. Hazards on, and sidelights too if it is dark or misty.
+3. Everyone out on the side away from traffic. Stand behind a barrier if there is one.
+4. Wear a high-vis vest if you carry one.
+5. If you are stuck in a live lane and can't get out safely, call 999.
+
+Then call us on 07598 314366. Country lanes have few signs, so send your WhatsApp live location or a what3words reference, or tell us the nearest junction or landmark and which way you were heading. Our guide on [what to do if you break down](/guides/what-to-do-if-you-break-down) has more detail.
+
+## How much does car recovery cost in Gretton?
+
+Local breakdown recovery starts from a **£60 minimum charge**. Longer recoveries, winching from a ditch, or taking the car further afield are priced on the phone before we set off. You agree the price first, with no surprises when we arrive.
+
+| Job | How it is priced |
+| --- | --- |
+| Local breakdown recovery | From £60 minimum |
+| Ditch or verge winching | Priced on the phone |
+| Recovery to a garage further away | Priced on the phone |
+| Recovery anywhere in the UK | Priced on the phone |
+
+We take card on the day, bank transfer or cash. Business invoicing is available by arrangement for garages, dealers and fleets. See the full [breakdown recovery cost guide](/costs/breakdown-recovery).
+
+## What we recover
+
+We recover cars, vans up to 3.5 tonnes, 4x4s and SUVs, motorbikes, campervans and classic cars. Some of our trucks can carry one car and tow a second on a dolly, which helps when two vehicles from the same household or business need moving.
+
+If the car can't be repaired straight away, we can hold it in our secure storage yard until you, your garage or your insurer decides what happens next. That is often useful after an accident on one of the valley roads.
+
+## Other help in Gretton
+
+If the problem is just a flat battery, a [jump start in Gretton](/jump-start/gretton) is quicker and cheaper than a tow. If you need a car moved without a breakdown, see [car transport from Gretton](/car-transport/gretton). For recoveries just over the hill, we also cover [breakdown recovery in Rockingham](/breakdown-recovery/rockingham) and [breakdown recovery in Weldon](/breakdown-recovery/weldon).
 ---
-Q: My car has slid onto the verge on a lane near Gretton. Can you help?
-A: Yes. We can winch it back onto the road or onto the truck. Tell us how it is positioned and whether anyone is hurt. If anyone is injured, call 999 first.
-Q: Can you take my car to a garage in Corby?
-A: Yes, or to any garage, dealer or home address you choose.
+Q: Who can I call for a tow truck in Gretton at night?
+A: Call Rapid Recovery Corby on 07598 314366. We run 24 hours a day, 7 days a week, including nights and bank holidays, and we always answer the phone.
+Q: How much is breakdown recovery in Gretton?
+A: Local breakdown recovery has a £60 minimum charge. Winching, longer distances and anything unusual are priced on the phone before we set off.
+Q: My car slid into a ditch on an icy lane near Gretton. Can you get it out?
+A: Yes. We recover cars from ditches and verges with a winch. If anyone is hurt, call 999 first, then call us and tell us how the car is lying.
+Q: Can you take my car from Gretton to my own garage?
+A: Yes. We recover to any garage you choose, locally or anywhere in the UK. Longer runs are priced before we set off.
+Q: Do you recover campervans and classic cars in Gretton?
+A: Yes. We recover campervans, classic cars, 4x4s, motorbikes and vans up to 3.5 tonnes, and we are careful with every vehicle we load.
+Q: How do I tell you where I am on a country lane near Gretton?
+A: Send your WhatsApp live location or a what3words reference to 07598 314366. If you can't, give us the nearest junction or landmark and your direction of travel.
 
 === car-transport
-title: Car Transport Gretton | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport for Gretton. Collections and deliveries anywhere in the UK, classic and project cars and garage runs, fully insured with a fixed price.
-h1: Car transport in Gretton
-lead: Moving a car to or from Gretton? We'll collect it, load it safely and deliver it anywhere in the UK, insured all the way.
+title: Car Transport Gretton | Vehicle Transport and Car Transporter | Rapid Recovery
+desc: Car transport from Gretton for auctions, private sales, garage runs and classic cars. Fixed price agreed before booking, insured open transport. Call 07598 314366.
+h1: Car transport from Gretton
+lead: Bought a car, sold one, or need one taken to a garage? We move vehicles to and from Gretton on open transporters, at a fixed price agreed up front.
+answer: Rapid Recovery Corby provides car transport to and from Gretton on open beavertail transporters, UK-wide. Every job has a fixed price agreed before booking. Call or WhatsApp 07598 314366 for a quote.
 img: car-transport-volvo-v40-rally-car
+img_alt: Volvo V40 rally car loaded on an open beavertail car transporter, ready for delivery from the Corby area
 ---
-## Out of the way? Not for us
+## Car transport in Gretton, done carefully
 
-Gretton isn't on the way to anywhere, which makes getting a car to a dealer or specialist a hassle. We'll do the driving: collect your car and take it wherever it needs to go, or bring a car you've bought back to your door.
+Car transport from Gretton covers far more than breakdowns. People in the village buy cars at auction, sell to buyers in other counties, keep project cars in garages, and need runs to a trusted garage for an MOT or repair. Rapid Recovery Corby moves vehicles of all kinds on open transporters, anywhere in the UK.
 
-## Careful with classics
+Customers tell us they choose us because we are careful with their cars. That matters when you are moving a classic or a car you have just paid good money for.
 
-Plenty of classic and cherished cars live in Gretton garages. We load low and valuable cars on a beavertail at a gentle angle, strap them by the wheels and drive steadily. Non-runners can be winched on.
+## Who uses our vehicle transport in Gretton
 
-## Fixed prices
+### Buyers and sellers
 
-Tell us the collection and delivery addresses and the vehicle, and we'll give you a fixed price.
+If you have bought a car privately or online, we can collect it from the seller and bring it to your door in Gretton. If you have sold a car that isn't taxed or insured for the road, we can deliver it to the buyer.
 
-See our [car transport cost guide](/costs/car-transport).
+### Auction collections
+
+Auction cars often need moving quickly. We collect from auction sites and deliver to Gretton or wherever you need the car to go.
+
+### Garage and MOT runs
+
+If your car isn't road legal or you would rather not drive it, we take it to the garage and bring it back once the work is done. Many people in the village use garages in Corby or Kettering, and we run between them regularly.
+
+### Classic and prestige cars
+
+Older cars kept in garages and barns around the Welland valley often come out for shows, restorations or sale. We load them on beavertail transporters with a gentle angle, which helps with low cars and long overhangs.
+
+### Moving house
+
+If you are moving into or out of Gretton with more cars than drivers, we can transport the extra vehicle. Some of our trucks carry one car and tow a second on a dolly.
+
+### Non-runners
+
+A car that doesn't run can still be moved. Our van with dollies and skates can shift a car with seized wheels out of a tight garage or driveway so it can be loaded.
+
+## Open transport and what that means
+
+We use **open transport only**. Your car travels on the back of a beavertail tilt-and-slide transporter, strapped down securely. We do not offer enclosed transport. For most cars, including classics, open transport on a well-run truck is perfectly suitable.
+
+We are insured for goods in transit, public liability and road risks, and our PAS 43 and ISO 9001 accreditations cover how we load, secure and move vehicles safely.
+
+## How much does car transport from Gretton cost?
+
+Each car transport job is priced individually. The price depends on:
+
+- where the car is collected from and where it is going
+- whether it runs, steers and brakes
+- the size and type of vehicle
+- how easy it is to reach and load
+- when you need it moved
+
+We agree a **fixed price before you book**, so there are no add-ons later. Payment is by card on the day, bank transfer or cash, and business invoicing is available by arrangement for dealers and garages. Read the [car transport cost guide](/costs/car-transport) for more on how jobs are priced.
+
+## Getting the car ready
+
+To make collection smooth:
+
+1. Tell us if the car is a non-runner, has flat tyres or the handbrake is stuck on.
+2. Remove valuables and loose items from inside.
+3. Have the keys ready, or tell us where to collect them.
+4. Mention any steep slope or narrow entrance at the collection point, which is common in the village.
+
+## Booking a move from Gretton
+
+Call or WhatsApp 07598 314366 with the collection address, the delivery address and the make and model. Photos of the car and the access help us plan. We confirm the fixed price, agree a collection time that suits you, and let you know when the truck is on its way. Garages, dealers and fleets can set up regular runs with business invoicing.
+
+## Delivery to your door in Gretton
+
+Many cottages in Gretton have narrow entrances or steep approaches. Let us know when you book and we will plan where to unload safely. Where a driveway is too tight for a transporter, we can use the dollies to place the car exactly where you want it.
+
+## More from Rapid Recovery in Gretton
+
+If your car has broken down rather than simply needing a move, see [breakdown recovery in Gretton](/breakdown-recovery/gretton). If it is beyond saving, we offer [scrap car collection in Gretton](/scrap-car-collection/gretton). We also run car transport from nearby [Rockingham](/car-transport/rockingham) and [Corby](/car-transport/corby). If your car won't start before a planned move, our [car won't start guide](/guides/car-wont-start) may help.
 ---
-Q: Can you transport a classic car from Gretton to a show?
-A: Yes. Book in advance and tell us the event details, and we will collect and deliver it.
-Q: How is a car secured during transport?
-A: Cars are strapped down on the transporter and covered by goods in transit insurance while with us.
+Q: How much does it cost to transport a car from Gretton?
+A: Each job is priced individually based on distance, the vehicle and access. We agree a fixed price before you book, so you know exactly what you will pay.
+Q: Do you offer enclosed car transport from Gretton?
+A: No. We offer open transport only, on beavertail tilt-and-slide transporters, with full goods in transit insurance.
+Q: Can you collect a car from an auction and deliver it to Gretton?
+A: Yes. We collect auction cars and deliver them to Gretton or anywhere else in the UK.
+Q: Can you move a non-running classic car from a garage in Gretton?
+A: Yes. Our van with dollies and skates can move cars with seized wheels out of tight garages, and we load classics onto a beavertail transporter.
+Q: Can you move two cars at once?
+A: Often, yes. Some of our trucks can carry one car and tow a second on a dolly. Tell us about both cars when you call.
 
 === jump-start
-title: Jump Start Gretton | Mobile Battery Fitting from £40 | Rapid Recovery Corby
-desc: Flat battery in Gretton? 24/7 mobile jump starts from £40, new batteries fitted on your driveway and wheel changes from a local Corby team.
-h1: Jump starts in Gretton
-lead: Car won't start on a cold Gretton morning? We'll come up from Corby with a jump pack and replacement batteries.
-img: early-morning-recovery-renault-clio
+title: Jump Start Gretton | Flat Battery and Mobile Battery Fitting | Rapid Recovery
+desc: Flat battery in Gretton? 24/7 jump starts from £40, new batteries fitted on the spot and wheel changes onto your spare. Local Corby team. Call 07598 314366.
+h1: Jump starts and batteries in Gretton
+lead: Car dead on a frosty Gretton morning? We come out with a jump pack or a new battery, and get you moving without a tow.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Gretton from a £40 minimum charge, plus mobile battery fitting and wheel changes onto your spare. Call or WhatsApp 07598 314366.
+img: night-breakdown-recovery-honda-civic
+img_alt: Honda Civic with its hazard lights on at night beside a Rapid Recovery truck, waiting for a jump start or recovery
 ---
-## Exposed and cold
+## Jump start in Gretton when the cold wins
 
-Being up on the ridge, Gretton gets the wind and the frost. Cold weather is hard on batteries, and one that's been coping all year can suddenly fail on a frosty morning.
+A jump start in Gretton is our most common winter call in the village. Gretton is high and exposed, so frost settles harder up here than in parts of Corby. A battery that coped all autumn can fail on the first sharp morning. Rapid Recovery Corby comes out 24/7 to get you started, fit a new battery, or change a flat tyre.
 
-## Jump or replace
+## Why batteries fail on the hill
 
-We'll start the car and test the battery. If it's still healthy, you're on your way. If it isn't, we can supply and fit a new one on your drive, with the price agreed first.
+Car batteries lose power in the cold. Add short trips around the village, cars left standing over winter, and modern cars drawing power while parked, and a weak battery soon runs flat. Common signs include:
 
-## Flat tyres
+- a slow, laboured crank when you turn the key
+- clicking with no crank at all
+- dashboard lights dimming or flickering
+- the car starting after a jump, then failing again the next day
 
-Rough lanes and potholes mean punctures. We'll change the wheel or recover the car to a tyre fitter.
+If the car starts after a jump but keeps going flat, the battery is probably past its best. We can test it and fit a replacement on the spot.
 
-A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+## Jump starts, batteries and wheel changes
+
+### Jump starts
+
+We use professional jump packs and leads. Once the car is running, we check it is charging properly and advise how long to drive before switching off.
+
+### Mobile battery fitting
+
+If the battery is worn out, we can **supply and fit a new one where the car is parked**, whether that is a driveway, a lane-side spot or a car park. We match the battery to what your car needs, and confirm the price before fitting.
+
+### Flat tyre wheel changes
+
+A flat on a narrow lane is awkward and can be unsafe to tackle alone. We change the wheel onto your spare or space saver so you can get to a tyre fitter.
+
+## How much does a jump start cost in Gretton?
+
+| Service | Price |
+| --- | --- |
+| Jump start | From £40 minimum |
+| New battery supplied and fitted | Priced by the battery your car needs, confirmed before fitting |
+| Wheel change onto your spare | Priced on the phone |
+
+Pay by card on the day, bank transfer or cash. There is more detail in the [jump start cost guide](/costs/jump-start).
+
+## Before you call
+
+A few quick checks can save time:
+
+1. Make sure lights, heater and other electrics are switched off.
+2. Check you are in park or neutral and that the immobiliser key fob isn't dead.
+3. Note any warning lights on the dashboard.
+4. If the car is on a steep lane or blocking traffic, put the hazards on and stand clear.
+
+Our [car won't start guide](/guides/car-wont-start) explains common causes, including when a battery isn't actually the problem.
+
+## Keeping your battery healthy through a Gretton winter
+
+A few habits help a battery survive the colder months on the hill:
+
+- Take a longer drive at least once a week, rather than only short trips to the shops.
+- If a car will sit for weeks, consider a trickle charger on the drive or in the garage.
+- Switch off headlights, heated screens and the blower before you turn the engine off.
+- Book a battery check if the car is slow to start as the weather turns.
+
+None of this guarantees the battery won't fail, but it reduces the chance of being stuck on a frosty morning. If it does go, we are a call away.
+
+## Who we help
+
+We jump start cars for commuters heading down into Corby, parents on the school run, visitors parked near Kirby Hall, and garages and fleets with vehicles that have sat unused. Vans and 4x4s are covered too. If a business vehicle won't start, invoicing can be arranged.
+
+## When a jump start isn't enough
+
+Sometimes the issue is a starter motor, alternator or fuel problem, not the battery. If we can't get the car going safely, we can recover it to a garage the same visit. See [breakdown recovery in Gretton](/breakdown-recovery/gretton) for how that works.
+
+## Help in the dark
+
+Gretton has little street lighting once you are out of the village centre. If the car dies at night, keep your sidelights and hazards on if the battery allows, and wait somewhere safe off the road. Send your WhatsApp live location or a what3words reference so we can find you quickly.
+
+## Nearby jump start cover
+
+We also provide jump starts and battery fitting in [Rockingham](/jump-start/rockingham), [Weldon](/jump-start/weldon) and [Corby](/jump-start/corby). If the car is past repair, [scrap car collection in Gretton](/scrap-car-collection/gretton) is free.
 ---
-Q: Why does my battery always die in winter?
-A: Cold reduces a battery's power while the engine needs more to start. An ageing battery often copes in summer and fails on the first cold mornings. We can test it and tell you if it needs replacing.
-Q: Can you come out early before work?
-A: Yes, we are available 24 hours a day.
+Q: How much is a jump start in Gretton?
+A: A jump start has a £40 minimum charge. If you need a new battery, it is priced by the battery your car needs and confirmed before we fit it.
+Q: Can you fit a new battery on my driveway in Gretton?
+A: Yes. We supply and fit new batteries on the spot, on driveways, lanes or in car parks.
+Q: Can you jump start my car in Gretton early in the morning?
+A: Yes. We work 24 hours a day, 7 days a week, so an early start before work is no problem. Call or WhatsApp 07598 314366.
+Q: Why does my car battery keep going flat in winter?
+A: Cold weather reduces battery power, and short trips don't give it time to recharge. An older battery often fails on the first hard frost. We can test it and replace it if needed.
+Q: Can you change a flat tyre on a lane near Gretton?
+A: Yes. We change the wheel onto your spare or space saver so you can drive to a tyre fitter.
 
 === scrap-car-collection
-title: Scrap My Car Gretton | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car in Gretton with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+title: Scrap Car Collection Gretton | Sell My Scrap Car | Rapid Recovery
+desc: Scrap your car in Gretton with free collection and payment by bank transfer. Non-runners, no MOT and accident damaged cars taken. Call 07598 314366 today.
 h1: Scrap car collection in Gretton
-lead: Got an old car in Gretton that's done its last mile? We'll collect it for free and pay you by bank transfer.
+lead: Got a car in Gretton that has reached the end of the road? We collect it free, pay you by bank transfer, and make sure it is scrapped properly.
+answer: Rapid Recovery Corby offers free scrap car collection in Gretton, paying by bank transfer. We take non-runners, cars with no MOT and accident damaged vehicles, and use a licensed Authorised Treatment Facility. Call 07598 314366.
 img: scrap-car-collection-small-hatchback
+img_alt: Small hatchback ready for scrap car collection on a recovery truck, collected free from a village driveway
 ---
-## Collected from the village
+## Scrap my car in Gretton: how it works
 
-We collect scrap cars and vans from driveways, garages and yards in Gretton. Non-runners, MOT failures and accident damage are all fine.
+If you want to scrap your car in Gretton, Rapid Recovery Corby makes it simple. We buy scrap and unwanted cars, vans and motorbikes, collect them free of charge and pay you by bank transfer. Everything goes through a licensed Authorised Treatment Facility, so the scrapping is legal and recorded properly with the DVLA.
 
-## Done properly
+Villages like Gretton often have cars sitting in garages, on driveways or behind houses for years. Many have flat tyres, seized brakes or no keys. We are used to getting those out.
 
-We're licensed waste carriers and scrap metal collectors. You're paid by bank transfer, never cash, and the car goes to a licensed Authorised Treatment Facility that issues your Certificate of Destruction and tells the DVLA.
+## What we collect in Gretton
 
-## Simple to arrange
+- Cars that don't run
+- Cars with no MOT or no tax
+- Accident damaged vehicles
+- Old vans and motorbikes
+- Cars with no V5C logbook, as long as you can show proof of ID
 
-Send us the registration and a few details. We'll give you a price and agree a collection time.
+If you are unsure whether we will take it, ask. The answer is usually yes.
 
-See our [scrap car cost guide](/costs/scrap-car-collection).
+## Getting an awkward car out
+
+Gretton's stone cottages and narrow driveways can make collection tricky. Our van with dollies and skates moves cars with seized wheels out of tight spaces, and a winch can pull a car up onto a beavertail transporter. Tell us about the access when you call and we will plan for it.
+
+## How much will I get for my scrap car?
+
+The price is based on:
+
+| Factor | Why it matters |
+| --- | --- |
+| Weight | Most of the value is in the metal |
+| Scrap metal prices | These go up and down over time |
+| Make and model | Some cars have more useful parts |
+| Completeness | Missing parts lower the value |
+| Condition | Damage and corrosion affect the price |
+
+Give us the registration, make and model, and tell us whether the car is complete. We will quote over the phone. Collection is free. The [scrap car cost guide](/costs/scrap-car-collection) explains pricing in more detail.
+
+## Why we pay by bank transfer
+
+We always pay for scrap cars by bank transfer. The Scrap Metal Dealers Act 2013 bans cash payments for scrap metal, and that includes scrap cars. Any business offering cash for a scrap car is breaking the law. A bank transfer also gives you a clear record of the sale.
+
+## Licences and paperwork
+
+We hold a **waste carrier licence** and a **scrap metal collector's licence**. Your car goes to a licensed Authorised Treatment Facility (ATF), which:
+
+1. Issues the Certificate of Destruction.
+2. Notifies the DVLA that the vehicle has been scrapped.
+
+Once the DVLA knows, any full months of vehicle tax are refunded to you automatically. Keep your paperwork until the refund arrives. Our guide on [how to scrap a car](/guides/how-to-scrap-a-car) walks through each step.
+
+## The collection, step by step
+
+1. Call or WhatsApp 07598 314366 with the registration, make, model and where the car is.
+2. We give you a price and agree a collection time.
+3. We arrive, check your ID and paperwork, and load the car.
+4. We pay you by bank transfer.
+5. The car goes to the Authorised Treatment Facility for dismantling and recycling.
+
+Most collections are straightforward and you do not need to pay anything for the truck to come out. Where a car has been parked on a sloping drive or in a barn for a long time, we may need a little longer to free it up safely, and we will tell you that in advance.
+
+## Selling a car you have inherited or cleared
+
+We often collect cars when a family is clearing a house or a relative can no longer drive. If you are not the registered keeper, tell us when you call and bring your proof of ID. We will explain what paperwork helps and keep the process simple. Garages and businesses with unwanted vehicles can book collections too, and we can take more than one vehicle in a visit where the truck allows it.
+
+## What to have ready
+
+- Your proof of ID
+- The V5C logbook, if you have it
+- Keys, if you still have them
+- Personal items removed from the car
+- Any number plates you want to keep, removed or mentioned when you book
+
+## Not sure it's scrap?
+
+If the car might be worth repairing, it is worth asking a garage first. We can take it there for you through [car transport from Gretton](/car-transport/gretton). If it has simply broken down, [breakdown recovery in Gretton](/breakdown-recovery/gretton) may be what you need. We also collect scrap cars from [Rockingham](/scrap-car-collection/rockingham), [Weldon](/scrap-car-collection/weldon) and [Deenethorpe](/scrap-car-collection/deenethorpe).
 ---
-Q: Do you collect scrap cars from Gretton for free?
-A: Yes, collection is free.
-Q: What happens to my car tax when the car is scrapped?
-A: Once the DVLA is told the car has been scrapped, any full months of remaining vehicle tax are refunded to you automatically.
+Q: Is scrap car collection free in Gretton?
+A: Yes. We collect scrap cars from Gretton free of charge and pay you by bank transfer.
+Q: Can I get cash for my scrap car in Gretton?
+A: No. Cash payments for scrap cars are banned under the Scrap Metal Dealers Act 2013. We always pay by bank transfer.
+Q: Can I scrap my car without a V5C logbook?
+A: Yes. We can still collect it as long as you can show proof of ID.
+Q: Will I get my car tax back when I scrap it?
+A: Yes. Once the Authorised Treatment Facility notifies the DVLA, any full months of tax are refunded to you automatically.
+Q: How much will I get for my scrap car in Gretton?
+A: It depends on weight, scrap metal prices, make and model, completeness and condition. Call with the registration and we will give you a quote.
+Q: Can you collect a scrap car that has been sitting in a garage for years?
+A: Yes. We use dollies, skates and a winch to move cars with seized wheels or flat tyres out of garages and tight driveways.

@@ -1,124 +1,429 @@
 === hub
-title: Vehicle Recovery Desborough | 24/7 Breakdown Recovery on the A6 | Rapid Recovery
-desc: 24/7 vehicle recovery in Desborough, between Kettering and Market Harborough on the A6. Breakdown recovery, car transport, jump starts and scrap car collection.
-h1: Vehicle recovery in Desborough
-lead: Desborough sits on the A6 between Kettering and Market Harborough. We cover the town and the roads around it, day and night.
+title: Car Recovery Desborough | 24/7 Towing on the A6 | Rapid Recovery
+desc: 24/7 car recovery in Desborough and on the A6 between Kettering and Market Harborough. Breakdowns, car transport, jump starts and scrap cars. Call 07598 314366.
+h1: Car recovery in Desborough, 24 hours a day
+lead: Desborough is a growing town on the A6 between Kettering and Market Harborough. We cover its estates, the bypass and the roads around it, day and night.
+answer: Rapid Recovery Corby provides 24/7 car recovery in Desborough, with local breakdown recovery from £60, jump starts from £40, UK-wide car transport and free scrap car collection. Call or WhatsApp 07598 314366.
+img: vehicle-recovery-nissan-qashqai
+img_alt: Nissan Qashqai loaded on a Rapid Recovery truck during a vehicle recovery job
 ---
-## A growing town on the A6
+## Car recovery in Desborough from a Corby-based team
 
-Desborough has grown a lot in recent years, with new estates added to the old town centre. The A6 bypass takes through traffic between Kettering and Market Harborough, and the A14 is a short drive south.
+Rapid Recovery provides car recovery in Desborough around the clock, from our base in Corby. We run five-plus recovery vehicles and pick up the phone at any hour, including nights, weekends and bank holidays.
 
-We're called to Desborough for breakdowns on the A6, cars that won't start on the newer estates, vans at the local business units, and old cars that need collecting for scrap.
+Desborough has grown a lot, with newer estates added to the older town. It sits on the A6 between Kettering and Market Harborough, and the A6 bypass carries through traffic past the town. That combination of a fast main road and busy residential streets is what most of our Desborough work comes from.
 
-## Our services in Desborough
+## Typical recovery jobs in Desborough
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+Here is what we are most often asked to do in and around the town:
+
+- **A6 and bypass breakdowns.** Cars that fail at speed, often with a tyre blowout, overheating or a sudden loss of power.
+- **Accidents.** Bumps at junctions and roundabouts on the A6 that leave a car undriveable.
+- **Estate driveway non-runners.** Cars on the newer estates that won't start or need to go to a garage.
+- **Flat batteries.** Commuter cars that sit for a weekend, or second cars barely used.
+- **Moves for new residents.** People moving into new homes who need a second car transported.
+- **Scrap collections.** Old cars cleared from drives and garages.
+
+## The right truck for each Desborough job
+
+| Job | What we usually use |
+| --- | --- |
+| A6 breakdown or accident | Beavertail tilt-and-slide or spec lift tow truck |
+| Estate driveway non-runner | Beavertail, or dollies if the wheels are locked |
+| Low or underground car park | Van with dollies and skates |
+| Two cars at once | Truck carrying one car and towing one on a dolly |
+
+We recover cars, vans up to 3.5 tonnes, 4x4s, motorbikes, campervans and classic cars.
+
+## Work for Desborough garages and businesses
+
+We don't only help private drivers. Local garages use us to bring in cars that have failed on customers' drives, dealers use us to move stock, and companies with vans or fleet cars call us when one stops. Regular business customers can ask about invoicing by arrangement, so drivers don't have to pay on the spot.
+
+## What our services in Desborough cost
+
+Local breakdown recovery has a £60 minimum charge. Jump starts have a £40 minimum. Everything else, including longer recoveries, car transport and scrap prices, is quoted on the phone before we set off, so you know where you stand.
+
+You can pay by card on the day, bank transfer or cash. Garages, dealers and fleets can ask about business invoicing. Scrap cars are always paid by bank transfer, because the law does not allow cash for scrap. More detail is on our [costs page](/costs).
+
+## Choose a service in Desborough
+
+- [Breakdown recovery in Desborough](/breakdown-recovery/desborough) for roadside, accident and driveway jobs.
+- [Car transport in Desborough](/car-transport/desborough) for auction, dealer and private sale moves.
+- [Jump starts in Desborough](/jump-start/desborough) for flat batteries, new batteries and spare wheels.
+- [Scrap car collection in Desborough](/scrap-car-collection/desborough) for free collection and payment by bank transfer.
+
+## Accredited, insured and careful
+
+We are PAS 43 accredited, which is the national safety standard for vehicle breakdown, recovery and roadside operations. We are also ISO 9001 certified for quality management. Our insurance covers goods in transit, public liability and road risks, and we have a secure storage yard for cars that can't be dropped off straight away.
+
+Customers come back to us because we answer the phone, our prices are fair, we are friendly and local, and we are really careful with their cars.
+
+## Helping us find you quickly
+
+The A6 bypass has stretches where it is hard to describe where you are. The quickest way to help us is to send a WhatsApp live location or a what3words reference. If you can't, tell us the nearest junction, landmark or marker post and which direction you were heading.
+
+Our [what to do if you break down](/guides/what-to-do-if-you-break-down) guide explains how to stay safe while you wait. We also cover nearby [Rothwell](/areas/rothwell) and [Kettering](/areas/kettering).
 ---
-Q: Do you cover the A6 between Desborough and Market Harborough?
-A: Yes. We recover vehicles along the A6 and can take them to Market Harborough, Kettering or anywhere else.
-Q: How quickly can you reach Desborough?
-A: It is a short drive from Corby. We give you a realistic arrival time when you call.
+Q: Do you cover Desborough at night and at weekends?
+A: Yes. Rapid Recovery covers Desborough 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
+Q: How long will a recovery truck take to reach Desborough?
+A: We give you a realistic arrival time when you call. It depends on where our trucks are at the time, and Desborough is a straightforward run from Corby.
+Q: Do you recover cars on the A6 bypass at Desborough?
+A: Yes. We recover cars on the A6 and the bypass. Get off the carriageway if you safely can, stand away from traffic and call 07598 314366.
+Q: How much is car recovery in Desborough?
+A: Local breakdown recovery starts at a £60 minimum charge. Longer jobs are priced on the phone before we set off.
+Q: Can you collect my old car for scrap from Desborough?
+A: Yes. Collection is free, we pay by bank transfer and the car goes to a licensed Authorised Treatment Facility.
 
 === breakdown-recovery
-title: Breakdown Recovery Desborough | A6 Recovery 24/7 | Rapid Recovery Corby
-desc: Broken down in Desborough or on the A6? 24/7 breakdown and accident recovery for cars, vans and 4x4s from a PAS 43 accredited local team. From £60.
-h1: Breakdown recovery in Desborough
-lead: Stopped on the A6 bypass or won't start at home in Desborough? We'll get a truck to you and a price on the phone first.
-img: vehicle-recovery-vw-touran-loaded
+title: Breakdown Recovery Desborough | A6 Tow Truck 24/7 | Rapid Recovery Corby
+desc: 24/7 breakdown recovery in Desborough and on the A6 bypass. Tow trucks and beavertails from a PAS 43 accredited Corby team. Local recovery from £60. Call now.
+h1: Breakdown recovery in Desborough and on the A6
+lead: Broken down in Desborough or on the A6 bypass? We send the right recovery truck from Corby and agree the price with you before we leave.
+answer: Rapid Recovery Corby offers 24/7 breakdown recovery in Desborough and on the A6, with a £60 minimum charge for local recovery. Call or WhatsApp 07598 314366 for a price and a realistic arrival time.
+img: breakdown-recovery-ford-focus-beavertail
+img_alt: Ford Focus being winched onto a beavertail recovery truck after breaking down
 ---
-## The A6 bypass
+## Breakdown recovery in Desborough, any time of day
 
-The A6 around Desborough is a fast road with roundabouts and few places to stop. If you break down, pull onto the verge or into a lay-by if you can, put your hazards on and wait somewhere safe away from the traffic. Tell us your direction and the nearest roundabout, or share your location on WhatsApp.
+For breakdown recovery in Desborough, ring Rapid Recovery on 07598 314366. We are a Corby team on call 24 hours a day, every day, with tow trucks, beavertail transporters and a dolly van ready to go.
 
-## Family cars and people carriers
+We will tell you the price and a realistic arrival time on the phone. Local recovery starts at £60, and anything further is agreed before a truck moves.
 
-Desborough's newer estates are full of family cars, people carriers and SUVs. When one stops, we'll recover it and can usually take the family along too. Tell us how many passengers there are when you call.
+## Broken down on the A6 near Desborough?
 
-## Where we'll take it
+The A6 links Kettering and Market Harborough, and the Desborough bypass carries fast through traffic. A breakdown here needs care. While you wait for us:
 
-To your garage in Desborough, Kettering or Market Harborough, home, or our secure yard.
+1. Steer as far left as you safely can, ideally onto the verge or into a lay-by.
+2. Switch your hazard lights on, and at night your sidelights too.
+3. Get everyone out on the verge side, away from the traffic.
+4. Stand behind a safety barrier if there is one, and wear a high-vis if you have it.
+5. If you can't get out of a live lane safely, call 999 straight away.
 
-Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+Then call us with your location. A WhatsApp live location or a what3words reference is best. Our [guide to what to do if you break down](/guides/what-to-do-if-you-break-down) has more on staying safe.
+
+## Breakdowns on Desborough's estates and streets
+
+A lot of our Desborough work is inside the town. The newer estates have driveways, shared parking and tight turning heads, and a car that has died on a drive can be awkward to reach. Where a truck can't get alongside, our van with dollies and skates lets us move the car to a better loading spot.
+
+Common estate jobs include cars with seized brakes after standing, cars with a failed clutch or gearbox, and cars that need taking to a garage for repair. We can book these for a time that suits you, so you don't need to take a day off.
+
+## Types of vehicle we recover in Desborough
+
+- Cars of all sizes, from small hatchbacks to estates.
+- Vans up to 3.5 tonnes, including work vans.
+- 4x4s and SUVs.
+- Motorbikes.
+- Campervans.
+- Classic cars, loaded with extra care.
+
+We also handle accident recovery, including insurance and accident management work, garage-to-garage moves, and off-road or ditch recovery using a winch.
+
+## How much does vehicle recovery in Desborough cost?
+
+Local breakdown recovery has a £60 minimum charge. The final price depends on the distance, the type of vehicle and how complex the recovery is. For example, a car in a ditch or a vehicle with locked wheels takes more time than a straight tow.
+
+| What affects the price | Example |
+| --- | --- |
+| Distance to drop-off | Your local garage or a garage further away |
+| Vehicle type | Small car, van or campervan |
+| Access | Open road, estate drive or underground car park |
+| Extra work | Winching, dollies or locked wheels |
+
+Whatever the job, we give you the price on the phone before we set off. You can pay by card on the day, bank transfer or cash. Read our [breakdown recovery cost guide](/costs/breakdown-recovery) for more.
+
+## Off-road, ditch and verge recovery
+
+The country roads around Desborough have soft verges and ditches that can catch a car out, particularly in wet weather or after a skid on a cold morning. Our trucks carry winches, so we can pull a car back onto firm ground in a controlled way before loading it. Don't try to drive out if the car is tipped at an angle or the wheels are spinning, as that can make things worse. Get clear, keep warm and call us.
+
+## Where we take your car
+
+We can take your car to any garage you choose, to your home, or to our secure storage yard if it needs to wait. We recover anywhere in the UK, so if you have broken down far from Desborough, we can bring the car back for you.
+
+## Why Desborough drivers call us
+
+We are PAS 43 accredited and ISO 9001 certified, and we carry goods in transit, public liability and road risks insurance. More than that, we answer the phone, we are honest about arrival times and we treat every car carefully.
+
+If your car won't start but isn't broken, a [jump start in Desborough](/jump-start/desborough) may be all you need. Our [car won't start guide](/guides/car-wont-start) can help you tell the difference. We also cover [breakdown recovery in Rothwell](/breakdown-recovery/rothwell) and [breakdown recovery in Kettering](/breakdown-recovery/kettering), and every local service is listed on the [Desborough area page](/areas/desborough).
 ---
-Q: Can you take my family as well as the car?
-A: Usually, yes. Tell us how many passengers there are when you call so we can plan for it.
-Q: Can you recover my car to a garage in Market Harborough?
-A: Yes. We recover to any garage or dealer you choose.
+Q: How much is breakdown recovery in Desborough?
+A: Local breakdown recovery in Desborough has a £60 minimum charge. Longer or more complex recoveries are priced on the phone before we set off.
+Q: Do you cover breakdowns on the A6 near Desborough?
+A: Yes. We recover vehicles on the A6 and the Desborough bypass 24/7. Get to safety first, then call 07598 314366.
+Q: Can you recover a car from a driveway in Desborough?
+A: Yes. We collect non-runners from driveways, and use dollies and skates if access is tight or the wheels are locked.
+Q: Do you do accident recovery in Desborough?
+A: Yes. We recover accident-damaged cars and work with insurance and accident management companies.
+Q: Is there a tow truck near me in Desborough?
+A: Yes. Rapid Recovery runs tow trucks from Corby 24/7 and gives you a realistic arrival time when you call.
+Q: Can you recover a van in Desborough?
+A: Yes. We recover vans up to 3.5 tonnes, as well as cars, 4x4s, motorbikes, campervans and classic cars.
 
 === car-transport
-title: Car Transport Desborough | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport for Desborough. Collections and deliveries anywhere in the UK, garage runs, non-runners and private sale pick-ups. Fully insured.
-h1: Car transport in Desborough
-lead: Need a car moved to or from Desborough? We collect and deliver locally and anywhere in the UK, with a fixed price agreed first.
-img: two-car-recovery-touran-and-clio
+title: Car Transport Desborough | Car Transporter UK-Wide | Rapid Recovery Corby
+desc: Car transport from Desborough to anywhere in the UK on open transporters. Auction, dealer, private sale and house moves. Fixed price agreed. Call 07598 314366.
+h1: Car transport to and from Desborough
+lead: Need a car moved from Desborough, or brought home to it? We collect and deliver across the UK on open transporters, for a fixed price agreed before you book.
+answer: Rapid Recovery Corby provides car transport to and from Desborough and across the UK on open transporters, with a fixed price agreed before booking. Call or WhatsApp 07598 314366 for a quote.
+img: car-transport-volvo-v40-rally-car
+img_alt: Volvo V40 rally car strapped onto an open car transporter for delivery
 ---
-## Moving to Desborough?
+## Car transport in Desborough with a fixed price
 
-Lots of people move to Desborough's new homes from other parts of the country. If you've got a car that can't be driven to the new house, we'll collect it from your old address and deliver it.
+Rapid Recovery offers car transport in Desborough for private buyers and sellers, garages, dealers and businesses. We collect from Desborough and deliver anywhere in the UK, or collect from anywhere and bring the car back to you.
 
-## Bought or sold a car?
+Before you book, we agree a fixed price. That price covers the job as described, so it won't creep up on the day.
 
-We collect cars from sellers and deliver to buyers anywhere in the UK, so neither of you has to make the trip.
+## Moving into Desborough's new estates
 
-## Insured and careful
+Desborough is a growing town with newer estates, and many people moving in arrive from elsewhere with more cars than drivers. We can collect a second car from your old address and deliver it to your new home in Desborough, or the other way round if you are moving out. Tell us the day and we will fit around your move.
 
-Every vehicle is loaded on a beavertail, strapped down and covered by goods in transit insurance while it's with us.
+## Other car transport we do from Desborough
 
-See the [car transport cost guide](/costs/car-transport).
+- **Auction collections.** Picking up cars bought at auction and bringing them to Desborough.
+- **Dealer deliveries.** Delivering stock between dealers or to a buyer's door.
+- **Private sales.** Collecting a car you have bought, or delivering one you have sold.
+- **MOT and garage runs.** Taking a car without an MOT to its test, or to a specialist garage.
+- **Classic and prestige cars.** Loaded carefully and strapped down properly.
+- **Non-runners.** Cars that don't start but need moving.
+
+## Open transport explained
+
+We use open transport only, on beavertail tilt-and-slide transporters. The car is loaded at a gentle angle, which suits most cars, and strapped securely for the journey. We don't offer enclosed transport.
+
+Some of our trucks can carry one car and tow a second on a dolly. If you have two cars heading the same way, we can often move both in one trip.
+
+## How we price car transport from Desborough
+
+| Detail you give us | How it affects the quote |
+| --- | --- |
+| Collection and delivery points | Sets the distance and route |
+| Running or non-runner | Non-runners need more time and kit |
+| Access at each end | Tight estates or low car parks may need dollies |
+| Number of cars | Two cars on one trip can save money |
+| Dates and times | Fixed slots are planned in advance |
+
+Once we have those details, we give you a fixed price. Our [car transport cost guide](/costs/car-transport) explains this further. You can pay by card on the day, bank transfer or cash, and dealers and garages can ask about business invoicing.
+
+## Collecting from tight spaces and low car parks
+
+Some Desborough homes have shared parking or narrow estate drives. If a transporter can't reach the car, our van with dollies and skates rolls it out to a safe loading point. The same kit works in low car parks where a truck can't get in.
+
+## Safe hands for your car
+
+We are PAS 43 accredited for vehicle recovery and roadside operations, and ISO 9001 certified for quality management. Our insurance includes goods in transit, public liability and road risks. If a car needs to wait between collection and delivery, it can stay in our secure storage yard.
+
+## Cars for Desborough garages and dealers
+
+Garages and dealers in and around Desborough use our vehicle transport to move cars between sites, bring trade-ins back from a customer's home, or deliver a sold car to its new owner. Fixed prices make it easy to build the cost into a sale. Business customers who book regularly can ask about invoicing by arrangement instead of paying each job on the day.
+
+## Booking checklist
+
+- Addresses for collection and delivery.
+- A contact name and phone number at each end.
+- Make, model and whether it runs.
+- Keys, and any auction or dealer paperwork.
+- Anything we should know, like a low splitter or a flat tyre.
+
+## Booking ahead for longer runs
+
+Local moves between Desborough and nearby garages can often be done at short notice. Longer runs across the UK are easier to fit in when you give us a few days, so we can plan the route and pair the trip with a second car if one is going the same way.
+
+If your car has broken down rather than needing a planned move, see [breakdown recovery in Desborough](/breakdown-recovery/desborough). If it is ready for scrap, use [scrap car collection in Desborough](/scrap-car-collection/desborough). We also offer [car transport in Rothwell](/car-transport/rothwell) and [car transport in Kettering](/car-transport/kettering). See all local services on our [Desborough page](/areas/desborough), or browse our [guides](/guides).
 ---
-Q: Can you move a car from my old house to my new one in Desborough?
-A: Yes. Give us both addresses and the dates and we will give you a fixed price.
-Q: Do you deliver cars I have sold to the buyer?
-A: Yes. We collect from you and deliver to the buyer anywhere in the UK.
+Q: How much does car transport from Desborough cost?
+A: It depends on distance, access, whether the car runs and how many cars are moving. We give a fixed price before booking.
+Q: Can you move my second car when I move house to Desborough?
+A: Yes. We collect from your old address and deliver to your new home, fitting around your moving day.
+Q: Do you offer enclosed car transport?
+A: No. We use open transport only, on beavertail tilt-and-slide transporters, with the car properly strapped down.
+Q: Can you collect a car from auction and deliver it to Desborough?
+A: Yes. We collect from auctions across the UK and deliver to Desborough or any address you choose.
+Q: Do you transport cars that don't run?
+A: Yes. We move non-runners, using dollies and skates for cars with seized wheels or in tight spaces.
 
 === jump-start
-title: Jump Start Desborough | Mobile Battery Fitting from £40 | Rapid Recovery Corby
-desc: Flat battery in Desborough? 24/7 mobile jump starts from £40, new batteries fitted on your driveway and wheel changes.
-h1: Jump starts in Desborough
-lead: Car won't start in Desborough? We'll come to you with a jump pack and a new battery if yours has had it.
+title: Jump Start Desborough | Mobile Battery Fitting 24/7 | Rapid Recovery Corby
+desc: Jump starts in Desborough 24/7 from £40. Flat battery help, mobile battery fitting and spare wheel changes at home, at work or on the A6. Call 07598 314366.
+h1: Jump starts and new batteries in Desborough
+lead: Flat battery in Desborough? We come to your drive, your workplace or the roadside with jump packs and new batteries, any time of day or night.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Desborough from a £40 minimum charge, plus mobile battery fitting and flat tyre changes onto your spare. Call or WhatsApp 07598 314366.
 img: night-breakdown-recovery-honda-civic
+img_alt: Honda Civic with hazard lights on at night waiting for roadside assistance
 ---
-## Driveway call-outs
+## Jump start in Desborough, at home or on the road
 
-Most of our Desborough jump starts are on driveways, first thing in the morning or after a car has sat for a while. We'll get you going and test the battery while we're there.
+If you need a jump start in Desborough, call Rapid Recovery on 07598 314366. We are on call 24 hours a day, 7 days a week, and we will tell you the price and a realistic arrival time when you ring.
 
-## New batteries fitted
+Most flat battery call-outs are sorted on the spot. If your battery has had it, we can fit a new one there and then.
 
-If the battery's failing, we can supply and fit a new one on the spot. Some cars with stop-start need a specific battery, and some need it registering after fitting. We'll tell you before we start.
+## Common flat battery situations in Desborough
 
-## Flat tyres
+Desborough is a commuter town, with many people driving to Kettering, Market Harborough and beyond on the A6. That brings its own battery problems:
 
-We'll change a wheel onto your spare or space saver, or recover the car to a tyre fitter.
+- A car that sits all weekend and won't start on Monday morning.
+- A car used only for short runs into town, which never fully recharges.
+- A dashcam, charger or interior light left draining the battery overnight.
+- An older battery that fails on the first cold morning of winter.
+- A car that starts at home but dies after stopping somewhere on the A6.
 
-A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+## What happens when we arrive
+
+We check the battery first. If it is healthy but flat, we jump start the car and check the charging. If it won't hold a charge, we can supply and fit a new battery on the spot, once you have agreed the price.
+
+| What we find | What we do next |
+| --- | --- |
+| Flat but healthy battery | Jump start and check charging |
+| Battery at the end of its life | Fit a new battery there and then |
+| Flat tyre | Fit your spare wheel or space saver |
+| Bigger fault | Recover the car to your garage |
+
+If the problem isn't the battery at all, we can switch to [breakdown recovery in Desborough](/breakdown-recovery/desborough) and take the car where it needs to go.
+
+## How much is a jump start in Desborough?
+
+A jump start in Desborough has a £40 minimum charge. Batteries are priced by the battery your car needs, which depends on the make, model and engine. We always confirm the price before fitting.
+
+Payment is by card on the day, bank transfer or cash. Our [jump start cost guide](/costs/jump-start) has more on how batteries are priced.
+
+## Flat tyres around Desborough
+
+We also change wheels. If you have a puncture on an estate road or a car park in town, we fit your spare or space saver so you can get to a tyre fitter. If you don't have a usable spare, we can recover the car instead.
+
+On the A6 or the bypass, don't change a wheel next to moving traffic. Pull as far left as you safely can, put your hazards on, get everyone out on the verge side and wait for us. If you are stuck in a live lane, call 999.
+
+## Signs your battery is on its way out
+
+- The engine turns over slowly, especially on cold mornings.
+- The dashboard lights flicker or dim when you start the car.
+- You hear clicking but the engine doesn't turn.
+- The battery warning light has come on while driving.
+
+If the engine turns over normally but won't fire, the battery is probably not the cause. Our [car won't start guide](/guides/car-wont-start) explains what else it could be.
+
+## Before you call
+
+- Know the make, model and engine size if you can.
+- Share your location by WhatsApp or what3words if you are away from home.
+- Switch off lights, heater and accessories.
+- Find your locking wheel nut key if it is a tyre problem.
+
+## After the jump: keeping the battery healthy
+
+Once the car is running, take it for a proper drive rather than switching it off after a minute. Short hops around the estate won't put back what the starter took out. If the car will be left for a while, starting it and driving it now and then helps. If the same thing happens again soon after, the battery is likely worn and worth replacing before it lets you down somewhere less convenient.
+
+## Night and weekend battery help
+
+Flat batteries don't keep office hours, and neither do we. Early starts for commuters, late finishes after a shift, Sunday mornings and bank holidays are all normal times for us to be out. The price is set the same way whenever you call, and we confirm it before we come.
+
+We work to PAS 43, the national safety standard for roadside operations, and are ISO 9001 certified. We also cover [jump starts in Rothwell](/jump-start/rothwell) and [jump starts in Kettering](/jump-start/kettering). See everything we do locally on the [Desborough area page](/areas/desborough).
 ---
-Q: Do you come out at weekends?
-A: Yes, we work 24 hours a day, 7 days a week.
-Q: Do you fit stop-start batteries?
-A: Yes. We confirm the right battery and price for your car before fitting.
+Q: How much is a jump start in Desborough?
+A: A jump start in Desborough has a £40 minimum charge. New batteries are priced for your car and confirmed before fitting.
+Q: Can you fit a new battery at my home in Desborough?
+A: Yes. We supply and fit batteries on the spot, at home, at work or at the roadside.
+Q: Do you offer jump starts early in the morning?
+A: Yes. We are open 24 hours a day, 7 days a week, so early starts, nights and weekends are all covered.
+Q: Can you change my flat tyre in Desborough?
+A: Yes. We fit your spare or space saver. If you don't have a usable spare, we can recover the car to a tyre fitter.
+Q: What if a jump start doesn't work?
+A: We will check what else could be wrong. If it can't be fixed at the roadside, we can recover the car to your chosen garage.
 
 === scrap-car-collection
-title: Scrap My Car Desborough | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car in Desborough with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+title: Scrap Car Collection Desborough | Scrap My Car | Rapid Recovery Corby
+desc: Scrap your car in Desborough with free collection and payment by bank transfer. Non-runners, no MOT and damaged cars taken by licensed car scrappers. Call now.
 h1: Scrap car collection in Desborough
-lead: Old car in Desborough that's not worth fixing? We'll collect it free and pay you by bank transfer.
+lead: Want to scrap your car in Desborough? We collect for free, pay by bank transfer and take the car to a licensed Authorised Treatment Facility.
+answer: Rapid Recovery Corby provides free scrap car collection in Desborough and pays by bank transfer. We take non-runners, cars with no MOT and accident-damaged vehicles, and use a licensed ATF. Call or WhatsApp 07598 314366.
 img: scrap-car-collection-citroen-picasso
+img_alt: Citroen Picasso loaded onto a recovery truck for scrap car collection
 ---
-## Collected for free
+## Scrap my car in Desborough: how we make it simple
 
-We collect scrap cars and vans from homes across Desborough. Non-runners, MOT failures and accident-damaged vehicles are all fine.
+If you are searching "scrap my car" in Desborough, Rapid Recovery can help. We collect scrap and unwanted cars, vans and motorbikes for free, pay you by bank transfer and handle the vehicle through the proper legal route.
 
-## Licensed and legal
+We hold a waste carrier licence and a scrap metal collector's licence. Every vehicle goes to a licensed Authorised Treatment Facility (ATF), which issues the Certificate of Destruction and notifies the DVLA.
 
-We hold a waste carrier licence and a scrap metal collector's licence. You're paid by bank transfer, and the vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and notifies the DVLA.
+## Vehicles we buy for scrap in Desborough
 
-## Quick quote
+- Cars that have failed their MOT.
+- Cars with no MOT at all.
+- Non-runners sitting on driveways.
+- Accident-damaged cars, including insurance write-offs.
+- Vans and motorbikes.
+- Cars without a V5C logbook, as long as you can show proof of ID.
 
-Send us the registration and condition and we'll give you a price and book a collection.
+With newer estates and limited parking in parts of Desborough, an old car taking up a driveway space is a common reason people call us.
 
-See our [scrap car cost guide](/costs/scrap-car-collection).
+## From first call to payment
+
+1. Call or WhatsApp 07598 314366 with the make, model, year and condition.
+2. Send a few photos if you can, as it helps us price accurately.
+3. We give you a price.
+4. We agree a collection time.
+5. We collect the car, free of charge.
+6. We pay you by bank transfer.
+7. The ATF issues the Certificate of Destruction and tells the DVLA.
+
+Our [how to scrap a car guide](/guides/how-to-scrap-a-car) covers each step in more detail.
+
+## How much is my scrap car worth?
+
+The price depends on a few things:
+
+| What we look at | Why |
+| --- | --- |
+| Weight | More metal means more value |
+| Current scrap metal prices | These rise and fall over time |
+| Make and model | Some models are worth more |
+| Completeness | Missing engines, wheels or catalytic converters reduce value |
+| Condition | Overall state and damage |
+
+Collection is always free. Our [scrap car cost guide](/costs/scrap-car-collection) explains how prices are worked out.
+
+## Why we can't pay cash for scrap
+
+The Scrap Metal Dealers Act 2013 makes it illegal to pay cash for scrap metal, including scrap cars. We always pay by bank transfer. It gives you a clear record of the sale and keeps everything above board.
+
+## Getting your tax back
+
+You don't need to do anything to claim back your road tax. Once the DVLA knows your car has been scrapped, it automatically refunds any full months of vehicle tax remaining.
+
+## Collecting from tight drives and car parks
+
+Some Desborough driveways are narrow, and shared parking areas can be busy. If the car won't roll or a truck can't get close, we use our van with dollies and skates to move it to a safe spot for loading. We take care not to damage your drive, fences or other cars on the way out.
+
+## Scrapping a car after an A6 accident
+
+If your car was damaged on the A6 and isn't worth repairing, we can collect it for scrap. If it is already in our secure storage yard after we recovered it, we can arrange the scrap from there, which saves an extra trip.
+
+## Vans and motorbikes from Desborough
+
+The same service covers vans and motorbikes. A tradesperson replacing a tired work van, or someone with a bike that has sat in a garage for years, can call us in the same way. We price it on weight, condition and completeness, collect for free and pay by bank transfer. If the vehicle hasn't moved in a long time and the wheels are seized, our dollies and skates mean that isn't a problem.
+
+## Checklist for collection day
+
+- The V5C logbook if you have it, or proof of ID if not.
+- All the keys.
+- Personal belongings removed, including the boot and glovebox.
+- Your bank details for payment.
+- Any private number plate dealt with first, if you want to keep it.
+
+## Scrap or sell on?
+
+Not every old car needs scrapping. If yours still has life in it and you have found a buyer elsewhere, we can move it for you with [car transport in Desborough](/car-transport/desborough). If you are not sure whether a repair is worth it, we can take it to a garage for a look through [breakdown recovery in Desborough](/breakdown-recovery/desborough). When the answer is scrap, we will collect.
+
+We also offer [scrap car collection in Rothwell](/scrap-car-collection/rothwell) and [scrap car collection in Kettering](/scrap-car-collection/kettering). All our local services are on the [Desborough area page](/areas/desborough).
 ---
-Q: How soon can you collect my scrap car?
-A: Often within a day or two. We agree a time that suits you.
-Q: Do you take cars with flat tyres?
-A: Yes. Tell us its condition when you call so we bring the right kit.
+Q: Is scrap car collection free in Desborough?
+A: Yes. We collect scrap cars from Desborough for free and pay you by bank transfer.
+Q: Can I sell my scrap car for cash in Desborough?
+A: No. The Scrap Metal Dealers Act 2013 bans cash for scrap, so we always pay by bank transfer.
+Q: Can I scrap a car with no MOT?
+A: Yes. We take cars with no MOT, non-runners and accident-damaged cars.
+Q: What if I don't have the V5C logbook?
+A: We can still take the car, as long as you can show proof of ID.
+Q: Who tells the DVLA my car has been scrapped?
+A: The licensed Authorised Treatment Facility issues the Certificate of Destruction and notifies the DVLA for you.
+Q: Will I get a refund on my car tax?
+A: Yes. The DVLA automatically refunds any full months of vehicle tax once it knows the car has been scrapped.

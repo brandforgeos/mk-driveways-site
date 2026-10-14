@@ -1,124 +1,399 @@
 === hub
-title: Vehicle Recovery Geddington | 24/7 Breakdown Recovery on the A43 | Rapid Recovery
-desc: 24/7 vehicle recovery in Geddington, between Corby and Kettering on the A43. Breakdown and accident recovery, car transport, jump starts and scrap car collection.
-h1: Vehicle recovery in Geddington
-lead: Geddington sits between Corby and Kettering, just off the A43. We cover the village, the bypass and the lanes around it 24/7.
+title: Vehicle Recovery Geddington | 24/7 Towing and Breakdown Help | Rapid Recovery
+desc: 24/7 vehicle recovery in Geddington, just off the A43 between Corby and Kettering. Breakdown recovery, car transport, jump starts and scrap cars. Call us now.
+h1: Vehicle recovery in Geddington, day and night
+lead: Geddington sits just off the A43 between Corby and Kettering. Our Corby-based recovery trucks cover the village, the ford and the lanes round Boughton around the clock.
+answer: Rapid Recovery Corby provides 24/7 vehicle recovery in Geddington, including breakdown recovery from £60, jump starts from £40, car transport and free scrap car collection. Call or WhatsApp 07598 314366 for a realistic arrival time.
+img: breakdown-recovery-vw-passat
+img_alt: Silver VW Passat secured on a Rapid Recovery truck after a breakdown near Geddington
 ---
-## Between two towns
+## Vehicle recovery in Geddington from a local Corby team
 
-Geddington is known for its Eleanor Cross and the old bridge and ford over the River Ise, and for being right next to the Boughton estate. For drivers, it's the village on the A43 between Corby and Kettering, one of the busiest roads in the area.
+If you need vehicle recovery in Geddington, Rapid Recovery is a short run away in Corby. We are open 24 hours a day, 7 days a week, including bank holidays, and George or one of the team answers the phone every time.
 
-Our Geddington work is split between the A43, where cars break down or get involved in bumps at the junctions, and the village itself, where narrow streets, old stone buildings and the ford make access tricky.
+Geddington is a village people know for its Eleanor Cross and the old bridge and ford over the River Ise. It sits between Corby and Kettering, just off the A43, with the Boughton estate right next door. That mix of historic streets, a water crossing and a busy main road shapes the kind of call-outs we get here.
 
-## Our services in Geddington
+## What usually goes wrong around Geddington
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+Most Geddington jobs fall into a few patterns:
+
+- **A43 breakdowns.** Commuters running between Corby and Kettering, and lorries using the road, mean overheating, clutch failures and tyre blowouts on a fast road with little room to stop.
+- **The ford.** Drivers who misjudge the water depth over the River Ise can stall the engine. If that happens, do not try to restart it. Water drawn into the engine can cause serious damage.
+- **Tight village streets.** Old stone cottages and narrow roads can make it hard to park a recovery truck right beside the car.
+- **Flat batteries.** Cars left on drives through cold spells, or second cars used once a week, often won't start on a winter morning.
+- **Old cars to clear.** A non-runner sitting on a driveway near the village centre is a common scrap collection.
+
+## How we handle Geddington call-outs
+
+We pick the right vehicle for the job before we leave the yard. For the A43, that is normally a spec lift tow truck or a beavertail tilt-and-slide transporter. For cramped streets in the old part of the village, our van with dollies and skates lets us move a car out of a tight spot or off a drive with seized wheels, then load it where there is space.
+
+Some of our trucks can carry one car and tow a second on a dolly, which helps when two cars in a household or a small business need moving at the same time.
+
+## Services we offer in Geddington
+
+| Service | What it covers | Price guide |
+| --- | --- | --- |
+| [Breakdown recovery](/breakdown-recovery/geddington) | Roadside, accident and non-runner recovery | From £60 local minimum |
+| [Car transport](/car-transport/geddington) | Auction, dealer and private sale moves, UK-wide | Fixed price agreed first |
+| [Jump starts](/jump-start/geddington) | Jump starts, batteries, spare wheel fitting | From £40 minimum |
+| [Scrap car collection](/scrap-car-collection/geddington) | Free collection, paid by bank transfer | Based on weight and condition |
+
+Everything outside the two minimum charges is priced on the phone before we set off, so you know the cost before a truck moves. Our [costs page](/costs) explains how each price is worked out.
+
+## Is your car safe with us?
+
+We hold PAS 43, the national safety standard for vehicle breakdown, recovery and roadside operations, plus ISO 9001 for quality management. We carry goods in transit, public liability and road risks insurance. If a car can't be dropped off straight away, it goes into our secure storage yard.
+
+People choose us because we are careful with cars, our prices are fair and we turn up when we say we will. We work for private drivers, garages, dealers, fleets and insurance or accident management firms.
+
+## Before you call from Geddington
+
+Have these ready and the call will be quick:
+
+1. Where the car is. A WhatsApp live location or a what3words reference works well, especially on the A43 or the lanes towards Boughton.
+2. The make, model and what has happened.
+3. Whether the car rolls and steers, or if the wheels are locked.
+4. Where you want the car taken.
+
+If you are stuck on the A43, read our [breakdown safety guide](/guides/what-to-do-if-you-break-down) while you wait. Nearby, we also cover [Kettering](/areas/kettering), [Weldon](/areas/weldon) and [Corby](/areas/corby).
 ---
-Q: Do you cover the A43 between Corby and Kettering?
-A: Yes. We recover vehicles along the A43, including the stretch past Geddington.
-Q: Can you get a recovery truck into the village centre?
-A: Usually, yes. Where streets are tight, we can use dollies or skates to move the car to a safe loading point.
+Q: Do you cover Geddington 24 hours a day?
+A: Yes. Rapid Recovery covers Geddington 24 hours a day, 7 days a week, including nights, weekends and bank holidays. Call or WhatsApp 07598 314366.
+Q: How quickly can a recovery truck get to Geddington?
+A: It is usually quick, as Geddington is a short run from our Corby base. We give you a realistic arrival time when you call, based on where our trucks are at that moment.
+Q: My car stalled in the ford at Geddington. What should I do?
+A: Do not restart the engine. Get out safely if the water allows, call us and we will recover the car to a garage of your choice so the engine can be checked properly.
+Q: Can you get a truck into the narrow streets in the village?
+A: Usually, yes. Where a truck can't get close, we use dollies or skates to move the car to a spot where it can be loaded safely.
+Q: How much does vehicle recovery in Geddington cost?
+A: Local breakdown recovery has a £60 minimum charge and jump starts a £40 minimum. Longer or more complex jobs are priced on the phone before we set off.
+Q: Do you collect scrap cars from Geddington?
+A: Yes. Collection is free and we pay by bank transfer. The car goes to a licensed Authorised Treatment Facility, which issues the Certificate of Destruction and notifies the DVLA.
 
 === breakdown-recovery
-title: Breakdown Recovery Geddington | A43 Recovery 24/7 | Rapid Recovery Corby
-desc: Broken down in Geddington or on the A43 between Corby and Kettering? 24/7 breakdown and accident recovery from a PAS 43 accredited team. From £60.
-h1: Breakdown recovery in Geddington
-lead: Stuck on the A43 by Geddington or in the village? We're between Corby and Kettering already, so help isn't far away.
-img: accident-recovery-damaged-vauxhall-astra
+title: Breakdown Recovery Geddington | Car Recovery and Tow Truck 24/7 | Rapid Recovery
+desc: Breakdown recovery in Geddington and on the A43, 24/7. Tow trucks, beavertails and dollies from a PAS 43 accredited Corby team. From £60. Call 07598 314366.
+h1: Breakdown recovery in Geddington and on the A43
+lead: Broken down in Geddington, on the A43 or by the ford? Our recovery trucks run from Corby around the clock and we will tell you the price before we set off.
+answer: Rapid Recovery Corby offers 24/7 breakdown recovery in Geddington and on the nearby A43, with a £60 minimum charge for local recovery. Call or WhatsApp 07598 314366 and we will price the job and give a realistic arrival time.
+img: accident-recovery-astra-with-fiesta-on-dolly
+img_alt: Damaged Vauxhall Astra on a recovery truck with a Ford Fiesta towed behind on a dolly
 ---
-## A43 breakdowns and accidents
+## Breakdown recovery in Geddington when you need it
 
-The A43 past Geddington is fast and busy, with commuters, lorries and junctions where traffic joins and leaves. We regularly recover cars here after breakdowns and collisions. If you stop on it, get off the carriageway if possible, put your hazards on and wait somewhere safe away from the traffic. If you're stuck in a live lane, call 999 first.
+When you need breakdown recovery in Geddington, call Rapid Recovery on 07598 314366. We are a local Corby team with five-plus recovery vehicles, and we run 24 hours a day, every day of the year.
 
-## Water and the ford
+Geddington is a short run from our base. The village sits just off the A43 between Corby and Kettering, which means we often have a truck nearby. We will always give you a realistic arrival time when you ring rather than a guess.
 
-Geddington's ford through the River Ise looks inviting, but after heavy rain the water can be deeper and faster than it appears. If your car has stalled in water, don't try to restart it, as that can badly damage the engine. Call us and we'll recover it.
+## The A43 near Geddington: staying safe while you wait
 
-## Where we'll take you
+The A43 carries a lot of commuter and freight traffic, and a breakdown on a fast road is the most dangerous situation most drivers face. If your car fails there:
 
-To a garage in Kettering or Corby, your home or our secure yard.
+- Pull as far left as you safely can, onto the verge or into a lay-by if one is in reach.
+- Put your hazard lights on. At night, keep sidelights on as well.
+- Get everyone out on the side away from traffic and stand behind a barrier if there is one.
+- Wear a high-vis vest if you carry one.
+- If you are stuck in a live lane and can't get out safely, call 999 first.
 
-Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+Then call us. Send a WhatsApp live location or a what3words reference, or tell us the nearest junction, landmark or marker post and which way you were travelling. Our [what to do if you break down](/guides/what-to-do-if-you-break-down) guide covers this in more detail.
+
+## Village breakdowns, the ford and the Boughton lanes
+
+Not every Geddington job is on the main road. Inside the village, old streets and stone buildings can make access awkward, and the ford over the River Ise catches out drivers who underestimate the water. A car that has stalled in water should never be restarted. We will load it as it is and take it to a garage for checks.
+
+The lanes towards the Boughton estate are narrower and quieter. For a car in a verge or ditch, our winch lets us pull it back out in a controlled way before loading it.
+
+## Which recovery vehicle we send
+
+| Situation | What we usually bring |
+| --- | --- |
+| A43 breakdown or accident | Beavertail tilt-and-slide or spec lift tow truck |
+| Car in a ditch or soft verge | Truck with winch |
+| Tight street, seized wheels, low car park | Van with dollies and skates |
+| Two cars to move at once | Truck that carries one and tows one on a dolly |
+
+We recover cars, vans up to 3.5 tonnes, 4x4s and SUVs, motorbikes, campervans and classic cars. We also handle non-runners from driveways and garage-to-garage moves.
+
+## Non-runners on Geddington driveways
+
+Plenty of our Geddington work isn't an emergency at all. A car has failed on the drive, the garage can't fit it in for a week, and it needs moving when it suits you. Tell us when the garage expects it and we will book a time. If the handbrake is stuck on or the wheels have seized after months standing, skates let us roll it out without dragging it across your drive.
+
+## How much is car recovery in Geddington?
+
+Local breakdown recovery starts at a £60 minimum charge. For anything beyond a local job, such as a long tow, an accident recovery or a trip to a garage further away, we work out a price on the phone and agree it before we set off.
+
+You can pay by card on the day, bank transfer or cash. Garages, dealers and fleets can ask about business invoicing. See our [breakdown recovery cost guide](/costs/breakdown-recovery) for what affects the price.
+
+## Accident recovery and insurance work
+
+After a bump on the A43, we clear the car from the scene and take it to a garage, a body shop or our secure storage yard. We work with insurance and accident management companies, so if your insurer has its own process, tell us when you call and we will fit in with it.
+
+We are PAS 43 accredited and ISO 9001 certified, and carry goods in transit, public liability and road risks insurance. We take care loading every car, whether it is a run-around or a classic.
+
+## Further than Geddington
+
+We recover anywhere in the UK. If you break down far from home, we can bring the car back to Geddington or to your own garage. If the problem is just a flat battery, a [jump start in Geddington](/jump-start/geddington) may get you moving without a tow. We also cover [breakdown recovery in Kettering](/breakdown-recovery/kettering) and [breakdown recovery in Weldon](/breakdown-recovery/weldon), and you can see all our [Geddington services](/areas/geddington).
 ---
-Q: My car stalled in water. Should I try to restart it?
-A: No. Restarting an engine that has taken in water can cause serious damage. Leave it switched off and call us to recover it.
-Q: Do you work with insurers after an accident on the A43?
-A: Yes. We recover accident-damaged vehicles, store them securely and work with insurers and accident management companies.
+Q: How much is breakdown recovery in Geddington?
+A: Local breakdown recovery in Geddington has a £60 minimum charge. Longer recoveries and accident work are priced on the phone before we set off, so there are no surprises.
+Q: Do you recover cars broken down on the A43 near Geddington?
+A: Yes. We recover cars on the A43 around Geddington 24/7. Get to the verge or a lay-by if you safely can, stand away from traffic and call 07598 314366.
+Q: Can you pull a car out of a ditch near Geddington?
+A: Yes. Our trucks have winches for off-road and ditch recovery, so we can pull a car back onto firm ground before loading it.
+Q: Is there a tow truck near me in Geddington at night?
+A: Yes. We run 24 hours a day, including nights, weekends and bank holidays, and we give you a realistic arrival time when you call.
+Q: Will you take my car to my own garage?
+A: Yes. We can take it to any garage you choose, a body shop, your home or our secure storage yard.
+Q: Can you recover a campervan or van from Geddington?
+A: Yes. We recover vans up to 3.5 tonnes, campervans, 4x4s, motorbikes and classic cars as well as standard cars.
 
 === car-transport
-title: Car Transport Geddington | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport for Geddington, between Corby and Kettering. Collections, deliveries, garage runs and UK-wide vehicle moves. Fully insured.
-h1: Car transport in Geddington
-lead: Need a car collected from or delivered to Geddington? We'll move it locally or anywhere in the UK, with a fixed price up front.
-img: two-car-recovery-touran-and-clio
+title: Car Transport Geddington | Vehicle Transport UK-Wide | Rapid Recovery Corby
+desc: Car transport from Geddington to anywhere in the UK. Auction collections, dealer deliveries and private sales on open transporters. Fixed price agreed. Call us.
+h1: Car transport from Geddington, near or far
+lead: Bought a car at auction, sold one privately or need a non-runner moved? We move vehicles to and from Geddington on open transporters for a fixed price agreed upfront.
+answer: Rapid Recovery Corby provides car transport to and from Geddington and across the UK on open transporters. Every job has a fixed price agreed before booking. Call or WhatsApp 07598 314366 for a quote.
+img: two-car-transport-jaguar-and-golf
+img_alt: Jaguar and VW Golf loaded together on a Rapid Recovery transporter for a two-car delivery
 ---
-## Halfway between Corby and Kettering
+## Car transport in Geddington, booked in one call
 
-Geddington's position makes it easy for us to run cars to garages and dealers in either town, or further afield via the A14. Whether it's a service, a repair or a car you're selling, we'll do the driving.
+Rapid Recovery offers car transport in Geddington for private buyers, sellers, garages and dealers. We collect from the village and deliver anywhere in the UK, or bring a car back to Geddington from wherever it is.
 
-## Collections from anywhere
+Every job gets a fixed price agreed before you book. You won't get a bill that grows on the day because of traffic or a longer wait at the auction.
 
-Bought a car privately or from a dealer in another part of the country? We'll collect it and bring it to your door in Geddington.
+## What people in Geddington ask us to move
 
-## Non-runners and project cars
+Geddington is a village of older stone homes and families who commute towards Corby and Kettering, so the jobs we see are varied:
 
-Cars that don't run are winched onto our beavertail trucks. Low and classic cars load gently.
+- **Auction collections.** You win a car online and need it brought home without driving it.
+- **Private sale pick-ups.** Buying from a seller elsewhere in the country, or delivering a car you have sold.
+- **Dealer deliveries.** Moving stock between dealers, or from a dealer to a buyer's door.
+- **MOT and garage runs.** Taking a car with no MOT to its test, or into a garage for work.
+- **Classic and prestige cars.** Cars that are better kept off the road and loaded with care.
+- **House moves.** Taking a second car to your new address when you only have one driver.
+- **Non-runners.** Cars that don't start but need to go somewhere.
 
-Every job gets a fixed price before it's booked. See our [car transport cost guide](/costs/car-transport).
+## Open transport, and why that suits most cars
+
+We use open transport only. Your car sits on a beavertail tilt-and-slide transporter, strapped down properly, and travels in the open air. For most cars, including classics and prestige models on a dry run, that is the normal way vehicles are moved.
+
+Some of our trucks can carry one car and tow a second on a dolly. If you have two cars going the same way, ask about moving them together in one trip.
+
+## Getting a car out of tight spots in the village
+
+Some Geddington homes sit on narrow roads with tight drives and stone walls. If a transporter can't reach the car, we use our van with dollies and skates to roll it out to a spot where we can load safely. That also works for cars with seized wheels that have been parked for months.
+
+## How car transport is priced
+
+| Factor | Why it matters |
+| --- | --- |
+| Distance | A UK-wide run costs more than a local trip |
+| Collection access | Tight drives or underground car parks may need extra kit |
+| Running or non-runner | Non-runners take longer to load and unload |
+| One car or two | Two cars on one trip can make the job better value |
+| Timing | Tell us any fixed collection or delivery times |
+
+Give us the collection and delivery points, the make and model, and whether the car runs. We will quote a fixed price on the phone. Our [car transport cost guide](/costs/car-transport) explains this in more depth.
+
+## Looking after your car on the way
+
+We are PAS 43 accredited, the national safety standard for vehicle recovery and roadside operations, and certified to ISO 9001. Our insurance covers goods in transit, public liability and road risks. If there is a gap between collection and delivery, your car can wait in our secure storage yard.
+
+Payment is by card on the day, bank transfer or cash. Dealers and garages that move cars regularly can ask about business invoicing.
+
+## Does a local move from Geddington need booking ahead?
+
+Short moves, such as a car going from Geddington to a garage in Kettering or Corby for its MOT, can often be fitted in quickly. Longer runs across the UK are best booked a few days ahead so we can plan the route and line up any second car going the same way. If you have a deadline, such as an auction collection window or a completion day on a house move, tell us at the start and we will plan around it.
+
+## What to have ready
+
+- Full collection and delivery addresses.
+- A contact at each end, plus any auction or dealer reference.
+- Keys, and a note of anything unusual such as a low front splitter or a flat tyre.
+- Whether the car runs, steers and brakes.
+
+If your car has simply stopped on the road, you need [breakdown recovery in Geddington](/breakdown-recovery/geddington) instead. For a car that is finished, see [scrap car collection in Geddington](/scrap-car-collection/geddington). We also offer [car transport in Kettering](/car-transport/kettering) and [car transport in Corby](/car-transport/corby). Find everything we do locally on our [Geddington area page](/areas/geddington), or read our guides at [/guides](/guides).
 ---
-Q: Can you move my car from Geddington to a dealer in Kettering?
-A: Yes. We move cars to dealers and garages in Kettering, Corby and beyond.
+Q: How much does car transport from Geddington cost?
+A: It depends on distance, access and whether the car runs. We give you a fixed price on the phone and agree it before booking, so the price won't change on the day.
+Q: Do you offer enclosed car transport?
+A: No. We use open transport only, on beavertail tilt-and-slide transporters. The car is strapped down properly and travels in the open air.
+Q: Can you collect a car I bought at auction and bring it to Geddington?
+A: Yes. We collect auction cars across the UK and deliver them to Geddington or anywhere else you need.
+Q: Can you move a car that doesn't run?
+A: Yes. We move non-runners regularly. Our dollies and skates help with cars that have seized wheels or are parked in tight spaces.
 Q: Can you move two cars at once?
-A: Sometimes, yes. Ask when you book and we will tell you if it is possible.
+A: Often, yes. Some of our trucks can carry one car and tow a second on a dolly. Ask when you call.
 
 === jump-start
-title: Jump Start Geddington | Mobile Battery Fitting from £40 | Rapid Recovery Corby
-desc: Flat battery in Geddington? 24/7 mobile jump starts from £40, new batteries fitted on the spot and wheel changes from a local team.
-h1: Jump starts in Geddington
-lead: Car won't start in Geddington? We'll be with you quickly from Corby with a jump pack and replacement batteries.
-img: night-breakdown-recovery-honda-civic
+title: Jump Start Geddington | Flat Battery and Mobile Battery Fitting | Rapid Recovery
+desc: Flat battery in Geddington? 24/7 jump starts from £40, mobile battery fitting and spare wheel changes on your drive or at the roadside. Call 07598 314366 now.
+h1: Jump starts and battery fitting in Geddington
+lead: Car won't start in Geddington? We come to your drive, the roadside or a car park with jump packs, new batteries and the kit to fit your spare wheel.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Geddington from a £40 minimum charge, plus on-the-spot battery supply and fitting and flat tyre changes onto your spare. Call or WhatsApp 07598 314366.
+img: early-morning-recovery-renault-clio
+img_alt: Renault Clio being attended to in early morning light after failing to start
 ---
-## Village call-outs
+## Jump start in Geddington, wherever the car has stopped
 
-We jump start cars on driveways and streets across Geddington, at any hour. Most jobs take only a few minutes once we arrive.
+Need a jump start in Geddington? Rapid Recovery comes out to you 24 hours a day, 7 days a week. One call to 07598 314366 and we will tell you the price and a realistic arrival time.
 
-## A proper check
+We come from Corby, which is a short run from the village. A flat battery is usually a quick fix once we are there.
 
-After starting the car, we'll test the battery. If it's not going to last, we'll explain why and can fit a replacement on the spot, with the price agreed first.
+## Why cars in Geddington end up with flat batteries
 
-## Flat tyres
+The village has plenty of cars that do short runs or sit still for days. Common reasons we get called:
 
-We also change wheels onto spares and space savers, or recover the car to a tyre fitter.
+- A car left on the drive over a cold snap, especially a second car.
+- Short trips to Kettering or Corby that never let the battery recharge fully.
+- Lights or an interior lamp left on overnight.
+- An old battery that finally gives out on the first frosty morning.
+- A car parked up by the Eleanor Cross or near Boughton for a walk, which won't start on return.
 
-A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+If you are not sure whether it is the battery, our [car won't start guide](/guides/car-wont-start) walks through the signs.
+
+## What we do on a battery call-out
+
+We test first, then decide. If a jump start is all it needs, we get the engine running and check the charging system so you know it is safe to drive on. If the battery is worn out, we can supply and fit a new one on the spot.
+
+| Problem | What we do |
+| --- | --- |
+| Battery flat but healthy | Jump start and check the charge |
+| Battery worn out | Supply and fit a new battery there and then |
+| Flat tyre | Fit your spare or space saver wheel |
+| Fault beyond the battery | Recover the car to a garage of your choice |
+
+If it turns out the car has a bigger fault, we can switch to [breakdown recovery in Geddington](/breakdown-recovery/geddington) and take it where it needs to go.
+
+## How much is a jump start in Geddington?
+
+A jump start has a £40 minimum charge. New batteries are priced by the battery your car needs, and we confirm that price with you before we fit anything. We will never fit a battery without your OK.
+
+You can pay by card on the day, bank transfer or cash. Our [jump start cost guide](/costs/jump-start) goes into more detail.
+
+## Flat tyres on the lanes and the A43
+
+A puncture on the lanes near Boughton, or on the way to the A43, is another job we cover. We fit your spare wheel or space saver so you can get to a tyre fitter. If the spare is flat or missing, we can recover the car instead.
+
+If you are on the A43 itself, do not try to change a wheel on the traffic side. Get to the verge or a lay-by if you can, put your hazards on and stand away from the road. If you are stuck in a live lane and can't get out safely, call 999.
+
+## Is it the battery or something else?
+
+A flat battery usually gives clear signs. The engine turns over slowly or just clicks, the dashboard lights flicker or stay dim, and the central locking may not respond. If the engine turns over at normal speed but won't fire, the battery is probably fine and the fault lies elsewhere, so a jump start won't help.
+
+Tell us what you see and hear when you turn the key or press the start button. It helps us bring the right kit, and it means we can suggest recovery straight away if the symptoms point that way. That saves you paying for two call-outs. If a jump does get you going, drive for a while afterwards so the alternator can top the battery back up.
+
+## Before we arrive
+
+- Tell us the make and model, so we bring the right battery if one is needed.
+- Share your location by WhatsApp or what3words if you are not at home.
+- Find your locking wheel nut key if a tyre is the problem.
+- Turn off lights, heater and radio so nothing else is drawing power.
+
+We work to PAS 43, the national safety standard for roadside operations, and to ISO 9001. Out of hours is no problem. Nights, weekends and bank holidays are part of our normal week. We also cover [jump starts in Kettering](/jump-start/kettering) and [jump starts in Weldon](/jump-start/weldon), and you can see every local service on our [Geddington page](/areas/geddington).
 ---
-Q: How long does a jump start take?
-A: Usually only a few minutes once we arrive, plus a quick battery test.
-Q: Can you fit a new battery on my street?
-A: Yes, as long as it is safe to work there.
+Q: How much does a jump start cost in Geddington?
+A: A jump start in Geddington has a £40 minimum charge. If you need a new battery, we price it for your car and confirm before fitting.
+Q: Can you fit a new car battery at my house in Geddington?
+A: Yes. We supply and fit batteries on the spot, on your drive or at the roadside, once you have agreed the price.
+Q: Do you do jump starts at night?
+A: Yes. We are open 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
+Q: Can you change a flat tyre for me?
+A: Yes. We fit your spare wheel or space saver. If there isn't a usable spare, we can recover the car to a tyre fitter.
+Q: What if my car still won't start after a jump?
+A: We will check what else might be wrong. If it can't be fixed at the roadside, we can recover it to a garage of your choice.
+Q: Is there a jump start service near me in Geddington?
+A: Yes. Rapid Recovery is based in Corby, a short run from Geddington. Call or WhatsApp 07598 314366.
 
 === scrap-car-collection
-title: Scrap My Car Geddington | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car in Geddington with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+title: Scrap Car Collection Geddington | Sell My Scrap Car | Rapid Recovery Corby
+desc: Scrap your car in Geddington with free collection and payment by bank transfer. Non-runners, no MOT and accident damaged cars taken. Licensed. Call for a price.
 h1: Scrap car collection in Geddington
-lead: Car in Geddington that's not worth repairing? We'll collect it free, pay you by bank transfer and scrap it legally.
-img: scrap-car-collection-citroen-picasso
+lead: Got a car that has reached the end of the road? We collect scrap cars, vans and motorbikes from Geddington for free and pay you by bank transfer.
+answer: Rapid Recovery Corby offers free scrap car collection in Geddington and pays by bank transfer. We take non-runners, cars with no MOT and accident-damaged vehicles, and use a licensed ATF. Call or WhatsApp 07598 314366 for a price.
+img: scrap-car-collection-small-hatchback
+img_alt: Small hatchback being loaded for scrap car collection on a recovery truck
 ---
-## Free collection
+## Scrap car collection in Geddington, done properly
 
-We collect scrap cars and vans from homes in Geddington, whether they run or not. Accident damage, MOT failures and no tax are all fine.
+If you want to scrap your car in Geddington, Rapid Recovery will collect it for free and pay you by bank transfer. We hold a waste carrier licence and a scrap metal collector's licence, and every car goes to a licensed Authorised Treatment Facility.
 
-## Licensed and paid properly
+That means the paperwork is right. The ATF issues the Certificate of Destruction and tells the DVLA, so the car is officially off your name.
 
-We're licensed waste carriers and scrap metal collectors. You're paid by bank transfer, and your vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and tells the DVLA.
+## The scrap cars we see in Geddington
 
-## Flood-damaged cars
+Village homes often have a car tucked on a drive or by a garage that hasn't moved in a long time. Typical Geddington collections include:
 
-If your car has been written off after going through water, we can collect it and scrap it properly.
+- A car that failed its MOT and isn't worth fixing.
+- A non-runner left on a drive after a breakdown.
+- An old family car replaced by something newer.
+- A car written off after an accident on the A43.
+- A van or motorbike that has been sitting unused.
 
-See our [scrap car cost guide](/costs/scrap-car-collection) for what affects the price.
+We also buy cars with no V5C logbook, as long as you can show proof of ID.
+
+## How the scrap process works
+
+1. Call or WhatsApp 07598 314366 with the make, model, year and condition. Photos help.
+2. We give you a price based on the car.
+3. We agree a collection time that suits you.
+4. We collect the car, using dollies and skates if it is stuck in a tight spot or has seized wheels.
+5. We pay you by bank transfer.
+6. The car goes to a licensed ATF, which issues the Certificate of Destruction and notifies the DVLA.
+
+Our full [how to scrap a car guide](/guides/how-to-scrap-a-car) covers each step.
+
+## What decides the price of a scrap car?
+
+| Factor | Effect on price |
+| --- | --- |
+| Weight | Heavier vehicles contain more metal |
+| Scrap metal prices | These change, so prices move over time |
+| Make and model | Some cars have more value in parts |
+| Completeness | Missing parts, like the engine or catalytic converter, lower the price |
+| Condition | General condition and damage |
+
+Our [scrap car cost guide](/costs/scrap-car-collection) explains more. Collection is always free.
+
+## Why payment is by bank transfer only
+
+The Scrap Metal Dealers Act 2013 bans paying cash for scrap metal, including scrap cars. That is why we always pay by bank transfer. It protects you too, as there is a clear record of the sale.
+
+## Your tax refund
+
+You don't need to apply for a refund of your vehicle tax. Once the DVLA knows the car has been scrapped, it automatically refunds any full months of tax left.
+
+## Scrapping a car after an accident or write-off
+
+If your car was damaged in a bump on the A43 and your insurer has settled, or you have decided the repair isn't worth it, we can take it straight for scrap. Accident-damaged cars are fine. If the car is already in our secure storage yard after a recovery, tell us and we can arrange the scrap from there, which saves a second trip.
+
+## Vans and motorbikes too
+
+We buy scrap and unwanted vans and motorbikes as well as cars. A small business in or around Geddington clearing out an old van, or someone with a bike that hasn't run in years, can use the same process. The price is worked out in the same way, by weight, condition and how complete the vehicle is.
+
+## Getting the car out of tight village spots
+
+Some Geddington homes have narrow drives, stone walls or cars parked up behind garages. Our van with dollies and skates can move a car that won't roll, so we can get it to the truck without damage to your property. We are careful on the way out, even with a car that is heading for scrap. Let us know about any gates, low walls or overhanging trees before we arrive.
+
+## What to have ready on collection day
+
+- The V5C logbook if you have it, or proof of ID if you don't.
+- All keys you have.
+- Personal items cleared out, including the glovebox and boot.
+- Your bank details for the transfer.
+
+If your car might be worth repairing rather than scrapping, we can take it to a garage through [breakdown recovery in Geddington](/breakdown-recovery/geddington). For a car you are selling to another buyer, see [car transport in Geddington](/car-transport/geddington). We also collect scrap cars in [Kettering](/scrap-car-collection/kettering) and [Corby](/scrap-car-collection/corby), and you can see all our local work on the [Geddington area page](/areas/geddington).
 ---
-Q: Do you collect flood-damaged cars?
-A: Yes. We collect and scrap water-damaged vehicles. Tell us about its condition when you call.
-Q: Is collection free in Geddington?
-A: Yes, collection is free.
+Q: Do you charge to collect a scrap car from Geddington?
+A: No. Scrap car collection from Geddington is free. We pay you for the car by bank transfer.
+Q: Can I get cash for my scrap car?
+A: No. The Scrap Metal Dealers Act 2013 bans cash payments for scrap, so we always pay by bank transfer.
+Q: Can I scrap my car without a V5C logbook?
+A: Yes. We can take a car without a V5C as long as you show proof of ID.
+Q: How much will I get for my scrap car?
+A: It depends on the weight, current scrap metal prices, the make and model, and the car's completeness and condition. Call us with the details for a price.
+Q: Do I get my road tax back when I scrap my car?
+A: Yes. The DVLA automatically refunds any full months of vehicle tax once it knows the car has been scrapped.
+Q: Will I get a Certificate of Destruction?
+A: Yes. The licensed Authorised Treatment Facility issues the Certificate of Destruction and notifies the DVLA.

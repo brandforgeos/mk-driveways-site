@@ -12,6 +12,8 @@ $D = __DIR__ . '/data';
 $S = json_decode(file_get_contents("$D/site.json"), true);
 $SV = []; foreach ($S['services'] as $x) $SV[$x['slug']] = $x;
 $AR = []; foreach ($S['areas'] as $x) $AR[$x['slug']] = $x;
+$GUIDES = ['what-to-do-if-you-break-down' => 'What to do if you break down', 'a14-breakdown-advice' => 'Breaking down on the A14', 'car-wont-start' => 'Car won\'t start?', 'how-to-scrap-a-car' => 'How to scrap a car'];
+const UPDATED = '2026-10-14';
 
 function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 function u(string $p = ''): string { $p = trim($p, '/'); return BASE . ($p === '' ? '' : "$p/"); }
@@ -47,6 +49,9 @@ function area_page(string $area, string $key): ?array {
   return is_file($f) ? (parse_pages(file_get_contents($f))[$key] ?? null) : null;
 }
 
+function slugify(string $s): string { return trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(strip_tags($s))), '-'); }
+function md_toc(string $t): array { preg_match_all('/^## (.+)$/m', $t, $m); return array_map(fn($x) => [slugify($x), preg_replace('/\*\*|\[|\]\([^)]*\)/', '', $x)], $m[1]); }
+
 /* Minimal markdown: ## h2, ### h3, - lists, **bold**, [text](/path or url), blank-line paragraphs */
 function md(string $t): string {
   $inline = function (string $s): string {
@@ -62,7 +67,14 @@ function md(string $t): string {
   foreach (preg_split("/\n{2,}/", trim(str_replace("\r", '', $t))) as $b) {
     $lines = explode("\n", $b);
     if (str_starts_with($b, '### ')) $out .= '<h3>' . $inline(substr($b, 4)) . "</h3>\n";
-    elseif (str_starts_with($b, '## ')) $out .= '<h2>' . $inline(substr($b, 3)) . "</h2>\n";
+    elseif (str_starts_with($b, '## ')) { $txt = substr($b, 3); $out .= '<h2 id="' . slugify($txt) . '">' . $inline($txt) . "</h2>\n"; }
+    elseif (str_starts_with($b, '|')) {
+      $rows = array_values(array_filter($lines, fn($l) => !preg_match('/^\|\s*:?-{2,}/', $l)));
+      $out .= "<div class=\"tbl\"><table>\n";
+      foreach ($rows as $ri => $l) { $cells = array_map('trim', explode('|', trim($l, " |"))); $tag = $ri ? 'td' : 'th';
+        $out .= '<tr>' . implode('', array_map(fn($c) => "<$tag>" . $inline($c) . "</$tag>", $cells)) . "</tr>\n"; }
+      $out .= "</table></div>\n";
+    }
     elseif (str_starts_with($b, '- ')) {
       $out .= "<ul>\n"; foreach ($lines as $l) $out .= '<li>' . $inline(ltrim(substr($l, 2))) . "</li>\n"; $out .= "</ul>\n";
     } elseif (preg_match('/^\d+\. /', $b)) {
@@ -79,14 +91,15 @@ $seg = $r === '' ? [] : explode('/', $r);
 
 if ($r === 'robots.txt') { header('Content-Type: text/plain'); echo PREVIEW ? "User-agent: *\nDisallow: /\n" : "User-agent: *\nAllow: /\nSitemap: " . SITE_URL . "/sitemap.xml\n"; exit; }
 
-$urls = ['', 'services', 'areas', 'costs', 'about', 'contact'];
+$urls = ['', 'services', 'areas', 'costs', 'about', 'contact', 'guides'];
+foreach ($GUIDES as $g => $_) $urls[] = "guides/$g";
 foreach ($SV as $k => $_) { $urls[] = $k; $urls[] = "costs/$k"; foreach ($AR as $a => $_2) $urls[] = "$k/$a"; }
 foreach ($AR as $a => $_) $urls[] = "areas/$a";
 
 if ($r === 'sitemap.xml') {
   header('Content-Type: application/xml; charset=utf-8');
   echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n";
-  foreach ($urls as $p) echo '<url><loc>' . h(abs_url($p)) . "</loc></url>\n";
+  foreach ($urls as $p) echo '<url><loc>' . h(abs_url($p)) . '</loc><lastmod>' . UPDATED . "</lastmod></url>\n";
   echo "</urlset>\n"; exit;
 }
 if ($r === 'llms.txt') {
@@ -95,7 +108,9 @@ if ($r === 'llms.txt') {
   echo "- Hours: {$S['hours']}\n- Typical arrival in Corby: 30 to 45 minutes\n- Minimum charges: breakdown recovery from £60, jump start from £40\n- Covers: " . implode(', ', array_column($S['areas'], 'name')) . ", and UK-wide recovery and transport\n\n## Services\n";
   foreach ($SV as $k => $x) echo "- [{$x['name']}](" . abs_url($k) . "): {$x['card']}\n";
   echo "\n## Costs\n"; foreach ($SV as $k => $x) echo "- [{$x['name']} cost guide](" . abs_url("costs/$k") . ")\n";
-  echo "\n## Areas\n"; foreach ($AR as $k => $x) echo "- [{$x['name']}](" . abs_url("areas/$k") . ")\n";
+  echo "\n## Areas\n"; foreach ($AR as $k => $x) echo "- [{$x['name']}](" . abs_url("areas/$k") . "): breakdown recovery, car transport, jump starts and scrap car collection in {$x['name']}\n";
+  echo "\n## Guides\n"; foreach ($GUIDES as $k => $x) echo "- [$x](" . abs_url("guides/$k") . ")\n";
+  echo "\n## Contact\n- Phone and WhatsApp: {$S['phone']}\n- Email: {$S['email']}\n- Owner: {$S['owner']}\n- Accreditations: PAS 43, ISO 9001\n- Insurance: goods in transit, public liability, road risks\n";
   exit;
 }
 
@@ -118,7 +133,7 @@ if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 $type = ''; $P = null; $svc = null; $area = null; $crumbs = [['Home', '']];
 $n = count($seg);
 if ($n === 0) { $type = 'home'; $P = core_page('home'); }
-elseif ($n === 1 && in_array($seg[0], ['services', 'areas', 'costs', 'about', 'contact'], true)) {
+elseif ($n === 1 && in_array($seg[0], ['services', 'areas', 'costs', 'about', 'contact', 'guides'], true)) {
   $type = $seg[0]; $P = core_page($seg[0]);
   $crumbs[] = [$P['crumb'] ?? ucfirst($seg[0]), $seg[0]];
 } elseif ($n === 1 && isset($SV[$seg[0]])) {
@@ -127,6 +142,9 @@ elseif ($n === 1 && in_array($seg[0], ['services', 'areas', 'costs', 'about', 'c
 } elseif ($n === 2 && $seg[0] === 'areas' && isset($AR[$seg[1]])) {
   $type = 'area'; $area = $seg[1]; $P = area_page($area, 'hub');
   $crumbs[] = ['Areas', 'areas']; $crumbs[] = [$AR[$area]['name'], "areas/$area"];
+} elseif ($n === 2 && $seg[0] === 'guides' && isset($GUIDES[$seg[1]])) {
+  $type = 'guide'; $P = core_page("guide-{$seg[1]}");
+  $crumbs[] = ['Guides', 'guides']; $crumbs[] = [$GUIDES[$seg[1]], "guides/{$seg[1]}"];
 } elseif ($n === 2 && $seg[0] === 'costs' && isset($SV[$seg[1]])) {
   $type = 'cost'; $svc = $seg[1]; $P = core_page("cost-$svc");
   $crumbs[] = ['Costs', 'costs']; $crumbs[] = [$SV[$svc]['name'] . ' cost', "costs/$svc"];
@@ -158,11 +176,22 @@ $biz = [
   'hasCredential' => array_map(fn($c) => ['@type' => 'EducationalOccupationalCredential', 'name' => $c], $S['accreditations']),
   'sameAs' => [],
 ];
+$biz['slogan'] = '24/7 vehicle recovery in Corby and Kettering';
+$biz['knowsAbout'] = ['Vehicle recovery', 'Breakdown recovery', 'Accident recovery', 'Car transport', 'Jump starts', 'Battery replacement', 'Scrap car collection'];
+$biz['paymentAccepted'] = 'Cash, Credit Card, Debit Card, Bank Transfer';
+$biz['hasOfferCatalog'] = ['@type' => 'OfferCatalog', 'name' => 'Recovery services', 'itemListElement' => array_map(fn($k, $x) => ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => $x['name'], 'url' => abs_url($k)]], array_keys($SV), array_values($SV))];
 $graph = [$biz];
+$graph[] = ['@type' => 'WebSite', '@id' => SITE_URL . '/#website', 'url' => abs_url(), 'name' => $S['name'], 'publisher' => ['@id' => SITE_URL . '/#business'], 'inLanguage' => 'en-GB'];
+$graph[] = ['@type' => $type === 'guide' ? 'Article' : 'WebPage', '@id' => abs_url($path) . '#page', 'url' => abs_url($path), 'name' => $P['title'], 'description' => $P['desc'] ?? '', 'isPartOf' => ['@id' => SITE_URL . '/#website'], 'about' => ['@id' => SITE_URL . '/#business'], 'dateModified' => UPDATED, 'inLanguage' => 'en-GB',
+  'primaryImageOfPage' => ['@type' => 'ImageObject', 'url' => SITE_URL . '/img/' . $hero . '.webp', 'caption' => $P['img_alt'] ?? ''],
+  'speakable' => ['@type' => 'SpeakableSpecification', 'cssSelector' => ['h1', '.answer']]]
+  + ($type === 'guide' ? ['headline' => $P['h1'], 'author' => ['@type' => 'Organization', 'name' => $S['name']], 'publisher' => ['@id' => SITE_URL . '/#business'], 'datePublished' => UPDATED, 'image' => SITE_URL . '/img/' . $hero . '.webp'] : []);
 $graph[] = ['@type' => 'BreadcrumbList', 'itemListElement' => array_map(fn($c, $i) => ['@type' => 'ListItem', 'position' => $i + 1, 'name' => $c[0], 'item' => abs_url($c[1])], $crumbs, array_keys($crumbs))];
 if ($svc && in_array($type, ['service', 'areasvc', 'cost'], true)) {
   $graph[] = ['@type' => 'Service', 'name' => $SV[$svc]['name'] . ($area ? ' in ' . $AR[$area]['name'] : ''), 'serviceType' => $SV[$svc]['name'],
-    'provider' => ['@id' => SITE_URL . '/#business'], 'description' => $P['desc'] ?? '',
+    'provider' => ['@id' => SITE_URL . '/#business'], 'description' => $P['desc'] ?? '', 'url' => abs_url($path),
+    'offers' => ['@type' => 'Offer', 'priceCurrency' => 'GBP', 'availability' => 'https://schema.org/InStock', 'description' => $SV[$svc]['price'], 'url' => abs_url($path)] + ($svc === 'breakdown-recovery' ? ['priceSpecification' => ['@type' => 'PriceSpecification', 'minPrice' => 60, 'priceCurrency' => 'GBP']] : ($svc === 'jump-start' ? ['priceSpecification' => ['@type' => 'PriceSpecification', 'minPrice' => 40, 'priceCurrency' => 'GBP']] : [])),
+    'hoursAvailable' => $biz['openingHoursSpecification'],
     'areaServed' => $area ? ['@type' => 'Place', 'name' => $AR[$area]['name'] . ', Northamptonshire'] : $biz['areaServed']];
 }
 if (!empty($P['faqs'])) $graph[] = ['@type' => 'FAQPage', 'mainEntity' => array_map(fn($f) => ['@type' => 'Question', 'name' => $f[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f[1]]], $P['faqs'])];
@@ -188,7 +217,7 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
 <link rel="icon" href="<?= BASE ?>img/favicon-48.png" sizes="48x48"><link rel="icon" href="<?= BASE ?>img/favicon-192.png" sizes="192x192"><link rel="apple-touch-icon" href="<?= BASE ?>img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<?= BASE ?>style.css?v=1">
+<link rel="stylesheet" href="<?= BASE ?>style.css?v=2">
 <link rel="preload" as="image" href="<?= h(img($hero)) ?>" imagesrcset="<?= h(img("$hero-sm")) ?> 800w, <?= h(img($hero)) ?> 1600w" imagesizes="100vw">
 <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
@@ -197,8 +226,14 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
 <header class="top">
   <div class="wrap top-in">
     <a class="brand" href="<?= u() ?>" aria-label="Rapid Recovery Corby home"><img src="<?= BASE ?>img/badge.svg" alt="" width="52" height="52"><span><b>Rapid Recovery</b><small>Corby · 24/7</small></span></a>
-    <nav class="nav" aria-label="Main">
-      <a href="<?= u('services') ?>">Services</a><a href="<?= u('areas') ?>">Areas</a><a href="<?= u('costs') ?>">Costs</a><a href="<?= u('about') ?>">About</a><a href="<?= u('contact') ?>">Contact</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span><b>Menu</b></button>
+    <nav class="nav" id="menu" aria-label="Main">
+      <div class="dd"><a href="<?= u('services') ?>" class="dd-t">Services</a><div class="dd-m"><?php foreach ($SV as $k => $x): ?><a href="<?= u($k) ?>"><?= h($x['name']) ?></a><?php endforeach; ?><a href="<?= u('services') ?>" class="dd-all">All services</a></div></div>
+      <div class="dd dd-wide"><a href="<?= u('areas') ?>" class="dd-t">Areas</a><div class="dd-m"><?php foreach ($AR as $k => $x): ?><a href="<?= u("areas/$k") ?>"><?= h($x['name']) ?></a><?php endforeach; ?><a href="<?= u('areas') ?>" class="dd-all">All areas</a></div></div>
+      <div class="dd"><a href="<?= u('costs') ?>" class="dd-t">Prices</a><div class="dd-m"><?php foreach ($SV as $k => $x): ?><a href="<?= u("costs/$k") ?>"><?= h($x['name']) ?> cost</a><?php endforeach; ?></div></div>
+      <div class="dd"><a href="<?= u('guides') ?>" class="dd-t">Guides</a><div class="dd-m"><?php foreach ($GUIDES as $k => $x): ?><a href="<?= u("guides/$k") ?>"><?= h($x) ?></a><?php endforeach; ?></div></div>
+      <a href="<?= u('about') ?>">About</a><a href="<?= u('contact') ?>">Contact</a>
+      <a class="btn btn-call nav-call" href="<?= h($tel) ?>">Call <?= h($S['phone']) ?></a>
     </nav>
     <a class="btn btn-call top-call" href="<?= h($tel) ?>"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><?= h($S['phone']) ?></a>
   </div>
@@ -219,7 +254,28 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
 
 <div class="wrap layout">
   <article class="content">
-    <?= md($P['body'] ?? '') ?>
+    <?php if (!empty($P['answer'])): ?><div class="answer"><p class="answer-t">Quick answer</p><p><?= h($P['answer']) ?></p></div><?php endif; ?>
+    <?php if (in_array($type, ['home', 'service', 'areasvc', 'area', 'cost'], true)): ?>
+    <dl class="glance">
+      <div><dt>Open</dt><dd>24 hours, 7 days</dd></div>
+      <div><dt>Arrival</dt><dd><?= $area && $area !== 'corby' ? 'Fast from our Corby base' : '30–45 min in Corby' ?></dd></div>
+      <div><dt>Price</dt><dd><?= h($svc ? $SV[$svc]['price'] : 'Recovery from £60') ?></dd></div>
+      <div><dt>Accredited</dt><dd>PAS 43 &amp; ISO 9001</dd></div>
+    </dl>
+    <?php endif; ?>
+    <?php $toc = md_toc($P['body'] ?? ''); if (count($toc) >= 4): ?>
+    <details class="toc" open><summary>On this page</summary><ol><?php foreach ($toc as $t): ?><li><a href="#<?= h($t[0]) ?>"><?= h($t[1]) ?></a></li><?php endforeach; ?></ol></details>
+    <?php endif; ?>
+    <?php
+      $bodyHtml = md($P['body'] ?? '');
+      $pool = array_values(array_unique(array_merge(array_column($S['services'], 'img'), array_column($S['areas'], 'img'))));
+      $fig = $pool[crc32($path) % count($pool)]; if ($fig === $hero) $fig = $pool[(crc32($path) + 1) % count($pool)];
+      $figHtml = '<figure class="fig"><img src="' . h(img("$fig-sm")) . '" alt="Rapid Recovery truck carrying a vehicle' . ($area ? ' near ' . h($AR[$area]['name']) : ' in Northamptonshire') . '" loading="lazy" width="800" height="450"><figcaption>A Rapid Recovery truck on a job' . ($area ? ' near ' . h($AR[$area]['name']) : '') . '.</figcaption></figure>';
+      $parts = preg_split('/(?=<h2 )/', $bodyHtml);
+      if (count($parts) > 2) { $parts[1] .= $figHtml; $bodyHtml = implode('', $parts); }
+      echo $bodyHtml;
+    ?>
+    <p class="updated">Last updated <?= date('j F Y', strtotime(UPDATED)) ?> by <?= h($S['name']) ?>.</p>
 
     <?php if ($type === 'home' || $type === 'services'): ?>
       <h2><?= $type === 'home' ? 'What we do' : 'All our services' ?></h2>
@@ -261,6 +317,14 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
       <h3><?= h($SV[$svc]['name']) ?> by area</h3>
       <ul class="linklist cols"><?php foreach ($AR as $a => $x): ?><li><a href="<?= u("$svc/$a") ?>"><?= h($x['name']) ?></a></li><?php endforeach; ?></ul>
       <p class="more">Other cost guides: <?php $o = []; foreach ($SV as $k => $x) if ($k !== $svc) $o[] = '<a href="' . u("costs/$k") . '">' . h($x['name']) . '</a>'; echo implode(' · ', $o); ?></p>
+    <?php endif; ?>
+
+    <?php if ($type === 'guides'): ?>
+      <div class="cards"><?php $gi = ['recovery-truck-night-callout-corby', 'accident-recovery-astra-with-fiesta-on-dolly', 'night-breakdown-recovery-honda-civic', 'scrap-car-collection-citroen-picasso']; $i = 0; foreach ($GUIDES as $k => $x) echo card("guides/$k", $gi[$i++], $x, 'Plain-English advice from a local recovery team.', 'Read the guide'); ?></div>
+    <?php endif; ?>
+    <?php if (in_array($type, ['service', 'areasvc', 'cost', 'guide'], true)): ?>
+      <h3>Helpful guides</h3>
+      <ul class="linklist"><?php foreach ($GUIDES as $k => $x): if ($type === 'guide' && $path === "guides/$k") continue; ?><li><a href="<?= u("guides/$k") ?>"><?= h($x) ?></a></li><?php endforeach; ?></ul>
     <?php endif; ?>
 
     <?php if ($type === 'contact'): ?>
@@ -306,7 +370,7 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
   <div class="wrap foot-in">
     <div class="foot-b"><img src="<?= BASE ?>img/badge.svg" alt="Rapid Recovery Corby" width="84" height="84">
       <p><strong><?= h($S['name']) ?></strong><br>Corby, Northamptonshire<br><a href="<?= h($tel) ?>"><?= h($S['phone']) ?></a><br><a href="mailto:<?= h($S['email']) ?>"><?= h($S['email']) ?></a><br>Open 24 hours, 7 days</p></div>
-    <div><p class="ft">Services</p><ul><?php foreach ($SV as $k => $x): ?><li><a href="<?= u($k) ?>"><?= h($x['name']) ?></a></li><?php endforeach; ?><li><a href="<?= u('costs') ?>">Cost guides</a></li></ul></div>
+    <div><p class="ft">Services</p><ul><?php foreach ($SV as $k => $x): ?><li><a href="<?= u($k) ?>"><?= h($x['name']) ?></a></li><?php endforeach; ?><li><a href="<?= u('costs') ?>">Prices</a></li></ul><p class="ft ft2">Guides</p><ul><?php foreach ($GUIDES as $k => $x): ?><li><a href="<?= u("guides/$k") ?>"><?= h($x) ?></a></li><?php endforeach; ?></ul></div>
     <div class="foot-areas"><p class="ft">Areas</p><ul><?php foreach ($AR as $a => $x): ?><li><a href="<?= u("areas/$a") ?>"><?= h($x['name']) ?></a></li><?php endforeach; ?></ul></div>
     <div><p class="ft">Company</p><ul><li><a href="<?= u('about') ?>">About</a></li><li><a href="<?= u('contact') ?>">Contact</a></li><li><a href="<?= u('services') ?>">All services</a></li><li><a href="<?= u('areas') ?>">All areas</a></li></ul></div>
   </div>
@@ -315,6 +379,11 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
 
 <nav class="mbar" aria-label="Quick contact"><a href="<?= h($tel) ?>" class="mb-call">Call now</a><a href="<?= h($wa) ?>" rel="noopener" class="mb-wa">WhatsApp</a></nav>
 
+<script>
+(()=>{const b=document.getElementById('burger'),m=document.getElementById('menu');b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);document.body.classList.toggle('menu-open',o)});
+m.querySelectorAll('.dd-t').forEach(t=>t.addEventListener('click',e=>{if(window.matchMedia('(max-width:980px)').matches){const d=t.parentNode;if(!d.classList.contains('open')){e.preventDefault();m.querySelectorAll('.dd.open').forEach(x=>x!==d&&x.classList.remove('open'));d.classList.add('open')}}}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('menu-open')){b.click();b.focus()}})})();
+</script>
 <?php if ($type === 'contact'): ?>
 <script>
 (()=>{const f=document.getElementById('enq'),m=document.getElementById('enq-msg'),g=document.getElementById('geo'),l=document.getElementById('loc');

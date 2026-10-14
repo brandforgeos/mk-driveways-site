@@ -1,120 +1,433 @@
 === hub
-title: Vehicle Recovery Stanion | 24/7 Breakdown Recovery Near Corby | Rapid Recovery
-desc: 24/7 vehicle recovery in Stanion, south-east of Corby on the A6116. Breakdown recovery, car transport, jump starts and free scrap car collection.
-h1: Vehicle recovery in Stanion
-lead: Stanion is just south-east of Corby on the A6116, a short run from our base for any breakdown, battery or recovery job.
+title: Car Recovery Stanion | 24/7 Vehicle Recovery on the A6116 | Rapid Recovery Corby
+desc: Car recovery in Stanion and on the A6116, 24/7. Breakdown recovery from £60, jump starts from £40, car transport and free scrap collection. Call 07598 314366.
+h1: Car recovery in Stanion, south-east of Corby
+lead: Stanion sits on the A6116 just south-east of Corby. If your car lets you down in the village or on the road out towards Brigstock, we can help, day or night.
+answer: Rapid Recovery Corby provides 24/7 car recovery in Stanion and along the A6116, with breakdown recovery from a £60 minimum, jump starts from a £40 minimum, car transport and free scrap collection. Call or WhatsApp 07598 314366.
+img: breakdown-recovery-mg3-hatchback
+img_alt: MG3 hatchback loaded onto a recovery truck after breaking down near a village road
 ---
-## A village on a busy road
+## Car recovery in Stanion from your nearest Corby team
 
-Stanion is a small village, but the A6116 running past it is anything but quiet. It's the main route between Corby, Brigstock and Thrapston, linking through to the A14, and it carries a steady flow of cars, vans and lorries. Many of our Stanion call-outs come from that road, as well as from homes in the village itself.
+Stanion is a small village, but it sits on a busy road. The A6116 runs past it from Corby towards Brigstock and Thrapston, and on to the A14. That means our car recovery work in Stanion is split between residents whose cars won't start at home and through traffic that has broken down on the main road.
 
-## Our services in Stanion
+Rapid Recovery is a Corby firm, so Stanion is a short run for our trucks. We have been in vehicle recovery for over five years, we answer the phone at any hour and we price the job before we set off.
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+## Two kinds of call-out in Stanion
+
+### In the village
+
+Village jobs tend to be calm but awkward. A car that has sat on a driveway for weeks, a second car with a dead battery, a car that has failed its MOT and needs taking to a garage. Parking can be tight on older streets, so we choose the right vehicle for the job. Our van with dollies and skates can move a car with seized wheels out of a narrow gap before it is loaded.
+
+### On the A6116
+
+The main road is a different story. It carries commuters, vans and lorries, and when a car stops there the priority is getting everyone safe. Breakdowns here are often overheating, clutch or gearbox faults, punctures and electrical problems. We also attend accidents and can work with your insurer.
+
+## Staying safe on the A6116 near Stanion
+
+- Pull as far left as you can, onto the verge or into a lay-by if one is close.
+- Turn on your hazard lights, and your sidelights after dark.
+- Get everyone out on the side away from the traffic, and stand behind a barrier if there is one.
+- Wear a high-vis if you have one in the car.
+- If you are stuck in a live lane and cannot get out safely, call 999.
+
+When you are safe, call us on 07598 314366. Our [what to do if you break down guide](/guides/what-to-do-if-you-break-down) explains each step. If your journey takes you on towards the A14, our [A14 breakdown advice](/guides/a14-breakdown-advice) is worth reading too.
+
+## Tell us exactly where you are
+
+On a road between villages, "just outside Stanion" can mean several different places. The fastest way to help us find you is a WhatsApp live location sent to 07598 314366. A what3words reference is also accurate. Otherwise, tell us your direction of travel (towards Corby or towards Brigstock), the nearest junction or turning, and anything you can see nearby.
+
+## Services in Stanion
+
+| What's happened | Service | Price guide |
+| --- | --- | --- |
+| Car has broken down or been in an accident | [Breakdown recovery in Stanion](/breakdown-recovery/stanion) | From £60 minimum locally |
+| Battery flat or a wheel needs changing | [Jump start in Stanion](/jump-start/stanion) | From £40 minimum |
+| Car needs moving to a garage, buyer or new home | [Car transport in Stanion](/car-transport/stanion) | Fixed price per job |
+| Car is not worth repairing | [Scrap car collection in Stanion](/scrap-car-collection/stanion) | Free collection, paid by bank transfer |
+
+## Our trucks and standards
+
+We run five-plus recovery vehicles: spec lift tow trucks, beavertail tilt-and-slide transporters and a van with dollies and skates. Some trucks carry one car and tow a second on a dolly. We are PAS 43 accredited for safe roadside and recovery work and ISO 9001 certified for quality management. We are insured for goods in transit, public liability and road risks.
+
+If your car cannot be delivered straight away, perhaps because the garage is closed overnight, it can go into our secure storage yard until it can.
+
+## What it costs
+
+Local breakdown recovery has a £60 minimum charge. Jump starts have a £40 minimum charge. Anything else, including longer recoveries and car transport, is priced on the phone before we leave, so you are never guessing. Pay by card on the day, bank transfer or cash. Business invoicing is available by arrangement. Our [costs page](/costs) has more detail.
+
+## Neighbouring areas
+
+We also cover [Corby](/areas/corby), [Brigstock](/areas/brigstock), [Great Oakley](/areas/great-oakley) and [Weldon](/areas/weldon), along with the rest of the villages around the town.
 ---
-Q: How quickly can you get to Stanion?
-A: Stanion is close to our Corby base, so it is usually a quick call-out. We give you a realistic time when you call.
-Q: Do you cover the A6116 between Corby and Brigstock?
-A: Yes. We recover vehicles along the A6116, including the stretch past Stanion and Brigstock.
+Q: Do you cover Stanion at night?
+A: Yes. Rapid Recovery Corby is open 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
+Q: How long will it take you to reach Stanion?
+A: Stanion is a short run from our Corby base. We give you a realistic arrival time when you call, depending on where our trucks are.
+Q: Do you recover cars from the A6116 near Stanion?
+A: Yes. We recover broken down and accident-damaged vehicles from the A6116 between Corby, Stanion, Brigstock and Thrapston.
+Q: How much does car recovery cost in Stanion?
+A: Local breakdown recovery starts from a £60 minimum charge. Longer or more complex jobs are priced on the phone before we set off.
+Q: Can you take my car to a garage outside the area?
+A: Yes. We recover vehicles anywhere in the UK and can take your car to any garage you choose.
+Q: How do I tell you where I have broken down?
+A: Send a WhatsApp live location to 07598 314366, give us a what3words reference, or tell us your direction of travel and the nearest junction or landmark.
 
 === breakdown-recovery
-title: Breakdown Recovery Stanion | A6116 Recovery 24/7 | Rapid Recovery Corby
-desc: Broken down in Stanion or on the A6116? Fast 24/7 breakdown and accident recovery from a Corby-based, PAS 43 accredited team. From £60.
-h1: Breakdown recovery in Stanion
-lead: Broken down on the A6116 or at home in Stanion? Call us and a truck will be on its way from Corby straight away.
-img: early-morning-recovery-renault-clio
+title: Breakdown Recovery Stanion | A6116 Tow Truck & Car Recovery 24/7 | Rapid Recovery
+desc: Breakdown recovery in Stanion and on the A6116 towards Brigstock and Thrapston. 24/7 tow trucks and accident recovery from £60. Call 07598 314366.
+h1: Breakdown recovery in Stanion and on the A6116
+lead: Broken down in Stanion or on the A6116 out of Corby? Call us and a recovery truck will be on its way, any hour of the day.
+answer: Rapid Recovery Corby provides 24/7 breakdown recovery in Stanion and on the A6116 towards Brigstock and Thrapston. Local recovery has a £60 minimum charge, with other jobs priced before we set off. Call or WhatsApp 07598 314366.
+img: night-breakdown-recovery-honda-civic
+img_alt: Honda Civic being recovered at night under a recovery truck's work lights after a roadside breakdown
 ---
-## On the A6116
+## Breakdown recovery in Stanion: what to expect
 
-The A6116 past Stanion is a fast road with roundabouts at each end and few places to stop safely. If you break down, try to get onto the verge or into a lay-by, switch your hazards on and get everyone out on the side away from the traffic. Tell us which way you were heading and the nearest roundabout or landmark, or share your location on WhatsApp.
+When you ring us about a breakdown in Stanion, you speak to a local recovery firm based in Corby, not a national call centre. We ask where you are, what has happened and where you want the vehicle to go. We give you a price before we set off, then send the right truck for the job.
 
-We're **PAS 43** accredited, so the team loading your car is trained to work safely next to fast traffic.
+We recover cars, vans up to 3.5 tonnes, 4x4s and SUVs, motorbikes, campervans and classic cars. From Stanion we can take a vehicle home, to a local garage, to our secure yard, or anywhere in the UK.
 
-## In the village
+## Why the A6116 matters
 
-For breakdowns at home, we'll recover your car to your garage, a dealer or our secure yard, whichever works best.
+Most breakdown recovery in Stanion is tied to the A6116. The road runs from Corby past Stanion and on to Brigstock and Thrapston, where it links with the A14. It carries a steady mix of commuters and commercial traffic, so a car stopped on it needs dealing with quickly and safely.
 
-Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+### Common A6116 breakdowns
+
+- Overheating, often after sitting in slow traffic. Leave the radiator cap alone while the engine is hot.
+- Clutch and gearbox failures that leave a car unable to move.
+- Punctures and blowouts. We can change to a spare if it is safe, or recover the car if not.
+- Electrical faults and sudden loss of power.
+- Minor collisions and accident damage.
+
+## If you break down near Stanion, do this
+
+1. Get as far left as you safely can. A verge or lay-by is better than the carriageway.
+2. Hazards on. Sidelights too if it is dark.
+3. Everyone out on the side away from the traffic. If there is a barrier, stand behind it.
+4. Put on a high-vis if you carry one.
+5. Stuck in a live lane and can't get out safely? Call 999.
+6. Once safe, call 07598 314366 or send a WhatsApp live location.
+
+Our [what to do if you break down guide](/guides/what-to-do-if-you-break-down) covers this in more depth, and our [A14 breakdown advice](/guides/a14-breakdown-advice) is useful if you were heading that way.
+
+## Accident recovery and insurance work
+
+After a collision on the A6116 or in the village, we can clear the vehicle and take it to a body shop, a dealer or our secure storage yard. We work with insurers and accident management companies, so if your insurer has a preferred repairer we can deliver straight there. If the damage leaves wheels locked or bent, we can use dollies to move the car safely.
+
+## Non-runners and driveway recoveries in the village
+
+Not every breakdown happens on the move. Cars in Stanion that have been laid up, failed an MOT or developed a fault on the drive can be winched onto a beavertail truck without needing to start. If a car is boxed in or the wheels will not turn, our van with dollies and skates moves it into the open first.
+
+## How much is breakdown recovery in Stanion?
+
+Local breakdown recovery starts at a **£60 minimum charge**. The final price depends on distance, the type of vehicle, the time and whether specialist work such as winching is needed. We always agree the price on the phone before we set off.
+
+Payment is by card on the day, bank transfer or cash. Businesses can be invoiced by arrangement. Our [breakdown recovery cost guide](/costs/breakdown-recovery) explains the pricing in more detail.
+
+## Our recovery standards
+
+We are PAS 43 accredited, the national safety standard for vehicle breakdown, recovery and roadside operations. We are also ISO 9001 certified for quality management. Our vehicles are insured for goods in transit, public liability and road risks. Every car is loaded and strapped carefully, because it is your car and we treat it that way.
+
+## Waiting for us after dark
+
+Stretches of road around Stanion are unlit, and a stopped car is hard for other drivers to see at night. Keep your sidelights and hazards on, stay out of the vehicle if it is on a fast road, and wait somewhere you can be seen from a distance. If it is cold or wet, tell us when you call. We will keep you updated if anything changes on our way to you.
+
+## Information that speeds things up
+
+- Your exact location or WhatsApp live location.
+- Make, model, colour and registration.
+- What the car did before it stopped.
+- Whether it rolls freely or the wheels are locked.
+- How many passengers need a lift.
+- Where you want the vehicle taken.
+
+## Related services near Stanion
+
+A flat battery may only need a [jump start in Stanion](/jump-start/stanion). If you would rather not repair the car, see [scrap car collection in Stanion](/scrap-car-collection/stanion). We also cover [breakdown recovery in Brigstock](/breakdown-recovery/brigstock) and [breakdown recovery in Corby](/breakdown-recovery/corby).
 ---
-Q: What should I tell you if I've broken down on the A6116?
-A: Your direction of travel, the nearest roundabout or village, and your vehicle. Sharing your live location on WhatsApp is the easiest way.
-Q: Can you take my car to a garage in Kettering from Stanion?
-A: Yes. We can recover it to any garage or dealer you choose.
+Q: Do you recover cars from the A6116 between Stanion and Brigstock?
+A: Yes. We recover broken down and accident-damaged vehicles along the A6116 between Corby, Stanion, Brigstock and Thrapston, 24 hours a day.
+Q: How much does breakdown recovery cost in Stanion?
+A: Local breakdown recovery starts from a £60 minimum charge. Other jobs are priced on the phone before we set off.
+Q: What should I do if my car overheats near Stanion?
+A: Pull over safely, switch off the engine and do not open the radiator cap while it is hot. Get out on the side away from traffic and call us.
+Q: Can you recover a van from Stanion?
+A: Yes. We recover vans up to 3.5 tonnes, as well as cars, 4x4s, motorbikes, campervans and classic cars.
+Q: Do you work with insurance companies after an accident?
+A: Yes. We carry out accident recovery and insurance work, and can deliver your vehicle to your insurer's chosen repairer.
+Q: Can you take my car to our secure yard overnight?
+A: Yes. If your garage is closed, we can keep the vehicle in our secure storage yard until it can be delivered.
 
 === car-transport
-title: Car Transport Stanion | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport for Stanion. Collections, deliveries, garage runs and UK-wide vehicle moves from a local, fully insured recovery firm.
+title: Car Transport Stanion | Vehicle Transport & Car Transporter UK-Wide | Rapid Recovery
+desc: Car transport from Stanion near Corby. Auction, dealer and private sale collections, garage runs and non-runners moved UK-wide, fixed price. Call 07598 314366.
 h1: Car transport in Stanion
-lead: Need a car collecting from or delivering to Stanion? We move vehicles locally and anywhere in the UK, with a fixed price up front.
+lead: Buying, selling, moving house or just need a car at the garage? We collect and deliver vehicles to and from Stanion at a fixed price.
+answer: Rapid Recovery Corby provides car transport in Stanion and across the UK on open transporters, covering auctions, dealer deliveries, private sales, garage runs and non-runners. Every job gets a fixed price before booking. Call 07598 314366.
 img: car-transport-volvo-v40-rally-car
+img_alt: Volvo V40 rally car loaded onto an open car transporter for delivery
 ---
-## Local and long distance
+## Car transport in Stanion: moving vehicles without driving them
 
-From a car that needs to go to a garage in Corby to one you've bought on the other side of the country, we'll collect it, load it safely and deliver it to the door.
+Living in a village like Stanion often means a car is the only realistic way to get around. So when a second car needs to go somewhere, or you buy one a long way from home, getting it moved can be a headache. Our car transport service collects the vehicle and delivers it, so nobody has to arrange lifts or train tickets.
 
-## Classic and project cars
+We use open beavertail tilt-and-slide transporters and spec lift trucks, and we cover the whole of the UK. We do not offer enclosed transport, but open transport is right for the vast majority of cars, vans, 4x4s, classics and prestige models.
 
-Village garages and outbuildings often hide classic and project cars. If yours needs to go to a restorer, a show or an MOT station, our beavertail trucks load low cars gently and can winch on non-runners.
+## When Stanion drivers use our car transporter
 
-## Insured all the way
+**Buying privately or online.** Found the right car hundreds of miles away? We collect it from the seller and bring it back to Stanion.
 
-Every vehicle we move is covered by goods in transit insurance while it's with us.
+**Auction purchases.** We collect from auction sites and deliver to your home or your garage.
 
-See the [car transport cost guide](/costs/car-transport) for how we price.
+**Garage and MOT runs.** If your car has no MOT, or you do not want to lose half a day, we take it to the garage and bring it back.
+
+**Selling a car.** We can deliver a car to its new owner or to a dealer on your behalf.
+
+**Classic and project cars.** Older and non-running cars are winched carefully onto the bed. Low cars are loaded with extra care.
+
+**Moving home.** Moving to or from Stanion with more vehicles than drivers? We move the extra car or van.
+
+## For garages, dealers and fleets
+
+We work for garages, car dealers and fleet operators as well as private customers. That includes dealer deliveries, collections from customers' homes and garage-to-garage moves. Some of our trucks can carry one car and tow a second on a dolly, which can reduce cost when two vehicles are going the same way. Business invoicing is available by arrangement.
+
+## Step by step
+
+1. **Call or WhatsApp** 07598 314366 with the pick-up and drop-off locations.
+2. **Describe the car.** Make, model, whether it runs, and anything unusual such as lowered suspension.
+3. **Get your fixed price.** You know the full cost before you commit.
+4. **Pick a time.** We arrange collection around you and the other party.
+5. **We deliver.** The car is strapped down, transported and handed over.
+
+## How much does car transport cost from Stanion?
+
+Car transport is priced per job with a **fixed price agreed before booking**. The cost mainly depends on:
+
+- The distance between collection and delivery.
+- Whether the car runs or needs winching.
+- The size and weight of the vehicle.
+- Access at either end and any waiting time.
+
+A local garage run costs far less than a long-distance collection. Payment is by card, bank transfer or cash. More detail is in our [car transport cost guide](/costs/car-transport).
+
+## Careful handling, properly insured
+
+We are careful with every vehicle. Each one is loaded slowly, strapped through the wheels and checked before we leave. We hold goods in transit, public liability and road risks insurance and work to PAS 43 and ISO 9001 standards. If a car needs holding before delivery, it can stay in our secure storage yard.
+
+## Getting the car ready
+
+- Make sure keys, spare keys and the locking wheel nut key go with the car.
+- Take out valuables and anything loose.
+- Let us know about any damage, flat tyres or warning lights in advance.
+- If someone else is handing the car over, make sure they know our arrival time.
+
+If the car you are moving will not start, our [car won't start guide](/guides/car-wont-start) may help you work out why.
+
+## Taking the A6116 out of the way
+
+For many longer moves from Stanion we head out along the A6116 towards Thrapston and the A14, or back through Corby, depending on where the car is going. We plan the route around the vehicle and the delivery time, so you get a realistic delivery estimate when you book.
+
+## Collections from Stanion homes
+
+Drop-offs and pick-ups in the village are simple to arrange. Tell us whether the car is on a driveway, in a garage or parked on the street, and if there is anything that might make loading awkward, such as a steep drive, overhanging trees or cars parked close by. We plan the right truck around it so the collection goes smoothly.
+
+## Related pages
+
+For a car that has broken down rather than one that just needs moving, see [breakdown recovery in Stanion](/breakdown-recovery/stanion). If it is not worth keeping, try [scrap car collection in Stanion](/scrap-car-collection/stanion). We also provide [car transport in Brigstock](/car-transport/brigstock) and [car transport in Weldon](/car-transport/weldon).
 ---
-Q: Can you move a classic car from a garage in Stanion?
-A: Yes. Tell us about access to the garage and whether the car runs, and we will bring the right kit.
-Q: Do you give fixed prices for car transport?
-A: Yes. Every job gets a fixed price before it is booked.
+Q: Can you collect a car I have bought online and deliver it to Stanion?
+A: Yes. We collect from private sellers, dealers and auctions anywhere in the UK and deliver to your address, at a fixed price agreed before booking.
+Q: Do you provide enclosed transport?
+A: No. We offer open car transport only, which suits most everyday, classic and prestige cars.
+Q: Can you transport two cars at once?
+A: Often, yes. Some of our trucks can carry one car and tow a second on a dolly, which can save a second trip.
+Q: How much does it cost to transport a car from Stanion?
+A: Each move is priced individually, mainly on distance, vehicle size and whether it runs. You get a fixed price before you book.
+Q: Can you move a car that does not start?
+A: Yes. Non-runners are winched onto our beavertail transporters.
+Q: Do you work for garages and car dealers?
+A: Yes. We work with garages, dealers and fleet operators, with business invoicing by arrangement.
 
 === jump-start
-title: Jump Start Stanion | Mobile Battery Replacement from £40 | Rapid Recovery Corby
-desc: Flat battery in Stanion? 24/7 mobile jump starts from £40, new batteries fitted on your driveway and wheel changes from a local Corby team.
-h1: Jump starts in Stanion
-lead: Car won't start in Stanion? We'll come out from Corby with a jump pack and a replacement battery if you need one.
-img: breakdown-recovery-mg3-hatchback
+title: Jump Start Stanion | Flat Battery Help & Mobile Battery Fitting 24/7 | Rapid Recovery
+desc: Flat battery in Stanion? 24/7 jump starts from £40, new batteries supplied and fitted on the spot, and spare wheel changes. Call Rapid Recovery on 07598 314366.
+h1: Jump starts and battery fitting in Stanion
+lead: Car won't start in Stanion? We come out with professional jump packs and replacement batteries, at any time of day or night.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Stanion from a £40 minimum charge, plus new batteries supplied and fitted on the spot and spare wheel changes. Call or WhatsApp 07598 314366.
+img: early-morning-recovery-renault-clio
+img_alt: Renault Clio receiving help from a recovery truck early in the morning after a flat battery
 ---
-## Cold mornings, flat batteries
+## Jump start near me in Stanion
 
-Village driveways get cold and frosty, and a battery that's getting old often gives up on the first properly cold morning of the year. We'll come out, jump start the car and test the battery so you know whether it'll last.
+In a small village like Stanion, a car that won't start can leave you properly stuck, because most journeys out of the village depend on having a working car. Our jump start service brings the fix to you, whether the car is on your driveway, outside a friend's house or at the side of the A6116.
 
-## New battery on the spot
+We carry professional jump packs and replacement batteries. If a jump gets you going, great. If the battery is finished, we can supply and fit a new one there and then, once you have agreed the price.
 
-If the battery's failing, we can supply and fit a new one there and then, with the price agreed before we start.
+## Is it a flat battery?
 
-## Flat tyre?
+Here is a quick way to tell:
 
-We change wheels onto spares and space savers, and can take the car to a tyre fitter if there's no spare.
+| What you notice | Likely cause |
+| --- | --- |
+| Clicking, but the engine does not turn | Flat or failing battery |
+| Engine turns slowly then stops | Weak battery, especially on cold mornings |
+| No lights or dashboard at all | Completely flat battery or a loose connection |
+| Engine turns normally but won't fire | Probably not the battery, may be fuel or ignition |
 
-A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+Our [car won't start guide](/guides/car-wont-start) has more on reading the signs.
+
+## Why village cars lose their charge
+
+Stanion drivers tend to do one of two things. Some make short trips into Corby and back, which do not give the alternator time to recharge the battery. Others leave a second car parked for long periods while one car does all the work. Either way, the battery slowly runs down, and a cold snap is often what finally stops it starting.
+
+Interior lights, boot lights or accessories left on overnight are another regular cause.
+
+## How a jump start call-out works
+
+1. You call 07598 314366 or send your location by WhatsApp.
+2. We confirm the price and give you a realistic arrival time.
+3. We test the battery and connections on arrival.
+4. We jump start the car with a jump pack, so there is no need for another car.
+5. If the battery will not hold charge, we quote for a new one and fit it if you agree.
+6. If the fault is elsewhere, we can recover the car to a garage.
+
+## Mobile battery fitting in Stanion
+
+When a battery has failed, a jump start is only a short-term fix. We supply and fit new batteries on the spot, priced by the battery your car needs. Many modern cars need a specific battery type, so we check the make and model first and confirm the price before fitting. That means you are not paying for a tow to a garage just to change a battery.
+
+## Flat tyre on the A6116?
+
+We also change wheels onto your spare or space saver. On a main road, only change a wheel if the car is well off the carriageway. If it is not safe, or you have no usable spare, we can recover the vehicle instead. Our [what to do if you break down guide](/guides/what-to-do-if-you-break-down) covers roadside safety.
+
+## How much is a jump start in Stanion?
+
+Jump starts have a **£40 minimum charge**. A replacement battery is priced by the battery your car needs, and we confirm the total before we fit anything. Pay by card, bank transfer or cash. See our [jump start cost guide](/costs/jump-start) for the full picture.
+
+## What to tell us
+
+- Where the car is and how we reach it.
+- The make, model and registration.
+- What happens when you turn the key or press start.
+- Whether anything was left switched on.
+
+## After we have got you going
+
+Drive for a reasonable distance before switching off, to put some charge back into the battery. If it fails again within a couple of days, have the battery and charging system checked, or call us about a new battery.
+
+## Looking after your battery between call-outs
+
+A battery that has gone completely flat once is more likely to struggle again. Give the car a proper run of at least half an hour now and then, especially over winter. If a second car sits on the drive in Stanion for weeks at a time, start it and drive it regularly, or ask your garage about a battery maintainer. A slow start on a cold morning is often the first warning, so it is worth acting on before the car leaves you stuck.
+
+## Other services in Stanion
+
+If the car still won't run, we offer [breakdown recovery in Stanion](/breakdown-recovery/stanion). If an older car keeps failing, compare a repair against [scrap car collection in Stanion](/scrap-car-collection/stanion). We also provide [jump starts in Brigstock](/jump-start/brigstock) and [jump starts in Great Oakley](/jump-start/great-oakley).
 ---
-Q: Do you come out early in the morning?
-A: Yes, we work 24 hours a day, 7 days a week.
-Q: Can you tell if my battery needs replacing?
-A: Yes. We test it when we attend and give you an honest answer.
+Q: How much does a jump start cost in Stanion?
+A: A jump start has a £40 minimum charge. If you need a new battery, it is priced by the battery your car needs and confirmed before fitting.
+Q: Can you replace my car battery at home in Stanion?
+A: Yes. We supply and fit new batteries on the spot, on your driveway or at the roadside.
+Q: Are you available for jump starts early in the morning?
+A: Yes. We are open 24 hours a day, 7 days a week, so early morning and late night call-outs are no problem.
+Q: Do I need another car for a jump start?
+A: No. We use professional jump packs, so no second car is needed.
+Q: What if my car still won't start after a jump?
+A: We will tell you what we think the fault is and can recover the car to a garage of your choice.
+Q: Can you change a flat tyre near Stanion?
+A: Yes. We change wheels onto your spare or space saver where it is safe, or recover the car if there is no usable spare.
 
 === scrap-car-collection
-title: Scrap My Car Stanion | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car in Stanion with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+title: Scrap My Car Stanion | Free Scrap Car Collection & Car Scrappers | Rapid Recovery
+desc: Scrap your car in Stanion. Free collection, paid by bank transfer, no MOT and non-runners accepted, Certificate of Destruction issued. Call 07598 314366.
 h1: Scrap car collection in Stanion
-lead: Old car in Stanion that's not worth saving? We'll collect it for free, pay you by bank transfer and scrap it properly.
-img: non-runner-collection-seat-altea-space-saver
+lead: Got a car in Stanion that has reached the end of the road? Sell your scrap car to us. We collect it for free and pay by bank transfer.
+answer: Rapid Recovery Corby collects scrap cars, vans and motorbikes from Stanion for free and pays by bank transfer. Non-runners, no-MOT and accident-damaged vehicles are accepted, and a licensed ATF issues the Certificate of Destruction. Call 07598 314366.
+img: scrap-car-collection-small-hatchback
+img_alt: Small hatchback on a recovery truck being taken away for scrap from a residential driveway
 ---
-## From driveways, garages and yards
+## Sell my scrap car in Stanion
 
-We'll collect your scrap car or van from wherever it's parked in Stanion, including garages and outbuildings, as long as we can safely reach it. Non-runners and cars with flat tyres or no MOT are fine.
+Old cars hang around in villages. One fails its MOT, a replacement arrives, and the old one ends up on the drive or at the side of the house for months. In Stanion, where off-street space can be precious, that is space you could be using. Our scrap car collection clears it, pays you and handles the legal side properly.
 
-## The legal side
+We buy scrap and unwanted cars, vans and motorbikes. Collection from Stanion is free, and the car does not need to run.
 
-We're licensed waste carriers and scrap metal collectors. You're paid by bank transfer and your vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and tells the DVLA.
+## Vehicles we will take
 
-## Get a price
+- Cars that will not start or have major mechanical faults.
+- Cars with no MOT or that have been off the road for years.
+- Accident-damaged vehicles, including insurance write-offs.
+- Vans up to 3.5 tonnes.
+- Motorbikes.
+- Vehicles without a V5C logbook, provided you show proof of ID.
 
-Send us the registration, mileage and condition, and we'll give you a price and book a collection.
+## How much is my scrap car worth?
 
-See our [scrap car cost guide](/costs/scrap-car-collection).
+Every vehicle is priced individually. The main factors are:
+
+1. **Weight.** Heavier vehicles contain more metal.
+2. **Scrap metal prices.** These change with the market.
+3. **Make and model.** Some vehicles have more valuable parts.
+4. **Completeness.** A complete car is worth more than one with the engine, catalytic converter or wheels removed.
+5. **Condition.** Heavy damage can affect the price.
+
+Call 07598 314366 with the details and we will give you a price. Our [scrap car cost guide](/costs/scrap-car-collection) explains each factor.
+
+## Paid by bank transfer, by law
+
+The Scrap Metal Dealers Act 2013 bans cash payments for scrap metal, including scrap cars. Any car scrapper offering cash is breaking the law. We pay by bank transfer every time, which also gives you a clear record of the sale.
+
+## What happens to your car
+
+We hold a waste carrier licence and a scrap metal collector's licence. After collection, your car goes to a licensed Authorised Treatment Facility (ATF). The ATF:
+
+- Processes the vehicle in line with the regulations.
+- Issues the Certificate of Destruction.
+- Notifies the DVLA that the vehicle has been scrapped.
+
+Once the DVLA has been notified, any full months of vehicle tax left on the car are refunded to you automatically.
+
+## Checklist for collection day
+
+- Photo ID and proof of address.
+- The V5C logbook, if you have it.
+- All keys you have for the car.
+- Your bank details for the payment.
+- Personal items removed, including from the boot, door pockets and glovebox.
+- Private plates dealt with before collection if you want to keep them.
+
+## Awkward cars are fine
+
+A car that has stood for a long time often has flat tyres, seized brakes or is tucked behind a gate. We bring dollies and skates to move it to the truck without damaging walls, fences or other cars. If it is easy for us to load, it is straightforward. If it is not, we plan around it.
+
+## Repair or scrap?
+
+If a garage quote is more than the car is worth, scrapping usually makes more sense. Tell us what is wrong and we will give you a scrap price so you can compare the two. Our [how to scrap a car guide](/guides/how-to-scrap-a-car) covers the full process, from paperwork to the tax refund.
+
+## Scrapping a van or motorbike from Stanion
+
+It is not just cars. We collect old vans up to 3.5 tonnes, including work vans that have done their last job, and motorbikes that have been sitting in a shed or garage. For a van registered to a business, have the company details ready, along with ID for the person handing it over. For a motorbike, tell us if it has flat tyres or no keys, so we bring the right equipment to load it safely.
+
+## Selling a scrap car the right way
+
+Before you choose anyone to take your car, check they hold a scrap metal collector's licence and will pay by bank transfer. Ask where the car is going and whether you will get a Certificate of Destruction. If a buyer cannot answer clearly, the car may not be scrapped properly, and you could still be linked to it on the DVLA's records. We are happy to answer all of these questions when you call.
+
+## Booking a collection
+
+Tell us when you, or someone with ID, can be with the car. We agree a time, turn up when we say, and call ahead if anything changes. On arrival we check the car matches what you told us, check the ID and paperwork, load the vehicle and pay you by bank transfer. If the car is noticeably different from the description, such as missing major parts, we discuss it before loading.
+
+## Related services
+
+If the car only needs moving, see [car transport in Stanion](/car-transport/stanion). If it has broken down and you want it repaired, book [breakdown recovery in Stanion](/breakdown-recovery/stanion). We also collect scrap cars from [Brigstock](/scrap-car-collection/brigstock) and [Corby](/scrap-car-collection/corby).
 ---
-Q: Can you collect a car that has been parked in a garage for years?
-A: Usually, yes. Tell us about the access and the car's condition so we bring the right equipment.
-Q: Do you pay for scrap cars in Stanion?
-A: Yes, by bank transfer. The price depends on the vehicle, its weight and condition.
+Q: Is scrap car collection free in Stanion?
+A: Yes. Collection is free and we pay you for the vehicle by bank transfer.
+Q: Can I scrap a car with no MOT?
+A: Yes. We collect cars with no MOT, non-runners and accident-damaged vehicles.
+Q: Can I scrap my car without the logbook?
+A: Yes. We can collect a vehicle with no V5C as long as you can show proof of ID.
+Q: Why won't you pay cash for my scrap car?
+A: The Scrap Metal Dealers Act 2013 makes cash payments for scrap illegal, so we always pay by bank transfer.
+Q: Will the DVLA be told my car has been scrapped?
+A: Yes. The Authorised Treatment Facility issues the Certificate of Destruction and notifies the DVLA.
+Q: Do I get my road tax back when I scrap my car?
+A: Yes. Any full months of vehicle tax remaining are refunded by the DVLA automatically once it knows the car has been scrapped.

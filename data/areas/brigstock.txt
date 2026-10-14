@@ -1,124 +1,419 @@
 === hub
-title: Vehicle Recovery Brigstock | 24/7 Breakdown Recovery | Rapid Recovery Corby
-desc: 24/7 vehicle recovery in Brigstock on the A6116 between Corby and Thrapston. Breakdown recovery, car transport, jump starts and free scrap car collection.
-h1: Vehicle recovery in Brigstock
-lead: Brigstock sits on the A6116 between Corby and Thrapston, on the edge of Fermyn Woods. We cover the village and the roads around it 24/7.
+title: Vehicle Recovery Brigstock | 24/7 Towing & Breakdown Help | Rapid Recovery Corby
+desc: Vehicle recovery in Brigstock and on the A6116 near Fermyn Woods, 24/7. Breakdown recovery, winch recovery, jump starts and scrap collection. Call 07598 314366.
+h1: Vehicle recovery in Brigstock and around Fermyn Woods
+lead: From the A6116 to the narrow lanes around Fermyn Woods, we recover vehicles in and around Brigstock at any hour, from our base in Corby.
+answer: Rapid Recovery Corby provides 24/7 vehicle recovery in Brigstock, including the A6116, Fermyn Woods Country Park and surrounding rural lanes. Breakdown recovery starts from a £60 minimum and jump starts from a £40 minimum. Call 07598 314366.
+img: 4x4-recovery-nissan-x-trail
+img_alt: Nissan X-Trail 4x4 being recovered onto a truck after getting stuck on a rural lane
 ---
-## Village, woodland and the A6116
+## Vehicle recovery in Brigstock: a rural patch with a busy road through it
 
-Brigstock is one of the larger villages around Corby, with the A6116 bypassing it on the route to Thrapston and the A14. Fermyn Woods Country Park brings walkers and visitors from across the county, and the lanes around the village are narrow and rural.
+Brigstock is one of the larger villages around Corby, sitting on the A6116 between Corby and Thrapston. On one side is a main road that links to the A14. On the other are country lanes, farmland and Fermyn Woods Country Park. Our vehicle recovery work in Brigstock reflects all of that.
 
-That gives us a real mix of jobs here: breakdowns on the A6116, cars that won't start in the country park car park, cars stuck on muddy lanes and verges, and everyday driveway call-outs in the village.
+We are based in Corby and have been in recovery for over five years. We run 24 hours a day, every day of the year, and we price every job before we set off.
 
-## Our services in Brigstock
+## What we get called out for around Brigstock
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+**A6116 breakdowns.** Cars, vans and campervans that stop on the road between Corby and Thrapston. Many are heading to or from the A14, and some drivers are a long way from home.
+
+**Country park visitors.** Fermyn Woods brings walkers, cyclists and families from across the area. A flat battery after a long walk, or a car that will not start in the car park as it gets dark, is a regular call.
+
+**Narrow lanes and verges.** Rural lanes around the village are narrow, with soft verges and ditches. A car that slides off in the wet, or drops a wheel into a ditch while passing another vehicle, needs a careful winch recovery rather than a quick tow.
+
+**Village driveways.** Non-runners, flat batteries and cars that need a trip to the garage, the same as anywhere else.
+
+## Off-road and ditch recovery near Brigstock
+
+When a vehicle leaves the road, the job is about control. We use a winch to bring the car back onto firm ground slowly, protecting the bodywork and the underside as much as possible. Our fleet includes spec lift tow trucks and beavertail tilt-and-slide transporters, and we bring the right one for the ground and the vehicle. If your car is in a ditch, do not try to drive it out. You can make the damage worse and risk getting stuck further in.
+
+## Help us find you in the countryside
+
+Rural breakdowns are much harder to locate than town ones. Before you call, check:
+
+- **WhatsApp live location**, sent to 07598 314366, is the most accurate option.
+- **what3words** gives a precise three-word reference for any spot.
+- **Landmarks**, such as a named farm gate, the country park entrance or the nearest turning, help if you have no signal for data.
+- **Direction of travel** on the A6116: towards Corby or towards Thrapston.
+
+## Services in Brigstock
+
+| You need | Go to | Cost |
+| --- | --- | --- |
+| A tow after a breakdown or accident | [Breakdown recovery in Brigstock](/breakdown-recovery/brigstock) | From £60 minimum locally |
+| A jump start, new battery or wheel change | [Jump start in Brigstock](/jump-start/brigstock) | From £40 minimum |
+| A car moved to a garage, buyer or new address | [Car transport in Brigstock](/car-transport/brigstock) | Fixed price per job |
+| An unwanted car taken away | [Scrap car collection in Brigstock](/scrap-car-collection/brigstock) | Free collection, paid by bank transfer |
+
+## Safety on the A6116 and country roads
+
+On the main road, get as far left as is safe, put your hazards on and get everyone out on the side away from traffic. Stand behind a barrier if there is one, and wear a high-vis if you have it. If you are stuck in a live lane, call 999.
+
+On narrow lanes, a stopped car can be hidden by a bend. Hazards on, sidelights on after dark, and wait well off the road. In heavy rain, do not try to drive through deep water, and if the engine cuts out in a flood, leave it switched off. Read our [what to do if you break down guide](/guides/what-to-do-if-you-break-down) for more.
+
+## Standards and payment
+
+We are PAS 43 accredited for roadside and recovery safety and ISO 9001 certified. We hold goods in transit, public liability and road risks insurance, and we have a secure storage yard. Pay by card on the day, bank transfer or cash. Business invoicing is available. See our [cost guides](/costs) for pricing detail.
+
+## Nearby areas
+
+We also cover [Stanion](/areas/stanion), [Corby](/areas/corby), [Weldon](/areas/weldon) and [Deenethorpe](/areas/deenethorpe).
 ---
 Q: Do you cover Fermyn Woods Country Park?
-A: Yes. If your car won't start or has got stuck at or near the country park, call us and tell us where you are parked.
-Q: How long does it take to reach Brigstock?
-A: Brigstock is a short drive from our Corby base along the A6116. We give you a realistic arrival time when you call.
+A: Yes. We attend breakdowns, flat batteries and recoveries at Fermyn Woods Country Park and the lanes around Brigstock, 24 hours a day.
+Q: Can you pull a car out of a ditch near Brigstock?
+A: Yes. We carry out off-road and ditch recovery using a winch, bringing the vehicle back onto firm ground before loading it.
+Q: How quickly can you reach Brigstock?
+A: Brigstock is a short run from our Corby base along the A6116. We give you a realistic arrival time when you call.
+Q: How much does vehicle recovery cost in Brigstock?
+A: Local breakdown recovery starts from a £60 minimum charge. Winching and longer jobs are priced on the phone before we set off.
+Q: What if I have no phone signal for a live location?
+A: Call or text when you can and tell us the nearest landmark, farm name, turning or country park entrance, plus your direction of travel.
+Q: Do you recover campervans in Brigstock?
+A: Yes. We recover campervans, cars, vans up to 3.5 tonnes, 4x4s, motorbikes and classic cars.
 
 === breakdown-recovery
-title: Breakdown Recovery Brigstock | A6116 & Country Lane Recovery | Rapid Recovery Corby
-desc: Broken down in Brigstock, on the A6116 or a country lane nearby? 24/7 breakdown recovery and winching from a PAS 43 accredited Corby team. From £60.
+title: Breakdown Recovery Brigstock | A6116 Recovery Truck & Winch Recovery | Rapid Recovery
+desc: Breakdown recovery in Brigstock, on the A6116 and around Fermyn Woods. 24/7 recovery trucks, ditch and winch recovery, from £60. Call 07598 314366.
 h1: Breakdown recovery in Brigstock
-lead: Broken down on the A6116 near Brigstock or stuck on a muddy lane? We recover from main roads, verges and soft ground, day or night.
-img: non-runner-collection-seat-altea-space-saver
+lead: Broken down on the A6116, in the village or on a lane near Fermyn Woods? We send a recovery truck from Corby, day or night.
+answer: Rapid Recovery Corby provides 24/7 breakdown recovery in Brigstock, on the A6116 between Corby and Thrapston, and on rural lanes near Fermyn Woods, including winch recovery. Local recovery has a £60 minimum. Call or WhatsApp 07598 314366.
+img: breakdown-recovery-vw-passat
+img_alt: VW Passat estate being loaded onto a recovery truck after a breakdown on a country road
 ---
-## Main road recovery
+## Breakdown recovery in Brigstock, on main roads and country lanes
 
-The A6116 around Brigstock is fast and busy with traffic heading to and from the A14. If you break down, get off the carriageway if you can, put your hazards on and wait safely away from the road. Call us with your direction of travel and the nearest landmark.
+Breaking down near Brigstock can mean two very different situations. On the A6116 you are dealing with fast traffic heading between Corby, Thrapston and the A14. On the lanes around the village you might be on a single-track road, with a soft verge, no street lights and no other cars for a while. Our breakdown recovery covers both.
 
-## Off-road and soft ground
+We recover cars, vans up to 3.5 tonnes, 4x4s and SUVs, motorbikes, campervans and classic cars. After loading, we can take your vehicle home, to a garage of your choice, to our secure yard or to anywhere in the UK.
 
-Around Brigstock, cars end up on verges, in ditches and stuck on soft ground more often than in town. We carry winches and can recover cars from awkward spots that a simple tow can't reach. Tell us roughly how the car is stuck when you call so we bring the right truck.
+## A6116 breakdowns between Corby and Thrapston
 
-## Visitors to the area
+The A6116 is the main route through Brigstock and a link between Corby and the A14 at Thrapston. Long-distance drivers and commuters both use it, which is why a lot of our calls come from people who do not know the area. Typical faults include:
 
-If you've driven out to Fermyn Woods and the car won't start when you get back, don't worry. We'll come to the car park, get you going or recover you home.
+- Overheating. Turn the engine off and leave the radiator cap alone while it is hot.
+- Clutch, gearbox and driveshaft failures.
+- Punctures and tyre blowouts.
+- Electrical faults and warning lights followed by loss of power.
+- Collisions, including with wildlife on the rural stretches.
 
-Breakdown recovery starts from a £60 minimum charge. Winching and off-road jobs are priced on the phone. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+## What to do if you break down near Brigstock
+
+1. Move as far left as you safely can, onto a verge or into a lay-by.
+2. Hazards on, and sidelights on if it is dark.
+3. Get out on the side away from traffic. Stand behind a barrier if there is one.
+4. Put on a high-vis if you have one.
+5. If you are stuck in a live lane and cannot get out safely, call 999.
+6. Call us on 07598 314366, or send a WhatsApp live location.
+
+If you were heading to or from the A14, our [A14 breakdown advice](/guides/a14-breakdown-advice) is also worth reading. The [what to do if you break down guide](/guides/what-to-do-if-you-break-down) covers general roadside safety.
+
+## Off-road, verge and ditch recovery
+
+The lanes around Brigstock and Fermyn Woods are narrow, and verges can be soft, especially in winter. Cars slide off on wet or icy bends, or drop a wheel when pulling over for oncoming traffic. Our trucks are fitted with winches, so we can recover a vehicle from a ditch or field edge in a controlled way, then load it for transport.
+
+If your car has left the road, do not keep spinning the wheels to get out. Switch the engine off, get clear of the vehicle and call us. We will ask how the car is sitting so we can bring the right equipment.
+
+## Visitors to Fermyn Woods
+
+Fermyn Woods Country Park draws people from well beyond Corby. If your car will not start or develops a fault while you are there, we can help with a jump start or a full recovery. Tell us which part of the park or car park you are in, and we will come to you.
+
+## How much does breakdown recovery cost in Brigstock?
+
+Local breakdown recovery starts at a **£60 minimum charge**. Winch recovery, accident recovery, longer distances and out-of-area deliveries are priced on the phone before we set off. You will know the price before we move.
+
+You can pay by card on the day, bank transfer or cash, and businesses can be invoiced by arrangement. Our [breakdown recovery cost guide](/costs/breakdown-recovery) explains more.
+
+## Accident recovery and insurance work
+
+After a collision, we clear the vehicle safely and take it to a body shop, a dealer, your insurer's chosen repairer or our secure storage yard. We regularly work with insurers and accident management companies.
+
+## Why choose us for recovery near Brigstock
+
+- Open 24/7, including nights, weekends and bank holidays.
+- PAS 43 accredited, the national safety standard for recovery and roadside work, and ISO 9001 certified.
+- Insured for goods in transit, public liability and road risks.
+- Careful loading of every vehicle, from family cars to classics.
+- Fair prices agreed up front.
+
+## When you ring us, have ready
+
+Your exact location or live location, the make, model and registration, what happened, whether the car is on the road or off it, how many people need a lift, and where you want the vehicle taken.
+
+## More help around Brigstock
+
+For a flat battery, try a [jump start in Brigstock](/jump-start/brigstock) first. If the repair is not worth doing, see [scrap car collection in Brigstock](/scrap-car-collection/brigstock). We also provide [breakdown recovery in Stanion](/breakdown-recovery/stanion) and [breakdown recovery in Deenethorpe](/breakdown-recovery/deenethorpe).
 ---
+Q: Do you recover cars from the A6116 at Brigstock?
+A: Yes. We recover broken down and accident-damaged vehicles along the A6116 between Corby, Stanion, Brigstock and Thrapston, 24 hours a day.
 Q: Can you winch my car out of a ditch near Brigstock?
-A: Yes. We carry out off-road and ditch recoveries with a winch. Call and describe where the car is so we can plan it.
-Q: I'm not local. Can you take my car home?
-A: Yes. We can recover your car to your home or garage anywhere in the UK. We price it on the phone first.
+A: Yes. Our trucks have winches for off-road and ditch recovery. We bring the car back onto firm ground before loading it.
+Q: How much does breakdown recovery cost in Brigstock?
+A: Local breakdown recovery starts from a £60 minimum charge. Winching and longer jobs are priced on the phone before we set off.
+Q: I've broken down at Fermyn Woods Country Park. Can you help?
+A: Yes. Tell us which part of the park or car park you are in and we will come to you, with a jump start or a recovery truck.
+Q: Can you recover a campervan from Brigstock?
+A: Yes. We recover campervans as well as cars, vans up to 3.5 tonnes, 4x4s, motorbikes and classic cars.
+Q: What should I do if my engine stalled in floodwater?
+A: Do not try to restart it. Get to safety and call us, and we will recover the vehicle without running the engine.
 
 === car-transport
-title: Car Transport Brigstock | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport for Brigstock and nearby villages. Collections, deliveries, classic and project cars, and UK-wide vehicle moves. Fully insured.
+title: Car Transport Brigstock | Car Transporter & Vehicle Delivery UK-Wide | Rapid Recovery
+desc: Car transport in Brigstock. Auction, dealer and private sale collections, garage runs and non-runners on open transporters, fixed price. Call 07598 314366.
 h1: Car transport in Brigstock
-lead: Need a car moved to or from Brigstock? We collect and deliver anywhere in the UK, with a fixed price agreed before we book.
+lead: Need a vehicle collected or delivered in Brigstock? We move cars, vans and classics on open transporters, locally and across the UK, at a fixed price.
+answer: Rapid Recovery Corby offers car transport in Brigstock and UK-wide on open transporters, covering private sales, auctions, dealers, garage runs, classic cars and non-runners. Every job has a fixed price agreed before booking. Call 07598 314366.
 img: two-car-transport-jaguar-and-golf
+img_alt: Jaguar on a car transporter towing a VW Golf on a dolly behind, two vehicles moved in one trip
 ---
-## Village to anywhere
+## Car transport in Brigstock: getting cars to and from a rural village
 
-Rural villages like Brigstock are a long way from most dealers and specialist garages. We save you the trip by collecting your car and delivering it wherever it needs to go, whether that's a main dealer in Peterborough or a buyer at the other end of the country.
+Brigstock is a rural village, and getting a car collected from the other side of the country takes planning when you live somewhere like this. Our car transport service does that planning for you. We collect the vehicle, load it carefully onto an open transporter and deliver it to the door.
 
-## Barn finds and project cars
+We cover local moves around Brigstock, Corby and Thrapston, and longer journeys anywhere in the UK. We provide open transport only, using beavertail tilt-and-slide transporters and spec lift trucks.
 
-We're often asked to move cars that have been stored in barns, garages or outbuildings for a long time. Our beavertail trucks can winch on non-runners and load low cars gently.
+## Typical car transport jobs in Brigstock
 
-## Fully insured
+**Cars bought from private sellers or online.** We collect from the seller's address and deliver to your home in the village.
 
-Every vehicle is covered by goods in transit insurance while it's with us.
+**Auction cars.** We pick up from auction sites and bring the car back for you to inspect.
 
-See the [car transport cost guide](/costs/car-transport) for how we price each move.
+**Garage and MOT runs.** Many Brigstock residents use garages in Corby, Thrapston or further afield. We take the car in and bring it back, so you do not need two drivers.
+
+**Classic and prestige cars.** Older and special cars are often kept in garages and barns in the countryside. We load these with extra care, taking time over low front ends and fragile trim.
+
+**Project cars and non-runners.** Cars that do not start, have seized brakes or have been stored for years are winched onto the beavertail. Dollies and skates help get them out of tight garages or barns first.
+
+**House moves.** Moving to or from Brigstock with more vehicles than drivers? We will move the extra one.
+
+## Moving cars out of barns and long driveways
+
+Rural properties around Brigstock often have long drives, gravel yards, gates and outbuildings. Tell us about access when you book, including gate widths, slopes, soft ground and overhanging trees. We pick the right truck and, if a car is stored somewhere a truck cannot reach, we use our van with dollies and skates to bring it out.
+
+## Two cars at once
+
+Some of our trucks can carry one car and tow a second on a dolly. If you have two vehicles going the same way, for example a pair of cars for a dealer or a car and a project car going to the same garage, we can often move them together.
+
+## How to book
+
+1. Call or WhatsApp 07598 314366.
+2. Give us the collection and delivery addresses.
+3. Tell us the make, model and whether the car runs.
+4. Mention any access issues or low ground clearance.
+5. We give you a fixed price and agree a collection time.
+
+## How much does car transport cost in Brigstock?
+
+Car transport is priced per job, and the price is **fixed before you book**. It depends mainly on the distance, whether the car runs, the size and weight of the vehicle, access at each end and any waiting time. Pay by card, bank transfer or cash, with business invoicing by arrangement. Our [car transport cost guide](/costs/car-transport) explains more.
+
+## Insured, accredited and careful
+
+We hold goods in transit, public liability and road risks insurance. We are PAS 43 accredited and ISO 9001 certified. Every vehicle is strapped through the wheels and checked before departure. If a car needs to wait before delivery, it can stay in our secure storage yard.
+
+## Getting ready for collection
+
+- Keys, spare keys and locking wheel nut key with the car.
+- Valuables and loose items removed.
+- Any known damage, flat tyres or leaks mentioned in advance.
+- Someone available at both ends, or clear handover arrangements agreed.
+
+If the car will not start on collection day, our [car won't start guide](/guides/car-wont-start) can help you work out why before we arrive.
+
+## Local runs along the A6116
+
+Not every move is long distance. We regularly take cars from Brigstock along the A6116 to garages in Corby or towards Thrapston, and bring them back once the work is done. For short runs like these, we can usually fit you in at a time that suits, and the fixed price reflects the shorter distance.
+
+## For garages and dealers
+
+We work with garages, car dealers and fleet operators, handling dealer deliveries, customer collections and garage-to-garage moves. If you need regular transport to or from Brigstock, talk to us about how we can fit around your schedule.
+
+## Related services
+
+If the vehicle has broken down rather than simply needing a move, book [breakdown recovery in Brigstock](/breakdown-recovery/brigstock). If it is not worth keeping, see [scrap car collection in Brigstock](/scrap-car-collection/brigstock). We also offer [car transport in Stanion](/car-transport/stanion) and [car transport in Corby](/car-transport/corby).
 ---
-Q: Can you collect a car that's been stored in a barn?
-A: Yes, if we can safely reach it. Tell us about the access and whether the tyres hold air.
-Q: Do you deliver cars to Brigstock?
-A: Yes. We deliver cars bought anywhere in the UK to Brigstock addresses.
+Q: Can you collect a classic car from a barn near Brigstock?
+A: Yes. We move classic and non-running cars, using dollies and skates to bring them out of tight barns or garages before loading.
+Q: Do you offer enclosed car transport?
+A: No. We provide open car transport only, on beavertail transporters and spec lift trucks.
+Q: How much does car transport cost from Brigstock?
+A: Each job is priced individually based on distance, vehicle size, access and whether it runs. You get a fixed price before booking.
+Q: Can you deliver a car I have bought privately to Brigstock?
+A: Yes. We collect from private sellers, dealers and auctions anywhere in the UK and deliver to your address.
+Q: Can you move two cars at the same time?
+A: Often, yes. Some of our trucks carry one car and tow a second on a dolly.
 
 === jump-start
-title: Jump Start Brigstock | Mobile Battery Fitting from £40 | Rapid Recovery Corby
-desc: Flat battery in Brigstock? 24/7 mobile jump starts from £40, new batteries fitted on the spot and wheel changes, from a local Corby team.
-h1: Jump starts in Brigstock
-lead: Car won't start in Brigstock or at Fermyn Woods? We'll come out with a jump pack and replacement batteries.
-img: night-breakdown-recovery-honda-civic
+title: Jump Start Brigstock | Flat Battery & Mobile Battery Fitting 24/7 | Rapid Recovery
+desc: Car won't start in Brigstock or at Fermyn Woods? 24/7 jump starts from £40, new batteries fitted on the spot and wheel changes. Call 07598 314366.
+h1: Jump starts and batteries in Brigstock
+lead: Dead battery at home, on a lane or in the Fermyn Woods car park? We come to you with jump packs and replacement batteries, day or night.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Brigstock and at Fermyn Woods Country Park from a £40 minimum charge, with new batteries supplied and fitted on the spot and spare wheel changes. Call 07598 314366.
+img: breakdown-recovery-jaguar-x-type
+img_alt: Jaguar X-Type with a flat battery being attended by a recovery truck at the roadside
 ---
-## Village driveways and car parks
+## Jump start near me in Brigstock
 
-We jump start cars on driveways around Brigstock and in the car parks of the country park, where it's easy to come back to a dead battery after leaving lights on or charging a phone for hours.
+A car that will not start is a bigger problem in a rural village than in town. Brigstock is surrounded by countryside, and most people rely on their car to get anywhere. Our jump start service comes out to you, so you can get moving again without having to find a lift or arrange a tow.
 
-## Getting you going properly
+We bring professional jump packs and a range of replacement batteries. If your battery is just flat, we jump start the car. If it has failed, we supply and fit a new one on the spot.
 
-We'll check the battery as well as starting the car. If it's not going to last, we can fit a new one there and then, so you don't end up stuck again on a quiet lane.
+## Common flat battery call-outs around Brigstock
 
-## Flat tyres on country roads
+**Fermyn Woods Country Park.** Visitors leave the car for a long walk or a bike ride, sometimes with a door not quite shut or a light left on. Coming back to a car that will not start as the light fades is not much fun. Tell us where you are parked and we will come to you.
 
-Potholes and rough verges can do damage. We'll change your wheel onto the spare, or recover the car if there isn't one.
+**Cars that sit for long periods.** In rural homes, a second car or a weekend car can stand for weeks. Batteries slowly discharge, and one cold morning is all it takes.
 
-Jump starts have a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+**Short village trips.** A quick run to the shop and back does not give the alternator long enough to put the charge back.
+
+**Winter mornings.** Cold weather makes a tired battery struggle, and frosty starts on exposed driveways are a regular call.
+
+## Battery or something else?
+
+- **Clicking, no crank:** usually a flat battery.
+- **Slow, laboured crank:** a weak battery, often worse in the cold.
+- **Nothing at all:** a completely flat battery or a loose terminal.
+- **Normal crank, no start:** probably not the battery. It may be fuel or ignition, and we may need to recover the car.
+
+See our [car won't start guide](/guides/car-wont-start) for more detail.
+
+## What we do when we arrive
+
+We check the battery and its connections, then jump start the car with a jump pack, so no second car is needed. If the battery will not hold its charge, we tell you and quote for a replacement. If you agree, we fit it there and then. If the fault is elsewhere, we can recover the car to a garage instead.
+
+## New batteries fitted on the spot
+
+Modern cars often need specific batteries, especially those with stop-start systems. We check your make and model, then confirm the price of the right battery before fitting. That saves you a tow to a garage just for a battery change.
+
+## Flat tyre on a country lane?
+
+We also change wheels onto spares and space savers. On narrow lanes and the A6116, only attempt a wheel change if the car is well clear of passing traffic. If it is not safe, or there is no usable spare, we recover the car instead. Our [what to do if you break down guide](/guides/what-to-do-if-you-break-down) covers roadside safety.
+
+## How much is a jump start in Brigstock?
+
+Jump starts have a **£40 minimum charge**. New batteries are priced by the battery your car needs, confirmed before we fit anything. Payment by card, bank transfer or cash. Our [jump start cost guide](/costs/jump-start) has more detail.
+
+## Helping us reach you
+
+In the village, your address is enough. In the country park or on a lane, a WhatsApp live location or what3words reference is best. If you have no data signal, tell us the nearest landmark, car park or turning. Let us know the make, model and registration, and what happens when you try to start the car.
+
+## After your jump start
+
+Drive the car for a good distance before switching off, so the battery recovers some charge. If it goes flat again soon after, the battery or charging system needs checking. Give us a call and we can fit a replacement.
+
+## Keeping the battery in good shape
+
+If you only use a car for short trips around Brigstock, take it for a longer run every so often. Check lights and accessories are off before locking up, especially after a day out. For cars that stand for weeks, a battery maintainer from your garage can help.
+
+## Batteries and stop-start cars
+
+Many newer cars use stop-start systems that need a particular type of battery. Fitting the wrong type can cause warning lights or a battery that fails early. That is why we always check the make, model and registration before quoting, and only fit a battery that suits the car. If we cannot match the right battery on the day, we tell you straight away rather than fitting something unsuitable.
+
+## More services in Brigstock
+
+If the car still will not go, book [breakdown recovery in Brigstock](/breakdown-recovery/brigstock). We also provide [jump starts in Stanion](/jump-start/stanion) and [jump starts in Weldon](/jump-start/weldon). For an older car that keeps failing, consider [scrap car collection in Brigstock](/scrap-car-collection/brigstock).
 ---
-Q: Can you come to the Fermyn Woods car park?
-A: Yes. Tell us where you are parked and we will come to you.
-Q: Can you change a wheel if I have a space saver?
-A: Yes. We fit spares and space savers, or recover the car to a tyre fitter if needed.
+Q: Can you jump start my car at Fermyn Woods Country Park?
+A: Yes. We attend car parks and lanes around Fermyn Woods 24 hours a day. Tell us where you are parked and we will come to you.
+Q: How much is a jump start in Brigstock?
+A: A jump start has a £40 minimum charge. Replacement batteries are priced by the battery your car needs and confirmed before fitting.
+Q: Can you fit a new battery at my house in Brigstock?
+A: Yes. We supply and fit new batteries on the spot, at your home or at the roadside.
+Q: Do you need another car to jump start mine?
+A: No. We use professional jump packs, so a second car is not needed.
+Q: What if my car won't start after a jump start?
+A: We will explain what we think is wrong and can recover the car to a garage of your choice.
+Q: Do you change flat tyres near Brigstock?
+A: Yes. We change wheels onto your spare or space saver where it is safe, or recover the car if not.
 
 === scrap-car-collection
-title: Scrap My Car Brigstock | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car in Brigstock and nearby villages with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+title: Scrap Car Collection Brigstock | Sell My Scrap Car, Free Pick-Up | Rapid Recovery
+desc: Scrap car collection in Brigstock. We buy scrap cars, vans and motorbikes, collect free, pay by bank transfer and use a licensed ATF. Call 07598 314366.
 h1: Scrap car collection in Brigstock
-lead: Old car or van in Brigstock? We collect for free from village homes, farms and yards, and pay you by bank transfer.
-img: scrap-car-collection-citroen-picasso
+lead: Old car in a Brigstock drive, garage or barn? We buy it, collect it for free and make sure it is scrapped legally.
+answer: Rapid Recovery Corby offers free scrap car collection in Brigstock and pays by bank transfer for scrap cars, vans and motorbikes, including non-runners and cars with no MOT. A licensed ATF issues the Certificate of Destruction. Call 07598 314366.
+img: non-runner-collection-seat-altea-space-saver
+img_alt: Non-running SEAT Altea on a space saver wheel being collected by a recovery truck
 ---
-## Rural collections
+## Scrap car collection in Brigstock, from drive, garage or barn
 
-We collect scrap vehicles from homes, farms and yards around Brigstock. Non-runners, cars with no MOT and vehicles that have been sitting for years are all fine, as long as we can safely get the truck to them.
+Rural properties around Brigstock often have room for a car to sit unused for years. It might be in a garage, under a cover at the side of the house or at the back of a barn. Eventually, the decision is made to clear it. Our scrap car collection buys the vehicle, collects it free of charge and makes sure it is disposed of properly.
 
-## Licensed and legal
+We take cars, vans up to 3.5 tonnes and motorbikes, and they do not need to run.
 
-We hold a waste carrier licence and a scrap metal collector's licence. You're paid by bank transfer, and the vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction.
+## What counts as a scrap car?
 
-## Get a price
+We buy:
 
-Send us the registration and condition, plus a photo if you can, and we'll give you a price and book a collection.
+- Non-runners and cars with major engine or gearbox faults.
+- Cars that have failed an MOT and are not worth repairing.
+- Vehicles that have been off the road for years.
+- Accident-damaged cars and insurance write-offs.
+- Old vans and motorbikes.
+- Vehicles with no V5C logbook, as long as you show proof of ID.
 
-See our [scrap car cost guide](/costs/scrap-car-collection).
+## Long-stored vehicles
+
+A car that has stood for a long time often has flat tyres, seized brakes and wheels that will not turn. We bring dollies and skates to move it out of tight garages and barns, and our beavertail trucks winch it on without it needing to roll. Let us know about the access, including gates, gravel, mud or slopes, so we can plan the right approach.
+
+## How the price is worked out
+
+| What we look at | Effect on price |
+| --- | --- |
+| Weight of the vehicle | The biggest factor, as most value is in the metal |
+| Current scrap metal prices | These rise and fall over time |
+| Make and model | Some models have more valuable parts |
+| Completeness | Missing parts reduce the value |
+| Condition | Heavy damage or stripping affects it |
+
+Call 07598 314366 with the details for a price. Our [scrap car cost guide](/costs/scrap-car-collection) explains each factor.
+
+## Legal payment by bank transfer
+
+The Scrap Metal Dealers Act 2013 bans cash for scrap vehicles. We always pay by bank transfer. That protects you, because there is a clear record of who took the car and what was paid.
+
+## Licensed collection and proper disposal
+
+We hold a waste carrier licence and a scrap metal collector's licence. Every scrap vehicle we collect goes to a licensed Authorised Treatment Facility (ATF). The ATF issues the Certificate of Destruction and notifies the DVLA. Once the DVLA knows, any full months of vehicle tax left on the car are refunded to you automatically.
+
+## On the day of collection
+
+1. Have your photo ID and proof of address ready.
+2. Hand over the V5C logbook if you have it.
+3. Give us all the keys you have.
+4. Have your bank details ready for payment.
+5. Remove personal items from the car, including documents in the glovebox.
+
+If the car has a private registration you want to keep, sort the transfer out before we collect it.
+
+## Selling to a legitimate scrap buyer
+
+Before you let anyone take your car, check that they hold a scrap metal collector's licence, that they will pay by bank transfer, and that the vehicle will go to an ATF. If they cannot confirm these things, the car may not be scrapped properly and you could remain linked to it on DVLA records. We are happy to answer any of these questions when you call.
+
+## Repair or scrap?
+
+If a repair would cost more than the car is worth, scrapping is usually the sensible choice. We can give you a scrap price so you can compare it against any garage quote. Our [how to scrap a car guide](/guides/how-to-scrap-a-car) explains the process from start to finish.
+
+## Arranging a time
+
+Tell us when you, or someone with ID, can be with the vehicle. We agree a time, arrive when we say, and call ahead if anything changes. When we get there we check the car matches the description, check ID and paperwork, load it and arrange payment by bank transfer.
+
+## Inherited and abandoned-on-the-drive cars
+
+Sometimes a scrap car comes with a house move or a family estate. If you are dealing with a vehicle that belonged to someone else, call us and explain the situation. We will tell you what ID and paperwork we need so the collection is above board.
+
+## Related services in Brigstock
+
+If you would rather move the car than scrap it, see [car transport in Brigstock](/car-transport/brigstock). If it has broken down and you want it repaired, book [breakdown recovery in Brigstock](/breakdown-recovery/brigstock). We also collect scrap cars from [Stanion](/scrap-car-collection/stanion) and [Deenethorpe](/scrap-car-collection/deenethorpe).
 ---
-Q: Do you collect scrap vehicles from farms?
-A: Yes, as long as the truck can safely reach the vehicle. Tell us about the access when you call.
-Q: Will I get a Certificate of Destruction?
-A: Yes, from the licensed Authorised Treatment Facility where the vehicle is scrapped.
+Q: Is scrap car collection free in Brigstock?
+A: Yes. Collection is free and we pay you for the vehicle by bank transfer.
+Q: Can you collect a car that has been stored in a barn for years?
+A: Yes. We use dollies, skates and winches to move long-stored cars with flat tyres or seized wheels.
+Q: Can I scrap a car without a V5C logbook?
+A: Yes, as long as you can show proof of ID.
+Q: Why do you only pay by bank transfer for scrap cars?
+A: The Scrap Metal Dealers Act 2013 bans cash payments for scrap vehicles, so bank transfer is the only legal option.
+Q: Do I get my car tax back after scrapping?
+A: Yes. Once the ATF notifies the DVLA, any full months of vehicle tax remaining are refunded to you automatically.
+Q: Do you buy scrap vans and motorbikes in Brigstock?
+A: Yes. We buy and collect scrap vans up to 3.5 tonnes and motorbikes, as well as cars.

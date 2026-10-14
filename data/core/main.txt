@@ -1,153 +1,484 @@
 === home
-title: 24/7 Vehicle Recovery Corby | Breakdown Recovery & Car Transport | Rapid Recovery
-desc: Broken down in Corby or Kettering? Rapid Recovery is a PAS 43 accredited 24/7 recovery firm. Breakdown and accident recovery, car transport, jump starts and scrap car collection.
+title: Vehicle Recovery Corby | 24/7 Breakdown Recovery & Car Transport | Rapid Recovery
+desc: 24/7 vehicle recovery in Corby, Kettering and Northamptonshire. PAS 43 accredited breakdown recovery from £60, jump starts from £40. Call 07598 314366.
 h1: 24/7 vehicle recovery in Corby
-lead: Breakdowns, accidents, non-runners and car moves, day or night. A local, PAS 43 accredited team that answers the phone and usually reaches you in 30 to 45 minutes.
-img_alt: Rapid Recovery beavertail truck with its beacon on at an early morning call-out
+lead: Breakdowns, accidents, non-runners and car moves, day or night. A local, PAS 43 accredited team that answers the phone and usually reaches you in Corby within 30 to 45 minutes.
+answer: Rapid Recovery is a 24/7 vehicle recovery company based in Corby, covering Kettering and north Northamptonshire. Local breakdown recovery has a £60 minimum charge, jump starts £40. Call 07598 314366, any time.
+img: recovery-truck-night-callout-corby
+img_alt: Rapid Recovery truck with its amber beacon lit at a night-time breakdown call-out in Corby
 ---
-## Local recovery, run properly
+## Vehicle recovery in Corby, run by people who live here
 
-Rapid Recovery is a Corby vehicle recovery company run by George Mitchell. We've been recovering cars and vans around Corby, Kettering and the villages in between for over five years, and we run a fleet of five-plus recovery vehicles so there's nearly always a truck free.
+Rapid Recovery is a vehicle recovery company in Corby, run by George Mitchell. We have been recovering cars, vans, 4x4s and motorbikes around Corby, Kettering and the villages in between for over five years. If your car has broken down, been in an accident or simply won't start, we are the local number to ring.
 
-When you call, you speak to someone who knows the area. Tell us where you are and what's happened, and we'll give you a price and an arrival time before anyone sets off. Most jobs in Corby are reached in 30 to 45 minutes.
+We run a fleet of five-plus recovery vehicles from Corby, so there is nearly always a truck free. Most call-outs in Corby are reached in 30 to 45 minutes. For the towns and villages around us, we give you a realistic arrival time when you call, and we stick to it.
 
-## Accredited, insured and careful
+## 24/7 breakdown recovery in Corby and beyond
 
-We're **PAS 43** accredited, the national safety standard for vehicle recovery and roadside work, and certified to **ISO 9001** for quality management. Every vehicle we move is covered by goods in transit insurance, and we carry public liability and road risks cover too.
+Our phone is answered 24 hours a day, 7 days a week, including nights, weekends and bank holidays. A breakdown at 3am on the A6116 gets the same attention as one at lunchtime in the town centre.
 
-That matters when it's your car on the back of the truck. Wheels are strapped, not chained through alloys. Low cars go on a beavertail with a shallow loading angle. Non-runners are winched on, not dragged.
+We also recover vehicles anywhere in the UK. If you break down on holiday or need a car brought home from the other end of the country, call us for a price.
 
-## What we can recover
+## Our services
 
-- Cars, from city cars to executive saloons
+We offer four services. Each has its own page with the details, and its own cost guide.
+
+- **[Breakdown recovery](/breakdown-recovery):** roadside breakdowns, accident recovery, non-runners from driveways, off-road and ditch recovery with a winch, low car parks and garage-to-garage moves. Cars, vans up to 3.5 tonnes, 4x4s, motorbikes, campervans and classic cars.
+- **[Car transport](/car-transport):** open transport for auction collections, dealer deliveries, private sale pick-ups, MOT runs, house moves, classics and non-runners, anywhere in the UK.
+- **[Jump starts and batteries](/jump-start):** jump starts, new batteries supplied and fitted on the spot, and flat tyre changes onto your spare or space saver.
+- **[Scrap car collection](/scrap-car-collection):** we buy scrap and unwanted cars, vans and motorbikes, with free collection and payment by bank transfer.
+
+Not sure which you need? Read our [services overview](/services) or just ring and describe the problem.
+
+## Why drivers choose Rapid Recovery
+
+People who call us once tend to save the number. The reasons are simple:
+
+- **We answer the phone.** Day or night, you speak to a person, not a call queue.
+- **We arrive quickly.** Our trucks are based in Corby, so local call-outs are usually reached in 30 to 45 minutes.
+- **Prices are fair and agreed first.** You get a price on the phone before anyone sets off.
+- **We are careful with your car.** Wheels are strapped rather than chained through alloys, low cars go on a beavertail with a shallow loading angle, and non-runners are winched on, not dragged.
+- **We are local and friendly.** We know the estates, the villages and the back roads, which saves time when you are stuck.
+
+## How it works
+
+1. **Call or WhatsApp 07598 314366.** Tell us where you are, the make and model, and what has happened. A WhatsApp live location is the fastest way to show us exactly where you are.
+2. **Get a price and arrival time.** We confirm the cost on the phone before we set off. Nothing is sent until you are happy.
+3. **Stay safe while you wait.** If you are on a fast road, get everyone out on the side away from traffic and stand behind a barrier if there is one. Our guide on [what to do if you break down](/guides/what-to-do-if-you-break-down) explains more.
+4. **We recover you and your vehicle.** We load it safely and take it to your home, your garage, a dealer or our secure storage yard.
+5. **Pay the way that suits you.** Card on the day, bank transfer or cash.
+
+## Car recovery in Kettering and across Northamptonshire
+
+Corby is home, but our day-to-day patch covers much of north Northamptonshire. We regularly attend breakdowns on the A14 around Kettering, the A43 between Corby and Kettering, the A6003 and the A6116 bypass, as well as quiet village lanes where a car has slid into a verge.
+
+These are the areas we cover most often. Each page explains the roads and situations we deal with there:
+
+- [Corby](/areas/corby)
+- [Kettering](/areas/kettering)
+- [Weldon](/areas/weldon)
+- [Priors Hall Park](/areas/priors-hall-park)
+- [Great Oakley](/areas/great-oakley)
+- [Stanion](/areas/stanion)
+- [Brigstock](/areas/brigstock)
+- [Gretton](/areas/gretton)
+- [Cottingham](/areas/cottingham)
+- [Middleton](/areas/middleton)
+- [Rockingham](/areas/rockingham)
+- [Geddington](/areas/geddington)
+- [Rothwell](/areas/rothwell)
+- [Desborough](/areas/desborough)
+- [Deenethorpe](/areas/deenethorpe)
+
+Somewhere else? See [all the areas we cover](/areas). We still come out across the wider county and the rest of the UK.
+
+## How much does vehicle recovery cost in Corby?
+
+Local breakdown recovery has a **£60 minimum charge**. A jump start has a **£40 minimum charge**. Everything else, including longer recoveries, car transport and new batteries, is priced on the phone before we set off, based on the distance, the vehicle and how easy it is to load.
+
+Scrap cars work the other way round. We pay you, and the amount depends on the weight of the vehicle, scrap metal prices, the make and model, and its condition.
+
+Our cost guides go into more detail:
+
+- [Breakdown recovery cost guide](/costs/breakdown-recovery)
+- [Car transport cost guide](/costs/car-transport)
+- [Jump start and battery cost guide](/costs/jump-start)
+- [Scrap car prices guide](/costs/scrap-car-collection)
+
+## Accredited, insured and properly equipped
+
+We are accredited to **PAS 43**, the national safety standard for vehicle breakdown, recovery and roadside operations. We are also certified to **ISO 9001** for quality management. In plain terms, we work to recognised safety and quality standards at the roadside and in the office.
+
+Every vehicle we move is covered by goods in transit insurance. We also carry public liability and road risks cover.
+
+Our fleet includes spec lift tow trucks, beavertail tilt-and-slide transporters and a van with dollies and skates for low car parks, tight spaces and seized wheels. Some trucks can carry one car and tow a second on a dolly, which helps after a two-car accident or when moving a pair of vehicles. Find out more [about us](/about).
+
+## Who we work for
+
+Most of our call-outs come from private drivers, but we also work for:
+
+- Local garages that need cars brought in or moved between sites
+- Car dealers who need stock collected or delivered
+- Fleets and companies with vans and pool cars on the road
+- Insurance and accident management companies
+
+Business invoicing is available by arrangement. If you need a dependable recovery partner around Corby and Kettering, [get in touch](/contact).
+
+## Helpful guides
+
+If you are stuck right now, call us first. If you want to be prepared, our [guides](/guides) are written for real situations:
+
+- [What to do if you break down](/guides/what-to-do-if-you-break-down)
+- [Breaking down on the A14 and fast dual carriageways](/guides/a14-breakdown-advice)
+- [Car won't start? What to check](/guides/car-wont-start)
+- [How to scrap a car legally](/guides/how-to-scrap-a-car)
+---
+Q: How quickly can you get to me in Corby?
+A: Most call-outs in Corby are reached in 30 to 45 minutes. For other towns and villages we give you a realistic arrival time when you call, based on where our trucks are at the time.
+Q: Are you really open 24 hours?
+A: Yes. We take calls and attend breakdowns 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
+Q: How much does breakdown recovery cost in Corby?
+A: Local breakdown recovery has a £60 minimum charge. The final price depends on distance, the vehicle and how easy it is to load, and we confirm it on the phone before we set off.
+Q: Do I need breakdown cover to use you?
+A: No. You can call us direct and pay as you go. If you do have cover but are facing a long wait, you can still call us.
+Q: Do you cover Kettering and the rest of Northamptonshire?
+A: Yes. We regularly cover Kettering, Rothwell, Desborough and the villages around Corby, and we recover and transport vehicles anywhere in the UK.
+Q: How do I pay?
+A: You can pay by card on the day, by bank transfer or in cash. Business customers can talk to us about invoicing. Scrap cars are always paid for by bank transfer.
+
+=== services
+title: Recovery Services Corby | Breakdown, Transport, Jump Starts & Scrap | Rapid Recovery
+desc: Rapid Recovery's services in Corby and Kettering: 24/7 breakdown recovery from £60, UK car transport, jump starts from £40 and free scrap car collection. Call now.
+h1: Vehicle recovery services in Corby
+lead: Four services, one phone number. Whatever has happened to your vehicle, we can usually sort it in one visit.
+answer: Rapid Recovery in Corby offers 24/7 breakdown and accident recovery (from £60), UK-wide open car transport, jump starts and battery fitting (from £40) and free scrap car collection. Call 07598 314366.
+img: breakdown-recovery-ford-focus-beavertail
+img_alt: Ford Focus secured on a Rapid Recovery beavertail transporter after a breakdown
+crumb: Services
+---
+## Which service do you need?
+
+Most people call us because a car has stopped working. Some call because they have bought a car that needs collecting, or have an old one that needs to go. Pick the service that fits below, or ring 07598 314366 and tell us what is going on. We will point you the right way.
+
+| If your situation is... | You need |
+| --- | --- |
+| Broken down, crashed or won't drive | [Breakdown recovery](/breakdown-recovery) |
+| Car needs moving from A to B | [Car transport](/car-transport) |
+| Flat battery or flat tyre | [Jump starts and batteries](/jump-start) |
+| Old car you want rid of | [Scrap car collection](/scrap-car-collection) |
+
+## Breakdown and accident recovery
+
+Our main service, available 24/7. We recover cars, vans up to 3.5 tonnes, 4x4s, motorbikes, campervans and classic cars from the roadside, after accidents, from driveways, ditches and low car parks. Local recovery has a £60 minimum charge, and anything further is priced before we set off. See the [breakdown recovery cost guide](/costs/breakdown-recovery).
+
+## Car transport
+
+Open transport for auction collections, dealer deliveries, private sale pick-ups, garage and MOT runs, house moves, classics and non-runners. We cover the whole UK and agree a fixed price before booking. See the [car transport cost guide](/costs/car-transport).
+
+## Jump starts and batteries
+
+If your car won't start, we can jump start it, or supply and fit a new battery on the spot if the old one has had it. We also change flat tyres onto your spare or space saver. Jump starts have a £40 minimum charge, and batteries are priced by the battery your car needs. Read [car won't start?](/guides/car-wont-start) and the [jump start cost guide](/costs/jump-start).
+
+## Scrap car collection
+
+We buy scrap and unwanted cars, vans and motorbikes, including non-runners and cars with no MOT. Collection is free and payment is by bank transfer. Every vehicle goes to a licensed Authorised Treatment Facility. Our guide on [how to scrap a car](/guides/how-to-scrap-a-car) explains the paperwork, and the [scrap car prices guide](/costs/scrap-car-collection) explains what affects the value.
+
+## What we can move
+
+Our fleet of five-plus recovery vehicles covers most jobs up to 3.5 tonnes:
+
+- Cars, from city cars to executive saloons and estates
 - Vans up to 3.5 tonnes
 - 4x4s and SUVs
 - Motorbikes
 - Campervans
-- Classic cars
+- Classic and prestige cars
 
-We attend roadside breakdowns, accidents, the A14, A43 and A6003, non-runners from driveways, off-road and ditch recoveries, low car parks and garage-to-garage moves. If you need it taken further, we cover the whole of the UK.
+Spec lift trucks handle quick roadside recoveries. Beavertail tilt-and-slide transporters have a shallow loading angle for low cars. Our van with dollies and skates gets into low car parks and tight spaces, and moves cars with seized wheels.
 
-## Clear prices
+## Who uses our services
 
-Breakdown recovery starts from a **£60 minimum charge** and jump starts from a **£40 minimum charge**. Longer distances and more involved recoveries are priced on the phone before we set off, so there are no surprises. Our [cost guides](/costs) explain exactly what affects the price.
----
-Q: How quickly can you get to me in Corby?
-A: Most call-outs in Corby are reached in 30 to 45 minutes. Outlying villages and busy times can take a little longer, and we will always tell you a realistic arrival time when you call.
-Q: Are you really open 24 hours?
-A: Yes. We take calls and attend breakdowns 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
-Q: How much does breakdown recovery cost?
-A: Local breakdown recovery starts from a £60 minimum charge. The final price depends on distance, the vehicle and how easy it is to load, and we confirm it on the phone before we set off.
-Q: Do I need breakdown cover to use you?
-A: No. You can call us direct as a pay-as-you-go customer. If you do have cover and are facing a long wait, you can still call us.
-Q: How do I pay?
-A: You can pay by card on the day, by bank transfer or in cash. Business customers can talk to us about invoicing.
+Private drivers make up most of our work. We also help garages that need cars brought in, dealers moving stock, fleets with vans off the road, and insurance and accident management companies. Business invoicing is available by arrangement.
 
-=== services
-title: Our Services | Vehicle Recovery, Car Transport, Jump Starts & Scrap Cars | Rapid Recovery Corby
-desc: Everything Rapid Recovery Corby does: 24/7 breakdown and accident recovery, car transport across the UK, jump starts and battery fitting, and scrap car collection.
-h1: Recovery services
-lead: Four services, one phone number. Whatever has happened to your vehicle, we can usually sort it with one visit.
-crumb: Services
----
-## How we can help
+## The same standards on every job
 
-Most people call us because a car has stopped working. Some call because they've bought a car that needs collecting, or have an old one that needs to go. Pick the service that fits, or just ring and tell us what's going on. We'll point you the right way.
-
-Every job is carried out by our own team under our PAS 43 accreditation, with goods in transit insurance on every vehicle we move.
+Every job is carried out under our PAS 43 accreditation and ISO 9001 quality management, with goods in transit insurance on every vehicle we move. You get a price before we set off and a realistic arrival time. Services are available across all [the areas we cover](/areas), from [Corby](/areas/corby) to [Kettering](/areas/kettering) and beyond. To book or ask a question, [contact us](/contact).
 ---
 Q: Can you help with something not listed here?
-A: Probably. If it involves moving a vehicle that can't move itself, call us and describe the job. We'll tell you straight away if we can do it.
+A: Probably. If it involves moving a vehicle that can't move itself, call us and describe the job. We will tell you straight away if we can do it.
+Q: Can you do more than one service in one visit?
+A: Often, yes. For example, if a jump start doesn't work we can fit a new battery or recover the car to a garage on the same visit, once you have agreed the price.
+Q: Do you recover vans and motorbikes?
+A: Yes. We recover vans up to 3.5 tonnes, motorbikes, 4x4s, campervans and classic cars as well as ordinary cars.
+Q: Do you offer enclosed car transport?
+A: No. Our car transport is open transport on our recovery trucks and beavertail transporters.
+Q: Are your services available at night?
+A: Breakdown recovery and jump starts are available 24 hours a day, 7 days a week. Car transport and scrap collections are booked at a time that suits you.
 
 === areas
-title: Areas We Cover | Recovery in Corby, Kettering & Nearby | Rapid Recovery
-desc: Rapid Recovery covers Corby, Kettering, Rothwell, Desborough, Weldon, Priors Hall Park and the villages within 15 minutes of Corby, plus UK-wide recovery and transport.
-h1: Areas we cover
-lead: Based in Corby, covering everywhere within about 15 minutes for fast call-outs, and the rest of the UK for recovery and transport.
+title: Areas We Cover | Vehicle Recovery Corby, Kettering & Villages | Rapid Recovery
+desc: Rapid Recovery covers Corby, Kettering, Rothwell, Desborough, Weldon, Priors Hall Park and nearby villages 24/7, plus UK-wide recovery. Call 07598 314366.
+h1: Areas we cover for vehicle recovery
+lead: Based in Corby, covering Kettering, Rothwell, Desborough and the villages around Rockingham Forest for 24/7 call-outs, and the rest of the UK for recovery and transport.
+answer: Rapid Recovery is based in Corby and covers Kettering, Rothwell, Desborough, Weldon, Priors Hall Park and the surrounding villages 24/7. Most Corby call-outs are reached in 30 to 45 minutes. Call 07598 314366.
+img: breakdown-recovery-audi-a4-town-street
+img_alt: Audi A4 being prepared for recovery on a town street by a Rapid Recovery driver
 crumb: Areas
 ---
-## Close to home, fast to arrive
+## Recovery across north Northamptonshire
 
-Our trucks are based in Corby, which puts Kettering, Rothwell, Desborough and the villages around Rockingham Forest close by. That's why most of our call-outs are reached in 30 to 45 minutes.
+Our trucks are based in Corby, which puts Kettering, the A14 and the villages around Rockingham Forest a short run away. Most call-outs within Corby itself are reached in 30 to 45 minutes. For everywhere else, we give you a realistic arrival time when you call.
 
-Each area page below explains the roads and spots we're called to most, how quickly we can usually get there, and what we can do for you locally.
+Each area page explains the roads and situations we are called to most there, and links to all four of our services in that area.
 
-## Further afield
+## Corby and the new neighbourhoods
 
-Outside these areas? We still recover and transport vehicles anywhere in the UK, from a breakdown on the A14 to a car collection at the other end of the country. Call for a price.
+- **[Corby](/areas/corby):** our home base. From Kingswood and Lodge Park to Oakley Vale, Danesholme and the industrial estates, plus the A6116, A43, A6003 and A427.
+- **[Priors Hall Park](/areas/priors-hall-park):** the large new neighbourhood between Corby and Weldon, full of families and new homes.
+- **[Great Oakley](/areas/great-oakley):** the old village on Corby's southern edge beside Oakley Vale and the Oakley Hay industrial area.
+
+## Towns along the A14 and A6
+
+- **[Kettering](/areas/kettering):** on the A14 freight route, with the A43, A6 and A509 all meeting nearby.
+- **[Rothwell](/areas/rothwell):** the market town on the A6 west of Kettering, close to the A14.
+- **[Desborough](/areas/desborough):** the growing town on the A6 between Kettering and Market Harborough.
+
+## Villages east of Corby
+
+- **[Weldon](/areas/weldon):** right next to Corby on the A43 towards Stamford.
+- **[Deenethorpe](/areas/deenethorpe):** a small stone village off the A43 east of Weldon, among farms and tracks.
+- **[Stanion](/areas/stanion):** on the A6116 south-east of Corby.
+- **[Brigstock](/areas/brigstock):** a larger village on the A6116 towards Thrapston, near Fermyn Woods Country Park.
+- **[Geddington](/areas/geddington):** between Corby and Kettering just off the A43, home to the Eleanor Cross and the ford over the River Ise.
+
+## Villages north and west of Corby
+
+- **[Gretton](/areas/gretton):** the hilltop village above the Welland valley, with steep lanes that turn icy in winter.
+- **[Rockingham](/areas/rockingham):** home of Rockingham Castle, on the A6003 with the steep Rockingham Hill.
+- **[Cottingham](/areas/cottingham):** on the A427 west of Corby, with a steep, bendy road through the village.
+- **[Middleton](/areas/middleton):** joined to Cottingham along the A427 on the edge of the Welland valley.
+
+## What we do in every area
+
+Wherever you are on this list, all four of our services are available:
+
+- [Breakdown recovery](/breakdown-recovery), 24/7, from a £60 minimum charge locally
+- [Car transport](/car-transport), priced per job
+- [Jump starts and batteries](/jump-start), from a £40 minimum charge
+- [Scrap car collection](/scrap-car-collection), free collection and paid by bank transfer
+
+## How do I tell you where I am in a village?
+
+Village breakdowns are harder to pin down than a town street. Share your WhatsApp live location if you can, or give us a what3words address. Failing that, tell us the road you are on, the nearest village or junction, a landmark such as a church, pub or farm entrance, and which way you were heading. If you are on a dual carriageway, the small marker posts at the roadside carry a reference that helps us find you.
+
+## Why our base in Corby helps
+
+Because our trucks start the day in Corby rather than a distant depot, the towns and villages on this page are all a short run away. We know which lanes are too narrow for a big transporter, which hills catch people out in frost, and where the safe places to load are. That means fewer wasted minutes when you are waiting at the roadside.
+
+Rural call-outs often involve narrow lanes, verges, mud and steep hills. Our van with dollies and skates and our winch-equipped trucks are useful there, as are our beavertails for low cars. If you have broken down on a fast road near one of these places, read [what to do if you break down](/guides/what-to-do-if-you-break-down) or our advice on [breaking down on the A14](/guides/a14-breakdown-advice).
+
+## Outside these areas?
+
+We still recover and transport vehicles anywhere in the UK, from a breakdown further along the A14 to a car collection at the other end of the country. Call 07598 314366 with the location and we will give you a price and an honest arrival time. You can also [contact us](/contact) for non-urgent jobs.
 ---
 Q: Do you cover places not listed?
-A: Yes. These are the areas we can reach fastest, but we carry out recoveries and vehicle transport across the whole UK. Call us with the location for a price and arrival time.
+A: Yes. These are the areas we cover most often, but we carry out recoveries and vehicle transport across the whole UK. Call us with the location for a price and arrival time.
+Q: How fast can you reach villages outside Corby?
+A: We give you a realistic arrival time when you call, based on where our trucks are. Most call-outs in Corby itself are reached in 30 to 45 minutes.
+Q: Do you charge more for rural villages?
+A: Prices depend on distance and the job. Local breakdown recovery has a £60 minimum charge, and we confirm the full price on the phone before we set off.
+Q: Can you recover a car from a muddy verge or field?
+A: Yes. We carry out off-road and ditch recoveries using a winch, and we agree the price with you first.
+Q: Do you cover the A14 near Kettering?
+A: Yes. We regularly attend breakdowns on the A14, A43, A6003 and other major roads around Corby and Kettering, 24 hours a day.
 
 === costs
-title: Recovery Cost Guides | Breakdown, Jump Start, Transport & Scrap Prices | Rapid Recovery Corby
-desc: How much does vehicle recovery cost in Corby? Our cost guides explain prices for breakdown recovery, jump starts, car transport and scrap car collection, and what affects them.
-h1: Cost guides
+title: Recovery Cost Guides Corby | Breakdown, Jump Start & Scrap Prices | Rapid Recovery
+desc: How much does vehicle recovery cost in Corby? Breakdown recovery from £60, jump starts from £40, car transport and scrap prices explained. Call 07598 314366.
+h1: Vehicle recovery cost guides
 lead: Straight answers on what our services cost and why. Every price is confirmed on the phone before we set off.
+answer: At Rapid Recovery in Corby, local breakdown recovery has a £60 minimum charge and jump starts a £40 minimum charge. Car transport, batteries and longer recoveries are priced on the phone first. Call 07598 314366.
+img: two-car-recovery-touran-and-clio
+img_alt: Rapid Recovery truck carrying a VW Touran and towing a Renault Clio on a dolly
 crumb: Costs
 ---
-## How we price
+## How we price our work
 
-We keep pricing simple. Breakdown recovery has a **£60 minimum charge** and jump starts a **£40 minimum charge**. From there, the price depends on how far the vehicle needs to go, what it is and how easy it is to load.
+We keep pricing simple and honest. There are two fixed starting points, and everything else is quoted before we set off.
 
-You'll always get a firm price on the phone before a truck is sent. If anything changes when we arrive, such as a car that needs winching out of a ditch rather than a simple roadside load, we'll tell you before we do the extra work.
+| Service | Price |
+| --- | --- |
+| Local breakdown recovery | £60 minimum charge |
+| Jump start | £40 minimum charge |
+| New battery | Priced by the battery your car needs, confirmed before fitting |
+| Car transport | Fixed price agreed before booking |
+| Scrap car collection | Free collection, we pay you by bank transfer |
 
-Pick a guide below to see what affects each service.
+## What affects the price?
+
+The price of a recovery depends on a few clear things:
+
+- **Distance:** how far the vehicle needs to go, and how far we travel to reach it.
+- **The vehicle:** a small hatchback is quicker to load than a 3.5 tonne van or a low classic.
+- **Access:** a car on a driveway is simpler than one in a low car park, a ditch or a muddy field.
+- **Condition:** seized wheels, steering locks or accident damage can mean using dollies, skates or a winch.
+
+## You get the price first
+
+You will always get a firm price on the phone before a truck is sent. If anything changes when we arrive, such as a car that needs winching out of a ditch rather than a simple roadside load, we tell you before doing the extra work. No surprises.
+
+## Paying
+
+You can pay by card on the day, by bank transfer or in cash. Business invoicing is available by arrangement for garages, dealers, fleets and insurance work. Scrap cars are always paid for by bank transfer, because the Scrap Metal Dealers Act 2013 bans cash payments for scrap.
+
+## Read each cost guide
+
+- [Breakdown recovery cost guide](/costs/breakdown-recovery): local recovery, longer distances, accidents and non-runners.
+- [Car transport cost guide](/costs/car-transport): auction, dealer and private sale collections across the UK.
+- [Jump start and battery cost guide](/costs/jump-start): jump starts, battery fitting and wheel changes.
+- [Scrap car prices guide](/costs/scrap-car-collection): what affects how much we pay for your car.
+
+## Is calling us cheaper than breakdown cover?
+
+That depends on how often you break down. Breakdown cover is a yearly cost whether you use it or not. Calling us direct means you pay only when you need help, with a clear price before we set off. Many drivers without cover, or with cover but facing a long wait, simply call us when it happens. You don't need to be a member of anything to use us.
+
+## Prices for businesses
+
+Garages, dealers, fleets and accident management companies can talk to us about regular work and invoicing by arrangement. Car transport jobs are priced per job with a fixed price agreed before booking, which makes it easy to plan auction collections or dealer deliveries.
+
+## Ways to save money
+
+A clear description on the phone helps us send the right truck first time. Tell us the make and model, whether the wheels turn, whether the keys are with the car, and exactly where it is. Our guide on [what to do if you break down](/guides/what-to-do-if-you-break-down) lists what to have ready, and [car won't start?](/guides/car-wont-start) can help you work out whether a jump start might be all you need.
+
+Ready for a price? [Contact us](/contact) or call 07598 314366.
 ---
 Q: Will the price change when you arrive?
 A: Not unless the job turns out to be different from what was described. If extra work is needed, we explain why and agree it with you first.
+Q: How much is breakdown recovery in Corby?
+A: Local breakdown recovery has a £60 minimum charge. Longer distances and more involved recoveries are priced on the phone before we set off.
+Q: How much is a jump start?
+A: A jump start has a £40 minimum charge. If you need a new battery, it is priced by the battery your car needs and confirmed before fitting.
+Q: Do you charge extra at night or weekends?
+A: We price each job on the phone before we set off, whatever the time, so you know the cost before you agree to it.
+Q: How much will I get for my scrap car?
+A: It depends on the weight of the vehicle, current scrap metal prices, the make and model, how complete it is and its condition. Call us with the details for a price.
 
 === about
-title: About Rapid Recovery Corby | PAS 43 Accredited Local Recovery Company
-desc: Rapid Recovery is a Corby recovery company run by George Mitchell. Over five years in recovery, five-plus trucks, PAS 43 and ISO 9001 accredited, open 24/7.
-h1: About Rapid Recovery
+title: About Rapid Recovery Corby | PAS 43 Accredited Local Vehicle Recovery
+desc: Rapid Recovery is a Corby vehicle recovery company run by George Mitchell. Over five years in recovery, five-plus trucks, PAS 43 and ISO 9001, open 24/7.
+h1: About Rapid Recovery Corby
 lead: A local recovery firm built on answering the phone, turning up when we say we will and looking after your vehicle.
+answer: Rapid Recovery is a Corby vehicle recovery company owned by George Mitchell, with over five years in recovery, a fleet of five-plus trucks, PAS 43 and ISO 9001 accreditation, and 24/7 cover. Call 07598 314366.
+img: early-morning-recovery-renault-clio
+img_alt: Renault Clio being recovered at first light by a Rapid Recovery beavertail truck
 crumb: About
 ---
 ## Who we are
 
-Rapid Recovery is run by George Mitchell from Corby. George has been in vehicle recovery for over five years and built the business around the things people actually want when they've broken down: someone who picks up the phone, a straight price and a truck that turns up when promised.
+Rapid Recovery is run by George Mitchell from Corby, Northamptonshire. George has been in vehicle recovery for over five years and built the business around what people actually want when their car lets them down: someone who picks up the phone, a straight price, and a truck that turns up when promised.
 
-Today we run five-plus recovery vehicles, including spec lift trucks, beavertail tilt-and-slide transporters and a van with dollies and skates for awkward spots. That mix means we can recover almost anything up to 3.5 tonnes, from a motorbike to a campervan.
+We are a local business, not a national call centre passing jobs down a chain. When you ring 07598 314366, you speak to someone who knows Corby, Kettering and the villages in between. That local knowledge saves time when you are trying to describe where you are on a dark lane or a busy roundabout.
+
+## What we believe in
+
+Four things matter on every job:
+
+- **Answering the phone.** Day or night, weekends and bank holidays. A recovery firm that doesn't pick up is no use to anyone.
+- **Fair, upfront prices.** You get a price before we set off. Local breakdown recovery has a £60 minimum charge and jump starts a £40 minimum charge.
+- **Arriving when we say.** Most call-outs in Corby are reached in 30 to 45 minutes, and elsewhere we give you a realistic time.
+- **Treating your vehicle with care.** Whether it is a twenty-year-old hatchback or a prized classic, it is loaded and secured properly.
+
+## Our fleet
+
+We run five-plus recovery vehicles, chosen so that we have the right tool for most jobs:
+
+- **Spec lift tow trucks** for quick roadside recoveries and towing.
+- **Beavertail tilt-and-slide transporters** with a shallow loading angle, ideal for low cars, classics and non-runners.
+- **A van with dollies and skates** for low car parks, tight spaces and cars with seized wheels or locked steering.
+
+Some of our trucks can carry one car on the back and tow a second on a dolly. That is useful after a two-car accident, or when a dealer or customer needs two vehicles moved at once.
+
+## How we look after your vehicle
+
+Careful handling is one of the main reasons customers come back to us. We strap wheels rather than chaining through alloys. We use the beavertail for low cars so bumpers and sills are not scraped. Non-runners are winched on smoothly rather than dragged. If a car needs to be kept somewhere safe overnight, it goes into our secure storage yard.
 
 ## Standards we work to
 
-- **PAS 43**: the national safety standard for vehicle recovery and roadside operations
-- **ISO 9001**: certified quality management
-- **Insurance**: goods in transit, public liability and road risks cover
+- **PAS 43:** the national safety standard for vehicle breakdown, recovery and roadside operations. It covers how we work safely at the roadside, for our team, for you and for other road users.
+- **ISO 9001:** certified quality management, which keeps our bookings, records and service consistent.
+- **Insurance:** goods in transit cover on every vehicle we move, plus public liability and road risks cover.
+
+We also hold a waste carrier licence and a scrap metal collector's licence for our [scrap car collection](/scrap-car-collection) service.
+
+## What we do
+
+We offer [24/7 breakdown recovery](/breakdown-recovery), [car transport](/car-transport) across the UK, [jump starts and battery fitting](/jump-start) and [scrap car collection](/scrap-car-collection). The full list is on our [services page](/services), and prices are explained in our [cost guides](/costs).
 
 ## Who we work for
 
-Private drivers make up most of our call-outs, but we also work with local garages, car dealers, fleet and company vehicle operators and insurance and accident management companies. If you need a reliable recovery partner around Corby and Kettering, get in touch.
+Private drivers make up most of our call-outs, but we also work with local garages, car dealers, fleet and company vehicle operators, and insurance and accident management companies. Business invoicing is available by arrangement.
 
-## Secure storage
+## Available when you need us
 
-We have a secure yard for vehicles that can't go straight to a garage or home, which is useful after an accident or a late-night breakdown.
+Cars don't break down to a timetable. That is why we are open 24 hours a day, 7 days a week, including nights, weekends and bank holidays. A flat battery on a frosty Sunday morning, a crash on the way home late at night or a van that won't start before an early shift all get the same response: we answer, we give you a price and we come out. Payment is by card on the day, bank transfer or cash.
+
+## Where we work
+
+Our trucks are based in Corby, and we cover [Kettering](/areas/kettering), [Weldon](/areas/weldon), [Priors Hall Park](/areas/priors-hall-park), [Rothwell](/areas/rothwell), [Desborough](/areas/desborough) and the villages around them every day. See [all the areas we cover](/areas). For longer journeys, we recover and transport vehicles anywhere in the UK.
+
+## Helping drivers before they call
+
+We have written a set of plain-English [guides](/guides) on what to do if you break down, how to stay safe on the A14, what to check when your car won't start and how to scrap a car properly. If you need us, [contact us](/contact) any time.
 ---
 Q: Who owns Rapid Recovery?
 A: Rapid Recovery is owned and run by George Mitchell, based in Corby, Northamptonshire.
+Q: How long have you been doing vehicle recovery?
+A: Rapid Recovery has been in vehicle recovery for over five years.
+Q: What does PAS 43 mean?
+A: PAS 43 is the national safety standard for vehicle breakdown, recovery and roadside operations. Being accredited means we work to that recognised safety standard.
 Q: Do you work with garages and insurance companies?
 A: Yes. As well as private drivers, we carry out work for garages, car dealers, fleets and insurance and accident management companies.
+Q: Is my car insured while you move it?
+A: Yes. Every vehicle we move is covered by goods in transit insurance, and we also carry public liability and road risks cover.
+Q: Do you have somewhere to store my car?
+A: Yes. We have a secure storage yard for vehicles that can't go straight to a garage or home.
 
 === contact
 title: Contact Rapid Recovery Corby | Call 07598 314366 | 24/7 Recovery
-desc: Contact Rapid Recovery Corby 24/7 on 07598 314366, by WhatsApp or by email. Send your location and we'll give you a price and arrival time.
-h1: Contact us
+desc: Contact Rapid Recovery Corby 24/7 on 07598 314366, by WhatsApp or email. Send your location and get a price and arrival time before we set off.
+h1: Contact Rapid Recovery
 lead: For a breakdown, calling is quickest: 07598 314366, any time. For anything that can wait, send us the details below.
+answer: Contact Rapid Recovery in Corby 24/7 on 07598 314366 by phone or WhatsApp, or email rapidrecoverycorby@gmail.com. We give you a price and arrival time before we set off.
+img: night-breakdown-recovery-honda-civic
+img_alt: Honda Civic being loaded onto a Rapid Recovery truck at night under work lights
 crumb: Contact
 ---
 ## Fastest ways to reach us
 
-- **Phone:** [07598 314366](tel:+447598314366), 24 hours a day
-- **WhatsApp:** send a message and your live location to the same number
+- **Phone:** [07598 314366](tel:+447598314366), 24 hours a day, 7 days a week
+- **WhatsApp:** message the same number and share your live location
 - **Text:** fine for non-urgent jobs
 - **Email:** rapidrecoverycorby@gmail.com
 
-When you get in touch, tell us where the vehicle is, the make and model, and what's happened. If you're on a busy road, get yourself and any passengers somewhere safe first.
+If you have broken down, please call rather than email. We answer the phone day and night, including weekends and bank holidays.
+
+## What to tell us
+
+The more we know, the quicker we can send the right truck and give you an accurate price:
+
+1. **Where you are.** A WhatsApp live location or what3words is ideal. Otherwise, the road, nearest junction or landmark, and your direction of travel.
+2. **The vehicle.** Make, model, and whether it is a car, van, 4x4, motorbike or campervan.
+3. **What has happened.** Breakdown, accident, flat battery, flat tyre, or a car that needs moving.
+4. **Whether the wheels turn** and whether you have the keys.
+5. **Where it needs to go.** Home, a garage, a dealer or our secure yard.
+
+## Stay safe first
+
+If you are on a fast road, get yourself and any passengers out on the side away from traffic and stand behind a barrier if there is one. If you are stuck in a live lane and cannot get out safely, call 999 first. Our guide on [what to do if you break down](/guides/what-to-do-if-you-break-down) has more.
 
 ## Send an enquiry
 
-For car transport, scrap cars or anything that isn't an emergency, fill in the form and we'll call you back. Tap **Use my location** to send us exactly where the vehicle is.
+For [car transport](/car-transport), [scrap car collection](/scrap-car-collection) or anything that isn't an emergency, fill in the form and we will call you back. Tap **Use my location** to send us exactly where the vehicle is. Prices are explained in our [cost guides](/costs).
+
+## What happens after you call
+
+We confirm the price and give you a realistic arrival time. In Corby, that is usually 30 to 45 minutes. We may call or message you back if we need to check anything on the way, so keep your phone switched on and charged if you can. When we arrive, we load your vehicle safely and take it wherever you have agreed.
+
+## Paying
+
+You can pay by card on the day, by bank transfer or in cash. Business customers can ask about invoicing. Scrap cars are always paid for by bank transfer.
+
+## Where we cover
+
+We are based in Corby and cover [Kettering](/areas/kettering), the surrounding towns and villages and the rest of the UK. See [all the areas we cover](/areas). Not sure what you need? Read about our [services](/services).
 ---
 Q: What should I do while I wait?
-A: Get everyone out of the vehicle and away from traffic if it is safe to do so, stand behind a barrier on fast roads, and keep your hazard lights on. If you are in a live lane on a motorway or major road and cannot get out safely, call 999 first.
+A: Get everyone out of the vehicle and away from traffic if it is safe to do so, stand behind a barrier on fast roads and keep your hazard lights on. If you are in a live lane and cannot get out safely, call 999 first.
+Q: Can I send my location on WhatsApp?
+A: Yes. Message 07598 314366 on WhatsApp and share your live location. It is the quickest way to show us exactly where you are.
+Q: Will you give me a price before you come out?
+A: Yes. We confirm the price on the phone before we set off, along with a realistic arrival time.
+Q: Can I book a car transport or scrap collection in advance?
+A: Yes. Call, message or use the enquiry form and we will arrange a time that suits you.
+Q: Do you answer the phone at night?
+A: Yes. Our phone is answered 24 hours a day, 7 days a week, including nights, weekends and bank holidays.

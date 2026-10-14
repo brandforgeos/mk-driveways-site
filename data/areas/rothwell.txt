@@ -1,126 +1,480 @@
 === hub
-title: Vehicle Recovery Rothwell | 24/7 Breakdown Recovery on the A6 & A14 | Rapid Recovery
-desc: 24/7 vehicle recovery in Rothwell, near Kettering. Breakdown recovery on the A6 and A14, car transport, jump starts and free scrap car collection.
+title: Vehicle Recovery Rothwell | 24/7 Breakdown Recovery & Towing | Rapid Recovery
+desc: 24/7 vehicle recovery in Rothwell on the A6, close to the A14. Breakdown recovery, car transport, jump starts and free scrap car collection. Call 07598 314366.
 h1: Vehicle recovery in Rothwell
-lead: Rothwell sits on the A6 just west of Kettering, close to the A14. We cover the town and its main roads 24 hours a day.
+lead: Rothwell is a market town on the A6, west of Kettering and close to the A14. We cover the town and the roads around it 24 hours a day.
+answer: Rapid Recovery Corby provides 24/7 vehicle recovery in Rothwell, including the A6 and nearby A14. Local breakdown recovery has a £60 minimum charge. Call or WhatsApp 07598 314366 for a realistic arrival time.
+img: 4x4-recovery-nissan-x-trail
+img_alt: Nissan X-Trail 4x4 being recovered onto a transporter near Rothwell
 ---
-## Market town, major roads
+## A market town between two busy roads
 
-Rothwell is a historic market town, with its Market House and Holy Trinity church at its heart, but it's surrounded by some of the busiest roads in Northamptonshire. The A6 runs north to Desborough and Market Harborough, and the A14 passes just south of town.
+Rothwell is an old market town, with the Market House and Holy Trinity church at its centre. It is also a place people drive through and out of every day. The A6 runs through the area between Kettering and Desborough, and the A14 is close by, so a lot of Rothwell drivers spend time on fast, busy roads.
 
-That mix means our Rothwell work ranges from cars broken down on the A14 and the A6 to flat batteries and non-starters in the town's streets and estates.
+That shapes our vehicle recovery in Rothwell. We get calls from the A6 and A14, but just as many from homes, streets and car parks in the town itself.
 
-## Our services in Rothwell
+## Who we are
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+Rapid Recovery Corby is a local recovery business run by George Mitchell, with over five years in vehicle recovery. Our trucks are based in Corby, and Rothwell is a short run from there via Kettering. When you call, we give you a realistic arrival time.
+
+We are open 24 hours a day, 7 days a week, including nights, weekends and bank holidays, and we always answer the phone.
+
+## What we can help with in Rothwell
+
+| Service | Typical Rothwell job | Price |
+| --- | --- | --- |
+| [Breakdown recovery in Rothwell](/breakdown-recovery/rothwell) | Car broken down on the A6, A14 or at home | £60 minimum charge locally |
+| [Car transport in Rothwell](/car-transport/rothwell) | Private sale, auction or garage move | Fixed price agreed before booking |
+| [Jump starts in Rothwell](/jump-start/rothwell) | Flat battery on a cold morning | £40 minimum charge |
+| [Scrap car collection in Rothwell](/scrap-car-collection/rothwell) | Old car not worth repairing | Free collection, paid by bank transfer |
+
+Any other job is priced on the phone before we set off. See our [costs page](/costs) for how pricing works.
+
+## Typical calls from Rothwell
+
+- **A6 breakdowns:** commuters heading for Kettering or Desborough whose car loses power or overheats.
+- **A14 recoveries:** cars and vans that fail on the freight route close to town, where safety comes first.
+- **Town centre:** cars that won't restart after a trip to the shops near the Market House.
+- **Driveways and estates:** flat batteries, non-runners and cars that need taking to a garage.
+- **Planned moves:** cars bought online or at auction that need bringing home to Rothwell.
+
+## Safe recovery on fast roads
+
+We are PAS 43 accredited, which is the national safety standard for vehicle breakdown, recovery and roadside operations. On the A6 and A14 that means our trucks are positioned and lit correctly and our drivers follow set procedures to keep you safe while we work.
+
+We also hold ISO 9001 for quality management, and carry goods in transit, public liability and road risks insurance.
+
+## Our vehicles
+
+Our fleet of five-plus recovery vehicles includes spec lift tow trucks, beavertail tilt-and-slide transporters and a van with dollies and skates for low car parks and cars with seized wheels. Some trucks can carry one car and tow a second on a dolly.
+
+We recover cars, vans up to 3.5 tonnes, 4x4s and SUVs, motorbikes, campervans and classic cars, and we can recover anywhere in the UK.
+
+## Help for Rothwell businesses
+
+We work with garages, car dealers, fleets and companies, and handle insurance and accident management recoveries. Business invoicing is available by arrangement. Vehicles waiting for a garage or an insurer's decision can stay in our secure storage yard.
+
+## Broken down in or near Rothwell?
+
+If you are on a fast road, pull as far left as you safely can or into a lay-by, hazards on, and get everyone out on the side away from traffic. If you are stuck in a live lane and can't get out safely, call 999.
+
+Then call or WhatsApp **07598 314366**. Send your live location or a what3words address. Our guides on [what to do if you break down](/guides/what-to-do-if-you-break-down) and [A14 breakdowns](/guides/a14-breakdown-advice) have more advice.
+
+We also cover the towns and villages nearby, including [Desborough](/areas/desborough), [Kettering](/areas/kettering) and [Geddington](/areas/geddington).
 ---
-Q: Do you cover the A14 near Rothwell?
-A: Yes. We recover vehicles from the A14 and its junctions near Rothwell and Kettering.
+Q: Do you cover Rothwell 24 hours a day?
+A: Yes. Rapid Recovery Corby covers Rothwell 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
 Q: How long does it take you to get to Rothwell?
-A: Rothwell is a short drive from our Corby base via Kettering. We give you a realistic arrival time when you call.
+A: Rothwell is a short run from our Corby base via Kettering. We give you a realistic arrival time when you call.
+Q: How much does car recovery cost in Rothwell?
+A: Local breakdown recovery has a £60 minimum charge. Other jobs are priced on the phone before we set off.
+Q: Do you recover cars from the A6 and A14 near Rothwell?
+A: Yes. We recover broken-down and accident-damaged vehicles from both roads, working to the PAS 43 safety standard.
+Q: Can you store my car after a breakdown in Rothwell?
+A: Yes. We can keep your vehicle in our secure storage yard until your garage or insurer is ready.
 
 === breakdown-recovery
-title: Breakdown Recovery Rothwell | A6 & A14 Recovery 24/7 | Rapid Recovery Corby
-desc: Broken down in Rothwell or on the A6 or A14 nearby? 24/7 breakdown and accident recovery from a PAS 43 accredited local team. From £60.
+title: Breakdown Recovery Rothwell | A6 & A14 Car Recovery 24/7 | Rapid Recovery
+desc: Broken down in Rothwell, on the A6 or the A14 nearby? 24/7 breakdown and accident recovery from a PAS 43 accredited team. £60 minimum charge. Call now.
 h1: Breakdown recovery in Rothwell
-lead: Broken down on the A14, the A6 or in Rothwell itself? Call us for a fast, safe recovery and a price before we set off.
-img: 4x4-recovery-nissan-x-trail
+lead: Stuck on the A6, the A14 or a street in Rothwell? We recover cars, vans, 4x4s and motorbikes at any hour, with the price agreed before we set off.
+answer: Rapid Recovery Corby provides 24/7 breakdown recovery in Rothwell, including the A6 and A14. Local recovery has a £60 minimum charge, with other jobs priced before we set off. Call 07598 314366.
+img: breakdown-recovery-jaguar-x-type
+img_alt: Jaguar X-Type loaded onto a recovery truck after a breakdown near Rothwell
 ---
-## A14 and A6 recovery
+## Breakdown recovery in Rothwell you can rely on
 
-The A14 near Rothwell is heavy with freight, and the A6 carries a lot of traffic between Kettering and Market Harborough. A breakdown on either needs dealing with quickly and safely. Get onto the hard shoulder or verge if you can, put your hazards on and wait behind the barrier if there is one. If you can't get out of a live lane, call 999 first.
+If you need breakdown recovery in Rothwell, call the team that answers every time. We are a local recovery company based in Corby, and Rothwell is a short run for us via Kettering. We give you a realistic arrival time on the phone, then get on the road.
 
-We're **PAS 43** accredited for recovery at the roadside, so our team works safely next to fast traffic.
+We recover cars, vans up to 3.5 tonnes, 4x4s and SUVs, motorbikes, campervans and classic cars, 24 hours a day, 7 days a week.
 
-## 4x4s, vans and SUVs
+## Broken down on the A6 near Rothwell
 
-Rothwell has plenty of larger vehicles, and we recover them all, from 4x4s and SUVs to vans up to 3.5 tonnes.
+The A6 carries a steady stream of commuters between Kettering, Rothwell and Desborough, plus lorries and vans. Overheating, clutch failures and electrical faults are typical reasons cars stop here, often at roundabouts or junctions where traffic queues.
 
-## Around town
+If your car fails on the A6:
 
-For breakdowns at home or in the town centre, we'll recover your vehicle to your garage, a dealer or our secure yard.
+- Pull into a lay-by or as far left as you safely can.
+- Switch on your hazards, and sidelights after dark.
+- Get everyone out on the side away from traffic.
+- Wait somewhere safe, away from the carriageway.
 
-Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+## Recovery from the A14 close to Rothwell
+
+The A14 near Rothwell is a heavy freight route. A breakdown among fast lorries is one of the most dangerous situations a driver can face. Get onto the verge or hard edge if you can, stand behind the barrier, and wear a high-vis if you have one. If you are stuck in a live lane and cannot get out safely, call 999 before calling us.
+
+When you do call, give us your direction of travel and the nearest junction sign or marker post, or share a WhatsApp live location. We work to PAS 43, the national safety standard for recovery at the roadside. Our [A14 breakdown advice](/guides/a14-breakdown-advice) explains what to do in more detail.
+
+## Recovery in Rothwell town
+
+Not every breakdown is on a main road. We also recover:
+
+- cars that won't start in the town centre near the Market House and Holy Trinity church
+- non-runners from driveways and residential streets
+- cars that have failed and need taking to a garage, dealer or our secure yard
+- vehicles from car parks with low height limits, using our van with dollies and skates
+
+## Is 4x4 and SUV recovery any different?
+
+Larger vehicles need the right truck. 4x4s and SUVs are heavier and often have four-wheel drive or automatic gearboxes that shouldn't be towed on two wheels. We carry them fully on a beavertail tilt-and-slide transporter so the drivetrain isn't damaged. The same goes for vans up to 3.5 tonnes and campervans.
+
+## Accident recovery around Rothwell
+
+After a collision, call 999 if anyone is injured or the road is blocked. Once the scene is safe, we recover the damaged vehicles. We regularly work for insurers and accident management companies. Some of our trucks can carry one car and tow another on a dolly, so a two-car accident can often be cleared in one visit.
+
+Damaged vehicles can stay in our secure storage yard while the claim is sorted.
+
+## Off-road and awkward recoveries
+
+Cars occasionally slide onto soft verges or into ditches on wet or icy nights. We use a winch to bring them back onto firm ground before loading. Cars with seized wheels or brakes can be moved on skates.
+
+## What does breakdown recovery cost in Rothwell?
+
+Local breakdown recovery has a **£60 minimum charge**. Anything else, including A14 recoveries, longer tows, winch work or recovery to another part of the UK, is priced on the phone before we set off.
+
+| What you need | How we price it |
+| --- | --- |
+| Local recovery in Rothwell | £60 minimum charge |
+| Recovery from the A14 or A6 | Agreed on the phone |
+| Winching or difficult access | Priced once we know the details |
+| Long-distance recovery | Fixed price before we leave |
+
+Pay by card on the day, bank transfer or cash. Businesses can arrange invoicing. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+
+## Have this ready when you call
+
+1. Your location: live location, what3words, or the nearest junction or landmark.
+2. Make, model, colour and registration.
+3. What happened.
+4. Where you want the vehicle to go.
+
+Call or WhatsApp **07598 314366**. Our general guide on [what to do if you break down](/guides/what-to-do-if-you-break-down) is useful to read before you ever need it.
+
+## Related services
+
+If it's just a flat battery, try a [jump start in Rothwell](/jump-start/rothwell). If repair isn't worth it, see [scrap car collection in Rothwell](/scrap-car-collection/rothwell). We also offer breakdown recovery in [Desborough](/breakdown-recovery/desborough) and [Kettering](/breakdown-recovery/kettering).
 ---
-Q: Can you recover a 4x4 from Rothwell?
-A: Yes. We recover 4x4s, SUVs and vans up to 3.5 tonnes, as well as cars and motorbikes.
-Q: What information do you need if I'm on the A14?
-A: Your direction of travel, the nearest junction or marker post, and your vehicle. Sharing your WhatsApp location helps.
+Q: How much is breakdown recovery in Rothwell?
+A: Local breakdown recovery in Rothwell has a £60 minimum charge. Longer recoveries and A14 jobs are priced on the phone before we set off.
+Q: Can you recover my car from the A14 near Rothwell?
+A: Yes. We recover vehicles from the A14 near Rothwell 24 hours a day, working to the PAS 43 roadside safety standard.
+Q: Can you recover a 4x4 in Rothwell?
+A: Yes. We carry 4x4s and SUVs fully on a beavertail transporter, so four-wheel drive and automatic gearboxes aren't damaged.
+Q: What should I do if I break down on the A6?
+A: Pull as far left as you can or into a lay-by, hazards on, and get everyone out away from traffic. Then call us.
+Q: How long will I wait in Rothwell?
+A: Rothwell is a short run from our Corby base. We give you a realistic arrival time when you call.
+Q: Do you recover motorbikes in Rothwell?
+A: Yes. We recover motorbikes, cars, vans up to 3.5 tonnes, campervans and classic cars.
 
 === car-transport
-title: Car Transport Rothwell | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport for Rothwell, near Kettering. Collections and deliveries anywhere in the UK via the A14, garage runs and non-runners. Fully insured.
+title: Car Transport Rothwell | Vehicle Collection & Delivery UK-Wide | Rapid Recovery
+desc: Car transport to and from Rothwell. Auction, dealer and private sale collections, garage runs and non-runners moved UK-wide on open transporters. Fixed price.
 h1: Car transport in Rothwell
-lead: Need a car moved to or from Rothwell? With the A14 on the doorstep, we can reach anywhere in the UK, with a fixed price agreed first.
-img: two-car-transport-jaguar-and-golf
+lead: Buying, selling or moving a car to or from Rothwell? We collect and deliver anywhere in the UK on open transporters, at a fixed price agreed before you book.
+answer: Rapid Recovery Corby provides open car transport to and from Rothwell, including auction, dealer and private sale collections anywhere in the UK. Every job has a fixed price agreed before booking. Call 07598 314366.
+img: two-car-recovery-touran-and-clio
+img_alt: VW Touran and Renault Clio moved together on a two-car transport run from Rothwell
 ---
-## Well connected
+## Car transport in Rothwell, at a fixed price
 
-Rothwell's position by the A14 makes it easy for us to run cars east, west and south. Whether you're collecting a car from an auction, sending one to a buyer or moving a car to a specialist, we'll handle it.
+Car transport in Rothwell works best when it is planned. You tell us where the vehicle is, where it needs to go and what condition it is in, and we give you a fixed price before you book. With the A14 close to town, Rothwell is well placed for runs in every direction.
 
-## Trade work
+We provide open transport on beavertail tilt-and-slide transporters, suitable for cars, vans, 4x4s, motorbikes and classics.
 
-We move vehicles for garages, dealers and traders, including non-runners and multi-car jobs where possible.
+## What Rothwell customers use us for
 
-## Insured, careful and on time
+### Bringing a new car home
 
-Every car is loaded on a beavertail, strapped down and covered by goods in transit insurance while it's with us.
+Many Rothwell buyers find their next car online, sometimes a long way from Northamptonshire. Rather than travelling to collect it, you can book us to pick it up from the seller and deliver it to your door.
 
-See our [car transport cost guide](/costs/car-transport).
+### Auction purchases
+
+We collect from auction sites and deliver to Rothwell homes and businesses. Give us the auction, lot details and release arrangements.
+
+### Garage and MOT runs
+
+If your car can't be driven, or doesn't have a current MOT and needs taking to a pre-booked test, we can get it there. We also move cars to specialist garages, bodyshops and restorers.
+
+### Dealer and trade moves
+
+Garages and dealers in and around Rothwell use us to deliver sold cars and move stock. Some of our trucks can carry one car and tow another on a dolly, which helps when two vehicles are going the same way.
+
+### Moving home
+
+Moving to or from Rothwell with a car you can't drive, or more cars than drivers? We can move it on a date that suits your move.
+
+## Two cars at once
+
+Families and traders often need two cars moved together, perhaps a car being sold and one being bought, or a pair of cars going to the same garage. Where the route allows, we can carry one and tow the other on a dolly, so you pay for one trip rather than two.
+
+## Non-runners and project cars
+
+Rothwell has its share of project cars and long-term non-runners sitting in garages and on driveways. We use a winch to load cars that don't run, and our van with dollies and skates for cars with seized wheels or that are tucked in tight spaces.
+
+Please let us know if the handbrake is stuck on, the steering is locked or the tyres are flat. It helps us bring the right equipment first time.
+
+## Classic and prestige cars
+
+We carry classic and prestige cars on open transporters only, not enclosed. Every car is strapped by the wheels, loaded carefully on the low beavertail angle and handled by drivers who are used to valuable vehicles.
+
+## How is car transport priced?
+
+Each job has a **fixed price agreed before booking**. The main factors are:
+
+| Factor | Why it matters |
+| --- | --- |
+| Distance and route | The biggest part of the cost |
+| Vehicle size and weight | Decides which truck we use |
+| Runner or non-runner | Affects loading time and kit |
+| Access at each end | Low car parks or narrow streets may need different equipment |
+| Number of vehicles | Two cars together can reduce cost per car |
+
+See our [car transport cost guide](/costs/car-transport). Pay by card, bank transfer or cash, with business invoicing by arrangement.
+
+## Booking a collection
+
+1. Call or WhatsApp 07598 314366 with both addresses and the vehicle details.
+2. We confirm a fixed price and a collection window.
+3. We collect, secure and transport the vehicle.
+4. We deliver it and hand over the keys.
+
+If the delivery address isn't ready, the vehicle can wait in our secure storage yard.
+
+## Insured and accredited
+
+We carry goods in transit, public liability and road risks insurance. We are PAS 43 accredited and hold ISO 9001 for quality management.
+
+## Getting ready for collection day
+
+Check the car is paid for and released, especially if it is coming from an auction. Make sure the keys will be with the vehicle, remove loose items from inside, and let the seller, garage or neighbour know when we are due. If access is tight, such as a narrow drive or a gated yard, tell us in advance so we send the right truck.
+
+## Buying a car that won't start?
+
+If the car you are buying has been sitting a long time, ask the seller whether it starts, whether the wheels turn freely and whether the keys are available. Our guide on [why a car won't start](/guides/car-wont-start) gives some useful background.
+
+## More from us
+
+For an unplanned breakdown, use [breakdown recovery in Rothwell](/breakdown-recovery/rothwell). For a flat battery, book a [jump start in Rothwell](/jump-start/rothwell). We also run car transport in [Kettering](/car-transport/kettering) and [Desborough](/car-transport/desborough).
 ---
-Q: Can you collect a car from an auction and deliver it to Rothwell?
-A: Yes. We collect from auction sites across the UK.
-Q: Do you work with Rothwell garages?
-A: Yes. We move vehicles for garages, dealers and traders.
+Q: How much does car transport from Rothwell cost?
+A: It depends mainly on distance, the vehicle and access. We give you a fixed price on the phone before you book.
+Q: Can you collect a car I bought online and deliver it to Rothwell?
+A: Yes. We collect private sale cars from anywhere in the UK and deliver them to Rothwell.
+Q: Can you transport two cars from Rothwell at the same time?
+A: Often, yes. Some of our trucks carry one car and tow another on a dolly.
+Q: Do you move non-running project cars?
+A: Yes. We winch non-runners onto our transporters and use dollies and skates for seized wheels.
+Q: Is your car transport enclosed?
+A: No. We provide open transport only, with classic and prestige cars loaded and strapped with extra care.
+Q: Can you take my car to its MOT?
+A: Yes. We can take a car without a current MOT to a pre-booked MOT test, or to any garage you choose.
 
 === jump-start
-title: Jump Start Rothwell | Mobile Battery Fitting from £40 | Rapid Recovery Corby
-desc: Flat battery in Rothwell? 24/7 mobile jump starts from £40, new batteries fitted on the spot and wheel changes from a local team.
-h1: Jump starts in Rothwell
-lead: Car won't start in Rothwell? We'll come out with a jump pack, test your battery and fit a new one if needed.
-img: early-morning-recovery-renault-clio
+title: Jump Start Rothwell | Flat Battery & Mobile Battery Fitting | Rapid Recovery
+desc: Flat battery in Rothwell? 24/7 jump starts, mobile battery fitting and flat tyre wheel changes on your drive or in town. £40 minimum charge. Call 07598 314366.
+h1: Jump starts and battery fitting in Rothwell
+lead: Car won't start in Rothwell? We come out with a jump pack, replacement batteries and wheel-changing kit, 24 hours a day.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Rothwell with a £40 minimum charge. We also supply and fit new batteries on the spot and change flat tyres onto your spare. Call 07598 314366.
+img: breakdown-recovery-mg3-hatchback
+img_alt: MG3 hatchback with a flat battery waiting for a jump start in Rothwell
 ---
-## Home, work or the shops
+## Jump starts in Rothwell, wherever the car is
 
-We jump start cars on driveways, in town centre car parks and at workplaces around Rothwell, 24 hours a day.
+A flat battery is one of the most common reasons we are called to Rothwell. Whether your car is on a driveway, a residential street or in a town centre car park near the Market House, we come to it. Our base in Corby is a short run away, and we give you a realistic arrival time when you call.
 
-## Avoid a second breakdown
+A jump start has a **£40 minimum charge**, and we work 24 hours a day, 7 days a week.
 
-If your car is about to head onto the A14, a weak battery is a risk. We'll test it after starting the car and tell you honestly if it needs replacing. We can fit a new battery on the spot, with the price agreed first.
+## What we do
 
-## Flat tyres
+- Jump start cars and vans using professional jump packs.
+- Supply and fit a new battery on the spot if yours has failed.
+- Change a flat tyre onto your spare or space saver.
+- Recover the car to a garage if none of the above gets you going.
 
-We'll fit your spare or space saver, or recover the car to a tyre fitter.
+## Why batteries fail in Rothwell
 
-A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+### Short town journeys
+
+Plenty of Rothwell trips are short: to the shops, to school, to the edge of town and back. The alternator doesn't get long enough to recharge the battery, and over weeks it runs down.
+
+### Cold mornings
+
+On frosty mornings a battery delivers less power. A car that started slowly yesterday may not start at all after a cold night.
+
+### Cars that stand
+
+A second car on the drive, a car left while you work away, or a car parked up for a holiday can all lose charge.
+
+### Old batteries
+
+Batteries wear out. If yours is several years old and starting to struggle, it is probably near the end.
+
+## Before heading onto the A14
+
+Many Rothwell drivers use the A14 or A6 for work. A battery that just about started the car on the drive may not restart it after a stop. When we jump start your car, we check whether the battery is holding charge. If it isn't, we tell you honestly and can fit a new one before you set off, rather than risk a breakdown on a fast road.
+
+## Mobile battery fitting in Rothwell
+
+We supply and fit batteries where your car is parked. The price depends on the battery your vehicle needs, and we always confirm it with you before fitting.
+
+| Service | Price |
+| --- | --- |
+| Jump start | £40 minimum charge |
+| Battery supplied and fitted | Depends on the battery, confirmed before fitting |
+| Wheel change onto spare | Priced on the phone |
+| Local recovery if needed | £60 minimum charge |
+
+Our [jump start cost guide](/costs/jump-start) explains more.
+
+## Flat tyre in Rothwell
+
+If you have a puncture, we will change the wheel onto your spare or space saver. If there is no spare, or the locking wheel nut key is missing, we can recover the car to a tyre fitter. On the A6 or A14, don't attempt a wheel change next to moving traffic. Get to safety, hazards on, and call us.
+
+## When a jump start isn't the answer
+
+If the engine turns over well but won't fire, the battery probably isn't the problem. Fuel, ignition or sensor faults are more likely. Our guide on [why a car won't start](/guides/car-wont-start) runs through the causes. We won't keep charging you for jump attempts that won't work. Instead, we offer [breakdown recovery in Rothwell](/breakdown-recovery/rothwell) to a garage.
+
+## Signs a battery is close to failing
+
+- The starter turns slowly, especially first thing in the morning.
+- Dashboard lights dim or flicker when you turn the key.
+- The battery warning light comes on while you are driving.
+- You have needed more than one jump start in recent weeks.
+
+Spotting these early means you can book a battery fitting on your drive in Rothwell at a time that suits you, instead of waiting for it to fail somewhere less convenient.
+
+## Waiting safely
+
+At home, stay in the house until we arrive. If your car has died on a road, especially at night, keep sidelights and hazards on and wait somewhere safe away from traffic.
+
+## Tips to avoid another flat battery
+
+- Drive for longer than a few minutes at least once a week.
+- Turn off lights, heaters and phone chargers before switching off.
+- Fit a battery maintainer if the car will be parked for a long time.
+- Replace an ageing battery before winter.
+
+## How to book
+
+Call or WhatsApp **07598 314366**. Tell us where the car is, what it is and what happens when you turn the key. Pay by card, bank transfer or cash.
+
+If the car isn't worth saving, see [scrap car collection in Rothwell](/scrap-car-collection/rothwell). We also do jump starts in [Desborough](/jump-start/desborough) and [Kettering](/jump-start/kettering).
 ---
-Q: Can you test my battery after the jump start?
-A: Yes, we test the battery so you know whether it will keep going.
-Q: Do you carry batteries for most cars?
-A: We carry common battery types and can source others. We confirm the price before fitting.
+Q: How much is a jump start in Rothwell?
+A: A jump start in Rothwell has a £40 minimum charge, confirmed on the phone before we come out.
+Q: Can you fit a new battery on my drive in Rothwell?
+A: Yes. We supply and fit batteries on the spot. The price depends on the battery your car needs and is confirmed before fitting.
+Q: Do you do jump starts at night in Rothwell?
+A: Yes. We provide jump starts 24 hours a day, 7 days a week, including weekends and bank holidays.
+Q: Will you tell me if my battery needs replacing?
+A: Yes. After a jump start we check whether the battery is holding charge and tell you honestly if it needs replacing.
+Q: Can you change a flat tyre in Rothwell?
+A: Yes. We change wheels onto your spare or space saver, or recover the car to a tyre fitter if there is no spare.
 
 === scrap-car-collection
-title: Scrap My Car Rothwell | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car in Rothwell with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+title: Scrap Car Collection Rothwell | Sell My Scrap Car | Rapid Recovery
+desc: Scrap your car in Rothwell with free collection, payment by bank transfer and a Certificate of Destruction from a licensed ATF. Non-runners welcome. Call us.
 h1: Scrap car collection in Rothwell
-lead: Old car or van in Rothwell? We'll collect it free, pay you by bank transfer and make sure it's scrapped properly.
-img: scrap-car-collection-small-hatchback
+lead: Old car or van taking up space in Rothwell? We collect it free, pay you by bank transfer and make sure it is scrapped legally at a licensed facility.
+answer: Rapid Recovery Corby offers free scrap car collection in Rothwell and pays by bank transfer. Vehicles go to a licensed Authorised Treatment Facility, which issues the Certificate of Destruction and notifies the DVLA. Call 07598 314366.
+img: non-runner-collection-seat-altea-space-saver
+img_alt: SEAT Altea non-runner on a space saver wheel being collected for scrap in Rothwell
 ---
-## Free collection across Rothwell
+## Scrap my car in Rothwell
 
-We collect from driveways, streets and garages around Rothwell. Non-runners, MOT failures, accident damage and vans are all fine.
+If you want to scrap your car in Rothwell, we make it straightforward. We buy scrap and unwanted cars, vans and motorbikes, collect them free from anywhere in the town, and pay you by bank transfer. Every vehicle goes to a licensed Authorised Treatment Facility (ATF).
 
-## The legal side handled
+It doesn't matter whether the car runs. We are a recovery company, so loading non-runners is everyday work for us.
 
-We hold a waste carrier licence and a scrap metal collector's licence. You're paid by bank transfer and the vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and tells the DVLA.
+## What can you scrap with us?
 
-## Get your price
+- Cars that have failed their MOT or have no MOT
+- Non-runners, including cars that haven't moved in years
+- Accident-damaged vehicles
+- Cars with expensive faults such as gearbox or engine failure
+- Vans and motorbikes
+- Vehicles with no V5C logbook, if you can show proof of ID
 
-Send us the registration and condition and we'll come back with a price and a collection time.
+## How we price your scrap car
 
-See our [scrap car cost guide](/costs/scrap-car-collection).
+You get a price on the phone before we collect. It depends on:
+
+| Factor | What it means |
+| --- | --- |
+| Weight | Heavier vehicles usually contain more metal |
+| Scrap metal prices | These change with the market |
+| Make and model | Some vehicles have more valuable materials |
+| Completeness | Missing major parts lowers the value |
+| Condition | Severe damage can reduce the price |
+
+Collection is free. You won't pay to have your car taken away. See our [scrap car cost guide](/costs/scrap-car-collection).
+
+## Why bank transfer only?
+
+Since the Scrap Metal Dealers Act 2013, it has been illegal to buy scrap metal, including scrap cars, for cash. We always pay by bank transfer. A cash offer for a scrap car is a warning sign that the buyer may not be operating legally.
+
+## Licensed collection, legal disposal
+
+We hold a waste carrier licence and a scrap metal collector's licence. The ATF that takes your vehicle issues the Certificate of Destruction and notifies the DVLA. That is what officially ends your responsibility for the car.
+
+Once the DVLA has been told, it automatically refunds any full months of vehicle tax remaining. You don't need to apply.
+
+## Collecting from Rothwell driveways and garages
+
+Scrap cars are often in awkward places: wedged in a garage, sitting on flat tyres at the back of a drive, or parked on a tight residential street. We have:
+
+- a winch to pull non-runners onto a beavertail transporter
+- dollies and skates for cars with seized wheels or brakes
+- the experience to get cars out of tight spaces without damaging walls, gates or neighbouring vehicles
+
+## When is it time to scrap?
+
+It is usually time to scrap a car when repair costs are more than the car is worth, when it has failed its MOT on several major items, or when it has been sitting unused for so long that getting it roadworthy isn't realistic. If you're unsure, we can take it to a garage for an opinion using [car transport in Rothwell](/car-transport/rothwell).
+
+## Scrapping a van or company vehicle
+
+Rothwell's position near the A14 means plenty of local tradespeople and small firms run vans that cover big mileages. When a van reaches the end of its working life, we collect it the same way as a car, up to 3.5 tonnes, and pay by bank transfer. The person selling needs the right to dispose of the vehicle and should have the V5C or proof of ID ready. If the business also needs a replacement van collected from a seller, we can quote for that as [car transport](/car-transport/rothwell) too.
+
+## Mistakes to avoid when scrapping a car
+
+- Accepting cash from a collector. It is illegal and may mean the car is never properly disposed of.
+- Removing valuable parts before getting a price, which usually lowers the value of the car.
+- Leaving documents, parking permits or personal items in the vehicle.
+- Handing the car over without being sure it is going to a licensed ATF that will issue a Certificate of Destruction.
+
+## Step by step
+
+1. Call or WhatsApp 07598 314366 with the registration, make, model and condition.
+2. We give you a price.
+3. We agree a collection time.
+4. We collect free of charge.
+5. You receive payment by bank transfer.
+6. The ATF issues the Certificate of Destruction and notifies the DVLA.
+
+## What to have ready
+
+- V5C logbook, or proof of ID if you don't have it.
+- Keys, if available.
+- Car emptied of personal items, including the boot and glovebox.
+- Bank details for payment.
+- Clear access to the vehicle.
+
+Our [guide to scrapping a car](/guides/how-to-scrap-a-car) explains the process in full.
+
+## Other help nearby
+
+If your car has just broken down, [breakdown recovery in Rothwell](/breakdown-recovery/rothwell) gets it home or to a garage first. We also collect scrap cars in [Desborough](/scrap-car-collection/desborough) and [Kettering](/scrap-car-collection/kettering).
 ---
-Q: Do you collect scrap vans in Rothwell?
-A: Yes, as well as cars and motorbikes.
-Q: Can I scrap a car without the V5C?
-A: Yes, with proof of ID and that the car is yours. Tell us when you call.
+Q: How much will I get for scrapping my car in Rothwell?
+A: It depends on weight, scrap metal prices, make, model, completeness and condition. Call with the details and we will give you a price.
+Q: Is scrap car collection free in Rothwell?
+A: Yes. Collection is free from anywhere in Rothwell, and we pay you for the vehicle.
+Q: Do you pay cash for scrap cars?
+A: No. Cash payment for scrap is illegal under the Scrap Metal Dealers Act 2013, so we always pay by bank transfer.
+Q: Can I scrap a car without a logbook in Rothwell?
+A: Yes. We can collect a car without a V5C if you can show proof of ID.
+Q: Do you collect scrap vans and motorbikes in Rothwell?
+A: Yes. We buy scrap vans and motorbikes as well as cars.
+Q: Will I get a Certificate of Destruction?
+A: Yes. The licensed ATF issues the Certificate of Destruction and notifies the DVLA.

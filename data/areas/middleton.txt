@@ -1,124 +1,432 @@
 === hub
-title: Vehicle Recovery Middleton | 24/7 Breakdown Recovery Near Corby | Rapid Recovery
-desc: 24/7 vehicle recovery in Middleton, west of Corby on the A427. Breakdown recovery, car transport, jump starts and free scrap car collection.
-h1: Vehicle recovery in Middleton
-lead: Middleton joins up with Cottingham along the A427, west of Corby. If your car lets you down here, our trucks are close by.
+title: Recovery Middleton Corby | 24/7 Tow Truck on the A427 | Rapid Recovery
+desc: 24/7 vehicle recovery in Middleton near Corby, on the A427 beside Cottingham. Breakdowns, car transport, jump starts and free scrap car collection. Call now.
+h1: Vehicle recovery in Middleton, near Corby
+lead: Middleton is a small village joined to Cottingham along the A427, on the edge of the Welland valley. Our Corby trucks cover it 24 hours a day.
+answer: Rapid Recovery Corby provides 24/7 vehicle recovery in Middleton, near Corby, with local breakdown recovery from £60, jump starts from £40, car transport and free scrap car collection. Call or WhatsApp 07598 314366.
+img: breakdown-recovery-mg3-hatchback
+img_alt: MG3 hatchback on a recovery truck after a breakdown in a village near Corby
 ---
-## Small village, busy road
+## Vehicle recovery in Middleton, a short run from Corby
 
-Middleton is a small village, but the A427 through it carries a lot of traffic between Corby and Market Harborough. The road dips and climbs along the edge of the Welland valley, and both breakdowns and bumps happen here more than you might expect.
+Rapid Recovery covers vehicle recovery in Middleton from our base in Corby. Middleton runs straight on from Cottingham along the A427, so it is a short run for our trucks. We are open 24 hours a day, 7 days a week, including nights, weekends and bank holidays.
 
-We're often called out to Middleton for cars that have stopped on the main road, flat batteries at home, and older cars that need taking away for scrap.
+Middleton is a small village on the edge of the Welland valley. Most people here rely on a car to get anywhere, so when one stops, it matters. We give you a realistic arrival time when you call, and we tell you the price before we set off.
 
-## Our services in Middleton
+## Driving in and around Middleton
 
-Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+The A427 is the main road through the village, running west from Corby towards Market Harborough. Through neighbouring Cottingham it is steep and bendy, and Middleton sits along that same stretch. On the edge of the valley, the land falls away and the weather can feel harsher than in town.
+
+That shapes the calls we get:
+
+- Cars that struggle on the hill, with clutches, gearboxes or overheating giving up on the climb.
+- Cars that slide into a verge on a wet or icy bend.
+- Breakdowns on the A427 itself, where there isn't much room to pull over.
+- Flat batteries on cars parked outside village homes through cold nights.
+- Older cars that have been sitting for a long time and need clearing.
+
+## Services available in Middleton
+
+| Service | Typical Middleton job | Starting price |
+| --- | --- | --- |
+| [Breakdown recovery](/breakdown-recovery/middleton) | A427 breakdowns, verge recovery, non-runners | £60 local minimum |
+| [Car transport](/car-transport/middleton) | Auction cars, private sales, house moves | Fixed price agreed |
+| [Jump starts](/jump-start/middleton) | Flat batteries, new batteries, spare wheels | £40 minimum |
+| [Scrap car collection](/scrap-car-collection/middleton) | Old or damaged cars off drives | Free collection |
+
+Any job beyond the two minimum charges is priced on the phone before a truck leaves. Card on the day, bank transfer and cash are all accepted, and businesses can ask about invoicing. See our [costs page](/costs) for more.
+
+## Getting a car out of a village drive
+
+Village properties can have narrow gateways, gravel drives and cars parked close to walls. Our van with dollies and skates lets us move a car that won't roll, or one in a tight spot, out to a place where we can load it safely. For bigger jobs we bring a beavertail tilt-and-slide or a spec lift tow truck. Some trucks carry one car and tow a second on a dolly.
+
+## Winter on the edge of the valley
+
+Ice and wet leaves on the A427 bends cause a noticeable rise in calls once the weather turns. If you slide into a verge, stay calm and get out on the side away from traffic if it is safe to do so. Keep warm, keep your hazards on and call us. We would much rather winch a car out carefully than have you try to drive it out and make things worse.
+
+## Who we are
+
+Rapid Recovery is run by George Mitchell and has been in vehicle recovery for over five years. We are PAS 43 accredited, the national safety standard for vehicle breakdown, recovery and roadside operations, and ISO 9001 certified for quality management. We carry goods in transit, public liability and road risks insurance, and we have a secure storage yard.
+
+People call us because we pick up the phone, our prices are fair, we are friendly and local, and we look after their cars properly.
+
+## When you call from Middleton
+
+Tell us where the car is, what has happened, and where it needs to go. On the A427, a WhatsApp live location or what3words reference is the quickest way to pin you down. Otherwise, give us the nearest landmark or junction and your direction of travel.
+
+If you have broken down on the road, our guide on [what to do if you break down](/guides/what-to-do-if-you-break-down) explains how to stay safe. We also cover neighbouring [Cottingham](/areas/cottingham), [Rockingham](/areas/rockingham) and [Corby](/areas/corby).
 ---
-Q: Is Middleton covered by your Corby call-out times?
-A: Yes. Middleton is close to Corby and usually quick to reach. We confirm the arrival time when you call.
-Q: Do you cover the road from Middleton to Market Harborough?
-A: Yes. We recover vehicles along the A427 and can take them to Market Harborough or anywhere else.
+Q: Do you cover Middleton near Corby?
+A: Yes. Rapid Recovery covers Middleton 24 hours a day, 7 days a week. Middleton is a short run from our Corby base along the A427.
+Q: How fast can you get to Middleton?
+A: It is usually quick. We give you a realistic arrival time when you call, based on where our trucks are at the time.
+Q: How much does recovery cost in Middleton?
+A: Local breakdown recovery has a £60 minimum charge and jump starts a £40 minimum. Other jobs are priced on the phone before we set off.
+Q: Can you recover a car from the A427 between Middleton and Cottingham?
+A: Yes. We recover cars along the A427 through Middleton and Cottingham. Get off the road if you safely can, then call 07598 314366.
+Q: Do you collect scrap cars from Middleton?
+A: Yes. Collection is free, we pay by bank transfer, and the car goes to a licensed Authorised Treatment Facility.
 
 === breakdown-recovery
-title: Breakdown Recovery Middleton | A427 Recovery 24/7 | Rapid Recovery Corby
-desc: Broken down in Middleton or on the A427 west of Corby? 24/7 breakdown recovery from a PAS 43 accredited local team. From £60.
-h1: Breakdown recovery in Middleton
-lead: Stopped on the A427 at Middleton or won't start at home? Call us and a truck will be with you from Corby quickly.
-img: breakdown-recovery-vw-passat
+title: Breakdown Recovery Middleton | A427 Car Recovery 24/7 | Rapid Recovery Corby
+desc: 24/7 breakdown recovery in Middleton and on the A427 near Corby. Tow trucks, winches and dollies from a PAS 43 accredited team. From £60. Call 07598 314366.
+h1: Breakdown recovery in Middleton and on the A427
+lead: Broken down in Middleton or on the A427 hill? We send a recovery truck from Corby, day or night, and agree the price before we set off.
+answer: Rapid Recovery Corby offers 24/7 breakdown recovery in Middleton and on the A427, with a £60 minimum charge for local recovery. Call or WhatsApp 07598 314366 for a price and a realistic arrival time.
+img: 4x4-recovery-nissan-x-trail
+img_alt: Nissan X-Trail 4x4 being recovered onto a truck on a rural road
 ---
-## Stopped on the main road
+## Breakdown recovery in Middleton from our Corby base
 
-The A427 through Middleton has houses either side and few places to pull over. If you break down here, put your hazards on, get everyone onto the pavement or verge and away from the car, and call us. We'll arrive, load you quickly and get the road moving again.
+For breakdown recovery in Middleton, call Rapid Recovery on 07598 314366. We are a local Corby company running five-plus recovery vehicles, on call 24 hours a day including weekends and bank holidays.
 
-## Heading out of the area
+Middleton sits along the A427 joined to Cottingham, so it is a short run from Corby. We will give you a realistic arrival time when you ring, plus the price before we leave. Local recovery starts at a £60 minimum.
 
-If you live further away and break down while passing through Middleton, we can recover you and your car home or to a garage near you, anywhere in the UK. We'll price it on the phone first.
+## Why cars break down on the A427 at Middleton
 
-## Recovery to your choice of garage
+The A427 through Cottingham and Middleton is steep and bendy as it heads west from Corby towards Market Harborough. Hills put extra strain on a car, and that shows up in the faults we are called to:
 
-Local garage in Corby, a dealer in Market Harborough or our secure yard overnight. It's your call.
+- **Clutch failure** on the climb, especially on older manual cars.
+- **Overheating**, when the cooling system can't cope with a long pull uphill.
+- **Brake problems** on the way down.
+- **Gearbox faults** that leave the car stuck in one gear or none.
+- **Tyre damage** from clipping a kerb on a tight bend.
 
-Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+If your engine has overheated, don't open the radiator cap while it is hot. The coolant is under pressure and can cause serious burns. Wait for us, or let it cool fully.
+
+## Stopping safely on a narrow, bendy road
+
+The A427 here doesn't offer many places to pull over. If you break down:
+
+1. Try to get the car past the bend and as far left as possible, so traffic can see you in time.
+2. Switch on your hazard lights. At night, keep your sidelights on too.
+3. Get everyone out on the side away from traffic, and stand well back from the road.
+4. Wear a high-vis if you have one.
+5. If you can't get out of a live lane safely, call 999.
+
+Then call us and share your location by WhatsApp live location or what3words. Our [what to do if you break down](/guides/what-to-do-if-you-break-down) guide has more detail.
+
+## Verges, ditches and the Welland valley edge
+
+Middleton sits on the edge of the Welland valley, and the roads around it can be wet, muddy or icy in winter. A car that slides off a bend can end up in a soft verge or a ditch. Our trucks carry winches for off-road and ditch recovery, so we can pull the car back onto firm ground carefully before loading it.
+
+Please don't try to drive out if the car is at an angle or the wheels are spinning. It can make the damage worse and put you at risk.
+
+## Vehicles we recover in Middleton
+
+| Vehicle | Notes |
+| --- | --- |
+| Cars | From small hatchbacks to large estates |
+| Vans | Up to 3.5 tonnes |
+| 4x4s and SUVs | Including those stuck off-road |
+| Motorbikes | Secured properly for transport |
+| Campervans | Loaded on the right truck for size |
+| Classic cars | Handled with extra care |
+
+We also recover non-runners from driveways, carry out accident recovery including insurance and accident management work, and move cars from garage to garage.
+
+## Non-runners on village drives
+
+Not every Middleton job is on the road. A car that has died on a drive or in a garage can be collected at a time that suits you and your garage. Gravel drives and narrow gateways are common in the village, so tell us about access when you call. If the wheels are locked, our dollies and skates let us move the car without damage.
+
+## How much is car recovery in Middleton?
+
+Local breakdown recovery has a £60 minimum charge. Longer recoveries, accident work and jobs needing a winch or dollies are priced on the phone before we set off. You can pay by card on the day, bank transfer or cash, and businesses can ask about invoicing.
+
+Our [breakdown recovery cost guide](/costs/breakdown-recovery) explains what affects the price.
+
+## Where your car goes next
+
+We can take your car to any garage you choose, back to your home, or to our secure storage yard while you decide what to do. We recover anywhere in the UK, so if you break down a long way from Middleton, we can bring the car home.
+
+We are PAS 43 accredited and ISO 9001 certified, and carry goods in transit, public liability and road risks insurance.
+
+If your car simply won't start, a [jump start in Middleton](/jump-start/middleton) may be enough. Our [car won't start guide](/guides/car-wont-start) can help you work out which you need. We also cover [breakdown recovery in Cottingham](/breakdown-recovery/cottingham) and [breakdown recovery in Corby](/breakdown-recovery/corby), and every local service is on the [Middleton area page](/areas/middleton).
 ---
-Q: Can you take me home if I'm not local?
-A: Yes. We can recover you and your car home anywhere in the UK. Call for a price.
-Q: How many passengers can come with the car?
-A: It depends on the truck. Tell us how many people need a lift when you call and we will plan for it.
+Q: How much is breakdown recovery in Middleton?
+A: Local breakdown recovery in Middleton has a £60 minimum charge. Longer or more complex recoveries are priced before we set off.
+Q: Do you recover cars on the A427 hill through Cottingham and Middleton?
+A: Yes. We recover cars on the A427 through Cottingham and Middleton 24/7. Get to a safe spot if you can and call 07598 314366.
+Q: My car slid into a ditch near Middleton. Can you get it out?
+A: Yes. We use a winch to pull cars out of ditches and soft verges, then load them for recovery.
+Q: Should I open the bonnet if my car overheats on the hill?
+A: You can open the bonnet, but don't open a hot radiator cap. The coolant is under pressure and can cause serious burns.
+Q: Is there car recovery near me in Middleton at night?
+A: Yes. We run 24 hours a day, including nights, weekends and bank holidays.
+Q: Can you recover a 4x4 or campervan from Middleton?
+A: Yes. We recover 4x4s, SUVs, campervans, vans up to 3.5 tonnes, motorbikes and classic cars.
 
 === car-transport
-title: Car Transport Middleton | Vehicle Collection & Delivery | Rapid Recovery Corby
-desc: Car transport for Middleton near Corby. Collections and deliveries anywhere in the UK, garage runs and non-runners, fully insured.
-h1: Car transport in Middleton
-lead: Need a car moving to or from Middleton? We collect and deliver anywhere in the UK, insured, with a fixed price agreed first.
-img: two-car-transport-jaguar-and-golf
+title: Car Transport Middleton | Vehicle Transport UK-Wide | Rapid Recovery Corby
+desc: Car transport to and from Middleton near Corby, UK-wide on open transporters. Auction, dealer, private sale and classic car moves. Fixed price agreed. Call now.
+h1: Car transport from Middleton, near Corby
+lead: Moving a car to or from Middleton? We collect and deliver across the UK on open transporters, with a fixed price agreed before you book.
+answer: Rapid Recovery Corby provides car transport to and from Middleton and across the UK on open transporters. Every job has a fixed price agreed before booking. Call or WhatsApp 07598 314366.
+img: two-car-recovery-touran-and-clio
+img_alt: VW Touran and Renault Clio being transported together on one recovery vehicle
 ---
-## From your door to theirs
+## Car transport in Middleton, priced before you book
 
-Whether you're selling a car to a buyer in another county, sending one to a specialist or bringing home a car you've bought online, we'll handle the transport so you don't have to.
+Rapid Recovery offers car transport in Middleton for private owners, garages, dealers and businesses. We collect from the village and deliver to any address in the UK, or bring a car to Middleton from wherever it is.
 
-## Garage runs
+We agree a fixed price before you book. You know the cost up front, and it doesn't change on the day.
 
-Need your car taking to a garage for a service, MOT or repair, and bringing back afterwards? We can do the round trip, which is handy if you don't have a second car.
+## Why Middleton drivers use car transport
 
-## Insured and careful
+In a small village on the edge of the Welland valley, there often isn't a second driver to fetch a car, or the car can't be driven safely. We are booked for:
 
-Every vehicle is loaded on a beavertail transporter, strapped down and covered by goods in transit insurance.
+- **Auction purchases** that need bringing home.
+- **Private sales**, collecting a car you have bought or delivering one you have sold.
+- **Dealer deliveries** between sites or to customers.
+- **MOT and garage runs** for cars without a current MOT.
+- **Classic and prestige cars**, including cars kept off the road in a garage.
+- **House moves**, taking an extra car to your new home.
+- **Non-runners** that need to reach a garage or a new owner.
 
-See the [car transport cost guide](/costs/car-transport) for pricing.
+## Classic cars and village garages
+
+Middleton's older homes sometimes have a classic car tucked away in a garage, waiting to go to a show, a restorer or a buyer. These cars often haven't moved in a while. Our dollies and skates let us move a car with stiff or seized wheels out of a garage without dragging it. Once it is at the truck, it goes onto a beavertail tilt-and-slide transporter and is strapped down carefully.
+
+## Open transporters only
+
+We use open transport, not enclosed. The car travels on a beavertail tilt-and-slide transporter, secured with straps. For most cars, this is the standard way to move them. If you need fully enclosed transport, we are not the right choice for that job.
+
+Some trucks can carry one car and tow a second on a dolly, so two cars going the same way can often move together.
+
+## How car transport is priced from Middleton
+
+| Factor | How it affects the price |
+| --- | --- |
+| Distance | Longer runs cost more |
+| Access | Narrow gateways or garages may need dollies |
+| Condition | Non-runners take longer to load |
+| Number of cars | Two cars on one trip can be good value |
+| Timing | Fixed slots are planned around your dates |
+
+Give us the details and we will give you a fixed price. Our [car transport cost guide](/costs/car-transport) explains more. Payment is by card on the day, bank transfer or cash, with business invoicing by arrangement.
+
+## Collecting from the A427
+
+Many Middleton homes are along or just off the A427. Loading on a busy, bendy road needs care, so if there is a safer spot nearby, such as a drive or side road, we will use it. Let us know about access when you book and we will plan the collection around it.
+
+## Moving a car for an older relative
+
+Some of our Middleton bookings come from families sorting out a car after a parent or grandparent has stopped driving. The car might be going to a relative elsewhere in the UK, or to a buyer. We can collect it from the village, deal directly with the contact at the other end and deliver it for an agreed fixed price, so nobody has to make a long round trip to fetch it.
+
+## Insured and accredited
+
+We are PAS 43 accredited and ISO 9001 certified. Our insurance covers goods in transit, public liability and road risks. If a car needs to wait between collection and delivery, it can stay in our secure storage yard.
+
+## What we need from you
+
+- Collection and delivery addresses.
+- A contact at each end.
+- Make, model and whether the car runs and steers.
+- Keys and any auction or sale paperwork.
+- Anything unusual, such as low ground clearance.
+
+## Short notice or planned ahead?
+
+A local run from Middleton to a garage in Corby or Cottingham can often be fitted in quickly. For long UK-wide runs, a few days' notice helps us plan the route and line up a second car if one is heading the same way. If you have a fixed auction collection deadline or moving day, mention it when you first call.
+
+If your car has broken down rather than needing a planned move, see [breakdown recovery in Middleton](/breakdown-recovery/middleton). If it is ready to go for scrap, see [scrap car collection in Middleton](/scrap-car-collection/middleton). We also offer [car transport in Cottingham](/car-transport/cottingham) and [car transport in Corby](/car-transport/corby). All our services for the village are on the [Middleton area page](/areas/middleton), and our [guides](/guides) cover more.
 ---
-Q: Can you take my car to a garage and bring it back?
-A: Yes. We can collect it, deliver it to the garage and return it once the work is done.
-Q: Do you move cars for private sales?
-A: Yes, whether you are buying or selling. We collect from one address and deliver to the other.
+Q: How much is car transport from Middleton?
+A: It depends on distance, access, the car's condition and how many cars are moving. We give you a fixed price before booking.
+Q: Can you move a classic car from a garage in Middleton?
+A: Yes. We use dollies and skates to move classic cars out of garages, then load them carefully onto a beavertail transporter.
+Q: Do you offer enclosed car transport?
+A: No. We use open transport only, with the car strapped down securely on a beavertail tilt-and-slide transporter.
+Q: Can you deliver a car to Middleton from anywhere in the UK?
+A: Yes. We collect from anywhere in the UK and deliver to Middleton or any other address.
+Q: Can you transport a car that doesn't run?
+A: Yes. Non-runners are a regular job for us, and we bring the right kit to load them safely.
 
 === jump-start
-title: Jump Start Middleton | Mobile Battery Replacement from £40 | Rapid Recovery Corby
-desc: Flat battery in Middleton? 24/7 mobile jump starts from £40, new batteries fitted on the spot and wheel changes from a local Corby team.
-h1: Jump starts in Middleton
-lead: Car dead on the drive in Middleton? We'll come out from Corby and get you started, or fit a new battery there and then.
-img: breakdown-recovery-ford-focus-beavertail
+title: Jump Start Middleton | Flat Battery Help Near Corby | Rapid Recovery
+desc: Jump starts in Middleton near Corby 24/7 from £40. Mobile battery fitting and flat tyre changes at home or on the A427. Call 07598 314366 for help today.
+h1: Jump starts and flat battery help in Middleton
+lead: Car won't start in Middleton? We come out from Corby with jump packs, replacement batteries and the kit to fit your spare wheel, any time of day.
+answer: Rapid Recovery Corby provides 24/7 jump starts in Middleton from a £40 minimum charge, plus on-the-spot battery fitting and flat tyre changes onto your spare. Call or WhatsApp 07598 314366.
+img: non-runner-collection-seat-altea-space-saver
+img_alt: SEAT Altea fitted with a space saver wheel being prepared for collection
 ---
-## Quick help nearby
+## Jump start in Middleton, wherever you are parked
 
-Middleton is only a short run from our base, so a flat battery here is usually sorted fast. We bring a jump pack and replacement batteries on our call-outs.
+If you need a jump start in Middleton, call Rapid Recovery on 07598 314366. We are open 24 hours a day, 7 days a week, and will tell you the price and a realistic arrival time when you ring.
 
-## Signs your battery is on its way out
+Middleton is a short run from our Corby base along the A427. In most cases, we get the car running on the spot.
 
-A slow start, dim headlights at idle, the battery warning light coming on, or needing a jump more than once. If any of those sound familiar, ask us to test the battery when we come out.
+## Why batteries give up in Middleton
 
-## Wheel changes
+Middleton is a small village on the edge of the Welland valley, and it can be colder and more exposed than town. That is hard on batteries. Common causes we see:
 
-We'll swap a flat tyre for your spare or space saver, or take the car to a tyre fitter.
+- Cars parked outside overnight in freezing weather.
+- Cars used for short runs into Corby that never fully recharge.
+- Second cars or weekend cars left standing for weeks.
+- Older batteries that have been weakening for months.
+- Lights or accessories left on by accident.
 
-A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+## How a battery call-out works
+
+When we arrive, we test the battery and decide what is needed:
+
+| What we find | What we do |
+| --- | --- |
+| Battery flat but healthy | Jump start and check it is charging |
+| Battery worn out | Supply and fit a new battery on the spot |
+| Flat tyre | Fit your spare wheel or space saver |
+| Fault elsewhere | Recover the car to a garage of your choice |
+
+If a jump start won't fix it, we can move straight to [breakdown recovery in Middleton](/breakdown-recovery/middleton) so you don't need a second call.
+
+## How much does a jump start in Middleton cost?
+
+A jump start has a £40 minimum charge. New batteries are priced by the battery your car needs, and we always confirm the price before fitting anything.
+
+Pay by card on the day, bank transfer or cash. Our [jump start cost guide](/costs/jump-start) explains how battery prices are worked out.
+
+## Flat tyres on the A427 and village roads
+
+A puncture on the bendy A427 is a different matter from one on a quiet drive. On the main road, don't try to change a wheel next to traffic, especially near a bend where drivers can't see you in time. Get as far left as you safely can, switch on your hazards, get everyone out away from the traffic and call us. If you are stuck in a live lane and can't get out safely, call 999.
+
+Once we are there, we fit your spare or space saver. If there isn't a usable spare, we recover the car to a tyre fitter instead.
+
+## Is it the battery?
+
+A few signs point to the battery:
+
+- The engine turns over slowly or not at all.
+- You hear clicking when you try to start.
+- Dashboard lights are dim or flicker.
+- The central locking is slow or doesn't work.
+
+If the engine turns over at normal speed but won't fire, it is probably not the battery. Our [car won't start guide](/guides/car-wont-start) goes through other causes, and tells you what to check before you call.
+
+## Mobile battery fitting on your drive
+
+If your battery needs replacing, there is no need to get the car to a garage. We bring batteries with us and fit the right one for your car on your drive in Middleton, once you have agreed the price. That is particularly useful in a village where the nearest garage means a trip along the A427, and where a car that won't start can't get there on its own anyway. We check the new battery is charging properly before we leave, so you know the car is ready for the next morning.
+
+## Help us help you
+
+- Have the make, model and engine size ready.
+- If you are not at home, share your location by WhatsApp or what3words.
+- Switch off lights, heater and radio.
+- Find your locking wheel nut key for a tyre change.
+
+## Cold mornings in the valley
+
+Winter mornings are when most battery calls come in. A battery loses power in the cold just as the engine needs more to turn over. If your car has been slow to start for a few days, that is often a warning. Giving it a longer drive now and then, rather than lots of short trips, helps keep the charge up. If it keeps going flat, the battery probably needs replacing, and we can do that on your drive.
+
+We work to PAS 43, the national safety standard for roadside operations, and are ISO 9001 certified. We also cover [jump starts in Cottingham](/jump-start/cottingham) and [jump starts in Corby](/jump-start/corby). Every local service is on the [Middleton area page](/areas/middleton).
 ---
-Q: How do I know if I need a new battery?
-A: Slow starts, dim lights or needing repeated jump starts usually mean the battery is failing. We test it on the spot.
-Q: Can you fit the battery the same day?
-A: Usually on the same visit, as long as we have the right battery for your car. We confirm the price first.
+Q: How much is a jump start in Middleton?
+A: A jump start in Middleton has a £40 minimum charge. New batteries are priced for your car and confirmed before fitting.
+Q: Can you replace my car battery at home in Middleton?
+A: Yes. We supply and fit new batteries on the spot, on your drive or at the roadside, once you have agreed the price.
+Q: Do you do jump starts on cold winter mornings?
+A: Yes. We are open 24 hours a day, 7 days a week, including early mornings, nights, weekends and bank holidays.
+Q: Can you change a flat tyre on the A427?
+A: Yes. We fit your spare or space saver once you are somewhere safe. If there is no usable spare, we can recover the car.
+Q: What happens if my car won't start after a jump?
+A: We look for other causes. If it can't be fixed at the roadside, we recover the car to a garage of your choice.
+Q: Is there a jump start service near me in Middleton?
+A: Yes. Rapid Recovery is based in Corby, a short run from Middleton. Call or WhatsApp 07598 314366.
 
 === scrap-car-collection
-title: Scrap My Car Middleton | Free Scrap Car Collection | Rapid Recovery Corby
-desc: Scrap your car in Middleton with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+title: Scrap Car Collection Middleton | Sell My Scrap Car | Rapid Recovery Corby
+desc: Free scrap car collection in Middleton near Corby, paid by bank transfer. Non-runners, no MOT and damaged cars taken. Licensed car scrappers. Call for a price.
 h1: Scrap car collection in Middleton
-lead: Old car in Middleton that isn't worth fixing? We'll take it away for free and pay you by bank transfer.
-img: scrap-car-collection-small-hatchback
+lead: Ready to scrap your car in Middleton? We collect for free, pay by bank transfer and take every car to a licensed Authorised Treatment Facility.
+answer: Rapid Recovery Corby offers free scrap car collection in Middleton, paying by bank transfer. We take non-runners, cars with no MOT and accident-damaged vehicles, and use a licensed ATF. Call or WhatsApp 07598 314366.
+img: breakdown-recovery-jaguar-x-type
+img_alt: Jaguar X-Type loaded onto a recovery truck for collection
 ---
-## No-hassle collection
+## Scrap car collection in Middleton, near Corby
 
-We collect scrap cars from homes in Middleton at a time that suits you. Non-runners, cars with no MOT and accident-damaged vehicles are fine.
+Rapid Recovery offers scrap car collection in Middleton with no collection charge. We buy scrap and unwanted cars, vans and motorbikes, pay you by bank transfer and deal with the vehicle the legal way.
 
-## Licensed and legal
+We hold a waste carrier licence and a scrap metal collector's licence. Each vehicle goes to a licensed Authorised Treatment Facility (ATF), which issues the Certificate of Destruction and notifies the DVLA.
 
-We hold a waste carrier licence and a scrap metal collector's licence. You're paid by bank transfer, and the car goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and notifies the DVLA.
+## Old cars in a small village
 
-## Get a price
+In a village like Middleton, an old car can sit on a drive, in a garage or at the side of a house for months or even years. It might be a car that failed its MOT, one left behind after a family member stopped driving, or one damaged after sliding off the A427. Whatever the story, we can take it away.
 
-Tell us the registration, mileage and condition and we'll give you a price.
+We take:
 
-See our [scrap car cost guide](/costs/scrap-car-collection).
+- Non-runners.
+- Cars with no MOT.
+- Accident-damaged cars.
+- Vans and motorbikes.
+- Cars with no V5C logbook, if you can show proof of ID.
+
+## How scrapping your car works
+
+1. Call or WhatsApp 07598 314366 with the make, model, year and condition.
+2. Send photos if you can.
+3. We give you a price.
+4. We agree a collection day and time.
+5. We collect, free of charge.
+6. We pay you by bank transfer.
+7. The ATF issues the Certificate of Destruction and notifies the DVLA.
+
+Read our [how to scrap a car guide](/guides/how-to-scrap-a-car) for a full walkthrough.
+
+## How much will I get for my scrap car in Middleton?
+
+| What we consider | Why it matters |
+| --- | --- |
+| Weight | Heavier vehicles have more metal |
+| Scrap metal prices | Prices go up and down |
+| Make and model | Some vehicles are worth more |
+| Completeness | Missing parts reduce the value |
+| Condition | Overall state of the vehicle |
+
+Collection is always free. See our [scrap car cost guide](/costs/scrap-car-collection) for more on pricing.
+
+## Bank transfer only, by law
+
+The Scrap Metal Dealers Act 2013 bans cash payments for scrap metal, and that includes scrap cars. We always pay by bank transfer, which also gives you a clear record of the sale.
+
+## Your road tax refund
+
+Once the DVLA knows the car has been scrapped, it automatically refunds any full months of vehicle tax left. You don't need to apply.
+
+## Cars that haven't moved in years
+
+Cars that have stood for a long time often have flat tyres, seized brakes or wheels that won't turn. That is no problem. Our van with dollies and skates lets us move a stuck car out of a garage or off a gravel drive and onto the truck, without dragging it across your property. Tell us about gateways, walls or tight corners when you book so we bring the right kit.
+
+## After an accident on the A427
+
+If your car has been damaged on the A427 and isn't worth repairing, we can collect it for scrap. If we have already recovered it to our secure storage yard, we can arrange the scrap from there, saving another trip.
+
+## Clearing a car for a family member
+
+We are often asked to collect a car after an older relative has given up driving, or when a house is being cleared. If you are handling things on someone else's behalf, tell us when you call. We can arrange a collection time when someone can be at the property with the keys and paperwork, and the payment goes by bank transfer to the person selling the car. The ATF still issues the Certificate of Destruction and tells the DVLA, so the car is properly closed off.
+
+## What to have ready
+
+- The V5C logbook, or proof of ID if you don't have it.
+- All the keys.
+- Personal items cleared from the car, including the boot and glovebox.
+- Your bank details for payment.
+- Any private plate transferred off first if you want to keep it.
+
+## Scrap, repair or sell?
+
+If you aren't sure whether your car is worth repairing, we can take it to a garage for an opinion using [breakdown recovery in Middleton](/breakdown-recovery/middleton). If you have found a buyer, we can deliver it with [car transport in Middleton](/car-transport/middleton). If it is time to scrap it, we will collect.
+
+We are PAS 43 accredited and ISO 9001 certified, and we treat every vehicle with care, even one heading for scrap. We also offer [scrap car collection in Cottingham](/scrap-car-collection/cottingham) and [scrap car collection in Corby](/scrap-car-collection/corby). All our local services are on the [Middleton area page](/areas/middleton).
 ---
-Q: Do I need to be there when you collect?
-A: It is best if you are, so you can hand over the keys and paperwork, but we can discuss other arrangements.
-Q: Will you take a car with no MOT?
-A: Yes. We collect cars with no MOT or no tax.
+Q: Do you charge to collect a scrap car from Middleton?
+A: No. We collect scrap cars from Middleton for free and pay you by bank transfer.
+Q: Can I get cash for my scrap car?
+A: No. The Scrap Metal Dealers Act 2013 bans cash for scrap, so we always pay by bank transfer.
+Q: Can you collect a car that hasn't moved in years?
+A: Yes. We use dollies and skates to move cars with seized wheels or flat tyres out of garages and off drives.
+Q: Do I need the V5C to scrap my car?
+A: No. We can take a car without a V5C as long as you can show proof of ID.
+Q: How do I tell the DVLA my car has been scrapped?
+A: You don't need to. The licensed Authorised Treatment Facility issues the Certificate of Destruction and notifies the DVLA.
+Q: Will I get my car tax back?
+A: Yes. The DVLA automatically refunds any full months of vehicle tax once it knows the car has been scrapped.
