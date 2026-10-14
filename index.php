@@ -358,7 +358,7 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     'price' => $manual ? null : $price, 'valid_until' => gmdate('Y-m-d', time() + 86400 * $PR['valid_days']), 'rate_per_tonne' => $PR['rate_per_tonne'],
     'page' => $f('page')];                                         // no contact details yet: they're only asked for when the customer accepts
   save_lead($lead);
-  jout(['ok' => true, 'ref' => $ref, 'manual' => $manual, 'price' => $manual ? null : $price, 'valid_until' => date('j F Y', strtotime($lead['valid_until'])), 'lines' => PREVIEW ? $lines : [], 'outside' => $dist !== null && $dist > $PR['max_miles'], 'max_miles' => $PR['max_miles']]);
+  jout(['ok' => true, 'ref' => $ref, 'manual' => $manual, 'price' => $manual ? null : $price, 'valid_until' => date('j F Y', strtotime($lead['valid_until'])), 'lines' => [], 'outside' => $dist !== null && $dist > $PR['max_miles'], 'max_miles' => $PR['max_miles']]);
 }
 /* reopen a price from a reminder email link */
 if ($r === 'api/lead' && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -574,7 +574,7 @@ $lic = function () use ($S): string {
     <?php if ($type === 'get-a-price'):
       $preReg = clean_reg((string)($_GET['reg'] ?? '')); $prePc = clean_pc((string)($_GET['pc'] ?? '')); ?>
     <div class="tool" id="tool">
-      <?php if (PREVIEW): ?><div class="demo"><b>Preview version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live.' : 'The registration lookup is waiting on the DVSA API key, so for now every car is priced at an average weight.' ?> Rate in use: £<?= h((string)$PR['rate_per_tonne']) ?> per tonne, collection within <?= h((string)$PR['max_miles']) ?> miles of Corby (change these in the admin page). No emails go to customers or George while this is a preview.</div><?php endif; ?>
+      <?php if (PREVIEW): ?><div class="demo"><b>Preview version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live.' : 'The registration lookup is waiting on the DVSA API key, so for now every car is priced at an average weight.' ?> No emails go to customers or George while this is a preview.</div><?php endif; ?>
       <ol class="steps" aria-hidden="true"><li class="on" data-s="1">Your vehicle</li><li data-s="2">Your price</li><li data-s="3">Book collection</li></ol>
 
       <form class="step" id="s1" novalidate>
