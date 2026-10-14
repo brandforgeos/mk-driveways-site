@@ -29,6 +29,7 @@ $AR = []; foreach ($S['areas'] as $x) $AR[$x['slug']] = $x;
 $GUIDES = ['how-to-scrap-a-car' => 'How to scrap a car legally', 'certificate-of-destruction' => 'Certificate of Destruction explained', 'scrap-car-without-logbook' => 'Scrapping a car with no logbook', 'scrap-or-repair' => 'Should I scrap or repair my car?', 'how-scrap-car-prices-work' => 'How scrap car prices work'];
 $CFG = is_file(CONFIG_FILE) ? (include CONFIG_FILE) : [];
 if (!is_array($CFG)) $CFG = [];
+if (!str_starts_with(trim((string)($CFG['anthropic_key'] ?? '')), 'sk-ant-') && is_file(STORE . '/keys/anthropic.key')) $CFG['anthropic_key'] = (string)file_get_contents(STORE . '/keys/anthropic.key');   // key written by the Make tool
 if (!str_starts_with(trim((string)($CFG['anthropic_key'] ?? '')), 'sk-ant-')) $CFG['anthropic_key'] = '';   // placeholder or blank = off
 else $CFG['anthropic_key'] = trim($CFG['anthropic_key']);
 define('PREVIEW', ON_BUILDBRO || empty($CFG['live']));         // noindex + no emails to customers until 'live' => true is set in George's config file
