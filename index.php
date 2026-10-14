@@ -238,7 +238,7 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
     <?php endif; ?>
 
     <?php if ($type === 'area'): ?>
-      <h2>Our services in <?= h($AR[$area]['name']) ?></h2>
+      <h2>How we can help in <?= h($AR[$area]["name"]) ?></h2>
       <div class="cards"><?php foreach ($SV as $k => $x) echo card("$k/$area", $x['img'], $x['name'] . ' in ' . $AR[$area]['name'], $x['card'], 'View ' . strtolower($x['name'])); ?></div>
       <h3>What it costs</h3>
       <ul class="linklist"><?php foreach ($SV as $k => $x): ?><li><a href="<?= u("costs/$k") ?>"><?= h($x['name']) ?> cost guide</a> <span><?= h($x['price']) ?></span></li><?php endforeach; ?></ul>
@@ -296,7 +296,7 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
 
 <section class="band">
   <div class="wrap band-in">
-    <div><h2>Broken down near Corby?</h2><p>One call and a truck is on its way. Day or night.</p></div>
+    <div><h2>Broken down near <?= h($area ? $AR[$area]["name"] : "Corby") ?>?</h2><p>One call and a truck is on its way. Day or night.</p></div>
     <div class="band-cta"><a class="btn btn-call" href="<?= h($tel) ?>">Call <?= h($S['phone']) ?></a><a class="btn btn-ghost" href="<?= u('contact') ?>">Send an enquiry</a></div>
   </div>
 </section>
