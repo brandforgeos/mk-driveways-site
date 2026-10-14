@@ -18,9 +18,9 @@ We are not a call centre passing your details on to whoever bids. The person who
 The whole point of the site is that you can get a real price without ringing round scrap yards. It takes four short steps on our [instant price page](/get-a-price):
 
 1. **Enter your reg and postcode.** We look up the vehicle from the registration, so we know the make, model and roughly what it weighs. The postcode tells us where it is.
-2. **Add your details.** Your name, phone number and email, so we can save your price and send it to you.
-3. **See your price on screen.** No waiting for a callback to find out what the car is worth.
-4. **Accept it, and we call you.** We ring to book a free collection at a time that suits you, then pay you by bank transfer when we collect.
+2. **See your price on screen.** Straight away, with no contact details needed and no questions about the condition of the car.
+3. **Accept it and add your details.** Your name, phone number and email, so George can call you.
+4. **George calls to book.** He rings to talk through anything missing, such as the catalytic converter or wheels, and book a free collection at a time that suits you, then pay you by bank transfer when we collect.
 
 The price stands as long as the car is complete and as described. If something is different on the day, for example the catalytic converter has been taken off, we explain why before we load and you are free to say no.
 
@@ -122,7 +122,7 @@ crumb: Services
 ---
 ## Which scrap car service do I need?
 
-Most people do not need to know. Put your reg and postcode into our [instant price page](/get-a-price), add your details and the price takes care of the rest. The pages below are here if you want to understand how we handle your kind of vehicle before you go ahead.
+Most people do not need to know. Put your reg and postcode into our [instant price page](/get-a-price) and the price takes care of the rest. The pages below are here if you want to understand how we handle your kind of vehicle before you go ahead.
 
 Whatever the service, the basics are the same. We buy any scrap car of any age, make or model. Collection is free. We pay by bank transfer when we collect, because paying cash for scrap is illegal. Every vehicle goes to a licensed Authorised Treatment Facility, which issues a Certificate of Destruction.
 
@@ -167,7 +167,7 @@ Every service is available across Corby and Kettering and the villages around th
 Ready to go? [Get your instant price](/get-a-price), or call or WhatsApp 07598 314366.
 ---
 Q: Which service should I choose when I get a price?
-A: You do not need to choose one. The instant price form asks about the car's condition and works out the right price from your answers.
+A: You do not need to choose one. The instant price works from your reg and postcode, and anything about the car's condition is talked through when George calls to book.
 
 Q: Do you buy vans as well as cars?
 A: Yes. We buy vans up to 3.5 tonnes, plus 4x4s and pickups.
@@ -387,7 +387,7 @@ crumb: Contact
 ---
 ## The quickest way to a price
 
-If you just want to know what your car is worth, our [instant price page](/get-a-price) is the fastest route. Enter your reg and postcode, add your details and your price appears on screen. Accept it and we call you to book a free collection.
+If you just want to know what your car is worth, our [instant price page](/get-a-price) is the fastest route. Enter your reg and postcode and your price appears on screen straight away. Accept it, add your details and George calls you to book a free collection.
 
 ## Other ways to reach us
 

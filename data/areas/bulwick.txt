@@ -15,7 +15,7 @@ Bulwick is a small place, and it tends to have a particular mix of vehicles wait
 
 ## How do I get a price for my car in Bulwick?
 
-The quickest way is online. Go to [get your instant price](/get-a-price), enter the registration and your Bulwick postcode, add your contact details and the price appears on screen. If you accept it, we call you to agree a collection time that suits you.
+The quickest way is online. Go to [get your instant price](/get-a-price), enter the registration and your Bulwick postcode, and the price appears on screen. If you accept it, add your contact details and we call you to agree a collection time that suits you.
 
 You can also phone or WhatsApp 07598 314366 if you would rather talk it through, for example if the car is in a barn, has no keys or the logbook has gone missing.
 
@@ -110,8 +110,8 @@ If you are not sure your car is "scrap", our [scrap or repair guide](/guides/scr
 ## How does collection work?
 
 1. Go to [get your instant price](/get-a-price) and enter the reg and your Bulwick postcode.
-2. Add your contact details and see the price on screen.
-3. Accept it and we call you to book a time that suits you.
+2. See the price on screen straight away.
+3. Accept it, add your contact details, and we call you to book a time that suits you.
 4. We arrive, check your photo ID and proof of address, and look over the car.
 5. We pay you by bank transfer and load the car.
 6. The car goes to a licensed ATF, which issues a Certificate of Destruction.

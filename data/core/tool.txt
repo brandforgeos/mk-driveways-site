@@ -2,7 +2,7 @@
 title: Get an Instant Scrap Car Price | Corby & Kettering | We Buy Scrap Cars Corby
 desc: Get an instant scrap car price online in Corby and Kettering. Enter your reg and postcode, accept your price and book free collection. Paid by bank transfer.
 h1: Get your instant scrap car price
-lead: Enter your registration and postcode below, add your details and see a price for your car on screen in under a minute.
+lead: Enter your registration and postcode below and see a price for your car on screen straight away. No sign-up needed.
 answer: We Buy Scrap Cars Corby gives an instant online scrap car price from your registration and postcode. Accept it and we call to book a free collection, then pay you by bank transfer when we collect. Prefer to talk? Call or WhatsApp 07598 314366.
 img: scrap-vw-touran-collection
 img_alt: VW Touran loaded on a white recovery truck after the owner accepted an instant online scrap price
@@ -13,19 +13,22 @@ crumb: Get a price
 The price tool at the top of this page turns a few details into a real figure for your car. Here is what happens at each stage:
 
 1. **Enter your registration and postcode.** We use the registration to look up the vehicle, including its make, model and size. The postcode tells us where it is.
-2. **Add your contact details.** Your name, phone number and email.
-3. **See your price.** The figure appears on screen, worked out from your vehicle's weight and where it is. No forms about the condition of the car.
-4. **Accept or walk away.** If you are happy, accept it. If not, there is nothing more to do.
+2. **See your price.** The figure appears on screen straight away, worked out from your vehicle's weight and where it is. No contact details and no questions about the condition of the car.
+3. **Accept or walk away.** If you are not happy, close the page. There is nothing more to do.
+4. **Add your details to accept.** If you accept, give your name, phone number and email. You can also tick a box if you want reminders about your price.
+5. **George calls you.** He books your free collection and talks through anything missing from the car, such as the catalytic converter or wheels.
 
-## Why we ask for your details first
+## See your price first, no sign-up
 
-We ask for your name, phone number and email before showing the price for three reasons. It lets us save your price, so it doesn't vanish if you close the page. It lets us send the price to you, so you have a record. And it means that if you accept, we can contact you straight away to book your collection.
+You see your price before we ask for anything else. There is no sign-up and no need to give a phone number or email just to find out what your car is worth.
+
+We only ask for your name, phone number and email if you accept the price. George uses them to call you and book the collection, and we send you a record of the price you accepted.
 
 We never sell your details. You can read exactly what we collect, why and how long we keep it in our [privacy notice](/privacy).
 
 ## What happens after you accept
 
-Once you accept, we call you to agree a collection time that suits you. Same-day collection is often possible, though we can't promise it every time. We collect from driveways, roadsides, car parks, garages, garage forecourts, farms and business premises across Corby, Kettering and the surrounding towns and villages, and further afield by arrangement.
+Once you accept, George calls you to agree a collection time that suits you. If anything is missing from the car, such as the catalytic converter or wheels, he talks it through on that call, before collection. Same-day collection is often possible, though we can't promise it every time. We collect from driveways, roadsides, car parks, garages, garage forecourts, farms and business premises across Corby, Kettering and the surrounding towns and villages, and further afield by arrangement.
 
 Collection is free. On the day, we check your ID, check the car, load it and pay you instantly by bank transfer. The car goes to a licensed Authorised Treatment Facility, which issues a Certificate of Destruction and tells the DVLA. Our guide on [how to scrap a car legally](/guides/how-to-scrap-a-car) covers each step.
 
@@ -37,7 +40,7 @@ The price stands as long as the car is complete and as described. It only change
 - The engine, gearbox or wheels are missing.
 - The car is a different vehicle or has been altered since you got the price.
 
-If anything is different, we explain why before we load and you can say no. Answering the questions accurately is the simplest way to make sure the figure holds. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains what each factor does.
+If anything is different, we explain why before we load and you can say no. Telling George about anything missing when he calls is the simplest way to make sure the figure holds. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains what each factor does.
 
 ## What to have ready
 
@@ -56,16 +59,16 @@ If you want to keep a personalised number plate, transfer or retain it with the 
 We buy [scrap cars](/scrap-car-collection), [MOT failures](/mot-failure), [non-runners](/non-runner), [damaged cars and write-offs](/damaged-cars) and [vans up to 3.5 tonnes](/scrap-van). If you would rather talk it through, call or WhatsApp 07598 314366. Otherwise, start again at the top of [this page](/get-a-price).
 ---
 Q: How does the instant scrap car price work?
-A: You enter your registration and postcode and add your contact details. We look up the vehicle and show a price on screen.
+A: You enter your registration and postcode. We look up the vehicle and show a price on screen straight away, with no sign-up.
 
-Q: Why do you need my phone number and email before showing a price?
-A: So we can save your price, send it to you and contact you to book the collection if you accept. We never sell your details.
+Q: Do I need to give my phone number and email to see a price?
+A: No. You only give your name, phone number and email if you accept, so George can call to book the collection and send you a record of the price.
 
 Q: Am I committed once I see the price?
 A: No. You are only committed if you accept it, and even then you can say no on the day if we find the car is different.
 
 Q: Can the price change when you collect?
-A: Only if the car doesn't match what you told us, for example a missing catalytic converter. We explain why before loading.
+A: Only if the car doesn't match what we agreed when George called, for example a missing catalytic converter. We explain why before loading.
 
 Q: How do I get paid?
 A: Instantly by bank transfer when we collect. Paying cash for scrap cars is illegal under the Scrap Metal Dealers Act 2013.
@@ -78,7 +81,7 @@ title: Privacy Notice | Website & Instant Price Tool | We Buy Scrap Cars Corby
 desc: Privacy notice for We Buy Scrap Cars Corby: what we collect through our website and instant price tool, why we need it, who we share it with and your rights.
 h1: Privacy notice
 lead: This notice explains what personal information we collect through our website and instant price tool, why we need it and what your rights are.
-answer: We Buy Scrap Cars Corby collects your registration, postcode and contact details to give and honour a scrap price and book your collection. We never sell your data. Contact George Mitchell at rapidrecoverycorby@gmail.com or 07598 314366 with any privacy questions.
+answer: We Buy Scrap Cars Corby uses your registration and postcode to work out a scrap price, and collects your contact details only if you accept it or use the contact form. We never sell your data. Contact George Mitchell at rapidrecoverycorby@gmail.com or 07598 314366 with any privacy questions.
 img: scrap-nissan-qashqai-collection
 img_alt: Silver Nissan Qashqai loaded on a white recovery truck during a scrap car collection
 crumb: Privacy
@@ -91,12 +94,12 @@ If you have any questions about this notice or how your information is used, con
 
 ## What information we collect
 
-When you use our [instant price tool](/get-a-price) or contact us, we may collect:
+When you use our [instant price tool](/get-a-price), we use the vehicle's registration number and the postcode where it is to work out your price. We also look up vehicle details from the registration, such as make, model and size. You don't need to give any contact details to see a price.
 
-- The vehicle's registration number.
-- The postcode where the vehicle is.
-- Vehicle details looked up from the registration, such as make, model and size.
+We only collect your name, phone number and email address if you accept a price or contact us through the contact form. In that case we may also hold:
+
 - Your name, phone number and email address.
+- The vehicle's registration number and postcode.
 - Anything you tell us about the vehicle when we speak, such as whether it is complete, has keys or has a V5C.
 - The price we offered you, and whether you accepted it.
 
@@ -106,8 +109,9 @@ When we collect a vehicle, we also record the seller's ID details, as the law re
 
 We use your information to:
 
-- **Give you a price and honour it.** We need the vehicle and location details to work out a price, and we keep a record so the price stands when we collect.
-- **Contact you about your collection.** If you accept, we use your phone number and email to arrange a time and keep you updated.
+- **Give you a price and honour it.** We use the registration and postcode to work out a price. If you accept, we keep a record so the price stands when we collect.
+- **Contact you about your collection.** If you accept, we use your phone number and email to arrange a time, send you a record of the price and keep you updated.
+- **Reply to your message.** If you use the contact form, we use your details to get back to you.
 - **Meet our legal duty.** The Scrap Metal Dealers Act 2013 requires us to record sellers' ID details at collection.
 - **Send you reminders about your price**, but only if you tick the box to say you want them.
 

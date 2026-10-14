@@ -97,8 +97,8 @@ Rockingham is a hillside village on the A6003, between Corby and the Welland val
 ## How does the collection work?
 
 1. Go to [get your instant price](/get-a-price) and enter your reg and postcode.
-2. Add your contact details and see the price on screen.
-3. Accept the price and we phone you to agree a collection time that suits you.
+2. See the price on screen.
+3. Accept the price, add your contact details, and we phone you to agree a collection time that suits you.
 4. On the day, we check your ID, look over the car and load it.
 5. We pay you instantly by bank transfer before we leave.
 
@@ -365,7 +365,7 @@ Whatever the category, every car we buy goes to a licensed Authorised Treatment 
 
 Damage changes the picture less than people think. A damaged car is still valued mainly on weight, because scrap is priced per tonne, along with the current scrap metal price. Make and model count, and so does whether the engine, gearbox, catalytic converter and wheels are still in place.
 
-See our [damaged car cost guide](/costs/damaged-cars) for how we work out figures, or go straight to [get your instant price](/get-a-price). Describe the damage honestly when you enter your details. The price stands as long as the car is complete and as described, and if anything differs on the day we explain before loading.
+See our [damaged car cost guide](/costs/damaged-cars) for how we work out figures, or go straight to [get your instant price](/get-a-price). Describe the damage honestly when we call to book. The price stands as long as the car is complete and as described, and if anything differs on the day we explain before loading.
 
 ## Flood damaged cars
 
@@ -422,7 +422,7 @@ img_alt: Old white panel van loaded on our recovery truck for scrap collection i
 ---
 ## Scrap my van in Rockingham, priced in minutes
 
-If you need to scrap your van in Rockingham, you can get a price without anyone coming out to look first. Enter the registration and postcode, add your details and see the figure on screen. Accept it and we will call to book a free collection.
+If you need to scrap your van in Rockingham, you can get a price without anyone coming out to look first. Enter the registration and postcode and see the figure on screen. Accept it, add your details and we will call to book a free collection.
 
 Rockingham is a rural village surrounded by farmland, with the Welland valley below and Corby close by. Vans here are often working vehicles for trades, farms and small businesses, or a pickup that has done years of hard work. When the repairs stop making sense, we take it off your hands.
 

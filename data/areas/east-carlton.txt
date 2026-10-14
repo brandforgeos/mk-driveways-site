@@ -24,9 +24,9 @@ Being so close to Corby, we hear from East Carlton households about the same kin
 We built the process around an instant online price. Here is how it works:
 
 1. Enter your registration and postcode on our [get a price page](/get-a-price).
-2. Add your contact details.
-3. See your price on screen.
-4. Accept it, and we call you to arrange collection.
+2. See your price on screen.
+3. Accept it and add your contact details.
+4. We call you to arrange collection.
 
 Prefer to talk? Ring or WhatsApp 07598 314366. Either way, we agree a collection time that suits you. Same-day collection is often possible, though we never promise it.
 
@@ -76,7 +76,7 @@ Q: Do you collect scrap cars from East Carlton?
 A: Yes. We collect scrap and unwanted cars, vans, 4x4s and pickups from East Carlton free of charge.
 
 Q: How do I get an instant scrap car price?
-A: Enter your registration and postcode on our online price form, add your contact details, and your price appears on screen.
+A: Enter your registration and postcode on our online price form and your price appears on screen. Contact details are only needed if you accept it.
 
 Q: How will I be paid for my scrap car?
 A: By bank transfer when we collect. Cash payments for scrap cars are illegal under the Scrap Metal Dealers Act 2013.
@@ -111,7 +111,7 @@ The ATF issues a Certificate of Destruction, normally within 7 days, and notifie
 
 ## How the instant price works
 
-Our [instant price page](/get-a-price) asks for two things: your registration and your postcode. We look up the vehicle from the registration, and the postcode tells us where it is. Add your contact details and the price appears on screen.
+Our [instant price page](/get-a-price) asks for two things: your registration and your postcode. We look up the vehicle from the registration, and the postcode tells us where it is. The price then appears on screen. If you accept it, add your contact details so we can call you.
 
 If you accept, we call to agree a time that suits you. Same-day collection is often possible, but we will never promise it before we have spoken.
 

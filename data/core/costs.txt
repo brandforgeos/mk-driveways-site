@@ -55,9 +55,9 @@ Awkward spots are rarely a problem. Our collections are carried out with our own
 Getting a figure takes a couple of minutes:
 
 1. Enter your registration and postcode on the [get a price page](/get-a-price).
-2. Add your name, phone number and email so we can save the price and contact you.
-3. See your price on screen, worked out from the vehicle's weight and where it is, and accept it if you are happy.
-4. We call you to agree a collection time that suits you.
+2. See your price on screen straight away, worked out from the vehicle's weight and where it is. No contact details needed.
+3. Accept it if you are happy, and add your name, phone number and email.
+4. George calls you to agree a collection time and talk through anything missing from the car.
 
 You are under no obligation at any point before you accept.
 
@@ -206,7 +206,7 @@ Q: How will I be paid for my MOT failure?
 A: By bank transfer when we collect. Paying cash for scrap cars is illegal under the Scrap Metal Dealers Act 2013.
 
 Q: Do I need my MOT failure certificate?
-A: No. The instant price is based on the registration, postcode and your answers about the car, not the failure sheet.
+A: No. The instant price is based on the registration and postcode, not the failure sheet.
 
 === cost-non-runner
 title: How Much Is My Non-Runner Worth? | Non-Runner Prices Corby | We Buy Scrap Cars Corby
@@ -252,7 +252,7 @@ What does reduce value is missing parts. If the engine has been taken out to try
 
 This is where our recovery background helps. Collections are carried out with our own trucks from Rapid Recovery Corby, including tilt-and-slide beavertails with winches, and a van with dollies and skates for low garages and seized wheels. Cars with flat tyres, seized brakes or locked steering can usually be loaded without trouble.
 
-When you fill in the form, tell us if the car is in a garage, behind a gate or on soft ground. That helps us bring the right equipment so the collection goes smoothly.
+When George calls to book, tell him if the car is in a garage, behind a gate or on soft ground. That helps us bring the right equipment so the collection goes smoothly.
 
 ## Cars that have sat for years
 
@@ -262,9 +262,9 @@ None of that stops us. As long as the car is still complete, its value is mainly
 
 ## Will the price change on the day?
 
-The online price stands as long as the car matches your answers. If something is different when we arrive, for example the catalytic converter has been cut off since you filled in the form, we explain why before we load. You can say no at that point and nothing is taken.
+The online price stands as long as the car matches what we agreed when George called. If something is different when we arrive, for example the catalytic converter has been cut off since that call, we explain why before we load. You can say no at that point and nothing is taken.
 
-Being upfront in the form is the best way to keep things simple. Tell us what is missing and the figure on screen will reflect it.
+Being upfront when George calls is the best way to keep things simple. Tell him what is missing and he will talk it through before collection.
 
 ## Paying you and the paperwork
 
@@ -272,9 +272,9 @@ We pay instantly by bank transfer when we collect. We don't pay cash, because th
 
 Have photo ID and proof of address ready, as we must check the seller's name and address. Hand over the V5C if you have it and keep the small yellow slip. The car goes to a licensed Authorised Treatment Facility, which issues a Certificate of Destruction and tells the DVLA.
 
-## What to tell us in the form
+## What to tell George when he calls
 
-The more accurate your answers, the more reliable your price. Useful details include:
+Once you accept your price, George calls to book the collection. The more he knows, the smoother the day goes. Useful details include:
 
 - Whether the engine, gearbox and catalytic converter are still fitted.
 - Whether you have keys and the V5C logbook.
@@ -282,7 +282,7 @@ The more accurate your answers, the more reliable your price. Useful details inc
 - Where the car is: driveway, roadside, garage, yard or car park.
 - Anything that makes access tricky, such as a narrow gateway or a low garage roof.
 
-None of these answers commits you to anything. They simply make sure the figure on screen matches the car we come to collect.
+None of this commits you to anything. It simply makes sure the price matches the car we come to collect.
 
 ## Cars left after a death or illness
 
@@ -317,7 +317,7 @@ Q: What lowers the price of a non-runner?
 A: Missing parts, especially the engine, gearbox or catalytic converter, plus a lower scrap metal market. Not running on its own rarely matters much.
 
 Q: Do I need keys for a non-runner?
-A: Keys help with steering and handling during loading. If you don't have them, say so in the form so the price and equipment are right.
+A: Keys help with steering and handling during loading. If you don't have them, tell George when he calls so the price and equipment are right.
 
 === cost-damaged-cars
 title: How Much Is My Damaged Car Worth? | Write-Off Prices Corby | We Buy Scrap Cars Corby
@@ -338,7 +338,7 @@ The things that really move a damaged car's scrap price are what has been lost o
 
 Your damaged car's value starts with its weight and the current scrap metal price per tonne. We then adjust for what is missing, whether the catalytic converter is still fitted, whether you have keys and the V5C, and the write-off category if there is one.
 
-You can see a figure straight away by entering the registration and postcode on our [instant price page](/get-a-price). Answer the questions honestly about the damage and the price will reflect your car.
+You can see a figure straight away by entering the registration and postcode on our [instant price page](/get-a-price). No contact details are needed to see it. If you accept, George calls to talk through the damage and anything missing before collection.
 
 ## Write-off categories explained
 
@@ -349,7 +349,7 @@ If an insurer has written your car off, it will be given a category. Each one sa
 - **Cat S**: structural damage. The car can be repaired and returned to the road.
 - **Cat N**: non-structural damage. The car can be repaired.
 
-If your insurer paid out and you kept the car (a buy-back), you can still scrap it with us. Tell us the category in the form so we have the full picture.
+If your insurer paid out and you kept the car (a buy-back), you can still scrap it with us. Tell George the category when he calls so we have the full picture.
 
 ## Does the category change the price?
 
@@ -374,7 +374,7 @@ Where the category tends to matter is in what has happened since. Cars that have
 
 Cars caught in floods on low roads are a common sight after heavy rain. Water can ruin the electrics, the engine and the interior, which often makes a repair uneconomic. As scrap, though, a flood damaged car still has its metal, so it is valued in much the same way as any other complete car.
 
-If the car has been sitting in water or mud, let us know in the form. It helps us plan the collection.
+If the car has been sitting in water or mud, tell George when he calls. It helps us plan the collection.
 
 ## Getting a damaged car loaded
 
@@ -471,7 +471,7 @@ Body type matters for the same reason. A Luton box body or a dropside bed adds w
 
 Please clear the van of tools, materials, racking contents and rubbish before we collect. The price is for the van, not what is inside it, and loose items can be dangerous when a vehicle is loaded on a truck.
 
-Fixed racking and ply lining can usually stay. If you are unsure about something bolted in, mention it in the form.
+Fixed racking and ply lining can usually stay. If you are unsure about something bolted in, mention it when George calls.
 
 ## Business and fleet vans
 
@@ -481,7 +481,7 @@ Whoever sells the van needs to show photo ID and proof of address, as we are req
 
 ## Non-running and damaged vans
 
-Vans that have failed an MOT, won't start or have been damaged are still priced mainly on weight. Our collections are carried out with our own recovery trucks from Rapid Recovery Corby, so a van with a seized engine or flat tyres can usually be moved. Tell us in the form if the van doesn't run so we can plan the right equipment.
+Vans that have failed an MOT, won't start or have been damaged are still priced mainly on weight. Our collections are carried out with our own recovery trucks from Rapid Recovery Corby, so a van with a seized engine or flat tyres can usually be moved. Tell George when he calls if the van doesn't run so we can plan the right equipment.
 
 ## Will the price change on the day?
 
@@ -515,7 +515,7 @@ Vans that have been parked in a yard or behind a unit for a long time can end up
 
 ## Two vehicles at once
 
-Some of our trucks carry one vehicle and tow a second, so if a business has a van and a car to clear, both can often go in a single trip. Mention it in the form or when we call, and we will plan the collection around it.
+Some of our trucks carry one vehicle and tow a second, so if a business has a van and a car to clear, both can often go in a single trip. Mention it when George calls, and we will plan the collection around it.
 
 ## Related pages
 

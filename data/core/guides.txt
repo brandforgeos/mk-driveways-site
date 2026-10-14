@@ -28,7 +28,7 @@ We get asked the same handful of questions on almost every call, so we have writ
 
 ## Where to go next
 
-If you already know you want to sell, the quickest route is our [instant price tool](/get-a-price). Enter your registration and postcode, add your details and you will see a price on screen. Collection is free, and we pay by bank transfer when we collect.
+If you already know you want to sell, the quickest route is our [instant price tool](/get-a-price). Enter your registration and postcode and you will see a price on screen straight away. If you accept, add your details and George calls to book. Collection is free, and we pay by bank transfer when we collect.
 
 For more on what we buy, see our [scrap car collection](/scrap-car-collection) service, or go straight to the pages for [MOT failures](/mot-failure), [non-runners](/non-runner), [damaged cars](/damaged-cars) and [scrap vans](/scrap-van). Our [cost guides](/costs) explain what affects the price for each type of vehicle.
 ---
@@ -39,7 +39,7 @@ Q: Is it legal to scrap a car without a logbook?
 A: Yes. You can scrap a car without a V5C if you have photo ID and proof of ownership and address. Our no-logbook guide explains how.
 
 Q: How do I get a price for my scrap car?
-A: Enter your registration and postcode on our instant price page, and add your contact details. Your price appears on screen.
+A: Enter your registration and postcode on our instant price page. Your price appears on screen straight away, with no contact details needed.
 
 Q: Who can legally scrap a car in the UK?
 A: Only an Authorised Treatment Facility (ATF). We take every car we buy to a licensed ATF, which issues a Certificate of Destruction.
@@ -63,9 +63,9 @@ Doing it properly is not complicated. It mostly comes down to choosing the right
 
 ## How to scrap a car, step by step
 
-1. **Get a price.** Enter your registration and postcode on our [instant price page](/get-a-price). We look up the vehicle, ask a few short questions and show you a price on screen.
-2. **Accept the price.** If you are happy, accept it. There is no obligation before that point.
-3. **Agree a collection time.** We call you to book a time that suits you. Same-day collection is often possible, but it depends on the day.
+1. **Get a price.** Enter your registration and postcode on our [instant price page](/get-a-price). We look up the vehicle and show you a price on screen straight away.
+2. **Accept the price.** If you are happy, accept it and add your name, phone number and email. There is no obligation before that point.
+3. **Agree a collection time.** George calls you to book a time that suits you. Same-day collection is often possible, but it depends on the day.
 4. **Decide about your number plate.** If the car has a personalised plate you want to keep, transfer or retain it with the DVLA now. Once the car is scrapped, the plate is lost.
 5. **Clear out the car.** Check the glovebox, door pockets, boot and under the spare wheel. Take dashcams, sat navs and parking permits, and cancel any toll or parking accounts linked to the registration.
 6. **Get your documents ready.** Have photo ID (driving licence or passport), proof of address and the V5C logbook if you have it.
@@ -292,8 +292,8 @@ Proof of ownership is anything that reasonably connects you to the vehicle. Depe
 
 ## How the process works without a logbook
 
-1. **Get your instant price.** Enter your registration and postcode on our [get a price page](/get-a-price), add your details and answer the short questions. Tell us you don't have the V5C.
-2. **Accept and book.** If you are happy with the price, accept it and we will call to agree a collection time.
+1. **Get your instant price.** Enter your registration and postcode on our [get a price page](/get-a-price) and your price appears on screen.
+2. **Accept and book.** If you are happy with the price, accept it and add your details. George calls to agree a collection time. Tell him then that you don't have the V5C.
 3. **Gather your documents.** Have your photo ID, proof of address and proof of ownership ready for collection day.
 4. **Hand the car over.** We check your documents, load the car and pay you by bank transfer.
 5. **The car goes to an ATF.** The Authorised Treatment Facility issues a Certificate of Destruction and tells the DVLA.
@@ -302,7 +302,7 @@ Proof of ownership is anything that reasonably connects you to the vehicle. Depe
 
 The V5C is one of the factors that can affect a scrap price, because it keeps the paperwork simple. The bigger factors are still the car's weight, the scrap metal market and whether the car is complete. Our [scrap car cost guide](/costs/scrap-car-collection) and our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explain how these fit together.
 
-The important thing is to tell us in the form that the logbook is missing. That way the price on screen reflects your situation, and there are no surprises on the day.
+The important thing is to tell George the logbook is missing when he calls to book. That way everything is agreed before collection, and there are no surprises on the day.
 
 ## Selling a relative's car without the logbook
 
@@ -348,7 +348,7 @@ Q: Will I still get a Certificate of Destruction without a V5C?
 A: Yes. The Authorised Treatment Facility issues a Certificate of Destruction and tells the DVLA once the car is scrapped.
 
 Q: Does having no V5C reduce the price?
-A: It can make a difference, but weight, the scrap market and completeness matter more. Tell us in the form so the price is accurate.
+A: It can make a difference, but weight, the scrap market and completeness matter more. Tell George when he calls so everything is agreed before collection.
 
 Q: Can I scrap a family member's car without the logbook?
 A: Usually, yes, with your own ID, proof of address and evidence that you are entitled to sell it. Call us to check what you need.
@@ -499,7 +499,7 @@ Make and model matter mainly because they tell us the car's weight and construct
 
 A complete car has its engine, gearbox, wheels, panels and catalytic converter. Each of those adds weight or value. When parts are missing, there is less to recycle, so the price drops.
 
-This is the second most common reason for a lower figure, after a car simply being light. If parts have been removed, say so in the form, and the price on screen will reflect it.
+This is the second most common reason for a lower figure, after a car simply being light. If parts have been removed, tell George when he calls to book, and he will talk it through before collection.
 
 ## The catalytic converter
 
@@ -547,7 +547,7 @@ The same logic applies to vans, 4x4s and pickups, but they are usually heavier t
 
 ## How our instant price uses these factors
 
-When you enter your registration, we look up the vehicle's details, including its make, model and size. Your postcode tells us where it is. Your answers about keys, the V5C and missing parts fill in the rest. Together, those let us show a price for your actual car rather than a rough band.
+When you enter your registration, we look up the vehicle's details, including its make, model and size. Your postcode tells us where it is. Together, those let us show a price for your actual car rather than a rough band. Anything about keys, the V5C or missing parts is talked through when George calls to book, before collection.
 
 ## Why the price can change on the day
 

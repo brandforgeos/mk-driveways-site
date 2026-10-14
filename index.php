@@ -220,10 +220,8 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $f = fn($k, $n = 200) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
   if ($f('website') !== '') jout(['ok' => false]);
   $reg = clean_reg($f('reg')); $pc = clean_pc($f('postcode'));
-  $name = $f('name', 100); $phone = $f('phone', 40); $email = $f('email', 120);
   if (strlen($reg) < 2 || strlen($pc) < 5) jout(['ok' => false, 'msg' => 'Please check the registration and postcode.']);
-  if ($name === '' || !preg_match('/\d{6,}/', preg_replace('/\D/', '', $phone)) || !filter_var($email, FILTER_VALIDATE_EMAIL)) jout(['ok' => false, 'msg' => 'Please add your name, a phone number and a valid email.']);
-  if (!rate_ok('quote', 15)) jout(['ok' => false, 'msg' => 'Too many prices requested. Please call us on ' . $S['phone'] . '.']);
+  if (!rate_ok('quote', 20)) jout(['ok' => false, 'msg' => 'Too many prices requested. Please call us on ' . $S['phone'] . '.']);
 
   $v = is_file(STORE . "/cache/veh-$reg.json") ? json_decode(file_get_contents(STORE . "/cache/veh-$reg.json"), true) : null;
   if ($v && !weight_cached($v) && !empty($CFG['anthropic_key'])) weight_lookup($v, $CFG);   // background lookup didn't finish: try once more now
@@ -242,30 +240,34 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $price = (int)(round(max($PR['min_price'], min($PR['max_price'], $price)) / 5) * 5);
 
   $ref = 'SC' . gmdate('ymd') . strtoupper(bin2hex(random_bytes(2)));
-  $lead = ['ref' => $ref, 'status' => $manual ? 'call-back' : 'quoted', 'received' => gmdate('c'), 'demo' => $DEMO,
+  $lead = ['ref' => $ref, 'status' => $manual ? 'needs-price' : 'priced', 'received' => gmdate('c'), 'demo' => $DEMO,
     'reg' => $reg, 'postcode' => $loc['pc'] ?? $pc, 'town' => $loc['town'] ?? '', 'miles' => $dist,
     'vehicle' => $v, 'weight_kg' => $kg, 'weight_source' => $weightSrc,
     'price' => $manual ? null : $price, 'valid_until' => gmdate('Y-m-d', time() + 86400 * $PR['valid_days']), 'rate_per_tonne' => $PR['rate_per_tonne'],
-    'name' => $name, 'phone' => $phone, 'email' => $email, 'reminders_ok' => $f('consent', 3) === 'yes', 'page' => $f('page')];
+    'page' => $f('page')];                                         // no contact details yet: they're only asked for when the customer accepts
   @file_put_contents(store_path('leads') . "/$ref.json", json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-  if (!PREVIEW) {
-    $host = parse_url(SITE_URL, PHP_URL_HOST);
-    $veh = $v ? trim("{$v['year']} {$v['make']} {$v['model']}") : 'Not found from reg';
-    $body = ($manual ? "Price request needing a call-back" : "New instant price given: £$price") . "\n\nRef: $ref\nName: $name\nPhone: $phone\nEmail: $email\nReg: $reg\nVehicle: $veh\nPostcode: " . ($loc['pc'] ?? $pc) . ($dist !== null ? " ($dist miles)" : '') . "\nWeight: $kg kg ($weightSrc)\nReminders OK: " . ($lead['reminders_ok'] ? 'yes' : 'no') . "\n";
-    @mail($S['email'], '=?UTF-8?B?' . base64_encode(($manual ? 'Call-back' : "Price £$price") . " - $reg - $name") . '?=', $body, "From: We Buy Scrap Cars Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8", "-fwebsite@$host");
-  }
   jout(['ok' => true, 'ref' => $ref, 'manual' => $manual, 'price' => $manual ? null : $price, 'valid_until' => date('j F Y', strtotime($lead['valid_until'])), 'lines' => $DEMO ? $lines : [], 'outside' => $dist !== null && $dist > $PR['max_miles']]);
 }
 if ($r === 'api/accept' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $ref = preg_replace('/[^A-Z0-9]/', '', strtoupper((string)($_POST['ref'] ?? '')));
   $file = STORE . "/leads/$ref.json";
   if ($ref === '' || !is_file($file)) jout(['ok' => false]);
+  $f = fn($k, $n = 200) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
+  if ($f('website') !== '') jout(['ok' => false]);
+  $name = $f('name', 100); $phone = $f('phone', 40); $email = $f('email', 120);
+  if ($name === '' || strlen(preg_replace('/\D/', '', $phone)) < 10 || !filter_var($email, FILTER_VALIDATE_EMAIL)) jout(['ok' => false, 'msg' => 'Please add your name, a mobile number and your email so George can book your collection.']);
   $lead = json_decode(file_get_contents($file), true);
-  $lead['status'] = 'accepted'; $lead['accepted'] = gmdate('c'); $lead['collection_note'] = mb_substr(trim((string)($_POST['note'] ?? '')), 0, 500);
+  $lead['status'] = $lead['price'] === null ? 'call-back' : 'accepted'; $lead['accepted'] = gmdate('c');
+  $lead += ['name' => '', 'phone' => '', 'email' => ''];
+  $lead['name'] = $name; $lead['phone'] = $phone; $lead['email'] = $email; $lead['reminders_ok'] = $f('consent', 3) === 'yes';
+  $lead['collection_note'] = $f('note', 500);
   file_put_contents($file, json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
   if (!PREVIEW) {
     $host = parse_url(SITE_URL, PHP_URL_HOST);
-    @mail($S['email'], '=?UTF-8?B?' . base64_encode("ACCEPTED £{$lead['price']} - {$lead['reg']} - {$lead['name']}") . '?=', "Price accepted. Call to book the collection.\n\nRef: $ref\nName: {$lead['name']}\nPhone: {$lead['phone']}\nEmail: {$lead['email']}\nReg: {$lead['reg']}\nPostcode: {$lead['postcode']}\nPrice: £{$lead['price']}\nNotes: {$lead['collection_note']}\n", "From: We Buy Scrap Cars Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8", "-fwebsite@$host");
+    $v = $lead['vehicle']; $veh = $v ? trim("{$v['year']} {$v['make']} {$v['model']}") : 'Not found from reg';
+    $head = $lead['price'] === null ? 'Needs a price: call them back' : "ACCEPTED £{$lead['price']}: call to book the collection";
+    $body = "$head\n\nRef: $ref\nName: $name\nPhone: $phone\nEmail: $email\nReg: {$lead['reg']}\nVehicle: $veh\nPostcode: {$lead['postcode']}" . ($lead['miles'] !== null ? " ({$lead['miles']} miles)" : '') . "\nWeight used: {$lead['weight_kg']} kg ({$lead['weight_source']})\nNotes: {$lead['collection_note']}\nReminders OK: " . ($lead['reminders_ok'] ? 'yes' : 'no') . "\n";
+    @mail($S['email'], '=?UTF-8?B?' . base64_encode(($lead['price'] === null ? 'Call-back' : "ACCEPTED £{$lead['price']}") . " - {$lead['reg']} - $name") . '?=', $body, "From: We Buy Scrap Cars Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8", "-fwebsite@$host");
   }
   jout(['ok' => true]);
 }
@@ -421,7 +423,7 @@ $lic = function () use ($S): string {
       $preReg = clean_reg((string)($_GET['reg'] ?? '')); $prePc = clean_pc((string)($_GET['pc'] ?? '')); ?>
     <div class="tool" id="tool">
       <?php if ($DEMO): ?><div class="demo"><b>Demo version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live. Prices use placeholder rates, not George\'s real ones.' : 'The registration lookup is waiting on the DVSA API key, so for now every car is priced at an average weight. Prices use placeholder rates, not George\'s real ones.' ?> Nothing is sent to the customer or to George while this is a preview.</div><?php endif; ?>
-      <ol class="steps" aria-hidden="true"><li class="on" data-s="1">Your vehicle</li><li data-s="2">Your details</li><li data-s="3">Your price</li></ol>
+      <ol class="steps" aria-hidden="true"><li class="on" data-s="1">Your vehicle</li><li data-s="2">Your price</li><li data-s="3">Book collection</li></ol>
 
       <form class="step" id="s1" novalidate>
         <h2>Your vehicle</h2>
@@ -429,35 +431,35 @@ $lic = function () use ($S): string {
           <label class="fl">Registration<span class="plate"><b>GB</b><input name="reg" id="reg" value="<?= h($preReg) ?>" placeholder="ENTER REG" autocomplete="off" autocapitalize="characters" maxlength="8" required></span></label>
           <label class="fl">Postcode where the vehicle is<input class="pc" name="postcode" id="pc" value="<?= h($prePc) ?>" placeholder="e.g. NN17 1AA" autocomplete="postal-code" maxlength="9" required></label>
         </div>
-        <div id="found" hidden></div>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="err" id="e1" role="alert"></p>
-        <div class="tool-nav"><button class="btn btn-go" type="submit" id="b1">Find my vehicle</button></div>
+        <div class="tool-nav"><button class="btn btn-go" type="submit" id="b1">Get my price</button></div>
+        <p class="note">No sign-up needed to see your price.</p>
       </form>
 
-      <form class="step" id="s2" hidden novalidate>
-        <h2>Where should we send your price?</h2>
-        <p>Your price shows on the next screen. We also save it so you can accept it later, and George can call you to book the collection.</p>
+      <div class="step" id="s2" hidden>
+        <div id="found"></div>
+        <div id="pricebox"></div>
+        <div class="tool-nav" id="pricenav"><button class="btn btn-go" type="button" id="accept">Accept and book collection</button><button class="btn btn-ghost-d" type="button" id="again">Price another vehicle</button></div>
+        <p class="note" id="pricenote">Accepting doesn't commit you yet. George will call to agree a collection time.</p>
+      </div>
+
+      <form class="step" id="s3" hidden novalidate>
+        <h2 id="s3h">Book your free collection</h2>
+        <p id="s3p">Add your details and George will call you to agree a collection time.</p>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="fgrid">
           <label class="fl">Your name<input name="name" autocomplete="name" required></label>
           <label class="fl">Mobile number<input name="phone" type="tel" autocomplete="tel" required></label>
           <label class="fl full">Email<input name="email" type="email" autocomplete="email" required></label>
+          <label class="fl full">Anything we should know? (optional)<input name="note" placeholder="e.g. it's on the drive, flat tyre, best times to call"></label>
           <label class="tick full"><input type="checkbox" name="consent" value="yes"> Send me a reminder about my price before it runs out. You can stop these at any time.</label>
         </div>
-        <p class="note">We use your details to give you a price and arrange your collection. We never sell them. See our <a href="<?= u('privacy') ?>">privacy notice</a>.</p>
-        <p class="err" id="e2" role="alert"></p>
-        <div class="tool-nav"><button class="btn btn-ghost-d" type="button" id="back2">Back</button><button class="btn btn-go" type="submit" id="b2">Show my price</button></div>
+        <p class="note">We only use your details to arrange your collection and send you a copy of your price. We never sell them. See our <a href="<?= u('privacy') ?>">privacy notice</a>.</p>
+        <p class="err" id="e3" role="alert"></p>
+        <div class="tool-nav"><button class="btn btn-ghost-d" type="button" id="back3">Back</button><button class="btn btn-go" type="submit" id="b3">Book my collection</button></div>
       </form>
-
-      <div class="step" id="s3" hidden>
-        <div id="pricebox"></div>
-        <div id="acceptwrap">
-          <label class="fl">Anything we should know for the collection? (optional)<input id="note" placeholder="e.g. it's on the drive, flat tyre, best times to call"></label>
-          <p class="err" id="e3" role="alert"></p>
-          <div class="tool-nav"><button class="btn btn-go" type="button" id="accept">Accept this price</button><a class="btn btn-ghost-d" href="<?= h($tel) ?>">Call <?= h($S['phone']) ?></a></div>
-          <p class="note">Accepting doesn't commit you to anything yet. George will call you to agree a collection time.</p>
-        </div>
-      </div>
+      <div class="step" id="s4" hidden></div>
     </div>
     <?php endif; ?>
 
@@ -594,43 +596,45 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.class
 <script>
 (()=>{
 const API='<?= rtrim(u('api'), '/') ?>/', $=id=>document.getElementById(id), steps=[...document.querySelectorAll('.steps li')];
-const s1=$('s1'),s2=$('s2'),s3=$('s3');let ref=null,stage='find';
-const show=n=>{[s1,s2,s3].forEach((s,i)=>s.hidden=i!==n-1);steps.forEach(l=>l.classList.toggle('on',+l.dataset.s<=n));$('tool').scrollIntoView({behavior:'smooth',block:'start'})};
+const S=[$('s1'),$('s2'),$('s3'),$('s4')];let ref=null;
+const show=n=>{S.forEach((s,i)=>s.hidden=i!==n-1);steps.forEach(l=>l.classList.toggle('on',+l.dataset.s<=Math.min(n,3)));$('tool').scrollIntoView({behavior:'smooth',block:'start'})};
 const post=async(p,data)=>{const r=await fetch(API+p,{method:'POST',body:data});return r.json()};
 const busy=(btn,on,txt)=>{btn.disabled=on;btn.innerHTML=on?'<span class="spin"></span> '+txt:txt};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-$('reg').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9 ]/g,'');if(stage!=='find'){stage='find';$('found').hidden=true;$('b1').textContent='Find my vehicle'}});
-s1.addEventListener('submit',async e=>{e.preventDefault();$('e1').textContent='';
+$('reg').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9 ]/g,'')});
+S[0].addEventListener('submit',async e=>{e.preventDefault();$('e1').textContent='';
   const reg=$('reg').value.replace(/\s/g,''),pc=$('pc').value.trim();
   if(reg.length<2){$('e1').textContent='Please enter your registration.';return}
   if(!/^[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}$/.test(pc)){$('e1').textContent='Please enter a full UK postcode, e.g. NN17 1AA.';return}
-  if(stage==='find'){busy($('b1'),true,'Looking up '+reg);
-    try{const fd=new FormData();fd.append('reg',reg);const j=await post('vehicle',fd);if(!j.ok)throw j.msg;
-      if(j.found){const veh=j.vehicle;$('found').innerHTML='<div class="found"><span class="ok">✓</span><div><strong>'+esc([veh.year,veh.make,veh.model].filter(Boolean).join(' '))+'</strong><span>'+esc([veh.engine_cc?(veh.engine_cc/1000).toFixed(1)+' litre':'',veh.fuel,veh.colour].filter(Boolean).join(' · '))+'</span></div></div>';$('found').hidden=false;
-        if(!j.weight_ready){const w=new FormData();w.append('reg',reg);fetch(API+'weight',{method:'POST',body:w,keepalive:true}).catch(()=>{})}}
-      else{$('found').innerHTML='<p class="note">'+(j.live?'We couldn\'t find that registration automatically. Carry on and George will call you with a price.':'Demo: the registration lookup isn\'t switched on yet, so this demo prices an average-sized car.')+'</p>';$('found').hidden=false}
-      stage='confirm';busy($('b1'),false,'Next: your details')}
-    catch(m){busy($('b1'),false,'Find my vehicle');$('e1').textContent=typeof m==='string'?m:'Something went wrong. Please try again or call us.'}
-    return}
-  show(2)});
-$('back2').addEventListener('click',()=>show(1));
-s2.addEventListener('submit',async e=>{e.preventDefault();$('e2').textContent='';
-  const fd=new FormData(s2);if(!fd.get('name').trim()||fd.get('phone').replace(/\D/g,'').length<10||!/^\S+@\S+\.\S+$/.test(fd.get('email'))){$('e2').textContent='Please add your name, a mobile number and your email so we can send your price.';return}
-  for(const[k,v]of new FormData(s1))fd.append(k,v);fd.set('reg',$('reg').value.replace(/\s/g,''));fd.append('page',location.pathname);
-  busy($('b2'),true,'Working out your price');
-  try{const j=await post('quote',fd);if(!j.ok)throw j.msg;ref=j.ref;
+  busy($('b1'),true,'Finding your price');
+  try{const fd=new FormData();fd.append('reg',reg);const j=await post('vehicle',fd);if(!j.ok)throw j.msg;
+    let f='';
+    if(j.found){const v=j.vehicle;f='<div class="found"><span class="ok">✓</span><div><strong>'+esc([v.year,v.make,v.model].filter(Boolean).join(' '))+'</strong><span>'+esc([v.engine_cc?(v.engine_cc/1000).toFixed(1)+' litre':'',v.fuel,v.colour].filter(Boolean).join(' · '))+'</span></div></div>'}
+    else if(!j.live)f='<p class="note">Demo: the registration lookup isn\'t switched on yet, so this demo prices an average-sized car.</p>';
+    $('found').innerHTML=f;
+    const q=new FormData(S[0]);q.set('reg',reg);q.append('page',location.pathname);
+    const p=await post('quote',q);if(!p.ok)throw p.msg;ref=p.ref;
     let h;
-    if(j.manual){h='<div class="priceout"><small>Thanks, we have your details</small><p style="font-size:20px;color:#fff;margin-top:8px">'+(j.outside?'Your vehicle is outside our instant-price area.':'We need to check a couple of things for this one.')+' George will call you with a price shortly.</p><p>Reference '+esc(ref)+'</p></div>';$('acceptwrap').hidden=true}
-    else{h='<div class="priceout"><small>Your instant price</small><div class="big">£'+j.price+'</div><p>Free collection · Paid by bank transfer when we collect</p><p>Price held until '+esc(j.valid_until)+' · Ref '+esc(ref)+'</p></div>';
-      if(j.lines&&j.lines.length)h+='<div class="workings"><b>How this was worked out (demo only, hidden on the live site)</b><table>'+j.lines.map(l=>'<tr><td>'+esc(l[0])+'</td><td>'+esc(l[1])+'</td></tr>').join('')+'</table></div>';
-      h+='<p class="note">Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, we\'ll talk it through with you before we collect.</p>'}
-    $('pricebox').innerHTML=h;show(3)}
-  catch(m){$('e2').textContent=typeof m==='string'?m:'Something went wrong. Please try again or call us.'}
-  busy($('b2'),false,'Show my price')});
-$('accept').addEventListener('click',async()=>{const fd=new FormData();fd.append('ref',ref);fd.append('note',$('note').value);busy($('accept'),true,'Accepting');
-  try{const j=await post('accept',fd);if(!j.ok)throw 0;$('acceptwrap').innerHTML='<div class="done"><div class="ok">✓</div><h2>Price accepted</h2><p>Thanks. George will call you shortly to book your free collection. Have your photo ID, proof of address and V5C ready for the day.</p><p class="note">Reference '+esc(ref)+'</p></div>'}
-  catch(_){busy($('accept'),false,'Accept this price');$('e3').textContent='That didn\'t go through. Please call us on <?= h($S['phone']) ?>.'}});
-if($('reg').value&&$('pc').value)s1.requestSubmit();
+    if(p.manual){h='<div class="priceout"><small>We need a quick check</small><p style="font-size:20px;color:#fff;margin-top:8px">'+(p.outside?'Your vehicle is outside our instant-price area.':'We couldn\'t price this one automatically.')+' Leave your number and George will call you with a price.</p></div>';
+      $('accept').textContent='Get a price by phone';$('pricenote').hidden=true;$('s3h').textContent='Get a price by phone';$('s3p').textContent='Add your details and George will call you with a price.'}
+    else{h='<div class="priceout"><small>Your instant price</small><div class="big">£'+p.price+'</div><p>Free collection · Paid by bank transfer when we collect</p><p>Price held until '+esc(p.valid_until)+' · Ref '+esc(ref)+'</p></div>';
+      if(p.lines&&p.lines.length)h+='<div class="workings"><b>How this was worked out (demo only, hidden on the live site)</b><table>'+p.lines.map(l=>'<tr><td>'+esc(l[0])+'</td><td>'+esc(l[1])+'</td></tr>').join('')+'</table></div>';
+      h+='<p class="note">Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, we\'ll talk it through with you before we collect.</p>';
+      $('accept').textContent='Accept and book collection';$('pricenote').hidden=false;$('s3h').textContent='Book your free collection';$('s3p').textContent='Add your details and George will call you to agree a collection time.'}
+    $('pricebox').innerHTML=h;show(2)}
+  catch(m){$('e1').textContent=typeof m==='string'?m:'Something went wrong. Please try again or call us.'}
+  busy($('b1'),false,'Get my price')});
+$('accept').addEventListener('click',()=>show(3));
+$('again').addEventListener('click',()=>{$('reg').value='';show(1);$('reg').focus()});
+$('back3').addEventListener('click',()=>show(2));
+S[2].addEventListener('submit',async e=>{e.preventDefault();$('e3').textContent='';
+  const fd=new FormData(S[2]);if(!fd.get('name').trim()||fd.get('phone').replace(/\D/g,'').length<10||!/^\S+@\S+\.\S+$/.test(fd.get('email'))){$('e3').textContent='Please add your name, a mobile number and your email so George can book your collection.';return}
+  fd.append('ref',ref);busy($('b3'),true,'Booking');
+  try{const j=await post('accept',fd);if(!j.ok)throw j.msg;
+    S[3].innerHTML='<div class="done"><div class="ok">✓</div><h2>'+($('accept').textContent.startsWith('Get')?'Thanks, we\'ll call you':'Price accepted')+'</h2><p>George will call you shortly'+($('accept').textContent.startsWith('Get')?' with a price.':' to book your free collection. Have your photo ID, proof of address and V5C ready for the day.')+'</p><p class="note">Reference '+esc(ref)+'</p></div>';show(4)}
+  catch(m){$('e3').textContent=typeof m==='string'?m:'That didn\'t go through. Please call us on <?= h($S['phone']) ?>.'}
+  busy($('b3'),false,'Book my collection')});
+if($('reg').value&&$('pc').value)S[0].requestSubmit();
 })();
 </script>
 <?php endif; ?>
