@@ -122,11 +122,15 @@ if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $lead = ['received' => gmdate('c'), 'page' => $f('page', 200), 'name' => $f('name', 100), 'phone' => $f('phone', 40), 'service' => $f('service', 60), 'location' => $f('location', 300), 'vehicle' => $f('vehicle', 120), 'message' => $f('message', 2000)];
   if (!is_dir(LEADS_DIR)) @mkdir(LEADS_DIR, 0700, true);
   $ok = @file_put_contents(LEADS_DIR . '/' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.json', json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) !== false;
-  if (!PREVIEW) {
-    $body = ''; foreach ($lead as $k => $v) $body .= ucfirst($k) . ": $v\n";
-    @mail($S['email'], 'Website enquiry: ' . ($lead['service'] ?: 'Recovery'), $body, "From: website@" . parse_url(SITE_URL, PHP_URL_HOST) . "\r\nReply-To: " . $S['email']);
-  }
-  echo json_encode(['ok' => $ok]); exit;
+  $clean = fn($v) => str_replace(["\r", "\n"], ' ', $v);
+  $labels = ['name' => 'Name', 'phone' => 'Phone', 'service' => 'Service', 'location' => 'Location', 'vehicle' => 'Vehicle', 'message' => 'Message', 'page' => 'Sent from page', 'received' => 'Received (UTC)'];
+  $body = "New enquiry from the Rapid Recovery Corby website.\n\nCall them back on: " . $lead['phone'] . "\n\n";
+  foreach ($labels as $k => $l) if ($lead[$k] !== '') $body .= "$l: " . $lead[$k] . "\n";
+  $host = parse_url(SITE_URL, PHP_URL_HOST);
+  $subject = 'Website enquiry: ' . $clean($lead['service'] ?: 'Recovery') . ' - ' . $clean($lead['name']);
+  $headers = "From: Rapid Recovery Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8\r\nX-Mailer: PHP";
+  $sent = @mail($S['email'], '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers, "-fwebsite@$host");
+  echo json_encode(['ok' => $ok || $sent]); exit;
 }
 
 /* ---------- resolve page ---------- */
