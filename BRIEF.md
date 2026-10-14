@@ -98,3 +98,16 @@ Every page should link to: its cost guide (if a service page), at least one rele
 - AI search: clear, factual, self-contained statements; question-style H2s are good ("How much does car recovery cost in Rothwell?"); short paragraphs (2-4 sentences); lists and one small table where useful; FAQs phrased exactly as people ask, each answer starting with a direct answer.
 - Tone: plain UK English, confident, friendly, local. Short sentences. No hype words ("unparalleled", "seamless", "top-notch", "look no further"), no exclamation marks, no emoji, avoid em dashes (use commas or full stops). Speak as "we".
 - Accuracy over everything: if a fact isn't in this brief, don't state it.
+
+## Additional areas (batch 2) — notes you may use; same rules (no distances, no invented roads/landmarks)
+- wilbarston — Wilbarston — village west of Corby on the way to Market Harborough; stone village on a ridge above the Welland valley, close to the county border with Leicestershire. Neighbours: Stoke Albany, East Carlton, Cottingham.
+- stoke-albany — Stoke Albany — small village next to Wilbarston, further west towards Market Harborough, right on the Northamptonshire / Leicestershire border. Rural lanes, farms.
+- east-carlton — East Carlton — small village west of Corby, home of East Carlton Countryside Park (visitors, car park, walkers). Between Corby, Cottingham and Wilbarston.
+- rushton — Rushton — village between Corby and Desborough/Rothwell, by the River Ise; Rushton Triangular Lodge (historic building, visitors); narrow lanes and a railway line nearby.
+- great-easton — Great Easton — Leicestershire village across the Welland valley from Rockingham and Cottingham, close to Caldecott and Eyebrook Reservoir (visitors, anglers, narrow lanes, flood-prone low roads after heavy rain).
+- caldecott — Caldecott — Rutland village at the bottom of Rockingham Hill, where the A6003 crosses the Welland valley; River Welland; near Eyebrook Reservoir and Great Easton.
+- harringworth — Harringworth — village in the Welland valley north-east of Gretton, known for the long brick Harringworth (Welland) railway viaduct; narrow lanes, a river crossing, Rutland border.
+- bulwick — Bulwick — small village beside the A43 north-east of Corby, between Deenethorpe and the road on towards Stamford; fast stretch of the A43, farm traffic.
+- grafton-underwood — Grafton Underwood — small village between Geddington and Brigstock; former wartime airfield with a memorial (visitors); quiet country lanes.
+- lowick — Lowick — small village near Thrapston (the A14 is close by at Thrapston); rural lanes, farms, near Drayton House estate.
+- barton-seagrave — Barton Seagrave — residential village on Kettering's south-east edge, right by the A14 and the A6; commuters, estates, Wicksteed Park nearby (visitors, families).
