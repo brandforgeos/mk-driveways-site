@@ -13,7 +13,7 @@ if (ON_BUILDBRO) {
   define('STORE', getenv('SC_STORE') ?: '/home1/sufktgte/buildbro-intake/scrap-cars');                 // leads, caches (outside public_html)
   define('CONFIG_FILE', getenv('SC_CONFIG') ?: '/home1/sufktgte/buildbro-intake/scrap-cars-config.php'); // API keys
 } else {
-  $home = dirname(rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? __DIR__), '/'));                          // e.g. /home2/khekowte
+  $home = preg_match('#^(/home\d*/[^/]+)/#', __DIR__, $m) ? $m[1] : dirname(__DIR__, 2);                  // account home, e.g. /home2/khekowte (never inside public_html)
   define('BASE', '/');
   define('SITE_URL', 'https://' . preg_replace('/[^a-z0-9.\-]/i', '', (string)($_SERVER['HTTP_HOST'] ?? 'localhost')));
   define('STORE', "$home/scrap-cars-data");
