@@ -2,5 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/sufktgte/public_html/website_42f1e8ce/clients/scrap-cars/site/
+    - if [ "$(whoami)" = "khekowte" ]; then export DEPLOYPATH=/home2/khekowte/public_html/; fi
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R img data index.php style.css .htaccess $DEPLOYPATH

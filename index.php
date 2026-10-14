@@ -4,11 +4,21 @@
    Secrets (API keys) live OUTSIDE the web root in CONFIG_FILE, never in this repo. */
 declare(strict_types=1);
 
-const PREVIEW = true;                                     // noindex + no client emails while on the Build Bro preview
-const BASE = '/clients/scrap-cars/site/';                 // set to '/' on the live domain
-const SITE_URL = 'https://buildbro.app/clients/scrap-cars/site'; // no trailing slash
-define('STORE', getenv('SC_STORE') ?: '/home1/sufktgte/buildbro-intake/scrap-cars'); // leads, caches, logs (outside public_html)
-define('CONFIG_FILE', getenv('SC_CONFIG') ?: '/home1/sufktgte/buildbro-intake/scrap-cars-config.php'); // returns an array of keys
+/* Two homes for the same code: the Build Bro preview, and George's own hosting. */
+const PREVIEW = true;                                     // noindex + no client emails until the real domain is live
+define('ON_BUILDBRO', str_contains(__DIR__, '/clients/scrap-cars/'));
+if (ON_BUILDBRO) {
+  define('BASE', '/clients/scrap-cars/site/');
+  define('SITE_URL', 'https://buildbro.app/clients/scrap-cars/site');
+  define('STORE', getenv('SC_STORE') ?: '/home1/sufktgte/buildbro-intake/scrap-cars');                 // leads, caches (outside public_html)
+  define('CONFIG_FILE', getenv('SC_CONFIG') ?: '/home1/sufktgte/buildbro-intake/scrap-cars-config.php'); // API keys
+} else {
+  $home = dirname(rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? __DIR__), '/'));                          // e.g. /home2/khekowte
+  define('BASE', '/');
+  define('SITE_URL', 'https://' . preg_replace('/[^a-z0-9.\-]/i', '', (string)($_SERVER['HTTP_HOST'] ?? 'localhost')));
+  define('STORE', "$home/scrap-cars-data");
+  define('CONFIG_FILE', "$home/scrap-cars-config.php");
+}
 const UPDATED = '2026-10-14';
 
 $D = __DIR__ . '/data';
