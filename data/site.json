@@ -1,0 +1,40 @@
+{
+  "name": "Rapid Recovery Corby",
+  "short": "Rapid Recovery",
+  "owner": "George Mitchell",
+  "phone": "07598 314366",
+  "phone_intl": "+447598314366",
+  "whatsapp": "447598314366",
+  "email": "rapidrecoverycorby@gmail.com",
+  "town": "Corby",
+  "county": "Northamptonshire",
+  "postcode_area": "NN17",
+  "geo": [52.4888, -0.7010],
+  "hours": "24 hours a day, 7 days a week",
+  "accreditations": ["PAS 43", "ISO 9001"],
+  "facebook": "https://www.facebook.com/search/top?q=Rapid%20Recovery%20Corby",
+  "instagram": "https://www.instagram.com/explore/search/keyword/?q=rapid%20recovery%20corby",
+  "services": [
+    {"slug": "breakdown-recovery", "name": "Breakdown Recovery", "card": "24/7 recovery for cars, vans, 4x4s, motorbikes and campervans, from the roadside, motorway or your driveway.", "img": "breakdown-recovery-audi-a4-town-street", "price": "From £60 minimum charge"},
+    {"slug": "car-transport", "name": "Car Transport", "card": "Auction, dealer and private-sale collections, garage runs and UK-wide vehicle moves on a beavertail transporter.", "img": "two-car-transport-jaguar-and-golf", "price": "Priced per job"},
+    {"slug": "jump-start", "name": "Jump Starts and Batteries", "card": "Flat battery, flat tyre or won't start? We jump start, supply and fit new batteries, and change wheels on the spot.", "img": "night-breakdown-recovery-honda-civic", "price": "From £40 minimum charge"},
+    {"slug": "scrap-car-collection", "name": "Scrap Car Collection", "card": "We buy scrap and unwanted cars and vans. Free collection, Certificate of Destruction and payment by bank transfer.", "img": "scrap-car-collection-citroen-picasso", "price": "We pay you"}
+  ],
+  "areas": [
+    {"slug": "corby", "name": "Corby", "img": "recovery-truck-night-callout-corby", "near": ["weldon", "priors-hall-park", "great-oakley", "stanion"]},
+    {"slug": "kettering", "name": "Kettering", "img": "accident-recovery-astra-with-fiesta-on-dolly", "near": ["geddington", "rothwell", "great-oakley", "desborough"]},
+    {"slug": "weldon", "name": "Weldon", "img": "vehicle-recovery-nissan-qashqai", "near": ["corby", "priors-hall-park", "deenethorpe", "stanion"]},
+    {"slug": "priors-hall-park", "name": "Priors Hall Park", "img": "two-car-transport-jaguar-and-golf", "near": ["weldon", "corby", "gretton", "deenethorpe"]},
+    {"slug": "great-oakley", "name": "Great Oakley", "img": "breakdown-recovery-ford-focus-beavertail", "near": ["corby", "geddington", "stanion", "kettering"]},
+    {"slug": "stanion", "name": "Stanion", "img": "early-morning-recovery-renault-clio", "near": ["corby", "brigstock", "great-oakley", "weldon"]},
+    {"slug": "brigstock", "name": "Brigstock", "img": "non-runner-collection-seat-altea-space-saver", "near": ["stanion", "weldon", "geddington", "corby"]},
+    {"slug": "gretton", "name": "Gretton", "img": "breakdown-recovery-jaguar-x-type", "near": ["corby", "rockingham", "priors-hall-park", "cottingham"]},
+    {"slug": "cottingham", "name": "Cottingham", "img": "breakdown-recovery-mg3-hatchback", "near": ["middleton", "rockingham", "corby", "gretton"]},
+    {"slug": "middleton", "name": "Middleton", "img": "breakdown-recovery-vw-passat", "near": ["cottingham", "rockingham", "corby", "desborough"]},
+    {"slug": "rockingham", "name": "Rockingham", "img": "car-transport-volvo-v40-rally-car", "near": ["cottingham", "gretton", "corby", "middleton"]},
+    {"slug": "geddington", "name": "Geddington", "img": "accident-recovery-damaged-vauxhall-astra", "near": ["kettering", "great-oakley", "brigstock", "corby"]},
+    {"slug": "rothwell", "name": "Rothwell", "img": "4x4-recovery-nissan-x-trail", "near": ["desborough", "kettering", "geddington", "corby"]},
+    {"slug": "desborough", "name": "Desborough", "img": "vehicle-recovery-vw-touran-loaded", "near": ["rothwell", "kettering", "middleton", "corby"]},
+    {"slug": "deenethorpe", "name": "Deenethorpe", "img": "scrap-car-collection-small-hatchback", "near": ["weldon", "priors-hall-park", "brigstock", "corby"]}
+  ]
+}
