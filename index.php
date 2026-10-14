@@ -41,6 +41,7 @@ $NOTIFY = filter_var($SET['notify_email'] ?? '', FILTER_VALIDATE_EMAIL) ?: $S['e
 $LIVE_LOOKUP = !empty($CFG['mot_api_key']) && !empty($CFG['mot_client_id']);
 $DEMO = !$LIVE_LOOKUP;
 if (PREVIEW) header('X-Robots-Tag: noindex, nofollow');
+$_GET = array_filter($_GET, 'is_string'); $_POST = array_filter($_POST, 'is_string');   // no array params (reg[]=x): every field here is a plain string
 
 function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 function u(string $p = ''): string { $p = trim($p, '/'); return BASE . ($p === '' ? '' : "$p/"); }
@@ -281,7 +282,7 @@ if (PHP_SAPI === 'cli') {
 if ($_SERVER['REQUEST_METHOD'] === 'GET') daily_jobs($S, $REM);
 
 /* ---------- routing ---------- */
-$r = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
+$r = trim((string)(parse_url((string)($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: ''), '/');   // parse_url gives false on malformed URIs such as //:
 $b = trim(BASE, '/'); if ($b !== '' && str_starts_with($r, $b)) $r = trim(substr($r, strlen($b)), '/');
 $seg = $r === '' ? [] : explode('/', $r);
 
@@ -387,10 +388,12 @@ if ($r === 'api/save' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 if ($r === 'api/accept' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $lead = load_lead((string)($_POST['ref'] ?? ''));
-  if (!$lead) jout(['ok' => false]);
+  if (!$lead || in_array($lead['status'], ['booked', 'collected', 'lost'], true)) jout(['ok' => false]);   // George has already dealt with it: don't reset the status
   $ref = $lead['ref'];
   $f = fn($k, $n = 200) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
   if ($f('website') !== '') jout(['ok' => false]);
+  if ($lead['price'] !== null && $lead['valid_until'] < date('Y-m-d')) jout(['ok' => false, 'msg' => 'That price has run out. Please get an up to date price, or call us on ' . $S['phone'] . '.']);
+  if (!rate_ok('accept', 10)) jout(['ok' => false, 'msg' => 'Please call us on ' . $S['phone'] . '.']);
   $name = $f('name', 100); $phone = $f('phone', 40); $email = $f('email', 120);
   if ($name === '' || strlen(preg_replace('/\D/', '', $phone)) < 10 || !filter_var($email, FILTER_VALIDATE_EMAIL)) jout(['ok' => false, 'msg' => 'Please add your name, a mobile number and your email so George can book your collection.']);
   $lead['status'] = $lead['price'] === null ? 'call-back' : 'accepted'; $lead['accepted'] = gmdate('c');
@@ -423,7 +426,7 @@ if ($seg && $seg[0] === 'admin') { require __DIR__ . '/admin.php'; exit; }
 /* contact form */
 if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $f = fn($k, $n = 500) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
-  if ($f('website') !== '' || $f('name') === '' || $f('phone') === '') jout(['ok' => false]);
+  if ($f('website') !== '' || $f('name') === '' || $f('phone') === '' || !rate_ok('enq', 10)) jout(['ok' => false]);
   $lead = ['received' => gmdate('c'), 'page' => $f('page', 200), 'name' => $f('name', 100), 'phone' => $f('phone', 40), 'vehicle' => $f('vehicle', 120), 'location' => $f('location', 300), 'message' => $f('message', 2000)];
   $ok = @file_put_contents(store_path('enquiries') . '/' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.json', json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) !== false;
   if (!PREVIEW) { $body = "New enquiry from the We Buy Scrap Cars website.\n\n"; foreach ($lead as $k => $v) if ($v !== '') $body .= ucfirst($k) . ": $v\n";
@@ -530,7 +533,7 @@ $lic = function () use ($S): string {
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= BASE ?>style.css?v=6">
 <link rel="preload" as="image" href="<?= h(img($hero)) ?>" imagesrcset="<?= h(img("$hero-sm")) ?> 800w, <?= h(img($hero)) ?> 1600w" imagesizes="100vw">
-<script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
+<script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
 </head>
 <body class="t-<?= h($type) ?>">
 <a class="skip" href="#main">Skip to content</a>
