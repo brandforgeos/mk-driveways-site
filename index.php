@@ -804,7 +804,8 @@ if(openRef){(async()=>{const fd=new FormData();fd.append('ref',openRef);try{cons
     if(j.accepted){$('pricenav').hidden=true;$('later').hidden=true;$('pricenote').textContent='You\'ve already accepted this price. George will call you to book the collection, or call him on <?= h($S['phone']) ?>.'}
     else $('later').hidden=true;
     show(2)}
-  else if(j.expired){$('reg').value=j.reg;$('pc').value=j.postcode;$('e1').textContent='That price has run out. Get an up to date price below.'}}catch(_){}})()}
+  else if(j.expired){$('reg').value=j.reg;$('pc').value=j.postcode;$('e1').textContent='That price has run out. Get an up to date price below.'}
+  else $('e1').textContent='That price is no longer open. Get a new price below, or call us on <?= h($S['phone']) ?>.'}catch(_){}})()}
 $('again').addEventListener('click',()=>{$('reg').value='';show(1);$('reg').focus()});
 $('back3').addEventListener('click',()=>show(2));
 S[2].addEventListener('submit',async e=>{e.preventDefault();$('e3').textContent='';
