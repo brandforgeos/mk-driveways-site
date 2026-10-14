@@ -93,7 +93,8 @@ function md(string $t): string {
 }
 
 /* ---------- routing ---------- */
-$r = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
+$_GET = array_filter($_GET, 'is_string'); $_POST = array_filter($_POST, 'is_string');   // no array params (name[]=x): every field here is a plain string
+$r = trim((string)(parse_url((string)($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: ''), '/');   // parse_url gives false on malformed URIs such as //:
 $b = trim(BASE, '/'); if ($b !== '' && str_starts_with($r, $b)) $r = trim(substr($r, strlen($b)), '/');
 $seg = $r === '' ? [] : explode('/', $r);
 
@@ -231,7 +232,7 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= BASE ?>style.css?v=2">
 <link rel="preload" as="image" href="<?= h(img($hero)) ?>" imagesrcset="<?= h(img("$hero-sm")) ?> 800w, <?= h(img($hero)) ?> 1600w" imagesizes="100vw">
-<script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
+<script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
 </head>
 <body class="t-<?= h($type) ?>">
 <a class="skip" href="#main">Skip to content</a>
