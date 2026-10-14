@@ -344,7 +344,7 @@ Q: How much will I get for my scrap car?
 A: It depends on the weight of the vehicle, current scrap metal prices, the make and model, how complete it is and its condition. Call us with the details for a price.
 
 === about
-title: About Rapid Recovery Corby | PAS 43 Accredited Local Vehicle Recovery
+title: About Rapid Recovery Corby | PAS 43 Accredited Vehicle Recovery
 desc: Rapid Recovery is a Corby vehicle recovery company run by George Mitchell. Over five years in recovery, five-plus trucks, PAS 43 and ISO 9001, open 24/7.
 h1: About Rapid Recovery Corby
 lead: A local recovery firm built on answering the phone, turning up when we say we will and looking after your vehicle.
