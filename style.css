@@ -195,7 +195,7 @@ h1,h2,h3,.side-t,.ft{font-family:var(--display);font-style:italic;font-weight:80
   .brand b{white-space:nowrap}
   .nav-call{display:flex;margin-top:18px}
   .top-call{margin-left:auto}
-  .layout{grid-template-columns:1fr}
+  .layout{grid-template-columns:minmax(0,1fr)}
   .side{position:static}
   .foot-in{grid-template-columns:1fr 1fr}
 }
