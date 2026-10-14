@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (!$me || !hash_equals($csrf, (string)($_POST['csrf'] ?? ''))) adm_go($A, 'Please log in again.', true);
   $back = (string)($_POST['back'] ?? $A); if (!str_starts_with($back, $A)) $back = $A;
 
-  if ($act === 'logout') { $_SESSION = []; session_destroy(); adm_go($A, 'Logged out.'); }
+  if ($act === 'logout') { $_SESSION = []; session_regenerate_id(true); adm_go($A, 'Logged out.'); }   // fresh empty session, so the 'Logged out' message survives
 
   if ($act === 'lead') {
     $l = load_lead((string)($_POST['ref'] ?? '')); if (!$l) adm_go($back, 'Lead not found.', true);
@@ -91,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           'default_kg' => min(3500, max(500, (int)$num('default_kg'))), 'round_to' => in_array((int)$num('round_to'), [1, 5, 10], true) ? (int)$num('round_to') : 5,
           'min_price' => $num('min_price') === '' ? null : max(0, (int)$num('min_price')), 'max_price' => $num('max_price') === '' ? null : max(0, (int)$num('max_price'))];
     if ($p['rate_per_tonne'] <= 0) adm_go($A . '?v=rates', 'The rate per tonne needs to be more than £0.', true);
+    if ($p['min_price'] !== null && $p['max_price'] !== null && $p['min_price'] > $p['max_price']) adm_go($A . '?v=rates', 'The minimum price can\'t be more than the maximum price.', true);
     $old = $PR; $SET['pricing'] = $p;
     if (!adm_settings_save($SET)) adm_go($A . '?v=rates', 'Couldn\'t save. Please tell Lewis.', true);
     $diff = []; foreach ($p as $k => $v) if (($old[$k] ?? null) != $v) $diff[] = "$k " . json_encode($old[$k] ?? null) . ' → ' . json_encode($v);
@@ -143,7 +144,8 @@ if ($me && $v === 'export') {
   header('Content-Type: text/csv; charset=utf-8'); header('Content-Disposition: attachment; filename="scrap-car-leads-' . date('Y-m-d') . '.csv"');
   $o = fopen('php://output', 'w'); fwrite($o, "\xEF\xBB\xBF");
   fputcsv($o, ['Ref', 'Received', 'Status', 'Reg', 'Vehicle', 'Postcode', 'Miles', 'Weight kg', 'Weight source', 'Price', 'Agreed price', 'Collection date', 'Name', 'Phone', 'Email', 'Reminders OK', 'Customer note', 'Admin notes']);
-  foreach (adm_leads() as $l) fputcsv($o, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['admin_note'] ?? '']);
+  $cell = fn($x) => is_string($x) && preg_match('/^[=@\t\r]|^[+\-](?![\d\s()]+$)/', $x) ? "'" . $x : $x;   // customer-typed text can't run as a spreadsheet formula
+  foreach (adm_leads() as $l) fputcsv($o, array_map($cell, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['admin_note'] ?? '']));
   exit;
 }
 
@@ -322,7 +324,7 @@ elseif ($v === 'lead'):
         <dt>Email</dt><dd><?= h($l['email'] ?? '') ?: '–' ?></dd>
         <dt>Postcode</dt><dd><?= h($l['postcode']) ?><?= $l['town'] ? ', ' . h($l['town']) : '' ?><?= $l['miles'] !== null ? ' (' . h((string)$l['miles']) . ' miles from Corby)' : '' ?></dd>
         <dt>Their note</dt><dd><?= h($l['collection_note'] ?? '') ?: '–' ?></dd>
-        <dt>Reminders</dt><dd><?= !empty($l['reminders_ok']) ? 'Yes' . (!empty($l['reminded']) ? ' (sent ' . h(adm_when($l['reminded'] === 'unsubscribed' ? null : $l['reminded']) ?: 'no: unsubscribed') . ')' : '') : 'No' ?></dd>
+        <dt>Reminders</dt><dd><?= !empty($l['reminders_ok']) ? 'Yes' . (!empty($l['reminded']) ? ($l['reminded'] === 'unsubscribed' ? ' (unsubscribed, none sent)' : ' (sent ' . h(adm_when($l['reminded'])) . ')') : '') : 'No' ?></dd>
         <?php if (!empty($l['accepted'])): ?><dt>Accepted</dt><dd><?= h(adm_when($l['accepted'])) ?></dd><?php endif; ?>
       </dl>
     </div>
@@ -404,7 +406,7 @@ elseif ($v === 'rates'):
     <table><tr><th>Model</th><th>Weight</th><th class="hide-m">Source</th></tr>
       <?php foreach ($ws as $k => $w): ?><tr><td><?= h(ucwords(str_replace('-', ' ', $k))) ?></td>
         <td><form class="wform" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="weight"><input type="hidden" name="key" value="<?= h($k) ?>"><input type="number" name="kg" min="500" max="3500" step="1" value="<?= (int)$w['kg'] ?>" aria-label="Kerb weight in kg"><button class="btn ghost" type="submit">Save</button></form></td>
-        <td class="hide-m small"><?= h($w['source'] ?? '') ?> (<?= h($w['confidence'] ?? '') ?>)<?php if (!empty($w['url'])): ?> · <a href="<?= h($w['url']) ?>" rel="noopener noreferrer" target="_blank">source</a><?php endif; ?></td></tr><?php endforeach; ?>
+        <td class="hide-m small"><?= h($w['source'] ?? '') ?> (<?= h($w['confidence'] ?? '') ?>)<?php if (preg_match('#^https?://#i', (string)($w['url'] ?? ''))): ?> · <a href="<?= h($w['url']) ?>" rel="noopener noreferrer" target="_blank">source</a><?php endif; ?></td></tr><?php endforeach; ?>
     </table><?php endif; ?>
   </div>
   <script>
