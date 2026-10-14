@@ -291,3 +291,8 @@ h1,h2,h3,.side-t,.ft{font-family:var(--display);font-style:italic;font-weight:80
   .tool{padding:16px;border-radius:14px}
   .mb-go{background:var(--green);color:#06210F}
 }
+/* email-me-my-price */
+.later{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.linkbtn{background:none;border:0;padding:6px 0;font:inherit;font-weight:700;color:var(--navy);text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:44px}
+#laterform{display:grid;gap:12px;max-width:460px;margin-top:6px}
+#laterform .btn{justify-self:start}

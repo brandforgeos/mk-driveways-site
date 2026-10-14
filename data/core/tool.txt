@@ -22,7 +22,7 @@ The price tool at the top of this page turns a few details into a real figure fo
 
 You see your price before we ask for anything else. There is no sign-up and no need to give a phone number or email just to find out what your car is worth.
 
-We only ask for your name, phone number and email if you accept the price. George uses them to call you and book the collection, and we send you a record of the price you accepted.
+We only ask for your name, phone number and email if you accept the price. George uses them to call you and book the collection, and we send you a record of the price you accepted. Not ready to decide? You can ask us to email you the price instead, with an optional reminder before it runs out.
 
 We never sell your details. You can read exactly what we collect, why and how long we keep it in our [privacy notice](/privacy).
 
@@ -62,7 +62,7 @@ Q: How does the instant scrap car price work?
 A: You enter your registration and postcode. We look up the vehicle and show a price on screen straight away, with no sign-up.
 
 Q: Do I need to give my phone number and email to see a price?
-A: No. You only give your name, phone number and email if you accept, so George can call to book the collection and send you a record of the price.
+A: No. You only give your name, phone number and email if you accept, so George can call to book the collection and send you a record of the price. If you just want the price emailed to you, all we need is your email address.
 
 Q: Am I committed once I see the price?
 A: No. You are only committed if you accept it, and even then you can say no on the day if we find the car is different.
@@ -81,7 +81,7 @@ title: Privacy Notice | Website & Instant Price Tool | We Buy Scrap Cars Corby
 desc: Privacy notice for We Buy Scrap Cars Corby: what we collect through our website and instant price tool, why we need it, who we share it with and your rights.
 h1: Privacy notice
 lead: This notice explains what personal information we collect through our website and instant price tool, why we need it and what your rights are.
-answer: We Buy Scrap Cars Corby uses your registration and postcode to work out a scrap price, and collects your contact details only if you accept it or use the contact form. We never sell your data. Contact George Mitchell at rapidrecoverycorby@gmail.com or 07598 314366 with any privacy questions.
+answer: We Buy Scrap Cars Corby uses your registration and postcode to work out a scrap price, and collects your contact details only if you accept it, ask us to email it to you or use the contact form. We never sell your data. Contact George Mitchell at rapidrecoverycorby@gmail.com or 07598 314366 with any privacy questions.
 img: scrap-nissan-qashqai-collection
 img_alt: Silver Nissan Qashqai loaded on a white recovery truck during a scrap car collection
 crumb: Privacy
@@ -96,7 +96,7 @@ If you have any questions about this notice or how your information is used, con
 
 When you use our [instant price tool](/get-a-price), we use the vehicle's registration number and the postcode where it is to work out your price. We also look up vehicle details from the registration, such as make, model and size. You don't need to give any contact details to see a price.
 
-We only collect your name, phone number and email address if you accept a price or contact us through the contact form. In that case we may also hold:
+We only collect your name, phone number and email address if you accept a price or contact us through the contact form. If you ask us to email you your price, we only collect your email address. In that case we may also hold:
 
 - Your name, phone number and email address.
 - The vehicle's registration number and postcode.
@@ -113,7 +113,7 @@ We use your information to:
 - **Contact you about your collection.** If you accept, we use your phone number and email to arrange a time, send you a record of the price and keep you updated.
 - **Reply to your message.** If you use the contact form, we use your details to get back to you.
 - **Meet our legal duty.** The Scrap Metal Dealers Act 2013 requires us to record sellers' ID details at collection.
-- **Send you reminders about your price**, but only if you tick the box to say you want them.
+- **Send you a reminder about your price** shortly before it runs out, but only if you tick the box to say you want one. Every reminder has a link to stop them.
 
 ## Our lawful bases
 

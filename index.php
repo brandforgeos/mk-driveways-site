@@ -5,7 +5,8 @@
 declare(strict_types=1);
 
 /* Two homes for the same code: the Build Bro preview, and George's own hosting. */
-const PREVIEW = true;                                     // noindex + no client emails until the real domain is live
+define('SC_APP', true);
+date_default_timezone_set('Europe/London');
 define('ON_BUILDBRO', str_contains(__DIR__, '/clients/scrap-cars/'));
 if (ON_BUILDBRO) {
   define('BASE', '/clients/scrap-cars/site/');
@@ -15,7 +16,7 @@ if (ON_BUILDBRO) {
 } else {
   $home = preg_match('#^(/home\d*/[^/]+)/#', __DIR__, $m) ? $m[1] : dirname(__DIR__, 2);                  // account home, e.g. /home2/khekowte (never inside public_html)
   define('BASE', '/');
-  define('SITE_URL', 'https://' . preg_replace('/[^a-z0-9.\-]/i', '', (string)($_SERVER['HTTP_HOST'] ?? 'localhost')));
+  define('SITE_URL', 'https://' . (preg_replace('/[^a-z0-9.\-]/i', '', (string)($_SERVER['HTTP_HOST'] ?? '')) ?: 'www.webuyscrapcars-corby.co.uk'));
   define('STORE', "$home/scrap-cars-data");
   define('CONFIG_FILE', "$home/scrap-cars-config.php");
 }
@@ -27,9 +28,16 @@ $SV = []; foreach ($S['services'] as $x) $SV[$x['slug']] = $x;
 $AR = []; foreach ($S['areas'] as $x) $AR[$x['slug']] = $x;
 $GUIDES = ['how-to-scrap-a-car' => 'How to scrap a car legally', 'certificate-of-destruction' => 'Certificate of Destruction explained', 'scrap-car-without-logbook' => 'Scrapping a car with no logbook', 'scrap-or-repair' => 'Should I scrap or repair my car?', 'how-scrap-car-prices-work' => 'How scrap car prices work'];
 $CFG = is_file(CONFIG_FILE) ? (include CONFIG_FILE) : [];
-$PR = array_merge($S['pricing_demo'], $CFG['pricing'] ?? []);   // live rates can override the demo ones from the config file
+if (!is_array($CFG)) $CFG = [];
+define('PREVIEW', ON_BUILDBRO || empty($CFG['live']));         // noindex + no emails to customers until 'live' => true is set in George's config file
+/* George's own settings (rates, reminders), saved from the admin page */
+$SET = is_file(STORE . '/settings.json') ? (json_decode((string)file_get_contents(STORE . '/settings.json'), true) ?: []) : [];
+$PR = array_merge($S['pricing_default'], $CFG['pricing'] ?? [], $SET['pricing'] ?? []);
+$REM = array_merge(['on' => true, 'days_before' => 2], $SET['reminders'] ?? []);
+$NOTIFY = filter_var($SET['notify_email'] ?? '', FILTER_VALIDATE_EMAIL) ?: $S['email'];
 $LIVE_LOOKUP = !empty($CFG['mot_api_key']) && !empty($CFG['mot_client_id']);
-$DEMO = !$LIVE_LOOKUP || empty($CFG['pricing']);
+$DEMO = !$LIVE_LOOKUP;
+if (PREVIEW) header('X-Robots-Tag: noindex, nofollow');
 
 function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 function u(string $p = ''): string { $p = trim($p, '/'); return BASE . ($p === '' ? '' : "$p/"); }
@@ -165,15 +173,116 @@ function pc_lookup(string $pc): ?array {
 function miles(array $a, array $b): float {
   $R = 3958.8; $dLat = deg2rad($b[0] - $a[0]); $dLng = deg2rad($b[1] - $a[1]);
   $x = sin($dLat / 2) ** 2 + cos(deg2rad($a[0])) * cos(deg2rad($b[0])) * sin($dLng / 2) ** 2;
-  return 2 * $R * asin(sqrt($x)) * 1.25;                          // straight line x 1.25 as a rough road distance
+  return 2 * $R * asin(sqrt($x));                                  // straight line: the collection area is a radius around Corby
 }
+function save_json(string $file, array $a): bool { return @file_put_contents($file, json_encode($a, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), LOCK_EX) !== false; }
+function load_lead(string $ref): ?array { $ref = preg_replace('/[^A-Z0-9]/', '', strtoupper($ref)); $f = STORE . "/leads/$ref.json"; return ($ref !== '' && is_file($f)) ? json_decode((string)file_get_contents($f), true) : null; }
+function save_lead(array $l): bool { return save_json(store_path('leads') . '/' . $l['ref'] . '.json', $l); }
+function price_for(int $kg, array $PR): int {
+  $p = $kg / 1000 * (float)$PR['rate_per_tonne'];
+  if (is_numeric($PR['min_price'] ?? null)) $p = max((float)$PR['min_price'], $p);
+  if (is_numeric($PR['max_price'] ?? null)) $p = min((float)$PR['max_price'], $p);
+  $step = max(1, (int)($PR['round_to'] ?? 5));
+  return (int)(round($p / $step) * $step);
+}
+
+/* ---------- email ---------- */
+function app_secret(): string {
+  $f = store_path('keys') . '/secret.key';
+  if (!is_file($f)) @file_put_contents($f, bin2hex(random_bytes(32)), LOCK_EX);
+  return (string)@file_get_contents($f);
+}
+function unsub_token(string $email): string { return substr(hash_hmac('sha256', strtolower(trim($email)), app_secret()), 0, 24); }
+function unsubscribed(string $email): bool { return is_file(STORE . '/unsub/' . sha1(strtolower(trim($email)))); }
+function send_mail(string $to, string $subject, string $text, ?string $html = null, ?string $replyTo = null): bool {
+  if (!filter_var($to, FILTER_VALIDATE_EMAIL)) return false;
+  $host = (string)parse_url(SITE_URL, PHP_URL_HOST); $from = 'website@' . preg_replace('/^www\./', '', $host);
+  $subject = '=?UTF-8?B?' . base64_encode(str_replace(["\r", "\n"], ' ', $subject)) . '?=';
+  $h = "From: We Buy Scrap Cars Corby <$from>\r\nMIME-Version: 1.0\r\n" . ($replyTo ? "Reply-To: $replyTo\r\n" : '');
+  if ($html === null) { $h .= "Content-Type: text/plain; charset=UTF-8"; $body = $text; }
+  else { $b = 'b' . bin2hex(random_bytes(8)); $h .= "Content-Type: multipart/alternative; boundary=\"$b\"";
+    $body = "--$b\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($text))
+          . "--$b\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($html)) . "--$b--"; }
+  $ok = @mail($to, $subject, $body, $h, "-f$from");
+  @file_put_contents(store_path('logs') . '/mail-' . date('Y-m') . '.log', date('c') . ' ' . ($ok ? 'SENT' : 'FAIL') . " $to " . base64_decode(substr($subject, 10, -2)) . "\n", FILE_APPEND | LOCK_EX);
+  return $ok;
+}
+/* Branded customer email. $paras are plain text; $rows are [label, value]; $cta is [text, url]. */
+function customer_email(array $S, string $title, array $paras, array $rows = [], ?array $cta = null, ?string $unsubUrl = null): array {
+  $txt = "$title\n\n" . implode("\n\n", $paras) . "\n\n";
+  foreach ($rows as $r) $txt .= "$r[0]: $r[1]\n";
+  if ($cta) $txt .= "\n$cta[0]: $cta[1]\n";
+  $txt .= "\n{$S['name']}\nCall or WhatsApp {$S['phone']}\n" . ($unsubUrl ? "\nStop these reminders: $unsubUrl\n" : '');
+  $logo = SITE_URL . '/img/logo-512.png';
+  $html = '<!doctype html><html><body style="margin:0;background:#eef1f6;font-family:Arial,Helvetica,sans-serif;color:#10224A">'
+    . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef1f6;padding:24px 12px"><tr><td align="center">'
+    . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff;border-radius:12px;overflow:hidden">'
+    . '<tr><td style="background:#0A1733;padding:18px 24px"><img src="' . h($logo) . '" width="44" height="44" alt="" style="vertical-align:middle;border-radius:50%"> <span style="color:#fff;font-size:18px;font-weight:bold;vertical-align:middle;margin-left:8px">We Buy Scrap Cars Corby</span></td></tr>'
+    . '<tr><td style="padding:24px"><h1 style="font-size:22px;margin:0 0 14px">' . h($title) . '</h1>';
+  foreach ($paras as $p) $html .= '<p style="font-size:16px;line-height:1.5;margin:0 0 14px">' . h($p) . '</p>';
+  if ($rows) { $html .= '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #dde3ee;border-radius:8px;margin:6px 0 18px">';
+    foreach ($rows as $i => $r) $html .= '<tr><td style="padding:10px 14px;font-size:15px;color:#51607d;' . ($i ? 'border-top:1px solid #dde3ee' : '') . '">' . h($r[0]) . '</td><td style="padding:10px 14px;font-size:15px;font-weight:bold;text-align:right;' . ($i ? 'border-top:1px solid #dde3ee' : '') . '">' . h($r[1]) . '</td></tr>';
+    $html .= '</table>'; }
+  if ($cta) $html .= '<p style="margin:0 0 18px"><a href="' . h($cta[1]) . '" style="display:inline-block;background:#3FBF5F;color:#0A1733;font-weight:bold;font-size:16px;padding:13px 22px;border-radius:8px;text-decoration:none">' . h($cta[0]) . '</a></p>';
+  $html .= '<p style="font-size:15px;line-height:1.5;margin:0">Call or WhatsApp George on <a href="tel:' . h($S['phone_intl']) . '" style="color:#10224A;font-weight:bold">' . h($S['phone']) . '</a>, or just reply to this email.</p></td></tr>'
+    . '<tr><td style="background:#f5f7fb;padding:14px 24px;font-size:12px;color:#51607d;line-height:1.5">' . h($S['name']) . ', Corby, Northamptonshire. Free collection. Paid by bank transfer.'
+    . ($unsubUrl ? '<br><a href="' . h($unsubUrl) . '" style="color:#51607d">Stop price reminders</a>' : '') . '</td></tr></table></td></tr></table></body></html>';
+  return [$txt, $html];
+}
+function vehicle_name(?array $v): string { return $v ? trim(($v['year'] ?? '') . ' ' . ($v['make'] ?? '') . ' ' . ($v['model'] ?? '')) : ''; }
+function price_email_rows(array $l): array {
+  $rows = [['Reference', $l['ref']], ['Registration', $l['reg']]];
+  if ($v = vehicle_name($l['vehicle'] ?? null)) $rows[] = ['Vehicle', $v];
+  if ($l['price'] !== null) { $rows[] = ['Your price', '£' . $l['price']]; $rows[] = ['Price held until', date('j F Y', strtotime($l['valid_until']))]; }
+  return $rows;
+}
+/* Reminder run: once a day (cron, or the first visit after 9am). One reminder per lead, sent shortly before the price runs out. */
+function run_reminders(array $S, array $REM, bool $force = false): array {
+  $out = ['sent' => 0, 'checked' => 0, 'skipped' => 'no'];
+  if (PREVIEW && !$force) return ['sent' => 0, 'checked' => 0, 'skipped' => 'preview'];
+  if (empty($REM['on'])) return ['sent' => 0, 'checked' => 0, 'skipped' => 'reminders off'];
+  $today = date('Y-m-d');
+  foreach (glob(STORE . '/leads/*.json') ?: [] as $f) {
+    $l = json_decode((string)file_get_contents($f), true); if (!$l) continue;
+    if (empty($l['reminders_ok']) || empty($l['email']) || !empty($l['reminded']) || $l['price'] === null) continue;
+    if (!in_array($l['status'], ['saved', 'accepted'], true)) continue;           // booked, collected or lost: leave them alone
+    $out['checked']++;
+    $daysLeft = (int)round((strtotime($l['valid_until']) - strtotime($today)) / 86400);
+    if ($daysLeft < 0 || $daysLeft > (int)$REM['days_before']) continue;
+    if (unsubscribed($l['email'])) { $l['reminded'] = 'unsubscribed'; save_json($f, $l); continue; }
+    $first = trim(explode(' ', (string)($l['name'] ?? ''))[0]);
+    $unsub = abs_url('unsubscribe') . '?e=' . rawurlencode($l['email']) . '&t=' . unsub_token($l['email']);
+    $when = $daysLeft === 0 ? 'today' : ($daysLeft === 1 ? 'tomorrow' : 'on ' . date('l j F', strtotime($l['valid_until'])));
+    $paras = [($first ? "Hi $first," : 'Hi,'), "Just a reminder that your scrap price of £{$l['price']} for {$l['reg']} runs out $when.",
+      $l['status'] === 'accepted' ? 'If we haven\'t managed to fix a collection time yet, reply to this email or give George a call and he\'ll get you booked in. Collection is free and we pay by bank transfer when we collect.'
+                                  : 'If you\'re ready to go ahead, accept your price online or call George and he\'ll book your free collection. We pay by bank transfer when we collect.'];
+    $cta = $l['status'] === 'accepted' ? ['Call George', 'tel:' . $S['phone_intl']] : ['Accept my price', abs_url('get-a-price') . '?ref=' . rawurlencode($l['ref'])];
+    [$t, $hh] = customer_email($S, "Your £{$l['price']} price runs out $when", $paras, price_email_rows($l), $cta, $unsub);
+    if (send_mail($l['email'], "Your scrap price for {$l['reg']} runs out $when", $t, $hh, $S['email'])) { $l['reminded'] = date('c'); $out['sent']++; save_json($f, $l); }
+  }
+  @file_put_contents(store_path('logs') . '/reminders.log', date('c') . " checked {$out['checked']} sent {$out['sent']}\n", FILE_APPEND | LOCK_EX);
+  return $out;
+}
+function daily_jobs(array $S, array $REM): void {
+  $f = store_path('logs') . '/last-daily.txt';
+  if ((int)date('G') < 9 || @file_get_contents($f) === date('Y-m-d')) return;
+  @file_put_contents($f, date('Y-m-d'), LOCK_EX);
+  run_reminders($S, $REM);
+}
+
+/* cron: php index.php cron  (cPanel cron, once a day) */
+if (PHP_SAPI === 'cli') {
+  if (($argv[1] ?? '') === 'cron') { @file_put_contents(store_path('logs') . '/last-daily.txt', date('Y-m-d'), LOCK_EX); echo json_encode(run_reminders($S, $REM)), "\n"; }
+  exit;
+}
+if ($_SERVER['REQUEST_METHOD'] === 'GET') daily_jobs($S, $REM);
 
 /* ---------- routing ---------- */
 $r = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
 $b = trim(BASE, '/'); if ($b !== '' && str_starts_with($r, $b)) $r = trim(substr($r, strlen($b)), '/');
 $seg = $r === '' ? [] : explode('/', $r);
 
-if ($r === 'robots.txt') { header('Content-Type: text/plain'); echo PREVIEW ? "User-agent: *\nDisallow: /\n" : "User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: " . SITE_URL . "/sitemap.xml\n"; exit; }
+if ($r === 'robots.txt') { header('Content-Type: text/plain'); echo PREVIEW ? "User-agent: *\nDisallow: /\n" : "User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\nSitemap: " . SITE_URL . "/sitemap.xml\n"; exit; }
 
 $urls = ['', 'get-a-price', 'services', 'areas', 'costs', 'about', 'contact', 'guides', 'privacy'];
 foreach ($GUIDES as $g => $_) $urls[] = "guides/$g";
@@ -231,13 +340,12 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $loc = pc_lookup($pc);
   $dist = $loc ? round(miles($S['geo'], [$loc['lat'], $loc['lng']]), 1) : null;
-  $lines = [['Weight used', number_format($kg) . ' kg'], ['Scrap rate', '£' . $PR['rate_per_tonne'] . ' per tonne'], ['Weight value', '£' . number_format($kg / 1000 * $PR['rate_per_tonne'], 2)]];
-  $price = $kg / 1000 * $PR['rate_per_tonne'];
-  if ($dist === null) { $lines[] = ['Collection distance', 'Not checked (postcode lookup unavailable)']; }   // still give a price; George checks the address when he calls
-  elseif ($dist > $PR['max_miles']) { $manual = true; }
-  elseif ($dist > $PR['free_miles']) { $ded = ($dist - $PR['free_miles']) * $PR['per_mile_over']; $price -= $ded; $lines[] = ['Collection distance (' . $dist . ' miles)', '−£' . number_format($ded, 2)]; }
-  else $lines[] = ['Collection distance (' . $dist . ' miles)', 'Free'];
-  $price = (int)(round(max($PR['min_price'], min($PR['max_price'], $price)) / 5) * 5);
+  $lines = [['Weight used', number_format($kg) . ' kg (' . $weightSrc . ')'], ['Scrap rate', '£' . $PR['rate_per_tonne'] . ' per tonne'], ['Weight value', '£' . number_format($kg / 1000 * $PR['rate_per_tonne'], 2)]];
+  if ($dist === null) $lines[] = ['Distance from Corby', 'Not checked (postcode lookup unavailable)'];   // still give a price; George checks the address when he calls
+  elseif ($dist > $PR['max_miles']) { $manual = true; $lines[] = ['Distance from Corby', "$dist miles: outside the {$PR['max_miles']} mile area"]; }
+  else $lines[] = ['Distance from Corby', "$dist miles: free collection"];
+  $price = price_for($kg, $PR);
+  $lines[] = ['Price (rounded to £' . max(1, (int)($PR['round_to'] ?? 5)) . ')', '£' . $price];
 
   $ref = 'SC' . gmdate('ymd') . strtoupper(bin2hex(random_bytes(2)));
   $lead = ['ref' => $ref, 'status' => $manual ? 'needs-price' : 'priced', 'received' => gmdate('c'), 'demo' => $DEMO,
@@ -245,40 +353,78 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     'vehicle' => $v, 'weight_kg' => $kg, 'weight_source' => $weightSrc,
     'price' => $manual ? null : $price, 'valid_until' => gmdate('Y-m-d', time() + 86400 * $PR['valid_days']), 'rate_per_tonne' => $PR['rate_per_tonne'],
     'page' => $f('page')];                                         // no contact details yet: they're only asked for when the customer accepts
-  @file_put_contents(store_path('leads') . "/$ref.json", json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-  jout(['ok' => true, 'ref' => $ref, 'manual' => $manual, 'price' => $manual ? null : $price, 'valid_until' => date('j F Y', strtotime($lead['valid_until'])), 'lines' => $DEMO ? $lines : [], 'outside' => $dist !== null && $dist > $PR['max_miles']]);
+  save_lead($lead);
+  jout(['ok' => true, 'ref' => $ref, 'manual' => $manual, 'price' => $manual ? null : $price, 'valid_until' => date('j F Y', strtotime($lead['valid_until'])), 'lines' => PREVIEW ? $lines : [], 'outside' => $dist !== null && $dist > $PR['max_miles'], 'max_miles' => $PR['max_miles']]);
+}
+/* reopen a price from a reminder email link */
+if ($r === 'api/lead' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+  $l = load_lead((string)($_POST['ref'] ?? ''));
+  if (!$l || $l['price'] === null || in_array($l['status'], ['booked', 'collected', 'lost'], true)) jout(['ok' => false]);
+  if ($l['valid_until'] < date('Y-m-d')) jout(['ok' => false, 'expired' => true, 'reg' => $l['reg'], 'postcode' => $l['postcode']]);
+  jout(['ok' => true, 'ref' => $l['ref'], 'price' => $l['price'], 'valid_until' => date('j F Y', strtotime($l['valid_until'])), 'vehicle' => $l['vehicle'], 'reg' => $l['reg'], 'accepted' => $l['status'] === 'accepted']);
+}
+/* "Not ready yet? Email me this price" */
+if ($r === 'api/save' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+  $f = fn($k, $n = 200) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
+  if ($f('website') !== '') jout(['ok' => false]);
+  $l = load_lead($f('ref', 20)); $email = $f('email', 120);
+  if (!$l || $l['price'] === null) jout(['ok' => false]);
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) jout(['ok' => false, 'msg' => 'Please check your email address.']);
+  if (!rate_ok('save', 10)) jout(['ok' => false, 'msg' => 'Please call us on ' . $S['phone'] . '.']);
+  if ($l['status'] === 'priced') $l['status'] = 'saved';
+  $l['email'] = $email; $l['saved'] = gmdate('c'); $l['reminders_ok'] = $f('consent', 3) === 'yes';
+  save_lead($l);
+  if (!PREVIEW) {
+    [$t, $hh] = customer_email($S, "Your scrap price: £{$l['price']}", ['Hi,', "Here's the price you asked us to email you. It's for a complete vehicle and includes free collection. We pay by bank transfer when we collect.",
+      'When you\'re ready, accept it online and George will call you to book a collection time.'], price_email_rows($l), ['Accept my price', abs_url('get-a-price') . '?ref=' . rawurlencode($l['ref'])],
+      $l['reminders_ok'] ? abs_url('unsubscribe') . '?e=' . rawurlencode($email) . '&t=' . unsub_token($email) : null);
+    send_mail($email, "Your scrap price for {$l['reg']}: £{$l['price']}", $t, $hh, $S['email']);
+  }
+  jout(['ok' => true]);
 }
 if ($r === 'api/accept' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-  $ref = preg_replace('/[^A-Z0-9]/', '', strtoupper((string)($_POST['ref'] ?? '')));
-  $file = STORE . "/leads/$ref.json";
-  if ($ref === '' || !is_file($file)) jout(['ok' => false]);
+  $lead = load_lead((string)($_POST['ref'] ?? ''));
+  if (!$lead) jout(['ok' => false]);
+  $ref = $lead['ref'];
   $f = fn($k, $n = 200) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
   if ($f('website') !== '') jout(['ok' => false]);
   $name = $f('name', 100); $phone = $f('phone', 40); $email = $f('email', 120);
   if ($name === '' || strlen(preg_replace('/\D/', '', $phone)) < 10 || !filter_var($email, FILTER_VALIDATE_EMAIL)) jout(['ok' => false, 'msg' => 'Please add your name, a mobile number and your email so George can book your collection.']);
-  $lead = json_decode(file_get_contents($file), true);
   $lead['status'] = $lead['price'] === null ? 'call-back' : 'accepted'; $lead['accepted'] = gmdate('c');
-  $lead += ['name' => '', 'phone' => '', 'email' => ''];
-  $lead['name'] = $name; $lead['phone'] = $phone; $lead['email'] = $email; $lead['reminders_ok'] = $f('consent', 3) === 'yes';
+  $lead['name'] = $name; $lead['phone'] = $phone; $lead['email'] = $email; $lead['reminders_ok'] = $f('consent', 3) === 'yes' || !empty($lead['reminders_ok']);
   $lead['collection_note'] = $f('note', 500);
-  file_put_contents($file, json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+  save_lead($lead);
   if (!PREVIEW) {
-    $host = parse_url(SITE_URL, PHP_URL_HOST);
-    $v = $lead['vehicle']; $veh = $v ? trim("{$v['year']} {$v['make']} {$v['model']}") : 'Not found from reg';
+    $veh = vehicle_name($lead['vehicle'] ?? null) ?: 'Not found from reg';
     $head = $lead['price'] === null ? 'Needs a price: call them back' : "ACCEPTED £{$lead['price']}: call to book the collection";
-    $body = "$head\n\nRef: $ref\nName: $name\nPhone: $phone\nEmail: $email\nReg: {$lead['reg']}\nVehicle: $veh\nPostcode: {$lead['postcode']}" . ($lead['miles'] !== null ? " ({$lead['miles']} miles)" : '') . "\nWeight used: {$lead['weight_kg']} kg ({$lead['weight_source']})\nNotes: {$lead['collection_note']}\nReminders OK: " . ($lead['reminders_ok'] ? 'yes' : 'no') . "\n";
-    @mail($S['email'], '=?UTF-8?B?' . base64_encode(($lead['price'] === null ? 'Call-back' : "ACCEPTED £{$lead['price']}") . " - {$lead['reg']} - $name") . '?=', $body, "From: We Buy Scrap Cars Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8", "-fwebsite@$host");
+    $body = "$head\n\nRef: $ref\nName: $name\nPhone: $phone\nEmail: $email\nReg: {$lead['reg']}\nVehicle: $veh\nPostcode: {$lead['postcode']}" . ($lead['miles'] !== null ? " ({$lead['miles']} miles from Corby)" : '') . "\nWeight used: {$lead['weight_kg']} kg ({$lead['weight_source']})\nNotes: {$lead['collection_note']}\nReminders OK: " . ($lead['reminders_ok'] ? 'yes' : 'no') . "\n\nOpen in admin: " . abs_url('admin') . '?v=lead&ref=' . $ref . "\n";
+    send_mail($NOTIFY, ($lead['price'] === null ? 'Call-back' : "ACCEPTED £{$lead['price']}") . " - {$lead['reg']} - $name", $body, null, $email);
+    $first = trim(explode(' ', $name)[0]);
+    [$t, $hh] = $lead['price'] === null
+      ? customer_email($S, 'Thanks, George will call you with a price', ["Hi $first,", "Thanks for sending us your details for {$lead['reg']}. We need to check a couple of things before we can price it, so George will call you shortly on $phone."], price_email_rows($lead))
+      : customer_email($S, "Price accepted: £{$lead['price']}", ["Hi $first,", "Thanks for accepting our price for {$lead['reg']}. George will call you shortly on $phone to agree a collection time.",
+          'On the day, please have your photo ID, proof of address and the V5C logbook ready. We pay by bank transfer when we collect, and the car goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction.',
+          'Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, please mention it when George calls.'], price_email_rows($lead));
+    send_mail($email, $lead['price'] === null ? "We'll call you with a price for {$lead['reg']}" : "Price accepted: £{$lead['price']} for {$lead['reg']}", $t, $hh, $S['email']);
   }
   jout(['ok' => true]);
 }
+if ($r === 'unsubscribe') {
+  $e = (string)($_GET['e'] ?? ''); $ok = filter_var($e, FILTER_VALIDATE_EMAIL) && hash_equals(unsub_token($e), (string)($_GET['t'] ?? ''));
+  if ($ok) @file_put_contents(store_path('unsub') . '/' . sha1(strtolower(trim($e))), date('c'));
+  header('X-Robots-Tag: noindex'); header('Content-Type: text/html; charset=utf-8');
+  echo '<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reminders</title><body style="font-family:Arial,sans-serif;max-width:520px;margin:60px auto;padding:0 16px;color:#10224A"><h1 style="font-size:22px">' . ($ok ? 'You won\'t get any more reminders' : 'That link didn\'t work') . '</h1><p>' . ($ok ? 'We\'ve stopped price reminders to ' . h($e) . '.' : 'Please call us on ' . h($S['phone']) . ' and we\'ll sort it.') . '</p><p><a href="' . h(u()) . '">Back to We Buy Scrap Cars Corby</a></p>';
+  exit;
+}
+if ($seg && $seg[0] === 'admin') { require __DIR__ . '/admin.php'; exit; }
 /* contact form */
 if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $f = fn($k, $n = 500) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
   if ($f('website') !== '' || $f('name') === '' || $f('phone') === '') jout(['ok' => false]);
   $lead = ['received' => gmdate('c'), 'page' => $f('page', 200), 'name' => $f('name', 100), 'phone' => $f('phone', 40), 'vehicle' => $f('vehicle', 120), 'location' => $f('location', 300), 'message' => $f('message', 2000)];
   $ok = @file_put_contents(store_path('enquiries') . '/' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.json', json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) !== false;
-  if (!PREVIEW) { $host = parse_url(SITE_URL, PHP_URL_HOST); $body = "New enquiry from the We Buy Scrap Cars website.\n\n"; foreach ($lead as $k => $v) if ($v !== '') $body .= ucfirst($k) . ": $v\n";
-    @mail($S['email'], '=?UTF-8?B?' . base64_encode('Website enquiry - ' . str_replace(["\r", "\n"], ' ', $lead['name'])) . '?=', $body, "From: We Buy Scrap Cars Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8", "-fwebsite@$host"); }
+  if (!PREVIEW) { $body = "New enquiry from the We Buy Scrap Cars website.\n\n"; foreach ($lead as $k => $v) if ($v !== '') $body .= ucfirst($k) . ": $v\n";
+    send_mail($NOTIFY, 'Website enquiry - ' . $lead['name'], $body . "\nAll enquiries: " . abs_url('admin') . "?v=enquiries\n"); }
   jout(['ok' => $ok]);
 }
 
@@ -379,7 +525,7 @@ $lic = function () use ($S): string {
 <link rel="icon" href="<?= BASE ?>img/favicon-48.png" sizes="48x48"><link rel="icon" href="<?= BASE ?>img/favicon-192.png" sizes="192x192"><link rel="apple-touch-icon" href="<?= BASE ?>img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<?= BASE ?>style.css?v=3">
+<link rel="stylesheet" href="<?= BASE ?>style.css?v=4">
 <link rel="preload" as="image" href="<?= h(img($hero)) ?>" imagesrcset="<?= h(img("$hero-sm")) ?> 800w, <?= h(img($hero)) ?> 1600w" imagesizes="100vw">
 <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
@@ -422,7 +568,7 @@ $lic = function () use ($S): string {
     <?php if ($type === 'get-a-price'):
       $preReg = clean_reg((string)($_GET['reg'] ?? '')); $prePc = clean_pc((string)($_GET['pc'] ?? '')); ?>
     <div class="tool" id="tool">
-      <?php if ($DEMO): ?><div class="demo"><b>Demo version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live. Prices use placeholder rates, not George\'s real ones.' : 'The registration lookup is waiting on the DVSA API key, so for now every car is priced at an average weight. Prices use placeholder rates, not George\'s real ones.' ?> Nothing is sent to the customer or to George while this is a preview.</div><?php endif; ?>
+      <?php if (PREVIEW): ?><div class="demo"><b>Preview version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live.' : 'The registration lookup is waiting on the DVSA API key, so for now every car is priced at an average weight.' ?> Rate in use: £<?= h((string)$PR['rate_per_tonne']) ?> per tonne, collection within <?= h((string)$PR['max_miles']) ?> miles of Corby (change these in the admin page). No emails go to customers or George while this is a preview.</div><?php endif; ?>
       <ol class="steps" aria-hidden="true"><li class="on" data-s="1">Your vehicle</li><li data-s="2">Your price</li><li data-s="3">Book collection</li></ol>
 
       <form class="step" id="s1" novalidate>
@@ -442,6 +588,17 @@ $lic = function () use ($S): string {
         <div id="pricebox"></div>
         <div class="tool-nav" id="pricenav"><button class="btn btn-go" type="button" id="accept">Accept and book collection</button><button class="btn btn-ghost-d" type="button" id="again">Price another vehicle</button></div>
         <p class="note" id="pricenote">Accepting doesn't commit you yet. George will call to agree a collection time.</p>
+        <div class="later" id="later">
+          <button class="linkbtn" type="button" id="laterbtn" aria-expanded="false" aria-controls="laterform">Not ready yet? Email me this price</button>
+          <form id="laterform" hidden novalidate>
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <label class="fl">Your email<input name="email" type="email" autocomplete="email" required></label>
+            <label class="tick"><input type="checkbox" name="consent" value="yes" checked> Remind me before my price runs out. You can stop these at any time.</label>
+            <p class="err" id="e2" role="alert"></p>
+            <button class="btn btn-ghost-d" type="submit" id="b2">Email me my price</button>
+          </form>
+          <p class="note" id="latermsg" role="status"></p>
+        </div>
       </div>
 
       <form class="step" id="s3" hidden novalidate>
@@ -609,22 +766,39 @@ S[0].addEventListener('submit',async e=>{e.preventDefault();$('e1').textContent=
   busy($('b1'),true,'Finding your price');
   try{const fd=new FormData();fd.append('reg',reg);const j=await post('vehicle',fd);if(!j.ok)throw j.msg;
     let f='';
-    if(j.found){const v=j.vehicle;f='<div class="found"><span class="ok">✓</span><div><strong>'+esc([v.year,v.make,v.model].filter(Boolean).join(' '))+'</strong><span>'+esc([v.engine_cc?(v.engine_cc/1000).toFixed(1)+' litre':'',v.fuel,v.colour].filter(Boolean).join(' · '))+'</span></div></div>'}
+    if(j.found)f=carHtml(j.vehicle);
     else if(!j.live)f='<p class="note">Demo: the registration lookup isn\'t switched on yet, so this demo prices an average-sized car.</p>';
     $('found').innerHTML=f;
     const q=new FormData(S[0]);q.set('reg',reg);q.append('page',location.pathname);
     const p=await post('quote',q);if(!p.ok)throw p.msg;ref=p.ref;
     let h;
-    if(p.manual){h='<div class="priceout"><small>We need a quick check</small><p style="font-size:20px;color:#fff;margin-top:8px">'+(p.outside?'Your vehicle is outside our instant-price area.':'We couldn\'t price this one automatically.')+' Leave your number and George will call you with a price.</p></div>';
+    if(p.manual){h='<div class="priceout"><small>We need a quick check</small><p style="font-size:20px;color:#fff;margin-top:8px">'+(p.outside?'Your vehicle is more than '+p.max_miles+' miles from Corby, outside our usual collection area.':'We couldn\'t price this one automatically.')+' Leave your number and George will call you with a price.</p></div>';
       $('accept').textContent='Get a price by phone';$('pricenote').hidden=true;$('s3h').textContent='Get a price by phone';$('s3p').textContent='Add your details and George will call you with a price.'}
-    else{h='<div class="priceout"><small>Your instant price</small><div class="big">£'+p.price+'</div><p>Free collection · Paid by bank transfer when we collect</p><p>Price held until '+esc(p.valid_until)+' · Ref '+esc(ref)+'</p></div>';
+    else{h=priceHtml(p);
       if(p.lines&&p.lines.length)h+='<div class="workings"><b>How this was worked out (demo only, hidden on the live site)</b><table>'+p.lines.map(l=>'<tr><td>'+esc(l[0])+'</td><td>'+esc(l[1])+'</td></tr>').join('')+'</table></div>';
       h+='<p class="note">Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, we\'ll talk it through with you before we collect.</p>';
       $('accept').textContent='Accept and book collection';$('pricenote').hidden=false;$('s3h').textContent='Book your free collection';$('s3p').textContent='Add your details and George will call you to agree a collection time.'}
-    $('pricebox').innerHTML=h;show(2)}
+    $('pricebox').innerHTML=h;resetLater();$('later').hidden=!!p.manual;$('pricenav').hidden=false;show(2)}
   catch(m){$('e1').textContent=typeof m==='string'?m:'Something went wrong. Please try again or call us.'}
   busy($('b1'),false,'Get my price')});
 $('accept').addEventListener('click',()=>show(3));
+const resetLater=()=>{$('laterform').hidden=true;$('laterbtn').hidden=false;$('laterbtn').setAttribute('aria-expanded','false');$('latermsg').textContent='';$('e2').textContent=''};
+$('laterbtn').addEventListener('click',()=>{$('laterform').hidden=false;$('laterbtn').hidden=true;$('laterbtn').setAttribute('aria-expanded','true');$('laterform').email.focus()});
+$('laterform').addEventListener('submit',async e=>{e.preventDefault();$('e2').textContent='';const fd=new FormData($('laterform'));
+  if(!/^\S+@\S+\.\S+$/.test(fd.get('email'))){$('e2').textContent='Please check your email address.';return}
+  fd.append('ref',ref);busy($('b2'),true,'Sending');
+  try{const j=await post('save',fd);if(!j.ok)throw j.msg;$('laterform').hidden=true;$('latermsg').textContent='Done. We\'ve emailed your price to '+fd.get('email')+'. Accept it any time before it runs out.';$('s3').email.value=fd.get('email');if(fd.get('consent'))$('s3').consent.checked=true}
+  catch(m){$('e2').textContent=typeof m==='string'?m:'That didn\'t send. Please try again or call us.'}
+  busy($('b2'),false,'Email me my price')});
+const priceHtml=p=>'<div class="priceout"><small>Your instant price</small><div class="big">£'+p.price+'</div><p>Free collection · Paid by bank transfer when we collect</p><p>Price held until '+esc(p.valid_until)+' · Ref '+esc(ref)+'</p></div>';
+const carHtml=v=>v?'<div class="found"><span class="ok">✓</span><div><strong>'+esc([v.year,v.make,v.model].filter(Boolean).join(' '))+'</strong><span>'+esc([v.engine_cc?(v.engine_cc/1000).toFixed(1)+' litre':'',v.fuel,v.colour].filter(Boolean).join(' · '))+'</span></div></div>':'';
+const openRef=new URLSearchParams(location.search).get('ref');
+if(openRef){(async()=>{const fd=new FormData();fd.append('ref',openRef);try{const j=await post('lead',fd);
+  if(j.ok){ref=j.ref;$('found').innerHTML=carHtml(j.vehicle);$('pricebox').innerHTML=priceHtml(j)+'<p class="note">Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, we\'ll talk it through with you before we collect.</p>';
+    if(j.accepted){$('pricenav').hidden=true;$('later').hidden=true;$('pricenote').textContent='You\'ve already accepted this price. George will call you to book the collection, or call him on <?= h($S['phone']) ?>.'}
+    else $('later').hidden=true;
+    show(2)}
+  else if(j.expired){$('reg').value=j.reg;$('pc').value=j.postcode;$('e1').textContent='That price has run out. Get an up to date price below.'}}catch(_){}})()}
 $('again').addEventListener('click',()=>{$('reg').value='';show(1);$('reg').focus()});
 $('back3').addEventListener('click',()=>show(2));
 S[2].addEventListener('submit',async e=>{e.preventDefault();$('e3').textContent='';

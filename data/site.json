@@ -347,14 +347,14 @@
    ]
   }
  ],
- "pricing_demo": {
-  "rate_per_tonne": 150,
-  "free_miles": 15,
-  "per_mile_over": 1.0,
-  "max_miles": 40,
-  "min_price": 50,
-  "max_price": 600,
+ "pricing_default": {
+  "rate_per_tonne": 100,
+  "max_miles": 15,
+  "min_price": null,
+  "max_price": null,
+  "round_to": 5,
   "valid_days": 7,
   "default_kg": 1250
- }
+ },
+ "domain": "www.webuyscrapcars-corby.co.uk"
 }
