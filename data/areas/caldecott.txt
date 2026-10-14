@@ -4,8 +4,8 @@ desc: Scrap my car in Caldecott, Rutland. Get an instant online price, free coll
 h1: Scrap my car in Caldecott
 lead: Caldecott sits at the foot of Rockingham Hill where the A6003 crosses the Welland valley into Rutland. We collect scrap and unwanted cars from the village for free.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted cars in Caldecott, Rutland. Get an instant price online with your reg and postcode, then we collect for free and pay by bank transfer on the day. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a white Rapid Recovery truck outside a house, ready to go for scrap
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Caldecott
 ---
 ## Scrapping a car in Caldecott, the simple way
 
@@ -39,7 +39,7 @@ We have a page for each type of job in Caldecott, with the detail that matters f
 
 The honest answer is that it depends on the vehicle. Scrap is priced by the tonne, so weight matters most, followed by the current scrap metal price. Make and model count, as does whether the car is complete with its engine, gearbox, catalytic converter and wheels. Keys and a V5C logbook help, and so does where the car is. Our [scrap car cost guide](/costs/scrap-car-collection) explains each of these in plain terms.
 
-The price you get online stands as long as the car matches what you told us. If something is different when we arrive, such as a missing catalytic converter, we tell you why before we load, and you are free to say no.
+The price you get online stands as long as the car is complete and as described. If something is different when we arrive, such as a missing catalytic converter, we tell you why before we load, and you are free to say no.
 
 ## Getting a truck down the hill
 
@@ -88,8 +88,8 @@ desc: Scrap car collection in Caldecott with an instant online price. Free colle
 h1: Scrap car collection in Caldecott
 lead: Want an old car gone from your drive in Caldecott? Put your reg in, see your price, and we come down Rockingham Hill to collect it for free.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Caldecott, Rutland. Get an instant price online from your reg and postcode, accept it, and we pay by bank transfer when we collect. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus secured on a beavertail recovery truck in a residential street during a scrap car collection
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Caldecott
 ---
 ## Scrap car collection in Caldecott, start to finish
 
@@ -179,8 +179,8 @@ desc: Sell your MOT failure in Caldecott, Rutland. Instant online price from you
 h1: Sell your MOT failure in Caldecott
 lead: Failed MOT in Caldecott and the repair list looks expensive? We buy MOT failures as they are and collect them for free, even with no valid MOT.
 answer: We Buy Scrap Cars Corby buys MOT failures in Caldecott, Rutland. Enter your reg and postcode for an instant online price, we collect for free on our own truck, and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat loaded on a white recovery truck at dusk after failing its MOT
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Caldecott
 ---
 ## Failed MOT in Caldecott: what now?
 
@@ -216,7 +216,7 @@ A failed MOT does not by itself lower the scrap value much, because scrap is mos
 | Do you have keys and a V5C? | Makes collection and paperwork simpler |
 | What make and model is it? | Some models are worth more than weight alone |
 
-Our [MOT failure cost guide](/costs/mot-failure) has more detail. The online price stands as long as the car matches what you told us. If something is different on the day, we explain it before loading.
+Our [MOT failure cost guide](/costs/mot-failure) has more detail. The online price stands as long as the car is complete and as described. If something is different on the day, we explain it before loading.
 
 ## No MOT, no tax, still sellable
 
@@ -267,8 +267,8 @@ desc: Non-runner collection in Caldecott. We buy cars that won't start, with fla
 h1: Non-runner collection in Caldecott
 lead: Car in Caldecott that will not start, will not roll, or has not moved in years? We bring the kit to shift it and buy it as it is.
 answer: We Buy Scrap Cars Corby offers free non-runner collection in Caldecott, Rutland, using recovery trucks with winches, dollies and skates. Get an instant price online and we pay by bank transfer when we collect. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel being loaded onto a recovery truck on a gravel drive
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Caldecott
 ---
 ## Non-runner collection in Caldecott, without the headache
 
@@ -356,8 +356,8 @@ desc: Sell a damaged car in Caldecott. We buy accident damaged, flood damaged an
 h1: Sell your damaged car in Caldecott
 lead: Accident damage, a write-off you kept, or a car caught in floodwater in the valley? We buy damaged cars in Caldecott and collect them for free.
 answer: We Buy Scrap Cars Corby buys damaged cars and write-offs in Caldecott, Rutland, including Cat S, N and B buy-backs. Get an instant price online, we collect for free, and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a white recovery truck
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Caldecott
 ---
 ## Selling a damaged car in Caldecott
 
@@ -394,7 +394,7 @@ Caldecott sits on the valley floor beside the River Welland. If your car has bee
 
 Damage does not always reduce scrap value as much as people expect, because scrap is mainly priced on weight and the current scrap metal price. What matters more is whether the car is still complete. If the engine, gearbox, catalytic converter and wheels are all there, that helps. Make, model, keys and the V5C also play a part.
 
-Our [damaged car cost guide](/costs/damaged-cars) explains more. Your online price stands as long as the car matches what you told us. If we find something different, we explain before loading and you can say no.
+Our [damaged car cost guide](/costs/damaged-cars) explains more. Your online price stands as long as the car is complete and as described. If we find something different, we explain before loading and you can say no.
 
 ## Moving a car that is badly damaged
 
@@ -447,8 +447,8 @@ desc: Scrap my van in Caldecott. We buy panel vans, Lutons and pickups up to 3.5
 h1: Scrap my van in Caldecott
 lead: Old works van or pickup in Caldecott that has reached the end? We buy vans up to 3.5 tonnes, collect them for free and pay by bank transfer.
 answer: We Buy Scrap Cars Corby scraps vans in Caldecott, Rutland, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Instant online price, free collection, paid by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: White recovery truck with its amber beacon on at dusk in a yard beside other vehicles
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Caldecott
 ---
 ## Scrap my van in Caldecott: how it works
 
@@ -499,7 +499,7 @@ Vans are often heavier than cars, and weight is the main factor in scrap value. 
 | Make and model | Some vans are worth more than their weight |
 | Keys and V5C | Simpler loading and paperwork |
 
-See our [scrap van cost guide](/costs/scrap-van) for more on how prices are worked out. The online price stands as long as the van matches what you told us. If something is different on the day, we explain it before we load.
+See our [scrap van cost guide](/costs/scrap-van) for more on how prices are worked out. The online price stands as long as the van is complete and as described. If something is different on the day, we explain it before we load.
 
 ## Getting a van out of the valley
 

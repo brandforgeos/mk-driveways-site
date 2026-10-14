@@ -23,7 +23,7 @@
    "name": "Scrap Car Collection",
    "short": "Scrap my car",
    "card": "Get an instant price online, then we collect free and pay you by bank transfer when we pick it up.",
-   "img": "scrap-citroen-picasso-collection",
+   "img": "two-scrap-cars-old-touran-and-clio",
    "kw": "scrap car collection"
   },
   {
@@ -31,7 +31,7 @@
    "name": "MOT Failures",
    "short": "MOT failure",
    "card": "Failed its MOT and not worth fixing? We buy MOT failures as they are, with free collection.",
-   "img": "scrap-ford-focus-collection",
+   "img": "scrap-mot-failure-ford-focus",
    "kw": "sell MOT failure car"
   },
   {
@@ -39,7 +39,7 @@
    "name": "Non-Runners",
    "short": "Non-runner",
    "card": "Won't start, seized or been sat for years? We winch and load non-runners from driveways and garages.",
-   "img": "non-runner-seat-altea-collection",
+   "img": "scrap-non-runner-flat-tyres",
    "kw": "non-runner car collection"
   },
   {
@@ -47,7 +47,7 @@
    "name": "Damaged Cars and Write-Offs",
    "short": "Damaged car",
    "card": "Accident damaged, flood damaged or written off. We buy damaged cars and collect them free.",
-   "img": "damaged-vauxhall-astra-scrap",
+   "img": "scrap-damaged-nissan-qashqai",
    "kw": "sell damaged car"
   },
   {
@@ -55,7 +55,7 @@
    "name": "Scrap Van Collection",
    "short": "Scrap my van",
    "card": "Scrap vans up to 3.5 tonnes, from small vans to long-wheelbase panel vans and pickups.",
-   "img": "scrap-nissan-x-trail-collection",
+   "img": "scrap-van-collection-panel-van",
    "kw": "scrap van collection"
   }
  ],
@@ -74,7 +74,7 @@
   {
    "slug": "kettering",
    "name": "Kettering",
-   "img": "damaged-astra-and-fiesta-scrap",
+   "img": "scrap-car-garage-forecourt",
    "near": [
     "geddington",
     "rothwell",
@@ -85,7 +85,7 @@
   {
    "slug": "weldon",
    "name": "Weldon",
-   "img": "scrap-renault-clio-collection",
+   "img": "scrap-mot-failure-ford-focus",
    "near": [
     "corby",
     "priors-hall-park",
@@ -96,7 +96,7 @@
   {
    "slug": "priors-hall-park",
    "name": "Priors Hall Park",
-   "img": "scrap-jaguar-x-type-collection",
+   "img": "scrap-van-collection-panel-van",
    "near": [
     "weldon",
     "corby",
@@ -107,7 +107,7 @@
   {
    "slug": "great-oakley",
    "name": "Great Oakley",
-   "img": "scrap-mg3-collection",
+   "img": "scrap-car-garage-forecourt",
    "near": [
     "corby",
     "geddington",
@@ -140,7 +140,7 @@
   {
    "slug": "gretton",
    "name": "Gretton",
-   "img": "scrap-nissan-qashqai-collection",
+   "img": "scrap-car-overgrown-driveway",
    "near": [
     "corby",
     "rockingham",
@@ -151,7 +151,7 @@
   {
    "slug": "cottingham",
    "name": "Cottingham",
-   "img": "scrap-vw-touran-collection",
+   "img": "scrap-car-overgrown-driveway",
    "near": [
     "middleton",
     "rockingham",
@@ -162,7 +162,7 @@
   {
    "slug": "middleton",
    "name": "Middleton",
-   "img": "two-scrap-cars-touran-and-clio",
+   "img": "scrap-car-overgrown-driveway",
    "near": [
     "cottingham",
     "rockingham",
@@ -195,7 +195,7 @@
   {
    "slug": "rothwell",
    "name": "Rothwell",
-   "img": "scrap-honda-civic-collection",
+   "img": "scrap-audi-terraced-street",
    "near": [
     "desborough",
     "kettering",
@@ -206,7 +206,7 @@
   {
    "slug": "desborough",
    "name": "Desborough",
-   "img": "scrap-hatchback-collection",
+   "img": "scrap-audi-terraced-street",
    "near": [
     "rothwell",
     "kettering",
@@ -217,7 +217,7 @@
   {
    "slug": "deenethorpe",
    "name": "Deenethorpe",
-   "img": "damaged-astra-and-fiesta-scrap",
+   "img": "scrap-car-farmyard-collection",
    "near": [
     "weldon",
     "priors-hall-park",
@@ -239,7 +239,7 @@
   {
    "slug": "stoke-albany",
    "name": "Stoke Albany",
-   "img": "scrap-jaguar-x-type-collection",
+   "img": "scrap-car-farmyard-collection",
    "near": [
     "wilbarston",
     "east-carlton",
@@ -261,7 +261,7 @@
   {
    "slug": "rushton",
    "name": "Rushton",
-   "img": "scrap-vw-passat-collection",
+   "img": "scrap-non-runner-flat-tyres",
    "near": [
     "desborough",
     "rothwell",
@@ -272,7 +272,7 @@
   {
    "slug": "great-easton",
    "name": "Great Easton",
-   "img": "scrap-audi-a4-collection",
+   "img": "scrap-car-flood-damaged-clio",
    "near": [
     "caldecott",
     "rockingham",
@@ -283,7 +283,7 @@
   {
    "slug": "caldecott",
    "name": "Caldecott",
-   "img": "scrap-nissan-qashqai-collection",
+   "img": "scrap-car-flood-damaged-clio",
    "near": [
     "rockingham",
     "great-easton",
@@ -294,7 +294,7 @@
   {
    "slug": "harringworth",
    "name": "Harringworth",
-   "img": "scrap-vw-touran-collection",
+   "img": "scrap-car-flood-damaged-clio",
    "near": [
     "gretton",
     "caldecott",
@@ -305,7 +305,7 @@
   {
    "slug": "bulwick",
    "name": "Bulwick",
-   "img": "two-scrap-cars-touran-and-clio",
+   "img": "scrap-car-farmyard-collection",
    "near": [
     "deenethorpe",
     "harringworth",
@@ -316,7 +316,7 @@
   {
    "slug": "grafton-underwood",
    "name": "Grafton Underwood",
-   "img": "two-scrap-cars-jaguar-and-golf",
+   "img": "scrap-car-farmyard-collection",
    "near": [
     "geddington",
     "brigstock",
@@ -327,7 +327,7 @@
   {
    "slug": "lowick",
    "name": "Lowick",
-   "img": "scrap-cars-evening-collection-corby",
+   "img": "scrap-car-farmyard-collection",
    "near": [
     "brigstock",
     "grafton-underwood",
@@ -338,7 +338,7 @@
   {
    "slug": "barton-seagrave",
    "name": "Barton Seagrave",
-   "img": "scrap-honda-civic-collection",
+   "img": "scrap-damaged-nissan-qashqai",
    "near": [
     "kettering",
     "geddington",
@@ -355,48 +355,6 @@
   "min_price": 50,
   "max_price": 600,
   "valid_days": 7,
-  "types": [
-   [
-    "small",
-    "Small hatchback (e.g. Corsa, Fiesta, Micra)",
-    1000
-   ],
-   [
-    "hatch",
-    "Family hatchback (e.g. Focus, Astra, Golf)",
-    1250
-   ],
-   [
-    "estate",
-    "Estate, MPV or saloon (e.g. Passat, Touran, Mondeo)",
-    1450
-   ],
-   [
-    "suv",
-    "SUV or large car (e.g. Qashqai, X-Trail, Kuga)",
-    1600
-   ],
-   [
-    "4x4",
-    "Large 4x4 (e.g. Land Rover, Shogun)",
-    2100
-   ],
-   [
-    "smallvan",
-    "Small van (e.g. Berlingo, Transit Connect, Caddy)",
-    1350
-   ],
-   [
-    "van",
-    "Large van or pickup (e.g. Transit, Sprinter, Hilux)",
-    2000
-   ]
-  ],
-  "deductions": {
-   "no_keys": 0,
-   "no_v5": 0,
-   "no_cat": 0,
-   "no_wheels": 0
-  }
+  "default_kg": 1250
  }
 }

@@ -87,6 +87,16 @@ All photos show real collections by our white recovery trucks, branded Rapid Rec
 - two-scrap-cars-jaguar-and-golf — Jaguar on the bed and a Golf behind, new-build estate
 - scrap-cars-evening-collection-corby — truck with amber beacon at dusk in a yard beside other cars
 - scrap-honda-civic-collection — car being loaded at night with beacons on
+- scrap-mot-failure-ford-focus — rusty, faded silver Ford Focus MOT failure on a beavertail, residential street
+- scrap-van-collection-panel-van — old scuffed white small panel van on the truck, new-build estate
+- scrap-non-runner-flat-tyres — mossy, leaf-covered MPV with flat tyres that has sat for years, loaded on gravel
+- scrap-damaged-nissan-qashqai — silver SUV with heavy front-end crash damage (write-off) on the truck
+- scrap-car-farmyard-collection — muddy old 4x4 loaded in a farmyard with a brick barn and fields
+- scrap-car-flood-damaged-clio — flood-damaged blue Clio with a mud tide line, loaded early morning
+- scrap-car-overgrown-driveway — mossy abandoned hatchback with a flat tyre, collected from a driveway
+- two-scrap-cars-old-touran-and-clio — two old rusty cars, one on the bed and one towed
+- scrap-car-garage-forecourt — old dark saloon MOT failure collected from an independent garage forecourt
+- scrap-audi-terraced-street — tired dark saloon on the truck in a terraced town street
 
 ## Page file format (exact)
 

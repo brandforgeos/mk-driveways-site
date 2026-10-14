@@ -4,8 +4,8 @@ desc: Scrap my car in Middleton near Corby: instant online price from your reg a
 h1: Scrap your car in Middleton
 lead: An unwanted car sitting in Middleton? Get an instant price online, accept it, and we collect it free from your home on the edge of the Welland valley.
 answer: We Buy Scrap Cars Corby buys scrap cars in Middleton, near Corby. Enter your reg and postcode for an instant online price, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-touran-collection
-img_alt: VW Touran loaded onto a white Rapid Recovery truck during a free scrap car collection near Corby
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Middleton
 ---
 ## Scrap my car in Middleton, start to finish
 
@@ -49,7 +49,7 @@ Most of a scrap car's value comes from its weight, because scrap metal is priced
 | Keys and V5C | Help the price |
 | Where it is | Collection location plays a part |
 
-The online price is based on your reg and postcode, and it stands as long as the car matches what you told us. If something is different on the day, we explain before loading and you can decide not to go ahead. The [costs section](/costs) and our [how scrap car prices work guide](/guides/how-scrap-car-prices-work) explain more.
+The online price is based on your reg and postcode, and it stands as long as the car is complete and as described. If something is different on the day, we explain before loading and you can decide not to go ahead. The [costs section](/costs) and our [how scrap car prices work guide](/guides/how-scrap-car-prices-work) explain more.
 
 ## Legal, licensed and paid properly
 
@@ -89,8 +89,8 @@ desc: Scrap car collection in Middleton near Corby. Instant online price from yo
 h1: Scrap car collection in Middleton
 lead: Sell your scrap car in Middleton in a few clicks. Get your instant price online, accept it and we collect the car free from your home.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Middleton near Corby. Enter your reg and postcode for an instant online price, and we pay by bank transfer when we collect. Call or WhatsApp 07598 314366.
-img: scrap-mg3-collection
-img_alt: Light blue MG3 strapped onto the bed of a white Rapid Recovery truck for scrap collection
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Middleton
 ---
 ## Free scrap car collection in Middleton
 
@@ -120,7 +120,7 @@ If the car is in a garage or at the back of a property, our van with dollies and
 
 The price depends mainly on weight and the current scrap metal price. Make, model, whether the car is complete, whether you have the keys and V5C, and the collection location also make a difference. Because the market moves, we do not publish figures. The [instant online price](/get-a-price) is the reliable way to know.
 
-The price stands as long as the car matches what you told us. If something is different on the day, for example the catalytic converter is missing, we explain before we load and you are free to say no. Our [scrap car collection cost guide](/costs/scrap-car-collection) covers the detail.
+The price stands as long as the car is complete and as described. If something is different on the day, for example the catalytic converter is missing, we explain before we load and you are free to say no. Our [scrap car collection cost guide](/costs/scrap-car-collection) covers the detail.
 
 ## What happens on collection day?
 
@@ -178,8 +178,8 @@ desc: Sell your MOT failure in Middleton near Corby. Instant online price, free 
 h1: Sell your MOT failure in Middleton
 lead: MOT failed and the quote is more than the car is worth? We buy MOT failures in Middleton as they are. Get your instant price online.
 answer: We Buy Scrap Cars Corby buys MOT failures in Middleton, including cars with expired MOTs and no tax. Get an instant online price from your reg and postcode, free collection, paid by bank transfer. Call 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso on the bed of a white Rapid Recovery truck after failing its MOT
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Middleton
 ---
 ## Sell your MOT failure in Middleton instead of paying for repairs
 
@@ -218,7 +218,7 @@ Yes. There is no need to drive it anywhere. If the MOT has expired, the car shou
 
 Usually not much. What we pay is based mainly on weight and the current scrap metal price, with make, model, completeness, keys, the V5C and location also playing a part. The [MOT failure cost guide](/costs/mot-failure) explains each one, and our [how scrap car prices work guide](/guides/how-scrap-car-prices-work) shows why weight matters so much.
 
-Your online price stands as long as the car matches what you told us. If parts have been removed since you got the price, we explain the difference before loading, and you can say no.
+Your online price stands as long as the car is complete and as described. If parts have been removed since you got the price, we explain the difference before loading, and you can say no.
 
 ## Cars with no MOT, no tax or a SORN
 
@@ -263,8 +263,8 @@ desc: Non-runner collection in Middleton. We buy cars that won't start, seized e
 h1: Non-runner collection in Middleton
 lead: A dead car in Middleton is easier to shift than you think. We buy non-runners, collect them free and pay by bank transfer. Get your instant price.
 answer: We Buy Scrap Cars Corby provides free non-runner collection in Middleton for cars that won't start, have seized engines, flat tyres or seized brakes. Get an instant online price and we pay by bank transfer. Call 07598 314366.
-img: two-scrap-cars-touran-and-clio
-img_alt: Two scrap cars collected together, one on the bed of a Rapid Recovery truck and one towed behind
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Middleton
 ---
 ## Non-runner collection in Middleton for cars that have stopped for good
 
@@ -321,7 +321,7 @@ The more you tell us, the smoother it goes. When we call to book, mention:
 
 Usually more than people expect, because a scrap car's value is mostly in its weight. The current scrap metal price, make and model, whether the car is complete, and having the keys and V5C all count too. Our [non-runner cost guide](/costs/non-runner) explains more.
 
-Your price stands as long as the car matches what you told us. If something is different, we explain before we load and you can say no.
+Your price stands as long as the car is complete and as described. If something is different, we explain before we load and you can say no.
 
 ## Paperwork for a car that has been off the road
 
@@ -366,8 +366,8 @@ desc: Sell your damaged car in Middleton. Accident damaged, Cat S, N and B write
 h1: Sell your damaged car in Middleton
 lead: We buy accident damaged cars, insurance write-offs and flood damaged cars in Middleton, as they are. Get your instant price and a free collection.
 answer: We Buy Scrap Cars Corby buys damaged cars and write-offs in Middleton, including Cat S, N and B buy-backs and flood damage. Get an instant online price, we collect free and pay by bank transfer. Call 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red damaged Vauxhall Astra on a Rapid Recovery truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Middleton
 ---
 ## Sell your damaged car in Middleton as it stands
 
@@ -453,8 +453,8 @@ desc: Scrap your van in Middleton near Corby. Panel vans, Lutons and pickups up 
 h1: Scrap your van in Middleton
 lead: Finished with an old van in Middleton? We buy vans, pickups and 4x4s up to 3.5 tonnes. Get your instant price online and a free collection.
 answer: We Buy Scrap Cars Corby buys scrap vans in Middleton near Corby, from small vans to Lutons and pickups up to 3.5 tonnes. Get an instant online price, free collection, paid by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: White Rapid Recovery truck with its amber beacon on at dusk in a yard beside other vehicles
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Middleton
 ---
 ## Scrap your van in Middleton and free up the space
 
@@ -489,7 +489,7 @@ Weight drives most scrap prices, and vans are heavier than most cars. We also ta
 | Keys and V5C | Help the price |
 | Scrap metal price | Moves with the market |
 
-The online price stands as long as the van matches what you told us. If something differs on the day, we explain before loading and you can say no. Our [scrap van cost guide](/costs/scrap-van) and the guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explain more.
+The online price stands as long as the van is complete and as described. If something differs on the day, we explain before loading and you can say no. Our [scrap van cost guide](/costs/scrap-van) and the guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explain more.
 
 ## Can you collect a van that will not start?
 

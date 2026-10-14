@@ -4,8 +4,8 @@ desc: Scrap your car in Priors Hall Park, Corby. Instant online price from your 
 h1: Scrap cars and vans bought in Priors Hall Park
 lead: New homes, new neighbours and sometimes an old car that doesn't fit the new driveway. We buy unwanted vehicles across Priors Hall Park and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted cars and vans in Priors Hall Park. Get an instant price online from your reg and postcode, and we collect free and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: two-scrap-cars-jaguar-and-golf
-img_alt: Jaguar on a white recovery truck bed with a Golf towed behind on a new-build housing estate
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Priors Hall Park
 ---
 ## Selling a scrap car in Priors Hall Park
 
@@ -41,7 +41,7 @@ When we call to book, tell us where the car is parked and whether anything is bl
 
 ## What decides the price?
 
-The biggest factor is weight, because scrap is priced per tonne, along with the current scrap metal price. We also look at the make and model, whether the car is complete with engine, gearbox, catalytic converter and wheels, whether you have keys and the V5C, and where it is. The online price stands as long as the car matches what you told us. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) gives the full picture.
+The biggest factor is weight, because scrap is priced per tonne, along with the current scrap metal price. We also look at the make and model, whether the car is complete with engine, gearbox, catalytic converter and wheels, whether you have keys and the V5C, and where it is. The online price stands as long as the car is complete and as described. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) gives the full picture.
 
 ## No cash, just a bank transfer
 
@@ -79,8 +79,8 @@ desc: Scrap car collection in Priors Hall Park. Instant online price, free colle
 h1: Scrap car collection in Priors Hall Park
 lead: Clear the space on your drive. We give you an instant price for your old car, collect it free from Priors Hall Park and pay you by bank transfer.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Priors Hall Park. Get an instant online price from your reg and postcode, accept it, and we collect and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark hatchback loaded onto a white recovery truck on a housing estate for scrap
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Priors Hall Park
 ---
 ## Scrap my car in Priors Hall Park
 
@@ -168,8 +168,8 @@ desc: Sell your MOT failure in Priors Hall Park. We buy cars with no MOT or tax 
 h1: Sell your MOT failure in Priors Hall Park
 lead: The MOT came back with a fail and a long list. Rather than pay for repairs, sell the car as it is. We collect it free from Priors Hall Park.
 answer: We Buy Scrap Cars Corby buys MOT failures in Priors Hall Park as they are, including cars with no tax. Get an instant online price from your reg and postcode, then we collect free and pay by bank transfer. Call 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso that failed its MOT loaded on the bed of a white recovery truck
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Priors Hall Park
 ---
 ## Sell your MOT failure in Priors Hall Park without the hassle of repairs
 
@@ -207,7 +207,7 @@ For most MOT failures, the value comes from weight and the scrap metal price, wi
 | Do you have the keys? | Makes loading easier |
 | Do you have the V5C? | Hand it over, keep the yellow slip |
 
-The online price stands as long as the car matches what you told us.
+The online price stands as long as the car is complete and as described.
 
 ## On collection day
 
@@ -255,8 +255,8 @@ desc: Non-runner collection in Priors Hall Park. We buy dead cars with flat batt
 h1: Non-runner collection in Priors Hall Park
 lead: A car that won't start is taking up a space you need. We buy non-runners in Priors Hall Park, load them with the right kit and pay by bank transfer.
 answer: We Buy Scrap Cars Corby buys non-runners in Priors Hall Park, including cars with dead engines, flat tyres or seized brakes. Get an instant price online, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-honda-civic-collection
-img_alt: Car being loaded onto a white recovery truck at night with amber beacons flashing
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Priors Hall Park
 ---
 ## Dead car removal in Priors Hall Park
 
@@ -291,7 +291,7 @@ Give us a quick picture when we call:
 
 Because scrap value comes mainly from weight and the current scrap metal price, a car that doesn't run is still worth something. Make and model matter too, and so does completeness: the engine, gearbox, catalytic converter and wheels should all be there. Keys and the V5C help. Our [non-runner cost guide](/costs/non-runner) and our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explain more.
 
-The online price holds as long as the car matches what you told us. If we find something different on the day, we explain before we load and you can choose not to go ahead.
+The online price holds as long as the car is complete and as described. If we find something different on the day, we explain before we load and you can choose not to go ahead.
 
 ## A car that isn't really yours to drive
 
@@ -341,8 +341,8 @@ desc: Sell your damaged car in Priors Hall Park. We buy accident damaged cars an
 h1: Sell your damaged car in Priors Hall Park
 lead: Whether it was a parking scrape that got worse or a serious crash, we buy damaged cars and write-offs in Priors Hall Park and collect them free.
 answer: We Buy Scrap Cars Corby buys damaged cars in Priors Hall Park, including accident damage and Cat S, N and B buy-backs. Get an instant price online from your reg and postcode, and we collect free and pay by bank transfer. Call 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red damaged Vauxhall Astra on a recovery truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Priors Hall Park
 ---
 ## Selling a damaged car in Priors Hall Park
 
@@ -379,7 +379,7 @@ We buy:
 
 A damaged car is mainly valued on weight and the current scrap metal price, with adjustments for make and model. A badly dented car that is complete, with its engine, gearbox, catalytic converter and wheels, can still be worth a fair amount. Missing parts lower the price. Our [damaged cars cost guide](/costs/damaged-cars) goes through it.
 
-Please describe the damage honestly when you get your price. The price stands as long as the car matches what you told us, and if it doesn't, we explain before loading and you can say no.
+Please describe the damage honestly when you get your price. The price stands as long as the car is complete and as described, and if it doesn't, we explain before loading and you can say no.
 
 ## Collecting a car that can't move
 
@@ -432,8 +432,8 @@ desc: Scrap your van in Priors Hall Park. Small vans, panel vans, Lutons and pic
 h1: Scrap van collection in Priors Hall Park
 lead: An old van parked outside a new home is an easy thing to fix. We buy vans and pickups up to 3.5 tonnes in Priors Hall Park and collect them free.
 answer: We Buy Scrap Cars Corby offers scrap van collection in Priors Hall Park for vans and pickups up to 3.5 tonnes. Get an instant price online from your reg and postcode, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a white recovery truck outside a house for scrap collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Priors Hall Park
 ---
 ## Scrap my van in Priors Hall Park
 
@@ -473,7 +473,7 @@ Vans tend to be heavier than cars, and weight plus the scrap metal price makes u
 | Luton up to 3.5 tonnes | Yes |
 | Pickup or 4x4 | Yes |
 
-The price stands as long as the van matches what you told us. If something is different, we explain before loading and you can say no.
+The price stands as long as the van is complete and as described. If something is different, we explain before loading and you can say no.
 
 ## Loading a van in a tight street
 

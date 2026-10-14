@@ -4,8 +4,8 @@ desc: Scrap car buyers in Gretton. Enter your reg for an instant online price, f
 h1: Scrap your car in Gretton
 lead: Gretton looks out over the Welland valley from its hilltop north of Corby. If you have a car or van to get rid of, we price it online and collect it free.
 answer: We Buy Scrap Cars Corby buys scrap cars and vans in Gretton. Get an instant online price from your reg and postcode, accept it, and we collect free and pay by bank transfer when we load. Call or WhatsApp 07598 314366.
-img: scrap-jaguar-x-type-collection
-img_alt: Green Jaguar X-Type loaded on the bed of a white recovery truck during a scrap car collection
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Gretton
 ---
 ## Scrap car buyers for Gretton
 
@@ -80,8 +80,8 @@ desc: Free scrap car collection in Gretton. Get an instant online price from you
 h1: Scrap car collection in Gretton
 lead: Sell your scrap car in Gretton without leaving home. Check the price online, say yes, and we come to you with our own truck.
 answer: We Buy Scrap Cars Corby runs free scrap car collection in Gretton. Your reg and postcode give an instant online price, and once you accept we collect the car and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-mg3-collection
-img_alt: Light blue MG3 strapped onto a white recovery truck bed, collected as a scrap car
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Gretton
 ---
 ## How scrap car collection in Gretton works
 
@@ -168,8 +168,8 @@ desc: Sell your MOT failure in Gretton. We buy failed MOT cars as they are, with
 h1: Sell an MOT failure in Gretton
 lead: A failed MOT does not have to mean a big repair bill. Sell your MOT failure in Gretton to us and we collect it free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Gretton in any condition. Get an instant online price from your reg and postcode, and we collect the car free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded on a white recovery truck early in the morning after failing its MOT
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Gretton
 ---
 ## Sell your MOT failure in Gretton, as it stands
 
@@ -254,8 +254,8 @@ desc: Non-runner collection in Gretton. Seized engines, flat batteries, flat tyr
 h1: Non-runner collection in Gretton
 lead: Dead battery, seized engine or four flat tyres. We remove non-runners from homes, garages and yards in Gretton and pay you by bank transfer.
 answer: We Buy Scrap Cars Corby offers free non-runner collection in Gretton, including cars that will not start, roll or steer. Get an instant online price and we collect with our own recovery trucks, paying by bank transfer. Call or WhatsApp 07598 314366.
-img: two-scrap-cars-touran-and-clio
-img_alt: Two scrap cars collected at once, a VW Touran on the truck bed and a Renault Clio towed behind
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Gretton
 ---
 ## Dead car removal in Gretton
 
@@ -286,7 +286,7 @@ We buy all of them, whatever the age, make or model.
 
 Yes. A car that does not run is still made of metal, and scrap is priced by weight. The scrap metal price, make and model also count, along with whether the engine, gearbox, catalytic converter and wheels are still on the car. Keys and the V5C help too.
 
-The instant online price uses your registration and postcode. It stands as long as the car matches what you told us. If we find something different, we explain it before loading, and you can refuse. Read the [non-runner cost guide](/costs/non-runner) for more on what affects the figure.
+The instant online price uses your registration and postcode. It stands as long as the car is complete and as described. If we find something different, we explain it before loading, and you can refuse. Read the [non-runner cost guide](/costs/non-runner) for more on what affects the figure.
 
 ## Old paperwork, missing keys
 
@@ -336,8 +336,8 @@ desc: Sell a damaged car in Gretton. We buy accident damaged cars, write-offs an
 h1: Sell a damaged car in Gretton
 lead: Whether it was a collision, a slide on an icy hill or flood water, we buy damaged cars and write-offs in Gretton and collect them free.
 answer: We Buy Scrap Cars Corby buys damaged cars in Gretton, including accident damage, flood damage and Cat S, Cat N and Cat B buy-backs. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Damaged red Vauxhall Astra on a recovery truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Gretton
 ---
 ## Accident damaged car buyers in Gretton
 
@@ -417,8 +417,8 @@ desc: Scrap van removal in Gretton for vans, Lutons and pickups up to 3.5 tonnes
 h1: Scrap van removal in Gretton
 lead: Tired trade van, ex-fleet panel van or an old pickup. We scrap vans up to 3.5 tonnes in Gretton and collect them free.
 answer: We Buy Scrap Cars Corby scraps vans in Gretton, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: White recovery truck with amber beacon at dusk in a yard beside other vehicles waiting for scrap
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Gretton
 ---
 ## Scrap a van in Gretton
 
@@ -455,7 +455,7 @@ Vans are priced mainly by weight and the current scrap metal price. A bigger van
 | Keys and V5C | Both help |
 | Location | Where we collect from |
 
-The instant online price stands as long as the van matches what you told us. If we find a difference, we explain before loading, and you can decide not to go ahead. See the [scrap van cost guide](/costs/scrap-van) and [how scrap car prices work](/guides/how-scrap-car-prices-work) for more.
+The instant online price stands as long as the van is complete and as described. If we find a difference, we explain before loading, and you can decide not to go ahead. See the [scrap van cost guide](/costs/scrap-van) and [how scrap car prices work](/guides/how-scrap-car-prices-work) for more.
 
 ## Collecting a van from a slope or a yard
 

@@ -4,8 +4,8 @@ desc: Scrap your car in Barton Seagrave with an instant online price, free colle
 h1: Scrap my car in Barton Seagrave
 lead: Barton Seagrave sits on Kettering's south-east edge by the A14 and A6. We buy scrap and unwanted cars from its estates and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap cars in Barton Seagrave. Enter your reg and postcode for an instant online price, we collect free and pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark hatchback loaded on a recovery truck on a residential housing estate
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Barton Seagrave
 ---
 ## Scrap my car in Barton Seagrave, the simple way
 
@@ -90,8 +90,8 @@ desc: Scrap car collection in Barton Seagrave, Kettering. Instant online price f
 h1: Scrap car collection in Barton Seagrave
 lead: Need an old car moved off the drive in Barton Seagrave? Get an instant price online and we collect it for free.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Barton Seagrave. Get an instant online price from your reg and postcode, then we collect and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus loaded on a beavertail recovery truck on a residential street
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Barton Seagrave
 ---
 ## Scrap car collection in Barton Seagrave, explained
 
@@ -125,7 +125,7 @@ When you enter your registration, we look up the vehicle, so the price is based 
 | Keys and V5C | Both help |
 | Postcode | Part of the calculation |
 
-The [scrap car collection cost guide](/costs/scrap-car-collection) explains each of these. Your price stays as agreed while the car matches what you told us. If something differs, for example the catalytic converter has gone, we explain before loading and you can decline.
+The [scrap car collection cost guide](/costs/scrap-car-collection) explains each of these. Your price stays as agreed while the car is complete and as described. If something differs, for example the catalytic converter has gone, we explain before loading and you can decline.
 
 ## What happens on collection day
 
@@ -188,8 +188,8 @@ desc: Sell your MOT failure in Barton Seagrave. Instant online price, no repairs
 h1: Sell your MOT failure in Barton Seagrave
 lead: Just had the bad news at the MOT test? We buy MOT failures in Barton Seagrave as they are and collect them free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Barton Seagrave with no repairs needed. Get an instant online price, free collection from your home or garage, paid by bank transfer. Call 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded on a recovery truck early in the morning after failing its MOT
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Barton Seagrave
 ---
 ## Sell an MOT failure in Barton Seagrave without the repair bill
 
@@ -281,8 +281,8 @@ desc: Non-runner collection in Barton Seagrave. We buy cars that won't start, fl
 h1: Non-runner collection in Barton Seagrave
 lead: A car in Barton Seagrave that won't start or has sat on the drive for months? We buy non-runners and have the kit to move them.
 answer: We Buy Scrap Cars Corby buys and collects non-runners in Barton Seagrave, including cars with flat tyres, seized brakes or engine failure. Instant online price, free collection, paid by bank transfer. Call 07598 314366.
-img: scrap-honda-civic-collection
-img_alt: Car being loaded onto a recovery truck at night with amber beacons on
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Barton Seagrave
 ---
 ## Non-runner collection in Barton Seagrave
 
@@ -372,8 +372,8 @@ desc: Sell a damaged car in Barton Seagrave. Accident damage, Cat S, N and B buy
 h1: Sell your damaged car in Barton Seagrave
 lead: Car damaged in an accident or written off by your insurer? We buy damaged cars in Barton Seagrave and collect them free.
 answer: We Buy Scrap Cars Corby buys accident damaged cars and write-offs in Barton Seagrave, including Cat S, N and B buy-backs. Instant online price, free collection, paid by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red damaged Vauxhall Astra on a recovery truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Barton Seagrave
 ---
 ## Sell a damaged car in Barton Seagrave
 
@@ -468,8 +468,8 @@ desc: Scrap your van in Barton Seagrave. We buy vans, Lutons and pickups up to 3
 h1: Scrap van collection in Barton Seagrave
 lead: An old work van parked outside the house in Barton Seagrave? We buy scrap vans up to 3.5 tonnes and collect them free.
 answer: We Buy Scrap Cars Corby offers free scrap van collection in Barton Seagrave for vans, Lutons and pickups up to 3.5 tonnes. Get an instant price online and be paid by bank transfer. Call 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: Recovery truck with amber beacon at dusk in a yard beside other vehicles awaiting collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Barton Seagrave
 ---
 ## Scrap my van in Barton Seagrave
 

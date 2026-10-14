@@ -4,8 +4,8 @@ desc: Scrap car collection in Stoke Albany. Get an instant price online, free co
 h1: Scrap car collection in Stoke Albany
 lead: Stoke Albany is a small village beside Wilbarston on the Northamptonshire and Leicestershire border. We buy scrap and unwanted cars, vans and 4x4s here and collect them free.
 answer: We Buy Scrap Cars Corby offers scrap car collection in Stoke Albany with an instant online price, free collection from your drive, yard or lane, and payment by bank transfer when we load. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a white Rapid Recovery truck outside a house, ready to be taken for scrap
+img: scrap-car-farmyard-collection
+img_alt: Muddy old 4x4 loaded on our truck in a farmyard for free scrap collection in Stoke Albany
 ---
 ## Scrapping a car in a border village
 
@@ -44,7 +44,7 @@ There is no fixed figure, and we do not publish one. The price depends on a hand
 | Keys and V5C | Both make the sale simpler |
 | Location | Where the vehicle is affects the collection |
 
-The price stands as long as the vehicle matches what you told us. If something differs on the day, such as a missing catalytic converter, we explain before we load and you can say no. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) goes into more detail, and our [scrap car cost guide](/costs/scrap-car-collection) covers what affects the figure.
+The price stands as long as the vehicle is complete and as described. If something differs on the day, such as a missing catalytic converter, we explain before we load and you can say no. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) goes into more detail, and our [scrap car cost guide](/costs/scrap-car-collection) covers what affects the figure.
 
 ## Why bank transfer and not cash?
 
@@ -90,8 +90,8 @@ desc: Scrap my car in Stoke Albany with an instant online price, free collection
 h1: Scrap my car in Stoke Albany
 lead: Want to scrap your car in Stoke Albany? Get an instant price online, accept it, and we will book a free collection at a time that suits you.
 answer: To scrap your car in Stoke Albany, get an instant online price from We Buy Scrap Cars Corby using your registration and postcode. Collection is free and we pay by bank transfer when we load. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus secured on a beavertail recovery truck on a residential street for scrap collection
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Stoke Albany
 ---
 ## Scrap my car in Stoke Albany, step by step
 
@@ -117,7 +117,7 @@ People often ask for a typical figure. We do not give one, because every vehicle
 
 The main factor is weight, because scrap metal is priced per tonne. After that we look at the make and model, whether the car is complete, whether there are keys and a V5C, and where the car is. A car with its engine, gearbox, catalytic converter and wheels in place is worth more than one that has been stripped.
 
-The price you accept stands as long as the car matches what you told us. If something is different on the day, we explain why before loading, and you are free to say no. For more, read our [scrap car cost guide](/costs/scrap-car-collection).
+The price you accept stands as long as the car is complete and as described. If something is different on the day, we explain why before loading, and you are free to say no. For more, read our [scrap car cost guide](/costs/scrap-car-collection).
 
 ## Where can you collect from?
 
@@ -176,8 +176,8 @@ desc: Sell your MOT failure in Stoke Albany. Instant online price, free collecti
 h1: Sell your MOT failure in Stoke Albany
 lead: Car failed its MOT in Stoke Albany and the repair bill does not add up? We buy MOT failures as they are and collect them free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Stoke Albany. Get an instant price online, we collect free even with no MOT, and we pay by bank transfer when we load. Call or WhatsApp 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso loaded on the bed of a white recovery truck after failing its MOT
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Stoke Albany
 ---
 ## Failed MOT, what now?
 
@@ -214,7 +214,7 @@ We do not quote general figures. Your price comes from the registration and post
 | Complete or not | Missing parts lower the value |
 | Keys and V5C present | Makes the sale straightforward |
 
-An MOT failure is usually a complete car, which helps. Our [MOT failure cost guide](/costs/mot-failure) explains more about how failures are valued, and the price stands as long as the car matches what you told us.
+An MOT failure is usually a complete car, which helps. Our [MOT failure cost guide](/costs/mot-failure) explains more about how failures are valued, and the price stands as long as the car is complete and as described.
 
 ## Getting ready for collection
 
@@ -262,8 +262,8 @@ desc: Non-runner collection in Stoke Albany. We buy cars that won't start, have 
 h1: Non-runner collection in Stoke Albany
 lead: Got a car in Stoke Albany that will not start or will not move? We buy non-runners and bring the right kit to shift them.
 answer: We Buy Scrap Cars Corby offers non-runner collection in Stoke Albany for cars that won't start, have seized brakes or flat tyres. Get an instant online price, free collection, and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel being loaded onto a recovery truck from a gravel drive
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Stoke Albany
 ---
 ## Non-runner collection in Stoke Albany, without the headache
 
@@ -353,8 +353,8 @@ desc: Sell your damaged car in Stoke Albany. We buy accident damaged cars and Ca
 h1: Sell your damaged car in Stoke Albany
 lead: Car damaged in an accident or written off by your insurer? We buy damaged cars and write-offs in Stoke Albany and collect them free.
 answer: We Buy Scrap Cars Corby buys damaged cars and insurance write-offs in Stoke Albany, including Cat S, N and B buy-backs. Get an instant online price, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a white recovery truck
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Stoke Albany
 ---
 ## Sell a damaged car in Stoke Albany
 
@@ -438,8 +438,8 @@ desc: Scrap your van in Stoke Albany. We buy vans and pickups up to 3.5 tonnes. 
 h1: Scrap your van in Stoke Albany
 lead: Old van or pickup taking up space in Stoke Albany? We buy vans up to 3.5 tonnes, running or not, and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap vans in Stoke Albany, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Instant online price, free collection, paid by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: White recovery truck with amber beacon lit at dusk in a yard beside other vehicles waiting for collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Stoke Albany
 ---
 ## Scrap van collection in Stoke Albany
 

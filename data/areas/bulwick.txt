@@ -4,8 +4,8 @@ desc: Scrap my car in Bulwick: instant online price from your reg and postcode, 
 h1: Scrap my car in Bulwick
 lead: Bulwick is a small village beside the A43 on the way from Corby to Stamford. If you have a car, van or 4x4 to get rid of here, we buy it and collect it free.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted vehicles in Bulwick. Get an instant online price from your registration and postcode, accept it, and we collect free and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a white Rapid Recovery truck outside a house, ready to go for scrap
+img: scrap-car-farmyard-collection
+img_alt: Muddy old 4x4 loaded on our truck in a farmyard for free scrap collection in Bulwick
 ---
 ## Scrap car buyers for Bulwick and the A43 corridor
 
@@ -46,7 +46,7 @@ Because the village sits right beside the A43, which carries plenty of lorries a
 | Keys and V5C | Make the sale straightforward |
 | Location | Your postcode is part of the online price |
 
-The price stands as long as the vehicle matches what you told us. If something is different on the day, such as a missing catalytic converter, we explain before we load and you can say no. Our [guide to how scrap car prices work](/guides/how-scrap-car-prices-work) goes into more depth, and the [costs pages](/costs) cover each service.
+The price stands as long as the vehicle is complete and as described. If something is different on the day, such as a missing catalytic converter, we explain before we load and you can say no. Our [guide to how scrap car prices work](/guides/how-scrap-car-prices-work) goes into more depth, and the [costs pages](/costs) cover each service.
 
 ## Why bank transfer and not cash?
 
@@ -86,8 +86,8 @@ desc: Free scrap car collection in Bulwick. Instant online price from your reg, 
 h1: Scrap car collection in Bulwick
 lead: Got an old car to clear in Bulwick? Get your instant price online, accept it, and we come and collect it free, paying you by bank transfer on the spot.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Bulwick. Enter your reg and postcode for an instant online price, accept it, and we collect and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-jaguar-x-type-collection
-img_alt: Green Jaguar X-Type strapped onto the bed of a white recovery truck for scrap collection
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Bulwick
 ---
 ## Free scrap car collection in Bulwick
 
@@ -122,7 +122,7 @@ Same-day collection is often possible, but it depends on where the trucks are, s
 
 There is no fixed answer, because the price is worked out for your car. The main driver is weight, since scrap is priced per tonne, together with the current scrap metal price. After that we look at the make and model, whether it is complete with its engine, gearbox, catalytic converter and wheels, whether there are keys and a V5C, and where it is.
 
-The online price stands as long as the car matches what you told us. If something is different on the day, we explain why before we load and you are free to say no. The [scrap car collection cost guide](/costs/scrap-car-collection) explains it in more detail.
+The online price stands as long as the car is complete and as described. If something is different on the day, we explain why before we load and you are free to say no. The [scrap car collection cost guide](/costs/scrap-car-collection) explains it in more detail.
 
 ## Bulwick access: drives, gateways and the main road
 
@@ -172,8 +172,8 @@ desc: Sell your MOT failure in Bulwick. Instant online price, free collection ev
 h1: Sell your MOT failure in Bulwick
 lead: Failed the MOT and facing a repair bill bigger than the car is worth? Sell your MOT failure in Bulwick to us instead. Instant price online, free collection.
 answer: We Buy Scrap Cars Corby buys MOT failures in Bulwick, including cars whose MOT has already expired. Get an instant online price from your reg and postcode, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat loaded on a white recovery truck at dusk after failing its MOT
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Bulwick
 ---
 ## Failed MOT in Bulwick? What now
 
@@ -210,7 +210,7 @@ Same-day collection is often possible, but we confirm timings when we call rathe
 
 Not really, because we are not pricing the car to put back on the road. The price is based mainly on weight and the current scrap metal price, then on make and model, whether the car is complete with engine, gearbox, catalytic converter and wheels, whether there are keys and a V5C, and where it is. A car that failed on rust can be worth much the same to us as one that failed on brakes. The [MOT failure cost guide](/costs/mot-failure) explains how this works.
 
-The price stands as long as the car matches what you told us. If something has changed, we tell you before loading and you can walk away.
+The price stands as long as the car is complete and as described. If something has changed, we tell you before loading and you can walk away.
 
 ## No MOT, no tax, on a SORN
 
@@ -255,8 +255,8 @@ desc: Non-runner collection in Bulwick. Sell a car that won't start, has flat ty
 h1: Non-runner collection in Bulwick
 lead: A car in Bulwick that won't start, won't roll or has sat in a shed for years? We buy non-runners and bring the kit to move them. Get your instant price online.
 answer: We Buy Scrap Cars Corby buys non-runners in Bulwick, including cars with seized engines, flat tyres or stuck brakes. Get an instant online price, and we collect free with winches, dollies and skates and pay by bank transfer. Call 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel being loaded onto a recovery truck on gravel
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Bulwick
 ---
 ## Non-runner collection in Bulwick, wherever it stopped
 
@@ -299,7 +299,7 @@ Around Bulwick there are plenty of outbuildings, and plenty of cars inside them.
 3. Accept the price and we agree a collection time.
 4. We check your ID, pay you by bank transfer and load the car.
 
-The price stands as long as the car matches what you told us. If something is missing, for example the catalytic converter has been taken off while the car was standing, we explain before we load and you can decline.
+The price stands as long as the car is complete and as described. If something is missing, for example the catalytic converter has been taken off while the car was standing, we explain before we load and you can decline.
 
 ## Do non-runners get a lower price?
 
@@ -342,8 +342,8 @@ desc: Sell your damaged car in Bulwick. We buy accident damaged cars, Cat S, N a
 h1: Sell your damaged car in Bulwick
 lead: Accident damage, a write-off you kept, or a car that went through floodwater? We buy damaged cars in Bulwick and collect them free. Get your price online.
 answer: We Buy Scrap Cars Corby buys damaged cars in Bulwick, including accident damaged cars, insurance write-off buy-backs and flood damaged cars. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a recovery truck for scrap
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Bulwick
 ---
 ## Damaged car buyers for Bulwick
 
@@ -369,7 +369,7 @@ If your insurer wrote the car off and you kept it as a buy-back, perhaps meaning
 3. Accept the price and we call to agree a collection time.
 4. On the day we check your ID, pay by bank transfer and load the car.
 
-The price stands as long as the car matches what you told us. If we find something different, for example parts missing since the accident, we explain before loading and you can say no.
+The price stands as long as the car is complete and as described. If we find something different, for example parts missing since the accident, we explain before loading and you can say no.
 
 ## Will damage lower my scrap price?
 
@@ -424,8 +424,8 @@ desc: Scrap your van in Bulwick. Panel vans, Lutons and pickups up to 3.5 tonnes
 h1: Scrap your van in Bulwick
 lead: An old work van, Luton or pickup sitting in a yard in Bulwick? We buy scrap vans up to 3.5 tonnes and collect them free. Get your instant price online.
 answer: We Buy Scrap Cars Corby buys scrap vans in Bulwick, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso loaded on the bed of a white Rapid Recovery truck
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Bulwick
 ---
 ## Scrap van collection in Bulwick
 
@@ -446,7 +446,7 @@ Bulwick is surrounded by farmland, and the vans and pickups around here work har
 
 Weight is the main factor, because scrap is priced per tonne, so a larger van is generally worth more than a small one. After that we look at the current scrap metal price, the make and model, whether it is complete with its engine, gearbox, catalytic converter and wheels, whether there are keys and a V5C, and where it is. The [scrap van cost guide](/costs/scrap-van) and our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explain more.
 
-The price stands as long as the van matches what you told us. If something is different, we explain before we load and you can say no.
+The price stands as long as the van is complete and as described. If something is different, we explain before we load and you can say no.
 
 ## Empty the van first
 

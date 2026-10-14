@@ -4,8 +4,8 @@ desc: Scrap my car in Cottingham: get an instant online price from your reg and 
 h1: Scrap your car in Cottingham
 lead: Got an old car in Cottingham that has reached the end of the road? Get an instant price online, accept it, and we collect it free from the village.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted cars in Cottingham. Enter your reg and postcode for an instant online price, we collect free and pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus loaded on a white Rapid Recovery beavertail truck in a residential street during a scrap car collection
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Cottingham
 ---
 ## Scrap my car in Cottingham, the simple way
 
@@ -52,7 +52,7 @@ When we call to book, tell us if the drive is steep, if the car is facing uphill
 | Keys and V5C | Having them helps |
 | Location | Where the car is collected from |
 
-The online price is based on your registration and postcode. It stands as long as the car matches what you told us. If something is different on the day, we explain before we load and you can say no. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) goes into more depth, and the [costs section](/costs) covers each service.
+The online price is based on your registration and postcode. It stands as long as the car is complete and as described. If something is different on the day, we explain before we load and you can say no. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) goes into more depth, and the [costs section](/costs) covers each service.
 
 ## Paid by bank transfer, never cash
 
@@ -92,8 +92,8 @@ desc: Scrap car collection in Cottingham with an instant online price, free coll
 h1: Scrap car collection in Cottingham
 lead: Selling your scrap car in Cottingham takes minutes. Enter your reg and postcode, accept the price and we come and collect it free.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Cottingham. Get an instant online price from your registration and postcode, then we collect and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark hatchback secured on a white Rapid Recovery truck on a housing estate, ready to go for scrap
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Cottingham
 ---
 ## Scrap car collection in Cottingham from your own driveway
 
@@ -122,7 +122,7 @@ If the car is tucked into a garage or squeezed at the side of the house, we have
 
 Your price comes mainly from the car's weight and the current scrap metal price. Make, model, completeness, keys, the V5C and where the car is all play a part too. We do not publish figures because they change with the market, which is why the [instant online price](/get-a-price) is the quickest way to know.
 
-The price stands as long as the car matches what you told us. If, say, the catalytic converter has been removed and you did not mention it, we explain the change before we load. You can still say no. The [scrap car collection cost guide](/costs/scrap-car-collection) explains each factor in more detail.
+The price stands as long as the car is complete and as described. If, say, the catalytic converter has been removed and you did not mention it, we explain the change before we load. You can still say no. The [scrap car collection cost guide](/costs/scrap-car-collection) explains each factor in more detail.
 
 ## Step by step
 
@@ -180,8 +180,8 @@ desc: Sell your MOT failure in Cottingham. Instant online price from your reg, f
 h1: Sell your MOT failure in Cottingham
 lead: Failed MOT and a repair quote that makes no sense? Sell the car to us instead. Instant price online, free collection in Cottingham.
 answer: We Buy Scrap Cars Corby buys MOT failures in Cottingham, including cars with expired MOTs. Get an instant online price from your reg and postcode, we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded on a white Rapid Recovery truck early in the morning after failing its MOT
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Cottingham
 ---
 ## Failed MOT in Cottingham, what now?
 
@@ -222,7 +222,7 @@ If the garage that tested it would rather the car was moved from their forecourt
 
 The failure itself often makes little difference. What counts is the car's weight, the current scrap metal price, the make and model, whether it is complete, and whether you have the keys and V5C. Location plays a small part too. Our [MOT failure cost guide](/costs/mot-failure) explains it in full.
 
-The online price holds as long as the car matches what you told us. If something has changed, for example parts have been taken off since the test, we tell you before we load and you can decide.
+The online price holds as long as the car is complete and as described. If something has changed, for example parts have been taken off since the test, we tell you before we load and you can decide.
 
 ## Expired MOT and no tax
 
@@ -267,8 +267,8 @@ desc: Non-runner collection in Cottingham. Instant online price, free removal of
 h1: Non-runner collection in Cottingham
 lead: Car dead on the drive in Cottingham? We buy non-runners and collect them free with our own recovery trucks. Get your instant price online.
 answer: We Buy Scrap Cars Corby offers free non-runner collection in Cottingham for cars that won't start, have flat tyres or seized brakes. Get an instant online price, then we collect and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea non-runner sitting on a space saver wheel, loaded onto a recovery truck from a gravel drive
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Cottingham
 ---
 ## Non-runner collection in Cottingham, even when nothing moves
 
@@ -308,7 +308,7 @@ Plenty of non-runners are tucked away, in a single garage, behind a gate or at t
 
 A car that does not run is usually still worth something, because most of the value of a scrap car is in its weight. The price also depends on the current scrap metal price, make and model, whether the engine, gearbox, catalytic converter and wheels are still there, and whether you have the keys and V5C.
 
-Your online price stands as long as the car matches what you told us. If we find a difference, we explain before loading and you can say no. Our [non-runner cost guide](/costs/non-runner) has more detail, and the [how scrap car prices work guide](/guides/how-scrap-car-prices-work) explains the per tonne side.
+Your online price stands as long as the car is complete and as described. If we find a difference, we explain before loading and you can say no. Our [non-runner cost guide](/costs/non-runner) has more detail, and the [how scrap car prices work guide](/guides/how-scrap-car-prices-work) explains the per tonne side.
 
 ## Sorting the paperwork for a car that has been sat
 
@@ -353,8 +353,8 @@ desc: Sell your damaged car in Cottingham. Accident damage, Cat S, N and B write
 h1: Sell your damaged car in Cottingham
 lead: Accident damage or an insurance write-off you kept? We buy damaged cars in Cottingham as they are. Get an instant price and a free collection.
 answer: We Buy Scrap Cars Corby buys accident damaged cars and write-offs in Cottingham, including Cat S, N and B buy-backs. Get an instant online price, we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with heavy front-end damage loaded onto a white Rapid Recovery truck for scrap
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Cottingham
 ---
 ## Sell your damaged car in Cottingham without fixing it
 
@@ -396,7 +396,7 @@ When we call to book, tell us what is damaged and whether the wheels turn. That 
 
 Sometimes, but less than you might think. Most of a scrap car's value is in its weight and the current scrap metal price. Damage starts to matter more when parts are missing, such as the catalytic converter, the engine or wheels. Make, model, keys, the V5C and location also count.
 
-Your online price stands as long as the car matches what you told us. If it is different on the day, we explain before we load and you can say no. See our [damaged cars cost guide](/costs/damaged-cars) for more.
+Your online price stands as long as the car is complete and as described. If it is different on the day, we explain before we load and you can say no. See our [damaged cars cost guide](/costs/damaged-cars) for more.
 
 ## Flood damaged cars
 
@@ -437,8 +437,8 @@ desc: Scrap your van in Cottingham. Panel vans, Lutons, pickups and 4x4s up to 3
 h1: Scrap your van in Cottingham
 lead: Old work van taking up space in Cottingham? We buy vans, pickups and 4x4s up to 3.5 tonnes. Get your instant price and a free collection.
 answer: We Buy Scrap Cars Corby buys scrap vans in Cottingham, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Get an instant online price, free collection, paid by bank transfer. Call 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail 4x4 loaded on a white Rapid Recovery truck outside a house ready for scrap
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Cottingham
 ---
 ## Scrap van collection in Cottingham for trades and households
 
@@ -474,7 +474,7 @@ Vans are generally heavier than cars, and weight is the main factor in any scrap
 | Keys and V5C available | Major parts already removed |
 | Larger, heavier van | Wheels taken off |
 
-Your instant price holds as long as the van matches what you told us. If something is different, we explain before we load and you can say no. The [scrap van cost guide](/costs/scrap-van) explains more, and our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) covers the per tonne side.
+Your instant price holds as long as the van is complete and as described. If something is different, we explain before we load and you can say no. The [scrap van cost guide](/costs/scrap-van) explains more, and our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) covers the per tonne side.
 
 ## Collecting a heavy van that won't run
 

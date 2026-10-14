@@ -41,7 +41,7 @@ On a ridge-top village, some drives are steep and some lanes are narrow. We brin
 
 Scrap is priced per tonne, so the weight of the car and today's scrap metal price matter most. We then look at the make and model, whether the car is complete, whether you have the keys and the V5C, and the collection location. The guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains it properly, and each service has a cost page in our [costs section](/costs).
 
-The price holds as long as the car matches what you told us. If something is different on the day, we explain before loading and you are free to say no.
+The price holds as long as the car is complete and as described. If something is different on the day, we explain before loading and you are free to say no.
 
 ## Bank transfer, because cash is illegal
 
@@ -94,8 +94,8 @@ desc: Scrap my car in Wilbarston: get an instant online price from your reg and 
 h1: Scrap my car in Wilbarston: free collection
 lead: Want an old car gone from your drive in Wilbarston? Check your price online, accept it, and we collect free and pay you by bank transfer.
 answer: To scrap your car in Wilbarston, get an instant online price from We Buy Scrap Cars Corby using your registration and postcode. We collect free and pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat loaded on a white recovery truck at dusk during a scrap car collection
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Wilbarston
 ---
 ## Scrap my car in Wilbarston: the short version
 
@@ -190,8 +190,8 @@ desc: Sell your MOT failure in Wilbarston. Instant online price from your reg, f
 h1: Sell an MOT failure in Wilbarston
 lead: Your car failed its MOT and the quote is more than it's worth. We buy MOT failures in Wilbarston, collect free and pay by bank transfer.
 answer: We Buy Scrap Cars Corby buys MOT failures in Wilbarston, including cars with expired MOTs and long advisory lists. Get an instant online price from your reg and postcode, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark hatchback that failed its MOT loaded on a white recovery truck on a housing estate
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Wilbarston
 ---
 ## Sell your MOT failure in Wilbarston, not your savings
 
@@ -246,7 +246,7 @@ Take everything out of the car first. Check the glovebox, door pockets, boot and
 1. You accept the instant price online.
 2. We call and agree a time that suits you.
 3. On the day, we check your photo ID and proof of address.
-4. We check the car matches what you told us, then load it.
+4. We check the car is complete and as described, then load it.
 5. We pay you instantly by bank transfer.
 
 We do not pay cash. Paying cash for scrap cars is illegal under the Scrap Metal Dealers Act 2013.
@@ -286,8 +286,8 @@ desc: Non-runner car buyers in Wilbarston. We collect cars that won't start, sei
 h1: Non-runner car buyers in Wilbarston
 lead: A car that won't start, won't roll, or has been shut in a garage for years can still be sold. We collect non-runners from across Wilbarston.
 answer: We Buy Scrap Cars Corby buys non-runners in Wilbarston, including cars with seized engines, flat tyres and stuck brakes. Get an instant online price, then we collect free using winches, dollies and skates and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: two-scrap-cars-touran-and-clio
-img_alt: Two scrap cars collected together, a VW Touran on the truck bed and a Renault Clio towed behind
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Wilbarston
 ---
 ## Non-runner car buyers for Wilbarston
 
@@ -375,8 +375,8 @@ desc: Sell a damaged car in Wilbarston. We buy accident damaged cars and Cat S, 
 h1: Sell a damaged car in Wilbarston
 lead: Accident damage, a write-off you kept from the insurer, or a car ruined by water. We buy damaged cars in Wilbarston and collect them free.
 answer: We Buy Scrap Cars Corby buys damaged cars in Wilbarston, including accident damage, flood damage and Cat S, Cat N and Cat B insurance buy-backs. Get an instant online price, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red accident damaged Vauxhall Astra on a recovery truck with a Ford Fiesta towed behind on a dolly
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Wilbarston
 ---
 ## Accident damaged car buyers in Wilbarston
 
@@ -467,8 +467,8 @@ desc: Scrap my van in Wilbarston. We buy panel vans, Lutons and pickups up to 3.
 h1: Scrap my van in Wilbarston
 lead: Old panel van, Luton or pickup in Wilbarston? Get an instant price from the reg, then we collect free and pay by bank transfer.
 answer: We Buy Scrap Cars Corby buys scrap vans, Lutons and pickups up to 3.5 tonnes in Wilbarston. Get an instant online price from your reg and postcode, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-audi-a4-collection
-img_alt: Dark Audi A4 on a white recovery truck in a terraced street, the same trucks used for scrap van collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Wilbarston
 ---
 ## Scrap my van in Wilbarston
 

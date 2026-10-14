@@ -2,7 +2,7 @@
 title: Get an Instant Scrap Car Price | Corby & Kettering | We Buy Scrap Cars Corby
 desc: Get an instant scrap car price online in Corby and Kettering. Enter your reg and postcode, accept your price and book free collection. Paid by bank transfer.
 h1: Get your instant scrap car price
-lead: Enter your registration and postcode above, add your details and see a price for your car on screen in a couple of minutes.
+lead: Enter your registration and postcode below, add your details and see a price for your car on screen in under a minute.
 answer: We Buy Scrap Cars Corby gives an instant online scrap car price from your registration and postcode. Accept it and we call to book a free collection, then pay you by bank transfer when we collect. Prefer to talk? Call or WhatsApp 07598 314366.
 img: scrap-vw-touran-collection
 img_alt: VW Touran loaded on a white recovery truck after the owner accepted an instant online scrap price
@@ -14,9 +14,8 @@ The price tool at the top of this page turns a few details into a real figure fo
 
 1. **Enter your registration and postcode.** We use the registration to look up the vehicle, including its make, model and size. The postcode tells us where it is.
 2. **Add your contact details.** Your name, phone number and email.
-3. **Answer a few questions.** Whether the car is complete, whether the catalytic converter is fitted, whether you have keys and the V5C, and anything about access.
-4. **See your price.** The figure appears on screen, based on your car's details and your answers.
-5. **Accept or walk away.** If you are happy, accept it. If not, there is nothing more to do.
+3. **See your price.** The figure appears on screen, worked out from your vehicle's weight and where it is. No forms about the condition of the car.
+4. **Accept or walk away.** If you are happy, accept it. If not, there is nothing more to do.
 
 ## Why we ask for your details first
 
@@ -32,7 +31,7 @@ Collection is free. On the day, we check your ID, check the car, load it and pay
 
 ## Will the final price change on the day?
 
-The price stands as long as the car matches what you told us. It only changes if something is different when we arrive. Common examples:
+The price stands as long as the car is complete and as described. It only changes if something is different when we arrive. Common examples:
 
 - The catalytic converter has been removed.
 - The engine, gearbox or wheels are missing.
@@ -57,7 +56,7 @@ If you want to keep a personalised number plate, transfer or retain it with the 
 We buy [scrap cars](/scrap-car-collection), [MOT failures](/mot-failure), [non-runners](/non-runner), [damaged cars and write-offs](/damaged-cars) and [vans up to 3.5 tonnes](/scrap-van). If you would rather talk it through, call or WhatsApp 07598 314366. Otherwise, start again at the top of [this page](/get-a-price).
 ---
 Q: How does the instant scrap car price work?
-A: You enter your registration and postcode, add your contact details and answer a few questions. We look up the vehicle and show a price on screen.
+A: You enter your registration and postcode and add your contact details. We look up the vehicle and show a price on screen.
 
 Q: Why do you need my phone number and email before showing a price?
 A: So we can save your price, send it to you and contact you to book the collection if you accept. We never sell your details.
@@ -98,7 +97,7 @@ When you use our [instant price tool](/get-a-price) or contact us, we may collec
 - The postcode where the vehicle is.
 - Vehicle details looked up from the registration, such as make, model and size.
 - Your name, phone number and email address.
-- Your answers about the vehicle, such as whether it is complete, has keys or has a V5C.
+- Anything you tell us about the vehicle when we speak, such as whether it is complete, has keys or has a V5C.
 - The price we offered you, and whether you accepted it.
 
 When we collect a vehicle, we also record the seller's ID details, as the law requires.

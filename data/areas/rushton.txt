@@ -4,8 +4,8 @@ desc: Scrap my car in Rushton, made simple. Get an instant online price, free co
 h1: Scrap my car in Rushton
 lead: Rushton is a small village by the River Ise, tucked between Corby, Desborough and Rothwell. If you have a car you no longer want, we can buy it and collect it free.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted cars in Rushton. Get an instant online price with your reg and postcode, accept it, and we collect free and pay you by bank transfer on the day. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus loaded on a white Rapid Recovery beavertail truck on a residential street
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Rushton
 ---
 ## Scrapping a car in Rushton, start to finish
 
@@ -56,7 +56,7 @@ Each service has its own page with more detail for the village:
 
 Scrap cars are priced mainly on weight and the current scrap metal price. Make and model matter too, along with whether the car is complete with its engine, gearbox, catalytic converter and wheels, and whether you have keys and a V5C. Our [cost guide](/costs/scrap-car-collection) and our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explain each factor.
 
-The price stands as long as the car matches what you told us. If something is different on the day, we explain before we load and you can say no.
+The price stands as long as the car is complete and as described. If something is different on the day, we explain before we load and you can say no.
 
 ## Paid by bank transfer, never cash
 
@@ -92,8 +92,8 @@ desc: Scrap car collection in Rushton with an instant online price, free pickup 
 h1: Scrap car collection in Rushton
 lead: Want a car gone from your drive in Rushton? Check your instant price online, accept it, and we will come and collect it free of charge.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Rushton. Enter your reg and postcode for an instant online price, accept it, and we collect and pay you by bank transfer at the time. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded onto a white Rapid Recovery truck early in the morning
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Rushton
 ---
 ## Free scrap car collection in Rushton
 
@@ -154,7 +154,7 @@ The Authorised Treatment Facility normally issues the Certificate of Destruction
 If your car failed its test, see [MOT failures in Rushton](/mot-failure/rushton). If it will not start, see [non-runner collection in Rushton](/non-runner/rushton). We also collect from [Desborough](/scrap-car-collection/desborough) and [Rothwell](/scrap-car-collection/rothwell), or go back to the [Rushton area page](/areas/rushton).
 ---
 Q: Is scrap car collection in Rushton free?
-A: Yes. Collection is free and the price you accept online is what we pay, as long as the car matches what you told us.
+A: Yes. Collection is free and the price you accept online is what we pay, as long as the car is complete and as described.
 
 Q: How quickly can you collect from Rushton?
 A: Same-day collection is often possible, but we cannot promise it. We agree a time that suits you when we call.
@@ -177,8 +177,8 @@ desc: Sell your MOT failure in Rushton. Get an instant online price, free collec
 h1: Sell your MOT failure in Rushton
 lead: Failed MOT and not sure the car is worth fixing? We buy MOT failures in Rushton, collect them free and pay by bank transfer.
 answer: We Buy Scrap Cars Corby buys MOT failures in Rushton. Enter your reg and postcode for an instant online price, accept it, and we collect the car free and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat sitting on a white Rapid Recovery truck at dusk after an MOT failure collection
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Rushton
 ---
 ## Your car failed its MOT. What now?
 
@@ -231,7 +231,7 @@ The fault that failed the MOT matters less than you might think, because a scrap
 
 ## On the day
 
-When we arrive, we check the car matches what you told us online. If it does, the price stands. If something is different, we explain before loading and you can decide not to go ahead. We need to see photo ID and proof of address, as required by law, and then we pay you by bank transfer. We never pay cash, which has been illegal for scrap cars since the Scrap Metal Dealers Act 2013.
+When we arrive, we check the car is complete and as described. If it does, the price stands. If something is different, we explain before loading and you can decide not to go ahead. We need to see photo ID and proof of address, as required by law, and then we pay you by bank transfer. We never pay cash, which has been illegal for scrap cars since the Scrap Metal Dealers Act 2013.
 
 ## Paperwork for a failed MOT car
 
@@ -269,8 +269,8 @@ desc: Non-runner collection in Rushton. Instant online price, free pickup of car
 h1: Non-runner collection in Rushton
 lead: Car stuck on the drive in Rushton and going nowhere? We buy non-runners, bring the right kit to move them, and collect free.
 answer: We Buy Scrap Cars Corby buys non-runners in Rushton, including cars with flat tyres, seized brakes or engines that will not start. Get an instant price online, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel being loaded onto a recovery truck on a gravel drive
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Rushton
 ---
 ## Selling a non-runner in Rushton
 
@@ -357,8 +357,8 @@ desc: Sell your damaged car in Rushton. We buy accident damaged cars and write-o
 h1: Sell your damaged car in Rushton
 lead: Accident damage, a write-off you kept, or a car hurt by flooding. We buy damaged cars in Rushton and collect them free.
 answer: We Buy Scrap Cars Corby buys damaged cars in Rushton, including accident damage and Cat S, N and B write-off buy-backs. Get your instant online price, accept it, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a white recovery truck
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Rushton
 ---
 ## Selling a damaged car from Rushton
 
@@ -447,8 +447,8 @@ desc: Scrap your van in Rushton. Instant online price, free collection of vans, 
 h1: Scrap your van in Rushton
 lead: Work van come to the end of the road? We buy and collect scrap vans, pickups and Lutons up to 3.5 tonnes from Rushton.
 answer: We Buy Scrap Cars Corby buys scrap vans in Rushton, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: Recovery truck with amber beacon at dusk in a yard beside other vehicles awaiting collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Rushton
 ---
 ## Scrap van collection in Rushton
 

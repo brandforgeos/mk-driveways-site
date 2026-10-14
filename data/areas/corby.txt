@@ -90,8 +90,8 @@ desc: Scrap car collection in Corby with an instant online price, free pick-up f
 h1: Scrap car collection in Corby
 lead: Free scrap car collection anywhere in Corby, from estate driveways to business car parks. Get your instant price online, then we book a time that works for you.
 answer: We Buy Scrap Cars Corby offers free scrap car collection across Corby. Enter your reg and postcode for an instant online price, we collect with our own recovery truck and pay you by bank transfer on the spot. Call 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark hatchback loaded on a Rapid Recovery truck on a Corby housing estate during a scrap car collection
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Corby
 ---
 ## Scrap car collection in Corby, start to finish
 
@@ -174,8 +174,8 @@ desc: Sell your MOT failure in Corby. Get an instant online price, free collecti
 h1: Sell your MOT failure in Corby
 lead: Failed your MOT in Corby and the repair bill does not add up? Get an instant price for the car as it stands and we will collect it for free.
 answer: We Buy Scrap Cars Corby buys MOT failures across Corby, including cars with expired MOTs. Get an instant price online, we collect free from your drive and pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio that failed its MOT loaded onto a recovery truck early in the morning in Corby
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Corby
 ---
 ## Failed MOT in Corby? Here is what you can do
 
@@ -204,7 +204,7 @@ If the garage that tested it wants the space back, let us know. We collect from 
 
 A car that has failed its MOT is mostly valued as scrap, so the main factors are its weight and the current scrap metal price. On top of that we look at the make and model, whether it is complete with engine, gearbox, catalytic converter and wheels, whether you have the keys and V5C, and where it is. An MOT failure that still drives and is complete is usually worth more than one stripped of parts.
 
-For a fuller picture, read our [MOT failure cost guide](/costs/mot-failure), then [get your instant price](/get-a-price) with your reg and postcode. The price stands as long as the car matches what you told us.
+For a fuller picture, read our [MOT failure cost guide](/costs/mot-failure), then [get your instant price](/get-a-price) with your reg and postcode. The price stands as long as the car is complete and as described.
 
 ## Expired MOT and no tax
 
@@ -253,8 +253,8 @@ desc: Non-runner collection in Corby for cars that will not start, have flat tyr
 h1: Non-runner car collection in Corby
 lead: A car that will not start is no problem for us. We collect non-runners across Corby with proper recovery kit and pay you by bank transfer.
 answer: We Buy Scrap Cars Corby collects non-runners across Corby, including cars with seized engines, flat tyres or seized brakes. Get an instant price online, free removal with our own recovery trucks and payment by bank transfer. Call 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea non-runner on a space saver wheel being collected on gravel by a Corby recovery truck
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Corby
 ---
 ## Dead car removal in Corby
 
@@ -302,7 +302,7 @@ A photo or two over WhatsApp to 07598 314366 helps a lot.
 
 ## On the day
 
-When we arrive we look over the car, check it matches what you told us and confirm your ID and proof of address. Then we get it onto the truck, whether that means winching it up the bed, skating it out of a garage or lifting one end. If something is different from the description, we explain it before we load and you can decide. Once the car is secure, we pay you by bank transfer and you are free to get on with your day, with the space on your drive back.
+When we arrive we look over the car, check it is complete and as described and confirm your ID and proof of address. Then we get it onto the truck, whether that means winching it up the bed, skating it out of a garage or lifting one end. If something is different from the description, we explain it before we load and you can decide. Once the car is secure, we pay you by bank transfer and you are free to get on with your day, with the space on your drive back.
 
 ## Paperwork for a car that has been off the road
 
@@ -338,8 +338,8 @@ desc: Sell your damaged car in Corby, from accident damage to Cat S, N or B writ
 h1: Sell your damaged car in Corby
 lead: Accident damaged, flood damaged or written off by your insurer, we buy damaged cars across Corby and collect them for free.
 answer: We Buy Scrap Cars Corby buys accident damaged cars and insurance write-offs across Corby, including Cat S, N and B buy-backs. Get an instant price online, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded onto a recovery truck in Corby
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Corby
 ---
 ## Sell your damaged car in Corby
 
@@ -423,8 +423,8 @@ desc: Scrap your van in Corby. Instant online price for vans up to 3.5 tonnes, f
 h1: Scrap your van in Corby
 lead: From small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes, we buy scrap vans across Corby and collect them for free.
 answer: We Buy Scrap Cars Corby buys scrap vans up to 3.5 tonnes across Corby, from home driveways to industrial estates. Get an instant price online, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-touran-collection
-img_alt: VW Touran loaded on a recovery truck during a scrap vehicle collection in Corby
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Corby
 ---
 ## Scrap van collection in Corby
 

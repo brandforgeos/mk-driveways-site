@@ -18,11 +18,11 @@ We are not a call centre passing your details on to whoever bids. The person who
 The whole point of the site is that you can get a real price without ringing round scrap yards. It takes four short steps on our [instant price page](/get-a-price):
 
 1. **Enter your reg and postcode.** We look up the vehicle from the registration, so we know the make, model and roughly what it weighs. The postcode tells us where it is.
-2. **Add your details.** Your name, phone number and email, plus a few quick answers about the car, such as whether it runs, whether it is complete and whether you have keys and the V5C logbook.
+2. **Add your details.** Your name, phone number and email, so we can save your price and send it to you.
 3. **See your price on screen.** No waiting for a callback to find out what the car is worth.
 4. **Accept it, and we call you.** We ring to book a free collection at a time that suits you, then pay you by bank transfer when we collect.
 
-The price stands as long as the car matches what you told us. If something is different on the day, for example the catalytic converter has been taken off, we explain why before we load and you are free to say no.
+The price stands as long as the car is complete and as described. If something is different on the day, for example the catalytic converter has been taken off, we explain why before we load and you are free to say no.
 
 ## What scrap car collection in Corby covers
 
@@ -122,7 +122,7 @@ crumb: Services
 ---
 ## Which scrap car service do I need?
 
-Most people do not need to know. Put your reg and postcode into our [instant price page](/get-a-price), answer a few questions about the car and the price takes care of the rest. The pages below are here if you want to understand how we handle your kind of vehicle before you go ahead.
+Most people do not need to know. Put your reg and postcode into our [instant price page](/get-a-price), add your details and the price takes care of the rest. The pages below are here if you want to understand how we handle your kind of vehicle before you go ahead.
 
 Whatever the service, the basics are the same. We buy any scrap car of any age, make or model. Collection is free. We pay by bank transfer when we collect, because paying cash for scrap is illegal. Every vehicle goes to a licensed Authorised Treatment Facility, which issues a Certificate of Destruction.
 
@@ -279,7 +279,7 @@ Condition beyond that matters less than people expect. A car that does not run c
 
 ## Why the price can change on the day
 
-The price stands as long as the car matches what you told us. If something is different when we arrive, for example the catalytic converter has been removed or the engine is missing, we explain why before we load and you can say no. Nothing goes on the truck until you agree.
+The price stands as long as the car is complete and as described. If something is different when we arrive, for example the catalytic converter has been removed or the engine is missing, we explain why before we load and you can say no. Nothing goes on the truck until you agree.
 
 ## Cost guides for each service
 
@@ -347,7 +347,7 @@ We pay by bank transfer, never cash. Paying cash for scrap cars is illegal under
 
 - **Instant price first.** Enter your reg and postcode on our [instant price page](/get-a-price) and see your price on screen.
 - **A call, not a chase.** Once you accept, we ring to book a collection at a time that suits you.
-- **Honest on the day.** The price stands as long as the car matches what you told us. If it does not, we explain why before loading and you can say no.
+- **Honest on the day.** The price stands as long as the car is complete and as described. If it does not, we explain why before loading and you can say no.
 - **Paid when we collect.** By bank transfer, before the truck leaves.
 - **Paperwork done properly.** ID check, V5C handover, and the car goes to an ATF.
 

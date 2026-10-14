@@ -4,8 +4,8 @@ desc: Scrap car collection in Corby and Kettering. Instant price online from you
 h1: Scrap car collection in Corby and Kettering
 lead: Get an instant price online, accept it, and we book a free collection from your drive, the roadside or a car park. Paid by bank transfer when we collect.
 answer: We Buy Scrap Cars Corby offers free scrap car collection across Corby, Kettering and nearby villages. Enter your reg and postcode for an instant price, accept it, and we collect and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus loaded on a beavertail recovery truck on a residential street during a scrap car collection
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind near Corby
 ---
 ## Scrap car collection in Corby, done properly
 
@@ -28,12 +28,12 @@ If you are not sure whether to fix it or let it go, our guide on [scrap or repai
 ## How our scrap car collection works
 
 1. **Get your instant price.** Enter your reg and postcode on the [instant price page](/get-a-price). We look up the car from the registration.
-2. **Tell us about the car.** Add your contact details and answer a few quick questions, such as whether it runs, whether it is complete and whether you have keys and the V5C.
+2. **Tell us about the car.** Add your contact details so we can save your price and send it to you.
 3. **See your price and accept it.** The price appears on screen straight away.
 4. **We call you to book.** We agree a collection time that suits you. Same-day collection is sometimes possible, but we will tell you honestly when we can come.
 5. **We collect and pay.** We check your ID, take the keys and V5C, load the car and pay you by bank transfer.
 
-The price stands as long as the car matches what you told us. If something is different, for example the catalytic converter has gone, we explain before we load and you can say no.
+The price stands as long as the car is complete and as described. If something is different, for example the catalytic converter has gone, we explain before we load and you can say no.
 
 ## Where we collect from
 
@@ -125,8 +125,8 @@ desc: Sell your MOT failure in Corby and Kettering. Instant price online, free c
 h1: Sell your MOT failure car in Corby
 lead: Failed its MOT and not worth fixing? We buy MOT failures as they are, collect them free and pay by bank transfer.
 answer: We Buy Scrap Cars Corby buys MOT failure cars across Corby, Kettering and nearby villages, including cars with an expired MOT. Get an instant price online, free collection, paid by bank transfer when we collect. Call 07598 314366.
-img: scrap-mg3-collection
-img_alt: Light blue MG3 that failed its MOT, loaded on a recovery truck for scrapping
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap near Corby
 ---
 ## Failed MOT, what now?
 
@@ -231,8 +231,8 @@ desc: Non-runner car collection in Corby and Kettering. Cars that won't start, s
 h1: Non-runner car collection in Corby
 lead: Won't start, seized, flat tyres or sat for years? We winch, skate and load non-runners free, and pay you by bank transfer.
 answer: We Buy Scrap Cars Corby collects non-runner cars free across Corby, Kettering and nearby villages, using winches, dollies and skates for seized or stuck cars. Get an instant price online, paid by bank transfer. Call 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea non-runner on a space saver wheel loaded onto a recovery truck on a gravel drive
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road near Corby
 ---
 ## Non-runner car collection that actually turns up with the right kit
 
@@ -274,7 +274,7 @@ If access is tricky, tell us when we call to book. A photo on WhatsApp helps us 
 4. **We call to book** a free collection at a time that suits you.
 5. **We collect and pay** by bank transfer once we have checked your ID.
 
-The price stands as long as the car matches what you told us. If something is different, we tell you before we load and you can say no.
+The price stands as long as the car is complete and as described. If something is different, we tell you before we load and you can say no.
 
 ## Is a car that won't start still worth anything?
 
@@ -344,8 +344,8 @@ desc: Sell your damaged car in Corby and Kettering: accident damage, write-offs 
 h1: Sell your damaged car or write-off in Corby
 lead: Accident damaged, written off or flood damaged? We buy damaged cars as they are, collect them free and pay by bank transfer.
 answer: We Buy Scrap Cars Corby buys accident damaged cars, insurance write-offs (Cat S, N and B buy-backs) and flood damaged cars across Corby, Kettering and nearby villages. Instant price online, free collection, paid by bank transfer. Call 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a recovery truck for scrapping
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap near Corby
 ---
 ## Sell your damaged car without the runaround
 
@@ -381,7 +381,7 @@ If your insurer wrote the car off and you kept it as a buy-back, you can still s
 4. **We call to book** a free collection at a time that suits you. A few photos on WhatsApp help.
 5. **We collect and pay** by bank transfer, once we have checked your ID.
 
-The price stands as long as the car matches what you told us. If something is different on the day, we explain before we load and you can say no.
+The price stands as long as the car is complete and as described. If something is different on the day, we explain before we load and you can say no.
 
 ## Can you move a car that is badly damaged?
 
@@ -451,8 +451,8 @@ desc: Scrap my van in Corby and Kettering. Vans up to 3.5 tonnes, Lutons and pic
 h1: Scrap van collection in Corby and Kettering
 lead: Small vans, panel vans, Lutons and pickups up to 3.5 tonnes. Instant price online, free collection, paid by bank transfer.
 answer: We Buy Scrap Cars Corby collects scrap vans up to 3.5 tonnes across Corby, Kettering and nearby villages, from small vans to Lutons and pickups. Get an instant price online, free collection, paid by bank transfer. Call 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a recovery truck outside a house, collected for scrap
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection near Corby
 ---
 ## Scrap my van in Corby: what we take
 
@@ -481,12 +481,12 @@ Mostly sole traders and small businesses, but not only them. Typical situations 
 ## How our scrap van collection works
 
 1. **Enter your reg and postcode** on our [instant price page](/get-a-price). We look up the van from the registration.
-2. **Add your details** and answer a few questions about the van, such as whether it runs and whether it is complete.
+2. **Add your details** so we can save your price and send it to you.
 3. **See your price on screen** and accept it if you are happy.
 4. **We call to book** a free collection at a time that suits you, at home or at your business premises.
 5. **We collect and pay** by bank transfer, once we have checked ID.
 
-The price stands as long as the van matches what you told us. If something is different on the day, we explain before loading and you can say no.
+The price stands as long as the van is complete and as described. If something is different on the day, we explain before loading and you can say no.
 
 ## Empty the van first
 

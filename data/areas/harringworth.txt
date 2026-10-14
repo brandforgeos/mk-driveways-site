@@ -4,8 +4,8 @@ desc: Scrap my car in Harringworth. Instant online price from your reg and postc
 h1: Scrap my car in Harringworth
 lead: Harringworth sits in the Welland valley beside its long brick viaduct, a quiet village of narrow lanes. We buy scrap and unwanted cars here and collect them for free.
 answer: We Buy Scrap Cars Corby buys scrap cars in Harringworth. Enter your reg and postcode for an instant online price, accept it, and we collect for free and pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: scrap-jaguar-x-type-collection
-img_alt: Green Jaguar X-Type strapped onto the bed of a white recovery truck for scrap collection
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Harringworth
 ---
 ## Scrap your car in Harringworth without leaving the village
 
@@ -88,8 +88,8 @@ desc: Free scrap car collection in Harringworth. Get an instant online price for
 h1: Scrap car collection in Harringworth
 lead: Need an unwanted car taken away from Harringworth? Get your price online in moments, and we bring a truck down into the valley to collect it for free.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Harringworth. Enter your reg and postcode for an instant price online, then we collect and pay by bank transfer when we load. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded onto a white recovery truck early in the morning for scrap
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Harringworth
 ---
 ## How scrap car collection in Harringworth works
 
@@ -169,7 +169,7 @@ Q: How do I find out what my scrap car is worth?
 A: Enter your reg and postcode on our website. You get an instant price based on the vehicle and its location.
 
 Q: Will the price change when you arrive?
-A: Not if the car matches what you told us. If something is different, we explain why before loading and you can say no.
+A: Not if the car is complete and as described. If something is different, we explain why before loading and you can say no.
 
 Q: Can you take two cars at once?
 A: Often, yes. Some of our trucks carry one car and tow a second. Mention it when we call.
@@ -183,8 +183,8 @@ desc: Sell your MOT failure in Harringworth for an instant online price. We coll
 h1: Sell your MOT failure in Harringworth
 lead: Your car has failed its MOT and the quote to fix it does not add up. We buy MOT failures in Harringworth as they stand and collect them on a truck for free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Harringworth. Get an instant price online with your reg and postcode, and we collect for free and pay by bank transfer on the day. Call or WhatsApp 07598 314366.
-img: scrap-audi-a4-collection
-img_alt: Dark Audi A4 on a white recovery truck, collected after an MOT failure
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Harringworth
 ---
 ## Selling an MOT failure in Harringworth
 
@@ -276,8 +276,8 @@ desc: Non-runner collection in Harringworth. We buy cars that won't start, seize
 h1: Non-runner collection in Harringworth
 lead: Car in a Harringworth barn, garage or drive that has not turned a wheel in months or years? We buy non-runners and bring the gear to move them.
 answer: We Buy Scrap Cars Corby offers free non-runner collection in Harringworth, with winches, dollies and skates for seized or flat-tyred cars. Get an instant price online and we pay by bank transfer. Call or WhatsApp 07598 314366.
-img: two-scrap-cars-touran-and-clio
-img_alt: Recovery truck carrying one scrap car on its bed and towing a second behind
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Harringworth
 ---
 ## Non-runner collection in Harringworth
 
@@ -320,7 +320,7 @@ Some trucks can take one car on the bed and tow another, so if there are two non
 
 Yes. Scrap value is mostly about weight and the current scrap metal price, and a car that will not start weighs just as much. We also look at make and model, whether it is complete with engine, gearbox, catalytic converter and wheels, and whether there are keys and a V5C.
 
-Our [non-runner cost guide](/costs/non-runner) explains it in more detail. The price stands as long as the car matches what you told us. If we find something different, such as parts taken off while it was stored, we explain before loading and you can say no.
+Our [non-runner cost guide](/costs/non-runner) explains it in more detail. The price stands as long as the car is complete and as described. If we find something different, such as parts taken off while it was stored, we explain before loading and you can say no.
 
 ## SORN and stored cars
 
@@ -365,8 +365,8 @@ desc: Sell a damaged car in Harringworth. We buy accident and flood damaged cars
 h1: Sell your damaged car in Harringworth
 lead: Hit a verge on a valley lane, or kept a write-off after the insurer paid out? We buy damaged cars in Harringworth and collect them for free.
 answer: We Buy Scrap Cars Corby buys damaged cars and insurance write-offs in Harringworth, including Cat S, N and B buy-backs and flood damage. Instant price online, free collection, paid by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red accident damaged Vauxhall Astra on a recovery truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Harringworth
 ---
 ## How to sell a damaged car in Harringworth
 
@@ -452,8 +452,8 @@ desc: Scrap my van in Harringworth. We buy vans, Lutons and pickups up to 3.5 to
 h1: Scrap my van in Harringworth
 lead: Has your farm pickup or works van in Harringworth reached the end of the road? We buy vans up to 3.5 tonnes and collect them for free.
 answer: We Buy Scrap Cars Corby buys scrap vans in Harringworth, from small vans and panel vans to Lutons and pickups up to 3.5 tonnes. Get an instant price online, free collection, paid by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-nissan-qashqai-collection
-img_alt: Silver Nissan Qashqai loaded on a white recovery truck during a vehicle collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Harringworth
 ---
 ## Scrap my van in Harringworth: the steps
 
@@ -501,7 +501,7 @@ We collect from farm yards, business premises, driveways and roadsides. If you a
 
 Often, because vans are heavier, and scrap is priced per tonne. The current scrap metal price matters too, along with whether the van is complete with engine, gearbox, catalytic converter and wheels, the make and model, and whether you have the keys and V5C.
 
-Our [scrap van cost guide](/costs/scrap-van) has more on pricing. Your online price stands as long as the van matches what you told us. If something is different on the day, we explain before we load.
+Our [scrap van cost guide](/costs/scrap-van) has more on pricing. Your online price stands as long as the van is complete and as described. If something is different on the day, we explain before we load.
 
 ## Business vans and paperwork
 

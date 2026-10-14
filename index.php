@@ -215,37 +215,32 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($name === '' || !preg_match('/\d{6,}/', preg_replace('/\D/', '', $phone)) || !filter_var($email, FILTER_VALIDATE_EMAIL)) jout(['ok' => false, 'msg' => 'Please add your name, a phone number and a valid email.']);
   if (!rate_ok('quote', 15)) jout(['ok' => false, 'msg' => 'Too many prices requested. Please call us on ' . $S['phone'] . '.']);
 
-  $types = []; foreach ($PR['types'] as $t) $types[$t[0]] = $t;
   $v = is_file(STORE . "/cache/veh-$reg.json") ? json_decode(file_get_contents(STORE . "/cache/veh-$reg.json"), true) : null;
-  $type = $f('type', 20); $weightSrc = '';
+  if ($v && !weight_cached($v) && !empty($CFG['anthropic_key'])) weight_lookup($v, $CFG);   // background lookup didn't finish: try once more now
   if ($v && ($w = weight_cached($v))) { $kg = $w['kg']; $weightSrc = $w['source'] . ' (' . $w['confidence'] . ')'; }
-  elseif (isset($types[$type])) { $kg = $types[$type][2]; $weightSrc = 'Average for: ' . $types[$type][1]; }
-  else jout(['ok' => false, 'msg' => 'Please choose the type of vehicle.']);
+  else { $kg = (int)$PR['default_kg']; $weightSrc = $v ? 'Average car weight (kerb weight not found yet)' : 'Average car weight (demo: registration lookup not switched on)'; }
+  $manual = $LIVE_LOOKUP && !$v;                                  // live lookup couldn't find the reg: George calls with a price
 
   $loc = pc_lookup($pc);
   $dist = $loc ? round(miles($S['geo'], [$loc['lat'], $loc['lng']]), 1) : null;
-  $cond = ['keys' => $f('keys', 3) === 'no', 'v5' => $f('v5', 3) === 'no', 'cat' => $f('cat', 3) === 'no', 'wheels' => $f('wheels', 3) === 'no'];
   $lines = [['Weight used', number_format($kg) . ' kg'], ['Scrap rate', '£' . $PR['rate_per_tonne'] . ' per tonne'], ['Weight value', '£' . number_format($kg / 1000 * $PR['rate_per_tonne'], 2)]];
   $price = $kg / 1000 * $PR['rate_per_tonne'];
-  $manual = false;
   if ($dist === null) { $lines[] = ['Collection distance', 'Not checked (postcode lookup unavailable)']; }   // still give a price; George checks the address when he calls
   elseif ($dist > $PR['max_miles']) { $manual = true; }
   elseif ($dist > $PR['free_miles']) { $ded = ($dist - $PR['free_miles']) * $PR['per_mile_over']; $price -= $ded; $lines[] = ['Collection distance (' . $dist . ' miles)', '−£' . number_format($ded, 2)]; }
   else $lines[] = ['Collection distance (' . $dist . ' miles)', 'Free'];
-  $dmap = ['keys' => 'no_keys', 'v5' => 'no_v5', 'cat' => 'no_cat', 'wheels' => 'no_wheels']; $dlabel = ['keys' => 'No keys', 'v5' => 'No V5C', 'cat' => 'No catalytic converter', 'wheels' => 'Wheels missing'];
-  foreach ($cond as $k => $on) if ($on) { $d = (float)($PR['deductions'][$dmap[$k]] ?? 0); $price -= $d; $lines[] = [$dlabel[$k], $d ? '−£' . number_format($d, 2) : '£0 (not set yet)']; }
   $price = (int)(round(max($PR['min_price'], min($PR['max_price'], $price)) / 5) * 5);
 
   $ref = 'SC' . gmdate('ymd') . strtoupper(bin2hex(random_bytes(2)));
   $lead = ['ref' => $ref, 'status' => $manual ? 'call-back' : 'quoted', 'received' => gmdate('c'), 'demo' => $DEMO,
     'reg' => $reg, 'postcode' => $loc['pc'] ?? $pc, 'town' => $loc['town'] ?? '', 'miles' => $dist,
-    'vehicle' => $v, 'type' => $type, 'weight_kg' => $kg, 'weight_source' => $weightSrc, 'condition' => $cond,
+    'vehicle' => $v, 'weight_kg' => $kg, 'weight_source' => $weightSrc,
     'price' => $manual ? null : $price, 'valid_until' => gmdate('Y-m-d', time() + 86400 * $PR['valid_days']), 'rate_per_tonne' => $PR['rate_per_tonne'],
     'name' => $name, 'phone' => $phone, 'email' => $email, 'reminders_ok' => $f('consent', 3) === 'yes', 'page' => $f('page')];
   @file_put_contents(store_path('leads') . "/$ref.json", json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
   if (!PREVIEW) {
     $host = parse_url(SITE_URL, PHP_URL_HOST);
-    $veh = $v ? trim("{$v['year']} {$v['make']} {$v['model']}") : ($types[$type][1] ?? '');
+    $veh = $v ? trim("{$v['year']} {$v['make']} {$v['model']}") : 'Not found from reg';
     $body = ($manual ? "Price request needing a call-back" : "New instant price given: £$price") . "\n\nRef: $ref\nName: $name\nPhone: $phone\nEmail: $email\nReg: $reg\nVehicle: $veh\nPostcode: " . ($loc['pc'] ?? $pc) . ($dist !== null ? " ($dist miles)" : '') . "\nWeight: $kg kg ($weightSrc)\nReminders OK: " . ($lead['reminders_ok'] ? 'yes' : 'no') . "\n";
     @mail($S['email'], '=?UTF-8?B?' . base64_encode(($manual ? 'Call-back' : "Price £$price") . " - $reg - $name") . '?=', $body, "From: We Buy Scrap Cars Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8", "-fwebsite@$host");
   }
@@ -415,7 +410,7 @@ $lic = function () use ($S): string {
     <?php if ($type === 'get-a-price'):
       $preReg = clean_reg((string)($_GET['reg'] ?? '')); $prePc = clean_pc((string)($_GET['pc'] ?? '')); ?>
     <div class="tool" id="tool">
-      <?php if ($DEMO): ?><div class="demo"><b>Demo version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live. Prices use placeholder rates, not George\'s real ones.' : 'The registration lookup is waiting on the DVSA API key, so for now you pick the vehicle type. Prices use placeholder rates, not George\'s real ones.' ?> Nothing is sent to the customer or to George while this is a preview.</div><?php endif; ?>
+      <?php if ($DEMO): ?><div class="demo"><b>Demo version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live. Prices use placeholder rates, not George\'s real ones.' : 'The registration lookup is waiting on the DVSA API key, so for now every car is priced at an average weight. Prices use placeholder rates, not George\'s real ones.' ?> Nothing is sent to the customer or to George while this is a preview.</div><?php endif; ?>
       <ol class="steps" aria-hidden="true"><li class="on" data-s="1">Your vehicle</li><li data-s="2">Your details</li><li data-s="3">Your price</li></ol>
 
       <form class="step" id="s1" novalidate>
@@ -425,13 +420,6 @@ $lic = function () use ($S): string {
           <label class="fl">Postcode where the vehicle is<input class="pc" name="postcode" id="pc" value="<?= h($prePc) ?>" placeholder="e.g. NN17 1AA" autocomplete="postal-code" maxlength="9" required></label>
         </div>
         <div id="found" hidden></div>
-        <label class="fl full" id="typewrap" hidden>What type of vehicle is it?<select name="type" id="type"><option value="">Choose the closest match</option><?php foreach ($PR['types'] as $t): ?><option value="<?= h($t[0]) ?>"><?= h($t[1]) ?></option><?php endforeach; ?></select></label>
-        <div class="qs" id="qs" hidden>
-          <fieldset><legend>Do you have the keys?</legend><label><input type="radio" name="keys" value="yes" checked> Yes</label><label><input type="radio" name="keys" value="no"> No</label></fieldset>
-          <fieldset><legend>Do you have the V5C logbook?</legend><label><input type="radio" name="v5" value="yes" checked> Yes</label><label><input type="radio" name="v5" value="no"> No</label></fieldset>
-          <fieldset><legend>Is the catalytic converter still fitted?</legend><label><input type="radio" name="cat" value="yes" checked> Yes</label><label><input type="radio" name="cat" value="no"> No / not sure</label></fieldset>
-          <fieldset><legend>Are all four wheels on it?</legend><label><input type="radio" name="wheels" value="yes" checked> Yes</label><label><input type="radio" name="wheels" value="no"> No</label></fieldset>
-        </div>
         <p class="err" id="e1" role="alert"></p>
         <div class="tool-nav"><button class="btn btn-go" type="submit" id="b1">Find my vehicle</button></div>
       </form>
@@ -596,25 +584,24 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.class
 <script>
 (()=>{
 const API='<?= rtrim(u('api'), '/') ?>/', $=id=>document.getElementById(id), steps=[...document.querySelectorAll('.steps li')];
-const s1=$('s1'),s2=$('s2'),s3=$('s3');let veh=null,ref=null,stage='find';
+const s1=$('s1'),s2=$('s2'),s3=$('s3');let ref=null,stage='find';
 const show=n=>{[s1,s2,s3].forEach((s,i)=>s.hidden=i!==n-1);steps.forEach(l=>l.classList.toggle('on',+l.dataset.s<=n));$('tool').scrollIntoView({behavior:'smooth',block:'start'})};
 const post=async(p,data)=>{const r=await fetch(API+p,{method:'POST',body:data});return r.json()};
 const busy=(btn,on,txt)=>{btn.disabled=on;btn.innerHTML=on?'<span class="spin"></span> '+txt:txt};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-$('reg').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9 ]/g,'');if(stage!=='find'){stage='find';veh=null;$('found').hidden=true;$('typewrap').hidden=true;$('qs').hidden=true;$('b1').textContent='Find my vehicle'}});
+$('reg').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9 ]/g,'');if(stage!=='find'){stage='find';$('found').hidden=true;$('b1').textContent='Find my vehicle'}});
 s1.addEventListener('submit',async e=>{e.preventDefault();$('e1').textContent='';
   const reg=$('reg').value.replace(/\s/g,''),pc=$('pc').value.trim();
   if(reg.length<2){$('e1').textContent='Please enter your registration.';return}
   if(!/^[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}$/.test(pc)){$('e1').textContent='Please enter a full UK postcode, e.g. NN17 1AA.';return}
   if(stage==='find'){busy($('b1'),true,'Looking up '+reg);
     try{const fd=new FormData();fd.append('reg',reg);const j=await post('vehicle',fd);if(!j.ok)throw j.msg;
-      if(j.found){veh=j.vehicle;$('found').innerHTML='<div class="found"><span class="ok">✓</span><div><strong>'+esc([veh.year,veh.make,veh.model].filter(Boolean).join(' '))+'</strong><span>'+esc([veh.engine_cc?(veh.engine_cc/1000).toFixed(1)+' litre':'',veh.fuel,veh.colour].filter(Boolean).join(' · '))+'</span></div></div>';$('found').hidden=false;
+      if(j.found){const veh=j.vehicle;$('found').innerHTML='<div class="found"><span class="ok">✓</span><div><strong>'+esc([veh.year,veh.make,veh.model].filter(Boolean).join(' '))+'</strong><span>'+esc([veh.engine_cc?(veh.engine_cc/1000).toFixed(1)+' litre':'',veh.fuel,veh.colour].filter(Boolean).join(' · '))+'</span></div></div>';$('found').hidden=false;
         if(!j.weight_ready){const w=new FormData();w.append('reg',reg);fetch(API+'weight',{method:'POST',body:w,keepalive:true}).catch(()=>{})}}
-      else{$('found').innerHTML='<p class="note">'+(j.live?'We couldn\'t find that registration automatically. Pick the closest type below and we\'ll confirm the details when we call.':'Demo: the registration lookup isn\'t switched on yet, so pick the closest type below.')+'</p>';$('found').hidden=false;$('typewrap').hidden=false}
-      $('qs').hidden=false;stage='confirm';busy($('b1'),false,'Next: your details')}
+      else{$('found').innerHTML='<p class="note">'+(j.live?'We couldn\'t find that registration automatically. Carry on and George will call you with a price.':'Demo: the registration lookup isn\'t switched on yet, so this demo prices an average-sized car.')+'</p>';$('found').hidden=false}
+      stage='confirm';busy($('b1'),false,'Next: your details')}
     catch(m){busy($('b1'),false,'Find my vehicle');$('e1').textContent=typeof m==='string'?m:'Something went wrong. Please try again or call us.'}
     return}
-  if(!veh&&!$('type').value){$('e1').textContent='Please choose the type of vehicle.';return}
   show(2)});
 $('back2').addEventListener('click',()=>show(1));
 s2.addEventListener('submit',async e=>{e.preventDefault();$('e2').textContent='';
@@ -626,7 +613,7 @@ s2.addEventListener('submit',async e=>{e.preventDefault();$('e2').textContent=''
     if(j.manual){h='<div class="priceout"><small>Thanks, we have your details</small><p style="font-size:20px;color:#fff;margin-top:8px">'+(j.outside?'Your vehicle is outside our instant-price area.':'We need to check a couple of things for this one.')+' George will call you with a price shortly.</p><p>Reference '+esc(ref)+'</p></div>';$('acceptwrap').hidden=true}
     else{h='<div class="priceout"><small>Your instant price</small><div class="big">£'+j.price+'</div><p>Free collection · Paid by bank transfer when we collect</p><p>Price held until '+esc(j.valid_until)+' · Ref '+esc(ref)+'</p></div>';
       if(j.lines&&j.lines.length)h+='<div class="workings"><b>How this was worked out (demo only, hidden on the live site)</b><table>'+j.lines.map(l=>'<tr><td>'+esc(l[0])+'</td><td>'+esc(l[1])+'</td></tr>').join('')+'</table></div>';
-      h+='<p class="note">The price stands as long as the vehicle matches what you\'ve told us. If anything is different on the day, we\'ll explain before we load it and you can say no.</p>'}
+      h+='<p class="note">Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, we\'ll talk it through with you before we collect.</p>'}
     $('pricebox').innerHTML=h;show(3)}
   catch(m){$('e2').textContent=typeof m==='string'?m:'Something went wrong. Please try again or call us.'}
   busy($('b2'),false,'Show my price')});

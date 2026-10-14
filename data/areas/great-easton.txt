@@ -4,8 +4,8 @@ desc: Scrap my car in Great Easton. Get an instant online price, free collection
 h1: Scrap my car in Great Easton
 lead: Great Easton sits on the Leicestershire side of the Welland valley, looking across to Rockingham and Cottingham. We buy unwanted cars here and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap cars in Great Easton. Enter your reg and postcode for an instant online price, accept it, and we collect free and pay you by bank transfer on the day. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a white Rapid Recovery truck outside a house in a village
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Great Easton
 ---
 ## A scrap car buyer for Great Easton
 
@@ -92,8 +92,8 @@ desc: Scrap car collection in Great Easton with an instant online price, free pi
 h1: Scrap car collection in Great Easton
 lead: Need a car taken away from Great Easton? Get your instant price online, accept it, and we collect the car free from your drive, garage or yard.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Great Easton. Get an instant online price with your reg and postcode, accept it, and we collect and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-jaguar-x-type-collection
-img_alt: Green Jaguar X-Type loaded on the bed of a white Rapid Recovery truck
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Great Easton
 ---
 ## Booking scrap car collection in Great Easton
 
@@ -180,8 +180,8 @@ desc: Sell your MOT failure in Great Easton. Instant online price, free collecti
 h1: Sell your MOT failure in Great Easton
 lead: Your car has failed its MOT and the repair quote is high. We buy MOT failures in Great Easton as they are and collect them free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Great Easton. Enter your reg and postcode for an instant online price, accept it, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-audi-a4-collection
-img_alt: Dark Audi A4 loaded on a white Rapid Recovery truck after failing its MOT
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Great Easton
 ---
 ## Failed MOT in Great Easton? Your options
 
@@ -270,8 +270,8 @@ desc: Non-runner collection in Great Easton. Instant online price, free removal 
 h1: Non-runner collection in Great Easton
 lead: A car that will not start, sat in a garage or barn in Great Easton, is not stuck for good. We buy non-runners and collect them free.
 answer: We Buy Scrap Cars Corby buys non-runners in Great Easton, including cars with dead engines, flat tyres or seized brakes. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: two-scrap-cars-touran-and-clio
-img_alt: Two scrap cars being collected together, a VW Touran on the truck bed and a Renault Clio towed behind
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Great Easton
 ---
 ## Non-runner collection in Great Easton
 
@@ -357,8 +357,8 @@ desc: Sell your damaged car in Great Easton. We buy flood damaged, accident dama
 h1: Sell your damaged car in Great Easton
 lead: Floodwater, a collision on a valley lane, or a write-off you kept. We buy damaged cars in Great Easton and collect them free.
 answer: We Buy Scrap Cars Corby buys damaged cars in Great Easton, including flood damage, accident damage and Cat S, N and B buy-backs. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red damaged Vauxhall Astra on a recovery truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Great Easton
 ---
 ## Sell a damaged car in Great Easton
 
@@ -441,8 +441,8 @@ desc: Scrap your van in Great Easton. Instant online price, free collection of v
 h1: Scrap your van in Great Easton
 lead: Got a tired van or pickup in Great Easton? We buy and collect scrap vans up to 3.5 tonnes, free of charge.
 answer: We Buy Scrap Cars Corby buys scrap vans in Great Easton, including panel vans, Lutons and pickups up to 3.5 tonnes. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso loaded onto the bed of a white Rapid Recovery truck
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Great Easton
 ---
 ## Scrap van collection in Great Easton
 

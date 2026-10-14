@@ -4,8 +4,8 @@ desc: Scrap your car in Lowick with an instant online price, free collection fro
 h1: Scrap my car in Lowick
 lead: Lowick is a small village near Thrapston with farm lanes and the A14 close by. We buy scrap and unwanted cars here and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap cars in Lowick. Get an instant price online from your registration and postcode, we collect free and pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel being loaded onto a recovery truck from a gravel drive
+img: scrap-car-farmyard-collection
+img_alt: Muddy old 4x4 loaded on our truck in a farmyard for free scrap collection in Lowick
 ---
 ## Scrapping a car in Lowick, start to finish
 
@@ -45,7 +45,7 @@ If there are two cars to clear, say so. Some of our trucks carry one car and tow
 
 Scrap is priced per tonne, so weight is the biggest factor. The current scrap metal price matters too, along with the make and model, whether the car is complete with its engine, gearbox, catalytic converter and wheels, and whether you have the keys and V5C. Location is part of it, which is why the online price asks for your postcode.
 
-The price you accept stands as long as the car matches what you told us. If something is different when we arrive, such as a missing catalytic converter, we explain it before we load and you are free to say no. Our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explains the detail.
+The price you accept stands as long as the car is complete and as described. If something is different when we arrive, such as a missing catalytic converter, we explain it before we load and you are free to say no. Our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explains the detail.
 
 ## Why we never pay cash
 
@@ -88,8 +88,8 @@ desc: Scrap car collection in Lowick near Thrapston. Instant online price from y
 h1: Scrap car collection in Lowick
 lead: An old car taking up space at home or on the farm in Lowick? Get an instant price online and we will collect it free.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Lowick. Enter your reg and postcode for an instant online price, we collect at a time that suits you and pay by bank transfer. Call 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a recovery truck outside a house ready for scrap collection
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Lowick
 ---
 ## Scrap car collection in Lowick that works around you
 
@@ -175,8 +175,8 @@ desc: Sell your MOT failure in Lowick. Instant online price, free collection fro
 h1: Sell your MOT failure in Lowick
 lead: Failed the MOT and the quote to fix it makes no sense? We buy MOT failures in Lowick as they are and collect them free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Lowick without any repairs. Get an instant online price from your reg and postcode, we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso loaded on a recovery truck bed after failing its MOT
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Lowick
 ---
 ## Failed MOT, what now in Lowick?
 
@@ -263,8 +263,8 @@ desc: Non-runner collection in Lowick. We buy cars that won't start, flat tyres 
 h1: Non-runner collection in Lowick
 lead: A car in Lowick that won't start, won't roll or has sat in a barn for years? We buy non-runners and bring the kit to move them.
 answer: We Buy Scrap Cars Corby buys and collects non-runners in Lowick, including cars with seized engines, flat tyres or seized brakes. Get an instant online price, free collection, paid by bank transfer. Call 07598 314366.
-img: two-scrap-cars-touran-and-clio
-img_alt: Two scrap cars collected together, a VW Touran on the truck bed and a Renault Clio towed behind
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Lowick
 ---
 ## Selling a non-runner in Lowick
 
@@ -346,8 +346,8 @@ desc: Sell a damaged car in Lowick. We buy accident damaged cars, Cat S, N and B
 h1: Sell your damaged car in Lowick
 lead: Accident damage, a write-off buy-back or a car hit by flood water? We buy damaged cars in Lowick and collect them free.
 answer: We Buy Scrap Cars Corby buys accident damaged cars and insurance write-offs in Lowick, including Cat S, N and B buy-backs. Instant online price, free collection, paid by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a recovery truck
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Lowick
 ---
 ## Selling a damaged car in Lowick
 
@@ -432,8 +432,8 @@ desc: Scrap your van in Lowick. We buy vans, Lutons and pickups up to 3.5 tonnes
 h1: Scrap van collection in Lowick
 lead: A tired work van or pickup in Lowick? We buy scrap vans up to 3.5 tonnes and collect them free from homes, yards and farms.
 answer: We Buy Scrap Cars Corby offers free scrap van collection in Lowick for vans, Lutons and pickups up to 3.5 tonnes. Get an instant online price from your reg, paid by bank transfer. Call 07598 314366.
-img: scrap-vw-touran-collection
-img_alt: VW Touran loaded onto a recovery truck during a vehicle collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Lowick
 ---
 ## Scrap my van in Lowick
 

@@ -37,7 +37,7 @@ Tell us when you book if the car is behind a gate, on a slope or in a narrow gap
 
 The price depends mostly on weight, because scrap is valued by the tonne, and on the scrap metal market at the time. Make and model matter too, as does whether the car is complete with its engine, gearbox, catalytic converter and wheels. Keys, a V5C and the location also play a part. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains each factor.
 
-We do not publish set figures, because every car is different. The fastest way to know is to [get your instant price](/get-a-price) online. The price stands as long as the car matches what you told us.
+We do not publish set figures, because every car is different. The fastest way to know is to [get your instant price](/get-a-price) online. The price stands as long as the car is complete and as described.
 
 ## Why bank transfer and not cash?
 
@@ -85,8 +85,8 @@ desc: Scrap car collection in Rockingham with an instant price from your reg, fr
 h1: Scrap car collection in Rockingham
 lead: Got a car in Rockingham that has reached the end of the road? Get an instant price online and we collect it free, paying by bank transfer.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Rockingham. Enter your reg and postcode for an instant online price, then we collect and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus secured on a beavertail recovery truck after a free scrap car collection
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Rockingham
 ---
 ## Scrap car collection in Rockingham from start to finish
 
@@ -119,7 +119,7 @@ You do not need to find one. We are car scrappers who come to you, and every car
 | Keys and V5C | A car with both is simpler to process |
 | Location | Where the car is affects the cost of collecting it |
 
-For full figures on how we price, see our [scrap car collection cost guide](/costs/scrap-car-collection). Your online price stands as long as the car matches what you told us. If something is different on the day, such as a missing catalytic converter, we explain why before we load and you are free to say no.
+For full figures on how we price, see our [scrap car collection cost guide](/costs/scrap-car-collection). Your online price stands as long as the car is complete and as described. If something is different on the day, such as a missing catalytic converter, we explain why before we load and you are free to say no.
 
 ## Getting a car off the hill safely
 
@@ -146,7 +146,7 @@ After collection, cancel your insurance. Any full months of road tax left are re
 If your car failed its test, see [selling an MOT failure in Rockingham](/mot-failure/rockingham). If it will not start at all, our [non-runner page for Rockingham](/non-runner/rockingham) explains how we move it. Neighbours down the valley can use [scrap car collection in Caldecott](/scrap-car-collection/caldecott), and those to the east can use [scrap car collection in Gretton](/scrap-car-collection/gretton).
 ---
 Q: Is scrap car collection in Rockingham free?
-A: Yes. Collection is free, and the price you accept online is the price we pay, as long as the car matches what you told us.
+A: Yes. Collection is free, and the price you accept online is the price we pay, as long as the car is complete and as described.
 
 Q: How quickly can you collect my car from Rockingham?
 A: Same-day collection is often possible, but we never promise it. We agree a time that suits you when we call after you accept the price.
@@ -169,8 +169,8 @@ desc: Sell your MOT failure in Rockingham. Instant online price, free collection
 h1: Sell your MOT failure in Rockingham
 lead: Your car failed its MOT and the repair list looks expensive. Sell it to us instead, with an instant online price and free collection from Rockingham.
 answer: We Buy Scrap Cars Corby buys MOT failures in Rockingham. Get an instant online price from your reg and postcode, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio that failed its MOT loaded on a recovery truck early in the morning
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Rockingham
 ---
 ## Sell an MOT failure in Rockingham without the stress
 
@@ -250,8 +250,8 @@ desc: Non-runner collection in Rockingham. Instant price for cars that won't sta
 h1: Non-runner collection in Rockingham
 lead: A car that will not start, roll or steer is still worth something. We buy non-runners in Rockingham and move them with the right recovery kit.
 answer: We Buy Scrap Cars Corby buys non-runners in Rockingham. Get an instant online price from your reg and postcode, and we collect free with winches and dollies, paying by bank transfer. Call 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea non-runner on a space saver wheel loaded onto a recovery truck from a gravel drive
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Rockingham
 ---
 ## Non-runner collection in Rockingham, even when nothing moves
 
@@ -335,8 +335,8 @@ desc: Sell a damaged car in Rockingham. We buy accident damaged cars and Cat S, 
 h1: Sell a damaged car in Rockingham
 lead: Accident damage, a write-off buy-back or flood damage. We buy damaged cars in Rockingham with an instant online price and free collection.
 answer: We Buy Scrap Cars Corby buys damaged cars and write-offs in Rockingham. Get an instant online price from your reg and postcode, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a recovery truck for scrapping
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Rockingham
 ---
 ## Sell a damaged car in Rockingham and move on
 
@@ -365,7 +365,7 @@ Whatever the category, every car we buy goes to a licensed Authorised Treatment 
 
 Damage changes the picture less than people think. A damaged car is still valued mainly on weight, because scrap is priced per tonne, along with the current scrap metal price. Make and model count, and so does whether the engine, gearbox, catalytic converter and wheels are still in place.
 
-See our [damaged car cost guide](/costs/damaged-cars) for how we work out figures, or go straight to [get your instant price](/get-a-price). Describe the damage honestly when you enter your details. The price stands as long as the car matches what you told us, and if anything differs on the day we explain before loading.
+See our [damaged car cost guide](/costs/damaged-cars) for how we work out figures, or go straight to [get your instant price](/get-a-price). Describe the damage honestly when you enter your details. The price stands as long as the car is complete and as described, and if anything differs on the day we explain before loading.
 
 ## Flood damaged cars
 
@@ -417,8 +417,8 @@ desc: Scrap my van in Rockingham. Instant online price for vans and pickups up t
 h1: Scrap my van in Rockingham
 lead: From small vans to long-wheelbase panel vans and pickups up to 3.5 tonnes, we buy scrap vans in Rockingham and collect them free.
 answer: We Buy Scrap Cars Corby scraps vans in Rockingham up to 3.5 tonnes. Get an instant online price from your reg and postcode, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a white recovery truck outside a house after collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Rockingham
 ---
 ## Scrap my van in Rockingham, priced in minutes
 

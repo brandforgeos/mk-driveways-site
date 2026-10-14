@@ -4,8 +4,8 @@ desc: Scrap my car in Grafton Underwood: instant online price from your reg and 
 h1: Scrap my car in Grafton Underwood
 lead: Grafton Underwood is a quiet village between Geddington and Brigstock. If there is an unwanted car, van or 4x4 on your drive here, we buy it and collect it free.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted vehicles in Grafton Underwood. Enter your reg and postcode for an instant online price, accept it, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded on a white recovery truck early in the morning on a quiet road
+img: scrap-car-farmyard-collection
+img_alt: Muddy old 4x4 loaded on our truck in a farmyard for free scrap collection in Grafton Underwood
 ---
 ## Scrap car buyers serving Grafton Underwood
 
@@ -82,8 +82,8 @@ desc: Free scrap car collection in Grafton Underwood. Get an instant online pric
 h1: Scrap car collection in Grafton Underwood
 lead: Want an old car gone from your drive in Grafton Underwood? Get your instant price online, accept it, and we collect free and pay by bank transfer.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Grafton Underwood. Get an instant online price from your reg and postcode, accept it, and we collect and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus on a beavertail recovery truck in a residential street, ready for scrap
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Grafton Underwood
 ---
 ## Scrap car collection in Grafton Underwood, start to finish
 
@@ -175,8 +175,8 @@ desc: Sell your MOT failure in Grafton Underwood. Instant online price, free col
 h1: Sell your MOT failure in Grafton Underwood
 lead: Your car failed its MOT and the repairs don't add up? Sell your MOT failure in Grafton Underwood to us. Get your price online and we collect free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Grafton Underwood, including cars with an expired test or long lists of advisories. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-mg3-collection
-img_alt: Light blue MG3 on the bed of a white recovery truck after failing its MOT
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Grafton Underwood
 ---
 ## When the MOT sheet says it all
 
@@ -261,8 +261,8 @@ desc: Non-runner collection in Grafton Underwood. We buy cars that won't start, 
 h1: Non-runner collection in Grafton Underwood
 lead: Car in Grafton Underwood that won't start or won't move? We buy non-runners and bring winches, dollies and skates to shift them. Get your instant price online.
 answer: We Buy Scrap Cars Corby buys non-runners in Grafton Underwood, from flat batteries to seized engines and stuck brakes. Get an instant online price, and we collect free with the right recovery kit and pay by bank transfer. Call 07598 314366.
-img: scrap-honda-civic-collection
-img_alt: Car being loaded onto a recovery truck at night with amber beacons flashing
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Grafton Underwood
 ---
 ## Non-runner collection in Grafton Underwood
 
@@ -352,8 +352,8 @@ desc: Sell your damaged car in Grafton Underwood. Accident damaged cars, Cat S, 
 h1: Sell your damaged car in Grafton Underwood
 lead: Accident damage, a write-off you kept, or a car hurt by floodwater? We buy damaged cars in Grafton Underwood as they are. Get your instant price online.
 answer: We Buy Scrap Cars Corby buys damaged cars in Grafton Underwood, including accident damaged cars, Cat S, N and B buy-backs and flood damaged cars. Get an instant online price, and we collect free and pay by bank transfer. Call 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red accident damaged Astra on a recovery truck bed with a Fiesta towed behind on a dolly
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Grafton Underwood
 ---
 ## Sell a damaged car in Grafton Underwood
 
@@ -437,8 +437,8 @@ desc: Scrap your van in Grafton Underwood. We buy panel vans, Lutons and pickups
 h1: Scrap your van in Grafton Underwood
 lead: Old van, Luton or pickup parked up in Grafton Underwood? We buy scrap vans up to 3.5 tonnes and collect them free. Get your instant price online.
 answer: We Buy Scrap Cars Corby buys scrap vans in Grafton Underwood, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Get an instant online price, and we collect free and pay by bank transfer. Call 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark hatchback loaded on a white recovery truck on a housing estate
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Grafton Underwood
 ---
 ## Scrap van collection in Grafton Underwood
 
@@ -462,7 +462,7 @@ We Buy Scrap Cars Corby is a licensed scrap van buyer. We hold a waste carrier l
 
 Weight is the big one, because scrap is priced per tonne, which means a larger van is generally worth more. The current scrap metal price, the make and model, whether it is complete with engine, gearbox, catalytic converter and wheels, the keys, the V5C and the location all play a part too. More is in the [scrap van cost guide](/costs/scrap-van).
 
-The online price stands if the van matches what you told us. If not, we explain before we load and you can say no.
+The online price stands if the van is complete and as described. If not, we explain before we load and you can say no.
 
 ## Clear it out first
 

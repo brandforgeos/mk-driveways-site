@@ -35,7 +35,7 @@ Our collections are carried out with the recovery trucks of our sister company, 
 
 Scrap cars are priced mainly on weight, because scrap metal is bought per tonne, and on the current scrap metal price. On top of that we look at the make and model, whether the car is complete with its engine, gearbox, catalytic converter and wheels, whether there are keys and a V5C, and where it is.
 
-The online price uses your registration to look up the vehicle and your postcode to place it. The price stands as long as the vehicle matches what you told us. If something is different when we arrive, for example the catalytic converter has gone, we explain before we load and you are free to say no. Our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explains more, and our [scrap car costs page](/costs) covers each service.
+The online price uses your registration to look up the vehicle and your postcode to place it. The price stands as long as the vehicle is complete and as described. If something is different when we arrive, for example the catalytic converter has gone, we explain before we load and you are free to say no. Our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explains more, and our [scrap car costs page](/costs) covers each service.
 
 ## Paid properly, by bank transfer
 
@@ -77,8 +77,8 @@ desc: Scrap car collection in Brigstock with an instant online price, free picku
 h1: Scrap car collection in Brigstock
 lead: Got a car in Brigstock you no longer want? Get an instant price online, accept it, and we collect it free with our own recovery trucks.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Brigstock. Enter your reg and postcode for an instant online price, accept it, and we collect and pay you by bank transfer on the day. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus secured on a beavertail recovery truck in a residential street during a scrap collection
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Brigstock
 ---
 ## Scrap my car in Brigstock: how it works
 
@@ -108,7 +108,7 @@ Whatever the reason, the process is the same, and you deal with us directly from
 | Keys and V5C | Make the sale cleaner and can affect the price |
 | Location | Where the car is affects the collection |
 
-We do not publish figures because the scrap price changes. The online price looks up your vehicle from the registration and stands as long as the car matches what you told us. For the detail, read [how scrap car prices work](/guides/how-scrap-car-prices-work) or the [scrap car collection costs guide](/costs/scrap-car-collection).
+We do not publish figures because the scrap price changes. The online price looks up your vehicle from the registration and stands as long as the car is complete and as described. For the detail, read [how scrap car prices work](/guides/how-scrap-car-prices-work) or the [scrap car collection costs guide](/costs/scrap-car-collection).
 
 ## Getting a truck to your car
 
@@ -163,8 +163,8 @@ desc: Sell your MOT failure in Brigstock. Instant online price, free collection 
 h1: Sell your MOT failure in Brigstock
 lead: Failed MOT and facing a big repair bill? Sell your MOT failure in Brigstock to us instead. Instant online price, free collection, paid by bank transfer.
 answer: We Buy Scrap Cars Corby buys MOT failures in Brigstock as they are. Get an instant online price with your reg and postcode, and we collect free and pay by bank transfer. No repairs needed. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat loaded on a white recovery truck at dusk after failing its MOT
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Brigstock
 ---
 ## Failed MOT in Brigstock: what now?
 
@@ -191,7 +191,7 @@ Village cars often live hard lives. They cover long miles on country roads, sit 
 
 An MOT failure is priced like any other scrap car. The main factors are weight and the current scrap metal price, then make, model, completeness, keys, V5C and location. An MOT failure that still has all its main parts is priced the same way as a car with a fresh certificate, because what we pay for is the vehicle, not the test.
 
-Use your registration and postcode on our price page for an instant figure. The price stands if the car matches what you told us. If something has been removed before we arrive, such as the catalytic converter, we tell you before loading and you can decline. Our [MOT failure costs guide](/costs/mot-failure) explains it in more depth.
+Use your registration and postcode on our price page for an instant figure. The price stands if the car is complete and as described. If something has been removed before we arrive, such as the catalytic converter, we tell you before loading and you can decline. Our [MOT failure costs guide](/costs/mot-failure) explains it in more depth.
 
 ## What to have ready on collection day
 
@@ -247,8 +247,8 @@ desc: Non-runner collection in Brigstock. Cars that won't start, flat tyres, sei
 h1: Non-runner car collection in Brigstock
 lead: A car that will not start is not a problem for us. We collect non-runners from drives, garages, barns and yards across Brigstock with the right recovery equipment.
 answer: We Buy Scrap Cars Corby buys non-runners in Brigstock, including cars with dead engines, flat tyres and seized brakes. Get an instant online price, and we collect free with our own recovery trucks and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel loaded onto a recovery truck on a gravel drive
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Brigstock
 ---
 ## Non-runner collection in Brigstock
 
@@ -333,8 +333,8 @@ desc: Sell your damaged car in Brigstock. Accident damaged, write-offs and flood
 h1: Sell your damaged car in Brigstock
 lead: Accident damage, an insurance write-off or a flooded car. We buy damaged cars in Brigstock as they stand and collect them free.
 answer: We Buy Scrap Cars Corby buys accident damaged cars and write-offs in Brigstock, including Cat S, Cat N and Cat B buy-backs. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a white recovery truck for scrap
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Brigstock
 ---
 ## Selling a damaged car in Brigstock
 
@@ -367,7 +367,7 @@ Yes. Many damaged cars cannot be steered or rolled. Our collections use the reco
 
 Damaged cars are priced mainly on weight and the current scrap metal price, then the make, model and how complete the car is. Damage that has taken out major parts, or parts removed after the accident, will affect the price. Keys and the V5C also help.
 
-The online price is based on your registration and postcode. It stands as long as the car matches what you told us. If something is different on the day, we explain why before we load and you can say no. See our [damaged cars costs guide](/costs/damaged-cars) for more.
+The online price is based on your registration and postcode. It stands as long as the car is complete and as described. If something is different on the day, we explain why before we load and you can say no. See our [damaged cars costs guide](/costs/damaged-cars) for more.
 
 ## What to sort out before collection
 
@@ -413,8 +413,8 @@ desc: Scrap your van in Brigstock. Small vans, panel vans, Lutons and pickups up
 h1: Scrap van collection in Brigstock
 lead: From small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes, we scrap vans from Brigstock homes, farms and businesses.
 answer: We Buy Scrap Cars Corby scraps vans up to 3.5 tonnes in Brigstock, including panel vans, Lutons and pickups. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark vehicle loaded on a white Rapid Recovery truck on a housing estate during a scrap collection
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Brigstock
 ---
 ## Scrap my van in Brigstock
 
@@ -452,7 +452,7 @@ Vans are priced mainly on weight and the current scrap metal price, which is why
 | Keys and V5C | Help the sale |
 | Where it is | Affects the collection |
 
-The online price stands as long as the van matches what you told us. If something is different on the day, we explain before we load and you can decline. For more, see our [scrap van costs guide](/costs/scrap-van) and [how scrap car prices work](/guides/how-scrap-car-prices-work).
+The online price stands as long as the van is complete and as described. If something is different on the day, we explain before we load and you can decline. For more, see our [scrap van costs guide](/costs/scrap-van) and [how scrap car prices work](/guides/how-scrap-car-prices-work).
 
 ## Collecting from yards, farms and lanes
 

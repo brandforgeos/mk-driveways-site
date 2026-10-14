@@ -39,7 +39,7 @@ Q: Is it legal to scrap a car without a logbook?
 A: Yes. You can scrap a car without a V5C if you have photo ID and proof of ownership and address. Our no-logbook guide explains how.
 
 Q: How do I get a price for my scrap car?
-A: Enter your registration and postcode on our instant price page, add your contact details and answer a few questions. Your price appears on screen.
+A: Enter your registration and postcode on our instant price page, and add your contact details. Your price appears on screen.
 
 Q: Who can legally scrap a car in the UK?
 A: Only an Authorised Treatment Facility (ATF). We take every car we buy to a licensed ATF, which issues a Certificate of Destruction.
@@ -100,7 +100,7 @@ You can still scrap a car without the logbook. You will need proof of ID and pro
 
 We collect from driveways, roadsides, car parks, garages, garage forecourts, farms and business premises. Our collections are carried out with our own recovery trucks from Rapid Recovery Corby, so non-runners and cars with flat tyres are not a problem. See our [non-runner](/non-runner) page if your car won't start.
 
-Before we load, we check the car matches what you told us. If it does, the price stands. If something is different, for example the catalytic converter has been removed, we explain why the price would change before we load, and you can say no.
+Before we load, we check the car is complete and as described. If it does, the price stands. If something is different, for example the catalytic converter has been removed, we explain why the price would change before we load, and you can say no.
 
 ## After the car has gone
 
@@ -551,7 +551,7 @@ When you enter your registration, we look up the vehicle's details, including it
 
 ## Why the price can change on the day
 
-The online price stands as long as the car matches what you told us. If something is different when we arrive, such as the catalytic converter having been removed, we explain why before we load. You can say no.
+The online price stands as long as the car is complete and as described. If something is different when we arrive, such as the catalytic converter having been removed, we explain why before we load. You can say no.
 
 ## Why we pay by bank transfer
 
@@ -577,4 +577,4 @@ Q: Does mileage affect a scrap car price?
 A: Not much. A high mileage car is valued on its weight and completeness like any other scrap car.
 
 Q: Is a scrap price fixed once I accept it?
-A: Yes, as long as the car matches what you told us. If it is different on the day, we explain why before loading and you can say no.
+A: Yes, as long as the car is complete and as described. If it is different on the day, we explain why before loading and you can say no.

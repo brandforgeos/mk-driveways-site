@@ -29,7 +29,7 @@ Each of these has a dedicated Geddington page, linked further down.
 
 Weight is the main factor, because scrap metal is priced per tonne, and the scrap metal market sets the rate on the day. On top of that, the make and model count, along with whether the engine, gearbox, catalytic converter and wheels are still fitted. Keys, a V5C and the car's location all play a part. Our guide to [how scrap car prices work](/guides/how-scrap-car-prices-work) explains each one.
 
-We do not list fixed figures, because no two cars are the same. The quickest answer is to [get your instant price](/get-a-price). It holds as long as the car matches what you told us.
+We do not list fixed figures, because no two cars are the same. The quickest answer is to [get your instant price](/get-a-price). It holds as long as the car is complete and as described.
 
 ## Village streets, the ford and tight spaces
 
@@ -83,8 +83,8 @@ desc: Free scrap car collection in Geddington. Get an instant price from your re
 h1: Scrap car collection in Geddington
 lead: Need an old car removed from Geddington? Get an instant online price, choose a collection time that suits you and get paid by bank transfer.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Geddington. Get an instant price online from your reg and postcode, and we pay by bank transfer when we collect. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat loaded on a recovery truck at dusk after a scrap car collection
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Geddington
 ---
 ## Scrap car collection in Geddington, explained
 
@@ -119,7 +119,7 @@ There is no need to search for a scrap yard near Geddington and find a way to ge
 | Keys and V5C | Make the car simpler to process |
 | Where the car is | Affects what it takes to collect |
 
-Our [scrap car collection cost guide](/costs/scrap-car-collection) goes into this further. The price you see online stands as long as the car matches what you told us. If anything is different on the day, say the catalytic converter has gone, we explain why the price changes before we load, and you can say no.
+Our [scrap car collection cost guide](/costs/scrap-car-collection) goes into this further. The price you see online stands as long as the car is complete and as described. If anything is different on the day, say the catalytic converter has gone, we explain why the price changes before we load, and you can say no.
 
 ## Getting through the village
 
@@ -167,8 +167,8 @@ desc: Sell an MOT failure in Geddington. Instant online price, free collection f
 h1: Sell your MOT failure in Geddington
 lead: Failed MOT and a repair bill bigger than the car is worth? We buy MOT failures in Geddington with an instant online price and free collection.
 answer: We Buy Scrap Cars Corby buys MOT failures in Geddington. Enter your reg and postcode for an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-mg3-collection
-img_alt: Light blue MG3 that failed its MOT loaded onto a white recovery truck bed
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Geddington
 ---
 ## Sell an MOT failure in Geddington and skip the repair bill
 
@@ -250,8 +250,8 @@ desc: Non-runner collection in Geddington. Instant price for cars that won't sta
 h1: Non-runner collection in Geddington
 lead: Car won't start, wheels won't turn or the tyres are flat? We buy non-runners in Geddington and remove them free with proper recovery kit.
 answer: We Buy Scrap Cars Corby buys non-runners in Geddington. Get an instant online price from your reg and postcode, and we remove the car free using winches and dollies, paying by bank transfer. Call 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red Astra loaded on a recovery truck bed with a Fiesta towed behind on a dolly
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Geddington
 ---
 ## Non-runner collection in Geddington, done properly
 
@@ -340,8 +340,8 @@ desc: Sell a damaged car in Geddington. We buy accident damaged, flood damaged a
 h1: Sell a damaged car in Geddington
 lead: We buy accident damaged cars, insurance buy-backs and flood damaged vehicles in Geddington, with an instant price online and free collection.
 answer: We Buy Scrap Cars Corby buys damaged cars and write-offs in Geddington. Get an instant online price from your reg and postcode, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso loaded on the bed of a white recovery truck for scrapping
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Geddington
 ---
 ## Sell a damaged car in Geddington with one simple price
 
@@ -378,7 +378,7 @@ Geddington's old bridge and ford cross the River Ise, and low ground near a rive
 | Engine, gearbox, catalytic converter, wheels | A complete car is worth more |
 | Keys and V5C | Help with processing |
 
-Damage often matters less than you might expect. A car with a smashed front end may still carry its engine, gearbox and catalytic converter, and those count. For more, read our [damaged car cost guide](/costs/damaged-cars), or [get your instant price](/get-a-price) now. The price stands as long as the car matches what you told us. If anything differs on the day, we explain before loading and you can say no.
+Damage often matters less than you might expect. A car with a smashed front end may still carry its engine, gearbox and catalytic converter, and those count. For more, read our [damaged car cost guide](/costs/damaged-cars), or [get your instant price](/get-a-price) now. The price stands as long as the car is complete and as described. If anything differs on the day, we explain before loading and you can say no.
 
 ## Collecting from home, a garage or a body shop
 
@@ -423,8 +423,8 @@ desc: Scrap my van in Geddington. Instant online price for vans and pickups up t
 h1: Scrap my van in Geddington
 lead: Small vans, panel vans, Lutons and pickups up to 3.5 tonnes. We scrap vans in Geddington with an instant online price and free collection.
 answer: We Buy Scrap Cars Corby scraps vans in Geddington up to 3.5 tonnes. Get an instant online price from your reg and postcode, with free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: two-scrap-cars-touran-and-clio
-img_alt: Recovery truck carrying one scrap vehicle on the bed while towing a second behind
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Geddington
 ---
 ## Scrap my van in Geddington, from quote to collection
 

@@ -4,8 +4,8 @@ desc: Scrap my car in Desborough with an instant online price from your reg and 
 h1: Scrap my car in Desborough
 lead: Desborough keeps growing, and so does the number of old cars on its drives. We price them online and collect them free from anywhere in the town.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted cars in Desborough. Get an instant online price from your reg and postcode, then we collect free and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: two-scrap-cars-jaguar-and-golf
-img_alt: Green Jaguar on a recovery truck bed with a Golf towed behind on a new-build estate
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Desborough
 ---
 ## Scrap my car in Desborough: the short version
 
@@ -84,8 +84,8 @@ desc: Scrap car collection in Desborough. Get an instant price online from your 
 h1: Scrap car collection in Desborough
 lead: Free scrap car collection anywhere in Desborough, priced online in minutes and paid by bank transfer when we load.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Desborough. Enter your reg and postcode for an instant online price, and we pay by bank transfer when we collect. Call or WhatsApp 07598 314366.
-img: scrap-citroen-picasso-collection
-img_alt: Red Citroen Picasso loaded on the bed of a white recovery truck
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Desborough
 ---
 ## Free scrap car collection in Desborough
 
@@ -127,7 +127,7 @@ Scrap car prices depend mostly on weight, because scrap metal is priced per tonn
 | Keys and V5C present | Simpler sale |
 | Current scrap metal market | Moves the price up or down |
 
-The online price stands as long as the car matches what you told us. If it does not, we explain before we load and you can say no. See our [scrap car collection cost guide](/costs/scrap-car-collection) for more.
+The online price stands as long as the car is complete and as described. If it does not, we explain before we load and you can say no. See our [scrap car collection cost guide](/costs/scrap-car-collection) for more.
 
 ## Why not cash for cars?
 
@@ -177,8 +177,8 @@ desc: Sell your MOT failure in Desborough with an instant online price, free col
 h1: Sell your MOT failure in Desborough
 lead: If your car failed its MOT in Desborough and the repairs do not make sense, we will buy it as it is and collect it free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Desborough as they are. Enter your reg and postcode for an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded on a white recovery truck early in the morning
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Desborough
 ---
 ## Sell your MOT failure in Desborough
 
@@ -265,8 +265,8 @@ desc: Non-runner collection in Desborough for cars that won't start, have flat t
 h1: Non-runner collection in Desborough
 lead: Dead battery, seized engine or four flat tyres. We collect non-runners across Desborough using proper recovery kit, and the collection is free.
 answer: We Buy Scrap Cars Corby offers free non-runner collection in Desborough for cars that will not start or roll. Get an instant online price, and we pay by bank transfer when we load. Call or WhatsApp 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red damaged Vauxhall Astra on a truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-car-overgrown-driveway
+img_alt: Mossy abandoned hatchback with a flat tyre collected from a driveway for scrap in Desborough
 ---
 ## Non-runner collection in Desborough
 
@@ -349,8 +349,8 @@ desc: Sell your damaged car in Desborough, including accident damage and Cat S, 
 h1: Sell your damaged car in Desborough
 lead: From a crumpled front end to a write-off you kept from your insurer, we buy damaged cars across Desborough and collect them free.
 answer: We Buy Scrap Cars Corby buys damaged cars and insurance write-offs in Desborough, including Cat S, N and B buy-backs. Get an instant online price, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-jaguar-x-type-collection
-img_alt: Green Jaguar X-Type loaded on the bed of a white recovery truck
+img: scrap-car-flood-damaged-clio
+img_alt: Flood damaged Renault Clio with a mud line on the doors, loaded on our truck for scrap in Desborough
 ---
 ## Sell your damaged car in Desborough
 
@@ -438,8 +438,8 @@ desc: Scrap your van in Desborough. Panel vans, Lutons and pickups up to 3.5 ton
 h1: Scrap your van in Desborough
 lead: We buy scrap vans in Desborough, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes, and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap vans up to 3.5 tonnes in Desborough, including panel vans, Lutons and pickups. Get an instant online price, we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: Recovery truck with an amber beacon at dusk in a yard beside other vehicles
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Desborough
 ---
 ## Scrap my van in Desborough
 

@@ -4,8 +4,8 @@ desc: Scrap your car in Weldon with We Buy Scrap Cars Corby. Get an instant pric
 h1: Scrap cars, vans and non-runners bought in Weldon
 lead: From the old stone streets in the middle of the village to the newer homes on its edges, we buy unwanted cars and vans across Weldon and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted vehicles in Weldon. Enter your reg and postcode for an instant online price, then we collect free and pay you by bank transfer on the spot. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus loaded on a white Rapid Recovery beavertail truck on a residential street
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Weldon
 ---
 ## Scrapping a car in Weldon, the simple way
 
@@ -43,7 +43,7 @@ Some of the older parts of Weldon were laid out long before anyone owned a car. 
 
 Scrap is priced by weight, so the heavier the vehicle, the more metal there is to recycle. The current scrap metal price matters too, and so do the make and model, whether the car is complete with its engine, gearbox, catalytic converter and wheels, whether you have keys and the V5C, and where the car is. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains it in more depth.
 
-The price you see online stands as long as the car matches what you told us. If something is different on the day, we explain why before we load and you are free to say no.
+The price you see online stands as long as the car is complete and as described. If something is different on the day, we explain why before we load and you are free to say no.
 
 ## Paid by bank transfer, never cash
 
@@ -81,8 +81,8 @@ desc: Scrap my car in Weldon: instant online price from your reg and postcode, f
 h1: Scrap car collection in Weldon
 lead: Got a car in Weldon that has reached the end of the road? Get a price online in a minute, then we collect it for free and pay you by bank transfer.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Weldon. Get an instant online price from your reg and postcode, accept it, and we collect and pay you by bank transfer. Questions? Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded onto a white recovery truck early in the morning for scrap
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Weldon
 ---
 ## Scrap my car in Weldon: how it works
 
@@ -172,8 +172,8 @@ desc: Sell your MOT failure in Weldon. Instant online price from your reg, free 
 h1: Sell your MOT failure in Weldon
 lead: Your car has failed its MOT and the repair list is longer than you hoped. We buy MOT failures in Weldon as they are and collect them free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Weldon, including cars with no MOT or tax. Get an instant online price from your reg and postcode, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-touran-collection
-img_alt: VW Touran that failed its MOT loaded on a white recovery truck for scrap collection
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Weldon
 ---
 ## Failed MOT in Weldon? What now
 
@@ -215,7 +215,7 @@ A car that has failed its MOT is mostly valued on what it weighs and the current
 | Complete car | Engine, gearbox, catalytic converter and wheels all add value |
 | No MOT or tax | No problem, we still buy it |
 
-The online price stands as long as the car matches what you told us.
+The online price stands as long as the car is complete and as described.
 
 ## No tax, SORN and the DVLA
 
@@ -259,8 +259,8 @@ desc: Non-runner collection in Weldon. We buy cars that won't start, with flat t
 h1: Non-runner collection in Weldon
 lead: A car that won't start, or hasn't moved in years, is still worth something. We buy non-runners in Weldon and bring the kit to get them out.
 answer: We Buy Scrap Cars Corby buys non-runners in Weldon, including cars with flat tyres, seized engines or stuck brakes. Get an instant price online, and we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea non-runner on a space saver wheel loaded on a truck on a gravel drive
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Weldon
 ---
 ## Selling a non-runner in Weldon
 
@@ -303,7 +303,7 @@ Sometimes the car belongs to someone who can no longer drive it, or who has pass
 
 ## What we check and how we pay
 
-By law we check the seller's name and address, so please have photo ID and proof of address ready. The price you saw online stands as long as the car matches what you told us. If it doesn't, for example a part has been taken off since, we explain before loading and you can say no.
+By law we check the seller's name and address, so please have photo ID and proof of address ready. The price you saw online stands as long as the car is complete and as described. If it doesn't, for example a part has been taken off since, we explain before loading and you can say no.
 
 We pay instantly by bank transfer. Cash payments for scrap cars are illegal under the Scrap Metal Dealers Act 2013, so be wary of anyone who offers them.
 
@@ -346,8 +346,8 @@ desc: Sell your damaged car in Weldon. We buy accident damaged cars and Cat S, N
 h1: Sell your damaged car or write-off in Weldon
 lead: Accident damage, flood damage or an insurance write-off you kept. We buy damaged cars in Weldon and collect them free, even if they can't be driven.
 answer: We Buy Scrap Cars Corby buys damaged cars in Weldon, including accident damage and Cat S, N and B buy-backs. Enter your reg and postcode for an instant price, then we collect free and pay by bank transfer. Call 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a white recovery truck
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Weldon
 ---
 ## Damaged car in Weldon? You can still sell it
 
@@ -435,8 +435,8 @@ desc: Scrap your van in Weldon. Small vans, panel vans, Lutons and pickups up to
 h1: Scrap van collection in Weldon
 lead: Your work van has done its last job. We buy vans and pickups up to 3.5 tonnes in Weldon, collect them free and pay you by bank transfer.
 answer: We Buy Scrap Cars Corby offers scrap van collection in Weldon for small vans, panel vans, Lutons and pickups up to 3.5 tonnes. Get an instant price online, then we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-cars-evening-collection-corby
-img_alt: White recovery truck with amber beacon at dusk in a yard beside other vehicles waiting for scrap
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Weldon
 ---
 ## Scrap my van in Weldon
 
@@ -476,7 +476,7 @@ Vans are generally heavier than cars, and weight is the main driver of scrap val
 | Lutons | Yes, up to 3.5 tonnes |
 | Pickups and 4x4s | Yes |
 
-The price stands as long as the van matches what you told us. If something is different on the day, we explain before loading and you can say no.
+The price stands as long as the van is complete and as described. If something is different on the day, we explain before loading and you can say no.
 
 ## Collecting from yards and business premises
 

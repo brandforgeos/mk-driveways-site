@@ -4,8 +4,8 @@ desc: Scrap my car in Rothwell with an instant online price, free collection fro
 h1: Scrap my car in Rothwell
 lead: Rothwell is a busy market town on the A6 just west of Kettering. If there is an old car on your drive or in the street, we can price it and take it away.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted cars in Rothwell. Enter your reg and postcode for an instant online price, then we collect for free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-audi-a4-collection
-img_alt: Dark Audi A4 loaded on a white Rapid Recovery truck in a terraced town street
+img: scrap-audi-terraced-street
+img_alt: Tired old saloon loaded on our truck in a terraced street for scrap in Rothwell
 ---
 ## Scrapping a car in Rothwell, start to finish
 
@@ -39,7 +39,7 @@ We buy cars, 4x4s, pickups and vans up to 3.5 tonnes, of any age, make or model.
 
 There is no single number, which is why we price each car by its registration. The main driver is weight, because scrap metal is priced by the tonne, and that price moves with the market. After that we look at the make and model, whether the car is complete with its engine, gearbox, catalytic converter and wheels, whether there are keys and a V5C, and where it is.
 
-Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) goes into the detail, and the [costs section](/costs) explains each service. The short version: the online price stands as long as the car matches what you told us.
+Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) goes into the detail, and the [costs section](/costs) explains each service. The short version: the online price stands as long as the car is complete and as described.
 
 ## Paid by bank transfer, never cash
 
@@ -88,8 +88,8 @@ desc: Scrap car collection in Rothwell with a free pick-up, an instant online pr
 h1: Scrap car collection in Rothwell
 lead: Free scrap car collection from homes, streets and business premises across Rothwell, with an instant price online before we arrange anything.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Rothwell. Get an instant online price from your registration and postcode, accept it, and we collect and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus on a beavertail recovery truck on a residential street
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Rothwell
 ---
 ## Free scrap car collection in Rothwell
 
@@ -107,7 +107,7 @@ Rothwell's older streets near the Market House can be tight for parking, so a de
 
 1. Get your instant price online using the reg and postcode.
 2. Accept the price and we ring you to arrange a time that suits you.
-3. We arrive, check the car matches what you told us, and check your ID.
+3. We arrive, check the car is complete and as described, and check your ID.
 4. We load the car onto one of our own recovery trucks.
 5. We pay you by bank transfer there and then.
 6. The car goes to a licensed Authorised Treatment Facility, which notifies the DVLA.
@@ -118,7 +118,7 @@ Our collections are carried out by the same trucks George uses for Rapid Recover
 
 Scrap car prices are not fixed. Steel and other metals are priced per tonne, and that market price changes. So a heavy estate car will usually be worth more than a small city car. We also take account of the make and model, whether it is complete, whether it has keys and a V5C, and the location.
 
-The price you see online stands as long as the car matches what you told us. If something is different on the day, such as a catalytic converter that has been removed, we explain before we load and you are free to say no. Our [scrap car collection cost guide](/costs/scrap-car-collection) and [how scrap car prices work](/guides/how-scrap-car-prices-work) explain the detail.
+The price you see online stands as long as the car is complete and as described. If something is different on the day, such as a catalytic converter that has been removed, we explain before we load and you are free to say no. Our [scrap car collection cost guide](/costs/scrap-car-collection) and [how scrap car prices work](/guides/how-scrap-car-prices-work) explain the detail.
 
 ## Paperwork for selling your scrap car
 
@@ -165,8 +165,8 @@ desc: Sell your MOT failure in Rothwell with an instant online price, free colle
 h1: Sell your MOT failure in Rothwell
 lead: Failed your MOT in Rothwell and the repair quote made you wince? We buy MOT failures as they are and collect them free.
 answer: We Buy Scrap Cars Corby buys MOT failures in Rothwell. Get an instant online price from your reg and postcode, and we collect free, even if the MOT has expired, and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat loaded on a white recovery truck at dusk
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Rothwell
 ---
 ## Sell your MOT failure in Rothwell without paying for repairs
 
@@ -249,8 +249,8 @@ desc: Non-runner collection in Rothwell for cars that will not start, have flat 
 h1: Non-runner collection in Rothwell
 lead: A car that will not start is still worth something. We collect non-runners across Rothwell with the right recovery kit for the job.
 answer: We Buy Scrap Cars Corby offers free non-runner collection in Rothwell, including cars with seized engines, flat tyres or seized brakes. Get an instant online price, and we pay by bank transfer. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel being loaded onto a recovery truck on gravel
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Rothwell
 ---
 ## Non-runner collection in Rothwell for cars that will not move
 
@@ -330,8 +330,8 @@ desc: Sell your damaged car in Rothwell, from accident damage to Cat S, N or B b
 h1: Sell your damaged car in Rothwell
 lead: Accident damage, flood damage or an insurance write-off you kept. We buy damaged cars across Rothwell and collect them free on our own trucks.
 answer: We Buy Scrap Cars Corby buys damaged cars and write-offs in Rothwell, including Cat S, N and B buy-backs. Get an instant online price, we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end damage on a white recovery truck
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Rothwell
 ---
 ## Sell your damaged car in Rothwell
 
@@ -413,8 +413,8 @@ desc: Scrap your van in Rothwell, from small vans to Lutons and pickups up to 3.
 h1: Scrap your van in Rothwell
 lead: Small vans, long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. We buy scrap vans across Rothwell and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap vans up to 3.5 tonnes in Rothwell, including panel vans, Lutons and pickups. Get an instant online price, we collect free and pay by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a white recovery truck outside a house
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Rothwell
 ---
 ## Scrap my van in Rothwell
 
@@ -460,7 +460,7 @@ Vans are priced like cars. Weight matters most, and vans are generally heavier t
 | Keys and V5C | Makes the sale simpler |
 | Location | Part of the online price calculation |
 
-The online price stands as long as the van matches what you told us. Our [scrap van cost guide](/costs/scrap-van) and our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) go into more detail.
+The online price stands as long as the van is complete and as described. Our [scrap van cost guide](/costs/scrap-van) and our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) go into more detail.
 
 ## Paperwork for a business van
 

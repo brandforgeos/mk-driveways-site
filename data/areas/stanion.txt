@@ -37,7 +37,7 @@ We have written a page for each type of vehicle we buy in Stanion:
 
 Scrap is priced per tonne, so weight is the biggest factor. The current scrap metal price moves the figure up or down. Then we look at the make and model, whether the car is complete with engine, gearbox, catalytic converter and wheels, whether you have the keys and V5C, and where it is.
 
-We work out your instant price from the reg and postcode. As long as the car matches what you told us, the price stands. If something is different when we arrive, we explain before loading and you can decide not to go ahead. For more detail, read [how scrap car prices work](/guides/how-scrap-car-prices-work).
+We work out your instant price from the reg and postcode. As long as the car is complete and as described, the price stands. If something is different when we arrive, we explain before loading and you can decide not to go ahead. For more detail, read [how scrap car prices work](/guides/how-scrap-car-prices-work).
 
 ## Farms, yards and the edge of the village
 
@@ -82,8 +82,8 @@ desc: Scrap car collection in Stanion near Corby. Get an instant price online, w
 h1: Scrap car collection in Stanion
 lead: Ready to scrap your car in Stanion? Get an instant online price from your registration and postcode and we will collect it free.
 answer: We Buy Scrap Cars Corby provides free scrap car collection in Stanion. Get an instant online price from your reg and postcode, accept it, and we collect and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-mg3-collection
-img_alt: Light blue MG3 loaded on the bed of a Rapid Recovery truck during a scrap car collection
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Stanion
 ---
 ## Scrap my car in Stanion
 
@@ -103,7 +103,7 @@ It is also worth knowing that a car does not need to be roadworthy, taxed or tes
 
 Here is what to expect:
 
-1. We arrive at the agreed time and check the car matches what you told us.
+1. We arrive at the agreed time and check the car is complete and as described.
 2. We check your photo ID and proof of address, which the law requires.
 3. You hand over the V5C and keep the yellow slip.
 4. We load the car onto the truck.
@@ -170,8 +170,8 @@ desc: Sell your MOT failure in Stanion with no repairs needed. Instant online pr
 h1: Sell your MOT failure in Stanion
 lead: Car failed its MOT and the repair quote is more than it is worth? We buy MOT failure cars in Stanion as they are, with free collection.
 answer: We Buy Scrap Cars Corby buys MOT failure cars in Stanion with no repairs needed. Get an instant online price, we collect free, even with no MOT or tax, and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-vw-passat-collection
-img_alt: Dark VW Passat on a Rapid Recovery truck at dusk, collected after failing its MOT
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Stanion
 ---
 ## You can sell an MOT failure in Stanion as it is
 
@@ -255,8 +255,8 @@ desc: Non-runner collection in Stanion. We buy cars that won't start, seized car
 h1: Non-runner car collection in Stanion
 lead: Dead battery, seized engine or a car that has not moved in years? We buy non-runners in Stanion and handle the loading ourselves.
 answer: We Buy Scrap Cars Corby buys non-runner cars in Stanion and collects them free, even with seized engines, flat tyres or no keys. Get an instant price online and we pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: scrap-honda-civic-collection
-img_alt: Car being winched onto a Rapid Recovery truck at night with amber beacons flashing
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Stanion
 ---
 ## Non-runner car buyers in Stanion
 
@@ -347,8 +347,8 @@ desc: Sell your damaged car in Stanion. Accident damage, flood damage and Cat S,
 h1: Sell your damaged car in Stanion
 lead: Had an accident, or the insurer has written your car off? We buy damaged cars in Stanion as they are and collect them free.
 answer: We Buy Scrap Cars Corby buys accident damaged cars and write-offs in Stanion, including Cat S, N and B buy-backs and flood damage. Instant online price, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-astra-and-fiesta-scrap
-img_alt: Red accident damaged Vauxhall Astra on a recovery truck bed with a Ford Fiesta towed behind on a dolly
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Stanion
 ---
 ## Damaged car buyers for Stanion
 
@@ -436,8 +436,8 @@ desc: Scrap your van in Stanion. Panel vans, Lutons, pickups and ex-fleet vans u
 h1: Scrap van collection in Stanion
 lead: Got an old van or pickup in Stanion that has done its last job? We buy scrap vans up to 3.5 tonnes and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap vans in Stanion, including panel vans, Lutons, pickups and ex-fleet vans up to 3.5 tonnes. Instant online price, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-nissan-qashqai-collection
-img_alt: Silver Nissan Qashqai loaded on a Rapid Recovery truck, ready to be taken for scrap
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Stanion
 ---
 ## Scrap my van in Stanion
 

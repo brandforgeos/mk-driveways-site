@@ -4,8 +4,8 @@ desc: Scrap your car in Great Oakley with an instant online price, free collecti
 h1: Scrap car buyers in Great Oakley
 lead: Great Oakley sits on Corby's southern edge, between Oakley Vale and the Oakley Hay industrial area. We buy scrap cars and vans here and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap and unwanted cars and vans in Great Oakley. Enter your reg and postcode for an instant online price, we collect free and pay you by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: scrap-hatchback-collection
-img_alt: Dark hatchback loaded on a white Rapid Recovery truck on a housing estate, ready to go for scrap
+img: scrap-car-garage-forecourt
+img_alt: Old saloon MOT failure collected from a garage forecourt on our recovery truck in Great Oakley
 ---
 ## Selling a scrap car in Great Oakley
 
@@ -39,7 +39,7 @@ Each of these pages goes into detail for this village:
 
 Our price comes from your registration and postcode. We look up the vehicle, work out roughly what it weighs and apply the current scrap metal price, then allow for the make and model, whether it is complete and whether you have keys and the V5C. You see the figure on screen straight away on our [get a price](/get-a-price) page.
 
-The price stands as long as the car matches what you told us. If something is different on the day, for example the catalytic converter has gone, we explain why before we load and you are free to say no. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains each factor.
+The price stands as long as the car is complete and as described. If something is different on the day, for example the catalytic converter has gone, we explain why before we load and you are free to say no. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains each factor.
 
 ## Why we pay by bank transfer, not cash
 
@@ -92,8 +92,8 @@ desc: Scrap car collection in Great Oakley with an instant online price, free pi
 h1: Scrap car collection in Great Oakley
 lead: Want to scrap your car in Great Oakley? Get an instant price from your reg and postcode, and we collect it free from your drive, roadside or garage.
 answer: We Buy Scrap Cars Corby offers free scrap car collection in Great Oakley. Get an instant online price from your reg and postcode, accept it, and we collect and pay you by bank transfer on the spot. Call or WhatsApp 07598 314366.
-img: scrap-ford-focus-collection
-img_alt: Silver Ford Focus on the beavertail of a Rapid Recovery truck on a residential street, collected for scrap
+img: two-scrap-cars-old-touran-and-clio
+img_alt: Two old scrap cars collected at once, one on our truck and one towed behind in Great Oakley
 ---
 ## Scrap my car in Great Oakley: the short version
 
@@ -170,8 +170,8 @@ desc: Sell your MOT failure in Great Oakley without paying for repairs. Instant 
 h1: Sell your MOT failure in Great Oakley
 lead: Failed MOT and a garage quote that makes you wince? We buy MOT failure cars in Great Oakley as they are, and collect them free.
 answer: We Buy Scrap Cars Corby buys MOT failure cars in Great Oakley. Get an instant online price from your reg and postcode, we collect free, even with no MOT or tax, and pay you by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-renault-clio-collection
-img_alt: Blue Renault Clio loaded on a Rapid Recovery truck early in the morning after failing its MOT
+img: scrap-mot-failure-ford-focus
+img_alt: Rusty silver Ford Focus MOT failure loaded on our recovery truck for scrap in Great Oakley
 ---
 ## Failed MOT in Great Oakley: what now?
 
@@ -247,8 +247,8 @@ desc: Non-runner collection in Great Oakley. We buy cars that won't start, seize
 h1: Non-runner car collection in Great Oakley
 lead: Car will not start, tyres flat or brakes seized? We buy non-runners in Great Oakley and bring the kit to load them, free of charge.
 answer: We Buy Scrap Cars Corby collects non-runner cars in Great Oakley for free, including seized engines, flat tyres and cars sat for years. Get an instant price online, and we pay by bank transfer on collection. Call or WhatsApp 07598 314366.
-img: non-runner-seat-altea-collection
-img_alt: Grey Seat Altea on a space saver wheel being loaded onto a recovery truck from a gravel drive
+img: scrap-non-runner-flat-tyres
+img_alt: Non-runner car with moss and flat tyres loaded onto our truck after years off the road in Great Oakley
 ---
 ## Selling a non-runner in Great Oakley
 
@@ -330,8 +330,8 @@ desc: Sell your damaged car in Great Oakley. We buy accident damaged cars and Ca
 h1: Sell your damaged car in Great Oakley
 lead: Accident damaged, written off by the insurer or hit by flood water? We buy damaged cars in Great Oakley and collect them free.
 answer: We Buy Scrap Cars Corby buys accident damaged cars and insurance write-offs in Great Oakley, including Cat S, N and B buy-backs. Get an instant online price, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: damaged-vauxhall-astra-scrap
-img_alt: Red Vauxhall Astra with front-end accident damage loaded on a Rapid Recovery truck
+img: scrap-damaged-nissan-qashqai
+img_alt: Accident damaged SUV with a crushed front end on our recovery truck, heading for scrap in Great Oakley
 ---
 ## Selling a damaged car in Great Oakley
 
@@ -411,8 +411,8 @@ desc: Scrap your van in Great Oakley. Panel vans, Lutons and pickups up to 3.5 t
 h1: Scrap van collection in Great Oakley
 lead: Got a tired van parked up at home or outside a unit on Oakley Hay? We buy scrap vans in Great Oakley up to 3.5 tonnes and collect them free.
 answer: We Buy Scrap Cars Corby buys scrap vans in Great Oakley, from small vans to long-wheelbase panel vans, Lutons and pickups up to 3.5 tonnes. Instant online price, free collection and payment by bank transfer. Call or WhatsApp 07598 314366.
-img: scrap-nissan-x-trail-collection
-img_alt: Silver Nissan X-Trail loaded on a Rapid Recovery truck outside a house, ready to be taken for scrap
+img: scrap-van-collection-panel-van
+img_alt: Old white panel van loaded on our recovery truck for scrap collection in Great Oakley
 ---
 ## Scrap my van in Great Oakley
 
