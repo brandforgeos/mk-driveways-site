@@ -140,6 +140,10 @@ if (!$P) {
   $crumbs = [['Home', '']];
 }
 $path = implode('/', $seg);
+/* keep <title> within ~65 chars: drop the middle "|" segment when too long */
+$tparts = array_map('trim', explode('|', $P['title']));
+if (mb_strlen($P['title']) > 65 && count($tparts) === 3) $P['title'] = $tparts[0] . ' | ' . $tparts[2];
+if (mb_strlen($P['title']) > 65) $P['title'] = str_replace(' | Rapid Recovery Corby', ' | Rapid Recovery', $P['title']);
 $hero = $P['img'] ?? ($svc ? $SV[$svc]['img'] : ($area ? $AR[$area]['img'] : 'recovery-truck-night-callout-corby'));
 
 /* ---------- schema ---------- */

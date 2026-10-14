@@ -1,0 +1,124 @@
+=== hub
+title: Vehicle Recovery Cottingham | 24/7 Breakdown Recovery on the A427 | Rapid Recovery
+desc: 24/7 vehicle recovery in Cottingham, west of Corby on the A427. Breakdown recovery, car transport, jump starts and free scrap car collection.
+h1: Vehicle recovery in Cottingham
+lead: Cottingham sits on the A427 just west of Corby, on the slopes above the Welland valley. Our trucks are only a short run away.
+---
+## On the road to Market Harborough
+
+Cottingham and its neighbour Middleton line the A427, the main road between Corby and Market Harborough. The road climbs and drops steeply through the village, with tight bends, parked cars and a lot of through traffic, which makes it a regular spot for breakdowns and minor collisions.
+
+The village is also next to East Carlton Countryside Park, which brings visitors and the odd flat battery in the car park.
+
+## Our services in Cottingham
+
+Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+---
+Q: Do you cover Cottingham and Middleton together?
+A: Yes. We cover both villages and the A427 through them.
+Q: How quickly can you get to Cottingham?
+A: Cottingham is close to Corby, so it is usually a quick call-out. We give you an arrival time when you call.
+
+=== breakdown-recovery
+title: Breakdown Recovery Cottingham | A427 Recovery 24/7 | Rapid Recovery Corby
+desc: Broken down in Cottingham or on the A427 near Corby? 24/7 breakdown and accident recovery from a PAS 43 accredited local team. From £60.
+h1: Breakdown recovery in Cottingham
+lead: Broken down on the A427 through Cottingham? We'll get a truck to you from Corby quickly and clear you off the road safely.
+img: breakdown-recovery-mg3-hatchback
+---
+## The A427 through the village
+
+The A427 through Cottingham is steep, bendy and narrowed by parked cars, so a breakdown here can quickly hold up traffic. If you stop in the village, switch your hazards on, get everyone out onto the pavement and away from the car, and call us. We know the road and will position the truck so it can load you safely.
+
+## Hill starts and clutches
+
+Steep hills are hard on clutches, and we're regularly called to cars whose clutch has finally given up on the climb. If your car won't move, we can recover it to your garage, home or our secure yard.
+
+## Accidents
+
+Bends and parked cars mean scrapes and bumps happen. We recover accident-damaged cars and work with insurers and accident management companies.
+
+Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+---
+Q: My clutch has gone on the hill in Cottingham. Can you help?
+A: Yes. We can recover the car on a beavertail and take it to your garage or home.
+Q: Do you recover accident-damaged cars from the A427?
+A: Yes, and we can store them in our secure yard and work with your insurer.
+
+=== car-transport
+title: Car Transport Cottingham | Vehicle Collection & Delivery | Rapid Recovery Corby
+desc: Car transport for Cottingham. Collections, deliveries and garage runs, locally or anywhere in the UK, fully insured with a fixed price.
+h1: Car transport in Cottingham
+lead: Need a car taking from Cottingham to a garage, a dealer or a new home? We'll move it, locally or anywhere in the UK.
+img: two-car-recovery-touran-and-clio
+---
+## Between Corby and Market Harborough
+
+Cottingham sits between Corby and Market Harborough, so cars often need to go one way or the other: to a dealer in Market Harborough, a specialist in Corby or further afield. We'll collect your car and take it there.
+
+## Bought a car elsewhere?
+
+We'll pick it up from the seller and bring it back to Cottingham, saving you the journey.
+
+## Non-runners
+
+Cars that don't run are winched onto our beavertail transporters, so a car that's failed or been laid up is no problem.
+
+Every job has a fixed price. See our [car transport cost guide](/costs/car-transport).
+---
+Q: Can you take my car from Cottingham to a dealer in Market Harborough?
+A: Yes. We move cars to dealers and garages in Market Harborough, Corby, Kettering and beyond.
+Q: Do you charge extra for non-runners?
+A: Sometimes a little, because they take longer to load. We include it in your fixed price.
+
+=== jump-start
+title: Jump Start Cottingham | Mobile Battery Fitting from £40 | Rapid Recovery Corby
+desc: Flat battery in Cottingham? 24/7 mobile jump starts from £40, new batteries fitted on the spot and wheel changes from a local Corby team.
+h1: Jump starts in Cottingham
+lead: Car won't start in Cottingham or at East Carlton Park? We'll come out with a jump pack and replacement batteries.
+img: night-breakdown-recovery-honda-civic
+---
+## Home or out for the day
+
+We jump start cars on driveways and streets in Cottingham and in the car park at East Carlton Countryside Park, where coming back from a walk to a flat battery is more common than you'd think.
+
+## Battery checks
+
+We test the battery once the car is running. If it's on its way out, we can fit a new one there and then rather than leave you to break down again on the hill.
+
+## Flat tyres
+
+We change wheels onto spares and space savers, and can recover the car to a tyre fitter if needed.
+
+A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+---
+Q: Can you come to East Carlton Countryside Park?
+A: Yes. Tell us where you are parked and we will come to you.
+Q: Do you fit batteries at the roadside?
+A: Yes. We supply and fit batteries at homes, car parks and the roadside.
+
+=== scrap-car-collection
+title: Scrap My Car Cottingham | Free Scrap Car Collection | Rapid Recovery Corby
+desc: Scrap your car in Cottingham with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+h1: Scrap car collection in Cottingham
+lead: Got an old car in Cottingham you need gone? We'll collect it for free, pay you and make sure it's scrapped legally.
+img: scrap-car-collection-citroen-picasso
+---
+## Collected from your door
+
+We collect scrap cars and vans from homes in Cottingham, including steep driveways and tight village streets, as long as we can safely reach the vehicle.
+
+## Paid and legal
+
+We're licensed waste carriers and scrap metal collectors. You're paid by bank transfer, and the vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and tells the DVLA.
+
+## Get a price
+
+Send us the registration and its condition. We'll give you a price and book a collection.
+
+See our [scrap car cost guide](/costs/scrap-car-collection).
+---
+Q: Can you collect from a steep driveway?
+A: Usually, yes. We can winch the car onto the truck. Tell us about the access when you call.
+Q: How am I paid?
+A: By bank transfer, as the Scrap Metal Dealers Act 2013 requires.

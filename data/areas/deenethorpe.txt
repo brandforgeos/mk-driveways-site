@@ -1,0 +1,124 @@
+=== hub
+title: Vehicle Recovery Deenethorpe | 24/7 Breakdown Recovery on the A43 | Rapid Recovery
+desc: 24/7 vehicle recovery in Deenethorpe, east of Corby off the A43. Breakdown recovery, car transport, jump starts and free scrap car collection.
+h1: Vehicle recovery in Deenethorpe
+lead: Deenethorpe is a small village just off the A43 east of Weldon. We cover the village, the A43 and the surrounding lanes 24/7.
+---
+## Quiet village, fast road
+
+Deenethorpe is a quiet stone village near Deene Park, next to the old wartime airfield. It sits just off the A43 between Corby and Stamford, a fast stretch of road where most of our call-outs in this area happen.
+
+We're called out here for breakdowns and minor accidents on the A43, cars stuck on farm tracks and verges, flat batteries at home, and old vehicles that need collecting for scrap.
+
+## Our services in Deenethorpe
+
+Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+---
+Q: Do you cover the A43 towards Stamford?
+A: Yes. We recover vehicles along the A43 past Weldon and Deenethorpe and on towards Stamford.
+Q: How quickly can you reach Deenethorpe?
+A: It is a short drive from our Corby base along the A43. We give you a realistic arrival time when you call.
+
+=== breakdown-recovery
+title: Breakdown Recovery Deenethorpe | A43 Recovery 24/7 | Rapid Recovery Corby
+desc: Broken down near Deenethorpe or on the A43 east of Corby? 24/7 breakdown and accident recovery from a PAS 43 accredited local team. From £60.
+h1: Breakdown recovery in Deenethorpe
+lead: Broken down on the A43 near Deenethorpe or on a lane nearby? We'll get to you from Corby and recover you safely.
+img: breakdown-recovery-ford-focus-beavertail
+---
+## On the A43
+
+The A43 past Deenethorpe is a fast road with long straights and limited verges. If you break down, pull as far off the road as you safely can, switch your hazards on and get everyone out on the side away from the traffic. Call us with your direction of travel and the nearest village or turning.
+
+## Lanes and farm tracks
+
+Away from the main road, cars can get stuck on soft verges, muddy tracks and field entrances. We carry winches for off-road and ditch recoveries. Describe where the car is when you call so we bring the right truck.
+
+## Where we'll take you
+
+To a garage in Corby or Stamford, your home, or our secure yard.
+
+Breakdown recovery starts from a £60 minimum charge. Off-road recoveries are priced on the phone. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+---
+Q: Can you recover a car stuck on a farm track?
+A: Yes. We carry out off-road recoveries with a winch. Tell us how the car is stuck when you call.
+Q: Can you take my car to a garage in Stamford?
+A: Yes. We recover to any garage, dealer or home address you choose.
+
+=== car-transport
+title: Car Transport Deenethorpe | Vehicle Collection & Delivery | Rapid Recovery Corby
+desc: Car transport for Deenethorpe and nearby villages. Collections and deliveries anywhere in the UK, classics and non-runners. Fully insured.
+h1: Car transport in Deenethorpe
+lead: Need a car moving to or from Deenethorpe? We collect and deliver anywhere in the UK, insured, with a fixed price first.
+img: car-transport-volvo-v40-rally-car
+---
+## Rural collections
+
+Getting a car from a small village to a dealer or specialist is a hassle. We'll collect it from your home or farm and deliver it wherever it needs to go.
+
+## Classic and specialist cars
+
+We move classic, project and specialist cars on beavertail trucks, loading low cars gently and winching on non-runners.
+
+## Fixed price, insured
+
+Every job gets a fixed price up front and goods in transit insurance while the vehicle is with us.
+
+See the [car transport cost guide](/costs/car-transport).
+---
+Q: Can you collect a car from a farm near Deenethorpe?
+A: Yes, if the truck can safely reach it. Tell us about the access when you book.
+Q: Do you transport non-runners?
+A: Yes. Non-runners are winched onto our beavertail trucks.
+
+=== jump-start
+title: Jump Start Deenethorpe | Mobile Battery Fitting from £40 | Rapid Recovery Corby
+desc: Flat battery in Deenethorpe? 24/7 mobile jump starts from £40, new batteries fitted on the spot and wheel changes from a local Corby team.
+h1: Jump starts in Deenethorpe
+lead: Car won't start in Deenethorpe? We'll come out from Corby with a jump pack and replacement batteries.
+img: early-morning-recovery-renault-clio
+---
+## Out in the countryside
+
+When your car won't start in a small village, you can't just walk to a garage. We'll come to you, any time of day, and get you going.
+
+## Test and replace
+
+After a jump start we test the battery. If it's failing, we can fit a new one there and then, so you're not stuck again tomorrow. We confirm the price before fitting.
+
+## Flat tyres
+
+Rural roads mean punctures. We'll fit your spare or recover the car to a tyre fitter.
+
+A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+---
+Q: Do you cover small villages like Deenethorpe at night?
+A: Yes, we cover Deenethorpe 24 hours a day, 7 days a week.
+Q: Can you fit a new battery at my home?
+A: Yes. We supply and fit batteries on driveways and at the roadside.
+
+=== scrap-car-collection
+title: Scrap My Car Deenethorpe | Free Scrap Car Collection | Rapid Recovery Corby
+desc: Scrap your car in Deenethorpe with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+h1: Scrap car collection in Deenethorpe
+lead: Old car or van in Deenethorpe? We'll collect it free from your home or farm and pay you by bank transfer.
+img: scrap-car-collection-small-hatchback
+---
+## Homes, farms and yards
+
+We collect scrap cars and vans from homes, farms and yards around Deenethorpe, as long as we can safely reach them. Non-runners and vehicles that have been sitting for years are fine.
+
+## Licensed and legal
+
+We hold a waste carrier licence and a scrap metal collector's licence. You're paid by bank transfer and the vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and tells the DVLA.
+
+## Get a price
+
+Send us the registration and condition and we'll give you a price and a collection time.
+
+See our [scrap car cost guide](/costs/scrap-car-collection).
+---
+Q: Do you collect old farm vehicles?
+A: We collect cars, vans and motorbikes. For other farm vehicles, call us and describe it.
+Q: Is collection free in Deenethorpe?
+A: Yes, collection is free.

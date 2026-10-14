@@ -1,0 +1,124 @@
+=== hub
+title: Vehicle Recovery Priors Hall Park | 24/7 Breakdown Recovery | Rapid Recovery Corby
+desc: 24/7 vehicle recovery for Priors Hall Park, between Corby and Weldon. Breakdown recovery, car transport, jump starts and scrap car collection. PAS 43 accredited.
+h1: Vehicle recovery in Priors Hall Park
+lead: Priors Hall Park sits between Corby and Weldon, a few minutes from our base. Whatever's happened to your car, we're close by.
+---
+## A new neighbourhood on our doorstep
+
+Priors Hall Park has grown into one of the biggest new neighbourhoods around Corby, with new homes, new roads and plenty of families running two cars. It's only a short hop from our Corby base, so call-outs here are usually among our quickest.
+
+On a newer estate the problems tend to be everyday ones: a car that won't start on the driveway, a flat tyre on the school run, or a car that needs taking to a garage for repairs. We also bring cars to Priors Hall Park for people who've just moved in and need a second vehicle, a project car or a car without a current MOT delivered to their new address.
+
+## Our services here
+
+Breakdown and accident recovery, car transport, jump starts and battery fitting, and free scrap car collection. Choose a service below or call 07598 314366.
+---
+Q: Do you cover all of Priors Hall Park?
+A: Yes, every part of Priors Hall Park, along with nearby Weldon, Corby and Deenethorpe.
+Q: Can you deliver a car to a new-build home at Priors Hall Park?
+A: Yes. We deliver cars to new homes, including cars bought elsewhere in the UK or cars that cannot be driven.
+
+=== breakdown-recovery
+title: Breakdown Recovery Priors Hall Park | 24/7 Local Recovery | Rapid Recovery Corby
+desc: Broken down in Priors Hall Park? Fast 24/7 breakdown recovery from just down the road in Corby. Cars, vans and 4x4s, PAS 43 accredited, from £60.
+h1: Breakdown recovery in Priors Hall Park
+lead: Car stopped on the drive or on the way out of Priors Hall Park? We're a few minutes away in Corby and can be with you quickly.
+img: vehicle-recovery-nissan-qashqai
+---
+## Close by, day or night
+
+Because Priors Hall Park is right next to our base, we can usually reach you faster here than almost anywhere else. That's handy at 6am when the car won't start before work, or late at night when you don't want to be waiting around.
+
+## Getting out onto the main roads
+
+Most people leave Priors Hall Park towards the A43, either heading into Corby or out towards Kettering and Stamford. If you break down on one of the faster roads nearby, pull as far off the carriageway as you safely can, put your hazards on and wait somewhere safe, away from the traffic. Then call us.
+
+## Tight spaces
+
+New estates can have tight parking, shared drives and courtyards. If your car has died somewhere a full-size truck can't reach, our van with dollies and skates can move it out to where it can be loaded safely.
+
+Breakdown recovery starts from a £60 minimum charge. See our [breakdown recovery cost guide](/costs/breakdown-recovery).
+---
+Q: How quickly can you get to Priors Hall Park?
+A: It is one of the closest areas to our Corby base, so usually very quickly. We give you a realistic time when you call.
+Q: My car is stuck in a parking court. Can you still move it?
+A: Yes. We can use dollies or skates to move it to where it can be loaded onto the truck.
+
+=== car-transport
+title: Car Transport Priors Hall Park | Vehicle Delivery & Collection | Rapid Recovery Corby
+desc: Car transport to and from Priors Hall Park. UK-wide collections and deliveries, garage runs and non-runners moved by a local, fully insured recovery firm.
+h1: Car transport in Priors Hall Park
+lead: Moving into Priors Hall Park with a car that can't make the journey? Or bought a car somewhere else? We'll bring it to your door.
+img: two-car-transport-jaguar-and-golf
+---
+## Bringing cars to new homes
+
+Lots of people moving to Priors Hall Park are relocating from elsewhere in the country. If you've got a car with no MOT, a non-runner or a second car nobody wants to drive down, we can collect it from your old address and deliver it to the new one.
+
+## Cars bought online
+
+If you've bought a car from a dealer or private seller outside the area, we'll collect it and deliver it to Priors Hall Park. That saves you a train journey and a long drive home in an unfamiliar car.
+
+## Garage runs
+
+Need your car taking to a garage in Corby, Kettering or further afield? We'll move it there and back, insured while it's with us.
+
+Every job gets a fixed price. See the [car transport cost guide](/costs/car-transport) for how it's worked out.
+---
+Q: Can you collect my car from my old address when I move to Priors Hall Park?
+A: Yes. Give us both addresses and dates and we will give you a fixed price for the move.
+Q: Is my car insured while you transport it?
+A: Yes, every vehicle is covered by goods in transit insurance while it is with us.
+
+=== jump-start
+title: Jump Start Priors Hall Park | Mobile Battery Fitting from £40 | Rapid Recovery Corby
+desc: Flat battery in Priors Hall Park? Mobile jump starts from £40, new batteries fitted on your driveway and wheel changes, 24/7, from just down the road in Corby.
+h1: Jump starts in Priors Hall Park
+lead: Car won't start on the drive in Priors Hall Park? We'll be with you quickly with a jump pack and, if you need it, a new battery.
+img: early-morning-recovery-renault-clio
+---
+## Why newer cars still go flat
+
+Even fairly new cars can end up with flat batteries. Modern cars draw a little power all the time for alarms, keyless entry and connected services, so if the car sits on the drive for a couple of weeks, the battery can drain. Lots of short trips to the shops and schools don't help either.
+
+## What we do
+
+We'll jump start the car and check the battery. If it's healthy, you're on your way. If it's failing, we can fit a new one on your driveway. Some cars with stop-start need a particular type of battery, and a few need the new battery registering. We'll tell you before fitting.
+
+## Flat tyres
+
+We'll swap the wheel onto your spare or space saver, or take the car to a tyre fitter if there isn't one.
+
+A jump start has a £40 minimum charge. See our [jump start cost guide](/costs/jump-start).
+---
+Q: My car is quite new. Why has the battery gone flat?
+A: Modern cars use a small amount of power even when parked, so a few weeks without driving, or lots of short trips, can drain the battery. We can test it and tell you if it needs replacing.
+Q: Can you fit a stop-start battery?
+A: Yes. We will confirm the correct battery type for your car and the price before fitting.
+
+=== scrap-car-collection
+title: Scrap My Car Priors Hall Park | Free Collection | Rapid Recovery Corby
+desc: Scrap your car in Priors Hall Park with free collection, payment by bank transfer and a Certificate of Destruction through a licensed ATF.
+h1: Scrap car collection in Priors Hall Park
+lead: Got an old car taking up a parking space at Priors Hall Park? We'll collect it free, pay you by bank transfer and scrap it legally.
+img: scrap-car-collection-small-hatchback
+---
+## Free up your parking
+
+On newer estates, parking is precious. An old car that's failed its MOT or stopped running is taking up a space you could use. We'll collect it from your driveway or parking bay at no cost.
+
+## Properly licensed
+
+We hold a waste carrier licence and a scrap metal collector's licence. You're paid by bank transfer, and the vehicle goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction and notifies the DVLA.
+
+## Quick and simple
+
+Send us the registration and a few details. We'll give you a price and arrange a time to collect that suits you.
+
+See our [scrap car cost guide](/costs/scrap-car-collection) for what affects the price.
+---
+Q: Can you collect a scrap car from a parking bay rather than a driveway?
+A: Yes, as long as we can safely reach it. Tell us where it is when you book.
+Q: Do I get paid in cash?
+A: No. The law does not allow cash payments for scrap vehicles, so we pay by bank transfer.
