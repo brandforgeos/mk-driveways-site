@@ -3,10 +3,18 @@
    One router + template. Page copy lives in data/core and data/areas. */
 declare(strict_types=1);
 
-const PREVIEW = true;                                    // noindex + no client emails while on the Build Bro preview
-const BASE = '/clients/rapid-recovery/site/';            // set to '/' on the live domain
-const SITE_URL = 'https://buildbro.app/clients/rapid-recovery/site'; // no trailing slash
-const LEADS_DIR = '/home1/sufktgte/buildbro-intake/rapid-recovery-leads';
+/* Two homes for the same code: the Build Bro preview, and George's own hosting. */
+const PREVIEW = true;                                    // noindex until the real domain is live
+if (str_contains(__DIR__, '/clients/rapid-recovery/')) {
+  define('BASE', '/clients/rapid-recovery/site/');
+  define('SITE_URL', 'https://buildbro.app/clients/rapid-recovery/site'); // no trailing slash
+  define('LEADS_DIR', '/home1/sufktgte/buildbro-intake/rapid-recovery-leads');
+} else {
+  $home = preg_match('#^(/home\d*/[^/]+)/#', __DIR__, $m) ? $m[1] : dirname(__DIR__, 2);   // account home, never inside public_html
+  define('BASE', '/');
+  define('SITE_URL', 'https://' . preg_replace('/[^a-z0-9.\-]/i', '', (string)($_SERVER['HTTP_HOST'] ?? 'localhost')));
+  define('LEADS_DIR', "$home/rapid-recovery-leads");
+}
 
 $D = __DIR__ . '/data';
 $S = json_decode(file_get_contents("$D/site.json"), true);
