@@ -1,0 +1,180 @@
+=== get-a-price
+title: Get an Instant Scrap Car Price | Corby & Kettering | We Buy Scrap Cars Corby
+desc: Get an instant scrap car price online in Corby and Kettering. Enter your reg and postcode, accept your price and book free collection. Paid by bank transfer.
+h1: Get your instant scrap car price
+lead: Enter your registration and postcode above, add your details and see a price for your car on screen in a couple of minutes.
+answer: We Buy Scrap Cars Corby gives an instant online scrap car price from your registration and postcode. Accept it and we call to book a free collection, then pay you by bank transfer when we collect. Prefer to talk? Call or WhatsApp 07598 314366.
+img: scrap-vw-touran-collection
+img_alt: VW Touran loaded on a white recovery truck after the owner accepted an instant online scrap price
+crumb: Get a price
+---
+## How the instant price works
+
+The price tool at the top of this page turns a few details into a real figure for your car. Here is what happens at each stage:
+
+1. **Enter your registration and postcode.** We use the registration to look up the vehicle, including its make, model and size. The postcode tells us where it is.
+2. **Add your contact details.** Your name, phone number and email.
+3. **Answer a few questions.** Whether the car is complete, whether the catalytic converter is fitted, whether you have keys and the V5C, and anything about access.
+4. **See your price.** The figure appears on screen, based on your car's details and your answers.
+5. **Accept or walk away.** If you are happy, accept it. If not, there is nothing more to do.
+
+## Why we ask for your details first
+
+We ask for your name, phone number and email before showing the price for three reasons. It lets us save your price, so it doesn't vanish if you close the page. It lets us send the price to you, so you have a record. And it means that if you accept, we can contact you straight away to book your collection.
+
+We never sell your details. You can read exactly what we collect, why and how long we keep it in our [privacy notice](/privacy).
+
+## What happens after you accept
+
+Once you accept, we call you to agree a collection time that suits you. Same-day collection is often possible, though we can't promise it every time. We collect from driveways, roadsides, car parks, garages, garage forecourts, farms and business premises across Corby, Kettering and the surrounding towns and villages, and further afield by arrangement.
+
+Collection is free. On the day, we check your ID, check the car, load it and pay you instantly by bank transfer. The car goes to a licensed Authorised Treatment Facility, which issues a Certificate of Destruction and tells the DVLA. Our guide on [how to scrap a car legally](/guides/how-to-scrap-a-car) covers each step.
+
+## Will the final price change on the day?
+
+The price stands as long as the car matches what you told us. It only changes if something is different when we arrive. Common examples:
+
+- The catalytic converter has been removed.
+- The engine, gearbox or wheels are missing.
+- The car is a different vehicle or has been altered since you got the price.
+
+If anything is different, we explain why before we load and you can say no. Answering the questions accurately is the simplest way to make sure the figure holds. Our guide on [how scrap car prices work](/guides/how-scrap-car-prices-work) explains what each factor does.
+
+## What to have ready
+
+To make collection day quick and straightforward:
+
+- Photo ID, such as a driving licence or passport.
+- Proof of address.
+- The V5C logbook, if you have it. If not, proof of ownership. See [scrapping without a logbook](/guides/scrap-car-without-logbook).
+- The keys, including any spare.
+- An empty car, with the glovebox, door pockets, boot and spare wheel well checked.
+
+If you want to keep a personalised number plate, transfer or retain it with the DVLA before the car is scrapped.
+
+## Not sure what you have?
+
+We buy [scrap cars](/scrap-car-collection), [MOT failures](/mot-failure), [non-runners](/non-runner), [damaged cars and write-offs](/damaged-cars) and [vans up to 3.5 tonnes](/scrap-van). If you would rather talk it through, call or WhatsApp 07598 314366. Otherwise, start again at the top of [this page](/get-a-price).
+---
+Q: How does the instant scrap car price work?
+A: You enter your registration and postcode, add your contact details and answer a few questions. We look up the vehicle and show a price on screen.
+
+Q: Why do you need my phone number and email before showing a price?
+A: So we can save your price, send it to you and contact you to book the collection if you accept. We never sell your details.
+
+Q: Am I committed once I see the price?
+A: No. You are only committed if you accept it, and even then you can say no on the day if we find the car is different.
+
+Q: Can the price change when you collect?
+A: Only if the car doesn't match what you told us, for example a missing catalytic converter. We explain why before loading.
+
+Q: How do I get paid?
+A: Instantly by bank transfer when we collect. Paying cash for scrap cars is illegal under the Scrap Metal Dealers Act 2013.
+
+Q: Is collection free?
+A: Yes. Collection is free across Corby, Kettering and the surrounding area, and further afield by arrangement.
+
+=== privacy
+title: Privacy Notice | Website & Instant Price Tool | We Buy Scrap Cars Corby
+desc: Privacy notice for We Buy Scrap Cars Corby: what we collect through our website and instant price tool, why we need it, who we share it with and your rights.
+h1: Privacy notice
+lead: This notice explains what personal information we collect through our website and instant price tool, why we need it and what your rights are.
+answer: We Buy Scrap Cars Corby collects your registration, postcode and contact details to give and honour a scrap price and book your collection. We never sell your data. Contact George Mitchell at rapidrecoverycorby@gmail.com or 07598 314366 with any privacy questions.
+img: scrap-nissan-qashqai-collection
+img_alt: Silver Nissan Qashqai loaded on a white recovery truck during a scrap car collection
+crumb: Privacy
+---
+## Who we are
+
+This website and its instant price tool are run by George Mitchell trading as We Buy Scrap Cars Corby. George is the data controller for the personal information described here.
+
+If you have any questions about this notice or how your information is used, contact George by email at rapidrecoverycorby@gmail.com or by phone on 07598 314366.
+
+## What information we collect
+
+When you use our [instant price tool](/get-a-price) or contact us, we may collect:
+
+- The vehicle's registration number.
+- The postcode where the vehicle is.
+- Vehicle details looked up from the registration, such as make, model and size.
+- Your name, phone number and email address.
+- Your answers about the vehicle, such as whether it is complete, has keys or has a V5C.
+- The price we offered you, and whether you accepted it.
+
+When we collect a vehicle, we also record the seller's ID details, as the law requires.
+
+## Why we use it
+
+We use your information to:
+
+- **Give you a price and honour it.** We need the vehicle and location details to work out a price, and we keep a record so the price stands when we collect.
+- **Contact you about your collection.** If you accept, we use your phone number and email to arrange a time and keep you updated.
+- **Meet our legal duty.** The Scrap Metal Dealers Act 2013 requires us to record sellers' ID details at collection.
+- **Send you reminders about your price**, but only if you tick the box to say you want them.
+
+## Our lawful bases
+
+Data protection law requires us to have a lawful basis for each use:
+
+| Use | Lawful basis |
+| --- | --- |
+| Working out and giving you a price, and arranging collection | Taking steps at your request before entering a contract |
+| Recording seller ID details at collection | Legal obligation |
+| Following up on your own enquiry | Legitimate interests |
+| Sending reminders about your price | Consent |
+
+## Who we share it with
+
+We only share your information where it is needed to provide the service:
+
+- **The vehicle data provider** we use to look up the registration.
+- **Our email provider**, which handles messages we send and receive.
+- **Our web host**, which runs the website and price tool.
+- **The Authorised Treatment Facility (ATF)** that scraps the vehicle, so it can complete the scrapping and notify the DVLA.
+
+We never sell your information, and we don't pass it to anyone for marketing.
+
+## How long we keep it
+
+- **Enquiries that don't go ahead:** 12 months, so we can help if you come back to us about the same vehicle.
+- **Completed collections:** as long as the law requires for scrap metal records.
+
+After that, we delete or securely dispose of the information.
+
+## Your rights
+
+You have the right to:
+
+- **Access** the personal information we hold about you.
+- **Correct** information that is wrong or incomplete.
+- **Ask us to delete** your information, unless we must keep it by law.
+- **Object** to us using your information based on legitimate interests.
+- **Withdraw consent** for reminders at any time. This doesn't affect anything we did before you withdrew it.
+
+To use any of these rights, contact George at rapidrecoverycorby@gmail.com or 07598 314366. We will respond as quickly as we can.
+
+If you are unhappy with how we have handled your information, you can complain to the Information Commissioner's Office (ICO) at ico.org.uk. We would appreciate the chance to sort it out with you first.
+
+## Cookies
+
+This website uses no tracking or advertising cookies. We don't follow you around the internet or build a profile of you for advertising.
+
+## Keeping your information safe
+
+We only collect what we need to price and collect your vehicle, and we only share it with the providers listed above. Access to your information is limited to what is needed to run the service.
+
+## Changes to this notice
+
+We may update this notice from time to time, for example if we change a provider. The current version will always be on this page.
+---
+Q: Do you sell my personal details?
+A: No. We never sell your information. We only share it with the providers needed to price and collect your vehicle and with the ATF that scraps it.
+
+Q: Why do you need my ID when you collect my car?
+A: The Scrap Metal Dealers Act 2013 requires us to record sellers' ID details when we buy a scrap vehicle.
+
+Q: How do I stop price reminders?
+A: Contact us at rapidrecoverycorby@gmail.com or 07598 314366 and we will stop them. You can withdraw consent at any time.
+
+Q: Does your website use cookies to track me?
+A: No. The site uses no tracking or advertising cookies.

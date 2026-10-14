@@ -1,0 +1,402 @@
+{
+ "name": "We Buy Scrap Cars Corby",
+ "short": "We Buy Scrap Cars",
+ "owner": "George Mitchell",
+ "phone": "07598 314366",
+ "phone_intl": "+447598314366",
+ "whatsapp": "447598314366",
+ "email": "rapidrecoverycorby@gmail.com",
+ "town": "Corby",
+ "county": "Northamptonshire",
+ "geo": [
+  52.4888,
+  -0.701
+ ],
+ "sister": "Rapid Recovery Corby",
+ "sister_url": "https://buildbro.app/clients/rapid-recovery/site/",
+ "licence_scrap": "",
+ "licence_waste": "",
+ "atf": "",
+ "services": [
+  {
+   "slug": "scrap-car-collection",
+   "name": "Scrap Car Collection",
+   "short": "Scrap my car",
+   "card": "Get an instant price online, then we collect free and pay you by bank transfer when we pick it up.",
+   "img": "scrap-citroen-picasso-collection",
+   "kw": "scrap car collection"
+  },
+  {
+   "slug": "mot-failure",
+   "name": "MOT Failures",
+   "short": "MOT failure",
+   "card": "Failed its MOT and not worth fixing? We buy MOT failures as they are, with free collection.",
+   "img": "scrap-ford-focus-collection",
+   "kw": "sell MOT failure car"
+  },
+  {
+   "slug": "non-runner",
+   "name": "Non-Runners",
+   "short": "Non-runner",
+   "card": "Won't start, seized or been sat for years? We winch and load non-runners from driveways and garages.",
+   "img": "non-runner-seat-altea-collection",
+   "kw": "non-runner car collection"
+  },
+  {
+   "slug": "damaged-cars",
+   "name": "Damaged Cars and Write-Offs",
+   "short": "Damaged car",
+   "card": "Accident damaged, flood damaged or written off. We buy damaged cars and collect them free.",
+   "img": "damaged-vauxhall-astra-scrap",
+   "kw": "sell damaged car"
+  },
+  {
+   "slug": "scrap-van",
+   "name": "Scrap Van Collection",
+   "short": "Scrap my van",
+   "card": "Scrap vans up to 3.5 tonnes, from small vans to long-wheelbase panel vans and pickups.",
+   "img": "scrap-nissan-x-trail-collection",
+   "kw": "scrap van collection"
+  }
+ ],
+ "areas": [
+  {
+   "slug": "corby",
+   "name": "Corby",
+   "img": "scrap-cars-evening-collection-corby",
+   "near": [
+    "weldon",
+    "priors-hall-park",
+    "great-oakley",
+    "stanion"
+   ]
+  },
+  {
+   "slug": "kettering",
+   "name": "Kettering",
+   "img": "damaged-astra-and-fiesta-scrap",
+   "near": [
+    "geddington",
+    "rothwell",
+    "great-oakley",
+    "barton-seagrave"
+   ]
+  },
+  {
+   "slug": "weldon",
+   "name": "Weldon",
+   "img": "scrap-renault-clio-collection",
+   "near": [
+    "corby",
+    "priors-hall-park",
+    "deenethorpe",
+    "stanion"
+   ]
+  },
+  {
+   "slug": "priors-hall-park",
+   "name": "Priors Hall Park",
+   "img": "scrap-jaguar-x-type-collection",
+   "near": [
+    "weldon",
+    "corby",
+    "gretton",
+    "deenethorpe"
+   ]
+  },
+  {
+   "slug": "great-oakley",
+   "name": "Great Oakley",
+   "img": "scrap-mg3-collection",
+   "near": [
+    "corby",
+    "geddington",
+    "stanion",
+    "kettering"
+   ]
+  },
+  {
+   "slug": "stanion",
+   "name": "Stanion",
+   "img": "scrap-vw-passat-collection",
+   "near": [
+    "corby",
+    "brigstock",
+    "great-oakley",
+    "weldon"
+   ]
+  },
+  {
+   "slug": "brigstock",
+   "name": "Brigstock",
+   "img": "scrap-audi-a4-collection",
+   "near": [
+    "stanion",
+    "weldon",
+    "geddington",
+    "lowick"
+   ]
+  },
+  {
+   "slug": "gretton",
+   "name": "Gretton",
+   "img": "scrap-nissan-qashqai-collection",
+   "near": [
+    "corby",
+    "rockingham",
+    "priors-hall-park",
+    "harringworth"
+   ]
+  },
+  {
+   "slug": "cottingham",
+   "name": "Cottingham",
+   "img": "scrap-vw-touran-collection",
+   "near": [
+    "middleton",
+    "rockingham",
+    "corby",
+    "east-carlton"
+   ]
+  },
+  {
+   "slug": "middleton",
+   "name": "Middleton",
+   "img": "two-scrap-cars-touran-and-clio",
+   "near": [
+    "cottingham",
+    "rockingham",
+    "corby",
+    "great-easton"
+   ]
+  },
+  {
+   "slug": "rockingham",
+   "name": "Rockingham",
+   "img": "two-scrap-cars-jaguar-and-golf",
+   "near": [
+    "cottingham",
+    "gretton",
+    "corby",
+    "caldecott"
+   ]
+  },
+  {
+   "slug": "geddington",
+   "name": "Geddington",
+   "img": "scrap-cars-evening-collection-corby",
+   "near": [
+    "kettering",
+    "great-oakley",
+    "brigstock",
+    "grafton-underwood"
+   ]
+  },
+  {
+   "slug": "rothwell",
+   "name": "Rothwell",
+   "img": "scrap-honda-civic-collection",
+   "near": [
+    "desborough",
+    "kettering",
+    "geddington",
+    "corby"
+   ]
+  },
+  {
+   "slug": "desborough",
+   "name": "Desborough",
+   "img": "scrap-hatchback-collection",
+   "near": [
+    "rothwell",
+    "kettering",
+    "middleton",
+    "rushton"
+   ]
+  },
+  {
+   "slug": "deenethorpe",
+   "name": "Deenethorpe",
+   "img": "damaged-astra-and-fiesta-scrap",
+   "near": [
+    "weldon",
+    "priors-hall-park",
+    "brigstock",
+    "bulwick"
+   ]
+  },
+  {
+   "slug": "wilbarston",
+   "name": "Wilbarston",
+   "img": "scrap-renault-clio-collection",
+   "near": [
+    "stoke-albany",
+    "east-carlton",
+    "cottingham",
+    "rushton"
+   ]
+  },
+  {
+   "slug": "stoke-albany",
+   "name": "Stoke Albany",
+   "img": "scrap-jaguar-x-type-collection",
+   "near": [
+    "wilbarston",
+    "east-carlton",
+    "desborough",
+    "rushton"
+   ]
+  },
+  {
+   "slug": "east-carlton",
+   "name": "East Carlton",
+   "img": "scrap-mg3-collection",
+   "near": [
+    "cottingham",
+    "middleton",
+    "wilbarston",
+    "corby"
+   ]
+  },
+  {
+   "slug": "rushton",
+   "name": "Rushton",
+   "img": "scrap-vw-passat-collection",
+   "near": [
+    "desborough",
+    "rothwell",
+    "geddington",
+    "wilbarston"
+   ]
+  },
+  {
+   "slug": "great-easton",
+   "name": "Great Easton",
+   "img": "scrap-audi-a4-collection",
+   "near": [
+    "caldecott",
+    "rockingham",
+    "cottingham",
+    "middleton"
+   ]
+  },
+  {
+   "slug": "caldecott",
+   "name": "Caldecott",
+   "img": "scrap-nissan-qashqai-collection",
+   "near": [
+    "rockingham",
+    "great-easton",
+    "gretton",
+    "harringworth"
+   ]
+  },
+  {
+   "slug": "harringworth",
+   "name": "Harringworth",
+   "img": "scrap-vw-touran-collection",
+   "near": [
+    "gretton",
+    "caldecott",
+    "bulwick",
+    "deenethorpe"
+   ]
+  },
+  {
+   "slug": "bulwick",
+   "name": "Bulwick",
+   "img": "two-scrap-cars-touran-and-clio",
+   "near": [
+    "deenethorpe",
+    "harringworth",
+    "weldon",
+    "brigstock"
+   ]
+  },
+  {
+   "slug": "grafton-underwood",
+   "name": "Grafton Underwood",
+   "img": "two-scrap-cars-jaguar-and-golf",
+   "near": [
+    "geddington",
+    "brigstock",
+    "barton-seagrave",
+    "lowick"
+   ]
+  },
+  {
+   "slug": "lowick",
+   "name": "Lowick",
+   "img": "scrap-cars-evening-collection-corby",
+   "near": [
+    "brigstock",
+    "grafton-underwood",
+    "stanion",
+    "barton-seagrave"
+   ]
+  },
+  {
+   "slug": "barton-seagrave",
+   "name": "Barton Seagrave",
+   "img": "scrap-honda-civic-collection",
+   "near": [
+    "kettering",
+    "geddington",
+    "grafton-underwood",
+    "rothwell"
+   ]
+  }
+ ],
+ "pricing_demo": {
+  "rate_per_tonne": 150,
+  "free_miles": 15,
+  "per_mile_over": 1.0,
+  "max_miles": 40,
+  "min_price": 50,
+  "max_price": 600,
+  "valid_days": 7,
+  "types": [
+   [
+    "small",
+    "Small hatchback (e.g. Corsa, Fiesta, Micra)",
+    1000
+   ],
+   [
+    "hatch",
+    "Family hatchback (e.g. Focus, Astra, Golf)",
+    1250
+   ],
+   [
+    "estate",
+    "Estate, MPV or saloon (e.g. Passat, Touran, Mondeo)",
+    1450
+   ],
+   [
+    "suv",
+    "SUV or large car (e.g. Qashqai, X-Trail, Kuga)",
+    1600
+   ],
+   [
+    "4x4",
+    "Large 4x4 (e.g. Land Rover, Shogun)",
+    2100
+   ],
+   [
+    "smallvan",
+    "Small van (e.g. Berlingo, Transit Connect, Caddy)",
+    1350
+   ],
+   [
+    "van",
+    "Large van or pickup (e.g. Transit, Sprinter, Hilux)",
+    2000
+   ]
+  ],
+  "deductions": {
+   "no_keys": 0,
+   "no_v5": 0,
+   "no_cat": 0,
+   "no_wheels": 0
+  }
+ }
+}
