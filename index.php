@@ -144,7 +144,7 @@ if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $labels = ['name' => 'Name', 'phone' => 'Phone', 'service' => 'Service', 'location' => 'Location', 'vehicle' => 'Vehicle', 'message' => 'Message', 'page' => 'Sent from page', 'received' => 'Received (UTC)'];
   $body = "New enquiry from the Rapid Recovery Corby website.\n\nCall them back on: " . $lead['phone'] . "\n\n";
   foreach ($labels as $k => $l) if ($lead[$k] !== '') $body .= "$l: " . $lead[$k] . "\n";
-  $host = parse_url(SITE_URL, PHP_URL_HOST);
+  $host = preg_replace('/^www\./', '', (string)parse_url(SITE_URL, PHP_URL_HOST));   // send as website@domain, not website@www.domain (SPF/DKIM live on the bare domain)
   $subject = 'Website enquiry: ' . $clean($lead['service'] ?: 'Recovery') . ' - ' . $clean($lead['name']);
   $headers = "From: Rapid Recovery Website <website@$host>\r\nContent-Type: text/plain; charset=UTF-8\r\nX-Mailer: PHP";
   $sent = @mail($S['email'], '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers, "-fwebsite@$host");
