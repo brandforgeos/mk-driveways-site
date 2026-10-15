@@ -81,7 +81,7 @@ title: Privacy Notice | Website & Instant Price Tool | We Buy Scrap Cars Corby
 desc: Privacy notice for We Buy Scrap Cars Corby: what we collect through our website and instant price tool, why we need it, who we share it with and your rights.
 h1: Privacy notice
 lead: This notice explains what personal information we collect through our website and instant price tool, why we need it and what your rights are.
-answer: We Buy Scrap Cars Corby uses your registration and postcode to work out a scrap price, and collects your contact details only if you accept it, ask us to email it to you or use the contact form. We never sell your data. Contact George Mitchell at rapidrecoverycorby@gmail.com or 07598 314366 with any privacy questions.
+answer: We Buy Scrap Cars Corby uses your registration and postcode to work out a scrap price, and collects your contact details only if you accept it, ask us to email it to you or use the contact form. We never sell your data. Contact George Mitchell at info@webuyscrapcars-corby.co.uk or 07598 314366 with any privacy questions.
 img: scrap-nissan-qashqai-collection
 img_alt: Silver Nissan Qashqai loaded on a white recovery truck during a scrap car collection
 crumb: Privacy
@@ -90,7 +90,7 @@ crumb: Privacy
 
 This website and its instant price tool are run by George Mitchell trading as We Buy Scrap Cars Corby. George is the data controller for the personal information described here.
 
-If you have any questions about this notice or how your information is used, contact George by email at rapidrecoverycorby@gmail.com or by phone on 07598 314366.
+If you have any questions about this notice or how your information is used, contact George by email at info@webuyscrapcars-corby.co.uk or by phone on 07598 314366.
 
 ## What information we collect
 
@@ -154,7 +154,7 @@ You have the right to:
 - **Object** to us using your information based on legitimate interests.
 - **Withdraw consent** for reminders at any time. This doesn't affect anything we did before you withdrew it.
 
-To use any of these rights, contact George at rapidrecoverycorby@gmail.com or 07598 314366. We will respond as quickly as we can.
+To use any of these rights, contact George at info@webuyscrapcars-corby.co.uk or 07598 314366. We will respond as quickly as we can.
 
 If you are unhappy with how we have handled your information, you can complain to the Information Commissioner's Office (ICO) at ico.org.uk. We would appreciate the chance to sort it out with you first.
 
@@ -177,7 +177,7 @@ Q: Why do you need my ID when you collect my car?
 A: The Scrap Metal Dealers Act 2013 requires us to record sellers' ID details when we buy a scrap vehicle.
 
 Q: How do I stop price reminders?
-A: Contact us at rapidrecoverycorby@gmail.com or 07598 314366 and we will stop them. You can withdraw consent at any time.
+A: Contact us at info@webuyscrapcars-corby.co.uk or 07598 314366 and we will stop them. You can withdraw consent at any time.
 
 Q: Does your website use cookies to track me?
 A: No. The site uses no tracking or advertising cookies.
