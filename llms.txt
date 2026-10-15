@@ -4,7 +4,7 @@
 
 Key facts:
 
-- Services: road and sub-base laser scanning against design levels; tarmac (asphalt) depth surveys by before-and-after scan comparison; plot and oversite scanning (slab flatness, brickwork dimensions to drawing, drain collar positions); 3D measured building surveys; garden and landscape scanning.
+- Services: Dimensure Design Audit (pre-construction review of groundworks drawings: levels, drainage, foundations, cross-drawing clashes; graded issue log with suggested fixes for the designer and indicative fix costs; from £495 per site); road and sub-base laser scanning against design levels; tarmac (asphalt) depth surveys by before-and-after scan comparison; plot and oversite scanning (slab flatness, brickwork dimensions to drawing, drain collar positions); 3D measured building surveys; garden and landscape scanning.
 - Areas served: the whole of the Midlands as standard (travel included within 50 miles of Corby, e.g. Northampton, Leicester, Coventry, Nottingham, Peterborough, Milton Keynes, Bedford, Cambridge); anywhere else in the UK with travel charged.
 - Quality: scans are processed by software, then every report is checked by the Dimensure team, who sense-check results against drawings and site and flag problems.
 - Equipment: Trimble X9, manufacturer-specified 2 mm range accuracy and 2.3 mm 3D point accuracy at 10 m; every report states the registration error for the job.
@@ -20,6 +20,7 @@ Key facts:
 - [Tarmac Depth Surveys by Laser Scan | Layer Thickness Checks | Dimensure](https://dimensure.co.uk/tarmac-depth-surveys.html): Measure the tarmac thickness laid everywhere, without cores. Before-and-after laser scans map layer thickness against your spec.
 - [Plot & Oversite Laser Scanning | Slab, Brickwork & Drain Checks | Dimensure](https://dimensure.co.uk/plot-oversite-scanning.html): Plot-by-plot laser scan QC: slab flatness, brickwork to drawing and drain collar positions checked at oversite. Pass/fail report next day.
 - [3D Measured Building Surveys by Laser Scan | Kitchens, Extensions | Dimensure](https://dimensure.co.uk/measured-building-surveys.html): Millimetre-accurate 3D laser scan surveys for kitchens, extensions, architects and interiors. Floor plans, elevations and point cloud.
+- [Groundworks Design Audit | Drawing Review for Housebuilders | Dimensure](https://dimensure.co.uk/groundworks-design-audit.html): Independent review of groundworks drawings before you dig: levels, drainage, foundations and clashes checked, with an issue log and suggested fixes. From £495.
 - [Garden & Landscape 3D Laser Scanning | Levels Surveys | Dimensure](https://dimensure.co.uk/garden-landscape-scanning.html): 3D laser scan garden surveys for designers, landscapers and homeowners. Every level, wall, step and tree, with a scaled levels plan. From £395.
 - [Laser Scanning Services | Roads, Plots, Buildings, Gardens | Dimensure](https://dimensure.co.uk/services.html): Dimensure laser scanning services: road and sub-base scans, tarmac depth surveys, plot QC, 3D measured building surveys and garden scans.
 
@@ -29,6 +30,7 @@ Key facts:
 - [Tarmac Depth Survey Cost 2026 | Asphalt Thickness Checks | Dimensure](https://dimensure.co.uk/tarmac-depth-survey-cost.html): Tarmac depth survey cost: from £895 per road section, or £450 if we scanned the sub-base. Full-coverage thickness compared with coring.
 - [Plot & Oversite Scan Cost 2026 | From £85 per Plot | Dimensure](https://dimensure.co.uk/plot-scan-cost.html): Plot and oversite scan cost: from £85 per plot when four or more are scanned in one visit, or £295 for a single-plot visit. All checks included.
 - [Measured Building Survey Cost 2026 | 3D Laser Scan Prices | Dimensure](https://dimensure.co.uk/measured-building-survey-cost.html): Measured building survey cost: from £325 for a kitchen or room, £695 for whole-house plans, £995 with elevations. Point cloud included.
+- [Groundworks Design Audit Cost 2026 | From £495 | Dimensure](https://dimensure.co.uk/groundworks-design-audit-cost.html): What a groundworks design audit costs: from £495 per site, priced on site size and drawing package. What's included, what changes the price and how it compares with the cost of an error.
 - [Garden Survey & Scan Cost 2026 | Levels Survey Prices | Dimensure](https://dimensure.co.uk/garden-scan-cost.html): Garden scan cost: from £395 for a typical rear garden with levels plan and point cloud, £595 front and rear. How it compares with a topo survey.
 - [Laser Scanning Prices & Cost Guide 2026 | Dimensure](https://dimensure.co.uk/prices.html): Laser scanning prices: road scans, tarmac depth surveys, plot checks, measured building and garden surveys, plus what changes the price.
 
