@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/sufktgte/public_html/dimensure.co.uk/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -Rf ./* $DEPLOYPATH
+    - /bin/cp -f ./.htaccess $DEPLOYPATH
