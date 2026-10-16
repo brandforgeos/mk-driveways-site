@@ -286,6 +286,22 @@ $r = trim((string)(parse_url((string)($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_P
 $b = trim(BASE, '/'); if ($b !== '' && str_starts_with($r, $b)) $r = trim(substr($r, strlen($b)), '/');
 $seg = $r === '' ? [] : explode('/', $r);
 
+/* Holding page: 'maintenance' => true in the config file takes the public site offline (admin keeps working). */
+if (!empty($CFG['maintenance']) && !($seg && $seg[0] === 'admin') && !str_starts_with($r, 'img/')) {
+  http_response_code(503); header('Retry-After: 86400'); header('X-Robots-Tag: noindex'); header('Content-Type: text/html; charset=utf-8');
+  $tel = 'tel:' . $S['phone_intl']; $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi George, I have a car to scrap. Reg: ');
+  echo '<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">'
+    . '<title>' . h($S['name']) . '</title><link rel="icon" href="' . BASE . 'img/favicon-48.png">'
+    . '<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0A1733;color:#fff;font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding:24px 16px;box-sizing:border-box}'
+    . '.c{max-width:460px;text-align:center}img{width:120px;height:120px}h1{font-size:28px;line-height:1.2;margin:18px 0 10px}p{color:#cfd9ee;margin:0 0 18px}'
+    . 'a.b{display:block;margin:10px 0;padding:15px 18px;border-radius:12px;font-weight:700;text-decoration:none;font-size:18px}.g{background:#3FBF5F;color:#06210F}.o{border:2px solid #4a5d86;color:#fff}.s{color:#b4c3e2;font-size:14px;margin-top:20px}.s a{color:#fff}</style></head><body><div class="c">'
+    . '<img src="' . BASE . 'img/logo-mark.svg" alt="We Buy Scrap Cars Corby"><h1>Our new website is nearly ready</h1>'
+    . '<p>We still buy scrap cars, MOT failures, non-runners and vans across Corby and Kettering. Call or WhatsApp George for a price and free collection. Paid by bank transfer.</p>'
+    . '<a class="b g" href="' . h($tel) . '">Call ' . h($S['phone']) . '</a><a class="b o" href="' . h($wa) . '" rel="noopener">WhatsApp us</a>'
+    . '<p class="s">Email <a href="mailto:' . h($S['email']) . '">' . h($S['email']) . '</a></p></div></body></html>';
+  exit;
+}
+
 if ($r === 'robots.txt') { header('Content-Type: text/plain'); echo PREVIEW ? "User-agent: *\nDisallow: /\n" : "User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\nSitemap: " . SITE_URL . "/sitemap.xml\n"; exit; }
 
 $urls = ['', 'get-a-price', 'services', 'areas', 'costs', 'about', 'contact', 'guides', 'privacy'];
