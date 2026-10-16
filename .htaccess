@@ -6,6 +6,12 @@ Header set Cache-Control "public, max-age=2592000"
 </FilesMatch>
 </IfModule>
 RewriteEngine On
+# Live domain: one canonical address (https + www), matching the Google listing
+RewriteCond %{HTTP_HOST} ^rapidrecoverycorby\.com$ [NC]
+RewriteRule ^ https://www.rapidrecoverycorby.com%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.rapidrecoverycorby\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://www.rapidrecoverycorby.com%{REQUEST_URI} [R=301,L]
 RewriteRule ^data/ - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L,QSA]
