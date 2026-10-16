@@ -6,9 +6,11 @@ Header set Cache-Control "public, max-age=2592000"
 </FilesMatch>
 </IfModule>
 RewriteEngine On
-# Live domain: one canonical address (https + www), matching the Google listing
+# Live domain: one canonical address (https + www), matching the Google listing. Leave /.well-known alone for SSL renewals.
+RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTP_HOST} ^rapidrecoverycorby\.com$ [NC]
 RewriteRule ^ https://www.rapidrecoverycorby.com%{REQUEST_URI} [R=301,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTP_HOST} ^www\.rapidrecoverycorby\.com$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://www.rapidrecoverycorby.com%{REQUEST_URI} [R=301,L]
