@@ -222,8 +222,19 @@ function miles(array $a, array $b): float {
   return 2 * $R * asin(sqrt($x));                                  // straight line: the collection area is a radius around Corby
 }
 function save_json(string $file, array $a): bool { return @file_put_contents($file, json_encode($a, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), LOCK_EX) !== false; }
-function load_lead(string $ref): ?array { $ref = preg_replace('/[^A-Z0-9]/', '', strtoupper($ref)); $f = STORE . "/leads/$ref.json"; return ($ref !== '' && is_file($f)) ? json_decode((string)file_get_contents($f), true) : null; }
-function save_lead(array $l): bool { return save_json(store_path('leads') . '/' . $l['ref'] . '.json', $l); }
+/* live leads in STORE/leads, archived (collected / lost, put away by George) in STORE/archive */
+function load_lead(string $ref): ?array {
+  $ref = preg_replace('/[^A-Z0-9]/', '', strtoupper($ref)); if ($ref === '') return null;
+  foreach (['leads', 'archive'] as $d) { $f = STORE . "/$d/$ref.json"; if (is_file($f)) return json_decode((string)file_get_contents($f), true); }
+  return null;
+}
+function save_lead(array $l): bool {
+  $arch = !empty($l['archived']);
+  $ok = save_json(store_path($arch ? 'archive' : 'leads') . '/' . $l['ref'] . '.json', $l);
+  $other = STORE . '/' . ($arch ? 'leads' : 'archive') . '/' . $l['ref'] . '.json';
+  if ($ok && is_file($other)) @unlink($other);                       // a lead lives in one place only
+  return $ok;
+}
 function price_for(int $kg, array $PR): int {
   $p = $kg / 1000 * (float)$PR['rate_per_tonne'];
   if (is_numeric($PR['min_price'] ?? null)) $p = max((float)$PR['min_price'], $p);

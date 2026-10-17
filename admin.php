@@ -38,11 +38,21 @@ $FILTERS = ['action' => ['To do', ['accepted', 'call-back', 'saved']], 'booked' 
 $CALLS = ['Spoke to customer', 'No answer', 'Left voicemail', 'Sent a text / WhatsApp'];
 
 function adm_go(string $url, string $flash = '', bool $bad = false): void { if ($flash !== '') $_SESSION['flash'] = [$flash, $bad]; header('Location: ' . $url, true, 303); exit; }
-function adm_leads(): array {
+function adm_leads(string $dir = 'leads'): array {
   $out = [];
-  foreach (glob(STORE . '/leads/*.json') ?: [] as $f) { $l = json_decode((string)file_get_contents($f), true); if ($l && !empty($l['ref'])) $out[] = $l; }
+  foreach (glob(STORE . "/$dir/*.json") ?: [] as $f) { $l = json_decode((string)file_get_contents($f), true); if ($l && !empty($l['ref'])) $out[] = $l; }
   usort($out, fn($a, $b) => strcmp($b['received'] ?? '', $a['received'] ?? ''));
   return $out;
+}
+/* every recorded detail of a lead as one lowercase string, for the archive search */
+function adm_haystack(array $l, array $OPS): string {
+  $bits = [];
+  array_walk_recursive($l, function ($v) use (&$bits) { if (is_scalar($v) && $v !== '' && $v !== true && $v !== false) $bits[] = (string)$v; });
+  foreach (['received', 'collect_on', 'collected_at', 'archived'] as $k) if (!empty($l[$k])) { $t = strtotime((string)$l[$k]); if ($t) $bits[] = date('j/n/Y d/m/Y j F Y M Y', $t); }
+  if (isset($OPS[$l['op'] ?? ''])) $bits[] = $OPS[$l['op']]['name'];
+  $bits[] = vehicle_name($l['vehicle'] ?? null); $bits[] = lead_address($l);
+  $t = strtolower(implode(' | ', $bits));
+  return $t . ' | ' . preg_replace('/\s+/', '', $t);                  // also matches regs / postcodes typed without spaces
 }
 function adm_settings_save(array $SET): bool { return save_json(STORE . '/settings.json', $SET); }
 function adm_when(?string $iso): string {
@@ -194,6 +204,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     save_lead($l); adm_go($A . '?v=lead&ref=' . $ref . '#book', 'Added. ' . ($v ? vehicle_name($v) . ', price £' . $l['price'] . '. ' : '') . 'Now pick the date and time to book it in.');
   }
 
+  /* archive: collected or lost jobs move out of the working lists into STORE/archive (still searchable, can be restored) */
+  if ($act === 'archive' || $act === 'unarchive') {
+    $l = load_lead($T('ref', 20)); if (!$l) adm_go($back, 'Lead not found.', true);
+    if ($act === 'archive') {
+      if (!in_array($l['status'], ['collected', 'lost'], true)) adm_go($back, 'Only collected or lost jobs can be archived.', true);
+      $l['archived'] = date('c'); $l['archived_by'] = $me; lead_log($l, $me, 'Archived', 'note'); save_lead($l);
+      adm_go($A . '?v=leads&f=' . ($l['status'] === 'lost' ? 'lost' : 'collected'), "{$l['reg']} archived. Find it any time in the Archive tab.");
+    }
+    unset($l['archived'], $l['archived_by']); lead_log($l, $me, 'Restored from the archive', 'note'); save_lead($l);
+    adm_go($A . '?v=lead&ref=' . $l['ref'], "{$l['reg']} restored to Leads.");
+  }
+  if ($act === 'archive_all') {
+    $st = $T('status', 20); if (!in_array($st, ['collected', 'lost'], true)) adm_go($back);
+    $n = 0; foreach (adm_leads() as $l) if ($l['status'] === $st) { $l['archived'] = date('c'); $l['archived_by'] = $me; lead_log($l, $me, 'Archived', 'note'); if (save_lead($l)) $n++; }
+    adm_go($A . '?v=leads&f=' . $st, $n ? "$n job" . ($n === 1 ? '' : 's') . ' archived. Find them in the Archive tab.' : 'Nothing to archive.');
+  }
+
   /* saved drivers (Settings) */
   if ($act === 'op_save') {
     $id = preg_replace('/[^a-z0-9]/', '', $T('id', 20)); $nm = $T('op_name', 40); $ph = $T('op_phone', 30); $via = $T('op_via', 10) === 'sms' ? 'sms' : 'whatsapp';
@@ -295,9 +322,9 @@ if ($me && $v === 'export') {
   header('Content-Type: text/csv; charset=utf-8'); header('Content-Disposition: attachment; filename="scrap-car-leads-' . date('Y-m-d') . '.csv"');
   $o = fopen('php://output', 'w'); fwrite($o, "\xEF\xBB\xBF");
   $OPS = operatives($SET);
-  fputcsv($o, ['Ref', 'Received', 'Status', 'Reg', 'Vehicle', 'Postcode', 'Miles', 'Weight kg', 'Weight source', 'Price', 'Agreed price', 'Collection date', 'Collection time', 'Address', 'Driver', 'Booked by', 'Booked at', 'Collected by', 'Collected at', 'Paid', 'Payment ref', 'Name', 'Phone', 'Email', 'Reminders OK', 'Customer note', 'Driver notes', 'Admin notes']);
+  fputcsv($o, ['Ref', 'Received', 'Status', 'Reg', 'Vehicle', 'Postcode', 'Miles', 'Weight kg', 'Weight source', 'Price', 'Agreed price', 'Collection date', 'Collection time', 'Address', 'Driver', 'Booked by', 'Booked at', 'Collected by', 'Collected at', 'Paid', 'Payment ref', 'Name', 'Phone', 'Email', 'Reminders OK', 'Customer note', 'Driver notes', 'Admin notes', 'Archived']);
   $cell = fn($x) => is_string($x) && preg_match('/^[=@\t\r]|^[+\-](?![\d\s()]+$)/', $x) ? "'" . $x : $x;   // customer-typed text can't run as a spreadsheet formula
-  foreach (adm_leads() as $l) fputcsv($o, array_map($cell, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', !empty($l['collect_on']) ? slot_label($l['collect_slot'] ?? 'any') : '', lead_address($l), $OPS[$l['op'] ?? '']['name'] ?? '', $l['booked_by'] ?? '', $l['booked_at'] ?? '', $l['collected_by'] ?? '', $l['collected_at'] ?? '', $l['paid'] ?? '', $l['pay_ref'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['driver_note'] ?? '', $l['admin_note'] ?? '']));
+  foreach (array_merge(adm_leads(), adm_leads('archive')) as $l) fputcsv($o, array_map($cell, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', !empty($l['collect_on']) ? slot_label($l['collect_slot'] ?? 'any') : '', lead_address($l), $OPS[$l['op'] ?? '']['name'] ?? '', $l['booked_by'] ?? '', $l['booked_at'] ?? '', $l['collected_by'] ?? '', $l['collected_at'] ?? '', $l['paid'] ?? '', $l['pay_ref'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['driver_note'] ?? '', $l['admin_note'] ?? '', $l['archived'] ?? '']));
   exit;
 }
 
@@ -421,8 +448,8 @@ input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;min-wi
 </body></html>
 <?php return; endif;
 
-$tabs = ['leads' => 'Leads', 'collections' => 'Collections', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'settings' => 'Settings'];
-$tabOn = in_array($v, ['lead', 'new'], true) ? 'leads' : $v;
+$tabs = ['leads' => 'Leads', 'collections' => 'Collections', 'archive' => 'Archive', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'settings' => 'Settings'];
+$tabOn = in_array($v, ['lead', 'new'], true) ? (($v === 'lead' && ($tl = load_lead((string)($_GET['ref'] ?? ''))) && !empty($tl['archived'])) ? 'archive' : 'leads') : $v;
 ?>
 <header class="top">
   <div class="top-in"><img src="<?= BASE ?>img/logo-mark.svg" alt=""><b>Scrap Cars admin</b>
@@ -463,6 +490,11 @@ if ($v === 'leads'):
   </div>
   <div class="pills"><?php foreach ($FILTERS as $k => $x): ?><a href="<?= h($A . '?v=leads&f=' . $k) ?>" class="<?= $f === $k ? 'on' : '' ?>"><?= h($x[0]) ?><i><?= $count($x[1]) ?></i></a><?php endforeach; ?></div>
   <form class="search" method="get" action="<?= h($A) ?>"><input type="hidden" name="v" value="leads"><input type="hidden" name="f" value="<?= h($f) ?>"><input name="q" value="<?= h($q) ?>" placeholder="Search reg, name, phone, postcode" aria-label="Search leads"><button class="btn" type="submit">Search</button></form>
+  <?php if (in_array($f, ['collected', 'lost'], true) && $list && $q === ''): ?>
+  <form method="post" action="<?= h($A) ?>" style="margin:0 0 12px"><?= $hidden ?><input type="hidden" name="act" value="archive_all"><input type="hidden" name="status" value="<?= h($f) ?>">
+    <button class="btn ghost sm" type="submit" onclick="return confirm('Move all <?= count($list) ?> <?= $f === 'lost' ? 'lost' : 'collected' ?> jobs to the Archive?')">Archive all <?= count($list) ?> <?= $f === 'lost' ? 'lost' : 'collected' ?> job<?= count($list) === 1 ? '' : 's' ?></button>
+    <span class="small">They stay searchable in the Archive tab and can be restored.</span></form>
+  <?php endif; ?>
   <?php if (!$list): ?><div class="box empty"><?= $f === 'action' ? 'Nothing to do right now. New accepted prices show up here.' : 'No leads here yet.' ?></div><?php endif; ?>
   <?php foreach (array_slice($list, ($page - 1) * $per, $per) as $l): $veh = vehicle_name($l['vehicle'] ?? null); ?>
     <a class="lead" href="<?= h($A . '?v=lead&ref=' . $l['ref']) ?>">
@@ -493,8 +525,9 @@ elseif ($v === 'lead'):
   $price = $l['final_price'] ?? $l['price'];
   $custWa = !empty($l['phone']) && $isBooked ? 'https://wa.me/' . intl_phone((string)$l['phone']) . '?text=' . rawurlencode(($first ? "Hi $first, " : 'Hi, ') . "it's George from We Buy Scrap Cars Corby. Your collection for {$l['reg']} is booked for " . collect_when($l) . ' at ' . lead_address($l) . ($price !== null ? ". Agreed price £$price, paid by bank transfer when we collect" : '') . ". Please have the V5C logbook, all keys and photo ID ready. Any problems, just reply here. Thanks!") : '';
 ?>
-  <p class="small"><a href="<?= h($A . '?v=leads') ?>">← All leads</a><?php if (!empty($l['collect_on'])): ?> · <a href="<?= h($A . '?v=collections&d=' . $l['collect_on']) ?>">Collections on <?= h(date('D j M', strtotime($l['collect_on']))) ?></a><?php endif; ?></p>
+  <p class="small"><a href="<?= h($A . (!empty($l['archived']) ? '?v=archive' : '?v=leads')) ?>">← <?= !empty($l['archived']) ? 'Archive' : 'All leads' ?></a><?php if (!empty($l['collect_on'])): ?> · <a href="<?= h($A . '?v=collections&d=' . $l['collect_on']) ?>">Collections on <?= h(date('D j M', strtotime($l['collect_on']))) ?></a><?php endif; ?></p>
   <h1><span class="plate" style="font-size:20px"><?= h($l['reg']) ?></span> <?= h(vehicle_name($veh) ?: 'Vehicle not found from reg') ?></h1>
+  <?php if (!empty($l['archived'])): ?><div class="box small" style="border-left:5px solid var(--muted)">Archived <?= h(adm_when($l['archived'])) ?> by <?= h(ucfirst((string)($l['archived_by'] ?? ''))) ?>. <a href="<?= h($A . '?v=archive') ?>">Back to Archive</a></div><?php endif; ?>
   <p><?= adm_badge($STATUS, $l['status']) ?> <span class="small">Ref <?= h($l['ref']) ?> · <?= ($l['source'] ?? '') === 'phone' ? 'added from a phone call' : 'priced online' ?> <?= h(adm_when($l['received'])) ?><?= $price !== null ? ' · £' . (int)$price : '' ?></span></p>
 
   <div class="steps">
@@ -647,7 +680,14 @@ elseif ($v === 'lead'):
     <label>Only you see these<textarea name="admin_note" placeholder="e.g. customer wants the private plate kept"><?= h($l['admin_note'] ?? '') ?></textarea></label>
     <button class="btn" type="submit" style="margin-top:12px">Save notes</button>
   </form>
-  <?php if ($l['status'] !== 'collected'): ?>
+  <?php if (!empty($l['archived'])): ?>
+  <form method="post" action="<?= h($A) ?>" style="margin:0 0 14px"><?= $hidden ?><input type="hidden" name="act" value="unarchive"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <button class="btn ghost sm" type="submit">Restore to Leads</button></form>
+  <?php elseif (in_array($l['status'], ['collected', 'lost'], true)): ?>
+  <form method="post" action="<?= h($A) ?>" style="margin:0 0 14px"><?= $hidden ?><input type="hidden" name="act" value="archive"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <button class="btn sm" type="submit">Archive this job</button> <span class="small">Moves it out of Leads. Still searchable in Archive.</span></form>
+  <?php endif; ?>
+  <?php if ($l['status'] !== 'collected' && empty($l['archived'])): ?>
   <form method="post" action="<?= h($A) ?>" style="margin:0 0 14px"><?= $hidden ?><input type="hidden" name="act" value="lead"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
     <?php if ($l['status'] === 'lost'): ?><button class="btn ghost sm" type="submit" name="status" value="<?= !empty($l['collect_on']) ? 'booked' : ($l['price'] === null ? 'call-back' : 'accepted') ?>">Reopen this lead</button>
     <?php else: ?><button class="btn ghost sm" type="submit" name="status" value="lost" style="border-color:var(--red);color:var(--red)" onclick="return confirm('Mark <?= h($l['reg']) ?> as lost / declined?')">Mark as lost / declined</button><?php endif; ?>
@@ -744,6 +784,45 @@ elseif ($v === 'new'):
     <label class="tick" style="margin-top:12px"><input type="checkbox" name="lookup" value="1" checked> Look up the car and price from the reg (20p if it's a new reg)</label>
     <button class="btn go" type="submit" style="margin-top:12px">Add and go to booking</button>
   </form>
+
+<?php
+/* ================= ARCHIVE ================= */
+elseif ($v === 'archive'):
+  $OPS = operatives($SET);
+  $all = adm_leads('archive');
+  $q = trim((string)($_GET['q'] ?? '')); $st = in_array($_GET['s'] ?? '', ['collected', 'lost'], true) ? (string)$_GET['s'] : '';
+  $words = array_filter(preg_split('/\s+/', strtolower($q)));
+  $list = array_values(array_filter($all, function ($l) use ($words, $st, $OPS) {
+    if ($st !== '' && $l['status'] !== $st) return false;
+    if (!$words) return true;
+    $hay = adm_haystack($l, $OPS);
+    foreach ($words as $w) if (!str_contains($hay, $w)) return false;      // every word must match somewhere
+    return true;
+  }));
+  $page = max(1, (int)($_GET['p'] ?? 1)); $per = 50; $pages = max(1, (int)ceil(count($list) / $per));
+  $cnt = fn($s) => count(array_filter($all, fn($l) => $l['status'] === $s));
+  $paid = array_sum(array_map(fn($l) => (int)($l['paid'] ?? 0), array_filter($list, fn($l) => $l['status'] === 'collected')));
+?>
+  <h1>Archive</h1>
+  <p class="small" style="margin-top:-6px">Collected and lost jobs you've put away. Search anything recorded: reg, name, phone, email, address, postcode, car, driver, notes, dates (e.g. 17/10/2026 or "Oct 2026"), checklist answers.</p>
+  <form class="search" method="get" action="<?= h($A) ?>"><input type="hidden" name="v" value="archive"><input type="hidden" name="s" value="<?= h($st) ?>"><input name="q" value="<?= h($q) ?>" placeholder="Search the archive" aria-label="Search the archive"><button class="btn" type="submit">Search</button></form>
+  <div class="pills">
+    <a class="<?= $st === '' ? 'on' : '' ?>" href="<?= h($A . '?v=archive&q=' . rawurlencode($q)) ?>">All<i><?= count($all) ?></i></a>
+    <a class="<?= $st === 'collected' ? 'on' : '' ?>" href="<?= h($A . '?v=archive&s=collected&q=' . rawurlencode($q)) ?>">Collected<i><?= $cnt('collected') ?></i></a>
+    <a class="<?= $st === 'lost' ? 'on' : '' ?>" href="<?= h($A . '?v=archive&s=lost&q=' . rawurlencode($q)) ?>">Lost<i><?= $cnt('lost') ?></i></a>
+  </div>
+  <?php if ($q !== '' || $st !== ''): ?><p class="small"><?= count($list) ?> result<?= count($list) === 1 ? '' : 's' ?><?= $paid ? ' · £' . number_format($paid) . ' paid out on these' : '' ?></p><?php endif; ?>
+  <?php if (!$list): ?><div class="box empty"><?= $all ? 'Nothing matches that search.' : 'Nothing archived yet. Open a collected or lost job and press Archive, or use "Archive all" on the Collected and Lost lists.' ?></div><?php endif; ?>
+  <?php foreach (array_slice($list, ($page - 1) * $per, $per) as $l): $veh = vehicle_name($l['vehicle'] ?? null); ?>
+    <a class="lead" href="<?= h($A . '?v=lead&ref=' . $l['ref']) ?>">
+      <div class="lead-top"><span class="plate"><?= h($l['reg']) ?></span><?= adm_badge($STATUS, $l['status']) ?><?php if (!empty($l['demo'])): ?><span class="badge" style="background:#fff3d6;color:#8a5a00">Test</span><?php endif; ?>
+        <span class="price"><?= isset($l['paid']) && $l['paid'] !== null ? '£' . (int)$l['paid'] : (isset($l['final_price']) && $l['final_price'] !== null ? '£' . (int)$l['final_price'] : ($l['price'] === null ? '–' : '£' . (int)$l['price'])) ?></span></div>
+      <div style="margin-top:6px;font-weight:700"><?= h($l['name'] ?? '') ?: '<span class="small">No contact details</span>' ?><?= $veh ? ' <span class="small">· ' . h($veh) . '</span>' : '' ?></div>
+      <div class="meta"><?= h(lead_address($l) ?: (string)$l['postcode']) ?><?= !empty($l['collected_at']) ? ' · collected ' . h(date('j M Y', strtotime($l['collected_at']))) : '' ?><?= isset($OPS[$l['op'] ?? '']) ? ' · ' . h($OPS[$l['op']]['name']) : '' ?> · archived <?= h(date('j M Y', strtotime($l['archived']))) ?> · <?= h($l['ref']) ?></div>
+    </a>
+  <?php endforeach; ?>
+  <?php if ($pages > 1): ?><div class="pills"><?php for ($i = 1; $i <= $pages; $i++): ?><a class="<?= $i === $page ? 'on' : '' ?>" href="<?= h($A . '?v=archive&s=' . $st . '&q=' . rawurlencode($q) . '&p=' . $i) ?>"><?= $i ?></a><?php endfor; ?></div><?php endif; ?>
+  <p class="small" style="margin-top:18px"><a href="<?= h($A . '?v=export') ?>">Download every lead, including the archive, as a spreadsheet (CSV)</a></p>
 
 <?php
 /* ================= ENQUIRIES ================= */
