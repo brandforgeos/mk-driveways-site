@@ -203,7 +203,7 @@ $biz['knowsAbout'] = ['Vehicle recovery', 'Breakdown recovery', 'Accident recove
 $biz['paymentAccepted'] = 'Cash, Credit Card, Debit Card, Bank Transfer';
 $biz['hasOfferCatalog'] = ['@type' => 'OfferCatalog', 'name' => 'Recovery services', 'itemListElement' => array_map(fn($k, $x) => ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => $x['name'], 'url' => abs_url($k)]], array_keys($SV), array_values($SV))];
 $graph = [$biz];
-$graph[] = ['@type' => 'WebSite', '@id' => SITE_URL . '/#website', 'url' => abs_url(), 'name' => $S['name'], 'publisher' => ['@id' => SITE_URL . '/#business'], 'inLanguage' => 'en-GB'];
+$graph[] = ['@type' => 'WebSite', '@id' => SITE_URL . '/#website', 'url' => abs_url(), 'name' => $S['name'], 'alternateName' => ['Rapid Recovery', 'rapidrecoverycorby.com'], 'publisher' => ['@id' => SITE_URL . '/#business'], 'inLanguage' => 'en-GB'];
 $graph[] = ['@type' => $type === 'guide' ? 'Article' : 'WebPage', '@id' => abs_url($path) . '#page', 'url' => abs_url($path), 'name' => $P['title'], 'description' => $P['desc'] ?? '', 'isPartOf' => ['@id' => SITE_URL . '/#website'], 'about' => ['@id' => SITE_URL . '/#business'], 'dateModified' => UPDATED, 'inLanguage' => 'en-GB',
   'primaryImageOfPage' => ['@type' => 'ImageObject', 'url' => SITE_URL . '/img/' . $hero . '.webp', 'caption' => $P['img_alt'] ?? ''],
   'speakable' => ['@type' => 'SpeakableSpecification', 'cssSelector' => ['h1', '.answer']]]
@@ -233,7 +233,7 @@ $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi Rapid Reco
 <meta name="description" content="<?= h($P['desc'] ?? '') ?>">
 <?php if (PREVIEW || $type === '404'): ?><meta name="robots" content="noindex,nofollow"><?php endif; ?>
 <link rel="canonical" href="<?= h(abs_url($path)) ?>">
-<meta property="og:type" content="website"><meta property="og:title" content="<?= h($P['title']) ?>"><meta property="og:description" content="<?= h($P['desc'] ?? '') ?>">
+<meta property="og:type" content="website"><meta property="og:site_name" content="<?= h($S['name']) ?>"><meta name="application-name" content="<?= h($S['name']) ?>"><meta name="apple-mobile-web-app-title" content="<?= h($S['name']) ?>"><meta property="og:title" content="<?= h($P['title']) ?>"><meta property="og:description" content="<?= h($P['desc'] ?? '') ?>">
 <meta property="og:url" content="<?= h(abs_url($path)) ?>"><meta property="og:image" content="<?= h(SITE_URL) ?>/img/og-rapid-recovery-corby.jpg"><meta property="og:locale" content="en_GB">
 <meta name="theme-color" content="#0E1C42">
 <link rel="icon" href="<?= BASE ?>img/favicon-48.png" sizes="48x48"><link rel="icon" href="<?= BASE ?>img/favicon-192.png" sizes="192x192"><link rel="apple-touch-icon" href="<?= BASE ?>img/apple-touch-icon.png">
