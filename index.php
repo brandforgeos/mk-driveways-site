@@ -155,7 +155,7 @@ function oneauto_lookup(string $reg, array $C, bool $useCache = true): ?array {
   $year = (int)($vi['manufactured_year'] ?? 0) ?: (int)substr((string)($vi['first_registration_date'] ?? $vi['registration_date'] ?? ''), 0, 4);
   $v = ['reg' => $reg, 'make' => tidy_name((string)$vi['dvla_manufacturer_desc']),
     'model' => tidy_name((string)($vi['dvla_model_desc'] ?? '') ?: trim(($md['model_data']['model_range_desc'] ?? '') . ' ' . ($md['model_data']['model_desc'] ?? ''))),
-    'fuel' => tidy_name((string)($vi['dvla_fuel_desc'] ?? $md['model_data']['ukvd_fuel_type_desc'] ?? '')),
+    'fuel' => fuel_label(tidy_name((string)($vi['dvla_fuel_desc'] ?? $md['model_data']['ukvd_fuel_type_desc'] ?? ''))),
     'engine_cc' => (int)($md['power_source']['ice_details']['engine_capacity_cc'] ?? 0),
     'colour' => tidy_name((string)($vd['colour_details']['colour'] ?? '')), 'year' => $year ?: null,
     'kerb_kg' => $kg ?: null, 'scrapped' => !empty($vd['vehicle_status_details']['is_scrapped']) || !empty($vd['vehicle_status_details']['certificate_of_destruction_issued']),
@@ -168,7 +168,7 @@ function oneauto_lookup(string $reg, array $C, bool $useCache = true): ?array {
   return $v;
 }
 /* what the customer's browser sees: description only, never weights or data source */
-function pub_vehicle(?array $v): ?array { return $v ? array_intersect_key($v, array_flip(['reg', 'make', 'model', 'fuel', 'engine_cc', 'colour', 'year'])) : null; }
+function pub_vehicle(?array $v): ?array { if (!$v) return null; $v = array_intersect_key($v, array_flip(['reg', 'make', 'model', 'fuel', 'engine_cc', 'colour', 'year'])); $v['fuel'] = fuel_label($v['fuel'] ?? ''); return $v; }
 function vehicle_lookup(string $reg, array $C): ?array {
   $cf = store_path('cache') . "/veh-$reg.json";
   if (is_file($cf) && filemtime($cf) > time() - 86400 * 30) return json_decode(file_get_contents($cf), true);
@@ -276,6 +276,59 @@ function customer_email(array $S, string $title, array $paras, array $rows = [],
   return [$txt, $html];
 }
 function vehicle_name(?array $v): string { return $v ? trim(($v['year'] ?? '') . ' ' . ($v['make'] ?? '') . ' ' . ($v['model'] ?? '')) : ''; }
+function fuel_label(?string $f): string { $f = trim((string)$f); return ['heavy oil' => 'Diesel', 'petrol/electric' => 'Petrol hybrid', 'electricity' => 'Electric'][strtolower($f)] ?? $f; }   // DVLA wording -> plain English
+function vehicle_line(?array $v): string { return $v ? implode(' · ', array_filter([vehicle_name($v), fuel_label($v['fuel'] ?? ''), $v['colour'] ?? ''])) : ''; }
+
+/* ================= bookings: address, slot, drivers ================= */
+function slot_label(?string $s, bool $short = false): string {
+  $s = (string)$s;
+  if ($s === 'am') return $short ? 'AM' : 'Morning (AM)';
+  if ($s === 'pm') return $short ? 'PM' : 'Afternoon (PM)';
+  if (preg_match('/^(\d{2}):(\d{2})$/', $s, $m)) return date('g:ia', mktime((int)$m[1], (int)$m[2]));
+  return $short ? 'Any time' : 'Any time';
+}
+function slot_sort(?string $s): string { $s = (string)$s; return $s === 'am' ? '10:00' : ($s === 'pm' ? '14:00' : (preg_match('/^\d{2}:\d{2}$/', $s) ? $s : '23:00')); }
+function lead_address(array $l, string $sep = ', '): string {
+  $a = $l['address'] ?? [];
+  return implode($sep, array_filter([trim((string)($a['line1'] ?? '')), trim((string)($a['line2'] ?? '')), trim((string)($a['town'] ?? '')), trim((string)($a['postcode'] ?? $l['postcode'] ?? ''))]));
+}
+function maps_url(array $l): string { return 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode(lead_address($l)); }
+function operatives(array $SET): array { return is_array($SET['operatives'] ?? null) ? $SET['operatives'] : []; }
+function intl_phone(string $p): string { $d = preg_replace('/\D/', '', $p); return str_starts_with($d, '0') ? '44' . substr($d, 1) : $d; }   // digits only, e.g. 447700900123
+function job_token(string $ref, string $op): string { return substr(hash_hmac('sha256', "job|$ref|$op", app_secret()), 0, 20); }
+function job_url(array $l): string { return abs_url('job/' . $l['ref'] . '/' . job_token($l['ref'], (string)($l['op'] ?? ''))); }
+function collect_when(array $l): string { return empty($l['collect_on']) ? 'Date to be confirmed' : date('D j M', strtotime($l['collect_on'])) . ', ' . slot_label($l['collect_slot'] ?? 'any'); }
+/* the text a driver gets for one job (WhatsApp or SMS) */
+function job_text(array $l, int $i = 0, int $n = 0): string {
+  $veh = vehicle_line($l['vehicle'] ?? null);
+  $lines = [($n > 1 ? "JOB $i of $n" : 'COLLECTION') . ': ' . collect_when($l),
+    'Vehicle: ' . ($veh ?: 'Not known') . ' (' . $l['reg'] . ')',
+    'Name: ' . ($l['name'] ?? ''), 'Phone: ' . ($l['phone'] ?? ''),
+    'Address: ' . lead_address($l), 'Map: ' . maps_url($l)];
+  $note = trim((string)($l['driver_note'] ?? '')); if ($note !== '') $lines[] = 'Notes: ' . $note;
+  $lines[] = 'Collected? Tap: ' . job_url($l);
+  return implode("\n", $lines);
+}
+function send_link(string $via, string $phone, string $text): string {
+  return $via === 'sms' ? 'sms:+' . intl_phone($phone) . '?&body=' . rawurlencode($text) : 'https://wa.me/' . intl_phone($phone) . '?text=' . rawurlencode($text);
+}
+/* booking confirmation email to the customer: [subject, text, html] */
+function booking_email(array $S, array $l, bool $changed): array {
+  $first = trim(explode(' ', (string)($l['name'] ?? ''))[0]);
+  $when = collect_when($l);
+  $price = $l['final_price'] ?? $l['price'];
+  $rows = [['Reference', $l['ref']], ['Registration', $l['reg']]];
+  if ($v = vehicle_name($l['vehicle'] ?? null)) $rows[] = ['Vehicle', $v];
+  $rows[] = ['Collection', $when]; $rows[] = ['Address', lead_address($l)];
+  if ($price !== null) $rows[] = ['Agreed price', '£' . (int)$price];
+  $paras = [($first ? "Hi $first," : 'Hi,'),
+    $changed ? "Your collection has changed. Here are the new details for {$l['reg']}." : "Thanks for booking with us. Your free collection for {$l['reg']} is booked in.",
+    'Please have ready: the V5C logbook (tell us if you don\'t have it), all the keys, and photo ID such as a driving licence or passport. By law we have to check the seller\'s ID. Please take out any personal belongings.',
+    'We pay by bank transfer when we collect. If anything about the car has changed, or the time no longer suits, just call or WhatsApp George.'];
+  [$t, $hh] = customer_email($S, $changed ? 'Your collection has changed' : 'Your collection is booked', $paras, $rows);
+  return [($changed ? 'Collection changed: ' : 'Collection booked: ') . "{$l['reg']}, $when", $t, $hh];
+}
+function lead_log(array &$l, string $by, string $what, string $type = 'note'): void { $l['history'][] = ['at' => date('c'), 'by' => $by, 'what' => $what, 'type' => $type]; }
 function price_email_rows(array $l): array {
   $rows = [['Reference', $l['ref']], ['Registration', $l['reg']]];
   if ($v = vehicle_name($l['vehicle'] ?? null)) $rows[] = ['Vehicle', $v];
@@ -329,7 +382,7 @@ $b = trim(BASE, '/'); if ($b !== '' && str_starts_with($r, $b)) $r = trim(substr
 $seg = $r === '' ? [] : explode('/', $r);
 
 /* Holding page: 'maintenance' => true in the config file takes the public site offline (admin keeps working). */
-if (!empty($CFG['maintenance']) && !($seg && $seg[0] === 'admin') && !str_starts_with($r, 'img/')) {
+if (!empty($CFG['maintenance']) && !($seg && in_array($seg[0], ['admin', 'job'], true)) && !str_starts_with($r, 'img/')) {
   http_response_code(503); header('Retry-After: 86400'); header('X-Robots-Tag: noindex'); header('Content-Type: text/html; charset=utf-8');
   $tel = 'tel:' . $S['phone_intl']; $wa = 'https://wa.me/' . $S['whatsapp'] . '?text=' . rawurlencode('Hi George, I have a car to scrap. Reg: ');
   echo '<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">'
@@ -422,7 +475,7 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 /* reopen a price from a reminder email link */
 if ($r === 'api/lead' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $l = load_lead((string)($_POST['ref'] ?? ''));
-  if (!$l || $l['price'] === null || in_array($l['status'], ['booked', 'collected', 'lost'], true)) jout(['ok' => false]);
+  if (!$l || $l['price'] === null || in_array($l['status'], ['booked', 'dispatched', 'collected', 'lost'], true)) jout(['ok' => false]);
   if ($l['valid_until'] < date('Y-m-d')) jout(['ok' => false, 'expired' => true, 'reg' => $l['reg'], 'postcode' => $l['postcode']]);
   jout(['ok' => true, 'ref' => $l['ref'], 'price' => $l['price'], 'valid_until' => date('j F Y', strtotime($l['valid_until'])), 'vehicle' => pub_vehicle($l['vehicle'] ?? null), 'reg' => $l['reg'], 'accepted' => $l['status'] === 'accepted']);
 }
@@ -447,7 +500,7 @@ if ($r === 'api/save' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 if ($r === 'api/accept' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $lead = load_lead((string)($_POST['ref'] ?? ''));
-  if (!$lead || in_array($lead['status'], ['booked', 'collected', 'lost'], true)) jout(['ok' => false]);   // George has already dealt with it: don't reset the status
+  if (!$lead || in_array($lead['status'], ['booked', 'dispatched', 'collected', 'lost'], true)) jout(['ok' => false]);   // George has already dealt with it: don't reset the status
   $ref = $lead['ref'];
   $f = fn($k, $n = 200) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
   if ($f('website') !== '') jout(['ok' => false]);
@@ -481,6 +534,7 @@ if ($r === 'unsubscribe') {
   echo '<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reminders</title><body style="font-family:Arial,sans-serif;max-width:520px;margin:60px auto;padding:0 16px;color:#10224A"><h1 style="font-size:22px">' . ($ok ? 'You won\'t get any more reminders' : 'That link didn\'t work') . '</h1><p>' . ($ok ? 'We\'ve stopped price reminders to ' . h($e) . '.' : 'Please call us on ' . h($S['phone']) . ' and we\'ll sort it.') . '</p><p><a href="' . h(u()) . '">Back to We Buy Scrap Cars Corby</a></p>';
   exit;
 }
+if ($seg && $seg[0] === 'job') { require __DIR__ . '/job.php'; exit; }
 if ($seg && $seg[0] === 'admin') { require __DIR__ . '/admin.php'; exit; }
 /* contact form */
 if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {

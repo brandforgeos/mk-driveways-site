@@ -4,4 +4,4 @@ deployment:
     - export DEPLOYPATH=/home1/sufktgte/public_html/website_42f1e8ce/clients/scrap-cars/site/
     - if [ "$(whoami)" = "khekowte" ]; then export DEPLOYPATH=/home2/khekowte/public_html/webuyscrapcars-corby.co.uk/; fi
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R img data index.php admin.php style.css .htaccess $DEPLOYPATH
+    - /bin/cp -R img data index.php admin.php job.php style.css .htaccess $DEPLOYPATH

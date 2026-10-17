@@ -26,14 +26,16 @@ $STATUS = [
   'call-back' => ['Call back with a price', '#8a5a00', '#fff3d6'],
   'saved' => ['Price emailed', '#1f4fa3', '#e4edfb'],
   'booked' => ['Booked in', '#10224A', '#dfe5f2'],
+  'dispatched' => ['Sent to driver', '#5b2b8a', '#efe6fa'],
   'collected' => ['Collected', '#0d5c27', '#cdeed7'],
   'lost' => ['Lost / declined', '#9b2226', '#fbe4e4'],
   'priced' => ['Price only (no contact)', '#51607d', '#eef1f6'],
   'needs-price' => ['No price (no contact)', '#51607d', '#eef1f6'],
 ];
-$SETTABLE = ['accepted', 'call-back', 'saved', 'booked', 'collected', 'lost'];
-$FILTERS = ['action' => ['To do', ['accepted', 'call-back', 'saved']], 'booked' => ['Booked', ['booked']], 'collected' => ['Collected', ['collected']], 'lost' => ['Lost', ['lost']],
-  'contacts' => ['All with details', ['accepted', 'call-back', 'saved', 'booked', 'collected', 'lost']], 'all' => ['Every price given', array_keys($STATUS)]];
+$SETTABLE = ['accepted', 'call-back', 'saved', 'booked', 'dispatched', 'collected', 'lost'];
+$FILTERS = ['action' => ['To do', ['accepted', 'call-back', 'saved']], 'booked' => ['Booked', ['booked', 'dispatched']], 'collected' => ['Collected', ['collected']], 'lost' => ['Lost', ['lost']],
+  'contacts' => ['All with details', ['accepted', 'call-back', 'saved', 'booked', 'dispatched', 'collected', 'lost']], 'all' => ['Every price given', array_keys($STATUS)]];
+$CALLS = ['Spoke to customer', 'No answer', 'Left voicemail', 'Sent a text / WhatsApp'];
 
 function adm_go(string $url, string $flash = '', bool $bad = false): void { if ($flash !== '') $_SESSION['flash'] = [$flash, $bad]; header('Location: ' . $url, true, 303); exit; }
 function adm_leads(): array {
@@ -75,14 +77,133 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($act === 'lead') {
     $l = load_lead((string)($_POST['ref'] ?? '')); if (!$l) adm_go($back, 'Lead not found.', true);
     $chg = [];
-    $st = (string)($_POST['status'] ?? ''); if (in_array($st, $SETTABLE, true) && $st !== $l['status']) { $chg[] = "status {$l['status']} → $st"; $l['status'] = $st; }
-    $fp = trim((string)($_POST['final_price'] ?? '')); $fpv = $fp === '' ? null : (int)round((float)$fp);
-    if ($fpv !== ($l['final_price'] ?? null)) { $chg[] = 'agreed price ' . ($fpv === null ? 'cleared' : "£$fpv"); $l['final_price'] = $fpv; }
-    $cd = (string)($_POST['collect_on'] ?? ''); $cd = preg_match('/^\d{4}-\d{2}-\d{2}$/', $cd) ? $cd : '';
-    if ($cd !== ($l['collect_on'] ?? '')) { $chg[] = 'collection ' . ($cd ?: 'cleared'); $l['collect_on'] = $cd; }
+    $st = (string)($_POST['status'] ?? ''); if (in_array($st, $SETTABLE, true) && $st !== $l['status']) { $chg[] = 'status: ' . ($STATUS[$l['status']][0] ?? $l['status']) . ' → ' . $STATUS[$st][0]; $l['status'] = $st; }
     $nt = mb_substr(trim((string)($_POST['admin_note'] ?? '')), 0, 2000); if ($nt !== ($l['admin_note'] ?? '')) { $chg[] = 'notes'; $l['admin_note'] = $nt; }
-    if ($chg) { $l['history'][] = ['at' => date('c'), 'by' => $me, 'what' => implode(', ', $chg)]; save_lead($l); }
+    if ($chg) { $l['history'][] = ['at' => date('c'), 'by' => $me, 'what' => ucfirst(implode(', ', $chg)), 'type' => 'note']; save_lead($l); }
     adm_go($back, $chg ? 'Saved.' : 'No changes.');
+  }
+
+  $T = fn($k, $n = 200) => mb_substr(trim((string)($_POST[$k] ?? '')), 0, $n);
+  $OPS = operatives($SET);
+
+  /* log a phone call / message with the customer */
+  if ($act === 'calllog') {
+    $l = load_lead($T('ref', 20)); if (!$l) adm_go($back, 'Lead not found.', true);
+    $out = $T('outcome', 40); if (!in_array($out, $CALLS, true)) adm_go($back, 'Pick what happened on the call.', true);
+    $note = $T('note', 500);
+    lead_log($l, $me, $out . ($note !== '' ? ": $note" : ''), 'call'); $l['last_call'] = date('c');
+    if ($out === 'Spoke to customer' && in_array($l['status'], ['priced', 'saved', 'needs-price'], true)) $l['status'] = $l['price'] === null ? 'call-back' : 'accepted';
+    save_lead($l); adm_go($back . '#book', 'Call logged.');
+  }
+
+  /* book (or change) the collection: address, date, slot, price, driver notes; optional email to the customer */
+  if ($act === 'book') {
+    $l = load_lead($T('ref', 20)); if (!$l) adm_go($back, 'Lead not found.', true);
+    $err = fn(string $m) => adm_go($back . '#book', $m, true);
+    $name = $T('name', 100); $phone = $T('phone', 40); $email = $T('email', 150);
+    $addr = ['line1' => $T('line1', 150), 'line2' => $T('line2', 150), 'town' => $T('town', 80), 'postcode' => clean_pc($T('postcode', 12))];
+    $date = $T('collect_on', 10); $slot = $T('slot', 10); if ($slot === 'time') $slot = $T('time', 5);
+    if ($name === '') $err('Add the customer\'s name.');
+    if (strlen(preg_replace('/\D/', '', $phone)) < 10) $err('Add a phone number for the customer (the driver needs it).');
+    if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) $err('That email address doesn\'t look right.');
+    if ($addr['line1'] === '' || strlen($addr['postcode']) < 5) $err('Add the collection address and postcode.');
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) || !strtotime($date)) $err('Pick a collection date.');
+    if (!in_array($slot, ['am', 'pm', 'any'], true) && !preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', $slot)) $err('Pick AM, PM, any time, or enter a time.');
+    $fp = $T('final_price', 10); $fpv = $fp === '' ? null : max(0, (int)round((float)$fp));
+    $was = in_array($l['status'], ['booked', 'dispatched', 'collected'], true) && !empty($l['collect_on']);
+    $oldWhen = $was ? collect_when($l) . ' at ' . lead_address($l) : '';
+    $l['name'] = $name; $l['phone'] = $phone; $l['email'] = $email; $l['address'] = $addr; $l['postcode'] = $addr['postcode'];
+    $l['collect_on'] = $date; $l['collect_slot'] = $slot; $l['final_price'] = $fpv; $l['driver_note'] = $T('driver_note', 1000);
+    $newWhen = collect_when($l) . ' at ' . lead_address($l);
+    if (!$was) { $l['status'] = 'booked'; $l['booked_at'] = date('c'); $l['booked_by'] = $me; lead_log($l, $me, 'Booked in: ' . $newWhen . ($fpv !== null ? ", agreed £$fpv" : ''), 'booked'); }
+    elseif ($oldWhen !== $newWhen) {
+      lead_log($l, $me, 'Booking changed to ' . $newWhen, 'booked');
+      if ($l['status'] === 'dispatched') { $l['status'] = 'booked'; lead_log($l, $me, 'Driver has old details: send the job again', 'note'); }
+    } else lead_log($l, $me, 'Booking details updated' . ($fpv !== null ? " (agreed £$fpv)" : ''), 'note');
+    $flash = $was ? 'Booking updated.' : 'Booked in for ' . collect_when($l) . '.';
+    if (!empty($_POST['email_customer'])) {
+      if ($email === '') $flash .= ' No email address, so no confirmation was emailed: use the WhatsApp button instead.';
+      elseif (PREVIEW) $flash .= ' (Preview: confirmation email not sent.)';
+      else { [$sub, $t, $hh] = booking_email($S, $l, $was && $oldWhen !== $newWhen);
+        if (send_mail($email, $sub, $t, $hh, $S['email'])) { lead_log($l, $me, "Confirmation emailed to $email", 'email'); $flash .= " Confirmation emailed to $email."; }
+        else $flash .= ' The confirmation email failed to send.'; }
+    }
+    save_lead($l); adm_go($back . '#driver', $flash);
+  }
+
+  /* fired by the WhatsApp / text buttons (sendBeacon) just before the app opens: records who sent which jobs to which driver */
+  if ($act === 'sent') {
+    $op = $T('op', 40); $via = $T('via', 10) === 'sms' ? 'text' : 'WhatsApp';
+    if (isset($OPS[$op])) foreach (array_slice(explode(',', $T('refs', 2000)), 0, 60) as $ref) {
+      $l = load_lead($ref); if (!$l || !in_array($l['status'], ['booked', 'dispatched'], true)) continue;
+      $l['op'] = $op; $l['status'] = 'dispatched'; $l['sent'][] = ['at' => date('c'), 'by' => $me, 'op' => $op, 'via' => $via];
+      lead_log($l, $me, "Sent to {$OPS[$op]['name']} by $via", 'sent'); save_lead($l);
+    }
+    http_response_code(204); exit;
+  }
+
+  /* collections board: set the driver for several jobs at once */
+  if ($act === 'assign') {
+    $n = 0;
+    foreach ($_POST as $k => $val) {
+      if (!str_starts_with((string)$k, 'op_')) continue;
+      $l = load_lead(substr((string)$k, 3)); if (!$l || !in_array($l['status'], ['booked', 'dispatched'], true)) continue;
+      $val = (string)$val; if ($val !== '' && !isset($OPS[$val])) continue;
+      if ($val === (string)($l['op'] ?? '')) continue;
+      $l['op'] = $val;
+      if ($l['status'] === 'dispatched') $l['status'] = 'booked';    // the old driver's link stops working; this driver hasn't been sent it yet
+      lead_log($l, $me, $val === '' ? 'Driver removed' : 'Driver set to ' . $OPS[$val]['name'], 'note'); save_lead($l); $n++;
+    }
+    adm_go($back, $n ? "Drivers saved ($n changed). Now send each driver their jobs." : 'No changes.');
+  }
+
+  if ($act === 'setop') {
+    $l = load_lead($T('ref', 20)); $op = $T('op', 40);
+    if (!$l || ($op !== '' && !isset($OPS[$op]))) adm_go($back, 'Not saved.', true);
+    if ($op !== (string)($l['op'] ?? '')) { $l['op'] = $op; if ($l['status'] === 'dispatched') $l['status'] = 'booked'; lead_log($l, $me, $op === '' ? 'Driver removed' : 'Driver set to ' . $OPS[$op]['name'], 'note'); save_lead($l); }
+    adm_go($back . '#driver', $op === '' ? 'Driver removed.' : 'Driver set to ' . $OPS[$op]['name'] . '. Now tap WhatsApp or Text to send the job.');
+  }
+
+  if ($act === 'collected') {
+    $l = load_lead($T('ref', 20)); if (!$l) adm_go($back, 'Lead not found.', true);
+    $paid = $T('paid', 10); $l['paid'] = $paid === '' ? null : max(0, (int)round((float)$paid)); $l['pay_ref'] = $T('pay_ref', 100);
+    $l['status'] = 'collected'; $l['collected_at'] = $l['collected_at'] ?? date('c'); $l['collected_by'] = $l['collected_by'] ?? (isset($OPS[$l['op'] ?? '']) ? 'Driver: ' . $OPS[$l['op']]['name'] : ucfirst($me));
+    lead_log($l, $me, 'Marked collected' . ($l['paid'] !== null ? ", paid £{$l['paid']}" : '') . ($l['pay_ref'] !== '' ? " (ref {$l['pay_ref']})" : '') . ($T('note', 500) !== '' ? '. ' . $T('note', 500) : ''), 'collected');
+    save_lead($l); adm_go($back, 'Marked as collected.');
+  }
+
+  /* a booking taken over the phone (customer never used the website) */
+  if ($act === 'new_lead') {
+    $reg = clean_reg($T('reg', 12)); $pc = clean_pc($T('postcode', 12)); $name = $T('name', 100); $phone = $T('phone', 40);
+    $keep = '&' . http_build_query(['name' => $name, 'phone' => $phone, 'reg' => $reg, 'postcode' => $pc]);
+    if (strlen($reg) < 2 || strlen($pc) < 5 || $name === '' || strlen(preg_replace('/\D/', '', $phone)) < 10) adm_go($A . '?v=new' . $keep, 'Add the reg, postcode, name and phone number.', true);
+    $v = !empty($_POST['lookup']) ? vehicle_lookup($reg, $CFG) : null;
+    $w = $v ? weight_cached($v) : null; $kg = $w['kg'] ?? (int)$PR['default_kg'];
+    $loc = pc_lookup($pc); $dist = $loc ? round(miles($S['geo'], [$loc['lat'], $loc['lng']]), 1) : null;
+    $ref = 'SC' . gmdate('ymd') . strtoupper(bin2hex(random_bytes(2)));
+    $fp = $T('final_price', 10);
+    $l = ['ref' => $ref, 'status' => 'accepted', 'received' => gmdate('c'), 'demo' => false, 'source' => 'phone',
+      'reg' => $reg, 'postcode' => $loc['pc'] ?? $pc, 'town' => $loc['town'] ?? '', 'miles' => $dist,
+      'vehicle' => $v, 'weight_kg' => $kg, 'weight_source' => $w ? $w['source'] . ' (' . $w['confidence'] . ')' : 'Average car weight (not looked up)',
+      'price' => $v ? price_for($kg, $PR) : null, 'final_price' => $fp === '' ? null : max(0, (int)round((float)$fp)),
+      'valid_until' => gmdate('Y-m-d', time() + 86400 * $PR['valid_days']), 'rate_per_tonne' => $PR['rate_per_tonne'],
+      'name' => $name, 'phone' => $phone, 'email' => $T('email', 150), 'accepted' => gmdate('c'), 'reminders_ok' => false, 'collection_note' => $T('note', 500),
+      'address' => ['line1' => $T('line1', 150), 'line2' => $T('line2', 150), 'town' => $T('town', 80), 'postcode' => $loc['pc'] ?? $pc]];
+    lead_log($l, $me, 'Added from a phone call', 'call');
+    save_lead($l); adm_go($A . '?v=lead&ref=' . $ref . '#book', 'Added. ' . ($v ? vehicle_name($v) . ', price £' . $l['price'] . '. ' : '') . 'Now pick the date and time to book it in.');
+  }
+
+  /* saved drivers (Settings) */
+  if ($act === 'op_save') {
+    $id = preg_replace('/[^a-z0-9]/', '', $T('id', 20)); $nm = $T('op_name', 40); $ph = $T('op_phone', 30); $via = $T('op_via', 10) === 'sms' ? 'sms' : 'whatsapp';
+    if ($nm === '' || strlen(intl_phone($ph)) < 11) adm_go($A . '?v=settings#drivers', 'Add the driver\'s name and mobile number.', true);
+    if ($id === '' || !isset($OPS[$id])) $id = substr(md5($nm . microtime()), 0, 8);
+    $OPS[$id] = ['name' => $nm, 'phone' => $ph, 'via' => $via]; $SET['operatives'] = $OPS;
+    adm_go($A . '?v=settings#drivers', adm_settings_save($SET) ? "Saved $nm." : 'Couldn\'t save. Please tell Lewis.', false);
+  }
+  if ($act === 'op_del') {
+    $id = $T('id', 20); if (isset($OPS[$id])) { $nm = $OPS[$id]['name']; unset($OPS[$id]); $SET['operatives'] = $OPS; adm_settings_save($SET); adm_go($A . '?v=settings#drivers', "Removed $nm. Jobs already sent to them keep their history."); }
+    adm_go($A . '?v=settings#drivers');
   }
 
   if ($act === 'rates') {
@@ -164,9 +285,10 @@ $v = (string)($_GET['v'] ?? 'leads');
 if ($me && $v === 'export') {
   header('Content-Type: text/csv; charset=utf-8'); header('Content-Disposition: attachment; filename="scrap-car-leads-' . date('Y-m-d') . '.csv"');
   $o = fopen('php://output', 'w'); fwrite($o, "\xEF\xBB\xBF");
-  fputcsv($o, ['Ref', 'Received', 'Status', 'Reg', 'Vehicle', 'Postcode', 'Miles', 'Weight kg', 'Weight source', 'Price', 'Agreed price', 'Collection date', 'Name', 'Phone', 'Email', 'Reminders OK', 'Customer note', 'Admin notes']);
+  $OPS = operatives($SET);
+  fputcsv($o, ['Ref', 'Received', 'Status', 'Reg', 'Vehicle', 'Postcode', 'Miles', 'Weight kg', 'Weight source', 'Price', 'Agreed price', 'Collection date', 'Collection time', 'Address', 'Driver', 'Booked by', 'Booked at', 'Collected by', 'Collected at', 'Paid', 'Payment ref', 'Name', 'Phone', 'Email', 'Reminders OK', 'Customer note', 'Driver notes', 'Admin notes']);
   $cell = fn($x) => is_string($x) && preg_match('/^[=@\t\r]|^[+\-](?![\d\s()]+$)/', $x) ? "'" . $x : $x;   // customer-typed text can't run as a spreadsheet formula
-  foreach (adm_leads() as $l) fputcsv($o, array_map($cell, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['admin_note'] ?? '']));
+  foreach (adm_leads() as $l) fputcsv($o, array_map($cell, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', !empty($l['collect_on']) ? slot_label($l['collect_slot'] ?? 'any') : '', lead_address($l), $OPS[$l['op'] ?? '']['name'] ?? '', $l['booked_by'] ?? '', $l['booked_at'] ?? '', $l['collected_by'] ?? '', $l['collected_at'] ?? '', $l['paid'] ?? '', $l['pay_ref'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['driver_note'] ?? '', $l['admin_note'] ?? '']));
   exit;
 }
 
@@ -247,6 +369,27 @@ th{font-size:13px;color:var(--muted);border-top:0}
 .tick{display:flex;gap:10px;align-items:center;font-weight:600}
 .tick input{width:22px;height:22px;min-height:0;margin:0}
 .st-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+[hidden]{display:none!important}
+.grid>*{min-width:0}
+input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;min-width:0;max-width:100%}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:0 0 14px}
+.steps div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px;font-size:13px;color:var(--muted);line-height:1.3}
+.steps div b{display:block;color:var(--navy);font-size:14px}
+.steps div.on{border-color:var(--green);background:#e9f7ee}
+.steps div.on b::before{content:"\2713  ";color:#1d7a3a}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.seg label{display:flex;align-items:center;gap:6px;border:1px solid #b9c4da;border-radius:9px;padding:9px 12px;font-weight:600;cursor:pointer}
+.seg input{width:auto;min-height:0;margin:0}
+.seg label:has(input:checked){border-color:var(--navy);background:#dfe5f2}
+.oprow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--line)}
+.oprow:first-of-type{border-top:0}
+.oprow b{min-width:110px}
+.btn.sm{min-height:40px;padding:6px 12px;font-size:15px}
+.btn.wa{background:#25D366;border-color:#25D366;color:#06210F}
+.job{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.job select{min-height:40px;padding:6px 8px;margin:0;width:auto;max-width:170px}
+.callbtns{display:flex;flex-wrap:wrap;gap:6px}
+@media (max-width:600px){.steps{grid-template-columns:repeat(2,1fr)}.job{grid-template-columns:1fr}.job select{max-width:none;width:100%}}
 @media (max-width:600px){dl.kv{grid-template-columns:1fr}dl.kv dt{margin-top:6px}.hide-m{display:none}}
 </style>
 </head>
@@ -268,8 +411,8 @@ th{font-size:13px;color:var(--muted);border-top:0}
 </body></html>
 <?php return; endif;
 
-$tabs = ['leads' => 'Leads', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'settings' => 'Settings'];
-$tabOn = $v === 'lead' ? 'leads' : $v;
+$tabs = ['leads' => 'Leads', 'collections' => 'Collections', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'settings' => 'Settings'];
+$tabOn = in_array($v, ['lead', 'new'], true) ? 'leads' : $v;
 ?>
 <header class="top">
   <div class="top-in"><img src="<?= BASE ?>img/logo-mark.svg" alt=""><b>Scrap Cars admin</b>
@@ -297,14 +440,16 @@ if ($v === 'leads'):
     $hay = strtolower(implode(' ', [$l['ref'], $l['reg'], $l['postcode'], $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', vehicle_name($l['vehicle'] ?? null)]));
     return str_contains(preg_replace('/\s/', '', $hay), preg_replace('/\s/', '', strtolower($q))) || str_contains($hay, strtolower($q));
   }));
+  $OPSL = operatives($SET);
   $page = max(1, (int)($_GET['p'] ?? 1)); $per = 50; $pages = max(1, (int)ceil(count($list) / $per));
 ?>
-  <h1>Leads</h1>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h1 style="margin-right:auto">Leads</h1><a class="btn go" href="<?= h($A . '?v=new') ?>">+ Phone booking</a></div>
   <div class="stats">
     <div class="stat"><b><?= $count(['accepted', 'call-back']) ?></b><span>Waiting for a call</span></div>
     <div class="stat"><b><?= count($wk) ?></b><span>Prices given, last 7 days</span></div>
     <div class="stat"><b><?= $acc($wk) ?></b><span>Accepted, last 7 days</span></div>
     <div class="stat"><b><?= count($col) ?></b><span>Collected, last 30 days</span></div>
+    <div class="stat"><b><?= count(array_filter($all, fn($l) => ($l['collect_on'] ?? '') === date('Y-m-d') && in_array($l['status'], ['booked', 'dispatched'], true))) ?></b><span><a href="<?= h($A . '?v=collections') ?>">Collections today</a></span></div>
   </div>
   <div class="pills"><?php foreach ($FILTERS as $k => $x): ?><a href="<?= h($A . '?v=leads&f=' . $k) ?>" class="<?= $f === $k ? 'on' : '' ?>"><?= h($x[0]) ?><i><?= $count($x[1]) ?></i></a><?php endforeach; ?></div>
   <form class="search" method="get" action="<?= h($A) ?>"><input type="hidden" name="v" value="leads"><input type="hidden" name="f" value="<?= h($f) ?>"><input name="q" value="<?= h($q) ?>" placeholder="Search reg, name, phone, postcode" aria-label="Search leads"><button class="btn" type="submit">Search</button></form>
@@ -314,7 +459,7 @@ if ($v === 'leads'):
       <div class="lead-top"><span class="plate"><?= h($l['reg']) ?></span><?= adm_badge($STATUS, $l['status']) ?><?php if (!empty($l['demo'])): ?><span class="badge" style="background:#fff3d6;color:#8a5a00">Test</span><?php endif; ?>
         <span class="price"><?= isset($l['final_price']) && $l['final_price'] !== null ? '£' . (int)$l['final_price'] : ($l['price'] === null ? '–' : '£' . (int)$l['price']) ?></span></div>
       <div style="margin-top:6px;font-weight:700"><?= h($l['name'] ?? '') ?: '<span class="small">No contact details</span>' ?><?= $veh ? ' <span class="small">· ' . h($veh) . '</span>' : '' ?></div>
-      <div class="meta"><?= h(adm_when($l['received'])) ?> · <?= h($l['postcode']) ?><?= $l['miles'] !== null ? ' (' . h((string)$l['miles']) . ' mi)' : '' ?><?= !empty($l['collect_on']) ? ' · Collect ' . h(date('D j M', strtotime($l['collect_on']))) : '' ?> · <?= h($l['ref']) ?></div>
+      <div class="meta"><?= h(adm_when($l['received'])) ?> · <?= h($l['postcode']) ?><?= $l['miles'] !== null ? ' (' . h((string)$l['miles']) . ' mi)' : '' ?><?= !empty($l['collect_on']) ? ' · Collect ' . h(date('D j M', strtotime($l['collect_on'])) . ' ' . slot_label($l['collect_slot'] ?? 'any', true)) . (isset($OPSL[$l['op'] ?? '']) ? ' · ' . h($OPSL[$l['op']]['name']) : '') : '' ?> · <?= h($l['ref']) ?></div>
     </a>
   <?php endforeach; ?>
   <?php if ($pages > 1): ?><div class="pills"><?php for ($i = 1; $i <= $pages; $i++): ?><a class="<?= $i === $page ? 'on' : '' ?>" href="<?= h($A . '?v=leads&f=' . $f . '&q=' . rawurlencode($q) . '&p=' . $i) ?>"><?= $i ?></a><?php endfor; ?></div><?php endif; ?>
@@ -325,17 +470,110 @@ if ($v === 'leads'):
 elseif ($v === 'lead'):
   $l = load_lead((string)($_GET['ref'] ?? ''));
   if (!$l): ?><div class="box empty">Lead not found. <a href="<?= h($A) ?>">Back to leads</a></div><?php else:
-  $veh = $l['vehicle'] ?? null; ?>
-  <p class="small"><a href="<?= h($A . '?v=leads') ?>">← All leads</a></p>
+  $veh = $l['vehicle'] ?? null; $OPS = operatives($SET); $op = (string)($l['op'] ?? '');
+  $isBooked = in_array($l['status'], ['booked', 'dispatched', 'collected'], true) && !empty($l['collect_on']);
+  $first = trim(explode(' ', (string)($l['name'] ?? ''))[0]);
+  $hist = $l['history'] ?? [];
+  $lastOf = function (string $type) use ($hist) { foreach (array_reverse($hist) as $x) if (($x['type'] ?? '') === $type) return $x; return null; };
+  $calls = array_values(array_filter($hist, fn($x) => ($x['type'] ?? '') === 'call'));
+  $sentLast = $lastOf('sent'); $collLast = $lastOf('collected');
+  $a = $l['address'] ?? []; $slot = (string)($l['collect_slot'] ?? '');
+  $isTime = (bool)preg_match('/^\d{2}:\d{2}$/', $slot);
+  $by = fn($x) => $x ? h(ucfirst((string)$x['by'])) . ', ' . h(adm_when($x['at'])) : '';
+  $price = $l['final_price'] ?? $l['price'];
+  $custWa = !empty($l['phone']) && $isBooked ? 'https://wa.me/' . intl_phone((string)$l['phone']) . '?text=' . rawurlencode(($first ? "Hi $first, " : 'Hi, ') . "it's George from We Buy Scrap Cars Corby. Your collection for {$l['reg']} is booked for " . collect_when($l) . ' at ' . lead_address($l) . ($price !== null ? ". Agreed price £$price, paid by bank transfer when we collect" : '') . ". Please have the V5C logbook, all keys and photo ID ready. Any problems, just reply here. Thanks!") : '';
+?>
+  <p class="small"><a href="<?= h($A . '?v=leads') ?>">← All leads</a><?php if (!empty($l['collect_on'])): ?> · <a href="<?= h($A . '?v=collections&d=' . $l['collect_on']) ?>">Collections on <?= h(date('D j M', strtotime($l['collect_on']))) ?></a><?php endif; ?></p>
   <h1><span class="plate" style="font-size:20px"><?= h($l['reg']) ?></span> <?= h(vehicle_name($veh) ?: 'Vehicle not found from reg') ?></h1>
-  <p><?= adm_badge($STATUS, $l['status']) ?> <span class="small">Ref <?= h($l['ref']) ?> · priced <?= h(adm_when($l['received'])) ?></span></p>
+  <p><?= adm_badge($STATUS, $l['status']) ?> <span class="small">Ref <?= h($l['ref']) ?> · <?= ($l['source'] ?? '') === 'phone' ? 'added from a phone call' : 'priced online' ?> <?= h(adm_when($l['received'])) ?><?= $price !== null ? ' · £' . (int)$price : '' ?></span></p>
+
+  <div class="steps">
+    <div class="on"><b>Priced</b><?= h(adm_when($l['received'])) ?></div>
+    <div class="<?= $calls ? 'on' : '' ?>"><b>Called</b><?= $calls ? count($calls) . ' · ' . $by(end($calls)) : 'Not yet' ?></div>
+    <div class="<?= $isBooked ? 'on' : '' ?>"><b>Booked</b><?= $isBooked ? h(ucfirst((string)($l['booked_by'] ?? ''))) . ($l['booked_at'] ?? '' ? ', ' . h(adm_when($l['booked_at'])) : '') : 'Not yet' ?></div>
+    <div class="<?= in_array($l['status'], ['dispatched', 'collected'], true) || $sentLast ? 'on' : '' ?>"><b>Sent to driver</b><?= $sentLast ? h($OPS[$sentLast['op'] ?? '']['name'] ?? 'Driver') . ' · ' . $by($sentLast) : 'Not yet' ?></div>
+    <div class="<?= $l['status'] === 'collected' ? 'on' : '' ?>"><b>Collected</b><?= $l['status'] === 'collected' ? h((string)($l['collected_by'] ?? '')) . (!empty($l['collected_at']) ? ', ' . h(adm_when($l['collected_at'])) : '') : 'Not yet' ?></div>
+  </div>
+
   <?php if (!empty($l['phone']) || !empty($l['email'])): ?>
   <div class="acts">
-    <?php if (!empty($l['phone'])): ?><a class="btn go" href="tel:<?= h(adm_tel($l['phone'])) ?>">Call <?= h($l['phone']) ?></a>
-    <a class="btn ghost" href="https://wa.me/<?= h(ltrim(adm_tel($l['phone']), '+')) ?>?text=<?= rawurlencode('Hi ' . trim(explode(' ', (string)($l['name'] ?? ''))[0]) . ', it\'s George from We Buy Scrap Cars Corby about your ' . ($l['reg']) . '.') ?>" rel="noopener">WhatsApp</a><?php endif; ?>
+    <?php if (!empty($l['phone'])): ?><a class="btn go" href="tel:+<?= h(intl_phone((string)$l['phone'])) ?>">Call <?= h($l['phone']) ?></a>
+    <a class="btn ghost" href="https://wa.me/<?= h(intl_phone((string)$l['phone'])) ?>?text=<?= rawurlencode(($first ? "Hi $first" : 'Hi') . ', it\'s George from We Buy Scrap Cars Corby about your ' . $l['reg'] . '.') ?>" rel="noopener">WhatsApp</a><?php endif; ?>
     <?php if (!empty($l['email'])): ?><a class="btn ghost" href="mailto:<?= h($l['email']) ?>?subject=<?= rawurlencode('Your scrap car ' . $l['reg'] . ' (ref ' . $l['ref'] . ')') ?>">Email</a><?php endif; ?>
   </div>
   <?php endif; ?>
+
+  <?php if ($l['status'] !== 'collected'): ?>
+  <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="calllog"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <h2 style="margin-top:0">1. Log a call</h2>
+    <div class="seg"><?php foreach ($CALLS as $i => $c): ?><label><input type="radio" name="outcome" value="<?= h($c) ?>"<?= $i === 0 ? ' checked' : '' ?>> <?= h($c) ?></label><?php endforeach; ?></div>
+    <label style="margin-top:10px">Note (optional)<input name="note" placeholder="e.g. wants Saturday, call back after 5"></label>
+    <button class="btn ghost" type="submit" style="margin-top:10px">Save call</button>
+    <?php if ($calls): ?><p class="small" style="margin-bottom:0">Last call: <?= h(end($calls)['what']) ?> (<?= $by(end($calls)) ?>)</p><?php endif; ?>
+  </form>
+  <?php endif; ?>
+
+  <form class="box" id="book" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="book"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <h2 style="margin-top:0">2. <?= $isBooked ? 'Booking' : 'Book the collection' ?></h2>
+    <div class="grid">
+      <label>Customer name<input name="name" value="<?= h($l['name'] ?? '') ?>" autocomplete="off" required></label>
+      <label>Phone<input name="phone" type="tel" value="<?= h($l['phone'] ?? '') ?>" autocomplete="off" required></label>
+      <label>Email (for the confirmation)<input name="email" type="email" value="<?= h($l['email'] ?? '') ?>" autocomplete="off"></label>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <label>Address line 1<input name="line1" value="<?= h($a['line1'] ?? '') ?>" placeholder="House number and street" autocomplete="off" required></label>
+      <label>Address line 2<input name="line2" value="<?= h($a['line2'] ?? '') ?>" placeholder="Optional" autocomplete="off"></label>
+      <label>Town<input name="town" value="<?= h($a['town'] ?? $l['town'] ?? '') ?>" autocomplete="off"></label>
+      <label>Postcode<input name="postcode" value="<?= h($a['postcode'] ?? $l['postcode']) ?>" autocomplete="off" required style="text-transform:uppercase"></label>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <label>Collection date<input type="date" name="collect_on" value="<?= h($l['collect_on'] ?? '') ?>" required></label>
+      <div><span style="font-weight:600;font-size:15px">Time</span>
+        <div class="seg" id="slots">
+          <?php foreach (['am' => 'AM', 'pm' => 'PM', 'any' => 'Any time', 'time' => 'Set time'] as $k => $t): $on = $k === 'time' ? $isTime : ($slot === $k || ($slot === '' && $k === 'any')); ?>
+          <label><input type="radio" name="slot" value="<?= $k ?>"<?= $on ? ' checked' : '' ?>> <?= $t ?></label><?php endforeach; ?>
+        </div>
+        <input type="time" name="time" id="slottime" value="<?= $isTime ? h($slot) : '' ?>" step="900"<?= $isTime ? '' : ' hidden' ?>>
+      </div>
+      <label>Agreed price (£)<input type="number" name="final_price" min="0" step="1" inputmode="numeric" value="<?= h(isset($l['final_price']) ? (string)$l['final_price'] : '') ?>" placeholder="<?= $l['price'] === null ? '' : h((string)$l['price']) ?>"><span class="hint"><?= $l['price'] === null ? 'No website price for this one: enter what you agreed.' : 'Leave blank to keep £' . (int)$l['price'] . '.' ?></span></label>
+    </div>
+    <label style="margin-top:12px">Notes for the driver<textarea name="driver_note" placeholder="e.g. no keys, flat tyres, parked on the drive, ring before arriving"><?= h($l['driver_note'] ?? ($l['collection_note'] ?? '')) ?></textarea><?php if (!empty($l['collection_note'])): ?><span class="hint">Customer's own note: <?= h($l['collection_note']) ?></span><?php endif; ?></label>
+    <label class="tick" style="margin-top:12px"><input type="checkbox" name="email_customer" value="1"<?= $isBooked ? '' : ' checked' ?>> Email the customer the booking details</label>
+    <button class="btn go" type="submit" style="margin-top:12px"><?= $isBooked ? 'Save booking' : 'Book in' ?></button>
+    <?php if ($custWa): ?><a class="btn ghost wa" style="margin-top:12px" href="<?= h($custWa) ?>" rel="noopener">WhatsApp the customer their booking</a><?php endif; ?>
+  </form>
+
+  <?php if ($isBooked && $l['status'] !== 'collected'): ?>
+  <div class="box" id="driver">
+    <h2 style="margin-top:0">3. Send to a driver</h2>
+    <?php if (!$OPS): ?><p>No drivers saved yet. <a href="<?= h($A . '?v=settings#drivers') ?>">Add your drivers in Settings</a> (name and mobile), then they show here.</p>
+    <?php else: ?>
+      <p class="small" style="margin-top:0">Tap WhatsApp or Text next to a driver. It opens with the job ready to send (car, reg, name, phone, address, map, date, time, notes and a link for them to mark it collected). <?= $l['status'] === 'dispatched' ? '<b>Already sent to ' . h($OPS[$op]['name'] ?? 'a driver') . '.</b>' : '' ?></p>
+      <?php foreach ($OPS as $id => $o): $lj = $l; $lj['op'] = (string)$id; $txt = job_text($lj); ?>
+      <div class="oprow"><b><?= h($o['name']) ?><?= $op === (string)$id ? ' ✓' : '' ?></b>
+        <a class="btn sm wa js-send" href="<?= h(send_link('whatsapp', $o['phone'], $txt)) ?>" data-op="<?= h((string)$id) ?>" data-via="whatsapp" data-refs="<?= h($l['ref']) ?>" rel="noopener">WhatsApp</a>
+        <a class="btn sm ghost js-send" href="<?= h(send_link('sms', $o['phone'], $txt)) ?>" data-op="<?= h((string)$id) ?>" data-via="sms" data-refs="<?= h($l['ref']) ?>">Text</a></div>
+      <?php endforeach; ?>
+    <?php endif; ?>
+  </div>
+  <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="collected"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <h2 style="margin-top:0">4. Collected</h2>
+    <p class="small" style="margin-top:0">The driver can mark it collected from their link, or you can do it here.</p>
+    <div class="grid">
+      <label>Amount paid (£)<input type="number" name="paid" min="0" step="1" inputmode="numeric" value="<?= $price !== null ? (int)$price : '' ?>"></label>
+      <label>Bank transfer reference<input name="pay_ref" placeholder="Optional"></label>
+      <label>Note<input name="note" placeholder="Optional"></label>
+    </div>
+    <button class="btn go" type="submit" style="margin-top:12px">Mark as collected</button>
+  </form>
+  <?php elseif ($l['status'] === 'collected'): ?>
+  <div class="box"><h2 style="margin-top:0">Collected</h2><dl class="kv">
+    <dt>Collected</dt><dd><?= h((string)($l['collected_by'] ?? '')) ?><?= !empty($l['collected_at']) ? ', ' . h(date('D j M Y, H:i', strtotime($l['collected_at']))) : '' ?></dd>
+    <dt>Paid</dt><dd><?= isset($l['paid']) && $l['paid'] !== null ? '£' . (int)$l['paid'] : '–' ?><?= !empty($l['pay_ref']) ? ' (ref ' . h($l['pay_ref']) . ')' : '' ?></dd>
+    <?php if (!empty($l['driver_report'])): ?><dt>Driver's note</dt><dd><?= h($l['driver_report']) ?></dd><?php endif; ?>
+  </dl></div>
+  <?php endif; ?>
+
   <div class="grid" style="align-items:start">
     <div class="box">
       <h2 style="margin-top:0">Customer</h2>
@@ -343,7 +581,7 @@ elseif ($v === 'lead'):
         <dt>Name</dt><dd><?= h($l['name'] ?? '') ?: '–' ?></dd>
         <dt>Phone</dt><dd><?= h($l['phone'] ?? '') ?: '–' ?></dd>
         <dt>Email</dt><dd><?= h($l['email'] ?? '') ?: '–' ?></dd>
-        <dt>Postcode</dt><dd><?= h($l['postcode']) ?><?= $l['town'] ? ', ' . h($l['town']) : '' ?><?= $l['miles'] !== null ? ' (' . h((string)$l['miles']) . ' miles from Corby)' : '' ?></dd>
+        <dt>Address</dt><dd><?= h(lead_address($l)) ?: '–' ?><?= $l['miles'] !== null ? ' (' . h((string)$l['miles']) . ' miles from Corby)' : '' ?></dd>
         <dt>Their note</dt><dd><?= h($l['collection_note'] ?? '') ?: '–' ?></dd>
         <dt>Reminders</dt><dd><?= !empty($l['reminders_ok']) ? 'Yes' . (!empty($l['reminded']) ? ($l['reminded'] === 'unsubscribed' ? ' (unsubscribed, none sent)' : ' (sent ' . h(adm_when($l['reminded'])) . ')') : '') : 'No' ?></dd>
         <?php if (!empty($l['accepted'])): ?><dt>Accepted</dt><dd><?= h(adm_when($l['accepted'])) ?></dd><?php endif; ?>
@@ -353,28 +591,116 @@ elseif ($v === 'lead'):
       <h2 style="margin-top:0">Price</h2>
       <dl class="kv">
         <dt>Price given</dt><dd><?= $l['price'] === null ? 'None: needs a price' : '£' . (int)$l['price'] ?></dd>
+        <?php if (isset($l['final_price']) && $l['final_price'] !== null): ?><dt>Agreed</dt><dd>£<?= (int)$l['final_price'] ?></dd><?php endif; ?>
         <dt>Held until</dt><dd><?= h(date('j M Y', strtotime($l['valid_until']))) ?></dd>
         <dt>Weight used</dt><dd><?= number_format((int)$l['weight_kg']) ?> kg <span class="small">(<?= h($l['weight_source']) ?>)</span></dd>
         <dt>Rate used</dt><dd>£<?= h((string)$l['rate_per_tonne']) ?> per tonne</dd>
-        <?php if ($veh): ?><dt>Vehicle</dt><dd><?= h(implode(' · ', array_filter([vehicle_name($veh), !empty($veh['engine_cc']) ? number_format($veh['engine_cc'] / 1000, 1) . ' litre' : '', $veh['fuel'] ?? '', $veh['colour'] ?? '']))) ?></dd><?php endif; ?>
+        <?php if ($veh): ?><dt>Vehicle</dt><dd><?= h(implode(' · ', array_filter([vehicle_name($veh), !empty($veh['engine_cc']) ? number_format($veh['engine_cc'] / 1000, 1) . ' litre' : '', fuel_label($veh['fuel'] ?? ''), $veh['colour'] ?? '']))) ?></dd><?php endif; ?>
       </dl>
       <?php if (str_contains((string)$l['weight_source'], 'Claude') || str_contains((string)$l['weight_source'], 'One Auto')): ?><p class="small">Weight looks wrong? <a href="<?= h($A . '?v=rates#weights') ?>">Fix it for this model</a>.</p><?php endif; ?>
     </div>
   </div>
+
   <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="lead"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
-    <h2 style="margin-top:0">Update</h2>
+    <h2 style="margin-top:0">Status &amp; your notes</h2>
     <div class="grid">
       <label>Status<select name="status"><?php foreach ($SETTABLE as $s): ?><option value="<?= h($s) ?>"<?= $l['status'] === $s ? ' selected' : '' ?>><?= h($STATUS[$s][0]) ?></option><?php endforeach;
-        if (!in_array($l['status'], $SETTABLE, true)): ?><option value="" selected><?= h($STATUS[$l['status']][0] ?? $l['status']) ?></option><?php endif; ?></select></label>
-      <label>Collection date<input type="date" name="collect_on" value="<?= h($l['collect_on'] ?? '') ?>"></label>
-      <label>Agreed price (£)<input type="number" name="final_price" min="0" step="1" inputmode="numeric" value="<?= h(isset($l['final_price']) ? (string)$l['final_price'] : '') ?>" placeholder="<?= $l['price'] === null ? '' : h((string)$l['price']) ?>"><span class="hint">Only if it changed, e.g. parts missing.</span></label>
+        if (!in_array($l['status'], $SETTABLE, true)): ?><option value="" selected><?= h($STATUS[$l['status']][0] ?? $l['status']) ?></option><?php endif; ?></select><span class="hint">Use this for Lost / declined. Booking and collecting set it for you.</span></label>
     </div>
-    <label style="margin-top:12px">Your notes<textarea name="admin_note" placeholder="e.g. no keys, cat missing, collect after 4pm"><?= h($l['admin_note'] ?? '') ?></textarea></label>
-    <p class="hint">Marking a lead Booked, Collected or Lost stops any price reminders.</p>
-    <button class="btn go" type="submit">Save</button>
+    <label style="margin-top:12px">Your notes (only you see these)<textarea name="admin_note" placeholder="e.g. customer wants the private plate kept"><?= h($l['admin_note'] ?? '') ?></textarea></label>
+    <button class="btn" type="submit" style="margin-top:12px">Save</button>
   </form>
-  <?php if (!empty($l['history'])): ?><div class="box"><h2 style="margin-top:0">History</h2><table><?php foreach (array_reverse($l['history']) as $hh): ?><tr><td class="small"><?= h(adm_when($hh['at'])) ?></td><td><?= h(ucfirst($hh['by'])) ?></td><td><?= h($hh['what']) ?></td></tr><?php endforeach; ?></table></div><?php endif; ?>
+  <?php if ($hist): ?><div class="box"><h2 style="margin-top:0">History</h2><table><?php foreach (array_reverse($hist) as $hh): ?><tr><td class="small" style="white-space:nowrap"><?= h(adm_when($hh['at'])) ?></td><td><?= h(ucfirst((string)$hh['by'])) ?></td><td><?= h($hh['what']) ?></td></tr><?php endforeach; ?></table></div><?php endif; ?>
   <?php endif; ?>
+
+<?php
+/* ================= COLLECTIONS BOARD ================= */
+elseif ($v === 'collections'):
+  $OPS = operatives($SET);
+  $d = preg_match('/^\d{4}-\d{2}-\d{2}$/', (string)($_GET['d'] ?? '')) ? (string)$_GET['d'] : date('Y-m-d');
+  $all = adm_leads();
+  $jobs = array_values(array_filter($all, fn($l) => ($l['collect_on'] ?? '') === $d && in_array($l['status'], ['booked', 'dispatched', 'collected'], true)));
+  usort($jobs, fn($x, $y) => strcmp(slot_sort($x['collect_slot'] ?? '') . $x['ref'], slot_sort($y['collect_slot'] ?? '') . $y['ref']));
+  $upcoming = []; foreach ($all as $l) if (!empty($l['collect_on']) && $l['collect_on'] >= date('Y-m-d') && in_array($l['status'], ['booked', 'dispatched'], true)) $upcoming[$l['collect_on']] = ($upcoming[$l['collect_on']] ?? 0) + 1;
+  ksort($upcoming);
+  $unassigned = count(array_filter($jobs, fn($l) => $l['status'] !== 'collected' && !isset($OPS[$l['op'] ?? ''])));
+  $dl = fn($x) => h($A . '?v=collections&d=' . $x);
+?>
+  <h1>Collections</h1>
+  <div class="pills">
+    <a href="<?= $dl(date('Y-m-d', strtotime($d . ' -1 day'))) ?>">← Prev</a>
+    <a class="<?= $d === date('Y-m-d') ? 'on' : '' ?>" href="<?= $dl(date('Y-m-d')) ?>">Today</a>
+    <a class="<?= $d === date('Y-m-d', strtotime('+1 day')) ? 'on' : '' ?>" href="<?= $dl(date('Y-m-d', strtotime('+1 day'))) ?>">Tomorrow</a>
+    <a href="<?= $dl(date('Y-m-d', strtotime($d . ' +1 day'))) ?>">Next →</a>
+  </div>
+  <form class="search" method="get" action="<?= h($A) ?>"><input type="hidden" name="v" value="collections"><input type="date" name="d" value="<?= h($d) ?>" aria-label="Date"><button class="btn" type="submit">Go</button></form>
+  <?php if ($upcoming): ?><p class="small">Coming up: <?php $i = 0; foreach ($upcoming as $day => $n): if ($i++ > 9) break; ?><a href="<?= $dl($day) ?>"><?= h(date('D j M', strtotime($day))) ?> (<?= $n ?>)</a><?= $i <= min(9, count($upcoming) - 1) ? ' · ' : '' ?><?php endforeach; ?></p><?php endif; ?>
+  <h2><?= h(date('l j F', strtotime($d))) ?>: <?= count($jobs) ?> job<?= count($jobs) === 1 ? '' : 's' ?></h2>
+  <?php if (!$jobs): ?><div class="box empty">No collections booked for this day.</div>
+  <?php else: ?>
+    <?php if (!$OPS): ?><div class="box">No drivers saved yet. <a href="<?= h($A . '?v=settings#drivers') ?>">Add your drivers in Settings</a>, then pick a driver for each job here.</div><?php endif; ?>
+    <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="assign">
+      <h2 style="margin-top:0">1. Pick a driver for each job</h2>
+      <?php foreach ($jobs as $l): $done = $l['status'] === 'collected'; ?>
+      <div class="job">
+        <div><span class="plate"><?= h($l['reg']) ?></span></div>
+        <div><a href="<?= h($A . '?v=lead&ref=' . $l['ref']) ?>"><b><?= h(slot_label($l['collect_slot'] ?? 'any', true)) ?></b> · <?= h(vehicle_name($l['vehicle'] ?? null) ?: 'Vehicle') ?></a>
+          <div class="small"><?= h(($l['name'] ?? '') . ' · ' . lead_address($l)) ?></div>
+          <div><?= adm_badge($STATUS, $l['status']) ?></div></div>
+        <div><?php if ($done): ?><span class="small">Collected<?= !empty($l['collected_by']) ? ' by ' . h(str_replace('Driver: ', '', (string)$l['collected_by'])) : '' ?></span><?php else: ?>
+          <select name="op_<?= h($l['ref']) ?>" aria-label="Driver for <?= h($l['reg']) ?>"><option value="">No driver</option><?php foreach ($OPS as $id => $o): ?><option value="<?= h((string)$id) ?>"<?= (string)($l['op'] ?? '') === (string)$id ? ' selected' : '' ?>><?= h($o['name']) ?></option><?php endforeach; ?></select><?php endif; ?></div>
+      </div>
+      <?php endforeach; ?>
+      <?php if ($OPS): ?><button class="btn go" type="submit" style="margin-top:12px">Save drivers</button><?php endif; ?>
+    </form>
+    <?php if ($OPS): ?>
+    <div class="box">
+      <h2 style="margin-top:0">2. Send each driver their jobs</h2>
+      <?php if ($unassigned): ?><p class="small" style="color:var(--red);font-weight:700"><?= $unassigned ?> job<?= $unassigned === 1 ? ' has' : 's have' ?> no driver yet.</p><?php endif; ?>
+      <?php $any = false; foreach ($OPS as $id => $o):
+        $mine = array_values(array_filter($jobs, fn($l) => (string)($l['op'] ?? '') === (string)$id && $l['status'] !== 'collected'));
+        if (!$mine) continue; $any = true;
+        $unsent = count(array_filter($mine, fn($l) => $l['status'] === 'booked'));
+        foreach (array_chunk($mine, 8) as $ci => $chunk):
+          $n = count($mine); $txt = "Hi {$o['name']}, collections for " . date('D j M', strtotime($d)) . " ($n job" . ($n === 1 ? '' : 's') . "):\n\n";
+          foreach ($chunk as $k => $l) $txt .= job_text($l, $ci * 8 + $k + 1, $n) . "\n\n";
+          $refs = implode(',', array_column($chunk, 'ref'));
+          $label = count($mine) > 8 ? ' (jobs ' . ($ci * 8 + 1) . '–' . ($ci * 8 + count($chunk)) . ')' : ''; ?>
+      <div class="oprow"><b><?= h($o['name']) ?></b><span class="small"><?= $n ?> job<?= $n === 1 ? '' : 's' ?><?= $label ?><?= $unsent ? " · $unsent not sent yet" : ' · all sent' ?></span>
+        <a class="btn sm wa js-send" href="<?= h(send_link('whatsapp', $o['phone'], trim($txt))) ?>" data-op="<?= h((string)$id) ?>" data-via="whatsapp" data-refs="<?= h($refs) ?>" rel="noopener">WhatsApp</a>
+        <a class="btn sm ghost js-send" href="<?= h(send_link('sms', $o['phone'], trim($txt))) ?>" data-op="<?= h((string)$id) ?>" data-via="sms" data-refs="<?= h($refs) ?>">Text</a></div>
+      <?php endforeach; endforeach; ?>
+      <?php if (!$any): ?><p class="small">Pick drivers above and press Save drivers. Each driver then gets one button to send all their jobs in one message.</p><?php endif; ?>
+    </div>
+    <?php endif; ?>
+  <?php endif; ?>
+
+<?php
+/* ================= NEW PHONE BOOKING ================= */
+elseif ($v === 'new'):
+  $g = fn($k) => h(mb_substr(trim((string)($_GET[$k] ?? '')), 0, 100)); ?>
+  <p class="small"><a href="<?= h($A . '?v=leads') ?>">← All leads</a></p>
+  <h1>New booking from a phone call</h1>
+  <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="new_lead">
+    <div class="grid">
+      <label>Registration<input name="reg" value="<?= $g('reg') ?>" required style="text-transform:uppercase" autocomplete="off"></label>
+      <label>Customer name<input name="name" value="<?= $g('name') ?>" required autocomplete="off"></label>
+      <label>Phone<input name="phone" type="tel" value="<?= $g('phone') ?>" required autocomplete="off"></label>
+      <label>Email (optional)<input name="email" type="email" autocomplete="off"></label>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <label>Address line 1<input name="line1" autocomplete="off"></label>
+      <label>Address line 2<input name="line2" autocomplete="off"></label>
+      <label>Town<input name="town" autocomplete="off"></label>
+      <label>Postcode<input name="postcode" value="<?= $g('postcode') ?>" required style="text-transform:uppercase" autocomplete="off"></label>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <label>Agreed price (£, optional)<input name="final_price" type="number" min="0" step="1" inputmode="numeric"><span class="hint">Leave blank to use the price from the reg lookup.</span></label>
+      <label>Note<input name="note" placeholder="Anything the customer told you" autocomplete="off"></label>
+    </div>
+    <label class="tick" style="margin-top:12px"><input type="checkbox" name="lookup" value="1" checked> Look up the car and price from the reg (20p if it's a new reg)</label>
+    <button class="btn go" type="submit" style="margin-top:12px">Add and go to booking</button>
+  </form>
 
 <?php
 /* ================= ENQUIRIES ================= */
@@ -389,6 +715,7 @@ elseif ($v === 'enquiries'):
         <dt>Phone</dt><dd><a href="tel:<?= h(adm_tel((string)($e['phone'] ?? ''))) ?>"><?= h($e['phone'] ?? '') ?></a></dd>
         <?php foreach (['vehicle' => 'Vehicle', 'location' => 'Where', 'message' => 'Message'] as $k => $t): if (!empty($e[$k])): ?><dt><?= $t ?></dt><dd><?= nl2br(h($e[$k])) ?></dd><?php endif; endforeach; ?>
       </dl>
+      <a class="btn ghost sm" style="margin-top:10px" href="<?= h($A . '?v=new&' . http_build_query(['name' => (string)($e['name'] ?? ''), 'phone' => (string)($e['phone'] ?? '')])) ?>">Make a booking</a>
     </div>
   <?php endforeach; ?>
 
@@ -451,6 +778,22 @@ elseif ($v === 'settings'):
       <dt>Last reminder run</dt><dd><?= $rl ? h($rl[0]) : 'Not run yet' ?></dd>
     </dl>
   </div>
+  <div class="box" id="drivers">
+    <h2 style="margin-top:0">Drivers</h2>
+    <p class="small">Save your drivers once. They then appear on every booking and on Collections, so sending a job is one tap.</p>
+    <?php $OPSS = operatives($SET); foreach ($OPSS as $id => $o): ?>
+    <form class="oprow" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="id" value="<?= h((string)$id) ?>">
+      <input name="op_name" value="<?= h($o['name']) ?>" aria-label="Name" style="max-width:160px;margin:0">
+      <input name="op_phone" type="tel" value="<?= h($o['phone']) ?>" aria-label="Mobile" style="max-width:170px;margin:0">
+      <button class="btn sm" type="submit" name="act" value="op_save">Save</button>
+      <button class="btn sm ghost" type="submit" name="act" value="op_del" onclick="return confirm('Remove <?= h(addslashes($o['name'])) ?>?')">Remove</button>
+    </form>
+    <?php endforeach; ?>
+    <form method="post" action="<?= h($A) ?>" style="margin-top:12px"><?= $hidden ?><input type="hidden" name="act" value="op_save">
+      <div class="grid"><label>Driver name<input name="op_name" autocomplete="off"></label><label>Mobile<input name="op_phone" type="tel" autocomplete="off" placeholder="07..."></label></div>
+      <button class="btn go" type="submit" style="margin-top:10px">Add driver</button>
+    </form>
+  </div>
   <div class="box" id="lookup">
     <h2 style="margin-top:0">Vehicle lookup (One Auto API)</h2>
     <p class="small">Finds the make, model and kerb weight from the reg. Each new reg costs 20p from your One Auto API credit; the same reg again within 30 days is free. At most <?= (int)($CFG['lookup_daily_cap'] ?? 150) ?> paid lookups a day, after that customers get a "we'll call you" price.</p>
@@ -496,5 +839,12 @@ elseif ($v === 'settings'):
   <div class="box empty">Page not found. <a href="<?= h($A) ?>">Back to leads</a></div>
 <?php endif; ?>
 </main>
+<script>
+(()=>{const A=<?= json_encode($A) ?>,C=<?= json_encode($csrf) ?>;
+document.querySelectorAll('.js-send').forEach(a=>a.addEventListener('click',()=>{const f=new FormData();f.append('act','sent');f.append('csrf',C);f.append('op',a.dataset.op);f.append('via',a.dataset.via);f.append('refs',a.dataset.refs);try{navigator.sendBeacon(A,f)}catch(e){}}));
+const t=document.getElementById('slottime');if(t){document.querySelectorAll('#slots input').forEach(r=>r.addEventListener('change',()=>{const on=document.querySelector('#slots input:checked').value==='time';t.hidden=!on;t.required=on;if(on)t.focus()}))}
+document.querySelectorAll('select[name^="op_"]').forEach(s=>s.addEventListener('change',()=>s.closest('.job').style.background='#fffbea'));
+})();
+</script>
 </body>
 </html>
