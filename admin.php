@@ -285,7 +285,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if ($me && ($_GET['v'] ?? '') === 'photo') {
   $ref = preg_replace('/[^A-Z0-9]/', '', strtoupper((string)($_GET['ref'] ?? ''))); $fn = (string)($_GET['f'] ?? '');
   $file = STORE . "/photos/$ref/$fn";
-  if ($ref === '' || !preg_match('/^(id|car)-\d{8}-\d{6}-[a-f0-9]{6}\.(jpg|png|webp)$/', $fn) || !is_file($file)) { http_response_code(404); exit; }
+  if ($ref === '' || !preg_match('/^(id|car|fail)-\d{8}-\d{6}-[a-f0-9]{6}\.(jpg|png|webp)$/', $fn) || !is_file($file)) { http_response_code(404); exit; }
   header('Content-Type: ' . ['jpg' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp'][pathinfo($fn, PATHINFO_EXTENSION)]);
   header('Cache-Control: private, max-age=86400'); header('Content-Length: ' . filesize($file)); readfile($file); exit;
 }
@@ -607,6 +607,14 @@ elseif ($v === 'lead'):
   </div>
   <?php endif; ?>
 
+  <?php if (!empty($l['failed'])): ?>
+  <div class="box" style="border-left:5px solid var(--red)"><h2 style="margin-top:0">Not collected</h2>
+    <?php foreach (array_reverse($l['failed']) as $fa): ?>
+      <p style="margin:8px 0 4px"><b><?= h((string)$fa['by']) ?></b> <span class="small"><?= h(adm_when($fa['at'])) ?></span><br><?= h((string)$fa['why']) ?></p>
+      <?php if (!empty($fa['photos'])): ?><div class="photos"><?php foreach ($fa['photos'] as $i => $fpn): $u = h($A . '?v=photo&ref=' . $l['ref'] . '&f=' . $fpn); ?><a href="<?= $u ?>" target="_blank" rel="noopener"><img src="<?= $u ?>" alt="Photo <?= $i + 1 ?>"><span>Photo <?= $i + 1 ?></span></a><?php endforeach; ?></div><?php endif; ?>
+    <?php endforeach; ?>
+  </div>
+  <?php endif; ?>
   <div class="grid" style="align-items:start">
     <div class="box">
       <h2 style="margin-top:0">Customer</h2>
