@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $l = load_lead((string)($_POST['ref'] ?? '')); if (!$l) adm_go($back, 'Lead not found.', true);
     $chg = [];
     $st = (string)($_POST['status'] ?? ''); if (in_array($st, $SETTABLE, true) && $st !== $l['status']) { $chg[] = 'status: ' . ($STATUS[$l['status']][0] ?? $l['status']) . ' → ' . $STATUS[$st][0]; $l['status'] = $st; }
-    $nt = mb_substr(trim((string)($_POST['admin_note'] ?? '')), 0, 2000); if ($nt !== ($l['admin_note'] ?? '')) { $chg[] = 'notes'; $l['admin_note'] = $nt; }
+    if (isset($_POST['admin_note'])) { $nt = mb_substr(trim((string)$_POST['admin_note']), 0, 2000); if ($nt !== ($l['admin_note'] ?? '')) { $chg[] = 'notes'; $l['admin_note'] = $nt; } }
     if ($chg) { $l['history'][] = ['at' => date('c'), 'by' => $me, 'what' => ucfirst(implode(', ', $chg)), 'type' => 'note']; save_lead($l); }
     adm_go($back, $chg ? 'Saved.' : 'No changes.');
   }
@@ -602,14 +602,16 @@ elseif ($v === 'lead'):
   </div>
 
   <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="lead"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
-    <h2 style="margin-top:0">Status &amp; your notes</h2>
-    <div class="grid">
-      <label>Status<select name="status"><?php foreach ($SETTABLE as $s): ?><option value="<?= h($s) ?>"<?= $l['status'] === $s ? ' selected' : '' ?>><?= h($STATUS[$s][0]) ?></option><?php endforeach;
-        if (!in_array($l['status'], $SETTABLE, true)): ?><option value="" selected><?= h($STATUS[$l['status']][0] ?? $l['status']) ?></option><?php endif; ?></select><span class="hint">Use this for Lost / declined. Booking and collecting set it for you.</span></label>
-    </div>
-    <label style="margin-top:12px">Your notes (only you see these)<textarea name="admin_note" placeholder="e.g. customer wants the private plate kept"><?= h($l['admin_note'] ?? '') ?></textarea></label>
-    <button class="btn" type="submit" style="margin-top:12px">Save</button>
+    <h2 style="margin-top:0">Your notes</h2>
+    <label>Only you see these<textarea name="admin_note" placeholder="e.g. customer wants the private plate kept"><?= h($l['admin_note'] ?? '') ?></textarea></label>
+    <button class="btn" type="submit" style="margin-top:12px">Save notes</button>
   </form>
+  <?php if ($l['status'] !== 'collected'): ?>
+  <form method="post" action="<?= h($A) ?>" style="margin:0 0 14px"><?= $hidden ?><input type="hidden" name="act" value="lead"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <?php if ($l['status'] === 'lost'): ?><button class="btn ghost sm" type="submit" name="status" value="<?= !empty($l['collect_on']) ? 'booked' : ($l['price'] === null ? 'call-back' : 'accepted') ?>">Reopen this lead</button>
+    <?php else: ?><button class="btn ghost sm" type="submit" name="status" value="lost" style="border-color:var(--red);color:var(--red)" onclick="return confirm('Mark <?= h($l['reg']) ?> as lost / declined?')">Mark as lost / declined</button><?php endif; ?>
+  </form>
+  <?php endif; ?>
   <?php if ($hist): ?><div class="box"><h2 style="margin-top:0">History</h2><table><?php foreach (array_reverse($hist) as $hh): ?><tr><td class="small" style="white-space:nowrap"><?= h(adm_when($hh['at'])) ?></td><td><?= h(ucfirst((string)$hh['by'])) ?></td><td><?= h($hh['what']) ?></td></tr><?php endforeach; ?></table></div><?php endif; ?>
   <?php endif; ?>
 
