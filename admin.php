@@ -126,6 +126,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     adm_go($A . '?v=settings', $res['skipped'] !== 'no' ? 'Reminders not sent: ' . $res['skipped'] . '.' : "Checked {$res['checked']} price(s), sent {$res['sent']} reminder(s).");
   }
 
+  if ($act === 'oneauto_key') {
+    $k = trim((string)($_POST['oneauto_key'] ?? ''));
+    if ($k === '' && !empty($_POST['remove'])) { @unlink(STORE . '/keys/oneauto.key'); adm_go($A . '?v=settings#lookup', 'Lookup key removed. Every car is now priced at the average weight.'); }
+    if (!preg_match('/^[A-Za-z0-9._~+\/=-]{16,200}$/', $k)) adm_go($A . '?v=settings#lookup', 'That key doesn\'t look right. Copy it again from your One Auto API account (no spaces).', true);
+    store_path('keys'); $kf = STORE . '/keys/oneauto.key';
+    if (@file_put_contents($kf, $k, LOCK_EX) === false) adm_go($A . '?v=settings#lookup', 'Couldn\'t save the key. Please tell Lewis.', true);
+    @chmod($kf, 0600);
+    adm_go($A . '?v=settings#lookup', 'Key saved. Now test it with a registration below.');
+  }
+
+  if ($act === 'oneauto_test') {
+    $reg = clean_reg((string)($_POST['reg'] ?? ''));
+    if (strlen($reg) < 2) adm_go($A . '?v=settings#lookup', 'Enter a registration to test.', true);
+    if ($CFG['oneauto_key'] === '') adm_go($A . '?v=settings#lookup', 'Save the One Auto API key first.', true);
+    $v = oneauto_lookup($reg, $CFG, false);
+    if (!$v) { $last = is_file(STORE . '/logs/lookups-' . date('Y-m') . '.log') ? (array_slice(file(STORE . '/logs/lookups-' . date('Y-m') . '.log', FILE_IGNORE_NEW_LINES) ?: [], -1)[0] ?? '') : '';
+      adm_go($A . '?v=settings#lookup', "No result for $reg. " . ($last ? 'Server reply: ' . $last . '. ' : '') . (str_contains($last, ' 401 ') || str_contains($last, ' 403 ') ? 'The key was refused: check it was copied in full and the account has credit.' : 'Check the reg, or tell Lewis.'), true); }
+    $w = weight_cached($v);
+    adm_go($A . '?v=settings#lookup', "$reg: " . vehicle_name($v) . ($v['engine_cc'] ? ', ' . number_format($v['engine_cc']) . 'cc' : '') . ' ' . $v['fuel'] . '. Weight ' . ($w ? number_format($w['kg']) . ' kg (' . $w['source'] . ')' : 'not given: average weight used') . '. Price today: £' . price_for($w['kg'] ?? (int)$PR['default_kg'], $PR) . (!empty($v['scrapped']) ? '. DVLA shows it as already scrapped.' : '.'));
+  }
+
   if ($act === 'password') {
     $cur = (string)($_POST['current'] ?? ''); $new = (string)($_POST['new'] ?? ''); $conf = (string)($_POST['confirm'] ?? '');
     if (!password_verify($cur, $users[$me]['hash'])) adm_go($A . '?v=settings', 'Your current password isn\'t right.', true);
@@ -337,7 +358,7 @@ elseif ($v === 'lead'):
         <dt>Rate used</dt><dd>£<?= h((string)$l['rate_per_tonne']) ?> per tonne</dd>
         <?php if ($veh): ?><dt>Vehicle</dt><dd><?= h(implode(' · ', array_filter([vehicle_name($veh), !empty($veh['engine_cc']) ? number_format($veh['engine_cc'] / 1000, 1) . ' litre' : '', $veh['fuel'] ?? '', $veh['colour'] ?? '']))) ?></dd><?php endif; ?>
       </dl>
-      <?php if (str_contains((string)$l['weight_source'], 'Claude')): ?><p class="small">Weight looks wrong? <a href="<?= h($A . '?v=rates#weights') ?>">Fix it for this model</a>.</p><?php endif; ?>
+      <?php if (str_contains((string)$l['weight_source'], 'Claude') || str_contains((string)$l['weight_source'], 'One Auto')): ?><p class="small">Weight looks wrong? <a href="<?= h($A . '?v=rates#weights') ?>">Fix it for this model</a>.</p><?php endif; ?>
     </div>
   </div>
   <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="lead"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
@@ -425,10 +446,26 @@ elseif ($v === 'settings'):
     <h2 style="margin-top:0">Status</h2>
     <dl class="kv">
       <dt>Website</dt><dd><?= $dot(!PREVIEW) ?><?= PREVIEW ? 'Preview (not live yet)' : 'Live' ?></dd>
-      <dt>Reg lookup</dt><dd><?= $dot($LIVE_LOOKUP) ?><?= $LIVE_LOOKUP ? 'On (DVSA)' : 'Waiting for the DVSA key: every car is priced at ' . number_format((int)$PR['default_kg']) . ' kg' ?></dd>
-      <dt>Kerb weight lookup</dt><dd><?= $dot(!empty($CFG['anthropic_key'])) ?><?= !empty($CFG['anthropic_key']) ? 'On' : 'Waiting for the Claude API key' ?></dd>
+      <dt>Reg &amp; weight lookup</dt><dd><?= $dot($LIVE_LOOKUP) ?><?= $CFG['oneauto_key'] !== '' ? 'On (One Auto API)' : ($LIVE_LOOKUP ? 'On (DVSA)' : 'Off: add the One Auto API key below. Until then every car is priced at ' . number_format((int)$PR['default_kg']) . ' kg') ?></dd>
+      <dt>Backup weight lookup</dt><dd><?= $dot(!empty($CFG['anthropic_key'])) ?><?= !empty($CFG['anthropic_key']) ? 'On (Claude, used only if a car has no weight)' : 'Off' ?></dd>
       <dt>Last reminder run</dt><dd><?= $rl ? h($rl[0]) : 'Not run yet' ?></dd>
     </dl>
+  </div>
+  <div class="box" id="lookup">
+    <h2 style="margin-top:0">Vehicle lookup (One Auto API)</h2>
+    <p class="small">Finds the make, model and kerb weight from the reg. Each new reg costs 20p from your One Auto API credit; the same reg again within 30 days is free. At most <?= (int)($CFG['lookup_daily_cap'] ?? 150) ?> paid lookups a day, after that customers get a "we'll call you" price.</p>
+    <dl class="kv"><dt>Key</dt><dd><?= $CFG['oneauto_key'] !== '' ? 'Saved (ends &hellip;' . h(substr($CFG['oneauto_key'], -4)) . ')' : 'Not added yet' ?></dd>
+      <dt>Lookups this month</dt><dd><?= number_format(lookups_this_month()) ?> (about £<?= number_format(lookups_this_month() * 0.2, 2) ?>)</dd></dl>
+    <form method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="oneauto_key">
+      <label><?= $CFG['oneauto_key'] !== '' ? 'Replace the key' : 'Paste your One Auto API key' ?><input type="password" name="oneauto_key" autocomplete="off" spellcheck="false"></label>
+      <div class="acts" style="margin-top:10px"><button class="btn go" type="submit">Save key</button><?php if ($CFG['oneauto_key'] !== ''): ?><button class="btn ghost" type="submit" name="remove" value="1" onclick="this.form.oneauto_key.value='';return confirm('Remove the key? Prices will use the average weight.')">Remove key</button><?php endif; ?></div>
+    </form>
+    <?php if ($CFG['oneauto_key'] !== ''): ?>
+    <form method="post" action="<?= h($A) ?>" style="margin-top:14px"><?= $hidden ?><input type="hidden" name="act" value="oneauto_test">
+      <label>Test with a registration (costs 20p)<input type="text" name="reg" maxlength="8" autocomplete="off" style="text-transform:uppercase" placeholder="e.g. AB12CDE"></label>
+      <button class="btn ghost" type="submit" style="margin-top:10px">Look it up</button>
+    </form>
+    <?php endif; ?>
   </div>
   <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="settings">
     <h2 style="margin-top:0">Emails</h2>

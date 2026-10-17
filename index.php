@@ -38,7 +38,9 @@ $SET = is_file(STORE . '/settings.json') ? (json_decode((string)file_get_content
 $PR = array_merge($S['pricing_default'], $CFG['pricing'] ?? [], $SET['pricing'] ?? []);
 $REM = array_merge(['on' => true, 'days_before' => 2], $SET['reminders'] ?? []);
 $NOTIFY = filter_var($SET['notify_email'] ?? '', FILTER_VALIDATE_EMAIL) ?: $S['email'];
-$LIVE_LOOKUP = !empty($CFG['mot_api_key']) && !empty($CFG['mot_client_id']);
+/* One Auto API key (reg + make/model + kerb weight in one call, 20p each): pasted into admin > Settings, stored outside the web root */
+$CFG['oneauto_key'] = trim((string)($CFG['oneauto_key'] ?? '')) ?: (is_file(STORE . '/keys/oneauto.key') ? trim((string)file_get_contents(STORE . '/keys/oneauto.key')) : '');
+$LIVE_LOOKUP = $CFG['oneauto_key'] !== '' || (!empty($CFG['mot_api_key']) && !empty($CFG['mot_client_id']));
 $DEMO = !$LIVE_LOOKUP;
 if (PREVIEW) header('X-Robots-Tag: noindex, nofollow');
 $_GET = array_filter($_GET, 'is_string'); $_POST = array_filter($_POST, 'is_string');   // no array params (reg[]=x): every field here is a plain string
@@ -133,9 +135,44 @@ function mot_token(array $C): ?string {
   @file_put_contents($f, json_encode(['tok' => $j['access_token'], 'exp' => time() + (int)($j['expires_in'] ?? 900)]));
   return $j['access_token'];
 }
+/* One Auto API: one paid call per reg (cached 30 days, misses cached 1 day, daily cap) gives make, model, year and kerb weight. */
+function tidy_name(string $s): string { $s = trim($s); return ($s !== '' && strtoupper($s) === $s) ? ucwords(strtolower($s)) : $s; }
+function lookups_this_month(): int { $f = STORE . '/logs/lookups-' . date('Y-m') . '.log'; return is_file($f) ? count(preg_grep('/ (200|204|206) /', file($f, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [])) : 0; }   // answered lookups only (refused keys aren't charged)
+function oneauto_lookup(string $reg, array $C, bool $useCache = true): ?array {
+  $cf = store_path('cache') . "/veh-$reg.json"; $nf = store_path('cache') . "/veh-$reg.none";
+  if ($useCache && is_file($nf) && filemtime($nf) > time() - 86400) return null;
+  $cntf = store_path('logs') . '/lookups-' . date('Y-m-d') . '.count'; $n = (int)@file_get_contents($cntf);
+  if ($n >= (int)($C['lookup_daily_cap'] ?? 150)) return null;    // cost guard: after this many paid lookups in a day, George prices by phone
+  @file_put_contents($cntf, (string)($n + 1), LOCK_EX);
+  [$code, $j] = http_json('GET', rtrim($C['oneauto_base'] ?? 'https://api.oneautoapi.com', '/') . '/ukvehicledata/vehicleandmodeldetailsfromvrm?vehicle_registration_mark=' . rawurlencode($reg), ['x-api-key: ' . $C['oneauto_key'], 'Accept: application/json'], null, 12);
+  $vi = is_array($j) ? ($j['result']['vehicle_details']['vehicle_identification'] ?? null) : null;
+  $ok = $code === 200 && !empty($j['success']) && is_array($vi) && !empty($vi['dvla_manufacturer_desc']);
+  @file_put_contents(store_path('logs') . '/lookups-' . date('Y-m') . '.log', date('c') . " $reg $code " . ($ok ? 'found' : 'not-found' . (is_array($j) && !empty($j['error']) ? ' ' . preg_replace('/\s+/', ' ', substr((string)(is_string($j['error']) ? $j['error'] : json_encode($j['error'])), 0, 120)) : '')) . "\n", FILE_APPEND | LOCK_EX);
+  if (!$ok) { if (in_array($code, [200, 204, 206, 404], true)) @touch($nf); return null; }
+  $md = $j['result']['model_details'] ?? []; $vd = $j['result']['vehicle_details'] ?? [];
+  $wt = $md['weights'] ?? []; $kg = (int)($wt['min_kerbweight_kg'] ?? 0) ?: (int)($wt['unladen_weight_kg'] ?? 0);
+  if ($kg < 500 || $kg > 3500) $kg = 0;                           // implausible or missing: fall back to Claude / average weight
+  $year = (int)($vi['manufactured_year'] ?? 0) ?: (int)substr((string)($vi['first_registration_date'] ?? $vi['registration_date'] ?? ''), 0, 4);
+  $v = ['reg' => $reg, 'make' => tidy_name((string)$vi['dvla_manufacturer_desc']),
+    'model' => tidy_name((string)($vi['dvla_model_desc'] ?? '') ?: trim(($md['model_data']['model_range_desc'] ?? '') . ' ' . ($md['model_data']['model_desc'] ?? ''))),
+    'fuel' => tidy_name((string)($vi['dvla_fuel_desc'] ?? $md['model_data']['ukvd_fuel_type_desc'] ?? '')),
+    'engine_cc' => (int)($md['power_source']['ice_details']['engine_capacity_cc'] ?? 0),
+    'colour' => tidy_name((string)($vd['colour_details']['colour'] ?? '')), 'year' => $year ?: null,
+    'kerb_kg' => $kg ?: null, 'scrapped' => !empty($vd['vehicle_status_details']['is_scrapped']) || !empty($vd['vehicle_status_details']['certificate_of_destruction_issued']),
+    'source' => 'One Auto API'];
+  @file_put_contents($cf, json_encode($v));
+  if ($kg) {                                                       // also list the weight under Rates > weights so George can override it
+    $wf = store_path('weights') . '/' . weight_key($v) . '.json';
+    if (!is_file($wf)) save_json($wf, ['kg' => $kg, 'source' => 'One Auto API', 'url' => '', 'confidence' => 'high', 'note' => "Manufacturer kerb weight (first seen on $reg)", 'at' => gmdate('c')]);
+  }
+  return $v;
+}
+/* what the customer's browser sees: description only, never weights or data source */
+function pub_vehicle(?array $v): ?array { return $v ? array_intersect_key($v, array_flip(['reg', 'make', 'model', 'fuel', 'engine_cc', 'colour', 'year'])) : null; }
 function vehicle_lookup(string $reg, array $C): ?array {
   $cf = store_path('cache') . "/veh-$reg.json";
   if (is_file($cf) && filemtime($cf) > time() - 86400 * 30) return json_decode(file_get_contents($cf), true);
+  if (!empty($C['oneauto_key'])) return oneauto_lookup($reg, $C);
   if (empty($C['mot_api_key'])) return null;
   $tok = mot_token($C); if (!$tok) return null;
   [$code, $j] = http_json('GET', ($C['mot_base'] ?? 'https://history.mot.api.gov.uk') . '/v1/trade/vehicles/registration/' . rawurlencode($reg), ['Authorization: Bearer ' . $tok, 'X-API-Key: ' . $C['mot_api_key'], 'Accept: application/json']);
@@ -148,7 +185,12 @@ function vehicle_lookup(string $reg, array $C): ?array {
 }
 /* Kerb weight: cached per make/model/engine/year; looked up once with Claude + web search, sanity-checked. */
 function weight_key(array $v): string { return slugify("{$v['make']} {$v['model']} {$v['engine_cc']} {$v['fuel']} " . ($v['year'] ?? '')); }
-function weight_cached(array $v): ?array { $f = store_path('weights') . '/' . weight_key($v) . '.json'; return is_file($f) ? json_decode(file_get_contents($f), true) : null; }
+function weight_cached(array $v): ?array {
+  $f = store_path('weights') . '/' . weight_key($v) . '.json'; $w = is_file($f) ? json_decode((string)file_get_contents($f), true) : null;
+  if ($w && str_starts_with((string)($w['source'] ?? ''), 'Set by')) return $w;   // George's override always wins
+  if (!empty($v['kerb_kg'])) return ['kg' => (int)$v['kerb_kg'], 'source' => 'One Auto API', 'confidence' => 'high'];   // this exact car's manufacturer weight
+  return $w;
+}
 function weight_lookup(array $v, array $C): ?array {
   if ($w = weight_cached($v)) return $w;
   if (empty($C['anthropic_key'])) return null;
@@ -335,7 +377,7 @@ if ($r === 'api/vehicle' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $v = vehicle_lookup($reg, $CFG);
   if (!$v) jout(['ok' => true, 'found' => false, 'live' => $LIVE_LOOKUP]);
   $w = weight_cached($v);
-  jout(['ok' => true, 'found' => true, 'vehicle' => $v, 'weight_ready' => (bool)$w]);
+  jout(['ok' => true, 'found' => true, 'vehicle' => pub_vehicle($v), 'weight_ready' => (bool)$w]);
 }
 if ($r === 'api/weight' && $_SERVER['REQUEST_METHOD'] === 'POST') {   // fired in the background while the customer types their details
   ignore_user_abort(true); set_time_limit(90);
@@ -356,7 +398,8 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($v && !weight_cached($v) && !empty($CFG['anthropic_key'])) weight_lookup($v, $CFG);   // background lookup didn't finish: try once more now
   if ($v && ($w = weight_cached($v))) { $kg = $w['kg']; $weightSrc = $w['source'] . ' (' . $w['confidence'] . ')'; }
   else { $kg = (int)$PR['default_kg']; $weightSrc = $v ? 'Average car weight (kerb weight not found yet)' : 'Average car weight (demo: registration lookup not switched on)'; }
-  $manual = $LIVE_LOOKUP && !$v;                                  // live lookup couldn't find the reg: George calls with a price
+  $manual = ($LIVE_LOOKUP && !$v) || !empty($v['scrapped']);    // reg not found, or already shown as scrapped: George calls with a price
+  if (!empty($v['scrapped'])) $weightSrc .= '. WARNING: DVLA records show this vehicle as already scrapped, check before quoting';
 
   $loc = pc_lookup($pc);
   $dist = $loc ? round(miles($S['geo'], [$loc['lat'], $loc['lng']]), 1) : null;
@@ -381,7 +424,7 @@ if ($r === 'api/lead' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $l = load_lead((string)($_POST['ref'] ?? ''));
   if (!$l || $l['price'] === null || in_array($l['status'], ['booked', 'collected', 'lost'], true)) jout(['ok' => false]);
   if ($l['valid_until'] < date('Y-m-d')) jout(['ok' => false, 'expired' => true, 'reg' => $l['reg'], 'postcode' => $l['postcode']]);
-  jout(['ok' => true, 'ref' => $l['ref'], 'price' => $l['price'], 'valid_until' => date('j F Y', strtotime($l['valid_until'])), 'vehicle' => $l['vehicle'], 'reg' => $l['reg'], 'accepted' => $l['status'] === 'accepted']);
+  jout(['ok' => true, 'ref' => $l['ref'], 'price' => $l['price'], 'valid_until' => date('j F Y', strtotime($l['valid_until'])), 'vehicle' => pub_vehicle($l['vehicle'] ?? null), 'reg' => $l['reg'], 'accepted' => $l['status'] === 'accepted']);
 }
 /* "Not ready yet? Email me this price" */
 if ($r === 'api/save' && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -590,7 +633,7 @@ $lic = function () use ($S): string {
     <?php if ($type === 'get-a-price'):
       $preReg = clean_reg((string)($_GET['reg'] ?? '')); $prePc = clean_pc((string)($_GET['pc'] ?? '')); ?>
     <div class="tool" id="tool">
-      <?php if (PREVIEW): ?><div class="demo"><b>Preview version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live.' : 'The registration lookup is waiting on the DVSA API key, so for now every car is priced at an average weight.' ?> No emails go to customers or George while this is a preview.</div><?php endif; ?>
+      <?php if (PREVIEW): ?><div class="demo"><b>Preview version for feedback</b><?= $LIVE_LOOKUP ? 'Vehicle lookup is live.' : 'The registration lookup is waiting on the vehicle data API key, so for now every car is priced at an average weight.' ?> No emails go to customers or George while this is a preview.</div><?php endif; ?>
       <ol class="steps" aria-hidden="true"><li class="on" data-s="1">Your vehicle</li><li data-s="2">Your price</li><li data-s="3">Book collection</li></ol>
 
       <form class="step" id="s1" novalidate>
