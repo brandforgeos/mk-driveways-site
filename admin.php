@@ -166,10 +166,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if ($act === 'collected') {
     $l = load_lead($T('ref', 20)); if (!$l) adm_go($back, 'Lead not found.', true);
+    $already = $l['status'] === 'collected';
     $paid = $T('paid', 10); $l['paid'] = $paid === '' ? null : max(0, (int)round((float)$paid)); $l['pay_ref'] = $T('pay_ref', 100);
     $l['status'] = 'collected'; $l['collected_at'] = $l['collected_at'] ?? date('c'); $l['collected_by'] = $l['collected_by'] ?? (isset($OPS[$l['op'] ?? '']) ? 'Driver: ' . $OPS[$l['op']]['name'] : ucfirst($me));
-    lead_log($l, $me, 'Marked collected' . ($l['paid'] !== null ? ", paid £{$l['paid']}" : '') . ($l['pay_ref'] !== '' ? " (ref {$l['pay_ref']})" : '') . ($T('note', 500) !== '' ? '. ' . $T('note', 500) : ''), 'collected');
-    save_lead($l); adm_go($back, 'Marked as collected.');
+    lead_log($l, $me, ($already ? 'Payment recorded' : 'Marked collected') . ($l['paid'] !== null ? ", paid £{$l['paid']}" : '') . ($l['pay_ref'] !== '' ? " (ref {$l['pay_ref']})" : '') . ($T('note', 500) !== '' ? '. ' . $T('note', 500) : ''), 'collected');
+    save_lead($l); adm_go($back, $already ? 'Payment saved.' : 'Marked as collected.');
   }
 
   /* a booking taken over the phone (customer never used the website) */
@@ -280,6 +281,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   adm_go($A);
 }
 
+/* ---------- collection photos (admin only; files live outside the web root) ---------- */
+if ($me && ($_GET['v'] ?? '') === 'photo') {
+  $ref = preg_replace('/[^A-Z0-9]/', '', strtoupper((string)($_GET['ref'] ?? ''))); $fn = (string)($_GET['f'] ?? '');
+  $file = STORE . "/photos/$ref/$fn";
+  if ($ref === '' || !preg_match('/^(id|car)-\d{8}-\d{6}-[a-f0-9]{6}\.(jpg|png|webp)$/', $fn) || !is_file($file)) { http_response_code(404); exit; }
+  header('Content-Type: ' . ['jpg' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp'][pathinfo($fn, PATHINFO_EXTENSION)]);
+  header('Cache-Control: private, max-age=86400'); header('Content-Length: ' . filesize($file)); readfile($file); exit;
+}
 /* ---------- CSV export ---------- */
 $v = (string)($_GET['v'] ?? 'leads');
 if ($me && $v === 'export') {
@@ -384,6 +393,7 @@ input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;min-wi
 .oprow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--line)}
 .oprow:first-of-type{border-top:0}
 .oprow b{min-width:110px}
+.photos{display:flex;gap:8px;flex-wrap:wrap}.photos a{display:block;text-decoration:none;text-align:center;font-size:13px;color:var(--muted)}.photos img{display:block;width:110px;height:110px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
 .btn.sm{min-height:40px;padding:6px 12px;font-size:15px}
 .btn.wa{background:#25D366;border-color:#25D366;color:#06210F}
 .job{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
@@ -571,7 +581,30 @@ elseif ($v === 'lead'):
     <dt>Collected</dt><dd><?= h((string)($l['collected_by'] ?? '')) ?><?= !empty($l['collected_at']) ? ', ' . h(date('D j M Y, H:i', strtotime($l['collected_at']))) : '' ?></dd>
     <dt>Paid</dt><dd><?= isset($l['paid']) && $l['paid'] !== null ? '£' . (int)$l['paid'] : '–' ?><?= !empty($l['pay_ref']) ? ' (ref ' . h($l['pay_ref']) . ')' : '' ?></dd>
     <?php if (!empty($l['driver_report'])): ?><dt>Driver's note</dt><dd><?= h($l['driver_report']) ?></dd><?php endif; ?>
-  </dl></div>
+    <?php if ($ck = $l['collection_check'] ?? null): $yn = fn($b) => $b ? '<span style="color:#1d7a3a">Yes</span>' : '<span style="color:var(--red)">No</span>'; ?>
+    <dt>Complete</dt><dd><?= $yn($ck['complete']) ?><?= !$ck['complete'] ? ': ' . h($ck['missing']) : '' ?></dd>
+    <dt>Battery</dt><dd><?= $yn($ck['battery']) ?></dd>
+    <dt>Engine</dt><dd><?= $yn($ck['engine']) ?></dd>
+    <dt>Catalytic converter</dt><dd><?= $yn($ck['cat']) ?></dd>
+    <?php endif; ?>
+  </dl>
+  <?php if ($ck = $l['collection_check'] ?? null): $ph = fn($f) => h($A . '?v=photo&ref=' . $l['ref'] . '&f=' . $f); ?>
+    <?php if (!$ck['complete'] || !$ck['battery'] || !$ck['engine'] || !$ck['cat']): ?><p style="color:var(--red);font-weight:700">Something is missing: check the agreed price before you pay the customer.</p><?php endif; ?>
+    <p class="small" style="margin-bottom:4px">Photos (tap to open full size)</p>
+    <div class="photos"><a href="<?= $ph($ck['id_photo']) ?>" target="_blank" rel="noopener"><img src="<?= $ph($ck['id_photo']) ?>" alt="Seller ID"><span>ID</span></a>
+      <?php foreach ($ck['car_photos'] as $i => $cp): ?><a href="<?= $ph($cp) ?>" target="_blank" rel="noopener"><img src="<?= $ph($cp) ?>" alt="Car photo <?= $i + 1 ?>"><span>Car <?= $i + 1 ?></span></a><?php endforeach; ?></div>
+  <?php endif; ?>
+  <?php if (!isset($l['paid']) || $l['paid'] === null): ?>
+  <form method="post" action="<?= h($A) ?>" style="margin-top:14px;border-top:1px solid var(--line);padding-top:12px"><?= $hidden ?><input type="hidden" name="act" value="collected"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <h2 style="margin-top:0;font-size:17px">Record payment</h2>
+    <div class="grid">
+      <label>Amount paid (£)<input type="number" name="paid" min="0" step="1" inputmode="numeric" value="<?= $price !== null ? (int)$price : '' ?>" required></label>
+      <label>Bank transfer reference<input name="pay_ref" placeholder="Optional"></label>
+    </div>
+    <button class="btn go" type="submit" style="margin-top:10px">Save payment</button>
+  </form>
+  <?php endif; ?>
+  </div>
   <?php endif; ?>
 
   <div class="grid" style="align-items:start">
