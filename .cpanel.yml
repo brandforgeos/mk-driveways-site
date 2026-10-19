@@ -3,5 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home1/sufktgte/public_html/hub.buildbro.app/
     - /bin/cp -R assets $DEPLOYPATH
-    - /bin/cp index.html sw.js registerSW.js manifest.webmanifest icon.svg icon-192.png icon-512.png .htaccess $DEPLOYPATH
+    - /bin/cp index.html sw.js registerSW.js push-sw.js manifest.webmanifest icon.svg icon-192.png icon-512.png .htaccess $DEPLOYPATH
     - /bin/cp workbox-9c191d2f.js $DEPLOYPATH
