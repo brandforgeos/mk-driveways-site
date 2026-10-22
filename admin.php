@@ -71,13 +71,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($act === 'login') {
     if (!rate_ok('adminlogin', 10)) adm_go($A, 'Too many attempts. Try again in an hour.', true);
     $un = strtolower(trim((string)($_POST['user'] ?? ''))); $pw = (string)($_POST['pass'] ?? '');
-    if (isset($users[$un]) && password_verify($pw, $users[$un]['hash'])) {
+    if (!isset($users[$un]) && str_contains($un, '@')) foreach ($users as $k => $x) if (strcasecmp((string)($x['email'] ?? ''), $un) === 0) { $un = $k; break; }   // log in with the email too
+    $tempOk = isset($users[$un]) && !empty($users[$un]['temp_hash']) && (int)($users[$un]['temp_until'] ?? 0) > time() && password_verify($pw, $users[$un]['temp_hash']);
+    if (isset($users[$un]) && ($tempOk || password_verify($pw, $users[$un]['hash']))) {
       session_regenerate_id(true); $_SESSION['u'] = $un; $_SESSION['pv'] = substr($users[$un]['hash'], -12); $_SESSION['csrf'] = bin2hex(random_bytes(16));
+      if ($tempOk) { $_SESSION['must_change'] = 1; @file_put_contents(store_path('logs') . '/admin.log', date('c') . " login $un with temporary password " . ($_SERVER['REMOTE_ADDR'] ?? '') . "\n", FILE_APPEND | LOCK_EX); adm_go($A . '?v=settings#password', 'You\'re in with your temporary password. Choose a new password now.'); }
       @file_put_contents(store_path('logs') . '/admin.log', date('c') . " login $un " . ($_SERVER['REMOTE_ADDR'] ?? '') . "\n", FILE_APPEND | LOCK_EX);
       adm_go($A);
     }
     @file_put_contents(store_path('logs') . '/admin.log', date('c') . " failed login '$un' " . ($_SERVER['REMOTE_ADDR'] ?? '') . "\n", FILE_APPEND | LOCK_EX);
     adm_go($A, 'That username or password isn\'t right.', true);
+  }
+  if ($act === 'forgot') {
+    $q = strtolower(trim((string)($_POST['who'] ?? ''))); $msg = 'If that login has an email address set up, a temporary password is on its way. It works for 1 hour. Check your spam folder too.';
+    if ($q === '' || !rate_ok('adminforgot', 5)) adm_go($A . '?v=forgot', $q === '' ? 'Enter your username or email.' : 'Too many requests. Try again in an hour.', true);
+    $un = isset($users[$q]) ? $q : null;
+    if (!$un) foreach ($users as $k => $x) if (strcasecmp((string)($x['email'] ?? ''), $q) === 0) { $un = $k; break; }
+    $em = $un ? (string)($users[$un]['email'] ?? '') : '';
+    if ($un && filter_var($em, FILTER_VALIDATE_EMAIL)) {
+      $abc = 'abcdefghjkmnpqrstuvwxyz23456789'; $tmp = ''; for ($i = 0; $i < 12; $i++) { $tmp .= $abc[random_int(0, strlen($abc) - 1)]; if ($i === 3 || $i === 7) $tmp .= '-'; }
+      $users[$un]['temp_hash'] = password_hash($tmp, PASSWORD_DEFAULT); $users[$un]['temp_until'] = time() + 3600; save_json($USERS_FILE, $users);
+      [$t, $hh] = customer_email($S, 'Your temporary admin password', ['Hi ' . ucfirst($un) . ',', 'Someone asked to reset the password for the We Buy Scrap Cars Corby admin. Use this temporary password to log in. It works for 1 hour, and you\'ll be asked to choose a new password straight away.',
+        "Temporary password: $tmp", 'Your old password still works too. If you didn\'t ask for this, you can ignore this email.'], [['Username', $un], ['Valid until', date('H:i', time() + 3600) . ' today']], ['Log in', abs_url('admin')]);
+      $sent = send_mail($em, 'Your temporary admin password', $t, $hh);
+      @file_put_contents(store_path('logs') . '/admin.log', date('c') . " password reset for $un " . ($sent ? 'emailed' : 'EMAIL FAILED') . ' ' . ($_SERVER['REMOTE_ADDR'] ?? '') . "\n", FILE_APPEND | LOCK_EX);
+    } else @file_put_contents(store_path('logs') . '/admin.log', date('c') . " password reset asked for '$q': no login or no email " . ($_SERVER['REMOTE_ADDR'] ?? '') . "\n", FILE_APPEND | LOCK_EX);
+    adm_go($A, $msg);
   }
   if (in_array($act, ['push_sub', 'push_off', 'push_save'], true) && (!$me || !hash_equals($csrf, (string)($_POST['csrf'] ?? '')))) {
     push_log("$act refused: " . (!$me ? 'not logged in' : 'stale page (csrf)') . ' ' . substr((string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 120));
@@ -85,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   if (!$me || !hash_equals($csrf, (string)($_POST['csrf'] ?? ''))) adm_go($A, 'Please log in again.', true);
   $back = (string)($_POST['back'] ?? $A); if (!str_starts_with($back, $A)) $back = $A;
+  if (!empty($_SESSION['must_change']) && !in_array($act, ['password', 'logout'], true)) adm_go($A . '?v=settings#password', 'Choose a new password first.', true);
 
   if ($act === 'logout') { $_SESSION = []; session_regenerate_id(true); adm_go($A, 'Logged out.'); }
 
@@ -340,13 +360,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     adm_go($A . '?v=settings#lookup', "$reg: " . vehicle_name($v) . ($v['engine_cc'] ? ', ' . number_format($v['engine_cc']) . 'cc' : '') . ' ' . $v['fuel'] . '. Weight ' . ($w ? number_format($w['kg']) . ' kg (' . $w['source'] . ')' : 'not given: average weight used') . '. Price today: £' . price_for($w['kg'] ?? (int)$PR['default_kg'], $PR) . (!empty($v['scrapped']) ? '. DVLA shows it as already scrapped.' : '.'));
   }
 
+  if ($act === 'my_email') {
+    $em = trim((string)($_POST['email'] ?? ''));
+    if ($em !== '' && !filter_var($em, FILTER_VALIDATE_EMAIL)) adm_go($A . '?v=settings#password', 'That email address doesn\'t look right.', true);
+    foreach ($users as $k => $x) if ($k !== $me && $em !== '' && strcasecmp((string)($x['email'] ?? ''), $em) === 0) adm_go($A . '?v=settings#password', 'Another login already uses that email.', true);
+    $users[$me]['email'] = $em; save_json($USERS_FILE, $users);
+    adm_go($A . '?v=settings#password', $em === '' ? 'Reset email removed.' : "Saved. Password resets for " . ucfirst($me) . " go to $em.");
+  }
   if ($act === 'password') {
     $cur = (string)($_POST['current'] ?? ''); $new = (string)($_POST['new'] ?? ''); $conf = (string)($_POST['confirm'] ?? '');
-    if (!password_verify($cur, $users[$me]['hash'])) adm_go($A . '?v=settings', 'Your current password isn\'t right.', true);
+    $curTemp = !empty($users[$me]['temp_hash']) && (int)($users[$me]['temp_until'] ?? 0) > time() && password_verify($cur, $users[$me]['temp_hash']);
+    if (!$curTemp && !password_verify($cur, $users[$me]['hash'])) adm_go($A . '?v=settings#password', 'Your current password isn\'t right.', true);
     if (strlen($new) < 10) adm_go($A . '?v=settings', 'Use at least 10 characters for the new password.', true);
     if ($new !== $conf) adm_go($A . '?v=settings', 'The two new passwords don\'t match.', true);
-    $users[$me]['hash'] = password_hash($new, PASSWORD_DEFAULT); $users[$me]['changed'] = date('c'); save_json($USERS_FILE, $users);
-    $_SESSION['pv'] = substr($users[$me]['hash'], -12);
+    $users[$me]['hash'] = password_hash($new, PASSWORD_DEFAULT); $users[$me]['changed'] = date('c'); unset($users[$me]['temp_hash'], $users[$me]['temp_until']); save_json($USERS_FILE, $users);
+    $_SESSION['pv'] = substr($users[$me]['hash'], -12); unset($_SESSION['must_change']);
     adm_go($A . '?v=settings', 'Password changed.');
   }
   adm_go($A);
@@ -362,6 +390,7 @@ if ($me && ($_GET['v'] ?? '') === 'photo') {
 }
 /* ---------- CSV export ---------- */
 $v = (string)($_GET['v'] ?? 'leads');
+if ($me && !empty($_SESSION['must_change']) && $v !== 'settings') { header('Location: ' . $A . '?v=settings#password', true, 303); exit; }
 if ($me && $v === 'export') {
   header('Content-Type: text/csv; charset=utf-8'); header('Content-Disposition: attachment; filename="scrap-car-leads-' . date('Y-m-d') . '.csv"');
   $o = fopen('php://output', 'w'); fwrite($o, "\xEF\xBB\xBF");
@@ -490,12 +519,24 @@ input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;min-wi
   <?php if ($flash): ?><div class="flash<?= $flash[1] ? ' bad' : '' ?>"><?= h($flash[0]) ?></div><?php endif; ?>
   <?php if (!$users): ?><div class="box">Admin isn't set up on this server yet. Ask Lewis to add the login.</div>
   <?php else: ?>
+  <?php if (($_GET['v'] ?? '') === 'forgot'): ?>
+  <form class="box" method="post" action="<?= h($A) ?>">
+    <input type="hidden" name="act" value="forgot">
+    <h2 style="margin-top:0">Forgotten your password?</h2>
+    <p class="small">Enter your username or email. We'll email you a temporary password that works for 1 hour.</p>
+    <label>Username or email<input name="who" autocomplete="username" autocapitalize="none" required></label><br>
+    <button class="btn go" type="submit" style="width:100%">Email me a temporary password</button>
+    <p class="small" style="text-align:center;margin-bottom:0"><a href="<?= h($A) ?>">Back to log in</a></p>
+  </form>
+  <?php else: ?>
   <form class="box" method="post" action="<?= h($A) ?>">
     <input type="hidden" name="act" value="login">
     <label>Username<input name="user" autocomplete="username" autocapitalize="none" required></label><br>
     <label>Password<input name="pass" type="password" autocomplete="current-password" required></label><br>
     <button class="btn go" type="submit" style="width:100%">Log in</button>
+    <p class="small" style="text-align:center;margin-bottom:0"><a href="<?= h($A) ?>?v=forgot">Forgotten your password?</a></p>
   </form>
+  <?php endif; ?>
   <?php endif; ?>
 </div>
 </body></html>
@@ -1049,8 +1090,15 @@ elseif ($v === 'settings'):
     </div>
     <?php if ($mlog): ?><p class="small">Emails sent this month (latest 10):</p><div class="pre"><?= h(implode("\n", array_reverse($mlog))) ?></div><?php endif; ?>
   </div>
-  <form class="box" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="password">
+  <form class="box" method="post" action="<?= h($A) ?>" id="email"><?= $hidden ?><input type="hidden" name="act" value="my_email">
+    <h2 style="margin-top:0">Your email for password resets</h2>
+    <p class="small">If you forget your password, a temporary one is sent here. Only you (<?= h(ucfirst($me)) ?>) can reset with it.</p>
+    <label>Email<input type="email" name="email" value="<?= h((string)($users[$me]['email'] ?? '')) ?>" autocomplete="email" placeholder="you@example.com"></label>
+    <button class="btn ghost" type="submit" style="margin-top:10px">Save email</button>
+  </form>
+  <form class="box" method="post" action="<?= h($A) ?>" id="password"<?= !empty($_SESSION['must_change']) ? ' style="border:2px solid var(--green)"' : '' ?>><?= $hidden ?><input type="hidden" name="act" value="password">
     <h2 style="margin-top:0">Change your password</h2>
+    <?php if (!empty($_SESSION['must_change'])): ?><p class="small" style="color:var(--navy);font-weight:700">You logged in with a temporary password. Put it in Current password, then choose a new one.</p><?php endif; ?>
     <div class="grid">
       <label>Current password<input type="password" name="current" autocomplete="current-password" required></label>
       <label>New password<input type="password" name="new" autocomplete="new-password" minlength="10" required></label>
