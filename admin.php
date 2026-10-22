@@ -79,6 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     @file_put_contents(store_path('logs') . '/admin.log', date('c') . " failed login '$un' " . ($_SERVER['REMOTE_ADDR'] ?? '') . "\n", FILE_APPEND | LOCK_EX);
     adm_go($A, 'That username or password isn\'t right.', true);
   }
+  if (in_array($act, ['push_sub', 'push_off', 'push_save'], true) && (!$me || !hash_equals($csrf, (string)($_POST['csrf'] ?? '')))) {
+    push_log("$act refused: " . (!$me ? 'not logged in' : 'stale page (csrf)') . ' ' . substr((string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 120));
+    jout(['ok' => false, 'msg' => 'Your login has run out on this phone. Log in again, then tap the button once more.']);
+  }
   if (!$me || !hash_equals($csrf, (string)($_POST['csrf'] ?? ''))) adm_go($A, 'Please log in again.', true);
   $back = (string)($_POST['back'] ?? $A); if (!str_starts_with($back, $A)) $back = $A;
 
@@ -86,15 +90,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   /* ---- phone notifications ---- */
   if ($act === 'push_sub') {                                   // called by the page script when a phone turns notifications on
-    $ep = (string)($_POST['endpoint'] ?? ''); $pk = (string)($_POST['p256dh'] ?? ''); $au = (string)($_POST['auth'] ?? '');
-    if (!push_endpoint_ok($ep) || strlen($ep) > 1000 || strlen(b64u_dec($pk)) !== 65 || strlen(b64u_dec($au)) !== 16) jout(['ok' => false, 'msg' => 'This browser gave an address we can\'t use. Try Safari on iPhone or Chrome on Android.']);
+    $sub = json_decode(b64u_dec((string)($_POST['sub'] ?? '')), true) ?: [];
+    $ep = (string)($sub['endpoint'] ?? ''); $pk = (string)($sub['keys']['p256dh'] ?? ''); $au = (string)($sub['keys']['auth'] ?? '');
+    push_log("sub attempt by $me from " . (parse_url($ep, PHP_URL_HOST) ?: 'no endpoint') . ' ' . substr((string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 120));
+    if (!push_endpoint_ok($ep) || strlen($ep) > 1000 || strlen(b64u_dec($pk)) !== 65 || strlen(b64u_dec($au)) !== 16) { push_log('sub refused: bad subscription'); jout(['ok' => false, 'msg' => 'This browser gave an address we can\'t use. Try Safari on iPhone (from the home screen) or Chrome on Android.']); }
     $id = push_id($ep); $old = push_device($id); $ev = push_events();
+    $pick = array_flip(array_filter(explode(',', (string)($_POST['ev'] ?? ''))));
+    $events = isset($_POST['ev']) ? array_map(fn($k) => isset($pick[$k]), array_combine(array_keys($ev), array_keys($ev))) : ($old['events'] ?? array_map(fn($e) => $e[2], $ev));
     $d = ['id' => $id, 'endpoint' => $ep, 'p256dh' => $pk, 'auth' => $au, 'user' => $me, 'name' => $old['name'] ?? push_device_name((string)($_SERVER['HTTP_USER_AGENT'] ?? '')),
-      'added' => $old['added'] ?? date('c'), 'events' => $old['events'] ?? array_map(fn($e) => $e[2], $ev)];
-    if (!push_save($d)) jout(['ok' => false, 'msg' => 'Couldn\'t save. Please tell Lewis.']);
-    $r = push_send([$d], ['title' => 'Notifications are on', 'body' => 'This ' . $d['name'] . ' will now get the alerts you pick on the Notifications page.', 'url' => abs_url('admin') . '?v=notify', 'tag' => 'welcome']);
+      'added' => $old['added'] ?? date('c'), 'events' => $events];
+    if (!push_save($d)) { push_log('sub refused: could not save'); jout(['ok' => false, 'msg' => 'Couldn\'t save. Please tell Lewis.']); }
+    $r = push_send([$d], ['title' => 'Notifications are on', 'body' => 'This ' . $d['name'] . ' will now get the notifications you switched on.', 'url' => abs_url('admin') . '?v=notify', 'tag' => 'welcome']);
     push_log("added $id ({$d['name']}) by $me, welcome " . ($r['sent'] ? 'sent' : 'failed'));
     jout(['ok' => true, 'id' => $id, 'sent' => $r['sent'] > 0]);
+  }
+  if ($act === 'push_save') {                                  // this phone's toggles, saved from the "This phone" box
+    $d = push_device((string)($_POST['id'] ?? '')); if (!$d) jout(['ok' => false, 'msg' => 'This phone isn\'t set up any more. Turn notifications on again.']);
+    $pick = array_flip(array_filter(explode(',', (string)($_POST['ev'] ?? ''))));
+    foreach (push_events() as $k => $_) $d['events'][$k] = isset($pick[$k]);
+    push_save($d); jout(['ok' => true, 'n' => count(array_filter($d['events']))]);
   }
   if ($act === 'push_off') {                                   // this phone turned notifications off
     $id = (string)($_POST['id'] ?? ''); if (push_device($id)) { push_forget($id); push_log("removed $id by $me (turned off on the device)"); }
@@ -437,6 +451,12 @@ th{font-size:13px;color:var(--muted);border-top:0}
 .pre{white-space:pre-wrap;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;background:#f5f7fb;border-radius:8px;padding:10px;max-height:240px;overflow:auto}
 .tick{display:flex;gap:10px;align-items:center;font-weight:600}
 .tick input{width:22px;height:22px;min-height:0;margin:0;flex:0 0 22px}
+.tog{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-weight:400;cursor:pointer}
+.tog:first-child{border-top:0}
+input.sw{-webkit-appearance:none;appearance:none;flex:0 0 52px;width:52px;height:32px;min-height:0;margin:0;padding:0;border:0;border-radius:16px;background:#c5cddc;position:relative;cursor:pointer;transition:background .15s}
+input.sw::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .15s}
+input.sw:checked{background:var(--green)}input.sw:checked::after{left:23px}
+input.sw:focus-visible{outline:3px solid #9cc3ff;outline-offset:2px}
 .st-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
 [hidden]{display:none!important}
 .grid>*{min-width:0}
@@ -928,14 +948,21 @@ elseif ($v === 'notify'):
     <?php if (!$vap): ?><p>Notifications can't be set up on this server yet. Please tell Lewis.</p>
     <?php else: ?>
     <p id="pstate" class="small">Checking&hellip;</p>
-    <div class="acts"><button class="btn go" type="button" id="pon" hidden>Turn on notifications on this phone</button><button class="btn ghost" type="button" id="poff" hidden>Turn off on this phone</button></div>
+    <p class="small" style="margin:14px 0 4px;color:var(--navy);font-weight:700">Notify this phone about:</p>
+    <div id="pev">
+    <?php foreach ($EV as $k => [$label, $hint, $def]): ?>
+      <label class="tog"><span><b><?= h($label) ?></b><span class="hint" style="display:block"><?= h($hint) ?></span></span><input type="checkbox" class="sw" value="<?= h($k) ?>"<?= $def ? ' checked' : '' ?>></label>
+    <?php endforeach; ?>
+    </div>
+    <p id="psaved" class="small" hidden style="color:#1d7a3a;font-weight:700"></p>
+    <div class="acts"><button class="btn go" type="button" id="pon" hidden>Turn on notifications on this phone</button><button class="btn go" type="button" id="psave" hidden>Save</button><button class="btn ghost" type="button" id="poff" hidden>Turn off on this phone</button></div>
     <div id="pios" hidden class="small" style="border-left:5px solid #FFD200;padding-left:10px">
       <b style="color:var(--navy)">On an iPhone, add the admin to your home screen first.</b> Apple only allows notifications from apps on the home screen.
       <ol style="margin:8px 0 0;padding-left:20px"><li>In Safari, tap the Share button (the square with an arrow).</li><li>Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li><li>Open <b>Scrap admin</b> from your home screen, log in, and come back to Notifications.</li></ol>
     </div>
     <?php endif; ?>
   </div>
-  <h2>Phones and computers getting notifications</h2>
+  <h2 id="pothers">Other phones getting notifications</h2>
   <?php if (!$DEV): ?><div class="box empty">None yet. Turn them on above, on each phone that should get them.</div><?php endif; ?>
   <?php foreach ($DEV as $d): ?>
   <form class="box" method="post" action="<?= h($A) ?>" id="d-<?= h($d['id']) ?>" data-dev="<?= h($d['id']) ?>"><?= $hidden ?><input type="hidden" name="id" value="<?= h($d['id']) ?>">
@@ -946,7 +973,7 @@ elseif ($v === 'notify'):
     <?php if (!empty($d['last_error_at']) && (empty($d['last_ok']) || $d['last_error_at'] > $d['last_ok'])): ?><p class="small" style="color:var(--red)">The last notification didn't go through (<?= h(adm_when($d['last_error_at'])) ?>: <?= h((string)$d['last_error']) ?>). Send a test, and if it fails again turn notifications off and on again on that phone.</p><?php endif; ?>
     <p class="small" style="margin:12px 0 6px">Send notifications to this device for:</p>
     <?php foreach ($EV as $k => [$label, $hint, $def]): ?>
-    <label class="tick" style="align-items:flex-start;margin:10px 0"><input type="checkbox" name="ev_<?= h($k) ?>" value="1"<?= ($d['events'][$k] ?? $def) ? ' checked' : '' ?>><span><?= h($label) ?><span class="hint" style="display:block"><?= h($hint) ?></span></span></label>
+    <label class="tog"><span><b><?= h($label) ?></b><span class="hint" style="display:block"><?= h($hint) ?></span></span><input type="checkbox" class="sw" name="ev_<?= h($k) ?>" value="1"<?= ($d['events'][$k] ?? $def) ? ' checked' : '' ?>></label>
     <?php endforeach; ?>
     <label style="margin-top:12px">Name for this device<input name="name" value="<?= h($d['name']) ?>" maxlength="40" placeholder="e.g. George's iPhone"></label>
     <div class="acts">
@@ -1040,18 +1067,29 @@ document.querySelectorAll('.js-send').forEach(a=>a.addEventListener('click',()=>
 const t=document.getElementById('slottime');if(t){document.querySelectorAll('#slots input').forEach(r=>r.addEventListener('change',()=>{const on=document.querySelector('#slots input:checked').value==='time';t.hidden=!on;t.required=on;if(on)t.focus()}))}
 document.querySelectorAll('select[name^="op_"]').forEach(s=>s.addEventListener('change',()=>s.closest('.job').style.background='#fffbea'));
 const ps=document.getElementById('pstate');
-if(ps){const on=document.getElementById('pon'),off=document.getElementById('poff'),ios=document.getElementById('pios'),KEY=<?= json_encode(($v === 'notify' && ($vk = push_vapid())) ? $vk['pub'] : '') ?>,KNOWN=<?= json_encode($v === 'notify' ? array_keys(push_devices()) : []) ?>;
-  const say=t=>{ps.textContent=t},post=o=>{const f=new FormData();f.append('csrf',C);for(const k in o)f.append(k,o[k]);return fetch(A,{method:'POST',body:f,credentials:'same-origin'}).then(r=>r.json())};
+if(ps){const on=document.getElementById('pon'),off=document.getElementById('poff'),sv=document.getElementById('psave'),ok=document.getElementById('psaved'),ios=document.getElementById('pios'),
+  KEY=<?= json_encode(($v === 'notify' && ($vk = push_vapid())) ? $vk['pub'] : '') ?>,DEVS=<?= json_encode($v === 'notify' ? array_map(fn($d) => $d['events'] ?? [], push_devices()) : new stdClass) ?>;
+  const say=t=>{ps.textContent=t},boxes=[...document.querySelectorAll('#pev input.sw')],picked=()=>boxes.filter(b=>b.checked).map(b=>b.value).join(',');
+  const post=async o=>{const f=new FormData();f.append('csrf',C);for(const k in o)f.append(k,o[k]);
+    const r=await fetch(A,{method:'POST',body:f,credentials:'same-origin',headers:{'Accept':'application/json'}}),t=await r.text();
+    try{return JSON.parse(t)}catch(_){throw new Error('the server replied '+r.status+(r.redirected?' (sent back to the login page)':'')+': '+t.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,90))}};
   const keyBytes=b=>{b=b.replace(/-/g,'+').replace(/_/g,'/');b+='='.repeat((4-b.length%4)%4);return Uint8Array.from(atob(b),c=>c.charCodeAt(0))};
+  const b64u=s=>btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
   const idOf=async ep=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ep)))].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,24);
   const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),standalone=navigator.standalone===true||matchMedia('(display-mode: standalone)').matches;
-  const show=async()=>{on.hidden=off.hidden=true;
-    if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window)){if(isIOS&&!standalone){ios.hidden=false;say('Not set up on this iPhone yet.')}else say('This browser can\'t get notifications. Use Chrome on Android, or Safari on iPhone (added to the home screen).');return}
+  let myId='';
+  const show=async()=>{on.hidden=off.hidden=sv.hidden=true;
+    if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window)){if(isIOS&&!standalone){ios.hidden=false;say('Not set up on this iPhone yet. Pick what you want below, then follow the steps.')}else say('This browser can\'t get notifications. Use Chrome on Android, or Safari on iPhone (added to the home screen).');return}
     if(Notification.permission==='denied'){say('Notifications are blocked for this site on this phone. Allow them in the phone\'s settings (Settings > Notifications, or the padlock in the address bar), then reload this page.');return}
     const reg=await navigator.serviceWorker.getRegistration(A),sub=reg&&await reg.pushManager.getSubscription();
     const id=sub&&await idOf(sub.endpoint);
-    if(sub&&KNOWN.includes(id)){say('Notifications are on for this phone. Pick what it gets below.');off.hidden=false;off.dataset.id=id;const me=document.querySelector('[data-dev="'+id+'"] .js-me');if(me)me.hidden=false;return}
-    say('Notifications are off on this phone.');on.hidden=false};
+    if(sub&&DEVS[id]){myId=id;say('Notifications are on for this phone. Switch each one on or off, then tap Save.');
+      boxes.forEach(b=>{if(b.value in DEVS[id])b.checked=!!DEVS[id][b.value]});sv.hidden=off.hidden=false;
+      const card=document.querySelector('[data-dev="'+id+'"]');if(card)card.hidden=true;
+      if(!document.querySelector('form[data-dev]:not([hidden])')){const hh=document.getElementById('pothers');if(hh)hh.hidden=true}return}
+    say('Notifications are off on this phone. Switch on the ones you want, then tap the green button.');on.hidden=false};
+  boxes.forEach(b=>b.addEventListener('change',()=>{ok.hidden=true}));
+  sv.addEventListener('click',async()=>{sv.disabled=true;try{const r=await post({act:'push_save',id:myId,ev:picked()});ok.textContent=r.ok?(r.n?'Saved. This phone gets '+r.n+' type'+(r.n===1?'':'s')+' of notification.':'Saved. Every notification is switched off on this phone.'):(r.msg||'Couldn\'t save.');ok.hidden=false}catch(e){ok.textContent='Couldn\'t save ('+e.message+').';ok.hidden=false}sv.disabled=false});
   on.addEventListener('click',async()=>{on.disabled=true;say('Turning on…');
     try{const perm=await Notification.requestPermission();   // ask first, straight from the tap (iPhone needs that)
       if(perm!=='granted'){say('You didn\'t allow notifications. Tap the button again and choose Allow.');on.disabled=false;return}
@@ -1059,12 +1097,12 @@ if(ps){const on=document.getElementById('pon'),off=document.getElementById('poff
       let sub=await reg.pushManager.getSubscription();
       if(sub&&sub.options&&sub.options.applicationServerKey&&btoa(String.fromCharCode(...new Uint8Array(sub.options.applicationServerKey)))!==btoa(String.fromCharCode(...keyBytes(KEY)))){await sub.unsubscribe();sub=null}
       if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:keyBytes(KEY)});
-      const j=sub.toJSON(),r=await post({act:'push_sub',endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth});
+      const r=await post({act:'push_sub',sub:b64u(JSON.stringify(sub.toJSON())),ev:picked()});
       if(!r.ok){say(r.msg||'That didn\'t work. Please tell Lewis.');on.disabled=false;return}
-      location.href=A+'?v=notify&on='+r.id+'#d-'+r.id}
-    catch(e){say('That didn\'t work ('+(e&&e.message||e)+'). Please tell Lewis.');on.disabled=false}});
+      location.href=A+'?v=notify&on='+r.id}
+    catch(e){say('That didn\'t work ('+(e&&e.message||e)+'). Please send Lewis a screenshot.');on.disabled=false}});
   off.addEventListener('click',async()=>{if(!confirm('Stop notifications on this phone?'))return;off.disabled=true;
-    try{const reg=await navigator.serviceWorker.getRegistration(A),sub=reg&&await reg.pushManager.getSubscription();if(sub)await sub.unsubscribe();await post({act:'push_off',id:off.dataset.id||''})}catch(e){}
+    try{const reg=await navigator.serviceWorker.getRegistration(A),sub=reg&&await reg.pushManager.getSubscription();if(sub)await sub.unsubscribe();await post({act:'push_off',id:myId})}catch(e){}
     location.reload()});
   show().catch(e=>say('Couldn\'t check this phone ('+(e&&e.message||e)+').'))}
 })();
