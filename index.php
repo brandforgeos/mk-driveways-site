@@ -540,22 +540,27 @@ if ($r === 'api/accept' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if (!rate_ok('accept', 10)) jout(['ok' => false, 'msg' => 'Please call us on ' . $S['phone'] . '.']);
   $name = $f('name', 100); $phone = $f('phone', 40); $email = $f('email', 120);
   if ($name === '' || strlen(preg_replace('/\D/', '', $phone)) < 10 || !filter_var($email, FILTER_VALIDATE_EMAIL)) jout(['ok' => false, 'msg' => 'Please add your name, a mobile number and your email so George can book your collection.']);
+  $addr = ['line1' => $f('line1', 150), 'line2' => $f('line2', 150), 'town' => $f('town', 80), 'postcode' => clean_pc($f('cpc', 12))];
+  if ($addr['line1'] === '' || $addr['town'] === '' || strlen(str_replace(' ', '', $addr['postcode'])) < 5) jout(['ok' => false, 'msg' => 'Please add the address we\'re collecting from: house number and street, town and postcode.']);
+  $pcMoved = str_replace(' ', '', $addr['postcode']) !== str_replace(' ', '', strtoupper((string)$lead['postcode']));   // car isn't at the postcode it was priced for
   $lead['status'] = $lead['price'] === null ? 'call-back' : 'accepted'; $lead['accepted'] = gmdate('c');
   $lead['name'] = $name; $lead['phone'] = $phone; $lead['email'] = $email; $lead['reminders_ok'] = $f('consent', 3) === 'yes' || !empty($lead['reminders_ok']);
   $lead['collection_note'] = $f('note', 500);
+  $lead['address'] = $addr; $lead['address_from'] = 'customer'; if ($pcMoved) $lead['address_pc_differs'] = true;
   save_lead($lead);
   $vn = vehicle_name($lead['vehicle'] ?? null);
-  if ($lead['price'] === null) push_notify('callback', "Call-back: {$lead['reg']} - $name", "Needs a price by phone. Call $phone" . ($vn ? ". $vn" : '') . ", {$lead['postcode']}.", push_lead_url($ref), "lead-$ref");
-  else push_notify('accepted', "Accepted £{$lead['price']}: {$lead['reg']} - $name", "Call $phone to book the collection" . ($vn ? ". $vn" : '') . ", {$lead['postcode']}.", push_lead_url($ref), "lead-$ref");
+  $where = lead_address($lead) . ($pcMoved ? " (priced for {$lead['postcode']})" : '');
+  if ($lead['price'] === null) push_notify('callback', "Call-back: {$lead['reg']} - $name", "Needs a price by phone. Call $phone" . ($vn ? ". $vn" : '') . ". $where.", push_lead_url($ref), "lead-$ref");
+  else push_notify('accepted', "Accepted £{$lead['price']}: {$lead['reg']} - $name", "Call $phone to confirm and book" . ($vn ? ". $vn" : '') . ". $where.", push_lead_url($ref), "lead-$ref");
   if (!PREVIEW) {
     $veh = vehicle_name($lead['vehicle'] ?? null) ?: 'Not found from reg';
     $head = $lead['price'] === null ? 'Needs a price: call them back' : "ACCEPTED £{$lead['price']}: call to book the collection";
-    $body = "$head\n\nRef: $ref\nName: $name\nPhone: $phone\nEmail: $email\nReg: {$lead['reg']}\nVehicle: $veh\nPostcode: {$lead['postcode']}" . ($lead['miles'] !== null ? " ({$lead['miles']} miles from Corby)" : '') . "\nWeight used: {$lead['weight_kg']} kg ({$lead['weight_source']})\nNotes: {$lead['collection_note']}\nReminders OK: " . ($lead['reminders_ok'] ? 'yes' : 'no') . "\n\nOpen in admin: " . abs_url('admin') . '?v=lead&ref=' . $ref . "\n";
+    $body = "$head\n\nRef: $ref\nName: $name\nPhone: $phone\nEmail: $email\nCollection address: " . lead_address($lead) . ($pcMoved ? "\nNOTE: priced for {$lead['postcode']}, but the collection postcode is different. Check the distance and price on the call." : '') . "\nReg: {$lead['reg']}\nVehicle: $veh\nPriced for postcode: {$lead['postcode']}" . ($lead['miles'] !== null ? " ({$lead['miles']} miles from Corby)" : '') . "\nWeight used: {$lead['weight_kg']} kg ({$lead['weight_source']})\nNotes: {$lead['collection_note']}\nReminders OK: " . ($lead['reminders_ok'] ? 'yes' : 'no') . "\n\nOpen in admin: " . abs_url('admin') . '?v=lead&ref=' . $ref . "\n";
     send_mail($NOTIFY, ($lead['price'] === null ? 'Call-back' : "ACCEPTED £{$lead['price']}") . " - {$lead['reg']} - $name", $body, null, $email);
     $first = trim(explode(' ', $name)[0]);
     [$t, $hh] = $lead['price'] === null
       ? customer_email($S, 'Thanks, George will call you with a price', ["Hi $first,", "Thanks for sending us your details for {$lead['reg']}. We need to check a couple of things before we can price it, so George will call you shortly on $phone."], price_email_rows($lead))
-      : customer_email($S, "Price accepted: £{$lead['price']}", ["Hi $first,", "Thanks for accepting our price for {$lead['reg']}. George will call you shortly on $phone to agree a collection time.",
+      : customer_email($S, "Price accepted: £{$lead['price']}", ["Hi $first,", "Thanks for accepting our price for {$lead['reg']}. George will call you shortly on $phone to check your details and agree a collection time.",
           'On the day, please have your photo ID, proof of address and the V5C logbook ready. We pay by bank transfer when we collect, and the car goes to a licensed Authorised Treatment Facility, which issues your Certificate of Destruction.',
           'Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, please mention it when George calls.'], price_email_rows($lead));
     send_mail($email, $lead['price'] === null ? "We'll call you with a price for {$lead['reg']}" : "Price accepted: £{$lead['price']} for {$lead['reg']}", $t, $hh, $S['email']);
@@ -777,12 +782,16 @@ $lic = function () use ($S): string {
 
       <form class="step" id="s3" hidden novalidate>
         <h2 id="s3h">Book your free collection</h2>
-        <p id="s3p">Add your details and George will call you to agree a collection time.</p>
+        <p id="s3p">Add your details and where we're collecting from. George will call to check them with you and agree a collection time.</p>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="fgrid">
           <label class="fl">Your name<input name="name" autocomplete="name" required></label>
           <label class="fl">Mobile number<input name="phone" type="tel" autocomplete="tel" required></label>
           <label class="fl full">Email<input name="email" type="email" autocomplete="email" required></label>
+          <label class="fl full">Collection address: house number and street<input name="line1" autocomplete="address-line1" required></label>
+          <label class="fl full">Address line 2 (optional)<input name="line2" autocomplete="address-line2"></label>
+          <label class="fl">Town<input name="town" autocomplete="address-level2" required></label>
+          <label class="fl">Postcode<input name="cpc" id="cpc" autocomplete="postal-code" required style="text-transform:uppercase"></label>
           <label class="fl full">Anything we should know? (optional)<input name="note" placeholder="e.g. it's on the drive, flat tyre, best times to call"></label>
           <label class="tick full"><input type="checkbox" name="consent" value="yes"> Send me a reminder about my price before it runs out. You can stop these at any time.</label>
         </div>
@@ -947,15 +956,15 @@ S[0].addEventListener('submit',async e=>{e.preventDefault();$('e1').textContent=
     const p=await post('quote',q);if(!p.ok)throw p.msg;ref=p.ref;
     let h;
     if(p.manual){h='<div class="priceout"><small>We need a quick check</small><p style="font-size:20px;color:#fff;margin-top:8px">'+(p.outside?'Your vehicle is more than '+p.max_miles+' miles from Corby, outside our usual collection area.':'We couldn\'t price this one automatically.')+' Leave your number and George will call you with a price.</p></div>';
-      $('accept').textContent='Get a price by phone';$('pricenote').hidden=true;$('s3h').textContent='Get a price by phone';$('s3p').textContent='Add your details and George will call you with a price.'}
+      $('accept').textContent='Get a price by phone';$('pricenote').hidden=true;$('s3h').textContent='Get a price by phone';$('s3p').textContent='Add your details and where the vehicle is. George will call you with a price.'}
     else{h=priceHtml(p);
       if(p.lines&&p.lines.length)h+='<div class="workings"><b>How this was worked out (demo only, hidden on the live site)</b><table>'+p.lines.map(l=>'<tr><td>'+esc(l[0])+'</td><td>'+esc(l[1])+'</td></tr>').join('')+'</table></div>';
       h+='<p class="note">Your price is for a complete vehicle. If anything is missing, such as the catalytic converter or wheels, we\'ll talk it through with you before we collect.</p>';
-      $('accept').textContent='Accept and book collection';$('pricenote').hidden=false;$('s3h').textContent='Book your free collection';$('s3p').textContent='Add your details and George will call you to agree a collection time.'}
+      $('accept').textContent='Accept and book collection';$('pricenote').hidden=false;$('s3h').textContent='Book your free collection';$('s3p').textContent='Add your details and where we\'re collecting from. George will call to check them with you and agree a collection time.'}
     $('pricebox').innerHTML=h;resetLater();$('later').hidden=!!p.manual;$('pricenav').hidden=false;show(2)}
   catch(m){$('e1').textContent=typeof m==='string'?m:'Something went wrong. Please try again or call us.'}
   busy($('b1'),false,'Get my price')});
-$('accept').addEventListener('click',()=>show(3));
+$('accept').addEventListener('click',()=>{if(!$('cpc').value)$('cpc').value=$('pc').value.toUpperCase();show(3)});
 const resetLater=()=>{$('laterform').hidden=true;$('laterbtn').hidden=false;$('laterbtn').setAttribute('aria-expanded','false');$('latermsg').textContent='';$('e2').textContent=''};
 $('laterbtn').addEventListener('click',()=>{$('laterform').hidden=false;$('laterbtn').hidden=true;$('laterbtn').setAttribute('aria-expanded','true');$('laterform').email.focus()});
 $('laterform').addEventListener('submit',async e=>{e.preventDefault();$('e2').textContent='';const fd=new FormData($('laterform'));
@@ -978,6 +987,7 @@ $('again').addEventListener('click',()=>{$('reg').value='';show(1);$('reg').focu
 $('back3').addEventListener('click',()=>show(2));
 S[2].addEventListener('submit',async e=>{e.preventDefault();$('e3').textContent='';
   const fd=new FormData(S[2]);if(!fd.get('name').trim()||fd.get('phone').replace(/\D/g,'').length<10||!/^\S+@\S+\.\S+$/.test(fd.get('email'))){$('e3').textContent='Please add your name, a mobile number and your email so George can book your collection.';return}
+  if(!fd.get('line1').trim()||!fd.get('town').trim()||fd.get('cpc').replace(/\s/g,'').length<5){$('e3').textContent='Please add the address we\'re collecting from: house number and street, town and postcode.';return}
   fd.append('ref',ref);busy($('b3'),true,'Booking');
   try{const j=await post('accept',fd);if(!j.ok)throw j.msg;
     S[3].innerHTML='<div class="done"><div class="ok">✓</div><h2>'+($('accept').textContent.startsWith('Get')?'Thanks, we\'ll call you':'Price accepted')+'</h2><p>George will call you shortly'+($('accept').textContent.startsWith('Get')?' with a price.':' to book your free collection. Have your photo ID, proof of address and V5C ready for the day.')+'</p><p class="note">Reference '+esc(ref)+'</p></div>';show(4)}

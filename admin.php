@@ -611,6 +611,7 @@ elseif ($v === 'lead'):
 
   <form class="box" id="book" method="post" action="<?= h($A) ?>"><?= $hidden ?><input type="hidden" name="act" value="book"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
     <h2 style="margin-top:0">2. <?= $isBooked ? 'Booking' : 'Book the collection' ?></h2>
+    <?php if (!$isBooked && ($l['address_from'] ?? '') === 'customer'): ?><p class="small" style="margin-top:-4px">The customer gave this address when they accepted. Check it with them on the call.<?php if (!empty($l['address_pc_differs'])): ?> <b style="color:var(--red)">It's not the postcode they were priced for (<?= h($l['postcode']) ?>): check the distance and price.</b><?php endif; ?></p><?php endif; ?>
     <div class="grid">
       <label>Customer name<input name="name" value="<?= h($l['name'] ?? '') ?>" autocomplete="off" required></label>
       <label>Phone<input name="phone" type="tel" value="<?= h($l['phone'] ?? '') ?>" autocomplete="off" required></label>
