@@ -38,6 +38,7 @@ $SET = is_file(STORE . '/settings.json') ? (json_decode((string)file_get_content
 $PR = array_merge($S['pricing_default'], $CFG['pricing'] ?? [], $SET['pricing'] ?? []);
 $REM = array_merge(['on' => true, 'days_before' => 2], $SET['reminders'] ?? []);
 $NOTIFY = filter_var($SET['notify_email'] ?? '', FILTER_VALIDATE_EMAIL) ?: $S['email'];
+require __DIR__ . '/push.php';   // phone notifications for George (admin > Notifications)
 /* One Auto API key (reg + make/model + kerb weight in one call, 20p each): pasted into admin > Settings, stored outside the web root */
 $CFG['oneauto_key'] = trim((string)($CFG['oneauto_key'] ?? '')) ?: (is_file(STORE . '/keys/oneauto.key') ? trim((string)file_get_contents(STORE . '/keys/oneauto.key')) : '');
 $LIVE_LOOKUP = $CFG['oneauto_key'] !== '' || (!empty($CFG['mot_api_key']) && !empty($CFG['mot_client_id']));
@@ -378,6 +379,23 @@ function daily_jobs(array $S, array $REM): void {
   if ((int)date('G') < 9 || @file_get_contents($f) === date('Y-m-d')) return;
   @file_put_contents($f, date('Y-m-d'), LOCK_EX);
   run_reminders($S, $REM);
+  morning_summary();
+}
+/* phone notification after 9am: today's collections, jobs not sent to a driver, customers waiting for a call. Nothing to report = nothing sent. */
+function morning_summary(): void {
+  $today = date('Y-m-d'); $jobs = 0; $unsent = 0; $wait = 0;
+  foreach (glob(STORE . '/leads/*.json') ?: [] as $f) {
+    $l = json_decode((string)file_get_contents($f), true); if (!$l) continue;
+    if (in_array($l['status'], ['accepted', 'call-back'], true)) $wait++;
+    if (in_array($l['status'], ['booked', 'dispatched'], true) && ($l['collect_on'] ?? '') === $today) { $jobs++; if ($l['status'] === 'booked') $unsent++; }
+  }
+  if (!$jobs && !$wait) return;
+  $title = $jobs ? "Today: $jobs collection" . ($jobs === 1 ? '' : 's') : 'No collections booked today';
+  $bits = [];
+  if ($unsent) $bits[] = "$unsent not sent to a driver yet.";
+  elseif ($jobs) $bits[] = 'All sent to drivers.';
+  if ($wait) $bits[] = "$wait customer" . ($wait === 1 ? ' is' : 's are') . ' waiting for a call.';
+  push_notify('morning', $title, implode(' ', $bits), abs_url('admin') . '?v=' . ($jobs ? 'collections' : 'leads'), 'morning');
 }
 
 /* cron: php index.php cron  (cPanel cron runs it hourly; the daily jobs only run once, after 9am UK time) */
@@ -481,6 +499,8 @@ if ($r === 'api/quote' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     'price' => $manual ? null : $price, 'valid_until' => gmdate('Y-m-d', time() + 86400 * $PR['valid_days']), 'rate_per_tonne' => $PR['rate_per_tonne'],
     'page' => $f('page')];                                         // no contact details yet: they're only asked for when the customer accepts
   save_lead($lead);
+  $vn = vehicle_name($v);
+  push_notify('priced', $manual ? "No price given: $reg" : "Price given: £$price for $reg", trim(($vn ? "$vn. " : '') . ($loc['pc'] ?? $pc) . ($dist !== null ? ", $dist miles" : '') . '. No contact details yet.'), push_lead_url($ref), "lead-$ref");
   jout(['ok' => true, 'ref' => $ref, 'manual' => $manual, 'price' => $manual ? null : $price, 'valid_until' => date('j F Y', strtotime($lead['valid_until'])), 'lines' => [], 'outside' => $dist !== null && $dist > $PR['max_miles'], 'max_miles' => $PR['max_miles']]);
 }
 /* reopen a price from a reminder email link */
@@ -501,6 +521,7 @@ if ($r === 'api/save' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($l['status'] === 'priced') $l['status'] = 'saved';
   $l['email'] = $email; $l['saved'] = gmdate('c'); $l['reminders_ok'] = $f('consent', 3) === 'yes';
   save_lead($l);
+  push_notify('saved', "Price emailed: £{$l['price']} for {$l['reg']}", "$email asked for their price by email to think it over.", push_lead_url($l['ref']), "lead-{$l['ref']}");
   if (!PREVIEW) {
     [$t, $hh] = customer_email($S, "Your scrap price: £{$l['price']}", ['Hi,', "Here's the price you asked us to email you. It's for a complete vehicle and includes free collection. We pay by bank transfer when we collect.",
       'When you\'re ready, accept it online and George will call you to book a collection time.'], price_email_rows($l), ['Accept my price', abs_url('get-a-price') . '?ref=' . rawurlencode($l['ref'])],
@@ -523,6 +544,9 @@ if ($r === 'api/accept' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $lead['name'] = $name; $lead['phone'] = $phone; $lead['email'] = $email; $lead['reminders_ok'] = $f('consent', 3) === 'yes' || !empty($lead['reminders_ok']);
   $lead['collection_note'] = $f('note', 500);
   save_lead($lead);
+  $vn = vehicle_name($lead['vehicle'] ?? null);
+  if ($lead['price'] === null) push_notify('callback', "Call-back: {$lead['reg']} - $name", "Needs a price by phone. Call $phone" . ($vn ? ". $vn" : '') . ", {$lead['postcode']}.", push_lead_url($ref), "lead-$ref");
+  else push_notify('accepted', "Accepted £{$lead['price']}: {$lead['reg']} - $name", "Call $phone to book the collection" . ($vn ? ". $vn" : '') . ", {$lead['postcode']}.", push_lead_url($ref), "lead-$ref");
   if (!PREVIEW) {
     $veh = vehicle_name($lead['vehicle'] ?? null) ?: 'Not found from reg';
     $head = $lead['price'] === null ? 'Needs a price: call them back' : "ACCEPTED £{$lead['price']}: call to book the collection";
@@ -546,6 +570,25 @@ if ($r === 'unsubscribe') {
   exit;
 }
 if ($seg && $seg[0] === 'job') { require __DIR__ . '/job.php'; exit; }
+if ($r === 'admin/sw.js') {          // notification service worker: scope /admin/
+  header('Content-Type: text/javascript; charset=utf-8'); header('Cache-Control: no-cache'); header('X-Robots-Tag: noindex');
+  echo <<<'JS'
+self.addEventListener('install',()=>self.skipWaiting());
+self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
+self.addEventListener('push',e=>{let d={};try{d=e.data?e.data.json():{}}catch(_){d={title:'We Buy Scrap Cars',body:e.data?e.data.text():''}}
+  const base=self.registration.scope;
+  e.waitUntil(self.registration.showNotification(d.title||'We Buy Scrap Cars',{body:d.body||'',tag:d.tag||undefined,renotify:!!d.tag,icon:base+'../img/favicon-192.png',badge:base+'../img/favicon-48.png',data:{url:d.url||base}}))});
+self.addEventListener('notificationclick',e=>{e.notification.close();const url=(e.notification.data&&e.notification.data.url)||self.registration.scope;
+  e.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(ws=>{for(const w of ws){if(w.url.startsWith(self.registration.scope)&&'focus' in w){w.navigate(url);return w.focus()}}return self.clients.openWindow(url)}))});
+JS;
+  exit;
+}
+if ($r === 'admin/manifest.webmanifest') {   // lets an iPhone add the admin to the home screen, which iOS needs before it allows notifications
+  header('Content-Type: application/manifest+json'); header('X-Robots-Tag: noindex');
+  echo json_encode(['name' => 'Scrap Cars admin', 'short_name' => 'Scrap admin', 'start_url' => u('admin'), 'scope' => u('admin'), 'display' => 'standalone',
+    'background_color' => '#eef1f6', 'theme_color' => '#10224A', 'icons' => [['src' => BASE . 'img/favicon-192.png', 'sizes' => '192x192', 'type' => 'image/png'], ['src' => BASE . 'img/logo-512.png', 'sizes' => '512x512', 'type' => 'image/png']]], JSON_UNESCAPED_SLASHES);
+  exit;
+}
 if ($seg && $seg[0] === 'admin') { require __DIR__ . '/admin.php'; exit; }
 /* contact form */
 if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -553,6 +596,7 @@ if ($r === 'enquiry' && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($f('website') !== '' || $f('name') === '' || $f('phone') === '' || !rate_ok('enq', 10)) jout(['ok' => false]);
   $lead = ['received' => gmdate('c'), 'page' => $f('page', 200), 'name' => $f('name', 100), 'phone' => $f('phone', 40), 'vehicle' => $f('vehicle', 120), 'location' => $f('location', 300), 'message' => $f('message', 2000)];
   $ok = @file_put_contents(store_path('enquiries') . '/' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.json', json_encode($lead, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)) !== false;
+  push_notify('enquiry', 'Website enquiry: ' . $lead['name'], trim($lead['phone'] . ($lead['vehicle'] !== '' ? '. ' . $lead['vehicle'] : '') . ($lead['message'] !== '' ? '. ' . $lead['message'] : '')), abs_url('admin') . '?v=enquiries', 'enquiry');
   if (!PREVIEW) { $body = "New enquiry from the We Buy Scrap Cars website.\n\n"; foreach ($lead as $k => $v) if ($v !== '') $body .= ucfirst($k) . ": $v\n";
     send_mail($NOTIFY, 'Website enquiry - ' . $lead['name'], $body . "\nAll enquiries: " . abs_url('admin') . "?v=enquiries\n"); }
   jout(['ok' => $ok]);

@@ -52,6 +52,7 @@ if ($ok && $_SERVER['REQUEST_METHOD'] === 'POST' && rate_ok('job', 30)) {
         lead_log($l, "Driver: $driver", 'Collected. ' . $summary . ($note !== '' ? " Note: $note" : ''), 'collected');
         save_lead($l);
         $warn = !$chk['complete'] || !$chk['battery'] || !$chk['engine'] || !$chk['cat'];
+        push_notify('collected', ($warn ? 'Collected, CHECK: ' : 'Collected: ') . "{$l['reg']} by $driver", $summary . ($warn ? ' Check the agreed price before you pay.' : ' Remember to pay the customer.'), push_lead_url($l['ref']), "lead-{$l['ref']}");
         if (!PREVIEW) send_mail($NOTIFY, ($warn ? 'Collected (CHECK, not complete): ' : 'Collected: ') . "{$l['reg']} by $driver",
           "$driver has collected {$l['reg']} (" . vehicle_name($l['vehicle'] ?? null) . ") from " . lead_address($l) . ".\n\n$summary" . ($note !== '' ? "\n\nDriver's note: $note" : '')
           . ($warn ? "\n\nSomething is missing: check the agreed price before you pay the customer." : '') . "\n\nRemember to pay the customer by bank transfer if you haven't already.\n\nPhotos and details: " . abs_url('admin') . '?v=lead&ref=' . $l['ref']);
@@ -68,6 +69,7 @@ if ($ok && $_SERVER['REQUEST_METHOD'] === 'POST' && rate_ok('job', 30)) {
       $l['status'] = 'booked'; $l['failed'][] = ['at' => date('c'), 'by' => $driver, 'why' => $note, 'photos' => $saved];
       if ($saved) $note .= ' (' . count($saved) . ' photo' . (count($saved) === 1 ? '' : 's') . ')';
       lead_log($l, "Driver: $driver", "Couldn't collect: $note", 'failed'); save_lead($l);
+      push_notify('failed', "Not collected: {$l['reg']} ($driver)", "$note. Call the customer to rebook" . (!empty($l['phone']) ? ": {$l['phone']}" : '') . '.', push_lead_url($l['ref']), "lead-{$l['ref']}");
       if (!PREVIEW) send_mail($NOTIFY, "Not collected: {$l['reg']} ($driver)", "$driver couldn't collect {$l['reg']} from " . lead_address($l) . ".\n\nReason: $note\n\nCall the customer to rebook: " . ($l['phone'] ?? '') . "\n\n" . abs_url('admin') . '?v=lead&ref=' . $l['ref']);
       $msg = 'Thanks, George has been told.';
     }

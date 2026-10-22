@@ -82,7 +82,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (!$me || !hash_equals($csrf, (string)($_POST['csrf'] ?? ''))) adm_go($A, 'Please log in again.', true);
   $back = (string)($_POST['back'] ?? $A); if (!str_starts_with($back, $A)) $back = $A;
 
-  if ($act === 'logout') { $_SESSION = []; session_regenerate_id(true); adm_go($A, 'Logged out.'); }   // fresh empty session, so the 'Logged out' message survives
+  if ($act === 'logout') { $_SESSION = []; session_regenerate_id(true); adm_go($A, 'Logged out.'); }
+
+  /* ---- phone notifications ---- */
+  if ($act === 'push_sub') {                                   // called by the page script when a phone turns notifications on
+    $ep = (string)($_POST['endpoint'] ?? ''); $pk = (string)($_POST['p256dh'] ?? ''); $au = (string)($_POST['auth'] ?? '');
+    if (!push_endpoint_ok($ep) || strlen($ep) > 1000 || strlen(b64u_dec($pk)) !== 65 || strlen(b64u_dec($au)) !== 16) jout(['ok' => false, 'msg' => 'This browser gave an address we can\'t use. Try Safari on iPhone or Chrome on Android.']);
+    $id = push_id($ep); $old = push_device($id); $ev = push_events();
+    $d = ['id' => $id, 'endpoint' => $ep, 'p256dh' => $pk, 'auth' => $au, 'user' => $me, 'name' => $old['name'] ?? push_device_name((string)($_SERVER['HTTP_USER_AGENT'] ?? '')),
+      'added' => $old['added'] ?? date('c'), 'events' => $old['events'] ?? array_map(fn($e) => $e[2], $ev)];
+    if (!push_save($d)) jout(['ok' => false, 'msg' => 'Couldn\'t save. Please tell Lewis.']);
+    $r = push_send([$d], ['title' => 'Notifications are on', 'body' => 'This ' . $d['name'] . ' will now get the alerts you pick on the Notifications page.', 'url' => abs_url('admin') . '?v=notify', 'tag' => 'welcome']);
+    push_log("added $id ({$d['name']}) by $me, welcome " . ($r['sent'] ? 'sent' : 'failed'));
+    jout(['ok' => true, 'id' => $id, 'sent' => $r['sent'] > 0]);
+  }
+  if ($act === 'push_off') {                                   // this phone turned notifications off
+    $id = (string)($_POST['id'] ?? ''); if (push_device($id)) { push_forget($id); push_log("removed $id by $me (turned off on the device)"); }
+    jout(['ok' => true]);
+  }
+  if ($act === 'push_prefs' || $act === 'push_test' || $act === 'push_del') {
+    $d = push_device((string)($_POST['id'] ?? '')); if (!$d) adm_go($A . '?v=notify', 'That device isn\'t set up any more.', true);
+    if ($act === 'push_del') { push_forget($d['id']); push_log("removed {$d['id']} ({$d['name']}) by $me"); adm_go($A . '?v=notify', $d['name'] . ' removed. It won\'t get any more notifications.'); }
+    if ($act === 'push_test') {
+      $r = push_send([$d], ['title' => 'Test notification', 'body' => 'If you can see this, notifications are working on this ' . $d['name'] . '.', 'url' => abs_url('admin') . '?v=notify', 'tag' => 'test']);
+      adm_go($A . '?v=notify#d-' . $d['id'], $r['sent'] ? "Test sent to {$d['name']}. It should pop up in a few seconds." : ($r['removed'] ? "{$d['name']} has turned notifications off, so it's been removed. Turn them on again on that phone." : "The test didn't go through. Please tell Lewis."), !$r['sent']);
+    }
+    $nm = mb_substr(trim((string)($_POST['name'] ?? '')), 0, 40); if ($nm !== '') $d['name'] = $nm;
+    foreach (push_events() as $k => $_) $d['events'][$k] = !empty($_POST["ev_$k"]);
+    push_save($d);
+    adm_go($A . '?v=notify#d-' . $d['id'], 'Saved. ' . (count(array_filter($d['events'])) ? $d['name'] . ' gets ' . count(array_filter($d['events'])) . ' type' . (count(array_filter($d['events'])) === 1 ? '' : 's') . ' of notification.' : $d['name'] . ' has every notification switched off.'));
+  }
+   // fresh empty session, so the 'Logged out' message survives
 
   if ($act === 'lead') {
     $l = load_lead((string)($_POST['ref'] ?? '')); if (!$l) adm_go($back, 'Lead not found.', true);
@@ -339,6 +369,9 @@ $hidden = '<input type="hidden" name="csrf" value="' . h($csrf) . '"><input type
 <meta name="robots" content="noindex,nofollow">
 <title>Admin | We Buy Scrap Cars Corby</title>
 <link rel="icon" href="<?= BASE ?>img/favicon-48.png" sizes="48x48">
+<link rel="manifest" href="<?= h($A) ?>manifest.webmanifest">
+<link rel="apple-touch-icon" href="<?= BASE ?>img/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Scrap admin"><meta name="theme-color" content="#10224A">
 <style>
 :root{--navy:#10224A;--deep:#0A1733;--green:#3FBF5F;--line:#dde3ee;--muted:#51607d;--bg:#eef1f6;--red:#9b2226}
 *{box-sizing:border-box}
@@ -403,7 +436,7 @@ th{font-size:13px;color:var(--muted);border-top:0}
 .login .brand img{width:52px;height:52px}
 .pre{white-space:pre-wrap;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;background:#f5f7fb;border-radius:8px;padding:10px;max-height:240px;overflow:auto}
 .tick{display:flex;gap:10px;align-items:center;font-weight:600}
-.tick input{width:22px;height:22px;min-height:0;margin:0}
+.tick input{width:22px;height:22px;min-height:0;margin:0;flex:0 0 22px}
 .st-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
 [hidden]{display:none!important}
 .grid>*{min-width:0}
@@ -448,7 +481,7 @@ input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;min-wi
 </body></html>
 <?php return; endif;
 
-$tabs = ['leads' => 'Leads', 'collections' => 'Collections', 'archive' => 'Archive', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'settings' => 'Settings'];
+$tabs = ['leads' => 'Leads', 'collections' => 'Collections', 'archive' => 'Archive', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'notify' => 'Notifications', 'settings' => 'Settings'];
 $tabOn = in_array($v, ['lead', 'new'], true) ? (($v === 'lead' && ($tl = load_lead((string)($_GET['ref'] ?? ''))) && !empty($tl['archived'])) ? 'archive' : 'leads') : $v;
 ?>
 <header class="top">
@@ -458,7 +491,7 @@ $tabOn = in_array($v, ['lead', 'new'], true) ? (($v === 'lead' && ($tl = load_le
 </header>
 <main>
 <?php if ($flash): ?><div class="flash<?= $flash[1] ? ' bad' : '' ?>" role="status"><?= h($flash[0]) ?></div><?php endif; ?>
-<?php if (PREVIEW): ?><div class="box small" style="border-left:5px solid #FFD200">Preview mode: the site isn't live yet, so no emails go to customers and lead alerts aren't sent. Everything else here works.</div><?php endif; ?>
+<?php if (PREVIEW): ?><div class="box small" style="border-left:5px solid #FFD200">Preview mode: the site isn't live yet, so no emails go to customers and lead alert emails aren't sent (phone notifications do work). Everything else here works.</div><?php endif; ?>
 
 <?php
 /* ================= LEADS ================= */
@@ -885,6 +918,46 @@ elseif ($v === 'rates'):
   </script>
 
 <?php
+/* ================= NOTIFICATIONS ================= */
+elseif ($v === 'notify'):
+  $vap = push_vapid(); $DEV = push_devices(); $EV = push_events(); ?>
+  <h1>Notifications</h1>
+  <p class="small">Get a notification on your phone when something happens, even with this page closed. Turn them on once on each phone, then pick what each one gets.</p>
+  <div class="box" id="thisdev">
+    <h2 style="margin-top:0">This phone</h2>
+    <?php if (!$vap): ?><p>Notifications can't be set up on this server yet. Please tell Lewis.</p>
+    <?php else: ?>
+    <p id="pstate" class="small">Checking&hellip;</p>
+    <div class="acts"><button class="btn go" type="button" id="pon" hidden>Turn on notifications on this phone</button><button class="btn ghost" type="button" id="poff" hidden>Turn off on this phone</button></div>
+    <div id="pios" hidden class="small" style="border-left:5px solid #FFD200;padding-left:10px">
+      <b style="color:var(--navy)">On an iPhone, add the admin to your home screen first.</b> Apple only allows notifications from apps on the home screen.
+      <ol style="margin:8px 0 0;padding-left:20px"><li>In Safari, tap the Share button (the square with an arrow).</li><li>Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li><li>Open <b>Scrap admin</b> from your home screen, log in, and come back to Notifications.</li></ol>
+    </div>
+    <?php endif; ?>
+  </div>
+  <h2>Phones and computers getting notifications</h2>
+  <?php if (!$DEV): ?><div class="box empty">None yet. Turn them on above, on each phone that should get them.</div><?php endif; ?>
+  <?php foreach ($DEV as $d): ?>
+  <form class="box" method="post" action="<?= h($A) ?>" id="d-<?= h($d['id']) ?>" data-dev="<?= h($d['id']) ?>"><?= $hidden ?><input type="hidden" name="id" value="<?= h($d['id']) ?>">
+    <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline">
+      <h2 style="margin:0"><?= h($d['name']) ?> <span class="badge js-me" hidden style="color:#1d7a3a;background:#e3f6e8">This phone</span></h2>
+      <span class="small">Turned on by <?= h(ucfirst((string)$d['user'])) ?>, <?= h(adm_when($d['added'])) ?><?= !empty($d['last_ok']) ? ' · last delivered ' . h(adm_when($d['last_ok'])) : '' ?></span>
+    </div>
+    <?php if (!empty($d['last_error_at']) && (empty($d['last_ok']) || $d['last_error_at'] > $d['last_ok'])): ?><p class="small" style="color:var(--red)">The last notification didn't go through (<?= h(adm_when($d['last_error_at'])) ?>: <?= h((string)$d['last_error']) ?>). Send a test, and if it fails again turn notifications off and on again on that phone.</p><?php endif; ?>
+    <p class="small" style="margin:12px 0 6px">Send notifications to this device for:</p>
+    <?php foreach ($EV as $k => [$label, $hint, $def]): ?>
+    <label class="tick" style="align-items:flex-start;margin:10px 0"><input type="checkbox" name="ev_<?= h($k) ?>" value="1"<?= ($d['events'][$k] ?? $def) ? ' checked' : '' ?>><span><?= h($label) ?><span class="hint" style="display:block"><?= h($hint) ?></span></span></label>
+    <?php endforeach; ?>
+    <label style="margin-top:12px">Name for this device<input name="name" value="<?= h($d['name']) ?>" maxlength="40" placeholder="e.g. George's iPhone"></label>
+    <div class="acts">
+      <button class="btn go" type="submit" name="act" value="push_prefs">Save</button>
+      <button class="btn ghost" type="submit" name="act" value="push_test">Send a test</button>
+      <button class="btn ghost" type="submit" name="act" value="push_del" onclick="return confirm('Stop all notifications to <?= h(addslashes($d['name'])) ?>?')">Remove</button>
+    </div>
+  </form>
+  <?php endforeach; ?>
+  <p class="small">Lead alert emails carry on as before (Settings &gt; Emails). Notifications are extra.</p>
+<?php
 /* ================= SETTINGS ================= */
 elseif ($v === 'settings'):
   $mlog = is_file(STORE . '/logs/mail-' . date('Y-m') . '.log') ? array_slice(file(STORE . '/logs/mail-' . date('Y-m') . '.log', FILE_IGNORE_NEW_LINES) ?: [], -10) : [];
@@ -966,6 +1039,34 @@ elseif ($v === 'settings'):
 document.querySelectorAll('.js-send').forEach(a=>a.addEventListener('click',()=>{const f=new FormData();f.append('act','sent');f.append('csrf',C);f.append('op',a.dataset.op);f.append('via',a.dataset.via);f.append('refs',a.dataset.refs);try{navigator.sendBeacon(A,f)}catch(e){}}));
 const t=document.getElementById('slottime');if(t){document.querySelectorAll('#slots input').forEach(r=>r.addEventListener('change',()=>{const on=document.querySelector('#slots input:checked').value==='time';t.hidden=!on;t.required=on;if(on)t.focus()}))}
 document.querySelectorAll('select[name^="op_"]').forEach(s=>s.addEventListener('change',()=>s.closest('.job').style.background='#fffbea'));
+const ps=document.getElementById('pstate');
+if(ps){const on=document.getElementById('pon'),off=document.getElementById('poff'),ios=document.getElementById('pios'),KEY=<?= json_encode(($v === 'notify' && ($vk = push_vapid())) ? $vk['pub'] : '') ?>,KNOWN=<?= json_encode($v === 'notify' ? array_keys(push_devices()) : []) ?>;
+  const say=t=>{ps.textContent=t},post=o=>{const f=new FormData();f.append('csrf',C);for(const k in o)f.append(k,o[k]);return fetch(A,{method:'POST',body:f,credentials:'same-origin'}).then(r=>r.json())};
+  const keyBytes=b=>{b=b.replace(/-/g,'+').replace(/_/g,'/');b+='='.repeat((4-b.length%4)%4);return Uint8Array.from(atob(b),c=>c.charCodeAt(0))};
+  const idOf=async ep=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ep)))].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,24);
+  const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),standalone=navigator.standalone===true||matchMedia('(display-mode: standalone)').matches;
+  const show=async()=>{on.hidden=off.hidden=true;
+    if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window)){if(isIOS&&!standalone){ios.hidden=false;say('Not set up on this iPhone yet.')}else say('This browser can\'t get notifications. Use Chrome on Android, or Safari on iPhone (added to the home screen).');return}
+    if(Notification.permission==='denied'){say('Notifications are blocked for this site on this phone. Allow them in the phone\'s settings (Settings > Notifications, or the padlock in the address bar), then reload this page.');return}
+    const reg=await navigator.serviceWorker.getRegistration(A),sub=reg&&await reg.pushManager.getSubscription();
+    const id=sub&&await idOf(sub.endpoint);
+    if(sub&&KNOWN.includes(id)){say('Notifications are on for this phone. Pick what it gets below.');off.hidden=false;off.dataset.id=id;const me=document.querySelector('[data-dev="'+id+'"] .js-me');if(me)me.hidden=false;return}
+    say('Notifications are off on this phone.');on.hidden=false};
+  on.addEventListener('click',async()=>{on.disabled=true;say('Turning on…');
+    try{const perm=await Notification.requestPermission();   // ask first, straight from the tap (iPhone needs that)
+      if(perm!=='granted'){say('You didn\'t allow notifications. Tap the button again and choose Allow.');on.disabled=false;return}
+      const reg=await navigator.serviceWorker.register(A+'sw.js',{scope:A});await navigator.serviceWorker.ready;
+      let sub=await reg.pushManager.getSubscription();
+      if(sub&&sub.options&&sub.options.applicationServerKey&&btoa(String.fromCharCode(...new Uint8Array(sub.options.applicationServerKey)))!==btoa(String.fromCharCode(...keyBytes(KEY)))){await sub.unsubscribe();sub=null}
+      if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:keyBytes(KEY)});
+      const j=sub.toJSON(),r=await post({act:'push_sub',endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth});
+      if(!r.ok){say(r.msg||'That didn\'t work. Please tell Lewis.');on.disabled=false;return}
+      location.href=A+'?v=notify&on='+r.id+'#d-'+r.id}
+    catch(e){say('That didn\'t work ('+(e&&e.message||e)+'). Please tell Lewis.');on.disabled=false}});
+  off.addEventListener('click',async()=>{if(!confirm('Stop notifications on this phone?'))return;off.disabled=true;
+    try{const reg=await navigator.serviceWorker.getRegistration(A),sub=reg&&await reg.pushManager.getSubscription();if(sub)await sub.unsubscribe();await post({act:'push_off',id:off.dataset.id||''})}catch(e){}
+    location.reload()});
+  show().catch(e=>say('Couldn\'t check this phone ('+(e&&e.message||e)+').'))}
 })();
 </script>
 </body>

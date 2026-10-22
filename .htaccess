@@ -12,6 +12,6 @@ RewriteCond %{HTTP_HOST} ^(www\.)?webuyscrapcars-corby\.co\.uk$ [NC]
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^webuyscrapcars-corby\.co\.uk$ [NC]
 RewriteRule ^ https://www.webuyscrapcars-corby.co.uk%{REQUEST_URI} [L,R=301]
-RewriteRule ^(data/|admin\.php|job\.php) - [F,L]
+RewriteRule ^(data/|admin\.php|job\.php|push\.php) - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L,QSA]
