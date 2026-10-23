@@ -704,13 +704,14 @@ $lic = function () use ($S): string {
 <link rel="icon" href="<?= BASE ?>img/favicon-48.png" sizes="48x48"><link rel="icon" href="<?= BASE ?>img/favicon-192.png" sizes="192x192"><link rel="apple-touch-icon" href="<?= BASE ?>img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<?= BASE ?>style.css?v=6">
+<link rel="stylesheet" href="<?= BASE ?>style.css?v=7">
 <link rel="preload" as="image" href="<?= h(img($hero)) ?>" imagesrcset="<?= h(img("$hero-sm")) ?> 800w, <?= h(img($hero)) ?> 1600w" imagesizes="100vw">
 <script type="application/ld+json"><?= json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
 </head>
 <body class="t-<?= h($type) ?>">
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
+  <a class="sameday" href="<?= u('get-a-price') ?>" id="sameday"><span class="sd-clock" aria-hidden="true"></span><b><span class="sd-l">Same day collection and payment</span><span class="sd-s">Same day Mon–Fri by 11am</span></b><span class="sd-when">Monday to Friday, when you book before 11am</span><span class="sd-live" id="sdlive" hidden><span class="sd-l"></span><span class="sd-s"></span></span></a>
   <div class="wrap top-in">
     <a class="brand" href="<?= u() ?>" aria-label="We Buy Scrap Cars Corby home"><img src="<?= BASE ?>img/logo-mark.svg" alt="" width="52" height="52"><span><b>We Buy Scrap Cars</b><small>Corby · Free collection</small></span></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span><b>Menu</b></button>
@@ -734,11 +735,12 @@ $lic = function () use ($S): string {
     <p class="eyebrow"><span class="dot"></span> Instant online price · Free collection</p>
     <h1><?= h($P['h1']) ?></h1>
     <?php if (!empty($P['lead'])): ?><p class="lead"><?= h($P['lead']) ?></p><?php endif; ?>
+    <div class="sd-badge"><span class="sd-big">Same day</span><span class="sd-txt"><b>Collected and paid the same day</b>Book before 11am, Monday to Friday</span></div>
     <?php if ($type !== 'get-a-price'): ?>
       <?= qbox('hero') ?>
       <p class="hero-alt">Rather talk? Call <a href="<?= h($tel) ?>"><?= h($S['phone']) ?></a> or <a href="<?= h($wa) ?>" rel="noopener">WhatsApp us</a>.</p>
     <?php endif; ?>
-    <ul class="proof"><li>Free collection</li><li>Paid by bank transfer</li><li>Certificate of Destruction</li><li>Non-runners welcome</li></ul>
+    <ul class="proof"><li>Same day Mon–Fri if booked by 11am</li><li>Free collection</li><li>Paid by bank transfer</li><li>Certificate of Destruction</li><li>Non-runners welcome</li></ul>
   </div>
 </section>
 
@@ -901,7 +903,7 @@ $lic = function () use ($S): string {
       <p>Enter your reg and postcode for an instant price. Free collection<?= $area ? ' in ' . h($AR[$area]['name']) : '' ?>.</p>
       <?= $type === 'get-a-price' ? '<a class="btn btn-go" href="#tool">Back to the price tool</a>' : qbox('side', false) ?>
       <a class="btn btn-ghost-d" href="<?= h($tel) ?>">Call <?= h($S['phone']) ?></a>
-      <ul class="ticks"><li>Free collection, non-runners welcome</li><li>Paid by bank transfer when we collect</li><li>Licensed ATF and Certificate of Destruction</li><li>Run by the team behind Rapid Recovery Corby</li></ul>
+      <ul class="ticks"><li><b>Same day collection and payment, Monday to Friday, when you book before 11am</b></li><li>Free collection, non-runners welcome</li><li>Paid by bank transfer when we collect</li><li>Licensed ATF and Certificate of Destruction</li><li>Run by the team behind Rapid Recovery Corby</li></ul>
     </div>
   </aside>
 </div>
@@ -973,7 +975,8 @@ $('laterform').addEventListener('submit',async e=>{e.preventDefault();$('e2').te
   try{const j=await post('save',fd);if(!j.ok)throw j.msg;$('laterform').hidden=true;$('latermsg').textContent='Done. We\'ve emailed your price to '+fd.get('email')+'. Accept it any time before it runs out.';$('s3').email.value=fd.get('email');if(fd.get('consent'))$('s3').consent.checked=true}
   catch(m){$('e2').textContent=typeof m==='string'?m:'That didn\'t send. Please try again or call us.'}
   busy($('b2'),false,'Email me my price')});
-const priceHtml=p=>'<div class="priceout"><small>Your instant price</small><div class="big">£'+p.price+'</div><p>Free collection · Paid by bank transfer when we collect</p><p>Price held until '+esc(p.valid_until)+' · Ref '+esc(ref)+'</p></div>';
+const sdLine=()=>{const t=sdNow();return t.open?'Accept before 11am and we can collect and pay you today':'Accept now and we can collect and pay you '+t.next};
+const priceHtml=p=>'<div class="priceout"><small>Your instant price</small><div class="big">£'+p.price+'</div><p>Free collection · Paid by bank transfer when we collect</p><p class="sd-price">'+sdLine()+'</p><p>Price held until '+esc(p.valid_until)+' · Ref '+esc(ref)+'</p></div>';
 const carHtml=v=>v?'<div class="found"><span class="ok">✓</span><div><strong>'+esc([v.year,v.make,v.model].filter(Boolean).join(' '))+'</strong><span>'+esc([v.engine_cc?(v.engine_cc/1000).toFixed(1)+' litre':'',v.fuel,v.colour].filter(Boolean).join(' · '))+'</span></div></div>':'';
 const openRef=new URLSearchParams(location.search).get('ref');
 if(openRef){(async()=>{const fd=new FormData();fd.append('ref',openRef);try{const j=await post('lead',fd);
@@ -1006,5 +1009,17 @@ try{const r=await fetch('<?= u('enquiry') ?>'.replace(/\/$/,''),{method:'POST',b
 catch(_){m.textContent='That did not send. Please call us on <?= h($S['phone']) ?> instead.'}btn.disabled=false;btn.textContent='Send enquiry'})})();
 </script>
 <?php endif; ?>
+<script>
+/* same day window: Monday to Friday, booked before 11am UK time */
+window.sdNow=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+  const d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),left=11*60-(+p.hour*60+ +p.minute),open=d>=1&&d<=5&&left>0;
+  return {open,left,next:open?'today':(d>=1&&d<=4?'tomorrow':'Monday')}};
+(()=>{const el=document.getElementById('sdlive');if(!el)return;
+const tick=()=>{const t=sdNow(),[L,Sh]=el.children,left=t.left>=60?Math.floor(t.left/60)+'h '+(t.left%60)+'m':t.left+' min';
+  if(t.open){L.textContent=t.left>=60?'Book in the next '+left:'Only '+left+' left today';Sh.textContent=left+' left';el.classList.remove('late')}
+  else{L.textContent='Book now for '+t.next;Sh.textContent='For '+t.next;el.classList.add('late')}
+  el.hidden=false};
+tick();setInterval(tick,30000)})();
+</script>
 </body>
 </html>
