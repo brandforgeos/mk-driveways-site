@@ -93,7 +93,7 @@ function pickJob() {
 
 async function showJob() {
   const c = job.customer
-  const { data: reqs } = await sb.from('sign_requests').select('*').eq('job_id', job.id).order('created_at', { ascending: false })
+  const { data: reqs } = await sb.from('sign_requests').select('*').eq('job_id', job.id).eq('demo', false).order('created_at', { ascending: false })
   app.innerHTML = `
     <div class="card"><div class="muted">${esc(job.ref)}</div><h2 style="margin:2px 0">${esc(c?.display_name)}</h2>
       <div class="muted">${esc(job.title)}${job.site_address ? ' · ' + esc([job.site_address, job.site_postcode].filter(Boolean).join(', ')) : ''}</div>

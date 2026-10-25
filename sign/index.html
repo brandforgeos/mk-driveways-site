@@ -140,7 +140,7 @@ async function drawPages() {
       await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise
       if (D.request.status !== 'signed' && n === D.request.sig_page) {
         const s = document.createElement('div'); s.className = 'spot'; s.id = 'spot'
-        Object.assign(s.style, { left: D.request.sig_x * 100 + '%', top: D.request.sig_y * 100 + '%', width: D.request.sig_w * 100 + '%', height: (D.request.sig_w * 0.3 * v1.width / v1.height) * 100 + '%' })
+        Object.assign(s.style, { left: D.request.sig_x * 100 + '%', top: D.request.sig_y * 100 + '%', width: D.request.sig_w * 100 + '%', height: (D.request.sig_h ?? (D.request.sig_w * 0.3 * v1.width / v1.height)) * 100 + '%' })
         s.innerHTML = '<span>Sign here</span>'
         div.appendChild(s)
       }
