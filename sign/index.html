@@ -30,9 +30,9 @@ p{line-height:1.6;margin:0 0 12px;font-size:15px}
 .pages{margin:10px -4px}
 .pg{position:relative;margin:0 auto 12px;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.5)}
 .pg canvas{display:block;width:100%;height:auto}
-.spot{position:absolute;border:2px dashed var(--accent);background:rgba(114,170,35,.12);border-radius:4px;pointer-events:none}
+.spot{position:absolute;border:2px dashed var(--accent);background:rgba(114,170,35,.12);border-radius:4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 body.mkd .spot{background:rgba(192,138,70,.14)}
-.spot span{position:absolute;left:-2px;top:-24px;background:var(--accent);color:var(--accent-ink);font:600 11px Poppins,Arial;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.spot span{position:absolute;left:-2px;top:-26px;background:var(--accent);color:var(--accent-ink);font:600 12px Poppins,Arial;padding:4px 9px;border-radius:4px;white-space:nowrap;cursor:pointer}
 .spot img{position:absolute;left:0;top:0;width:100%;height:auto}
 label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500;margin:14px 0 6px}
 input[type=text]{width:100%;font:400 17px Poppins,Arial;padding:12px;border-radius:8px;border:1px solid var(--line);background:#fff;color:#111}
@@ -51,6 +51,7 @@ input[type=text]{width:100%;font:400 17px Poppins,Arial;padding:12px;border-radi
 .done{border-color:var(--accent)}
 .done h2{font-family:var(--head);color:var(--ink);margin:0 0 8px;font-size:21px}
 .loading{padding:60px 0;text-align:center;color:var(--muted)}
+#signbox.flash{box-shadow:0 0 0 3px var(--accent);transition:box-shadow .3s}
 footer{border-top:1px solid var(--line);margin-top:30px;padding-top:12px;font-size:12px;color:var(--muted);line-height:1.6}
 footer a{color:var(--body);text-decoration:none}
 </style>
@@ -101,7 +102,7 @@ function render() {
     ${D.job?.site_address ? `<div class="meta">${esc([D.job.site_address, D.job.site_postcode].filter(Boolean).join(', '))}</div>` : ''}
     ${signed ? `<div class="card done"><h2>Signed — thank you</h2><p>Signed by ${esc(R.signed_name)} on ${when(R.signed_at)}. ${esc(D.company.name)} has been told, and a copy has been emailed to you.</p>
         <a class="btn" href="${D.pdf_url}&dl=1">Download your signed copy</a></div>`
-      : `<p>${first ? `Hi ${esc(first)}, please` : 'Please'} read the document below. When you’re happy, sign at the bottom of this page. Your signature will be placed where it’s marked <b style="color:var(--accent);font-weight:500">Sign here</b>.</p>
+      : `<p>${first ? `Hi ${esc(first)}, please` : 'Please'} read the document below. Then scroll down to the bottom of this page to sign, or tap the green <b style="color:var(--accent);font-weight:500">Tap here to sign</b> marker. Your signature goes in that box only.</p>
          ${R.note ? `<div class="card note">${esc(R.note)}</div>` : ''}`}
     <div class="pages" id="pages"><div class="loading">Loading the pages…</div></div>
     <p style="text-align:center"><a href="${D.pdf_url}" target="_blank" rel="noopener">Open the document full screen</a></p>
@@ -122,7 +123,7 @@ function render() {
   if (!signed) pad()
 }
 
-let sigPreview = null
+function toSign() { const b = document.getElementById('signbox'); if (!b) return; b.scrollIntoView({ behavior: 'smooth', block: 'start' }); b.classList.add('flash'); setTimeout(() => b.classList.remove('flash'), 1600) }
 async function drawPages() {
   const box = document.getElementById('pages')
   try {
@@ -141,7 +142,8 @@ async function drawPages() {
       if (D.request.status !== 'signed' && n === D.request.sig_page) {
         const s = document.createElement('div'); s.className = 'spot'; s.id = 'spot'
         Object.assign(s.style, { left: D.request.sig_x * 100 + '%', top: D.request.sig_y * 100 + '%', width: D.request.sig_w * 100 + '%', height: (D.request.sig_h ?? (D.request.sig_w * 0.3 * v1.width / v1.height)) * 100 + '%' })
-        s.innerHTML = '<span>Sign here</span>'
+        s.innerHTML = '<span>Tap here to sign ↓</span>'
+        s.onclick = toSign
         div.appendChild(s)
       }
     }
