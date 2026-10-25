@@ -15,3 +15,19 @@ DB (applied live): `private.e164()`; customers/blocked_numbers phone normalised 
 `link_message_customer` normalises SMS numbers, matches customer (email too) and attaches inbound replies to the job
 (`private.reply_job`: last job messaged, else latest live job); `link_call_customer` normalises `from_number`;
 existing rows backfilled.
+
+## 2026-10-25 — Send for signature (customer e-signing)
+Added as standalone pages + an injected helper, so nothing in the React bundle changed:
+- `sign/index.html` — the customer's signing page (`/sign/?t=<public_token>`): company-branded, shows the PDF (pdf.js),
+  "Sign here" marker, typed full name + drawn signature + consent tick, then a download of the signed copy.
+- `sign/new/index.html` — director page (`/sign/new/?job=<job id>`): upload a PDF, tap where the signature goes,
+  send by email/text (RPC `send_sign_request`), list/copy/resend/cancel existing requests for the job.
+- `sign/lib/` — self-hosted pdf.js 4.10.38 and supabase-js 2.45.4 UMD (no third-party CDN at runtime).
+- `sign-share.js` (loaded from index.html) — "Send for signature" button on a job page, directors only.
+- `sw.js` — NavigationRoute now has `denylist: [/^\/sign\//]` so the PWA doesn't swallow /sign/ links; index.html
+  revision bumped; sign-share.js precached. `.cpanel.yml` copies `sign/` and `sign-share.js`.
+Backend (live): table `sign_requests` (+ RLS, trigger `private.sign_rules`), RPC `public.send_sign_request`,
+edge function `sign-doc` (GET info / GET pdf=1 / POST sign → stamps signature onto the PDF with pdf-lib, appends a
+branded "Signing record" page with name, time, IP, device and the original's SHA-256, saves to documents bucket,
+inserts an inbound `sign_signed` message for the job and queues a `sign_confirm` email to the customer).
+Port into the source: add a real route/screen for both pages, and a "Send for signature" action on the job page.

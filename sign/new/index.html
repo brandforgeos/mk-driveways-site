@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Send for signature — Build Bro Hub</title>
+<link rel="icon" href="/icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F4F1;--card:#fff;--ink:#1B1F23;--body:#3D4247;--muted:#7A8086;--line:#E2E2DC;--accent:#2F6FEB;--ok:#2E8B57;--warn:#C2410C}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--body);font-family:Barlow,Arial,sans-serif;font-size:16px}
+header{background:#1B1F23;color:#fff;padding:14px 16px calc(14px);position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px}
+header a{color:#fff;text-decoration:none;font-size:22px;line-height:1}
+header h1{font:700 19px 'Barlow Semi Condensed',Arial;margin:0;letter-spacing:.01em}
+.wrap{max-width:760px;margin:0 auto;padding:14px 14px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+h2{font:700 17px 'Barlow Semi Condensed',Arial;color:var(--ink);margin:0 0 8px}
+label{display:block;font-weight:600;color:var(--ink);font-size:14px;margin:12px 0 5px}
+input[type=text],input[type=search],textarea,select{width:100%;font:400 16px Barlow,Arial;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+.btn{display:inline-block;border:0;border-radius:9px;background:var(--accent);color:#fff;font:600 16px Barlow,Arial;padding:12px 16px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.full{display:block;width:100%;margin-top:14px}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:7px 11px;font-size:14px}
+.btn[disabled]{opacity:.45}
+.muted{color:var(--muted);font-size:14px}
+.pill{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;background:#EEE;color:#555}
+.pill.sent{background:#E8F0FE;color:#1D4ED8}.pill.viewed{background:#FEF3C7;color:#92400E}.pill.signed{background:#DCFCE7;color:#166534}.pill.cancelled{background:#F3F4F6;color:#6B7280}.pill.draft{background:#F3F4F6;color:#374151}
+.req{border-top:1px solid var(--line);padding:10px 0}
+.req:first-of-type{border-top:0}
+.req .t{font-weight:600;color:var(--ink)}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.pg{position:relative;margin:10px auto;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.18);cursor:crosshair}
+.pg canvas{display:block;width:100%;height:auto}
+.pg .n{position:absolute;right:6px;top:6px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;padding:2px 7px;border-radius:5px}
+.box{position:absolute;border:2px solid var(--accent);background:rgba(47,111,235,.15);border-radius:3px;pointer-events:none}
+.box span{position:absolute;left:-2px;top:-22px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.checks{display:flex;gap:18px;margin-top:10px}
+.checks label{display:flex;align-items:center;gap:7px;margin:0;font-weight:500}
+.checks input{width:20px;height:20px}
+.err{color:var(--warn);font-size:14px;margin-top:8px;min-height:1em}
+.ok{color:var(--ok)}
+.result{padding:6px 0}
+.size{display:flex;gap:8px;margin-top:6px}
+.size button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+</style>
+</head>
+<body>
+<header><a href="/" aria-label="Back to the hub">‹</a><h1>Send for signature</h1></header>
+<div class="wrap" id="app"><p class="muted">Loading…</p></div>
+
+<script src="/sign/lib/supabase.js"></script>
+<script type="module">
+const { createClient } = window.supabase
+import * as pdfjs from '/sign/lib/pdf.min.js'
+pdfjs.GlobalWorkerOptions.workerSrc = '/sign/lib/pdf.worker.min.js'
+
+const sb = createClient('https://bjkjmdqytughwczpzgac.supabase.co', 'sb_publishable_Ct4SslgkSqBc5w1IUvWSMg_fvHw7zt4')
+const app = document.getElementById('app')
+const qs = new URLSearchParams(location.search)
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+const when = (d) => d ? new Date(d).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' }) : ''
+const HUB = location.origin
+let job = null, place = null, file = null, width = 0.32
+
+async function start() {
+  const { data: { session } } = await sb.auth.getSession()
+  if (!session) { app.innerHTML = `<div class="card"><h2>Sign in first</h2><p>Open the hub and sign in, then come back to this page.</p><a class="btn" href="/">Open the hub</a></div>`; return }
+  const id = qs.get('job'), ref = qs.get('ref')
+  if (id || ref) {
+    let q = sb.from('jobs').select('id, ref, title, company_id, customer_id, site_address, site_postcode, customer:customers(id, display_name, first_name, email, phone)')
+    q = id ? q.eq('id', id) : q.eq('ref', ref.toUpperCase())
+    const { data } = await q.maybeSingle()
+    if (data) { job = data; return showJob() }
+  }
+  pickJob()
+}
+
+function pickJob() {
+  app.innerHTML = `<div class="card"><h2>Which job is it for?</h2><input type="search" id="q" placeholder="Job number, customer or address"><div id="res"></div></div>`
+  const q = document.getElementById('q'); let tm
+  const run = async () => {
+    const s = q.value.trim(); const res = document.getElementById('res')
+    let qq = sb.from('jobs').select('id, ref, title, site_address, customer:customers(display_name)').order('created_at', { ascending: false }).limit(15)
+    if (s) qq = qq.or(`ref.ilike.%${s}%,title.ilike.%${s}%,site_address.ilike.%${s}%`)
+    const { data } = await qq
+    res.innerHTML = (data ?? []).map((j) => `<div class="req"><a href="?job=${j.id}" style="text-decoration:none;color:inherit"><div class="t">${esc(j.ref)} · ${esc(j.customer?.display_name)}</div><div class="muted">${esc(j.title)}${j.site_address ? ' · ' + esc(j.site_address) : ''}</div></a></div>`).join('') || '<p class="muted">No jobs found.</p>'
+  }
+  q.addEventListener('input', () => { clearTimeout(tm); tm = setTimeout(run, 250) }); run(); q.focus()
+}
+
+async function showJob() {
+  const c = job.customer
+  const { data: reqs } = await sb.from('sign_requests').select('*').eq('job_id', job.id).order('created_at', { ascending: false })
+  app.innerHTML = `
+    <div class="card"><div class="muted">${esc(job.ref)}</div><h2 style="margin:2px 0">${esc(c?.display_name)}</h2>
+      <div class="muted">${esc(job.title)}${job.site_address ? ' · ' + esc([job.site_address, job.site_postcode].filter(Boolean).join(', ')) : ''}</div>
+      <div class="muted">${esc(c?.email || 'No email')} · ${esc(c?.phone || 'No mobile')}</div>
+      <div class="acts"><a class="btn ghost small" href="/jobs/${job.id}">Open the job</a><a class="btn ghost small" href="?">Different job</a></div></div>
+    ${reqs?.length ? `<div class="card"><h2>Sent for signature</h2>${reqs.map(row).join('')}</div>` : ''}
+    <div class="card" id="new"><h2>New document to sign</h2>
+      <label for="title">What is it?</label><input type="text" id="title" placeholder="e.g. Dropped kerb application form">
+      <label for="note">Message to ${esc(c?.first_name || 'the customer')} <span class="muted">(optional, shown in the email and on the page)</span></label>
+      <textarea id="note" placeholder="e.g. Here's your dropped kerb application to the council, filled in ready. Please check your details and sign it, and we'll send it off."></textarea>
+      <label for="file">The document (PDF)</label><input type="file" id="file" accept="application/pdf">
+      <div id="placer"></div>
+      <div class="checks"><label><input type="checkbox" id="em" ${c?.email ? 'checked' : 'disabled'}> Email</label><label><input type="checkbox" id="tx" ${/^\+447\d{9}$/.test(c?.phone || '') ? 'checked' : 'disabled'}> Text</label></div>
+      <button class="btn full" id="send" disabled>Send to ${esc(c?.first_name || 'customer')} to sign</button>
+      <div class="err" id="err"></div></div>`
+  for (const r of reqs ?? []) wireRow(r)
+  document.getElementById('file').onchange = (e) => { file = e.target.files[0] || null; place = null; drawPreview(); check() }
+  document.getElementById('title').oninput = check
+  document.getElementById('send').onclick = send
+}
+
+function status(r) { return r.status === 'sent' && r.first_viewed_at ? 'viewed' : r.status }
+function row(r) {
+  const st = status(r)
+  const label = { draft: 'Draft', sent: 'Sent ' + when(r.sent_at), viewed: 'Opened ' + when(r.first_viewed_at), signed: 'Signed ' + when(r.signed_at), cancelled: 'Cancelled' }[st]
+  return `<div class="req" id="r-${r.id}"><div class="t">${esc(r.title)}</div><span class="pill ${st}">${label}</span>${r.signed_name ? ` <span class="muted">by ${esc(r.signed_name)}</span>` : ''}
+    <div class="acts">
+      ${r.status === 'signed' ? `<button class="btn small" data-a="signed">View signed copy</button>` : ''}
+      ${r.status !== 'draft' && r.status !== 'cancelled' ? `<button class="btn ghost small" data-a="copy">Copy link</button><a class="btn ghost small" target="_blank" href="${HUB}/sign/?t=${r.public_token}">See what they see</a>` : ''}
+      ${['draft', 'sent'].includes(r.status) ? `<button class="btn ghost small" data-a="resend">${r.status === 'draft' ? 'Send' : 'Send again'}</button><button class="btn ghost small" data-a="cancel">Cancel</button>` : ''}
+    </div><div class="muted result" id="m-${r.id}"></div></div>`
+}
+function wireRow(r) {
+  const el = document.getElementById('r-' + r.id); if (!el) return
+  const msg = (t) => { document.getElementById('m-' + r.id).textContent = t }
+  el.querySelectorAll('[data-a]').forEach((b) => b.onclick = async () => {
+    const a = b.dataset.a
+    if (a === 'copy') { await navigator.clipboard.writeText(`${HUB}/sign/?t=${r.public_token}`).catch(() => {}); msg('Link copied.') }
+    if (a === 'signed') { const { data } = await sb.storage.from('documents').createSignedUrl(r.signed_path, 600); if (data) location.href = data.signedUrl }
+    if (a === 'resend') { if (!confirm(`Send “${r.title}” to ${job.customer.display_name} by email and text?`)) return; const { error } = await sb.rpc('send_sign_request', { p_id: r.id, p_email: !!job.customer.email, p_sms: /^\+447\d{9}$/.test(job.customer.phone || '') }); msg(error ? error.message : 'Sent.'); if (!error) setTimeout(showJob, 900) }
+    if (a === 'cancel') { if (!confirm('Cancel this? The link will stop working.')) return; const { error } = await sb.from('sign_requests').update({ status: 'cancelled' }).eq('id', r.id); msg(error ? error.message : 'Cancelled.'); if (!error) setTimeout(showJob, 700) }
+  })
+}
+
+async function drawPreview() {
+  const box = document.getElementById('placer'); box.innerHTML = ''
+  if (!file) return
+  box.innerHTML = `<label>Tap where they sign</label><div class="muted">Tap the page where the signature should go. It's placed from the top-left of the box. Their name and the date go underneath.</div>
+    <div class="size"><span class="muted" style="align-self:center">Size:</span><button class="btn ghost small" data-w="0.24">Small</button><button class="btn ghost small on" data-w="0.32">Medium</button><button class="btn ghost small" data-w="0.42">Large</button></div><div id="pgs"></div>`
+  box.querySelectorAll('[data-w]').forEach((b) => b.onclick = () => { width = Number(b.dataset.w); box.querySelectorAll('[data-w]').forEach((x) => x.classList.toggle('on', x === b)); if (place) mark() })
+  try {
+    const doc = await pdfjs.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise
+    const pgs = document.getElementById('pgs'), W = pgs.clientWidth
+    for (let n = 1; n <= doc.numPages; n++) {
+      const page = await doc.getPage(n), v1 = page.getViewport({ scale: 1 })
+      const vp = page.getViewport({ scale: Math.min(2, (W / v1.width) * (devicePixelRatio || 1)) })
+      const d = document.createElement('div'); d.className = 'pg'; d.dataset.n = n; d.dataset.ar = v1.width / v1.height
+      const cv = document.createElement('canvas'); cv.width = vp.width; cv.height = vp.height
+      d.appendChild(cv); d.insertAdjacentHTML('beforeend', `<div class="n">Page ${n}</div>`); pgs.appendChild(d)
+      await page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise
+      d.onclick = (e) => { const r = d.getBoundingClientRect(); place = { page: n, x: (e.clientX - r.left) / r.width, y: (e.clientY - r.top) / r.height, ar: v1.width / v1.height }; mark(); check() }
+    }
+  } catch { box.innerHTML = '<div class="err">That PDF couldn’t be opened. Try saving it again as a PDF.</div>'; file = null }
+}
+function mark() {
+  document.querySelectorAll('.box').forEach((b) => b.remove())
+  const d = document.querySelector(`.pg[data-n="${place.page}"]`); if (!d) return
+  place.x = Math.min(place.x, 1 - width)
+  const b = document.createElement('div'); b.className = 'box'
+  Object.assign(b.style, { left: place.x * 100 + '%', top: place.y * 100 + '%', width: width * 100 + '%', height: (width * 0.3 * place.ar) * 100 + '%' })
+  b.innerHTML = '<span>Signature</span>'; d.appendChild(b)
+}
+function check() {
+  const ok = file && place && document.getElementById('title').value.trim().length > 2 && (document.getElementById('em').checked || document.getElementById('tx').checked)
+  document.getElementById('send').disabled = !ok
+}
+async function send() {
+  const err = document.getElementById('err'), btn = document.getElementById('send'); err.textContent = ''
+  const em = document.getElementById('em').checked, tx = document.getElementById('tx').checked
+  if (!confirm(`Send this to ${job.customer.display_name} by ${[em && 'email', tx && 'text'].filter(Boolean).join(' and ')} now?`)) return
+  btn.disabled = true; btn.textContent = 'Sending…'
+  const path = `${job.company_id}/${job.id}/sign-${crypto.randomUUID()}.pdf`
+  const up = await sb.storage.from('documents').upload(path, file, { contentType: 'application/pdf' })
+  if (up.error) { err.textContent = 'The PDF couldn’t be uploaded: ' + up.error.message; btn.disabled = false; btn.textContent = 'Send'; return }
+  const { data: r, error } = await sb.from('sign_requests').insert({ company_id: job.company_id, customer_id: job.customer_id, job_id: job.id,
+    title: document.getElementById('title').value.trim(), note: document.getElementById('note').value.trim() || null, document_path: path,
+    sig_page: place.page, sig_x: +place.x.toFixed(4), sig_y: +place.y.toFixed(4), sig_w: width }).select('id').single()
+  if (error) { err.textContent = error.message; btn.disabled = false; btn.textContent = 'Send'; return }
+  const s = await sb.rpc('send_sign_request', { p_id: r.id, p_email: em, p_sms: tx })
+  if (s.error) { err.textContent = 'Saved, but not sent: ' + s.error.message; btn.disabled = false; btn.textContent = 'Send'; showJob(); return }
+  file = null; place = null; showJob()
+  setTimeout(() => { const top = document.querySelector('.card + .card'); if (top) top.scrollIntoView({ behavior: 'smooth' }) }, 300)
+}
+start()
+</script>
+</body>
+</html>

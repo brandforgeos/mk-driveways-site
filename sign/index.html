@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="format-detection" content="telephone=no">
+<title>Sign your document</title>
+<link rel="icon" href="/icon.svg">
+<style>
+@font-face{font-family:Poppins;font-weight:300;src:url(/brand/fonts/Poppins-Light.ttf) format('truetype');font-display:swap}
+@font-face{font-family:Poppins;font-weight:400;src:url(/brand/fonts/Poppins-Regular.ttf) format('truetype');font-display:swap}
+@font-face{font-family:Poppins;font-weight:500;src:url(/brand/fonts/Poppins-Medium.ttf) format('truetype');font-display:swap}
+@font-face{font-family:Poppins;font-weight:600;src:url(/brand/fonts/Poppins-SemiBold.ttf) format('truetype');font-display:swap}
+@font-face{font-family:Playfair;font-weight:600;src:url(/brand/fonts/PlayfairDisplay-SemiBold.ttf) format('truetype');font-display:swap}
+:root{--bg:#0C0C0C;--panel:#151513;--ink:#F4F3EE;--body:#D4D3CB;--muted:#96958D;--line:#2A2A27;--accent:#72AA23;--accent-ink:#0C0C0C;--head:Playfair,Georgia,serif}
+body.mkd{--bg:#16181B;--panel:#1D2024;--ink:#EDE9E3;--body:#D3CEC6;--muted:#9A968E;--line:#31363C;--accent:#C08A46;--accent-ink:#16181B;--head:Poppins,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--body);font-family:Poppins,Arial,sans-serif;font-weight:300;-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.hero{position:relative;height:150px;background:var(--bg) center/cover no-repeat}
+.hero img.logo{position:absolute;left:20px;bottom:18px;height:56px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500;margin:18px 0 6px}
+h1{font-family:var(--head);font-weight:600;color:var(--ink);font-size:26px;line-height:1.2;margin:0 0 10px}
+p{line-height:1.6;margin:0 0 12px;font-size:15px}
+.note{white-space:pre-wrap}
+.meta{font-size:13px;color:var(--muted);margin-bottom:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:18px 0}
+.pages{margin:10px -4px}
+.pg{position:relative;margin:0 auto 12px;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.5)}
+.pg canvas{display:block;width:100%;height:auto}
+.spot{position:absolute;border:2px dashed var(--accent);background:rgba(114,170,35,.12);border-radius:4px;pointer-events:none}
+body.mkd .spot{background:rgba(192,138,70,.14)}
+.spot span{position:absolute;left:-2px;top:-24px;background:var(--accent);color:var(--accent-ink);font:600 11px Poppins,Arial;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.spot img{position:absolute;left:0;top:0;width:100%;height:auto}
+label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500;margin:14px 0 6px}
+input[type=text]{width:100%;font:400 17px Poppins,Arial;padding:12px;border-radius:8px;border:1px solid var(--line);background:#fff;color:#111}
+.pad{position:relative;background:#fff;border-radius:8px;height:180px;touch-action:none}
+.pad canvas{width:100%;height:100%;display:block;border-radius:8px;touch-action:none}
+.pad .hint{position:absolute;left:0;right:0;bottom:44px;text-align:center;color:#999;font-size:13px;pointer-events:none}
+.pad .base{position:absolute;left:16px;right:16px;bottom:36px;border-bottom:1px solid #ccc;pointer-events:none}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.link{background:none;border:0;color:var(--muted);font:400 14px Poppins,Arial;text-decoration:underline;padding:6px 0;cursor:pointer}
+.agree{display:flex;gap:12px;align-items:flex-start;margin:16px 0 4px;font-size:14px;line-height:1.5;color:var(--body)}
+.agree input{width:22px;height:22px;flex:0 0 22px;margin:1px 0 0;accent-color:var(--accent)}
+.btn{display:block;width:100%;border:0;border-radius:8px;background:var(--accent);color:var(--accent-ink);font:600 17px Poppins,Arial;padding:15px;margin-top:16px;cursor:pointer;text-align:center;text-decoration:none}
+.btn[disabled]{opacity:.45}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.err{color:#E07A6F;font-size:14px;margin-top:10px;min-height:1em}
+.done{border-color:var(--accent)}
+.done h2{font-family:var(--head);color:var(--ink);margin:0 0 8px;font-size:21px}
+.loading{padding:60px 0;text-align:center;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding-top:12px;font-size:12px;color:var(--muted);line-height:1.6}
+footer a{color:var(--body);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="hero" id="hero"></div>
+<div class="wrap" id="app"><div class="loading">Loading your document…</div></div>
+
+<script type="module">
+import * as pdfjs from '/sign/lib/pdf.min.js'
+pdfjs.GlobalWorkerOptions.workerSrc = '/sign/lib/pdf.worker.min.js'
+
+const FN = 'https://bjkjmdqytughwczpzgac.supabase.co/functions/v1/sign-doc'
+const KEY = 'sb_publishable_Ct4SslgkSqBc5w1IUvWSMg_fvHw7zt4'
+const app = document.getElementById('app')
+const t = new URLSearchParams(location.search).get('t') || ''
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+const when = (d) => new Date(d).toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' })
+function staffToken() {
+  try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.startsWith('sb-') && k.endsWith('-auth-token')) { const s = JSON.parse(localStorage.getItem(k) || 'null'); if (s?.access_token) return s.access_token } } } catch {}
+  return null
+}
+const fail = (msg) => { app.innerHTML = `<div class="card" style="margin-top:28px"><p>${msg}</p></div>` }
+
+let D = null
+async function start() {
+  if (!/^[0-9a-f-]{36}$/i.test(t)) return fail('This link isn’t complete. Please use the full link from your email or text message.')
+  const tok = staffToken()
+  const r = await fetch(`${FN}?t=${t}`, { headers: { apikey: KEY, Authorization: `Bearer ${tok || KEY}` } }).catch(() => null)
+  if (!r) return fail('We couldn’t load your document. Please check your connection and try again.')
+  if (r.status === 410) return fail('This signing request has been withdrawn. If you weren’t expecting that, please get in touch with us.')
+  if (!r.ok) return fail('We couldn’t find this document. Please use the full link from your email or text message.')
+  D = await r.json()
+  const key = (D.company.code || '').toUpperCase() === 'MKD' ? 'mkd' : 'rd'
+  document.body.classList.toggle('mkd', key === 'mkd')
+  document.getElementById('hero').style.backgroundImage = `url(/brand/${key}-hero-band.jpg)`
+  document.getElementById('hero').innerHTML = `<img class="logo" src="/brand/${key}-logo.png" alt="${esc(D.company.name)}">`
+  document.title = `${D.request.title} — ${D.company.name}`
+  render()
+}
+
+function render() {
+  const R = D.request, signed = R.status === 'signed'
+  const first = (D.customer.first_name || '').trim()
+  app.innerHTML = `
+    <div class="kicker">${signed ? 'Signed document' : 'Document to sign'}${D.job ? ' · ' + esc(D.job.ref) : ''}</div>
+    <h1>${esc(R.title)}</h1>
+    ${D.job?.site_address ? `<div class="meta">${esc([D.job.site_address, D.job.site_postcode].filter(Boolean).join(', '))}</div>` : ''}
+    ${signed ? `<div class="card done"><h2>Signed — thank you</h2><p>Signed by ${esc(R.signed_name)} on ${when(R.signed_at)}. ${esc(D.company.name)} has been told, and a copy has been emailed to you.</p>
+        <a class="btn" href="${D.pdf_url}&dl=1">Download your signed copy</a></div>`
+      : `<p>${first ? `Hi ${esc(first)}, please` : 'Please'} read the document below. When you’re happy, sign at the bottom of this page. Your signature will be placed where it’s marked <b style="color:var(--accent);font-weight:500">Sign here</b>.</p>
+         ${R.note ? `<div class="card note">${esc(R.note)}</div>` : ''}`}
+    <div class="pages" id="pages"><div class="loading">Loading the pages…</div></div>
+    <p style="text-align:center"><a href="${D.pdf_url}" target="_blank" rel="noopener">Open the document full screen</a></p>
+    ${signed ? '' : `
+    <div class="card" id="signbox">
+      <label for="name">Your full name</label>
+      <input type="text" id="name" autocomplete="name" autocapitalize="words" value="${esc(D.customer.display_name || '')}">
+      <label>Your signature</label>
+      <div class="pad"><canvas id="pad"></canvas><div class="base"></div><div class="hint" id="hint">Sign here with your finger</div></div>
+      <div class="row"><span style="font-size:13px;color:var(--muted)">Use your finger, or your mouse on a computer</span><button class="link" id="clear" type="button">Clear</button></div>
+      <div class="agree"><input type="checkbox" id="agree"><label for="agree" style="all:unset">I have read this document and agree to sign it electronically. I understand my electronic signature is as valid as signing by hand.</label></div>
+      <button class="btn" id="go" disabled>Sign the document</button>
+      <div class="err" id="err"></div>
+    </div>`}
+    <footer>${esc(D.company.legal_name || D.company.name)}${D.company.company_number ? ' · Company no. ' + esc(D.company.company_number) : ''}<br>
+      ${D.company.phone ? `<a href="tel:${esc(D.company.phone.replace(/\s/g, ''))}">${esc(D.company.phone)}</a> · ` : ''}${D.company.email ? `<a href="mailto:${esc(D.company.email)}">${esc(D.company.email)}</a>` : ''}</footer>`
+  drawPages()
+  if (!signed) pad()
+}
+
+let sigPreview = null
+async function drawPages() {
+  const box = document.getElementById('pages')
+  try {
+    const doc = await pdfjs.getDocument({ url: D.pdf_url, httpHeaders: { apikey: KEY } }).promise
+    box.innerHTML = ''
+    const W = box.clientWidth - 8
+    for (let n = 1; n <= doc.numPages; n++) {
+      const page = await doc.getPage(n)
+      const v1 = page.getViewport({ scale: 1 })
+      const scale = Math.min(2.5, (W / v1.width) * (window.devicePixelRatio || 1))
+      const vp = page.getViewport({ scale })
+      const div = document.createElement('div'); div.className = 'pg'; div.style.maxWidth = W + 'px'
+      const c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height
+      div.appendChild(c); box.appendChild(div)
+      await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise
+      if (D.request.status !== 'signed' && n === D.request.sig_page) {
+        const s = document.createElement('div'); s.className = 'spot'; s.id = 'spot'
+        Object.assign(s.style, { left: D.request.sig_x * 100 + '%', top: D.request.sig_y * 100 + '%', width: D.request.sig_w * 100 + '%', height: (D.request.sig_w * 0.3 * v1.width / v1.height) * 100 + '%' })
+        s.innerHTML = '<span>Sign here</span>'
+        div.appendChild(s)
+      }
+    }
+  } catch (e) {
+    box.innerHTML = `<div class="card"><p>The pages couldn’t be shown here. <a href="${D.pdf_url}" target="_blank" rel="noopener">Open the document</a> to read it, then come back to sign.</p></div>`
+  }
+}
+
+function pad() {
+  const c = document.getElementById('pad'), ctx = c.getContext('2d')
+  const dpr = window.devicePixelRatio || 1
+  let drawn = false, last = null, strokes = 0
+  const size = () => { const r = c.getBoundingClientRect(); c.width = r.width * dpr; c.height = r.height * dpr; ctx.scale(dpr, dpr); ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#0B2A6B'; ctx.lineWidth = 2.6 }
+  size()
+  const pos = (e) => { const r = c.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top } }
+  c.addEventListener('pointerdown', (e) => { e.preventDefault(); c.setPointerCapture(e.pointerId); last = pos(e); ctx.beginPath(); ctx.arc(last.x, last.y, 1.2, 0, 7); ctx.fillStyle = '#0B2A6B'; ctx.fill(); strokes++; document.getElementById('hint').style.display = 'none' })
+  c.addEventListener('pointermove', (e) => { if (!last) return; e.preventDefault(); const p = pos(e); ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p; drawn = true; check() })
+  const up = () => { last = null; check() }
+  c.addEventListener('pointerup', up); c.addEventListener('pointercancel', up); c.addEventListener('pointerleave', up)
+  document.getElementById('clear').onclick = () => { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, c.width, c.height); size(); drawn = false; strokes = 0; document.getElementById('hint').style.display = ''; check() }
+  const name = document.getElementById('name'), agree = document.getElementById('agree'), go = document.getElementById('go'), err = document.getElementById('err')
+  function check() { go.disabled = !(drawn && agree.checked && /\S+\s+\S+/.test(name.value.trim())) }
+  name.addEventListener('input', check); agree.addEventListener('change', check)
+  // the signature trimmed to the ink, so it sits neatly in the box on the document
+  function trimmed() {
+    const w = c.width, h = c.height, d = ctx.getImageData(0, 0, w, h).data
+    let x0 = w, y0 = h, x1 = 0, y1 = 0
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (d[(y * w + x) * 4 + 3] > 10) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y }
+    if (x1 <= x0 || y1 <= y0) return null
+    const p = Math.round(6 * dpr); x0 = Math.max(0, x0 - p); y0 = Math.max(0, y0 - p); x1 = Math.min(w - 1, x1 + p); y1 = Math.min(h - 1, y1 + p)
+    const o = document.createElement('canvas'); o.width = x1 - x0 + 1; o.height = y1 - y0 + 1
+    o.getContext('2d').drawImage(c, x0, y0, o.width, o.height, 0, 0, o.width, o.height)
+    // never taller than a third of its width, so it fits a signature line
+    if (o.height > o.width / 3) { const o2 = document.createElement('canvas'); o2.width = Math.round(o.height * 3); o2.height = o.height; o2.getContext('2d').drawImage(o, Math.round((o2.width - o.width) / 2), 0); return o2.toDataURL('image/png') }
+    return o.toDataURL('image/png')
+  }
+  go.onclick = async () => {
+    err.textContent = ''
+    const signature = trimmed()
+    if (!signature) { err.textContent = 'Please draw your signature in the box.'; return }
+    go.disabled = true; go.textContent = 'Signing…'
+    const r = await fetch(FN, { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: KEY, Authorization: `Bearer ${KEY}` },
+      body: JSON.stringify({ t, action: 'sign', name: name.value.trim(), signature, agree: agree.checked }) }).catch(() => null)
+    const j = r ? await r.json().catch(() => ({})) : {}
+    if (r?.ok) { const x = await fetch(`${FN}?t=${t}&staff=1`, { headers: { apikey: KEY, Authorization: `Bearer ${KEY}` } }); D = await x.json(); render(); scrollTo({ top: 0, behavior: 'smooth' }); return }
+    const msgs = { name_required: 'Please type your full name (first and last name).', signature_required: 'Please draw your signature in the box.', agree_required: 'Please tick the box to confirm you agree to sign electronically.', already_signed: 'This document has already been signed.' }
+    err.textContent = msgs[j.error] || 'Something went wrong saving your signature. Please try again in a moment.'
+    go.disabled = false; go.textContent = 'Sign the document'
+    if (j.error === 'already_signed') setTimeout(() => location.reload(), 1500)
+  }
+}
+start()
+</script>
+</body>
+</html>
