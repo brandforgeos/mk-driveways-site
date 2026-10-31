@@ -76,6 +76,20 @@ textarea{min-height:110px;resize:vertical}
 .photo-in input{display:none}
 .res .item{padding:9px 0}
 .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ch{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.cprice{font:700 22px 'Barlow Semi Condensed',Arial;color:var(--ink)}
+.csum{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.csum>div{flex:1 1 74px;min-width:74px;background:#F7F7F4;border-radius:8px;padding:7px 9px}
+.csum b{display:block;font-size:15px;color:var(--ink);white-space:nowrap}.csum span{font-size:12px;color:var(--muted)}
+.crow2{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}.crow2 label{margin:0}.crow2 input{width:120px}
+.cgrp{margin-top:12px}.cgh{display:flex;justify-content:space-between;font:700 13px 'Barlow Semi Condensed',Arial;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:3px}
+.cline{border-bottom:1px solid #EFEFEA;padding:8px 0}.cline.changed{background:#FFFBEB;margin:0 -8px;padding:8px}.cline.removed .cl1,.cline.removed .cl2{text-decoration:line-through;opacity:.5}
+.cl1{display:flex;justify-content:space-between;gap:10px;color:var(--ink);font-weight:600}.cc{white-space:nowrap}
+.cl2{font-size:13px;color:var(--body);margin-top:2px}.src{display:inline-block;border-radius:999px;padding:0 7px;font-size:11px;font-weight:700;margin-left:6px}
+.ccom{font-size:13px;margin-top:4px;color:#1D4ED8}
+.cline details{margin-top:5px}.cline summary{font-size:13px;color:var(--accent);cursor:pointer}
+.cedit{display:flex;gap:8px;flex-wrap:wrap}.cedit label{flex:1;min-width:80px;font-size:12px}.cedit label.ck{display:flex;align-items:center;gap:6px;flex:0 0 auto;margin-top:22px}
+.cedit input[type=number]{width:100%;font:400 16px Barlow,Arial;padding:8px;border:1px solid var(--line);border-radius:8px}
+@media print{header,.noprint{display:none!important}body{background:#fff}.card{border:1px solid #ccc;break-inside:avoid}.cline.changed{background:none}}
 </style>
 </head>
 <body>
@@ -108,6 +122,7 @@ function route() {
   clearInterval(timer)
   if (qs.get('b')) return showBrief(qs.get('b'))
   if (qs.get('settings')) return settings()
+  if (qs.get('costing')) return costing(qs.get('costing'))
   if (qs.get('new') || qs.get('job')) return newBrief()
   list()
 }
@@ -311,6 +326,161 @@ function viewPhoto(f) {
   ov.onclick = () => ov.remove()
 }
 
+// ---------- price build-up (internal: directors only, never shown to the customer) ----------
+const KINDS = [['materials', 'Materials'], ['labour', 'Labour'], ['plant', 'Plant & hire'], ['waste', 'Waste & muck-away'], ['other', 'Other']]
+const SRC = { checked: ['Checked', '#166534', '#DCFCE7'], est: ['EST', '#92400E', '#FEF3C7'], given: ['Your rate', '#1D4ED8', '#E8F0FE'] }
+const gbp = (n) => (n < 0 ? '-£' : '£') + Math.abs(Number(n) || 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+const num = (v) => v === '' || v == null ? null : Number(v)
+function lineQty(l) { return num(l.men) != null && num(l.days) != null ? num(l.men) * num(l.days) : (num(l.qty) ?? 0) }
+function lineCost(l) { return Math.round(lineQty(l) * (num(l.rate) ?? 0) * (l.vat ? 1.2 : 1) * 100) / 100 }
+function optTotals(o) {
+  const live = (o.lines ?? []).filter((l) => !l.removed)
+  const cost = Math.round(live.reduce((s, l) => s + lineCost(l), 0) * 100) / 100
+  const price = num(o.price) ?? 0
+  const manDays = live.filter((l) => l.kind === 'labour').reduce((s, l) => s + (num(l.men) ?? 0) * (num(l.days) ?? 0), 0)
+  const target = num(o.target_margin_pct) ?? 20
+  return { cost, price, profit: Math.round((price - cost) * 100) / 100, margin: cost > 0 ? Math.round((price / cost - 1) * 1000) / 10 : null,
+    atTarget: Math.round(cost * (1 + target / 100) * 100) / 100, manDays, target }
+}
+const clone = (x) => JSON.parse(JSON.stringify(x))
+
+async function costing(quoteId) {
+  const [{ data: c, error }, { data: q }, { data: vers }] = await Promise.all([
+    sb.from('quote_costings').select('*').eq('quote_id', quoteId).maybeSingle(),
+    sb.from('quotes').select('id, ref, revision, status, qb_hold, qb_signed_off_at, job_id').eq('id', quoteId).maybeSingle(),
+    sb.from('quote_costing_versions').select('version, saved_by, note, saved_at').eq('quote_id', quoteId).order('version', { ascending: false }),
+  ])
+  if (error || !c) { app.innerHTML = `<div class="card"><h2>No price build-up yet</h2><p class="muted">Claude adds it when it files the quote.</p><a class="btn ghost" href="?">Back</a></div>`; return }
+  await sb.rpc('qc_open', { p_quote: quoteId })
+  const orig = clone(c.data), d = clone(c.data)
+  const brief = c.brief_id
+  const editable = q?.status === 'draft'
+  const names = {}
+  const ids = [...new Set((vers ?? []).map((v) => v.saved_by).filter(Boolean))]
+  if (ids.length) { const { data: ps } = await sb.from('profiles').select('id, full_name').in('id', ids); for (const p of ps ?? []) names[p.id] = p.full_name }
+
+  function render() {
+    const opts = d.options ?? []
+    app.innerHTML = `<div class="card noprint-pad"><div class="muted">Internal — never shown to the customer</div>
+      <h2 style="margin:4px 0">Price build-up · ${esc(q?.ref)} rev ${esc(q?.revision)}</h2>
+      <div class="muted">Version ${c.version}${c.updated_at ? ' · ' + when(c.updated_at) : ''}${d.margin_rule ? ' · ' + esc(d.margin_rule) : ''}</div>
+      <div class="acts noprint"><a class="btn ghost small" href="?b=${brief}" id="cb">Back to the brief</a><button class="btn ghost small" id="print">Print / save PDF</button></div></div>
+      ${opts.map((o, oi) => optCard(o, oi)).join('')}
+      ${d.programme || d.gang_days ? `<div class="card"><h2>Programme</h2>${d.gang_days ? `<p><b>${esc(d.gang_days)} gang days</b></p>` : ''}${d.programme ? `<p style="white-space:pre-wrap">${esc(d.programme)}</p>` : ''}</div>` : ''}
+      ${(d.risks ?? []).length || (d.assumptions ?? []).length ? `<div class="card">${(d.risks ?? []).length ? `<h2>Risks priced in</h2><ul>${d.risks.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}${(d.assumptions ?? []).length ? `<h2 style="margin-top:10px">Assumptions</h2><ul>${d.assumptions.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}</div>` : ''}
+      ${editable ? `<div class="card noprint"><label for="gen" style="margin-top:0">General comment for Claude <span class="muted">(optional)</span></label><textarea id="gen" style="min-height:70px">${esc(d._comment || '')}</textarea>
+        <button class="btn full" id="send">Save and send changes to Claude</button><button class="btn ghost full" id="save">Save without sending</button><div class="err" id="err"></div>
+        <p class="muted">Sending posts your changes and comments on the brief; Claude builds the next revision from them. Nothing goes to the customer.</p></div>` : `<div class="card muted">This quote is ${esc(q?.status)}, so the build-up is read-only.</div>`}
+      ${(vers ?? []).length ? `<div class="card noprint"><h2>History</h2>${vers.map((v) => `<div class="muted">v${v.version} · ${esc(v.saved_by ? (names[v.saved_by] || 'A director') : 'Claude')} · ${when(v.saved_at)}${v.note ? ' · ' + esc(v.note) : ''}</div>`).join('')}</div>` : ''}`
+    wire()
+  }
+  function optCard(o, oi) {
+    const t = optTotals(o)
+    const low = t.margin != null && t.margin < t.target - 0.05
+    const groups = KINDS.map(([k, label]) => {
+      const ls = (o.lines ?? []).map((l, li) => [l, li]).filter(([l]) => (l.kind || 'other') === k)
+      if (!ls.length) return ''
+      const sub = ls.filter(([l]) => !l.removed).reduce((s, [l]) => s + lineCost(l), 0)
+      return `<div class="cgrp"><div class="cgh"><span>${label}</span><span>${gbp(sub)}</span></div>${ls.map(([l, li]) => lineRow(l, oi, li)).join('')}</div>`
+    }).join('')
+    return `<div class="card"><div class="ch"><div><h2 style="margin:0">${esc(o.name)}</h2><div class="muted">${o.optional ? 'Optional extra' : 'Main price'}</div></div>
+        <div style="text-align:right"><div class="cprice">${gbp(t.price)}</div><div class="muted">customer price</div></div></div>
+      <div class="csum"><div><b>${gbp(t.cost)}</b><span>true cost</span></div><div><b style="color:${t.profit < 0 ? 'var(--warn)' : 'inherit'}">${gbp(t.profit)}</b><span>profit</span></div>
+        <div><b style="color:${low ? 'var(--warn)' : 'var(--ok)'}">${t.margin == null ? '—' : t.margin + '%'}</b><span>on cost</span></div>${t.manDays ? `<div><b>${t.manDays}</b><span>man-days</span></div>` : ''}</div>
+      ${low ? `<div class="err" style="margin-top:6px">Below your ${t.target}% — at ${t.target}% it would be ${gbp(t.atTarget)}.</div>` : ''}
+      ${editable ? `<div class="crow2"><label>Customer price £</label><input type="number" step="1" inputmode="decimal" data-o="${oi}" data-f="price" value="${esc(o.price)}"><button class="btn ghost small" data-o="${oi}" data-a="target">Use ${t.target}% (${gbp(t.atTarget)})</button></div>` : ''}
+      ${groups}
+      ${editable ? `<button class="btn ghost small noprint" data-o="${oi}" data-a="add" style="margin-top:8px">＋ Add a line</button>` : ''}</div>`
+  }
+  function lineRow(l, oi, li) {
+    const s = SRC[l.source] || SRC.est, lab = l.kind === 'labour'
+    const base = orig.options?.[oi]?.lines?.[li]
+    const changed = !base || ['qty', 'rate', 'men', 'days', 'vat', 'description'].some((f) => String(base[f] ?? '') !== String(l[f] ?? '')) || !!l.removed
+    const calc = lab ? `${esc(l.men ?? '—')} men × ${esc(l.days ?? '—')} days × ${gbp(l.rate)}` : `${esc(l.qty ?? '—')} ${esc(l.unit || '')} × ${gbp(l.rate)}${l.vat ? ' + VAT' : ''}`
+    return `<div class="cline ${l.removed ? 'removed' : ''} ${changed ? 'changed' : ''}">
+      <div class="cl1"><span class="cd">${esc(l.description)}</span><span class="cc">${gbp(lineCost(l))}</span></div>
+      <div class="cl2"><span>${calc}</span><span class="src" style="color:${s[1]};background:${s[2]}">${s[0]}</span>${l.source_note ? `<span class="muted"> ${esc(l.source_note)}</span>` : ''}</div>
+      ${l.comment ? `<div class="ccom">💬 ${esc(l.comment)}</div>` : ''}
+      ${editable ? `<details class="noprint"><summary>Edit / comment</summary>
+        <div class="cedit">${lab ? `<label>Men<input type="number" step="1" data-o="${oi}" data-l="${li}" data-f="men" value="${esc(l.men ?? '')}"></label><label>Days<input type="number" step="0.5" data-o="${oi}" data-l="${li}" data-f="days" value="${esc(l.days ?? '')}"></label><label>Day rate £<input type="number" step="1" data-o="${oi}" data-l="${li}" data-f="rate" value="${esc(l.rate ?? '')}"></label>`
+          : `<label>Qty<input type="number" step="any" data-o="${oi}" data-l="${li}" data-f="qty" value="${esc(l.qty ?? '')}"></label><label>Rate £<input type="number" step="any" data-o="${oi}" data-l="${li}" data-f="rate" value="${esc(l.rate ?? '')}"></label><label class="ck"><input type="checkbox" data-o="${oi}" data-l="${li}" data-f="vat" ${l.vat ? 'checked' : ''}> + VAT</label>`}</div>
+        <label>Description<input type="text" data-o="${oi}" data-l="${li}" data-f="description" value="${esc(l.description ?? '')}"></label>
+        <label>Comment for Claude<textarea data-o="${oi}" data-l="${li}" data-f="comment" style="min-height:54px">${esc(l.comment ?? '')}</textarea></label>
+        <button class="btn ghost small" data-o="${oi}" data-l="${li}" data-a="${l.removed ? 'restore' : 'remove'}">${l.removed ? 'Put back' : 'Take this line out'}</button></details>` : ''}
+    </div>`
+  }
+  function wire() {
+    document.getElementById('cb').onclick = (e) => { e.preventDefault(); go({ b: brief }) }
+    document.getElementById('print').onclick = () => { document.querySelectorAll('details').forEach((x) => x.open = false); print() }
+    app.querySelectorAll('input[data-f], textarea[data-f]').forEach((el) => {
+      const set = () => {
+        const o = d.options[+el.dataset.o], tgt = el.dataset.l != null ? o.lines[+el.dataset.l] : o, f = el.dataset.f
+        tgt[f] = el.type === 'checkbox' ? el.checked : (el.type === 'number' ? (el.value === '' ? null : Number(el.value)) : el.value)
+      }
+      el.addEventListener('input', set)
+      // numbers re-total when you leave the box (keeps the keyboard up while typing)
+      if (el.type === 'number' || el.type === 'checkbox') el.addEventListener('change', () => { set(); keepOpen(render) })
+    })
+    app.querySelectorAll('[data-a]').forEach((b) => b.onclick = () => {
+      const o = d.options[+b.dataset.o], a = b.dataset.a
+      if (a === 'target') o.price = optTotals(o).atTarget
+      if (a === 'remove') o.lines[+b.dataset.l].removed = true
+      if (a === 'restore') delete o.lines[+b.dataset.l].removed
+      if (a === 'add') {
+        const k = prompt('What kind of line? Type: materials, labour, plant, waste or other', 'materials')
+        if (!k) return
+        const kind = KINDS.map((x) => x[0]).includes(k.trim().toLowerCase()) ? k.trim().toLowerCase() : 'other'
+        const desc = prompt('Description'); if (!desc) return
+        o.lines.push(kind === 'labour' ? { id: 'n' + Date.now(), kind, description: desc, men: 2, days: 1, unit: 'man-day', rate: 250, source: 'given', added: true }
+          : { id: 'n' + Date.now(), kind, description: desc, qty: 1, unit: 'item', rate: 0, vat: false, source: 'given', added: true })
+      }
+      keepOpen(render)
+    })
+    const gen = document.getElementById('gen'); if (gen) gen.oninput = () => { d._comment = gen.value }
+    const save = async (send) => {
+      const err = document.getElementById('err'); err.textContent = ''
+      const summary = diffSummary()
+      if (send && !summary && !(d._comment || '').trim()) { err.textContent = 'Nothing has changed yet.'; return }
+      const toSave = clone(d); delete toSave._comment
+      const { error } = await sb.rpc('qc_save', { p_quote: quoteId, p: toSave, p_note: send ? 'Sent to Claude' : 'Saved' })
+      if (error) { err.textContent = error.message; return }
+      if (send) {
+        const body = `Price build-up changes for ${q.ref} rev ${q.revision} — build the next revision from these:\n${summary || '(no figure changes)'}${(d._comment || '').trim() ? `\n\nGeneral: ${d._comment.trim()}` : ''}`
+        const { error: e2 } = await sb.from('quote_brief_messages').insert({ brief_id: brief, role: 'lewis', body })
+        if (e2) { err.textContent = 'Saved, but not sent: ' + e2.message; return }
+        go({ b: brief }); return
+      }
+      costing(quoteId)
+    }
+    const s1 = document.getElementById('send'); if (s1) s1.onclick = () => save(true)
+    const s2 = document.getElementById('save'); if (s2) s2.onclick = () => save(false)
+  }
+  function keepOpen(fn) {
+    const open = [...app.querySelectorAll('details')].map((x) => x.open), y = scrollY
+    fn(); app.querySelectorAll('details').forEach((x, i) => { if (open[i]) x.open = true }); scrollTo(0, y)
+  }
+  function diffSummary() {
+    const out = []
+    ;(d.options ?? []).forEach((o, oi) => {
+      const b = orig.options?.[oi] ?? { lines: [] }
+      const t = optTotals(o), tb = optTotals(b)
+      const lines = []
+      if (num(o.price) !== num(b.price)) lines.push(`  • Customer price ${gbp(b.price)} → ${gbp(o.price)}`)
+      o.lines.forEach((l, li) => {
+        const bl = b.lines?.[li]
+        if (!bl) { lines.push(`  • ADDED ${l.kind}: ${l.description} — ${l.kind === 'labour' ? `${l.men} men × ${l.days} days × ${gbp(l.rate)}` : `${l.qty} ${l.unit} × ${gbp(l.rate)}${l.vat ? ' + VAT' : ''}`} = ${gbp(lineCost(l))}${l.comment ? ` (“${l.comment}”)` : ''}`); return }
+        if (l.removed) { lines.push(`  • TAKE OUT: ${bl.description} (${gbp(lineCost(bl))})${l.comment ? ` — “${l.comment}”` : ''}`); return }
+        const ch = ['description', 'men', 'days', 'qty', 'rate', 'vat'].filter((f) => String(bl[f] ?? '') !== String(l[f] ?? '')).map((f) => `${f} ${bl[f] ?? '—'} → ${l[f] ?? '—'}`)
+        if (ch.length) lines.push(`  • ${bl.description}: ${ch.join(', ')} (${gbp(lineCost(bl))} → ${gbp(lineCost(l))})`)
+        if ((l.comment ?? '') !== (bl.comment ?? '') && l.comment) lines.push(`  • Comment on ${l.description}: “${l.comment}”`)
+      })
+      if (lines.length) out.push(`${o.name}: cost ${gbp(tb.cost)} → ${gbp(t.cost)}, price ${gbp(tb.price)} → ${gbp(t.price)} (${t.margin ?? '—'}% on cost)\n${lines.join('\n')}`)
+    })
+    return out.join('\n\n')
+  }
+  render()
+}
+
 // ---------- new brief ----------
 async function newBrief() {
   let job = null, co = companies[0]
@@ -431,13 +601,26 @@ async function showBrief(id) {
     closed: 'Closed.',
   }[b.status]
   const held = b.quote?.qb_hold && !b.quote?.qb_signed_off_at
+  let cost = null, opened = false
+  if (b.quote) {
+    const [{ data: cc }, { data: vw }] = await Promise.all([
+      sb.from('quote_costings').select('version, data').eq('quote_id', b.quote.id).maybeSingle(),
+      sb.from('quote_costing_views').select('first_at').eq('quote_id', b.quote.id).eq('profile_id', me.id).maybeSingle(),
+    ])
+    cost = cc; opened = !!vw
+  }
+  const tot = cost ? (cost.data.options ?? []).filter((o) => !o.optional).map((o) => ({ name: o.name, ...optTotals(o) })) : []
   const quoteCard = b.quote ? `<div class="card"><h2>${esc(b.quote.ref)} rev ${esc(b.quote.revision)}</h2>
     <div class="muted">${esc(b.quote.status === 'draft' ? 'Draft' : b.quote.status)}</div>
     ${held ? `<div class="status with_you" style="margin:10px 0 0"><b>Held — not signed off.</b> It can’t be sent and the customer can’t open it until a director signs it off.</div>`
       : b.quote.qb_signed_off_at ? `<div class="status ready" style="margin:10px 0 0"><b>Signed off</b> · ${when(b.quote.qb_signed_off_at)}</div>` : ''}
+    ${cost ? `<div class="csum">${tot.map((t) => `<div><b>${gbp(t.price)}</b><span>${esc(t.name)} · cost ${gbp(t.cost)} · ${t.margin ?? '—'}%</span></div>`).join('')}</div>`
+      : `<div class="muted" style="margin-top:8px">No price build-up yet${held ? ' — it can’t be signed off without one.' : '.'}</div>`}
     <div class="acts">${b.quote.document_path ? `<button class="btn ${held ? '' : 'ghost'} small" id="pdf">View the PDF</button>` : ''}
-      ${held && b.quote.status === 'draft' ? `<button class="btn small" id="signoff" style="background:var(--ok)">✓ Sign off</button>` : ''}
+      ${cost ? `<button class="btn ${held && !opened ? '' : 'ghost'} small" id="costbtn">£ Price build-up</button>` : ''}
+      ${held && b.quote.status === 'draft' ? `<button class="btn small" id="signoff" style="background:var(--ok)" ${cost && opened ? '' : 'disabled'}>✓ Sign off</button>` : ''}
       <a class="btn ghost small" href="/quotes/${b.quote.id}">Open the quote</a>${b.job ? `<a class="btn ghost small" href="/jobs/${b.job.id}">Open the job</a>` : ''}</div>
+    ${held && !(cost && opened) ? `<div class="muted" style="margin-top:6px">${cost ? 'Open the price build-up to check it — then you can sign off.' : ''}</div>` : ''}
     <div class="err" id="soerr"></div></div>` : ''
 
   const ph = photoPicker('ph2')
@@ -460,9 +643,10 @@ async function showBrief(id) {
   ph.wire()
   app.querySelectorAll('[data-f]').forEach((el) => el.onclick = () => viewPhoto((files ?? []).find((f) => f.id === el.dataset.f)))
   document.getElementById('back').onclick = (e) => { e.preventDefault(); go({}) }
+  const cbt = document.getElementById('costbtn'); if (cbt) cbt.onclick = () => go({ costing: b.quote.id })
   const so = document.getElementById('signoff')
   if (so) so.onclick = async () => {
-    if (!confirm(`Sign off ${b.quote.ref} rev ${b.quote.revision}?\n\nOnly sign off once you've opened the PDF and checked every page — names, address, scope and every price.\n\nThis doesn't send it. You still send it yourself from the quote screen.`)) return
+    if (!confirm(`Sign off ${b.quote.ref} rev ${b.quote.revision} at ${tot.map((t) => gbp(t.price) + ' (' + (t.margin ?? '—') + '% on cost)').join(' / ')}?\n\nOnly sign off once you've opened the PDF and checked every page — names, address, scope and every price.\n\nThis doesn't send it. You still send it yourself from the quote screen.`)) return
     so.disabled = true; so.textContent = 'Signing off…'
     const { error } = await sb.rpc('qb_sign_off', { p_quote: b.quote.id })
     if (error) { document.getElementById('soerr').textContent = error.message; so.disabled = false; so.textContent = '✓ Sign off'; return }

@@ -1,0 +1,31 @@
+{
+  "margin_rule": "Price = (materials + labour) x 1.2 — 20% on cost",
+  "gang_days": 4,
+  "programme": "Day 1 dig out and muck away; day 2 edgings and sub-base; day 3 base; day 4 resin and clear-up.",
+  "options": [
+    {
+      "name": "Resin bound driveway",
+      "optional": false,
+      "price": 6050,
+      "target_margin_pct": 20,
+      "lines": [
+        {"id": "m1", "kind": "materials", "description": "Type 3 sub-base, 150mm", "qty": 21, "unit": "t", "rate": 32.5, "vat": false, "source": "checked", "source_note": "Supplier X, delivered Oakham, inc VAT"},
+        {"id": "m2", "kind": "materials", "description": "Resin bound kits", "qty": 17, "unit": "kit", "rate": 145, "vat": true, "source": "given", "source_note": "Lewis's rate, ex VAT"},
+        {"id": "p1", "kind": "plant", "description": "8t grab lorry, muck away", "qty": 3, "unit": "load", "rate": 320, "vat": false, "source": "est", "source_note": "No online price found for LE15 — estimate"},
+        {"id": "l1", "kind": "labour", "description": "Dig out and sub-base", "men": 2, "days": 1.5, "unit": "man-day", "rate": 250, "source": "given"},
+        {"id": "l2", "kind": "labour", "description": "Resin laying", "men": 3, "days": 1, "unit": "man-day", "rate": 250, "source": "given"}
+      ]
+    },
+    {
+      "name": "LED step lights",
+      "optional": true,
+      "price": 380,
+      "lines": [
+        {"id": "x1", "kind": "materials", "description": "LED step light kit", "qty": 4, "unit": "each", "rate": 48, "vat": false, "source": "checked", "source_note": "inc VAT, delivered"},
+        {"id": "x2", "kind": "labour", "description": "Fit and wire", "men": 1, "days": 0.5, "unit": "man-day", "rate": 250, "source": "given"}
+      ]
+    }
+  ],
+  "risks": ["Formation may be soft under the existing gravel — any extra dig is a variation"],
+  "assumptions": ["Skip/grab access from the road", "No unrecorded services"]
+}

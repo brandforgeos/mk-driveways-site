@@ -58,3 +58,9 @@ Port into the source: a Quote builder route/screen and a job-page action.
   runs connect as 'postgres' and can't); the hold can never be removed. Quote builder shows Held / Sign off / Signed off.
   Transfers are now keyless for the runs: PDFs sealed to the hub's public key (quote-builder-kit/hub_public_key.hex,
   private half in app_secrets.qb_hub_x25519_private), photos sealed by the hub to a one-off key the run makes.
+- 2026-10-31 (night): PRICE BUILD-UP. Tables quote_costings (current), quote_costing_versions (every save kept),
+  quote_costing_views (who opened it). public.qc_totals (line cost = (men×days or qty) × rate, +20% when vat), qb_costing_save
+  (run; refuses if prices differ from the quote), qc_save (director edits, new version), qc_open; qb_sign_off now needs the
+  build-up opened by the signer; trigger quotes_qc_budget fills job_financials budgets on acceptance. Page: ?costing=<quote id>
+  — grouped lines, sources (Checked / EST / Your rate), live totals and margin, edit + comment, "Save and send changes to
+  Claude" (posts the diff on the brief), print. Kit: example-costing.json, costing_check.py, playbook step 9.

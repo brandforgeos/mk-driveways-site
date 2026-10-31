@@ -104,12 +104,31 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
    from the quote screen. qb_finish imports it as a draft quote on the job (revision letter from the PDF), attaches
    the PDF, marks the brief ready and notifies his phone.
 
+9. PRICE BUILD-UP (internal, directors only — required: the quote can't be signed off without it). Write `costing.json`
+   (shape: `example-costing.json`) from the same figures as the approved price check:
+   - one entry per option and extra, `price` = exactly that option's total on the quote;
+   - every cost line with `kind` (materials | labour | plant | waste | other), `description`, and either `qty` + `unit` +
+     `rate` or, for labour, `men` + `days` + day `rate`; `vat: true` only where the rate is ex-VAT and the VAT is a cost;
+     `source`: `checked` (looked up online — put supplier/location/delivery in `source_note`), `given` (Lewis's own rate
+     or figure) or `est` (couldn't confirm — say why in `source_note`);
+   - `target_margin_pct` (from the pricing rule), `margin_rule`, `gang_days`, `programme`, `risks`, `assumptions`.
+   Check it: `python3 ~/hub-kit/quote-builder-kit/costing_check.py costing.json spec.json` (must pass), then file it:
+   `select qb_costing_save('<brief>', '<costing.json>'::jsonb);` — it refuses if any price differs from the quote.
+   Put each option's cost, profit and margin in a line of your qb_finish note.
+
 Never send anything to a customer. Never email. Every quote you file is HELD by the database: it cannot leave draft, be
 sent, chased or accepted, and the customer link shows "not found", until a director taps Sign off in the Quote builder.
 Never call qb_sign_off, never change a quote's status or the qb_hold / qb_signed_off_* columns, and never try to get round
 the hold. Your note in qb_finish says the quote is held and needs checking and signing off before it can be sent.
 
 ## 4. Revisions
+A message starting "Price build-up changes" comes from the build-up screen: Lewis has edited figures and/or commented.
+Read the latest build-up (`select data, version from quote_costings where quote_id = (select quote_id from quote_briefs
+where id = '<brief>')`) — his edited figures and line comments are the instruction. Rebuild the next revision at those
+figures (the prices shown there are approved; no extra price-check round unless something contradicts), re-check every
+page, file it, then file the matching build-up. Only ask if a comment is unclear.
+A brief whose quote is filed but has no build-up (`quote_costings` row missing) needs only step 9 for that quote.
+
 A message from Lewis on a brief that already has a quote = changes. Ask whatever the change needs (price check again if the
 price moves), then build again: qb_ensure_job gives the next revision letter; qb_finish files it and marks the previous
 quote as superseded.
