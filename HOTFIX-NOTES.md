@@ -48,3 +48,7 @@ edge function `qb-store` (base64 chunks → documents bucket, SHA-256 checked). 
 The hourly "Hub quote builder" scheduled task on Lewis's Claude account does the thinking; its playbook and the PDF
 render kit live in `quote-builder-kit/` on this branch (not deployed to the site).
 Port into the source: a Quote builder route/screen and a job-page action.
+- 2026-10-31 (later): photos — each photo gets a mark-up editor (draw, arrow, ↔ measure with size label, box, text label,
+  5 colours, undo/clear) and a note. Stored in `quote_brief_files` as the marked copy (`data_b64`), the original
+  (`original_b64`), `marked`, `note`. The hourly run fetches them through edge function `qb-photos` (returns the brief's
+  photos AES-GCM encrypted with qb_courier_key) via the "Quote builder photos" GitHub Actions workflow on the qb-outbox branch.

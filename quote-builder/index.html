@@ -47,6 +47,13 @@ textarea{min-height:110px;resize:vertical}
 .msg .ans div{margin-top:3px}
 .thumbs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .thumbs img{width:76px;height:76px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.tf{margin:0;width:110px;cursor:pointer}.tf img{width:110px;height:110px;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+.tf figcaption{font-size:12px;color:var(--body);line-height:1.25;margin-top:3px;max-height:4.9em;overflow:hidden}
+.msg.lewis .thumbs{justify-content:flex-end}
+.pcard{display:flex;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px;margin-top:8px;background:#fff}
+.pcard .pimg{width:96px;height:96px;object-fit:cover;border-radius:8px;flex:none;cursor:pointer}
+.pcard .pbody{flex:1;min-width:0}.pcard textarea{min-height:58px;margin-top:6px;font-size:15px}
+.pacts{display:flex;gap:6px;flex-wrap:wrap}
 .q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
 .q .qt{font-weight:600;color:var(--ink);margin-bottom:8px}
 .q .qn{color:var(--muted);font-weight:600;margin-right:4px}
@@ -135,36 +142,138 @@ async function list() {
   timer = setInterval(() => { if (!document.hidden) list() }, 45000)
 }
 
-// ---------- photos (resized on the phone so Claude can read them) ----------
+// ---------- photos: resized on the phone, marked up, each with a note ----------
+async function loadImg(src) { return await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src }) }
+function toJpeg(cv) {
+  let q = 0.78, url = cv.toDataURL('image/jpeg', q)
+  while (url.length > 420000 && q > 0.4) { q -= 0.08; url = cv.toDataURL('image/jpeg', q) }
+  return url
+}
 async function resize(file) {
-  const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = URL.createObjectURL(file) })
+  const src = URL.createObjectURL(file), img = await loadImg(src)
   const max = 1400, k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight))
   const cv = document.createElement('canvas'); cv.width = Math.round(img.naturalWidth * k); cv.height = Math.round(img.naturalHeight * k)
   cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height)
-  let q = 0.74, url = cv.toDataURL('image/jpeg', q)
-  while (url.length > 300000 && q > 0.4) { q -= 0.08; url = cv.toDataURL('image/jpeg', q) }
-  URL.revokeObjectURL(img.src)
-  return { name: file.name, data: url.split(',')[1], preview: url }
+  URL.revokeObjectURL(src)
+  const url = toJpeg(cv)
+  return { name: file.name, original: url, marked: null, ops: [], note: '' }
+}
+const COLS = ['#FF2D2D', '#FFD60A', '#FFFFFF', '#1E90FF', '#111111']
+function drawOps(ctx, ops, W) {
+  const lw = Math.max(4, W / 180)
+  for (const o of ops) {
+    ctx.strokeStyle = o.c; ctx.fillStyle = o.c; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round'
+    if (o.t === 'pen') { ctx.beginPath(); o.p.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke() }
+    if (o.t === 'box') { ctx.strokeRect(Math.min(o.a[0], o.b[0]), Math.min(o.a[1], o.b[1]), Math.abs(o.b[0] - o.a[0]), Math.abs(o.b[1] - o.a[1])) }
+    if (o.t === 'arrow' || o.t === 'dim') {
+      const [x1, y1] = o.a, [x2, y2] = o.b, ang = Math.atan2(y2 - y1, x2 - x1), h = lw * 4.5
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke()
+      const head = (x, y, a) => { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - h * Math.cos(a - 0.45), y - h * Math.sin(a - 0.45)); ctx.lineTo(x - h * Math.cos(a + 0.45), y - h * Math.sin(a + 0.45)); ctx.closePath(); ctx.fill() }
+      head(x2, y2, ang); if (o.t === 'dim') head(x1, y1, ang + Math.PI)
+      if (o.t === 'dim' && o.txt) label(ctx, o.txt, (x1 + x2) / 2, (y1 + y2) / 2, o.c, W)
+    }
+    if (o.t === 'text') label(ctx, o.txt, o.a[0], o.a[1], o.c, W)
+  }
+}
+function label(ctx, txt, x, y, c, W) {
+  const fs = Math.max(24, W / 22); ctx.font = `700 ${fs}px Barlow, Arial, sans-serif`
+  const w = ctx.measureText(txt).width, pad = fs * 0.3
+  ctx.fillStyle = c === '#111111' || c === '#1E90FF' ? 'rgba(255,255,255,.88)' : 'rgba(0,0,0,.72)'
+  ctx.fillRect(x - w / 2 - pad, y - fs * 0.62 - pad, w + pad * 2, fs * 1.24 + pad * 2)
+  ctx.fillStyle = c; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, x, y)
+}
+async function markup(photo) {
+  const img = await loadImg(photo.original)
+  const ops = JSON.parse(JSON.stringify(photo.ops || []))
+  let tool = 'pen', col = COLS[0], cur = null
+  const ov = document.createElement('div')
+  ov.setAttribute('style', 'position:fixed;inset:0;z-index:100;background:#111;display:flex;flex-direction:column;touch-action:none')
+  ov.innerHTML = `<div style="display:flex;gap:6px;flex-wrap:wrap;padding:10px;padding-top:calc(10px + env(safe-area-inset-top));align-items:center;background:#1B1F23">
+      ${[['pen', '✎ Draw'], ['arrow', '➜ Arrow'], ['dim', '↔ Measure'], ['box', '▢ Box'], ['text', 'T Label']].map(([k, l]) => `<button data-tool="${k}" class="btn small ${k === 'pen' ? '' : 'ghost'}">${l}</button>`).join('')}
+      <span style="flex:1"></span>
+      ${COLS.map((c, i) => `<button data-col="${c}" style="width:28px;height:28px;border-radius:50%;background:${c};border:${i === 0 ? '3px solid #2F6FEB' : '2px solid #555'}"></button>`).join('')}</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden"><canvas style="max-width:100%;max-height:100%;touch-action:none"></canvas></div>
+    <div class="muted" id="mk-hint" style="color:#bbb;text-align:center;padding:4px 10px">Draw on the photo. Measure: drag along the length, then type the size.</div>
+    <div style="display:flex;gap:8px;padding:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom));background:#1B1F23">
+      <button class="btn ghost small" id="mk-undo">Undo</button><button class="btn ghost small" id="mk-clear">Clear</button><span style="flex:1"></span>
+      <button class="btn ghost small" id="mk-cancel">Cancel</button><button class="btn small" id="mk-done">Done</button></div>`
+  document.body.appendChild(ov)
+  const cv = ov.querySelector('canvas'); cv.width = img.naturalWidth; cv.height = img.naturalHeight
+  const ctx = cv.getContext('2d')
+  const redraw = () => { ctx.drawImage(img, 0, 0); drawOps(ctx, cur ? [...ops, cur] : ops, cv.width) }
+  redraw()
+  const pt = (e) => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height] }
+  ov.querySelectorAll('[data-tool]').forEach((b) => b.onclick = () => { tool = b.dataset.tool; ov.querySelectorAll('[data-tool]').forEach((x) => x.classList.toggle('ghost', x !== b)) })
+  ov.querySelectorAll('[data-col]').forEach((b) => b.onclick = () => { col = b.dataset.col; ov.querySelectorAll('[data-col]').forEach((x) => x.style.border = x === b ? '3px solid #2F6FEB' : '2px solid #555') })
+  cv.onpointerdown = (e) => {
+    e.preventDefault(); cv.setPointerCapture(e.pointerId); const p = pt(e)
+    if (tool === 'text') { const t = prompt('Label text (e.g. 5.2m, drain here, remove this)'); if (t && t.trim()) { ops.push({ t: 'text', c: col, a: p, txt: t.trim() }); redraw() } return }
+    cur = tool === 'pen' ? { t: 'pen', c: col, p: [p] } : { t: tool, c: col, a: p, b: p }
+  }
+  cv.onpointermove = (e) => { if (!cur) return; e.preventDefault(); const p = pt(e); if (cur.t === 'pen') cur.p.push(p); else cur.b = p; redraw() }
+  cv.onpointerup = () => {
+    if (!cur) return
+    const c = cur; cur = null
+    const len = c.t === 'pen' ? c.p.length : Math.hypot(c.b[0] - c.a[0], c.b[1] - c.a[1])
+    if ((c.t === 'pen' && len > 1) || (c.t !== 'pen' && len > 12)) {
+      if (c.t === 'dim') { const t = prompt('What does it measure? (e.g. 6.1m)'); c.txt = (t || '').trim() }
+      ops.push(c)
+    }
+    redraw()
+  }
+  ov.querySelector('#mk-undo').onclick = () => { ops.pop(); redraw() }
+  ov.querySelector('#mk-clear').onclick = () => { if (ops.length && confirm('Clear all mark-up on this photo?')) { ops.length = 0; redraw() } }
+  return await new Promise((res) => {
+    ov.querySelector('#mk-cancel').onclick = () => { ov.remove(); res(false) }
+    ov.querySelector('#mk-done').onclick = () => {
+      cur = null; redraw()
+      photo.ops = ops; photo.marked = ops.length ? toJpeg(cv) : null
+      ov.remove(); res(true)
+    }
+  })
 }
 function photoPicker(id) {
   const st = { files: [] }
-  const html = `<div class="photo-in"><label for="${id}">＋ Add photos</label><input type="file" id="${id}" accept="image/*" multiple><span class="muted" id="${id}-n">kept with the brief — put sizes and details in words too</span></div><div class="thumbs" id="${id}-t"></div>`
+  const html = `<div class="photo-in"><label for="${id}">＋ Add photos</label><input type="file" id="${id}" accept="image/*" multiple><span class="muted" id="${id}-n">Mark them up and add a note to each</span></div><div id="${id}-t"></div>`
+  const draw = () => {
+    const box = document.getElementById(id + '-t')
+    box.innerHTML = st.files.map((p, i) => `<div class="pcard"><img src="${p.marked || p.original}" data-i="${i}" class="pimg">
+      <div class="pbody"><div class="pacts"><button class="btn ghost small" data-mk="${i}">${p.marked ? '✎ Edit mark-up' : '✎ Mark up'}</button><button class="btn ghost small" data-rm="${i}">Remove</button></div>
+      <textarea data-note="${i}" placeholder="What's this photo showing? e.g. existing drive to come up, fall towards the garage, 6.1m wall to wall">${esc(p.note)}</textarea></div></div>`).join('')
+    box.querySelectorAll('[data-mk]').forEach((b) => b.onclick = async () => { if (await markup(st.files[+b.dataset.mk])) draw() })
+    box.querySelectorAll('.pimg').forEach((b) => b.onclick = async () => { if (await markup(st.files[+b.dataset.i])) draw() })
+    box.querySelectorAll('[data-rm]').forEach((b) => b.onclick = () => { st.files.splice(+b.dataset.rm, 1); draw() })
+    box.querySelectorAll('[data-note]').forEach((t) => t.oninput = () => { st.files[+t.dataset.note].note = t.value })
+    const n = document.getElementById(id + '-n'); n.textContent = st.files.length ? `${st.files.length} photo${st.files.length > 1 ? 's' : ''} — tap one to mark it up` : 'Mark them up and add a note to each'
+  }
   const wire = () => {
     document.getElementById(id).onchange = async (e) => {
       const n = document.getElementById(id + '-n'); n.textContent = 'Preparing…'
       for (const f of e.target.files) { try { st.files.push(await resize(f)) } catch { } }
-      n.textContent = st.files.length ? `${st.files.length} photo${st.files.length > 1 ? 's' : ''}` : ''
-      document.getElementById(id + '-t').innerHTML = st.files.map((p) => `<img src="${p.preview}">`).join('')
-      e.target.value = ''
+      e.target.value = ''; draw()
     }
   }
   return { html, wire, st }
 }
 async function savePhotos(briefId, msgId, files) {
   for (const p of files) {
-    const { error } = await sb.from('quote_brief_files').insert({ brief_id: briefId, message_id: msgId, name: p.name, data_b64: p.data })
+    const b64 = (u) => u ? u.split(',')[1] : null
+    const { error } = await sb.from('quote_brief_files').insert({ brief_id: briefId, message_id: msgId, name: p.name, mime: 'image/jpeg',
+      data_b64: b64(p.marked || p.original), original_b64: p.marked ? b64(p.original) : null, marked: !!p.marked, note: p.note.trim() || null })
     if (error) throw error
   }
+}
+function viewPhoto(f) {
+  const ov = document.createElement('div')
+  ov.setAttribute('style', 'position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;color:#fff')
+  ov.innerHTML = `<img src="data:${f.mime || 'image/jpeg'};base64,${f.data_b64}" style="max-width:100%;max-height:75vh;border-radius:8px">
+    ${f.note ? `<div style="margin-top:12px;max-width:640px;white-space:pre-wrap">${esc(f.note)}</div>` : ''}
+    ${f.original_b64 ? `<button class="btn ghost small" style="margin-top:12px" id="vo">Show without mark-up</button>` : ''}
+    <div class="muted" style="margin-top:10px;color:#aaa">Tap anywhere to close</div>`
+  document.body.appendChild(ov)
+  const vo = ov.querySelector('#vo')
+  if (vo) vo.onclick = (e) => { e.stopPropagation(); const im = ov.querySelector('img'); const showing = im.dataset.o === '1'; im.src = `data:image/jpeg;base64,${showing ? f.data_b64 : f.original_b64}`; im.dataset.o = showing ? '0' : '1'; vo.textContent = showing ? 'Show without mark-up' : 'Show mark-up' }
+  ov.onclick = () => ov.remove()
 }
 
 // ---------- new brief ----------
@@ -253,7 +362,7 @@ async function showBrief(id) {
   const [{ data: b, error }, { data: msgs }, { data: files }] = await Promise.all([
     sb.from('quote_briefs').select('*, job:jobs(id, ref, title, site_address, site_postcode, customer:customers(display_name)), quote:quotes!quote_briefs_quote_id_fkey(id, ref, revision, status, document_path)').eq('id', id).maybeSingle(),
     sb.from('quote_brief_messages').select('*').eq('brief_id', id).order('id'),
-    sb.from('quote_brief_files').select('id, message_id, data_b64').eq('brief_id', id).order('created_at'),
+    sb.from('quote_brief_files').select('id, message_id, mime, data_b64, original_b64, note, marked').eq('brief_id', id).order('created_at'),
   ])
   if (error || !b) { app.innerHTML = `<div class="card err">${esc(error?.message || 'Brief not found.')}</div>`; return }
   const co = coOf(b.company_id)
@@ -274,7 +383,7 @@ async function showBrief(id) {
   const thread = (msgs ?? []).map((m) => {
     if (m.role === 'claude' && m.questions?.length && m === lastQ && open) return `<div class="msg claude"><div class="who">Claude · ${when(m.created_at)}</div>${m.body ? `<div class="b">${esc(m.body)}</div>` : ''}</div>`
     const qsHtml = m.role === 'claude' && m.questions?.length ? `<div style="margin-top:8px">${m.questions.map((q, i) => `<div>${i + 1}. ${esc(q.q)}</div>`).join('')}</div>` : ''
-    const pics = (byMsg.get(m.id) ?? []).map((f) => `<img src="data:image/jpeg;base64,${f.data_b64}">`).join('')
+    const pics = (byMsg.get(m.id) ?? []).map((f) => `<figure class="tf" data-f="${f.id}"><img src="data:${f.mime || 'image/jpeg'};base64,${f.data_b64}">${f.note ? `<figcaption>${esc(f.note)}</figcaption>` : ''}</figure>`).join('')
     return `<div class="msg ${m.role}"><div class="who">${m.role === 'claude' ? 'Claude' : 'You'} · ${when(m.created_at)}</div>
       <div class="b">${esc(m.body || (m.answers ? 'My answers:' : ''))}${qsHtml}${ansText(m)}</div>${pics ? `<div class="thumbs">${pics}</div>` : ''}</div>`
   }).join('')
@@ -307,6 +416,7 @@ async function showBrief(id) {
     : b.status !== 'closed' ? `<div class="card"><label for="more" style="margin-top:0">${b.status === 'ready' ? 'Changes for a new revision' : 'Add more detail'}</label><textarea id="more" style="min-height:80px"></textarea>${ph.html}
       <button class="btn full" id="send2">Send to Claude</button><div class="err" id="err"></div></div>` : ''}`
   ph.wire()
+  app.querySelectorAll('[data-f]').forEach((el) => el.onclick = () => viewPhoto((files ?? []).find((f) => f.id === el.dataset.f)))
   document.getElementById('back').onclick = (e) => { e.preventDefault(); go({}) }
   const pdf = document.getElementById('pdf')
   if (pdf) pdf.onclick = async () => { const { data } = await sb.storage.from('documents').createSignedUrl(b.quote.document_path, 600); if (data) location.href = data.signedUrl }

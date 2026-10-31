@@ -31,8 +31,14 @@ select count(*) from quote_brief_files where brief_id = '<brief>';
 ```
 If the job already has quotes, read them too (`quotes` + `quote_lines` for that job_id) — a message after a quote is a
 request for a new revision. Also read the job's notes (`job_notes`) for site-visit details.
-Photos: `quote_brief_files` holds phone photos as base64. You can't usefully view them through SQL, so work from the text;
-if a photo clearly carried information you need, ask for it in words.
+Photos: if `select count(*) from quote_brief_files where brief_id = '<brief>'` is more than 0, LOOK AT THEM — they are
+part of the brief. Never select data_b64/original_b64 through SQL (far too big). Instead:
+`python3 ~/hub-kit/quote-builder-kit/photos.py <brief> <qb_courier_key>` (key: `select value from app_secrets where key =
+'qb_courier_key';`). It fetches them through the qb-outbox GitHub courier (takes 1–3 minutes) and writes
+`photos/<brief>/NN-marked.jpg` (+ `NN-original.jpg` when Lewis marked it up) and `photos.json` with his note for each
+photo and the message it came with. Read every image. Lewis's mark-up is deliberate: arrows point at things, ↔ lines with
+a label are measurements he has given you (treat as stated dimensions), boxes outline areas, labels are instructions.
+Read the note with each photo. Don't re-ask anything a photo or its note already answers; ask if a mark-up is unclear.
 
 Read memory before deciding anything (memory_read): `/topics/rates.md`, `/topics/workmanship.md`, and
 `/areas/rutland-driveways-quotes.md` (RD) or `/areas/mk-driveways.md` (MKD), plus any `/areas/` file that matches this
