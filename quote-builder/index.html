@@ -395,7 +395,7 @@ async function newBrief() {
 // ---------- one brief ----------
 async function showBrief(id) {
   const [{ data: b, error }, { data: msgs }, { data: files }] = await Promise.all([
-    sb.from('quote_briefs').select('*, job:jobs(id, ref, title, site_address, site_postcode, customer:customers(display_name)), quote:quotes!quote_briefs_quote_id_fkey(id, ref, revision, status, document_path)').eq('id', id).maybeSingle(),
+    sb.from('quote_briefs').select('*, job:jobs(id, ref, title, site_address, site_postcode, customer:customers(display_name)), quote:quotes!quote_briefs_quote_id_fkey(id, ref, revision, status, document_path, qb_hold, qb_signed_off_at)').eq('id', id).maybeSingle(),
     sb.from('quote_brief_messages').select('*').eq('brief_id', id).order('id'),
     sb.from('quote_brief_files').select('id, message_id, mime, data_b64, original_b64, note, marked').eq('brief_id', id).order('created_at'),
   ])
@@ -427,11 +427,18 @@ async function showBrief(id) {
     with_claude: `With Claude. ${nextRunText()}`,
     building: 'Claude is building the quote now.',
     with_you: open ? 'Claude has questions — answer them below.' : 'Waiting for you.',
-    ready: 'The draft quote is in the hub. Check it, then send it from the quote screen. Want changes? Write them below and Claude will do a new revision.',
+    ready: b.quote?.qb_signed_off_at ? 'Signed off — you can now send it from the quote screen. Want changes? Write them below and Claude will do a new revision.' : 'The draft quote is HELD. Open the PDF, check every page and figure, then tap Sign off. Until a director signs it off it cannot be sent and the customer can’t see it. Want changes? Write them below and Claude will do a new revision.',
     closed: 'Closed.',
   }[b.status]
-  const quoteCard = b.quote ? `<div class="card"><h2>${esc(b.quote.ref)} rev ${esc(b.quote.revision)}</h2><div class="muted">Draft quote · ${esc(b.quote.status)}</div>
-    <div class="acts"><a class="btn small" href="/quotes/${b.quote.id}">Open the quote</a>${b.quote.document_path ? `<button class="btn ghost small" id="pdf">View the PDF</button>` : ''}${b.job ? `<a class="btn ghost small" href="/jobs/${b.job.id}">Open the job</a>` : ''}</div></div>` : ''
+  const held = b.quote?.qb_hold && !b.quote?.qb_signed_off_at
+  const quoteCard = b.quote ? `<div class="card"><h2>${esc(b.quote.ref)} rev ${esc(b.quote.revision)}</h2>
+    <div class="muted">${esc(b.quote.status === 'draft' ? 'Draft' : b.quote.status)}</div>
+    ${held ? `<div class="status with_you" style="margin:10px 0 0"><b>Held — not signed off.</b> It can’t be sent and the customer can’t open it until a director signs it off.</div>`
+      : b.quote.qb_signed_off_at ? `<div class="status ready" style="margin:10px 0 0"><b>Signed off</b> · ${when(b.quote.qb_signed_off_at)}</div>` : ''}
+    <div class="acts">${b.quote.document_path ? `<button class="btn ${held ? '' : 'ghost'} small" id="pdf">View the PDF</button>` : ''}
+      ${held && b.quote.status === 'draft' ? `<button class="btn small" id="signoff" style="background:var(--ok)">✓ Sign off</button>` : ''}
+      <a class="btn ghost small" href="/quotes/${b.quote.id}">Open the quote</a>${b.job ? `<a class="btn ghost small" href="/jobs/${b.job.id}">Open the job</a>` : ''}</div>
+    <div class="err" id="soerr"></div></div>` : ''
 
   const ph = photoPicker('ph2')
   app.innerHTML = `<div class="card" style="margin-top:4px"><div class="muted"><span class="co" style="background:${CO_COL[co.code] || '#999'}"></span>${esc(co.name)}</div>
@@ -453,6 +460,14 @@ async function showBrief(id) {
   ph.wire()
   app.querySelectorAll('[data-f]').forEach((el) => el.onclick = () => viewPhoto((files ?? []).find((f) => f.id === el.dataset.f)))
   document.getElementById('back').onclick = (e) => { e.preventDefault(); go({}) }
+  const so = document.getElementById('signoff')
+  if (so) so.onclick = async () => {
+    if (!confirm(`Sign off ${b.quote.ref} rev ${b.quote.revision}?\n\nOnly sign off once you've opened the PDF and checked every page — names, address, scope and every price.\n\nThis doesn't send it. You still send it yourself from the quote screen.`)) return
+    so.disabled = true; so.textContent = 'Signing off…'
+    const { error } = await sb.rpc('qb_sign_off', { p_quote: b.quote.id })
+    if (error) { document.getElementById('soerr').textContent = error.message; so.disabled = false; so.textContent = '✓ Sign off'; return }
+    showBrief(id)
+  }
   const pdf = document.getElementById('pdf')
   if (pdf) pdf.onclick = async () => { const { data } = await sb.storage.from('documents').createSignedUrl(b.quote.document_path, 600); if (data) location.href = data.signedUrl }
   const cl = document.getElementById('close'); if (cl) cl.onclick = async () => { if (!confirm('Close this brief? Nothing is deleted — you can reopen it.')) return; await sb.from('quote_briefs').update({ status: 'closed', updated_at: new Date().toISOString() }).eq('id', id); showBrief(id) }

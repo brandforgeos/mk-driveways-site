@@ -52,3 +52,9 @@ Port into the source: a Quote builder route/screen and a job-page action.
   5 colours, undo/clear) and a note. Stored in `quote_brief_files` as the marked copy (`data_b64`), the original
   (`original_b64`), `marked`, `note`. The hourly run fetches them through edge function `qb-photos` (returns the brief's
   photos AES-GCM encrypted with qb_courier_key) via the "Quote builder photos" GitHub Actions workflow on the qb-outbox branch.
+- 2026-10-31 (night): SIGN-OFF LOCK. quotes.qb_hold / qb_signed_off_by / qb_signed_off_at + trigger private.qb_hold_guard:
+  any quote NOT created by a signed-in person through the app (session_user 'authenticator' + authenticated JWT) is held;
+  a held quote can't leave draft until a director signs it off (public.qb_sign_off, only from a real app session — Claude's
+  runs connect as 'postgres' and can't); the hold can never be removed. Quote builder shows Held / Sign off / Signed off.
+  Transfers are now keyless for the runs: PDFs sealed to the hub's public key (quote-builder-kit/hub_public_key.hex,
+  private half in app_secrets.qb_hub_x25519_private), photos sealed by the hub to a one-off key the run makes.

@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """Courier a finished proposal PDF to the hub.
 
-    python3 send.py proposal.pdf <courier_key_hex>
+    python3 send.py proposal.pdf
 
-Encrypts the PDF (AES-256-GCM, key = app_secrets.qb_courier_key, file = 12-byte IV + ciphertext+tag), commits it to the
+Seals the PDF to the hub's PUBLIC key (hub_public_key.hex, X25519 + AES-256-GCM, see qbcrypto.py) — no secret is needed
+or read — commits it to the
 qb-outbox branch of brandforgeos/mk-driveways-site and pushes. Prints JSON {blob_path, sha256, file_name} to pass to
 public.qb_upload_from_blob(brief, file_name, sha256, blob_path), then public.qb_store(upload_id).
 The edge function qb-store fetches, decrypts, checks the SHA-256 and saves it in the private documents bucket.
 """
 import hashlib, json, os, subprocess, sys, uuid
-from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from qbcrypto import seal
 
 REPO = 'https://github.com/brandforgeos/mk-driveways-site'
 WORK = os.path.expanduser('~/qb-outbox')
@@ -19,13 +21,10 @@ def git(*a, cwd=WORK):
     return subprocess.run(['git', *a], cwd=cwd, check=True, capture_output=True, text=True).stdout
 
 
-def main(pdf, key_hex):
+def main(pdf, *_ignored):
     data = open(pdf, 'rb').read()
     assert data[:5] == b'%PDF-', 'not a PDF'
-    key = bytes.fromhex(key_hex.strip())
-    assert len(key) == 32, 'courier key must be 32 bytes (64 hex characters)'
-    iv = os.urandom(12)
-    blob = iv + AESGCM(key).encrypt(iv, data, None)
+    blob = seal(data, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'hub_public_key.hex')).read())
     if not os.path.isdir(os.path.join(WORK, '.git')):
         subprocess.run(['git', 'clone', '--depth', '1', '--branch', 'qb-outbox', '--single-branch', REPO, WORK], check=True, capture_output=True, timeout=600)
     git('pull', '-q', '--rebase', 'origin', 'qb-outbox')
@@ -45,6 +44,6 @@ def main(pdf, key_hex):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(sys.argv) < 2:
         raise SystemExit(__doc__)
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1])

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Fetch a quote brief's photos so you can look at them.
 
-    python3 photos.py <brief_uuid> <courier_key_hex> [out_dir]
+    python3 photos.py <brief_uuid> [out_dir]
+
+No key needed: makes a one-off key pair, sends the public half with the request; the hub seals the photos to it.
 
 Pushes requests/<brief>.json to the qb-outbox branch; the "Quote builder photos" GitHub Actions workflow downloads the
 brief's photos from the hub (already AES-256-GCM encrypted by the hub) to inbox/<brief>.bin. This waits for that file
@@ -9,8 +11,9 @@ brief's photos from the hub (already AES-256-GCM encrypted by the hub) to inbox/
 <n>-original.jpg when marked, plus photos.json with each photo's note and which message it came with.
 Then Read each image. The marked copy shows what Lewis drew; his note says what it means.
 """
-import base64, json, os, subprocess, sys, time
-from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+import base64, json, os, re, subprocess, sys, time
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from qbcrypto import new_keypair, open_sealed
 
 REPO = 'https://github.com/brandforgeos/mk-driveways-site'
 WORK = os.path.expanduser('~/qb-outbox')
@@ -20,8 +23,8 @@ def git(*a):
     return subprocess.run(['git', *a], cwd=WORK, check=True, capture_output=True, text=True).stdout
 
 
-def main(brief, key_hex, out):
-    key = bytes.fromhex(key_hex.strip())
+def main(brief, out):
+    priv, pub = new_keypair()
     if not os.path.isdir(os.path.join(WORK, '.git')):
         subprocess.run(['git', 'clone', '--depth', '1', '--branch', 'qb-outbox', '--single-branch', REPO, WORK], check=True, capture_output=True, timeout=600)
     git('pull', '-q', '--rebase', 'origin', 'qb-outbox')
@@ -29,7 +32,7 @@ def main(brief, key_hex, out):
     before = os.path.getmtime(inbox) if os.path.exists(inbox) else 0
     old = open(inbox, 'rb').read() if os.path.exists(inbox) else None
     os.makedirs(os.path.join(WORK, 'requests'), exist_ok=True)
-    open(os.path.join(WORK, 'requests', brief + '.json'), 'w').write(json.dumps({'brief': brief, 'at': time.time()}))
+    open(os.path.join(WORK, 'requests', brief + '.json'), 'w').write(json.dumps({'brief': brief, 'pub': pub, 'at': time.time()}))
     git('add', 'requests/' + brief + '.json')
     git('-c', 'user.name=Claude', '-c', 'user.email=noreply@anthropic.com', 'commit', '-qm', 'qb-photos request')
     for _ in range(3):
@@ -47,7 +50,7 @@ def main(brief, key_hex, out):
     else:
         raise SystemExit('Timed out waiting for the photos workflow (check the "Quote builder photos" Action on qb-outbox).')
     blob = open(inbox, 'rb').read()
-    data = json.loads(AESGCM(key).decrypt(blob[:12], blob[12:], None))
+    data = json.loads(open_sealed(blob, priv))
     os.makedirs(out, exist_ok=True)
     meta = []
     for i, f in enumerate(data['files'], 1):
@@ -64,6 +67,7 @@ def main(brief, key_hex, out):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         raise SystemExit(__doc__)
-    main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else os.path.join(os.getcwd(), 'photos', sys.argv[1]))
+    args = [a for a in sys.argv[2:] if not re.fullmatch(r'[0-9a-fA-F]{64}', a)]   # an old-style key argument is ignored
+    main(sys.argv[1], args[0] if args else os.path.join(os.getcwd(), 'photos', sys.argv[1]))

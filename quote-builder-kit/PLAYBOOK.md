@@ -37,8 +37,7 @@ If the job already has quotes, read them too (`quotes` + `quote_lines` for that 
 request for a new revision. Also read the job's notes (`job_notes`) for site-visit details.
 Photos: if `select count(*) from quote_brief_files where brief_id = '<brief>'` is more than 0, LOOK AT THEM — they are
 part of the brief. Never select data_b64/original_b64 through SQL (far too big). Instead:
-`python3 ~/hub-kit/quote-builder-kit/photos.py <brief> <qb_courier_key>` (key: `select value from app_secrets where key =
-'qb_courier_key';`). It fetches them through the qb-outbox GitHub courier (takes 1–3 minutes) and writes
+`python3 ~/hub-kit/quote-builder-kit/photos.py <brief>` (no key needed — never read anything from app_secrets). It fetches them through the qb-outbox GitHub courier (takes 1–3 minutes) and writes
 `photos/<brief>/NN-marked.jpg` (+ `NN-original.jpg` when Lewis marked it up) and `photos.json` with his note for each
 photo and the message it came with. Read every image. Lewis's mark-up is deliberate: arrows point at things, ↔ lines with
 a label are measurements he has given you (treat as stated dimensions), boxes outline areas, labels are instructions.
@@ -95,17 +94,20 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
 5. NUMBER 1 RULE: re-check the whole document. `pdftoppm -r 60 -png` it and look at every page (Read the PNGs): every figure
    on the cover, price page, payment table and acceptance page agrees with the spec and with what Lewis approved; nothing
    overflows; names, address, ref and revision right.
-6. Courier it: `select value from app_secrets where key = 'qb_courier_key';` then
-   `python3 ~/hub-kit/quote-builder-kit/send.py <REF>-<REV>.pdf <key>` → blob_path, sha256, file_name.
+6. Courier it: `python3 ~/hub-kit/quote-builder-kit/send.py <REF>-<REV>.pdf` (sealed to the hub's public key in the
+   kit — no key to read; never read app_secrets) → blob_path, sha256, file_name.
 7. `select qb_store(qb_upload_from_blob('<brief>', 'proposal-<REF>-<REV>.pdf', '<sha256>', '<blob_path>'));`
    then poll `select status, error, path from qb_uploads where brief_id = '<brief>' order by created_at desc limit 1;`
    every ~10s (Monitor/until-loop not needed — just re-run the select) until `stored` (or `failed` → fix and retry once).
 8. File it: `select qb_finish('<brief>', '<upload_id>', '<contents of the .block.json>'::jsonb, '<note>');`
-   The note is 2–4 lines for Lewis: what was built, the price(s), anything he should look at, and that it's a draft to check
-   and send from the quote screen. qb_finish imports it as a draft quote on the job (revision letter from the PDF), attaches
+   The note is 2–4 lines for Lewis: what was built, the price(s), anything he should look at, and that it is held: check the PDF, sign it off in the Quote builder, then send it
+   from the quote screen. qb_finish imports it as a draft quote on the job (revision letter from the PDF), attaches
    the PDF, marks the brief ready and notifies his phone.
 
-Never send anything to a customer. Never email. Lewis checks the draft and sends it from the hub himself.
+Never send anything to a customer. Never email. Every quote you file is HELD by the database: it cannot leave draft, be
+sent, chased or accepted, and the customer link shows "not found", until a director taps Sign off in the Quote builder.
+Never call qb_sign_off, never change a quote's status or the qb_hold / qb_signed_off_* columns, and never try to get round
+the hold. Your note in qb_finish says the quote is held and needs checking and signing off before it can be sent.
 
 ## 4. Revisions
 A message from Lewis on a brief that already has a quote = changes. Ask whatever the change needs (price check again if the
