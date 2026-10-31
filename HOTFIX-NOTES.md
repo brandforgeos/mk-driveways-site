@@ -31,3 +31,20 @@ edge function `sign-doc` (GET info / GET pdf=1 / POST sign → stamps signature 
 branded "Signing record" page with name, time, IP, device and the original's SHA-256, saves to documents bucket,
 inserts an inbound `sign_signed` message for the job and queues a `sign_confirm` email to the customer).
 Port into the source: add a real route/screen for both pages, and a "Send for signature" action on the job page.
+
+## 2026-10-31 — Quote builder (brief → Claude's multiple-choice questions → branded draft quote)
+Standalone page + injected helper, nothing in the React bundle changed:
+- `quote-builder/index.html` — directors only. List of briefs (Your turn / With Claude / Building / Quote ready / Closed),
+  new brief (existing job or new customer, free-text brief, photos resized on the phone to ≤1400px JPEG and stored as
+  base64 in `quote_brief_files`), and the brief thread: Claude's questions render as tappable single/multi-choice cards
+  with an "own answer" box; when ready, links to the draft quote, its PDF and the job. Changes after a quote → new revision.
+- `qb-share.js` (loaded from index.html) — "Quote builder" button on the Today, Jobs and job pages (job page: above
+  "Send for signature"), with a badge for briefs waiting on you. sw.js: denylist gains /^\/quote-builder\//, qb-share.js precached.
+Backend (live): tables `quote_briefs`, `quote_brief_messages`, `quote_brief_files`, `qb_uploads`, `qb_upload_chunks`;
+trigger `private.qb_on_message` (status + phone notification); SQL API for the scheduled Claude run (service only):
+`qb_take`, `qb_reply`, `qb_ensure_job`, `qb_upload_start`, `qb_chunk`, `qb_store`, `qb_finish`, `qb_fail`;
+edge function `qb-store` (base64 chunks → documents bucket, SHA-256 checked). The quote itself is filed with
+`import_quote`, acting as the director who wrote the brief.
+The hourly "Hub quote builder" scheduled task on Lewis's Claude account does the thinking; its playbook and the PDF
+render kit live in `quote-builder-kit/` on this branch (not deployed to the site).
+Port into the source: a Quote builder route/screen and a job-page action.

@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Quote builder — Build Bro Hub</title>
+<link rel="icon" href="/icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F4F1;--card:#fff;--ink:#1B1F23;--body:#3D4247;--muted:#7A8086;--line:#E2E2DC;--accent:#2F6FEB;--ok:#2E8B57;--warn:#C2410C;--rd:#72AA23;--mkd:#C08A46;--claude:#F1EEE6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--body);font-family:Barlow,Arial,sans-serif;font-size:16px}
+header{background:#1B1F23;color:#fff;padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top));position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px}
+header a{color:#fff;text-decoration:none;font-size:22px;line-height:1}
+header h1{font:700 19px 'Barlow Semi Condensed',Arial;margin:0;letter-spacing:.01em;flex:1}
+header .new{font:600 14px Barlow,Arial;background:#fff;color:#1B1F23;border-radius:999px;padding:6px 12px}
+.wrap{max-width:760px;margin:0 auto;padding:14px 14px calc(110px + env(safe-area-inset-bottom))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+h2{font:700 17px 'Barlow Semi Condensed',Arial;color:var(--ink);margin:0 0 8px}
+h3{font:700 14px 'Barlow Semi Condensed',Arial;color:var(--muted);margin:18px 2px 4px;text-transform:uppercase;letter-spacing:.06em}
+label{display:block;font-weight:600;color:var(--ink);font-size:14px;margin:12px 0 5px}
+input[type=text],input[type=search],input[type=email],input[type=tel],textarea,select{width:100%;font:400 16px Barlow,Arial;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+textarea{min-height:110px;resize:vertical}
+.btn{display:inline-block;border:0;border-radius:9px;background:var(--accent);color:#fff;font:600 16px Barlow,Arial;padding:12px 16px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.full{display:block;width:100%;margin-top:14px}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:7px 11px;font-size:14px}
+.btn[disabled]{opacity:.45}
+.muted{color:var(--muted);font-size:14px}
+.row2{display:flex;gap:10px}.row2>div{flex:1}
+.pill{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;background:#EEE;color:#555;white-space:nowrap}
+.pill.with_you{background:#FEF3C7;color:#92400E}.pill.with_claude,.pill.building{background:#E8F0FE;color:#1D4ED8}.pill.ready{background:#DCFCE7;color:#166534}.pill.closed{background:#F3F4F6;color:#6B7280}
+.co{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.item{display:block;text-decoration:none;color:inherit;border-top:1px solid var(--line);padding:11px 0}
+.item:first-child{border-top:0}
+.item .t{font-weight:600;color:var(--ink);display:flex;justify-content:space-between;gap:10px}
+.seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{flex:1;border:0;background:#fff;font:600 15px Barlow,Arial;padding:10px;color:var(--ink);cursor:pointer}
+.seg button.on{background:var(--ink);color:#fff}
+.msg{margin:12px 0;display:flex;flex-direction:column}
+.msg .who{font-size:12px;color:var(--muted);margin:0 4px 3px}
+.msg .b{border-radius:14px;padding:11px 13px;white-space:pre-wrap;line-height:1.4;max-width:92%}
+.msg.lewis{align-items:flex-end}.msg.lewis .b{background:var(--ink);color:#fff;border-bottom-right-radius:4px}
+.msg.claude{align-items:flex-start}.msg.claude .b{background:var(--claude);color:var(--ink);border-bottom-left-radius:4px}
+.msg .ans{margin-top:6px;font-size:14px;opacity:.9}
+.msg .ans div{margin-top:3px}
+.thumbs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.thumbs img{width:76px;height:76px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+.q .qt{font-weight:600;color:var(--ink);margin-bottom:8px}
+.q .qn{color:var(--muted);font-weight:600;margin-right:4px}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;background:#fff;font-size:15px;color:var(--ink);text-align:left}
+.opt .mk{flex:none;width:20px;height:20px;border:2px solid #B8BCC0;border-radius:50%;margin-top:1px}
+.opt.multi .mk{border-radius:5px}
+.opt.on{border-color:var(--accent);background:#EEF4FF}
+.opt.on .mk{border-color:var(--accent);background:var(--accent);box-shadow:inset 0 0 0 3px #EEF4FF}
+.q input.other{margin-top:8px}
+.status{border-radius:12px;padding:12px 14px;margin:12px 0;font-size:15px}
+.status.with_claude,.status.building{background:#E8F0FE;color:#1D3E8A}
+.status.with_you{background:#FEF3C7;color:#7A3B06}
+.status.ready{background:#DCFCE7;color:#14532D}
+.status.closed{background:#EEE;color:#555}
+.err{color:var(--warn);font-size:14px;margin-top:8px;min-height:1em}
+.picked{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#FAFAF8}
+.photo-in{display:flex;align-items:center;gap:10px;margin-top:10px}
+.photo-in label{margin:0;font-weight:500;color:var(--accent);cursor:pointer}
+.photo-in input{display:none}
+.res .item{padding:9px 0}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+</style>
+</head>
+<body>
+<header><a href="/" aria-label="Back to the hub">‹</a><h1>Quote builder</h1><a class="new" href="?new=1" id="newBtn">+ New</a></header>
+<div class="wrap" id="app"><p class="muted">Loading…</p></div>
+
+<script src="/sign/lib/supabase.js"></script>
+<script type="module">
+const { createClient } = window.supabase
+const sb = createClient('https://bjkjmdqytughwczpzgac.supabase.co', 'sb_publishable_Ct4SslgkSqBc5w1IUvWSMg_fvHw7zt4')
+const app = document.getElementById('app')
+const qs = new URLSearchParams(location.search)
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+const when = (d) => d ? new Date(d).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' }) : ''
+const STATUS = { with_you: 'Your turn', with_claude: 'With Claude', building: 'Building', ready: 'Quote ready', closed: 'Closed' }
+const CO_COL = { RD: 'var(--rd)', MKD: 'var(--mkd)' }
+let me = null, companies = [], timer = null
+
+async function start() {
+  const { data: { session } } = await sb.auth.getSession()
+  if (!session) { app.innerHTML = `<div class="card"><h2>Sign in first</h2><p>Open the hub and sign in, then come back to this page.</p><a class="btn" href="/">Open the hub</a></div>`; return }
+  me = session.user
+  const { data: mem } = await sb.from('company_members').select('company:companies(id, code, name)').eq('profile_id', me.id).eq('active', true).eq('role', 'director')
+  companies = (mem ?? []).map((m) => m.company).filter(Boolean).sort((a, b) => a.code.localeCompare(b.code))
+  if (!companies.length) { app.innerHTML = `<div class="card"><h2>Directors only</h2><p class="muted">The quote builder is for directors.</p></div>`; return }
+  route()
+}
+function route() {
+  clearInterval(timer)
+  if (qs.get('b')) return showBrief(qs.get('b'))
+  if (qs.get('new') || qs.get('job')) return newBrief()
+  list()
+}
+function go(params) { history.pushState(null, '', '?' + new URLSearchParams(params).toString()); for (const k of [...qs.keys()]) qs.delete(k); for (const [k, v] of Object.entries(params)) qs.set(k, v); route() }
+window.addEventListener('popstate', () => { const n = new URLSearchParams(location.search); for (const k of [...qs.keys()]) qs.delete(k); for (const [k, v] of n) qs.set(k, v); route() })
+document.getElementById('newBtn').onclick = (e) => { e.preventDefault(); go({ new: 1 }) }
+
+function coOf(id) { return companies.find((c) => c.id === id) || {} }
+function nextRunText() {
+  return 'Claude checks for briefs once an hour — you’ll get a notification when there are questions or the quote is ready.'
+}
+
+// ---------- list ----------
+async function list() {
+  const showClosed = qs.get('closed') === '1'
+  let q = sb.from('quote_briefs').select('id, company_id, title, status, new_customer, error, updated_at, quote_id, job:jobs(ref, title, customer:customers(display_name))')
+    .in('company_id', companies.map((c) => c.id)).order('updated_at', { ascending: false }).limit(80)
+  if (!showClosed) q = q.neq('status', 'closed')
+  const { data, error } = await q
+  if (error) { app.innerHTML = `<div class="card err">${esc(error.message)}</div>`; return }
+  const groups = [['with_you', 'Your turn'], ['with_claude', 'With Claude'], ['building', 'Building'], ['ready', 'Quote ready'], ['closed', 'Closed']]
+  const row = (b) => {
+    const co = coOf(b.company_id)
+    const who = b.job ? `${b.job.ref} · ${b.job.customer?.display_name ?? ''}` : [b.new_customer?.first_name, b.new_customer?.last_name].filter(Boolean).join(' ') || 'New customer'
+    return `<a class="item" href="?b=${b.id}" data-b="${b.id}"><div class="t"><span><span class="co" style="background:${CO_COL[co.code] || '#999'}"></span>${esc(who)}</span><span class="pill ${b.status}">${STATUS[b.status]}</span></div>
+      <div class="muted">${esc(b.title || b.job?.title || '')}${b.error ? ` · <span style="color:var(--warn)">Problem — open to see</span>` : ''} · ${when(b.updated_at)}</div></a>`
+  }
+  const body = groups.map(([k, label]) => { const rows = (data ?? []).filter((b) => b.status === k); return rows.length ? `<h3>${label}</h3><div class="card">${rows.map(row).join('')}</div>` : '' }).join('')
+  app.innerHTML = (body || `<div class="card"><h2>No quotes on the go</h2><p class="muted">Write a brief — what the job is, sizes, materials, anything you noticed on the visit. Claude comes back with multiple-choice questions until it has everything, then builds the branded quote here as a draft for you to check and send.</p><a class="btn" href="?new=1" id="first">Start a brief</a></div>`)
+    + `<p class="muted" style="text-align:center;margin-top:18px">${nextRunText()}<br><a href="?${showClosed ? '' : 'closed=1'}" id="tc">${showClosed ? 'Hide closed' : 'Show closed'}</a></p>`
+  app.querySelectorAll('[data-b]').forEach((a) => a.onclick = (e) => { e.preventDefault(); go({ b: a.dataset.b }) })
+  const f = document.getElementById('first'); if (f) f.onclick = (e) => { e.preventDefault(); go({ new: 1 }) }
+  document.getElementById('tc').onclick = (e) => { e.preventDefault(); go(showClosed ? {} : { closed: 1 }) }
+  timer = setInterval(() => { if (!document.hidden) list() }, 45000)
+}
+
+// ---------- photos (resized on the phone so Claude can read them) ----------
+async function resize(file) {
+  const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = URL.createObjectURL(file) })
+  const max = 1400, k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight))
+  const cv = document.createElement('canvas'); cv.width = Math.round(img.naturalWidth * k); cv.height = Math.round(img.naturalHeight * k)
+  cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height)
+  let q = 0.74, url = cv.toDataURL('image/jpeg', q)
+  while (url.length > 300000 && q > 0.4) { q -= 0.08; url = cv.toDataURL('image/jpeg', q) }
+  URL.revokeObjectURL(img.src)
+  return { name: file.name, data: url.split(',')[1], preview: url }
+}
+function photoPicker(id) {
+  const st = { files: [] }
+  const html = `<div class="photo-in"><label for="${id}">＋ Add photos</label><input type="file" id="${id}" accept="image/*" multiple><span class="muted" id="${id}-n"></span></div><div class="thumbs" id="${id}-t"></div>`
+  const wire = () => {
+    document.getElementById(id).onchange = async (e) => {
+      const n = document.getElementById(id + '-n'); n.textContent = 'Preparing…'
+      for (const f of e.target.files) { try { st.files.push(await resize(f)) } catch { } }
+      n.textContent = st.files.length ? `${st.files.length} photo${st.files.length > 1 ? 's' : ''}` : ''
+      document.getElementById(id + '-t').innerHTML = st.files.map((p) => `<img src="${p.preview}">`).join('')
+      e.target.value = ''
+    }
+  }
+  return { html, wire, st }
+}
+async function savePhotos(briefId, msgId, files) {
+  for (const p of files) {
+    const { error } = await sb.from('quote_brief_files').insert({ brief_id: briefId, message_id: msgId, name: p.name, data_b64: p.data })
+    if (error) throw error
+  }
+}
+
+// ---------- new brief ----------
+async function newBrief() {
+  let job = null, co = companies[0]
+  if (qs.get('job')) {
+    // one brief per job: carry on with the open one rather than starting a second
+    const { data: ex } = await sb.from('quote_briefs').select('id').eq('job_id', qs.get('job')).neq('status', 'closed').order('created_at', { ascending: false }).limit(1).maybeSingle()
+    if (ex) { history.replaceState(null, '', '?b=' + ex.id); qs.delete('job'); qs.set('b', ex.id); return showBrief(ex.id) }
+    const { data } = await sb.from('jobs').select('id, ref, title, company_id, site_address, site_postcode, customer:customers(display_name, email, phone)').eq('id', qs.get('job')).maybeSingle()
+    if (data) { job = data; co = coOf(data.company_id) }
+  }
+  const ph = photoPicker('ph')
+  app.innerHTML = `<div class="card"><h2>New quote brief</h2>
+    ${companies.length > 1 ? `<label>Company</label><div class="seg" id="seg">${companies.map((c) => `<button data-c="${c.id}" class="${c.id === co.id ? 'on' : ''}">${esc(c.name)}</button>`).join('')}</div>` : ''}
+    <label>Customer / job</label>
+    <div class="seg" id="mode"><button data-m="job" class="on">Existing job</button><button data-m="new">New customer</button></div>
+    <div id="who" style="margin-top:10px"></div>
+    <label for="title">What's the job?</label><input type="text" id="title" placeholder="e.g. Resin bound driveway and porcelain path">
+    <label for="brief">The brief</label>
+    <textarea id="brief" style="min-height:180px" placeholder="Everything you know: sizes, levels, what's there now, materials, access, drainage, anything the customer said they want, budget hints, options to show, how long you reckon it'll take…"></textarea>
+    ${ph.html}
+    <button class="btn full" id="go">Send to Claude</button><div class="err" id="err"></div>
+    <p class="muted">${nextRunText()}</p></div>`
+  ph.wire()
+  let mode = 'job'
+  const seg = document.getElementById('seg')
+  if (seg) seg.querySelectorAll('button').forEach((b) => b.onclick = () => { co = coOf(b.dataset.c); seg.querySelectorAll('button').forEach((x) => x.classList.toggle('on', x === b)); if (job && job.company_id !== co.id) job = null; drawWho() })
+  document.getElementById('mode').querySelectorAll('button').forEach((b) => b.onclick = () => { mode = b.dataset.m; document.getElementById('mode').querySelectorAll('button').forEach((x) => x.classList.toggle('on', x === b)); drawWho() })
+  function drawWho() {
+    const w = document.getElementById('who')
+    if (mode === 'new') {
+      w.innerHTML = `<div class="row2"><div><label for="fn">First name</label><input type="text" id="fn" autocomplete="off"></div><div><label for="ln">Surname</label><input type="text" id="ln" autocomplete="off"></div></div>
+        <div class="row2"><div><label for="ph1">Mobile</label><input type="tel" id="ph1"></div><div><label for="em">Email</label><input type="email" id="em"></div></div>
+        <label for="ad">Address (first line)</label><input type="text" id="ad">
+        <div class="row2"><div><label for="tw">Town</label><input type="text" id="tw"></div><div><label for="pc">Postcode</label><input type="text" id="pc"></div></div>`
+      return
+    }
+    if (job) {
+      w.innerHTML = `<div class="picked"><b>${esc(job.ref)}</b> · ${esc(job.customer?.display_name)}<div class="muted">${esc(job.title)}${job.site_address ? ' · ' + esc(job.site_address) : ''}</div><a href="#" id="chg" class="muted">Change</a></div>`
+      document.getElementById('chg').onclick = (e) => { e.preventDefault(); job = null; drawWho() }
+      const t = document.getElementById('title'); if (!t.value) t.value = job.title || ''
+      return
+    }
+    w.innerHTML = `<input type="search" id="js" placeholder="Job number, customer or address"><div class="res" id="jr"></div>`
+    const s = document.getElementById('js'); let tm
+    const run = async () => {
+      const v = s.value.trim()
+      let qq = sb.from('jobs').select('id, ref, title, company_id, site_address, customer:customers(display_name)').eq('company_id', co.id).not('status', 'in', '(lost,cancelled,paid)').order('created_at', { ascending: false }).limit(12)
+      if (v) qq = qq.or(`ref.ilike.%${v}%,title.ilike.%${v}%,site_address.ilike.%${v}%`)
+      const { data } = await qq
+      document.getElementById('jr').innerHTML = (data ?? []).map((j) => `<a class="item" href="#" data-j='${esc(JSON.stringify(j))}'><div class="t">${esc(j.ref)} · ${esc(j.customer?.display_name)}</div><div class="muted">${esc(j.title)}${j.site_address ? ' · ' + esc(j.site_address) : ''}</div></a>`).join('') || '<p class="muted">No open jobs found — use New customer.</p>'
+      document.querySelectorAll('[data-j]').forEach((a) => a.onclick = (e) => { e.preventDefault(); job = JSON.parse(a.dataset.j); drawWho() })
+    }
+    s.oninput = () => { clearTimeout(tm); tm = setTimeout(run, 250) }; run()
+  }
+  drawWho()
+  document.getElementById('go').onclick = async () => {
+    const err = document.getElementById('err'); err.textContent = ''
+    const brief = document.getElementById('brief').value.trim(), title = document.getElementById('title').value.trim()
+    if (brief.length < 10) { err.textContent = 'Write the brief first.'; return }
+    const row = { company_id: co.id, title: title || null, status: 'with_claude' }
+    if (mode === 'job') {
+      if (!job) { err.textContent = 'Pick the job, or switch to New customer.'; return }
+      row.job_id = job.id
+    } else {
+      const v = (id) => document.getElementById(id).value.trim()
+      const nc = { first_name: v('fn'), last_name: v('ln'), phone: v('ph1'), email: v('em'), address: v('ad'), town: v('tw'), postcode: v('pc').toUpperCase() }
+      if (!nc.first_name && !nc.last_name) { err.textContent = 'Put in the customer’s name.'; return }
+      if (!nc.address || !nc.postcode) { err.textContent = 'Put in the full address and postcode — the quote needs it.'; return }
+      if (!nc.phone && !nc.email) { err.textContent = 'Add a mobile or email so the quote can be sent.'; return }
+      row.new_customer = nc
+    }
+    const btn = document.getElementById('go'); btn.disabled = true; btn.textContent = 'Sending…'
+    const { data: b, error } = await sb.from('quote_briefs').insert(row).select('id').single()
+    if (error) { err.textContent = error.message; btn.disabled = false; btn.textContent = 'Send to Claude'; return }
+    const { data: m, error: me2 } = await sb.from('quote_brief_messages').insert({ brief_id: b.id, role: 'lewis', body: brief }).select('id').single()
+    if (me2) { err.textContent = me2.message; btn.disabled = false; return }
+    try { await savePhotos(b.id, m.id, ph.st.files) } catch (e) { err.textContent = 'Brief saved, but a photo failed: ' + e.message }
+    go({ b: b.id })
+  }
+}
+
+// ---------- one brief ----------
+async function showBrief(id) {
+  const [{ data: b, error }, { data: msgs }, { data: files }] = await Promise.all([
+    sb.from('quote_briefs').select('*, job:jobs(id, ref, title, site_address, site_postcode, customer:customers(display_name)), quote:quotes!quote_briefs_quote_id_fkey(id, ref, revision, status, document_path)').eq('id', id).maybeSingle(),
+    sb.from('quote_brief_messages').select('*').eq('brief_id', id).order('id'),
+    sb.from('quote_brief_files').select('id, message_id, data_b64').eq('brief_id', id).order('created_at'),
+  ])
+  if (error || !b) { app.innerHTML = `<div class="card err">${esc(error?.message || 'Brief not found.')}</div>`; return }
+  const co = coOf(b.company_id)
+  const who = b.job ? `${b.job.ref} · ${b.job.customer?.display_name ?? ''}` : [b.new_customer?.first_name, b.new_customer?.last_name].filter(Boolean).join(' ')
+  const byMsg = new Map(); for (const f of files ?? []) { const k = f.message_id ?? 0; byMsg.set(k, [...(byMsg.get(k) ?? []), f]) }
+  const lastQ = [...(msgs ?? [])].reverse().find((m) => m.role === 'claude' && m.questions?.length)
+  const answered = lastQ && (msgs ?? []).some((m) => m.role === 'lewis' && m.id > lastQ.id)
+  const open = b.status === 'with_you' && lastQ && !answered
+
+  const ansText = (m) => {
+    if (!m.answers) return ''
+    const q = (msgs ?? []).find((x) => x.id === m.answers_to)
+    return `<div class="ans">${Object.entries(m.answers).map(([k, v]) => {
+      const qq = q?.questions?.find((x) => String(x.id) === String(k))
+      return `<div>• <b>${esc(qq?.q || k)}</b><br>&nbsp;&nbsp;${esc(Array.isArray(v) ? v.join(', ') : v)}</div>`
+    }).join('')}</div>`
+  }
+  const thread = (msgs ?? []).map((m) => {
+    if (m.role === 'claude' && m.questions?.length && m === lastQ && open) return `<div class="msg claude"><div class="who">Claude · ${when(m.created_at)}</div>${m.body ? `<div class="b">${esc(m.body)}</div>` : ''}</div>`
+    const qsHtml = m.role === 'claude' && m.questions?.length ? `<div style="margin-top:8px">${m.questions.map((q, i) => `<div>${i + 1}. ${esc(q.q)}</div>`).join('')}</div>` : ''
+    const pics = (byMsg.get(m.id) ?? []).map((f) => `<img src="data:image/jpeg;base64,${f.data_b64}">`).join('')
+    return `<div class="msg ${m.role}"><div class="who">${m.role === 'claude' ? 'Claude' : 'You'} · ${when(m.created_at)}</div>
+      <div class="b">${esc(m.body || (m.answers ? 'My answers:' : ''))}${qsHtml}${ansText(m)}</div>${pics ? `<div class="thumbs">${pics}</div>` : ''}</div>`
+  }).join('')
+
+  const statusBox = {
+    with_claude: `With Claude. ${nextRunText()}`,
+    building: 'Claude is building the quote now.',
+    with_you: open ? 'Claude has questions — answer them below.' : 'Waiting for you.',
+    ready: 'The draft quote is in the hub. Check it, then send it from the quote screen. Want changes? Write them below and Claude will do a new revision.',
+    closed: 'Closed.',
+  }[b.status]
+  const quoteCard = b.quote ? `<div class="card"><h2>${esc(b.quote.ref)} rev ${esc(b.quote.revision)}</h2><div class="muted">Draft quote · ${esc(b.quote.status)}</div>
+    <div class="acts"><a class="btn small" href="/quotes/${b.quote.id}">Open the quote</a>${b.quote.document_path ? `<button class="btn ghost small" id="pdf">View the PDF</button>` : ''}${b.job ? `<a class="btn ghost small" href="/jobs/${b.job.id}">Open the job</a>` : ''}</div></div>` : ''
+
+  const ph = photoPicker('ph2')
+  app.innerHTML = `<div class="card" style="margin-top:4px"><div class="muted"><span class="co" style="background:${CO_COL[co.code] || '#999'}"></span>${esc(co.name)}</div>
+      <h2 style="margin:4px 0 2px">${esc(who || 'New customer')}</h2><div class="muted">${esc(b.title || b.job?.title || '')}</div>
+      <div class="acts"><a class="btn ghost small" href="?" id="back">All briefs</a>${b.status !== 'closed' ? `<button class="btn ghost small" id="close">Close brief</button>` : `<button class="btn ghost small" id="reopen">Reopen</button>`}</div></div>
+    ${b.error ? `<div class="status with_you"><b>Problem on the last run:</b> ${esc(b.error)}<br><span class="muted">Claude will try again on the next run. Add a message if something needs changing.</span></div>` : ''}
+    <div class="status ${b.status}">${statusBox}</div>
+    ${quoteCard}
+    <div id="thread">${thread}</div>
+    ${open ? `<div class="card" id="qa"><h2>Claude's questions</h2>${lastQ.questions.map((q, i) => `
+      <div class="q" data-q="${esc(q.id)}" data-multi="${q.multi ? 1 : 0}"><div class="qt"><span class="qn">${i + 1}.</span>${esc(q.q)}${q.multi ? ' <span class="muted">(pick any)</span>' : ''}</div>
+        <div class="opts">${(q.options ?? []).map((o) => `<button class="opt ${q.multi ? 'multi' : ''}" data-v="${esc(o)}"><span class="mk"></span><span>${esc(o)}</span></button>`).join('')}</div>
+        ${q.other !== false ? `<input type="text" class="other" placeholder="Or type your own answer">` : ''}</div>`).join('')}
+      <label for="extra">Anything else? <span class="muted">(optional)</span></label><textarea id="extra" style="min-height:70px"></textarea>
+      ${ph.html}
+      <button class="btn full" id="send">Send answers</button><div class="err" id="err"></div></div>`
+    : b.status !== 'closed' ? `<div class="card"><label for="more" style="margin-top:0">${b.status === 'ready' ? 'Changes for a new revision' : 'Add more detail'}</label><textarea id="more" style="min-height:80px"></textarea>${ph.html}
+      <button class="btn full" id="send2">Send to Claude</button><div class="err" id="err"></div></div>` : ''}`
+  ph.wire()
+  document.getElementById('back').onclick = (e) => { e.preventDefault(); go({}) }
+  const pdf = document.getElementById('pdf')
+  if (pdf) pdf.onclick = async () => { const { data } = await sb.storage.from('documents').createSignedUrl(b.quote.document_path, 600); if (data) location.href = data.signedUrl }
+  const cl = document.getElementById('close'); if (cl) cl.onclick = async () => { if (!confirm('Close this brief? Nothing is deleted — you can reopen it.')) return; await sb.from('quote_briefs').update({ status: 'closed', updated_at: new Date().toISOString() }).eq('id', id); showBrief(id) }
+  const ro = document.getElementById('reopen'); if (ro) ro.onclick = async () => { await sb.from('quote_briefs').update({ status: b.quote_id ? 'ready' : 'with_you', updated_at: new Date().toISOString() }).eq('id', id); showBrief(id) }
+
+  if (open) {
+    document.querySelectorAll('.q').forEach((qe) => {
+      const multi = qe.dataset.multi === '1'
+      qe.querySelectorAll('.opt').forEach((o) => o.onclick = () => {
+        if (multi) o.classList.toggle('on')
+        else { qe.querySelectorAll('.opt').forEach((x) => x.classList.toggle('on', x === o)); const ot = qe.querySelector('.other'); if (ot) ot.value = '' }
+      })
+      const ot = qe.querySelector('.other'); if (ot && !multi) ot.oninput = () => { if (ot.value) qe.querySelectorAll('.opt').forEach((x) => x.classList.remove('on')) }
+    })
+    document.getElementById('send').onclick = async () => {
+      const err = document.getElementById('err'); err.textContent = ''
+      const answers = {}, missing = []
+      document.querySelectorAll('.q').forEach((qe, i) => {
+        const picked = [...qe.querySelectorAll('.opt.on')].map((o) => o.dataset.v)
+        const other = qe.querySelector('.other')?.value.trim()
+        const v = other ? [...picked, other] : picked
+        if (!v.length) missing.push(i + 1); else answers[qe.dataset.q] = qe.dataset.multi === '1' ? v : v[v.length - 1]
+      })
+      if (missing.length) { err.textContent = `Answer question ${missing.join(', ')} first (or type “don’t know”).`; return }
+      const btn = document.getElementById('send'); btn.disabled = true; btn.textContent = 'Sending…'
+      const { data: m, error: e2 } = await sb.from('quote_brief_messages').insert({ brief_id: id, role: 'lewis', body: document.getElementById('extra').value.trim() || null, answers, answers_to: lastQ.id }).select('id').single()
+      if (e2) { err.textContent = e2.message; btn.disabled = false; btn.textContent = 'Send answers'; return }
+      try { await savePhotos(id, m.id, ph.st.files) } catch (e) { alert('Answers sent, but a photo failed: ' + e.message) }
+      showBrief(id); scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+  const s2 = document.getElementById('send2')
+  if (s2) s2.onclick = async () => {
+    const err = document.getElementById('err'), t = document.getElementById('more').value.trim()
+    if (!t && !ph.st.files.length) { err.textContent = 'Write something first.'; return }
+    s2.disabled = true; s2.textContent = 'Sending…'
+    const { data: m, error: e2 } = await sb.from('quote_brief_messages').insert({ brief_id: id, role: 'lewis', body: t || 'Photos added.' }).select('id').single()
+    if (e2) { err.textContent = e2.message; s2.disabled = false; s2.textContent = 'Send to Claude'; return }
+    try { await savePhotos(id, m.id, ph.st.files) } catch (e) { alert('Sent, but a photo failed: ' + e.message) }
+    showBrief(id)
+  }
+  // refresh while waiting on Claude (keeps your typing: only when nothing is being answered)
+  timer = setInterval(async () => {
+    if (document.hidden || open || document.getElementById('more')?.value) return
+    const { data: x } = await sb.from('quote_briefs').select('status, updated_at').eq('id', id).maybeSingle()
+    if (x && (x.status !== b.status || x.updated_at !== b.updated_at)) showBrief(id)
+  }, 30000)
+}
+
+start()
+</script>
+</body>
+</html>
