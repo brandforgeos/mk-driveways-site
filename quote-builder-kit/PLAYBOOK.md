@@ -17,6 +17,10 @@ cd ~/hub-kit && git pull -q
 The kit is `~/hub-kit/quote-builder-kit/` (render.py, send.py, example-spec.json, this file); brand assets are in `~/hub-kit/brand/`.
 
 ## 1. Take the work
+Runs start two ways: the hourly schedule, or instantly from the hub when Lewis sends something (the run's extra message
+then reads "Brief <id>: new message / answers sent"). Either way, just use qb_take — it returns everything waiting.
+Just before you post questions (qb_reply) or file a quote (qb_finish), re-read the brief's messages: if Lewis has written
+again since you started, take that into account first.
 `select * from qb_take();` — returns every brief with status `with_claude` and marks it taken. If it returns nothing,
 stop: end the run with one line ("No briefs waiting.") and do nothing else.
 

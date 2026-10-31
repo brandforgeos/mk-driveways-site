@@ -101,11 +101,13 @@ async function start() {
   const { data: mem } = await sb.from('company_members').select('company:companies(id, code, name)').eq('profile_id', me.id).eq('active', true).eq('role', 'director')
   companies = (mem ?? []).map((m) => m.company).filter(Boolean).sort((a, b) => a.code.localeCompare(b.code))
   if (!companies.length) { app.innerHTML = `<div class="card"><h2>Directors only</h2><p class="muted">The quote builder is for directors.</p></div>`; return }
+  await loadInstant().catch(() => {})
   route()
 }
 function route() {
   clearInterval(timer)
   if (qs.get('b')) return showBrief(qs.get('b'))
+  if (qs.get('settings')) return settings()
   if (qs.get('new') || qs.get('job')) return newBrief()
   list()
 }
@@ -114,8 +116,40 @@ window.addEventListener('popstate', () => { const n = new URLSearchParams(locati
 document.getElementById('newBtn').onclick = (e) => { e.preventDefault(); go({ new: 1 }) }
 
 function coOf(id) { return companies.find((c) => c.id === id) || {} }
+let instant = null
+async function loadInstant() { const { data } = await sb.rpc('qb_instant_status'); instant = data || { on: false }; return instant }
 function nextRunText() {
-  return 'Claude checks for briefs once an hour — you’ll get a notification when there are questions or the quote is ready.'
+  return instant?.on
+    ? 'Claude starts on it as soon as you send — usually a few minutes. You’ll get a notification when there are questions or the quote is ready.'
+    : 'Claude checks for briefs once an hour — you’ll get a notification when there are questions or the quote is ready.'
+}
+async function settings() {
+  await loadInstant()
+  const last = instant.last_at ? `Last start: ${when(instant.last_at)} — ${instant.last_status ? (instant.last_status < 300 ? 'OK' : 'failed (' + instant.last_status + ')') : 'waiting for a reply'}` : ''
+  app.innerHTML = `<div class="card"><h2>Instant mode ${instant.on ? '<span class="pill ready">On</span>' : '<span class="pill closed">Off</span>'}</h2>
+    <p>With instant mode on, the hub starts Claude on your Claude account the moment you send a brief or answers — no waiting for the hourly check. It uses your Claude subscription, not the API.</p>
+    ${last ? `<p class="muted">${esc(last)}</p>${instant.last_body ? `<p class="err">${esc(instant.last_body)}</p>` : ''}` : ''}
+    <h3 style="margin-top:14px">${instant.on ? 'Replace the token' : 'Turn it on (one-off, 1 minute)'}</h3>
+    <ol style="padding-left:20px;line-height:1.5"><li>Open <a href="https://claude.ai/code/routines" target="_blank">claude.ai/code/routines</a> and open <b>Hub quote builder</b>.</li>
+      <li>Under <b>Select a trigger</b> tap <b>Add another trigger</b> → <b>API</b> → <b>Generate token</b>.</li>
+      <li>Copy the token (it's only shown once) and paste it below.</li></ol>
+    <label for="tok">Token</label><input type="text" id="tok" placeholder="sk-ant-oat01-…" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <label for="url">Fire URL <span class="muted">(only if it doesn't end in trig_016XnsaH8e3XtSVidYmaSX4G/fire)</span></label><input type="text" id="url" placeholder="https://api.anthropic.com/v1/claude_code/routines/…/fire" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <button class="btn full" id="save">Save and test</button><div class="err" id="err"></div><div class="muted" id="res"></div>
+    <a class="btn ghost full" href="?" id="back">Back to briefs</a></div>`
+  document.getElementById('back').onclick = (e) => { e.preventDefault(); go({}) }
+  document.getElementById('save').onclick = async () => {
+    const err = document.getElementById('err'), res = document.getElementById('res'); err.textContent = ''; res.textContent = 'Saving…'
+    const { error } = await sb.rpc('qb_set_routine_token', { p_token: document.getElementById('tok').value, p_url: document.getElementById('url').value || null })
+    if (error) { err.textContent = error.message; res.textContent = ''; return }
+    res.textContent = 'Saved. Testing the connection…'
+    for (let i = 0; i < 8; i++) {
+      await new Promise((r) => setTimeout(r, 2500))
+      const s = await loadInstant()
+      if (s.last_status) { if (s.last_status < 300) { res.innerHTML = '<span class="ok">Connected — instant mode is on.</span>'; } else { res.textContent = ''; err.textContent = `Claude refused the start (${s.last_status}): ${s.last_body || ''}` } return }
+    }
+    res.textContent = 'Saved — no reply from Claude yet. Reopen this page in a minute to see the result.'
+  }
 }
 
 // ---------- list ----------
@@ -135,10 +169,11 @@ async function list() {
   }
   const body = groups.map(([k, label]) => { const rows = (data ?? []).filter((b) => b.status === k); return rows.length ? `<h3>${label}</h3><div class="card">${rows.map(row).join('')}</div>` : '' }).join('')
   app.innerHTML = (body || `<div class="card"><h2>No quotes on the go</h2><p class="muted">Write a brief — what the job is, sizes, materials, anything you noticed on the visit. Claude comes back with multiple-choice questions until it has everything, then builds the branded quote here as a draft for you to check and send.</p><a class="btn" href="?new=1" id="first">Start a brief</a></div>`)
-    + `<p class="muted" style="text-align:center;margin-top:18px">${nextRunText()}<br><a href="?${showClosed ? '' : 'closed=1'}" id="tc">${showClosed ? 'Hide closed' : 'Show closed'}</a></p>`
+    + `<p class="muted" style="text-align:center;margin-top:18px">${nextRunText()}<br><a href="?${showClosed ? '' : 'closed=1'}" id="tc">${showClosed ? 'Hide closed' : 'Show closed'}</a> · <a href="?settings=1" id="st">Instant mode: ${instant?.on ? 'on' : 'off'}</a></p>`
   app.querySelectorAll('[data-b]').forEach((a) => a.onclick = (e) => { e.preventDefault(); go({ b: a.dataset.b }) })
   const f = document.getElementById('first'); if (f) f.onclick = (e) => { e.preventDefault(); go({ new: 1 }) }
   document.getElementById('tc').onclick = (e) => { e.preventDefault(); go(showClosed ? {} : { closed: 1 }) }
+  document.getElementById('st').onclick = (e) => { e.preventDefault(); go({ settings: 1 }) }
   timer = setInterval(() => { if (!document.hidden) list() }, 45000)
 }
 
