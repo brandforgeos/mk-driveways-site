@@ -1,0 +1,39 @@
+# Build Bro Hub quote builder: fetch a brief's photos for the hourly Claude run.
+# The run pushes requests/<brief>.json ({"brief": "<uuid>"}); this job downloads the brief's photos from the hub's
+# qb-photos function — already AES-256-GCM encrypted by the hub, never decrypted here — and commits them to
+# inbox/<brief>.bin, where the run picks them up and decrypts them with the hub key.
+name: Quote builder photos
+on:
+  push:
+    branches: [qb-outbox]
+    paths: ['requests/**.json']
+permissions:
+  contents: write
+concurrency:
+  group: qb-photos
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: qb-outbox
+      - name: Fetch encrypted photos
+        run: |
+          set -e
+          changed=0
+          for f in requests/*.json; do
+            [ -e "$f" ] || continue
+            brief=$(python3 -c "import json,sys,re; b=json.load(open(sys.argv[1]))['brief']; assert re.fullmatch(r'[0-9a-f-]{36}', b); print(b)" "$f")
+            out="inbox/$brief.bin"
+            curl -fsS --retry 3 --max-time 120 -o "$out.tmp" "https://bjkjmdqytughwczpzgac.supabase.co/functions/v1/qb-photos?brief=$brief"
+            mv "$out.tmp" "$out"
+            git rm -q "$f"
+            git add "$out"
+            changed=1
+          done
+          if [ "$changed" = 1 ]; then
+            git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -qm "qb-photos: fetched"
+            for i in 1 2 3; do git push -q origin HEAD:qb-outbox && break; git pull -q --rebase origin qb-outbox; done
+          fi
