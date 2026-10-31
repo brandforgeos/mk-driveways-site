@@ -1,0 +1,36 @@
+{
+  "brand": "RD",
+  "ref": "RD-2026-999",
+  "revision": "A",
+  "date": "2026-10-31",
+  "valid_until": "2026-11-30",
+  "title": "Resin Bound Driveway",
+  "customer": {"first_name": "Sample", "last_name": "Customer", "email": "sample@example.com", "phone": "07700 900000", "address": "1 Example Road", "town": "Oakham", "postcode": "LE15 6AA"},
+  "job": {"title": "Resin bound driveway", "site_address": "1 Example Road, Oakham", "site_postcode": "LE15 6AA"},
+  "intro": "A new 55m² resin bound driveway replacing the existing gravel, with a contrasting block border and the bush by the entrance removed.",
+  "scope": [
+    {"heading": "The works", "items": ["Remove the existing gravel and the bush by the entrance", "Excavate to formation and remove all spoil", "New permeable sub-base and resin bound surface, 55m²", "150 × 50mm concrete edgings to all open edges"]}
+  ],
+  "finishes": "Resin: chosen from samples on the visit. Border: charcoal block.",
+  "spec_stages": [
+    {"title": "Set out and protect", "text": "Levels and lines set out, adjoining surfaces and the house protected."},
+    {"title": "Excavate", "text": "Dug to formation, spoil removed from site, formation compacted."},
+    {"title": "Sub-base", "text": "Geotextile laid, then 150mm of free-draining stone laid and compacted in layers."},
+    {"title": "Base", "text": "Permeable base laid to falls away from the house."},
+    {"title": "Resin bound surface", "text": "18mm resin bound aggregate mixed on site and hand-trowelled."},
+    {"title": "Clean and hand over", "text": "Site cleared and swept, aftercare explained."}
+  ],
+  "buildups": [
+    {"name": "Driveway build-up", "layers": [{"name": "Resin bound surface", "mm": 18}, {"name": "Permeable base", "mm": 70}, {"name": "Type 3 sub-base", "mm": 150}, {"name": "Geotextile membrane", "mm": 2}, {"name": "Sub-grade (formation)", "mm": 60}], "note": "Permeable throughout — rain soaks through to the ground."}
+  ],
+  "options": [
+    {"name": "Resin bound driveway", "optional": false, "total": 6050, "duration": "4 working days", "summary": "55m² resin bound with block border, all groundworks and waste removal.",
+     "lines": [{"description": "Resin bound driveway, complete as specified", "qty": 55, "unit": "m²", "unit_price": 110, "notes": ""}]},
+    {"name": "LED step lights", "optional": true, "total": 380, "lines": [{"description": "LED step lights, supplied and fitted", "qty": 4, "unit": "each", "unit_price": 95}]}
+  ],
+  "payment_stages": [{"label": "Deposit on booking", "pct": 50}, {"label": "On completion", "pct": 50}],
+  "included": ["All excavation and waste removal", "All materials and labour", "Removal of rock and buried obstructions"],
+  "not_included": ["Unrecorded services found during excavation", "Planning or dropped kerb applications"],
+  "guarantee": {"years": 5, "vuba": true},
+  "choices": ["Resin colour", "Border colour"]
+}

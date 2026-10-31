@@ -148,7 +148,7 @@ async function resize(file) {
 }
 function photoPicker(id) {
   const st = { files: [] }
-  const html = `<div class="photo-in"><label for="${id}">＋ Add photos</label><input type="file" id="${id}" accept="image/*" multiple><span class="muted" id="${id}-n"></span></div><div class="thumbs" id="${id}-t"></div>`
+  const html = `<div class="photo-in"><label for="${id}">＋ Add photos</label><input type="file" id="${id}" accept="image/*" multiple><span class="muted" id="${id}-n">kept with the brief — put sizes and details in words too</span></div><div class="thumbs" id="${id}-t"></div>`
   const wire = () => {
     document.getElementById(id).onchange = async (e) => {
       const n = document.getElementById(id + '-n'); n.textContent = 'Preparing…'
@@ -293,7 +293,7 @@ async function showBrief(id) {
   app.innerHTML = `<div class="card" style="margin-top:4px"><div class="muted"><span class="co" style="background:${CO_COL[co.code] || '#999'}"></span>${esc(co.name)}</div>
       <h2 style="margin:4px 0 2px">${esc(who || 'New customer')}</h2><div class="muted">${esc(b.title || b.job?.title || '')}</div>
       <div class="acts"><a class="btn ghost small" href="?" id="back">All briefs</a>${b.status !== 'closed' ? `<button class="btn ghost small" id="close">Close brief</button>` : `<button class="btn ghost small" id="reopen">Reopen</button>`}</div></div>
-    ${b.error ? `<div class="status with_you"><b>Problem on the last run:</b> ${esc(b.error)}<br><span class="muted">Claude will try again on the next run. Add a message if something needs changing.</span></div>` : ''}
+    ${b.error ? `<div class="status with_you"><b>Problem on the last run:</b> ${esc(b.error)}<br><span class="muted">Reply below and Claude picks it up on the next run.</span></div>` : ''}
     <div class="status ${b.status}">${statusBox}</div>
     ${quoteCard}
     <div id="thread">${thread}</div>
