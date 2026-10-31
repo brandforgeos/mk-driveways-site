@@ -1,6 +1,6 @@
 # Build Bro Hub quote builder: fetch a brief's photos for the hourly Claude run.
 # The run pushes requests/<brief>.json ({"brief": "<uuid>"}); this job downloads the brief's photos from the hub's
-# qb-photos function — already AES-256-GCM encrypted by the hub, never decrypted here — and commits them to
+# qb-photos function — sealed by the hub to the run's own one-off public key, never decryptable here — and commits them to
 # inbox/<brief>.bin, where the run picks them up and decrypts them with the hub key.
 name: Quote builder photos
 on:
@@ -26,8 +26,9 @@ jobs:
           for f in requests/*.json; do
             [ -e "$f" ] || continue
             brief=$(python3 -c "import json,sys,re; b=json.load(open(sys.argv[1]))['brief']; assert re.fullmatch(r'[0-9a-f-]{36}', b); print(b)" "$f")
+            pub=$(python3 -c "import json,sys,re; p=json.load(open(sys.argv[1])).get('pub',''); assert re.fullmatch(r'[0-9a-f]{64}', p), 'request has no public key'; print(p)" "$f")
             out="inbox/$brief.bin"
-            curl -fsS --retry 3 --max-time 120 -o "$out.tmp" "https://bjkjmdqytughwczpzgac.supabase.co/functions/v1/qb-photos?brief=$brief"
+            curl -fsS --retry 3 --max-time 120 -o "$out.tmp" "https://bjkjmdqytughwczpzgac.supabase.co/functions/v1/qb-photos?brief=$brief&pub=$pub"
             mv "$out.tmp" "$out"
             git rm -q "$f"
             git add "$out"
