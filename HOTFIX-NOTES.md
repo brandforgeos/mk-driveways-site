@@ -86,3 +86,15 @@ Port into the source: a Quote builder route/screen and a job-page action.
   wording (editable) with the customer's number/email, then calls it; errors always shown. Bundle patched (renamed
   index-7b746705.js → index-f8a6b003.js so phones refresh): editor Send and "Send the link again" call hubSendQuote;
   nu() no longer calls navigator.share (copy link only). Port into the source.
+- 2026-11-01: QUOTE BUILDER FIXES (from MKD-2026-007).
+  Fix 1 revisions = letter + number: private.qb_next_revision (A1; our changes number+1; customer change next letter +1;
+  legacy F = F1), private.qb_customer_change, quote_brief_messages.customer_change (tick on "Changes for a new revision"),
+  qb_ensure_job returns it, qb_finish refuses a mismatched revision, import_quote fallback uses it, public.revision_sort_key.
+  Fix 2 qb_finish supersedes every older unsent draft on the job (never sent/viewed/accepted); brief screen collapses
+  "Earlier revisions". Fix 4 quote_pdf_views + qb_pdf_open (server-side, per director per revision); qb_sign_off needs PDF
+  + build-up opened; checklist above the buttons, pulsing "Start here", tapping Sign off explains what's missing.
+  Fix 5 quote_visuals.quote_heading / show_after (qv_set_options), quotes.qb_visual_ids recorded by qb_finish; visuals show
+  "On the quote ✓ (Rev X)" or "not on Rev X yet" + Add to the quote (posts a brief message, prices unchanged); approve
+  shows the saved state only after the DB confirms, then offers a rebuild. qb-photos v8 returns heading/show_after.
+  Fix 6 render.py ba_page(): placement after_brief / after_price; check() refuses headings over 70 chars; photos.py passes
+  heading + placement; PLAYBOOK updated (revisions, placement/heading, re-check approved visuals before qb_finish).

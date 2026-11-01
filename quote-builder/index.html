@@ -22,6 +22,7 @@ h3{font:700 14px 'Barlow Semi Condensed',Arial;color:var(--muted);margin:18px 2p
 label{display:block;font-weight:600;color:var(--ink);font-size:14px;margin:12px 0 5px}
 input[type=text],input[type=search],input[type=email],input[type=tel],textarea,select{width:100%;font:400 16px Barlow,Arial;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
 textarea{min-height:110px;resize:vertical}
+.pulse{animation:qbp 1.4s ease-in-out infinite;box-shadow:0 0 0 0 rgba(47,111,235,.7)}@keyframes qbp{0%{box-shadow:0 0 0 0 rgba(47,111,235,.7)}70%{box-shadow:0 0 0 10px rgba(47,111,235,0)}100%{box-shadow:0 0 0 0 rgba(47,111,235,0)}}
 .btn{display:inline-block;border:0;border-radius:9px;background:var(--accent);color:#fff;font:600 16px Barlow,Arial;padding:12px 16px;cursor:pointer;text-decoration:none;text-align:center}
 .btn.full{display:block;width:100%;margin-top:14px}
 .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
@@ -673,8 +674,13 @@ async function vCompose({ brief, baseUrl, parent = null, sourceFile = null, titl
 let vTimer = null, vSel = {}
 async function vRefresh(brief) {
   const box = document.getElementById('visuals'); if (!box) return
-  const { data: rows, error } = await sb.from('quote_visuals').select('id, chain_id, round, status, title, instruction, error, created_at, done_at, approved_at').eq('brief_id', brief).order('created_at')
+  const [{ data: rows, error }, { data: bq }] = await Promise.all([
+    sb.from('quote_visuals').select('id, chain_id, round, status, title, instruction, error, created_at, done_at, approved_at, quote_heading, show_after').eq('brief_id', brief).order('created_at'),
+    sb.from('quote_briefs').select('status, quote:quotes!quote_briefs_quote_id_fkey(id, revision, status, qb_visual_ids)').eq('id', brief).maybeSingle(),
+  ])
   if (error) { box.innerHTML = `<div class="err">${esc(error.message)}</div>`; return }
+  const lq = bq?.quote, onQ = new Set(lq?.qb_visual_ids ?? []), lqLive = lq && !['superseded', 'declined'].includes(lq.status)
+  const hm = (t) => (String(t || '').split(/(?<=[.!?])\s/)[0] || '').slice(0, 60)
   const chains = []; for (const r of rows ?? []) { let c = chains.find((x) => x.id === r.chain_id); if (!c) chains.push(c = { id: r.chain_id, rounds: [] }); c.rounds.push(r) }
   const busy = (rows ?? []).some((r) => r.status === 'queued' || r.status === 'generating')
   box.innerHTML = `<h2>Before &amp; after for the quote</h2>
@@ -682,7 +688,8 @@ async function vRefresh(brief) {
     ${chains.map((c) => {
       const latest = c.rounds[c.rounds.length - 1], appr = c.rounds.find((r) => r.status === 'approved')
       const sel = c.rounds.find((r) => r.id === vSel[c.id]) || latest
-      const head = appr ? VST.approved : VST[latest.status]
+      const head = appr ? (lqLive ? (onQ.has(appr.id) ? [`On the quote ✓ (Rev ${lq.revision})`, 'vok'] : [`Approved — not on Rev ${lq.revision} yet`, 'vchk']) : ['Approved ✓', 'vok']) : VST[latest.status]
+      const notOn = appr && lqLive && !onQ.has(appr.id)
       return `<div class="vx" id="vx-${c.id}"><div class="vh"><b>${esc(c.rounds[0].title || 'View')}</b><span class="pill ${head[1]}">${head[0]}</span></div>
         <div class="vpair"><figure><img data-vimg="${c.rounds[0].id}:base_b64" alt="Before"><figcaption>Before</figcaption></figure>
           <figure>${sel.status === 'queued' || sel.status === 'generating' ? `<div class="vwait"><span><span class="vsp"></span>Making round ${sel.round}…<br><span style="font-size:12px">about a minute</span></span></div>`
@@ -690,6 +697,12 @@ async function vRefresh(brief) {
             : `<img data-vimg="${sel.id}:after_b64" alt="After"><figcaption>After · round ${sel.round}${sel.status === 'approved' ? ' ✓' : ''}</figcaption>`}</figure></div>
         ${c.rounds.length > 1 ? `<div class="vrounds">${c.rounds.map((r) => `<button data-vsel="${c.id}:${r.id}" class="${r.id === sel.id ? 'on' : ''} ${r.status === 'approved' ? 'ap' : ''}">Round ${r.round}${r.status === 'approved' ? ' ✓' : r.status === 'failed' ? ' ✕' : ''}</button>`).join('')}</div>` : ''}
         <div class="vins"><b>Round ${sel.round}:</b> ${esc(sel.instruction)}</div>
+        ${appr && appr.approved_at ? `<div class="muted" style="margin-top:6px">Approved ${when(appr.approved_at)}</div>` : ''}
+        ${notOn ? `<div class="status with_you" style="margin:8px 0 0">Approved after Rev ${esc(lq.revision)} was built — it isn't on the quote yet.<div class="acts" style="margin-top:6px"><button class="btn small" data-vadd="${c.id}">＋ Add to the quote</button></div></div>` : ''}
+        ${appr ? `<div class="vopt" style="margin-top:10px"><label style="margin-top:0">Heading on the quote <span class="muted">(max 60 characters — the long instructions stay internal)</span></label>
+          <input type="text" maxlength="60" data-vh="${appr.id}" value="${esc(appr.quote_heading ?? hm(c.rounds[0].title))}">
+          <label>Show after</label><select data-vs="${appr.id}"><option value="brief"${appr.show_after !== 'price' ? ' selected' : ''}>The Brief page</option><option value="price"${appr.show_after === 'price' ? ' selected' : ''}>The Price page (use for optional extras)</option></select>
+          <div class="acts"><button class="btn ghost small" data-vsave="${appr.id}">Save heading &amp; position</button><span class="muted" data-vsaved="${appr.id}"></span></div></div>` : ''}
         <div class="acts">
           ${sel.status === 'ready' ? `<button class="btn small" style="background:var(--ok)" data-vap="${sel.id}">✓ Use on the quote</button>` : ''}
           ${sel.status === 'approved' ? `<button class="btn ghost small" data-vun="${sel.id}">Take off the quote</button>` : ''}
@@ -702,7 +715,20 @@ async function vRefresh(brief) {
   box.querySelectorAll('[data-vsel]').forEach((b) => b.onclick = () => { const [c, r] = b.dataset.vsel.split(':'); vSel[c] = r; vRefresh(brief) })
   box.querySelectorAll('[data-vap]').forEach((b) => b.onclick = async () => {
     if (!confirm('Use this after image on the quote?\n\nCheck it looks right — scale, materials, colours, and nothing changed that shouldn\'t be. It will be labelled on the quote as an illustration of the finished work.')) return
-    const { error } = await sb.rpc('qv_approve', { p_id: b.dataset.vap }); if (error) return alert(error.message); vRefresh(brief)
+    b.disabled = true; b.innerHTML = '<span class="vsp"></span> Saving…'
+    const { error } = await sb.rpc('qv_approve', { p_id: b.dataset.vap })
+    if (error) { b.disabled = false; b.textContent = '✓ Use on the quote'; return alert('Not saved: ' + error.message) }
+    const { data: ok } = await sb.from('quote_visuals').select('status').eq('id', b.dataset.vap).maybeSingle()
+    if (ok?.status !== 'approved') { b.disabled = false; b.textContent = '✓ Use on the quote'; return alert('The approval didn’t save — try again.') }
+    vRefresh(brief)
+    if (lqLive && lq.status === 'draft' && confirm(`Approved. Rev ${lq.revision} is already built without this picture.\n\nRebuild the quote with it now? Prices stay the same.`)) await vAdd(brief)
+  })
+  box.querySelectorAll('[data-vadd]').forEach((b) => b.onclick = async () => { b.disabled = true; b.textContent = 'Sending…'; await vAdd(brief) })
+  box.querySelectorAll('[data-vsave]').forEach((b) => b.onclick = async () => {
+    const id = b.dataset.vsave, h = box.querySelector(`[data-vh="${id}"]`).value.trim(), w = box.querySelector(`[data-vs="${id}"]`).value, out = box.querySelector(`[data-vsaved="${id}"]`)
+    b.disabled = true; out.textContent = 'Saving…'
+    const { error } = await sb.rpc('qv_set_options', { p_id: id, p_heading: h, p_show_after: w })
+    b.disabled = false; out.textContent = error ? 'Not saved: ' + error.message : 'Saved ✓ — used on the next revision'
   })
   box.querySelectorAll('[data-vun]').forEach((b) => b.onclick = async () => { const { error } = await sb.rpc('qv_unapprove', { p_id: b.dataset.vun }); if (error) return alert(error.message); vRefresh(brief) })
   box.querySelectorAll('[data-vtry]').forEach((b) => b.onclick = async () => { const { error } = await sb.rpc('qv_retry', { p_id: b.dataset.vtry }); if (error) return alert(error.message); vRefresh(brief) })
@@ -714,6 +740,12 @@ async function vRefresh(brief) {
   document.getElementById('vnew').onclick = () => vPickSource(brief)
   clearTimeout(vTimer); if (busy) vTimer = setTimeout(() => { if (document.getElementById('visuals')) vRefresh(brief) }, 6000)
   const want = qs.get('v'); if (want && document.getElementById('vx-' + want)) { document.getElementById('vx-' + want).scrollIntoView({ behavior: 'smooth', block: 'center' }); qs.delete('v') }
+}
+// "Add to the quote": sends the brief back to Claude to build the next revision with the approved picture, prices unchanged
+async function vAdd(brief) {
+  const { error } = await sb.from('quote_brief_messages').insert({ brief_id: brief, role: 'lewis', body: 'Add the newly approved before & after to the quote. Keep every price exactly the same.' })
+  if (error) return alert('Not sent: ' + error.message)
+  showBrief(brief)
 }
 async function vPickSource(brief) {
   const { data: fs } = await sb.from('quote_brief_files').select('id, data_b64, original_b64, note').eq('brief_id', brief).order('created_at')
@@ -732,6 +764,7 @@ async function vPickSource(brief) {
   }
 }
 
+const nextLetter = (r) => { const l = String(r || 'A').toUpperCase().charAt(0); return (l === 'Z' ? 'Z' : String.fromCharCode(l.charCodeAt(0) + 1)) + '1' }
 // ---------- one brief ----------
 async function showBrief(id) {
   const [{ data: b, error }, { data: msgs }, { data: files }] = await Promise.all([
@@ -777,14 +810,18 @@ async function showBrief(id) {
     closed: 'Closed.',
   }[b.status]
   const held = b.quote?.qb_hold && !b.quote?.qb_signed_off_at
-  let cost = null, opened = false
+  let cost = null, opened = false, pdfSeen = false, earlier = []
   if (b.quote) {
-    const [{ data: cc }, { data: vw }] = await Promise.all([
+    const [{ data: cc }, { data: vw }, { data: pv }, { data: older }] = await Promise.all([
       sb.from('quote_costings').select('version, data').eq('quote_id', b.quote.id).maybeSingle(),
       sb.from('quote_costing_views').select('first_at').eq('quote_id', b.quote.id).eq('profile_id', me.id).maybeSingle(),
+      sb.from('quote_pdf_views').select('first_at').eq('quote_id', b.quote.id).eq('profile_id', me.id).maybeSingle(),
+      b.job ? sb.from('quotes').select('id, revision, status, sent_at, created_at, document_path').eq('job_id', b.job.id).neq('id', b.quote.id).order('created_at', { ascending: false }) : Promise.resolve({ data: [] }),
     ])
-    cost = cc; opened = !!vw
+    cost = cc; opened = !!vw; pdfSeen = !!pv; earlier = older ?? []
   }
+  const ready = cost && opened && pdfSeen
+  const tick = (ok, t) => `<div style="margin:3px 0;font-weight:600;color:${ok ? 'var(--ok)' : 'var(--ink)'}">${ok ? '☑' : '☐'} ${t}</div>`
   const tot = cost ? (cost.data.options ?? []).filter((o) => !o.optional).map((o) => ({ name: o.name, ...optTotals(o) })) : []
   const quoteCard = b.quote ? `<div class="card"><h2>${esc(b.quote.ref)} rev ${esc(b.quote.revision)}</h2>
     <div class="muted">${esc(b.quote.status === 'draft' ? 'Draft' : b.quote.status)}</div>
@@ -792,12 +829,13 @@ async function showBrief(id) {
       : b.quote.qb_signed_off_at ? `<div class="status ready" style="margin:10px 0 0"><b>Signed off</b> · ${when(b.quote.qb_signed_off_at)}</div>` : ''}
     ${cost ? `<div class="csum">${tot.map((t) => `<div><b>${gbp(t.price)}</b><span>${esc(t.name)} · cost ${gbp(t.cost)} · ${t.margin ?? '—'}%</span></div>`).join('')}</div>`
       : `<div class="muted" style="margin-top:8px">No price build-up yet${held ? ' — it can’t be signed off without one.' : '.'}</div>`}
-    <div class="acts">${b.quote.document_path ? `<button class="btn ${held ? '' : 'ghost'} small" id="pdf">View the PDF</button>` : ''}
-      ${cost ? `<button class="btn ${held && !opened ? '' : 'ghost'} small" id="costbtn">£ Price build-up</button>` : ''}
-      ${held && b.quote.status === 'draft' ? `<button class="btn small" id="signoff" style="background:var(--ok)" ${cost && opened ? '' : 'disabled'}>✓ Sign off</button>` : ''}
+    ${held && b.quote.status === 'draft' ? `<div style="margin-top:10px"><div class="muted">Before you can sign off:</div>${tick(pdfSeen, 'PDF opened')}${tick(opened, 'Price build-up opened')}${cost ? '' : tick(false, 'Price build-up added by Claude')}</div>` : ''}
+    <div class="acts">${b.quote.document_path ? `<button class="btn ${held && !pdfSeen ? 'pulse' : held ? '' : 'ghost'} small" id="pdf">${held && !pdfSeen ? 'Start here: ' : ''}View the PDF</button>` : ''}
+      ${cost ? `<button class="btn ${held && pdfSeen && !opened ? 'pulse' : held && !opened ? '' : 'ghost'} small" id="costbtn">£ Price build-up</button>` : ''}
+      ${held && b.quote.status === 'draft' ? `<button class="btn small" id="signoff" style="background:var(--ok);${ready ? '' : 'opacity:.45'}">✓ Sign off</button>` : ''}
       <a class="btn ghost small" href="/quotes/${b.quote.id}">Open the quote</a>${b.job ? `<a class="btn ghost small" href="/jobs/${b.job.id}">Open the job</a>` : ''}</div>
-    ${held && !(cost && opened) ? `<div class="muted" style="margin-top:6px">${cost ? 'Open the price build-up to check it — then you can sign off.' : ''}</div>` : ''}
-    <div class="err" id="soerr"></div></div>` : ''
+    <div class="err" id="soerr"></div>
+    ${earlier.length ? `<details style="margin-top:10px"><summary class="muted" style="cursor:pointer">Earlier revisions (${earlier.length})</summary>${earlier.map((e) => `<div style="display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--line)"><span>Rev ${esc(e.revision)} · ${esc(e.status === 'superseded' ? 'superseded' : e.status)}${e.sent_at ? ' · sent ' + when(e.sent_at) : ''}</span><a href="/quotes/${e.id}" style="color:var(--accent)">Open</a></div>`).join('')}</details>` : ''}</div>` : ''
 
   const ph = photoPicker('ph2')
   app.innerHTML = `<div class="card" style="margin-top:4px"><div class="muted"><span class="co" style="background:${CO_COL[co.code] || '#999'}"></span>${esc(co.name)}</div>
@@ -818,7 +856,8 @@ async function showBrief(id) {
       <label for="extra">Anything else? <span class="muted">(optional)</span></label><textarea id="extra" style="min-height:70px"></textarea>
       ${ph.html}
       <button class="btn full" id="send">Send answers</button><div class="err" id="err"></div></div>`
-    : b.status !== 'closed' ? `<div class="card"><label for="more" style="margin-top:0">${b.status === 'ready' ? 'Changes for a new revision' : 'Add more detail'}</label><textarea id="more" style="min-height:80px"></textarea>${ph.html}
+    : b.status !== 'closed' ? `<div class="card"><label for="more" style="margin-top:0">${b.status === 'ready' ? 'Changes for a new revision' : 'Add more detail'}</label><textarea id="more" style="min-height:80px"></textarea>
+      ${b.quote ? `<label style="display:flex;gap:8px;align-items:flex-start;font-weight:400"><input type="checkbox" id="custchg" style="width:auto;margin-top:4px"><span><b>Customer asked for this change</b><br><span class="muted">Moves to the next letter (e.g. Rev ${esc(nextLetter(b.quote.revision))}). Leave unticked for our own changes — the number goes up instead.</span></span></label>` : ''}${ph.html}
       <button class="btn full" id="send2">Send to Claude</button><div class="err" id="err"></div></div>` : ''}`
   ph.wire()
   vRefresh(id)
@@ -828,6 +867,7 @@ async function showBrief(id) {
   const cbt = document.getElementById('costbtn'); if (cbt) cbt.onclick = () => go({ costing: b.quote.id })
   const so = document.getElementById('signoff')
   if (so) so.onclick = async () => {
+    if (!ready) { document.getElementById('soerr').textContent = !pdfSeen ? 'Open the PDF and check every page first.' : !cost ? 'Claude hasn’t added the price build-up yet.' : 'Open the price build-up first.'; return }
     if (!confirm(`Sign off ${b.quote.ref} rev ${b.quote.revision} at ${tot.map((t) => gbp(t.price) + ' (' + (t.margin ?? '—') + '% on cost)').join(' / ')}?\n\nOnly sign off once you've opened the PDF and checked every page — names, address, scope and every price.\n\nThis doesn't send it. You still send it yourself from the quote screen.`)) return
     so.disabled = true; so.textContent = 'Signing off…'
     const { error } = await sb.rpc('qb_sign_off', { p_quote: b.quote.id })
@@ -835,7 +875,12 @@ async function showBrief(id) {
     showBrief(id)
   }
   const pdf = document.getElementById('pdf')
-  if (pdf) pdf.onclick = async () => { const { data } = await sb.storage.from('documents').createSignedUrl(b.quote.document_path, 600); if (data) location.href = data.signedUrl }
+  if (pdf) pdf.onclick = async () => {
+    await sb.rpc('qb_pdf_open', { p_quote: b.quote.id })   // recorded server-side, so it survives a reload or a phone/desktop switch
+    const { data, error: pe } = await sb.storage.from('documents').createSignedUrl(b.quote.document_path, 600)
+    if (pe || !data) { document.getElementById('soerr').textContent = 'Couldn’t open the PDF: ' + (pe?.message || 'try again'); return }
+    location.href = data.signedUrl
+  }
   const cl = document.getElementById('close'); if (cl) cl.onclick = async () => { if (!confirm('Close this brief? Nothing is deleted — you can reopen it.')) return; await sb.from('quote_briefs').update({ status: 'closed', updated_at: new Date().toISOString() }).eq('id', id); showBrief(id) }
   const ro = document.getElementById('reopen'); if (ro) ro.onclick = async () => { await sb.from('quote_briefs').update({ status: b.quote_id ? 'ready' : 'with_you', updated_at: new Date().toISOString() }).eq('id', id); showBrief(id) }
 
@@ -870,7 +915,8 @@ async function showBrief(id) {
     const err = document.getElementById('err'), t = document.getElementById('more').value.trim()
     if (!t && !ph.st.files.length) { err.textContent = 'Write something first.'; return }
     s2.disabled = true; s2.textContent = 'Sending…'
-    const { data: m, error: e2 } = await sb.from('quote_brief_messages').insert({ brief_id: id, role: 'lewis', body: t || 'Photos added.' }).select('id').single()
+    const cc = !!document.getElementById('custchg')?.checked
+    const { data: m, error: e2 } = await sb.from('quote_brief_messages').insert({ brief_id: id, role: 'lewis', body: t || 'Photos added.', customer_change: cc }).select('id').single()
     if (e2) { err.textContent = e2.message; s2.disabled = false; s2.textContent = 'Send to Claude'; return }
     try { await savePhotos(id, m.id, ph.st.files) } catch (e) { alert('Sent, but a photo failed: ' + e.message) }
     showBrief(id)

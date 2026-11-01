@@ -99,6 +99,10 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
 1. `update quote_briefs set status = 'building', updated_at = now() where id = '<brief>' returning id;` (expect 1 row)
 2. `select qb_ensure_job('<brief>', '<short job title>');` → job_id, ref, revision, customer, site. For a new customer this
    creates the customer and the job with the next hub number. The PDF must use exactly this ref and revision.
+   Revisions are letter + number (Lewis, 1 Nov 2026): first draft A1; our own changes go up in numbers (A1 → A2 → A3);
+   only a change the customer asked for moves to the next letter (A3 → B1), which the director marks with the
+   "Customer asked for this change" tick. A legacy plain letter (F) counts as F1, so the next is F2. Never work the
+   revision out yourself — use what qb_ensure_job returns. qb_finish refuses a PDF whose revision doesn't match.
 3. Write `spec.json` (shape: `example-spec.json`). Rules:
    - `brand` = company code (RD or MKD). Dates: `date` today, `valid_until` today + 30 days.
    - Payment stages 50% deposit on booking / 50% on completion unless Lewis agreed otherwise.
@@ -113,9 +117,14 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
    - Garage conversions: state exactly which faces are skimmed (see memory rule). Tarmac: don't offer it unless asked.
    - `choices` = things the customer picks on acceptance (colours etc.).
    - `before_after`: one entry per approved visual, in the order of visuals.json —
-     `{"title": <its title>, "before": "<abs path NN-before.jpg>", "after": "<abs path NN-after.jpg>"}`. Use exactly
-     the approved files and titles; never crop, edit, re-generate or add any other image. No approved visuals → leave it out.
-     Each pair gets its own "Your Home, Finished" page, labelled as an illustration (render.py does the wording).
+     `{"title": <its title>, "heading": <its heading>, "placement": <its placement>, "before": "<abs path NN-before.jpg>",
+     "after": "<abs path NN-after.jpg>"}`. Use exactly the approved files; never crop, edit, re-generate or add any other
+     image. No approved visuals → leave it out. Each pair gets its own "Your Home, Finished" page, labelled as an
+     illustration (render.py does the wording).
+     `heading` is the short page heading the director set (the long title is their instruction text — internal). If it's
+     empty, write one of 70 characters or fewer from the first sentence of the title; check() refuses anything longer.
+     `placement`: `after_brief` (default) or `after_price` — a before & after showing an OPTIONAL EXTRA always goes
+     `after_price`, with a heading that names the extra, e.g. "Optional extra: front garden footpath and sleeper steps".
 4. `python3 ~/hub-kit/quote-builder-kit/render.py spec.json <REF>-<REV>.pdf` → writes the PDF and `<REF>-<REV>.block.json`.
    It refuses to render if any figure fails its checks — fix the spec, never the check.
 5. NUMBER 1 RULE: re-check the whole document. `pdftoppm -r 60 -png` it and look at every page (Read the PNGs): every figure
@@ -126,10 +135,15 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
 7. `select qb_store(qb_upload_from_blob('<brief>', 'proposal-<REF>-<REV>.pdf', '<sha256>', '<blob_path>'));`
    then poll `select status, error, path from qb_uploads where brief_id = '<brief>' order by created_at desc limit 1;`
    every ~10s (Monitor/until-loop not needed — just re-run the select) until `stored` (or `failed` → fix and retry once).
-8. File it: `select qb_finish('<brief>', '<upload_id>', '<contents of the .block.json>'::jsonb, '<note>');`
+8. Immediately before filing, re-check the approved visuals: `select id, status, approved_at from quote_visuals where
+   brief_id = '<brief>' and status = 'approved';` — if the set differs from what you built with (one approved since you
+   ran photos.py, or one taken off), re-run photos.py and rebuild before filing. Never file a quote missing an approved
+   before & after.
+   File it: `select qb_finish('<brief>', '<upload_id>', '<contents of the .block.json>'::jsonb, '<note>');`
    The note is 2–4 lines for Lewis: what was built, the price(s), anything he should look at, and that it is held: check the PDF, sign it off in the Quote builder, then send it
-   from the quote screen. qb_finish imports it as a draft quote on the job (revision letter from the PDF), attaches
-   the PDF, marks the brief ready and notifies his phone.
+   from the quote screen. qb_finish imports it as a draft quote on the job (revision from the PDF, checked
+   against qb_ensure_job), records which approved visuals it carries, marks every older UNSENT draft on the job superseded
+   (sent / viewed / accepted quotes are never touched), attaches the PDF, marks the brief ready and notifies his phone.
 
 9. PRICE BUILD-UP (internal, directors only — required: the quote can't be signed off without it). Write `costing.json`
    (shape: `example-costing.json`) from the same figures as the approved price check:
@@ -160,8 +174,10 @@ If a director approves a new before & after (or takes one off) after a quote is 
 that is a revision: rebuild with the current approved set — prices unchanged unless they say otherwise.
 
 A message from Lewis on a brief that already has a quote = changes. Ask whatever the change needs (price check again if the
-price moves), then build again: qb_ensure_job gives the next revision letter; qb_finish files it and marks the previous
-quote as superseded.
+price moves), then build again: qb_ensure_job gives the next revision (number up for our changes, next letter only when the
+director ticked "Customer asked for this change"); qb_finish files it and supersedes the older unsent drafts.
+A message "Add the newly approved before & after to the quote. Keep every price exactly the same." comes from the
+"Add to the quote" button: rebuild with the current approved visuals, prices unchanged, no price-check round.
 
 ## 5. When something goes wrong
 `select qb_fail('<brief>', '<one plain sentence: what failed and what you need from Lewis>');` — it hands the brief back to

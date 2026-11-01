@@ -133,6 +133,11 @@ def check(spec):
     for i, v in enumerate(ba, 1):
         if not (v.get('title') or '').strip():
             probs.append(f'Before/after {i} has no title')
+        shown = (v.get('heading') or v.get('title') or '').strip()
+        if len(shown) > 70:
+            probs.append(f'Before/after {i} heading is {len(shown)} characters — keep it to 70 or fewer so the after photo and the illustration note stay on the page (set a short "heading")')
+        if v.get('placement') not in (None, 'after_brief', 'after_price'):
+            probs.append(f'Before/after {i}: placement must be after_brief or after_price')
         for k in ('before', 'after'):
             if not v.get(k) or not os.path.exists(v[k]):
                 probs.append(f'Before/after {i}: {k} image not found ({v.get(k)})')
@@ -222,8 +227,9 @@ def build_html(spec):
       {scope}
       {f'<div class="panel"><h3>Your selected finishes</h3><p>{e(spec["finishes"])}</p></div>' if spec.get("finishes") else ''}''')
 
-    # 2b before & after (director-approved visuals only — they come from photos.py's visuals/ folder)
-    for v in spec.get('before_after') or []:
+    # 2b before & after (director-approved visuals only — they come from photos.py's visuals/ folder).
+    # Each goes after the Brief, or after the Price page with "placement": "after_price" (use that for optional extras).
+    def ba_page(v):
         try:
             from PIL import Image
             with Image.open(v['after']) as im:
@@ -232,8 +238,12 @@ def build_html(spec):
             portrait = False
         pair = (f'<div class="ba {"side" if portrait else ""}"><figure><img src="file://{os.path.abspath(v["before"])}"><figcaption>Before</figcaption></figure>'
                 f'<figure><img src="file://{os.path.abspath(v["after"])}"><figcaption>After</figcaption></figure></div>')
-        page(f'''{head("Your Home, Finished", v["title"])}{pair}
+        page(f'''{head("Your Home, Finished", v.get("heading") or v["title"])}{pair}
           <p class="small">Image for illustration purposes only. The after image was created from a photograph of your property to show the design; the colours, materials, levels and details of the work are as set out in this proposal.</p>''')
+
+    for v in spec.get('before_after') or []:
+        if v.get('placement') != 'after_price':
+            ba_page(v)
 
     # 3 specification
     stages = spec.get('spec_stages', [])
@@ -258,6 +268,10 @@ def build_html(spec):
       {('<h2>Optional extras</h2>' + ''.join(opt_block(o, True) for o in extras)) if extras else ''}
       <div class="panel"><h3>Payment terms</h3><table class="lines"><tr><th>Stage</th><th class="r">%</th><th class="r">{' / '.join(e(o["name"]) for o in mains) if len(mains) > 1 else 'Amount'}</th></tr>{stage_rows}</table>
       <p class="small">Prices are fixed and all-inclusive. The deposit is requested once a start date has been agreed with you; payment details are sent with the deposit request.</p></div>''')
+
+    for v in spec.get('before_after') or []:
+        if v.get('placement') == 'after_price':
+            ba_page(v)
 
     # 6 included / terms
     inc = ''.join(f'<li>{e(x)}</li>' for x in spec.get('included', []))

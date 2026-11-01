@@ -71,7 +71,9 @@ def main(brief, out):
         for i, v in enumerate(data['visuals'], 1):
             b = os.path.join(vd, f'{i:02d}-before.jpg'); a = os.path.join(vd, f'{i:02d}-after.jpg')
             open(b, 'wb').write(base64.b64decode(v['before_b64'])); open(a, 'wb').write(base64.b64decode(v['after_b64']))
-            vis.append({'n': i, 'title': v.get('title'), 'before': b, 'after': a, 'round': v.get('round'), 'approved_at': v.get('approved_at')})
+            vis.append({'n': i, 'title': v.get('title'), 'heading': v.get('quote_heading') or None,
+                        'placement': 'after_price' if v.get('show_after') == 'price' else 'after_brief',
+                        'before': b, 'after': a, 'round': v.get('round'), 'approved_at': v.get('approved_at')})
         json.dump(vis, open(os.path.join(vd, 'visuals.json'), 'w'), indent=1)
     print(json.dumps({'photos': meta, 'approved_before_after': vis}, indent=1))
 
