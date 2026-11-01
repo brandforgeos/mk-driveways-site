@@ -75,3 +75,7 @@ Port into the source: a Quote builder route/screen and a job-page action.
   pair (spec.before_after); PLAYBOOK updated. Page: "Before & after for the quote" card on each brief (pick/upload photo,
   mark-up, instructions, rounds, approve / take off / mark up & change / try again). Port into the source with the rest
   of the quote builder.
+- 2026-11-01 (test fixes): render.py site line de-duplicates town/postcode ("Corby, Corby"); qb_ensure_job takes the job
+  number via private.take_number (public.next_number refused the run, so new-customer briefs could never be built);
+  qv_retry uses extensions.gen_random_bytes and restarts the clock so the sweep doesn't re-fail it; Make scenario skips
+  stale/finished rounds (404) instead of stopping.

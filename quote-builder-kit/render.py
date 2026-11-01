@@ -173,11 +173,22 @@ def fmt_date(s):
     return datetime.strptime(s, '%Y-%m-%d').strftime('%-d %B %Y')
 
 
+def site_line(spec):
+    """Site address for the cover: street, town, postcode — each only once, even if the site address already includes them."""
+    c, j = spec['customer'], spec['job']
+    out = []
+    for part in [j.get('site_address') or c.get('address'), c.get('town'), j.get('site_postcode') or c.get('postcode')]:
+        for bit in [b.strip() for b in str(part or '').split(',') if b.strip()]:
+            if bit.lower().replace(' ', '') not in [o.lower().replace(' ', '') for o in out]:
+                out.append(bit)
+    return ', '.join(out)
+
+
 def build_html(spec):
     B = BRANDS[spec['brand']]
     c, j = spec['customer'], spec['job']
     who = ' '.join(x for x in [c.get('first_name'), c.get('last_name')] if x) or 'The Homeowner'
-    site = ', '.join(x for x in [j.get('site_address') or c.get('address'), c.get('town'), j.get('site_postcode') or c.get('postcode')] if x)
+    site = site_line(spec)
     refrev = f"{spec['ref']} · Rev {spec['revision']}"
     issued = fmt_date(spec.get('date') or date.today().isoformat())
     mains = [o for o in spec['options'] if not o.get('optional')]
