@@ -1,6 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home1/sufktgte/public_html/website_42f1e8ce/dimensure-templates/
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R dimensure-templates/. $DEPLOYPATH
+    - export DEPLOYPATH=/home1/sufktgte/public_html/website_42f1e8ce/
+    - /bin/mkdir -p ${DEPLOYPATH}dimensure-templates ${DEPLOYPATH}dimensure-report-builder
+    - /bin/cp -R dimensure-templates/. ${DEPLOYPATH}dimensure-templates/
+    - /bin/cp -R dimensure-report-builder/. ${DEPLOYPATH}dimensure-report-builder/
