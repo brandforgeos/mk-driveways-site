@@ -99,3 +99,4 @@ Port into the source: a Quote builder route/screen and a job-page action.
   Fix 6 render.py ba_page(): placement after_brief / after_price; check() refuses headings over 70 chars; photos.py passes
   heading + placement; PLAYBOOK updated (revisions, placement/heading, re-check approved visuals before qb_finish).
 - 2026-11-01: quote-send.js signs the message as the director who MADE the quote (brief creator → quote creator → signer → you) and says so on the sheet.
+- 2026-11-01: MKD is always "MK Driveways & Landscaping" to customers (another company is called MK Driveways): companies.name updated, render.py short name, quote-send.js, assistant (Ask) v2 rules, PLAYBOOK.

@@ -104,7 +104,8 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
    "Customer asked for this change" tick. A legacy plain letter (F) counts as F1, so the next is F2. Never work the
    revision out yourself — use what qb_ensure_job returns. qb_finish refuses a PDF whose revision doesn't match.
 3. Write `spec.json` (shape: `example-spec.json`). Rules:
-   - `brand` = company code (RD or MKD). Dates: `date` today, `valid_until` today + 30 days.
+   - `brand` = company code (RD or MKD). The MK company is always "MK Driveways & Landscaping" (or Milton Keynes Driveways & Landscaping) in
+     any wording you write — never just "MK Driveways": a different company has that name (Lewis, 1 Nov 2026). Dates: `date` today, `valid_until` today + 30 days.
    - Payment stages 50% deposit on booking / 50% on completion unless Lewis agreed otherwise.
    - Options the customer chooses between = separate non-optional options; add-ons = `optional: true`.
      Every option's lines × unit prices must equal its total to the penny (pick unit prices that divide, or one line qty 1).

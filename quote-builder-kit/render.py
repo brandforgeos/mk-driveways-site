@@ -22,7 +22,7 @@ BRANDS = {
                bg='#0C0C0C', panel='#161613', panel2='#1E1F1A', ink='#F4F4EF', body='#C9C9C1', muted='#8C8C84',
                line='rgba(255,255,255,.12)', accent='#72AA23', accent_ink='#0C0C0C',
                head_font="'Playfair Display'", head_weight=600, ref_prefix='RD'),
-    'MKD': dict(name='Milton Keynes Driveways & Landscaping Ltd', short='MK Driveways', phone='01908 104408',
+    'MKD': dict(name='Milton Keynes Driveways & Landscaping Ltd', short='MK Driveways & Landscaping', phone='01908 104408',
                 email='info@miltonkeynesdriveways.co.uk', web='miltonkeynesdriveways.co.uk', company_no='17432451',
                 logo='mkd-logo.png', hero='mkd-hero.jpg', band='mkd-hero-band.jpg',
                 bg='#16181B', panel='#1D2024', panel2='#24282D', ink='#EDE9E3', body='#CFC9C0', muted='#8E8A84',

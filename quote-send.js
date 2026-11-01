@@ -78,7 +78,7 @@
         var co = q.company || {}, job = q.job || {}, cu = job.customer || {};
         var first = (cu.first_name || cu.display_name || '').split(' ')[0] || 'there';
         var me = ((res[1] && res[1][0] && res[1][0].full_name) || '').split(' ')[0] || 'the team';
-        var shortName = co.code === 'MKD' ? 'MK Driveways' : 'Rutland Driveways';
+        var shortName = co.code === 'MKD' ? 'MK Driveways & Landscaping' : 'Rutland Driveways'; // never plain "MK Driveways" — that's another company
         var link = location.origin + '/q/' + q.public_token;
         var what = (q.title || job.title || 'your work').replace(/^./, function (c) { return c.toLowerCase(); });
         var phone = co.phone || '';
