@@ -1,7 +1,7 @@
 <!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
 <title>Dimensure Report Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;600;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 /* Layout: report-type picker on top, then one column of section cards; each card is a slice of paper with Include / Remove beside it. */
 :root{
@@ -162,7 +162,7 @@ main .wrap{padding-block:16px 70px;display:flex;flex-direction:column;gap:18px}
 .a4 .ph{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #e3e7ee;padding-bottom:7px;margin-bottom:10px;flex:none}
 .a4 .ph .wm{font-weight:800;letter-spacing:.06em;font-size:16px;color:#0e1e3a}.a4 .ph .wm b{color:#13a37a}
 .a4 .ph .r{text-align:right;font-size:10px;color:#5b6475}
-.a4 .pc{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.a4 .pgc{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;overflow:hidden}
 .a4 .pf{flex:none;display:flex;justify-content:space-between;gap:10px;font-size:8.5px;color:#7a8394;border-top:1px solid #eceff4;padding-top:5px;margin-top:8px}
 .a4 .dt{font-size:20px;font-weight:700;color:#0e1e3a;margin:0 0 2px}
 .a4 .part{position:relative}
@@ -202,6 +202,32 @@ main .wrap{padding-block:16px 70px;display:flex;flex-direction:column;gap:18px}
 .hcard.done{border-color:var(--mint)}
 .endnav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .endnav button{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:10px 14px;font-weight:700;font-size:14px}
+
+
+/* ===== match the real Dimensure report template (same rules as the PDF builder, at 96 dpi: 1 mm = 3.78 px, 1 pt = 1.333 px) ===== */
+.a4{font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:#0B222C;font-size:12px;line-height:1.36;padding:60px 57px 40px}
+.a4 .ph{align-items:flex-end;border-bottom:2px solid #071820;padding-bottom:11px;margin-bottom:19px}
+.a4 .ph .wm{font-size:22.7px;font-weight:800;letter-spacing:.04em;color:#071820}.a4 .ph .wm b{color:#2F8F78}
+.a4 .ph .r{font-size:10.9px;color:#3E5560;line-height:1.35}
+.a4 .dt{font-size:21.3px;font-weight:700;color:#071820;margin:0 0 4px}
+.a4 .dsub{color:#3E5560;margin:0 0 6px;font-size:12px}
+.a4 .pgc{gap:6px}
+.a4 .part>.body h3.sh{font-size:15.3px;color:#071820;margin:13px 0 6px;border-bottom:1px solid #D5E0DC;padding-bottom:4px;font-weight:700}
+.a4.pp h4{font-size:13.3px;color:#071820;margin:15px 0 6px}
+.a4 [data-sid="c_header"] h4{font-size:21.3px!important;margin:0 0 4px!important}
+.a4 .part table{font-size:11.5px;margin:4px 0 11px}
+.a4 .part th{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#3E5560;background:#EEF3F1;padding:6px 8px;border:0;font-weight:700}
+.a4 .part td{padding:4px 8px;border-bottom:1px solid #E1E9E6}
+.a4.pp span.pc{border-radius:12px;border:1px solid}
+.a4.pp .pc.m{color:#8a5a00;border-color:#d9b26a;background:#fff6e3}.a4.pp .pc.l{color:#22543d;border-color:#9ccfb5;background:#eef8f2}.a4.pp .pc.h{color:#9b1c1c;border-color:#e8a3a3;background:#fdf0f0}
+.a4.pp .box{border:1px solid #D5E0DC;border-radius:8px;padding:11px 15px}
+.a4.pp .note-g{border:1px solid #D5E0DC;border-left:3px solid #2F8F78;border-radius:8px;background:#fff;padding:11px 15px}
+.a4.pp .tile{border-color:#D5E0DC}
+.a4.pp .cap{font-size:10.7px;color:#3E5560;margin-top:4px}
+.a4.pp .kv>div:nth-child(odd){color:#3E5560;font-weight:600}
+.a4 .part img.fig{border:1px solid #D5E0DC;object-fit:contain}
+.a4 .pf{font-size:8px;color:#5B6D75;border-top:0;padding-top:0;margin-top:10px}
+.a4.pp .meta{font-size:12px}.a4.pp .meta span{color:#3E5560}
 
 button:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.progress i{transition:none}}
@@ -244,7 +270,7 @@ function common(T){
    {id:'c_next',g:'brief',t:'Next steps',d:'What happens after this report.',html:()=>`<h4>Next steps</h4><ol>${T.next.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`},
   ];
   const F1=[
-   {id:'c_contents',g:'fe',t:'How to use this document and contents',d:'Short intro and a contents table with page numbers.',html:()=>`<p class="cap">How to use this document: each finding has its own write-up; the Brief lists them all.</p><table class="contents">${T.F.map(f=>`<tr><td>${f[0]}</td><td>${esc(f[2])}</td><td>${f[4]}</td></tr>`).join('')}</table>`},
+   {id:'c_contents',g:'fe',t:'How to use this document and contents',d:'Short intro and a contents table with page numbers.',html:()=>`<p class="cap">How to use this document: each finding has its own write-up; the Brief lists them all.</p><table class="contents"><tr><th>ID</th><th>Finding</th><th style="text-align:right">Page</th></tr>${T.F.map(f=>`<tr><td><b>${f[0]}</b></td><td>${esc(f[2])}</td><td class="n">${f[4]}</td></tr>`).join('')}</table>`},
    {id:'c_writeup',g:'fe',t:'Finding write-up',d:'One write-up shown. Every finding gets the same fields.',html:()=>`<div class="box"><b style="color:#0e1e3a">${esc(T.w.t)} ${H.chip(T.w.p)}</b><div class="kv" style="margin-top:6px">${T.w.rows.map(r=>`<div>${esc(r[0])}</div><div>${esc(r[1])}</div>`).join('')}</div></div>`},
   ];
   const A=[
@@ -302,16 +328,16 @@ function bodyHtml(s){
 }
 let hideRemoved=false,sheetFor=null;
 function partEl(T,s){const ch=(choices[T.id]||{})[s.id]||{};const el=document.createElement('div');el.className='part'+(ch.v?' '+ch.v:'');el.dataset.sid=s.id;el.innerHTML=`<div class="body">${bodyHtml(s)}</div>`;el.querySelectorAll('img.fig').forEach(im=>im.onclick=()=>openLB(s));return el}
-function newPage(T,title){const pg=document.createElement('section');pg.className='a4 pp';
-  pg.innerHTML=`<div class="ph"><div class="wm">DIMEN<b>SURE</b></div><div class="r">${esc(T.title)}<br>Ref ${esc(T.ref)} · Issue 1 · [date]</div></div><div class="pc"></div><div class="pf"><span>© 2026 Dimensure. Confidential — issued to [client] for ${esc(T.project)}. Ref ${esc(T.ref)}, issue 1.</span><span class="pn"></span></div>`;
-  if(title){const t=document.createElement('div');t.className='dt';t.textContent=title;pg.querySelector('.pc').appendChild(t)}return pg}
+function newPage(T,title,docName){const pg=document.createElement('section');pg.className='a4 pp';
+  pg.innerHTML=`<div class="ph"><div class="wm">DIMEN<b>SURE</b></div><div class="r">${esc(docName||T.title)}<br>Ref ${esc(T.ref)} · Issue 1 · [date]</div></div><div class="pgc"></div><div class="pf"><span>© 2026 Dimensure. Confidential — issued to [client] for ${esc(T.project)}. Ref ${esc(T.ref)}, issue 1.</span><span class="pn"></span></div>`;
+  if(title){const t=document.createElement('div');t.className='dt';t.textContent=T.title+' – '+title;const sb=document.createElement('p');sb.className='dsub';sb.textContent=T.project;pg.querySelector('.pgc').append(t,sb)}return pg}
 function paginate(T,host){
   const secs=ALLSECS[T.id].filter(s=>!(hideRemoved&&((choices[T.id]||{})[s.id]||{}).v==='out'));
-  const runs=T.noBrief?[[null,secs]]:[[null,secs.filter(s=>s.g==='brief')],['Findings Explained',secs.filter(s=>s.g!=='brief')]];
+  const runs=T.noBrief?[[null,secs,T.name]]:[[null,secs.filter(s=>s.g==='brief'),'Brief'],['Findings Explained',secs.filter(s=>s.g!=='brief'),'Findings Explained']];
   const pages=[];
-  runs.forEach(([title,list])=>{if(!list.length)return;let pg=newPage(T,title);host.appendChild(pg);pages.push(pg);
-    list.forEach(s=>{let pc=pg.querySelector('.pc');const el=partEl(T,s);pc.appendChild(el);
-      if(pc.scrollHeight>pc.clientHeight+1&&pc.children.length>1){el.remove();pg=newPage(T,null);host.appendChild(pg);pages.push(pg);pg.querySelector('.pc').appendChild(el)}});});
+  runs.forEach(([title,list,dn])=>{if(!list.length)return;let pg=newPage(T,title,dn);host.appendChild(pg);pages.push(pg);
+    list.forEach(s=>{let pc=pg.querySelector('.pgc');const el=partEl(T,s);pc.appendChild(el);
+      if(pc.scrollHeight>pc.clientHeight+1&&pc.children.length>1){el.remove();pg=newPage(T,null,dn);host.appendChild(pg);pages.push(pg);pg.querySelector('.pgc').appendChild(el)}});});
   if(T.noBrief===undefined&&false){} // single document: Brief then Findings Explained
   pages.forEach((p,i)=>p.querySelector('.pn').textContent=`Page ${i+1} of ${pages.length}`);
   return pages}
