@@ -79,3 +79,10 @@ Port into the source: a Quote builder route/screen and a job-page action.
   number via private.take_number (public.next_number refused the run, so new-customer briefs could never be built);
   qv_retry uses extensions.gen_random_bytes and restarts the clock so the sweep doesn't re-fail it; Make scenario skips
   stale/finished rounds (404) instead of stopping.
+- 2026-11-01: SEND THROUGH THE HUB (no share sheet). "Send to customer" used to mark the quote sent and open the phone's share
+  sheet; nothing was queued, so no text/email went (MKD-2026-007 Rev F). Now: public.send_quote(p_quote, p_sms,
+  p_email_subject, p_email_body) — real director session only, refuses an unsigned held quote, queues the quote_sent text
+  and/or email in messages, and only then marks the quote sent. quote-send.js (window.hubSendQuote) shows the exact
+  wording (editable) with the customer's number/email, then calls it; errors always shown. Bundle patched (renamed
+  index-7b746705.js → index-f8a6b003.js so phones refresh): editor Send and "Send the link again" call hubSendQuote;
+  nu() no longer calls navigator.share (copy link only). Port into the source.
