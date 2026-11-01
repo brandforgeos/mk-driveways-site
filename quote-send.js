@@ -60,12 +60,21 @@
       var box = sheet('<h3>' + (opts.again ? 'Send the link again' : 'Send to customer') + '</h3><p class="m">Loading…</p><div class="r"><button class="x">Cancel</button></div>');
       box.querySelector('.x').onclick = function () { done(false); };
       var s = session();
-      Promise.all([
-        call('GET', '/quotes?id=eq.' + quoteId + '&select=id,ref,title,status,public_token,qb_hold,qb_signed_off_at,job_id,job:jobs(title,customer:customers(first_name,display_name,phone,email,sms_opted_out_at)),company:companies(code,name,phone)'),
-        s ? call('GET', '/profiles?id=eq.' + s.user.id + '&select=full_name') : Promise.resolve([])
-      ]).then(function (res) {
-        var q = res[0] && res[0][0];
+      // The message comes from the director who MADE the quote (Lewis's rule, 1 Nov 2026), not whoever presses Send:
+      // the director who wrote the quote-builder brief, else the quote's creator, else whoever signed it off, else you.
+      call('GET', '/quotes?id=eq.' + quoteId + '&select=id,ref,title,status,public_token,qb_hold,qb_signed_off_at,qb_signed_off_by,created_by,job_id,job:jobs(title,customer:customers(first_name,display_name,phone,email,sms_opted_out_at)),company:companies(code,name,phone)')
+      .then(function (rq) {
+        var q = rq && rq[0];
         if (!q) throw new Error('This quote couldn’t be found. Reload and try again.');
+        return call('GET', '/quote_briefs?quote_id=eq.' + q.id + '&select=created_by&limit=1').then(function (bb) {
+          if (bb && bb[0]) return bb[0].created_by;
+          return call('GET', '/quote_briefs?job_id=eq.' + q.job_id + '&select=created_by&order=created_at.desc&limit=1').then(function (b2) { return b2 && b2[0] ? b2[0].created_by : null; });
+        }).catch(function () { return null; }).then(function (briefBy) {
+          var owner = briefBy || q.created_by || q.qb_signed_off_by || (s && s.user.id);
+          return call('GET', '/profiles?id=eq.' + owner + '&select=full_name').then(function (pr) { return [[q], pr, owner]; });
+        });
+      }).then(function (res) {
+        var q = res[0] && res[0][0];
         var co = q.company || {}, job = q.job || {}, cu = job.customer || {};
         var first = (cu.first_name || cu.display_name || '').split(' ')[0] || 'there';
         var me = ((res[1] && res[1][0] && res[1][0].full_name) || '').split(' ')[0] || 'the team';
@@ -84,7 +93,8 @@
         var sms = 'Hi ' + first + ', it’s ' + me + ' from ' + shortName + '. Your proposal for ' + what + ' is ready. You can read it and accept it here: ' + link + '\nAny questions, just reply or call ' + phone + '. Thanks, ' + me;
         var mail = 'Hi ' + first + ',\n\nThank you for having us round. Your proposal for ' + what + ' is ready. You can read it in full and accept it here:\n\n' + link +
           '\n\nIf you have any questions, or would like anything changed, just let me know.\n\nKind regards,\n' + me + '\n' + (co.name || shortName) + (phone ? '\n' + phone : '');
-        var html = '<h3>' + (opts.again ? 'Send the link again' : 'Send to customer') + '</h3><p class="m">' + esc(q.ref) + ' · ' + esc(cu.display_name || '') + '. Check the wording — this is exactly what they’ll get.</p>';
+        var html = '<h3>' + (opts.again ? 'Send the link again' : 'Send to customer') + '</h3><p class="m">' + esc(q.ref) + ' · ' + esc(cu.display_name || '') + '. Check the wording — this is exactly what they’ll get.</p>' +
+          '<p class="m">From <b style="color:#F1F1EE">' + esc(me) + '</b> — the director who made this quote' + (s && res[2] !== s.user.id ? ' (not you — it’s signed in their name)' : '') + '.</p>';
         html += '<label class="c"><input type="checkbox" id="qs-s"' + (canSms ? ' checked' : ' disabled') + '> Text ' + (cu.phone ? esc(prettyPhone(cu.phone)) : '(no mobile on file)') + (cu.sms_opted_out_at ? ' — opted out' : '') + '</label>';
         if (canSms) html += '<textarea id="qs-st">' + esc(sms) + '</textarea>';
         html += '<label class="c"><input type="checkbox" id="qs-e"' + (canEmail ? ' checked' : ' disabled') + '> Email ' + (cu.email ? esc(cu.email) : '(no email on file)') + '</label>';
