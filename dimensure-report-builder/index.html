@@ -152,17 +152,68 @@ main .wrap{padding-block:16px 70px;display:flex;flex-direction:column;gap:18px}
 .toolbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
 .toolbar button{border:1px solid var(--line);background:var(--chip);border-radius:6px;padding:5px 10px;font-size:13px}
 
+
+/* ===== export view: A4 pages exactly as the PDF would print, scaled to the screen, with small controls floating over each part ===== */
+.stack{position:relative;margin:0 auto;overflow:hidden}
+.a4 .part .hdr{display:none}
+@media (max-width:560px){.ctl button{width:26px;height:24px;font-size:12px}}
+.pages{transform-origin:0 0;position:absolute;left:0;top:0;width:794px;display:flex;flex-direction:column;gap:24px}
+.a4{width:794px;height:1123px;background:#fff;color:#1d2433;box-shadow:0 1px 4px rgba(0,0,0,.25);font-family:"Helvetica Neue",Arial,sans-serif;font-size:12px;line-height:1.45;padding:34px 44px 28px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.a4 .ph{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #e3e7ee;padding-bottom:7px;margin-bottom:10px;flex:none}
+.a4 .ph .wm{font-weight:800;letter-spacing:.06em;font-size:16px;color:#0e1e3a}.a4 .ph .wm b{color:#13a37a}
+.a4 .ph .r{text-align:right;font-size:10px;color:#5b6475}
+.a4 .pc{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.a4 .pf{flex:none;display:flex;justify-content:space-between;gap:10px;font-size:8.5px;color:#7a8394;border-top:1px solid #eceff4;padding-top:5px;margin-top:8px}
+.a4 .dt{font-size:20px;font-weight:700;color:#0e1e3a;margin:0 0 2px}
+.a4 .part{position:relative}
+.a4 .part>.body h3.sh{font-size:14px;color:#0e1e3a;margin:2px 0 5px}
+.a4 .part table{border-collapse:collapse;width:100%}
+.a4 .part th{font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:#5b6475;text-align:left;border-bottom:1px solid #cfd5df;padding:3px 5px;font-weight:600}
+.a4 .part td{border-bottom:1px solid #eceff4;padding:4px 5px;vertical-align:top}
+.a4 .part td.n{text-align:right;font-variant-numeric:tabular-nums}
+.a4 .part img.fig{display:block;max-width:100%;max-height:740px;margin:0 auto;border:1px solid #e3e7ee;cursor:zoom-in}
+.a4 .part.out>.body{opacity:.25;filter:grayscale(1)}
+.a4 .part.out{background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(194,65,45,.08) 10px 20px);outline:2px solid #c2412d;outline-offset:3px}
+.a4 .part.in{outline:2px solid #13a37a;outline-offset:3px}
+.ctl{position:absolute;display:flex;gap:3px;align-items:center;z-index:3}
+.ctl .tg{font-size:10px;font-weight:700;border-radius:3px;padding:1px 5px;margin-right:2px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.ctl .tg.idea{background:#efe6fb;color:#6b3fb5}.ctl .tg.ex{background:#fbf0dc;color:#9a6614}
+.ctl button{width:30px;height:28px;border-radius:6px;border:1px solid #c9d0db;background:#fff;color:#0e1e3a;font-size:14px;font-weight:700;line-height:1;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.2);-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.ctl button.k[aria-pressed="true"]{background:#13a37a;border-color:#13a37a;color:#fff}
+.ctl button.x[aria-pressed="true"]{background:#c2412d;border-color:#c2412d;color:#fff}
+.ctl button.nb[aria-pressed="true"]{background:#0e1e3a;border-color:#0e1e3a;color:#fff}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.2);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:8px}
+.sheet b{font-size:15px}.sheet small{color:var(--muted)}
+.sheet textarea{width:100%;min-height:80px;font:inherit;font-size:15px;border:1px solid var(--line);border-radius:6px;padding:8px;background:var(--bg);color:var(--ink)}
+.sheet .row{display:flex;gap:8px;justify-content:flex-end}
+.sheet button{border:1px solid var(--line);background:var(--chip);border-radius:6px;padding:7px 14px;font-weight:700}
+.viewbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.viewbar button{border:1px solid var(--line);background:var(--chip);border-radius:6px;padding:5px 10px;font-size:13px}
+.viewbar button[aria-pressed="true"]{background:var(--sel);color:var(--sel-ink);border-color:var(--sel)}
+
+
+.home{display:flex;flex-direction:column;gap:14px}
+.home h3{font-family:var(--f-display);font-size:18px;margin:8px 0 0}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.hcard{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0}
+.hcard b{font-size:16px;line-height:1.25}.hcard span{font-size:13px;color:var(--muted)}
+.hcard .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}.hcard .bar i{display:block;height:100%;background:var(--mint)}
+.hcard .meta2{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.hcard.done{border-color:var(--mint)}
+.endnav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.endnav button{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:10px 14px;font-weight:700;font-size:14px}
+
 button:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.progress i{transition:none}}
 </style></head><body>
 <header class="top"><div class="wrap">
   <div class="brand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#35d6a1" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="7" stroke-dasharray="3 2.2"/><circle cx="12" cy="12" r="1.6" fill="#35d6a1" stroke="none"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>DIMENSURE</div>
   <h1>Report builder</h1>
-  <p class="lede">Each report type shown as the finished report, with every section, chart and drawing we have. Tap ✓ Keep or ✕ Remove on each part. Choices save as you go.</p>
+  <p class="lede">Each report type shown as one document, page by page, as it would export to PDF, with every section, chart and drawing we have. Tap ✓ to keep or ✕ to remove each part. Choices save as you go.</p>
 </div></header>
 <nav class="bar" aria-label="Report builder controls">
-  <div class="wrap"><div class="row"><span class="who" id="who"></span><div class="tabs"><button class="pill" id="tab-b" aria-pressed="true">Build</button><button class="pill" id="tab-c" aria-pressed="false">Compare</button></div></div>
-  <div class="types" id="types" role="group" aria-label="Report type"></div></div>
+  <div class="wrap"><div class="row"><button class="pill" id="back" type="button" hidden>‹ All reports</button><span class="who" id="who"></span><div class="tabs"><button class="pill" id="tab-b" aria-pressed="true">Build</button><button class="pill" id="tab-c" aria-pressed="false">Compare</button></div></div>
+  <div class="types" id="types" role="group" aria-label="Report type" hidden></div></div>
   <div class="progress"><i id="prog"></i></div>
   <div class="wrap status" id="status">Loading…</div>
 </nav>
@@ -216,10 +267,11 @@ const ALLSECS={};TYPES.forEach(T=>ALLSECS[T.id]=sectionsOf(T));
 const TOTAL=Object.values(ALLSECS).reduce((a,s)=>a+s.length,0);
 
 // ---------- state ----------
-let CODE=null,me=null,choices={},everyone={},cur=TYPES[0].id,view='b',saveT=null,loaded=false;
+let CODE=null,me=null,choices={},everyone={},cur=null,view='b',saveT=null,loaded=false;
 try{CODE=new URLSearchParams(location.search).get('k')}catch(e){}
 try{if(CODE)localStorage.setItem('dq_code',CODE);else CODE=localStorage.getItem('dq_code')}catch(e){}
 try{const h=location.hash.slice(1);if(TYPES.some(t=>t.id===h))cur=h}catch(e){}
+$('#back').hidden=!cur;
 const API='https://ivmdqsxnnstvxcspdmov.supabase.co/rest/v1/rpc/';const ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2bWRxc3hubnN0dnhjc3BkbW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4Mzk4MjYsImV4cCI6MjEwODQxNTgyNn0.ICjJ5k_71mnzfgb1aQuT-rMMaoT2mpFBfvZTzG5R1tE';
 async function rpc(fn,body){const r=await fetch(API+fn,{method:'POST',headers:{apikey:ANON,Authorization:'Bearer '+ANON,'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok){let m=r.status;try{m=(await r.json()).message||m}catch(e){}throw{code:m}}return r.json()}
 const decidedIn=id=>ALLSECS[id].filter(s=>choices[id]&&choices[id][s.id]&&choices[id][s.id].v).length;
@@ -248,53 +300,86 @@ function bodyHtml(s){
   if(HEADED.has(s.id)||/^c_(counts|exposure|queries|keyplan|writeup)$/.test(s.id))return x;
   return `<h3 class="sh">${esc(s.t)}</h3>${x}`;
 }
-function part(T,s){
-  const ch=(choices[T.id]||{})[s.id]||{};const el=document.createElement('div');el.className='part'+(ch.v?' '+ch.v:'');el.id='s-'+s.id;
-  el.innerHTML=`<div class="rv">${tagHtml(s,T)}<span class="nm">${esc(s.t)}<small>${esc(s.d)}</small></span><button class="k" type="button" aria-pressed="${ch.v==='in'}" aria-label="Keep ${esc(s.t)}">✓ Keep</button><button class="x" type="button" aria-pressed="${ch.v==='out'}" aria-label="Remove ${esc(s.t)}">✕ Remove</button><button class="nb" type="button" aria-pressed="${ch.note?'true':'false'}" aria-label="Note on ${esc(s.t)}">✎</button>${ch.note?`<textarea aria-label="Note on ${esc(s.t)}">${esc(ch.note)}</textarea>`:''}</div><div class="body">${bodyHtml(s)}</div>`;
-  const set=v=>{if(!me)return;choices[T.id]=choices[T.id]||{};const c=choices[T.id][s.id]=choices[T.id][s.id]||{};c.v=c.v===v?'':v;el.className='part'+(c.v?' '+c.v:'');el.querySelector('.k').setAttribute('aria-pressed',c.v==='in');el.querySelector('.x').setAttribute('aria-pressed',c.v==='out');queueSave()};
-  el.querySelector('.k').onclick=()=>set('in');el.querySelector('.x').onclick=()=>set('out');
-  const wireTa=ta=>{ta.oninput=e=>{if(!me)return;choices[T.id]=choices[T.id]||{};const c=choices[T.id][s.id]=choices[T.id][s.id]||{};c.note=e.target.value;el.querySelector('.nb').setAttribute('aria-pressed',c.note?'true':'false');queueSave()}};
-  const ta0=el.querySelector('textarea');if(ta0)wireTa(ta0);
-  el.querySelector('.nb').onclick=()=>{let ta=el.querySelector('.rv textarea');if(ta){ta.focus();return}ta=document.createElement('textarea');ta.setAttribute('aria-label','Note on '+s.t);ta.placeholder='What to change';el.querySelector('.rv').appendChild(ta);wireTa(ta);ta.focus()};
-  el.querySelectorAll('img.fig').forEach(im=>im.onclick=()=>openLB(s));
-  return el}
-function docShell(label,T,docName){
-  const wrap=document.createElement('div');wrap.innerHTML=`<div class="doclabel">${esc(label)}</div>`;
-  const d=document.createElement('article');d.className='doc pp';d.setAttribute('aria-label',label);
-  d.innerHTML=`<div class="dhead"><div class="wm">DIMEN<b>SURE</b></div><div class="r">${esc(docName)}<br>Ref ${esc(T.ref)} · Issue 1 · [date]</div></div>`;
-  wrap.appendChild(d);return [wrap,d]}
-function addFoot(d,T,pg){const f=document.createElement('div');f.className='dfoot';f.innerHTML=`<span>© 2026 Dimensure. Confidential — issued to [client] for ${esc(T.project)}. Ref ${esc(T.ref)}, issue 1.</span><span>${pg}</span>`;d.appendChild(f)}
-function brk(d,txt){const b=document.createElement('div');b.className='pagebreak';b.innerHTML=`<span>${esc(txt)}</span>`;d.appendChild(b)}
-function render(){const m=$('#main');m.innerHTML='';if(view==='c'){renderCompare(m);status();return}
+let hideRemoved=false,sheetFor=null;
+function partEl(T,s){const ch=(choices[T.id]||{})[s.id]||{};const el=document.createElement('div');el.className='part'+(ch.v?' '+ch.v:'');el.dataset.sid=s.id;el.innerHTML=`<div class="body">${bodyHtml(s)}</div>`;el.querySelectorAll('img.fig').forEach(im=>im.onclick=()=>openLB(s));return el}
+function newPage(T,title){const pg=document.createElement('section');pg.className='a4 pp';
+  pg.innerHTML=`<div class="ph"><div class="wm">DIMEN<b>SURE</b></div><div class="r">${esc(T.title)}<br>Ref ${esc(T.ref)} · Issue 1 · [date]</div></div><div class="pc"></div><div class="pf"><span>© 2026 Dimensure. Confidential — issued to [client] for ${esc(T.project)}. Ref ${esc(T.ref)}, issue 1.</span><span class="pn"></span></div>`;
+  if(title){const t=document.createElement('div');t.className='dt';t.textContent=title;pg.querySelector('.pc').appendChild(t)}return pg}
+function paginate(T,host){
+  const secs=ALLSECS[T.id].filter(s=>!(hideRemoved&&((choices[T.id]||{})[s.id]||{}).v==='out'));
+  const runs=T.noBrief?[[null,secs]]:[[null,secs.filter(s=>s.g==='brief')],['Findings Explained',secs.filter(s=>s.g!=='brief')]];
+  const pages=[];
+  runs.forEach(([title,list])=>{if(!list.length)return;let pg=newPage(T,title);host.appendChild(pg);pages.push(pg);
+    list.forEach(s=>{let pc=pg.querySelector('.pc');const el=partEl(T,s);pc.appendChild(el);
+      if(pc.scrollHeight>pc.clientHeight+1&&pc.children.length>1){el.remove();pg=newPage(T,null);host.appendChild(pg);pages.push(pg);pg.querySelector('.pc').appendChild(el)}});});
+  if(T.noBrief===undefined&&false){} // single document: Brief then Findings Explained
+  pages.forEach((p,i)=>p.querySelector('.pn').textContent=`Page ${i+1} of ${pages.length}`);
+  return pages}
+function placeControls(T,stack){stack.querySelectorAll('.ctl').forEach(c=>c.remove());const sr=stack.getBoundingClientRect();let lastBottom=-99;const CH=window.innerWidth<=560?26:30;
+  stack.querySelectorAll('.part').forEach(el=>{const s=ALLSECS[T.id].find(x=>x.id===el.dataset.sid);const ch=(choices[T.id]||{})[s.id]||{};const r=el.getBoundingClientRect();
+    const c=document.createElement('div');c.className='ctl';const tg=s.idea?'<span class="tg idea">New idea</span>':s.ex?'<span class="tg ex">Example</span>':'';
+    c.innerHTML=`${tg}<button class="k" type="button" aria-pressed="${ch.v==='in'}" aria-label="Keep ${esc(s.t)}" title="Keep: ${esc(s.t)}">✓</button><button class="x" type="button" aria-pressed="${ch.v==='out'}" aria-label="Remove ${esc(s.t)}" title="Remove: ${esc(s.t)}">✕</button><button class="nb" type="button" aria-pressed="${ch.note?'true':'false'}" aria-label="Note on ${esc(s.t)}" title="Note">✎</button>`;
+    let top=Math.max(0,r.top-sr.top-4);if(top<lastBottom+3)top=lastBottom+3;lastBottom=top+CH;c.style.top=top+'px';c.style.right=Math.max(2,sr.right-r.right-2)+'px';
+    const set=v=>{if(!me)return;choices[T.id]=choices[T.id]||{};const cc=choices[T.id][s.id]=choices[T.id][s.id]||{};cc.v=cc.v===v?'':v;el.className='part'+(cc.v?' '+cc.v:'');c.querySelector('.k').setAttribute('aria-pressed',cc.v==='in');c.querySelector('.x').setAttribute('aria-pressed',cc.v==='out');queueSave();if(hideRemoved&&cc.v==='out')render()};
+    c.querySelector('.k').onclick=()=>set('in');c.querySelector('.x').onclick=()=>set('out');c.querySelector('.nb').onclick=()=>openSheet(T,s,c.querySelector('.nb'));
+    stack.appendChild(c)})}
+function openSheet(T,s,btn){closeSheet();const ch=(choices[T.id]||{})[s.id]||{};const d=document.createElement('div');d.className='sheet';d.setAttribute('role','dialog');d.setAttribute('aria-label','Note');
+  d.innerHTML=`<b>${esc(s.t)}</b><small>${esc(s.d)}</small><textarea placeholder="What to change">${esc(ch.note||'')}</textarea><div class="row"><button type="button">Done</button></div>`;document.body.appendChild(d);sheetFor=d;
+  const ta=d.querySelector('textarea');ta.focus();ta.oninput=()=>{if(!me)return;choices[T.id]=choices[T.id]||{};const cc=choices[T.id][s.id]=choices[T.id][s.id]||{};cc.note=ta.value;btn.setAttribute('aria-pressed',cc.note?'true':'false');queueSave()};
+  d.querySelector('button').onclick=closeSheet}
+function closeSheet(){if(sheetFor){sheetFor.remove();sheetFor=null}}
+
+function openType(id){cur=id;try{history.replaceState(null,'',id?'#'+id:location.pathname+location.search)}catch(e){}$('#back').hidden=!id;render();window.scrollTo({top:0})}
+function renderHome(m){
+  const box=document.createElement('div');box.className='home';
+  box.innerHTML=`<div class="intro"><h2>Report types</h2><p>Each report type is its own document. Open one, keep or remove each part, then come back here for the next. Progress shows how many parts you have decided.</p></div>`;
+  let g='',grid=null;
+  TYPES.forEach(T=>{if(T.grp!==g){g=T.grp;const h3=document.createElement('h3');h3.textContent=g;box.appendChild(h3);grid=document.createElement('div');grid.className='hgrid';box.appendChild(grid)}
+    const n=decidedIn(T.id),t=ALLSECS[T.id].length;const b=document.createElement('button');b.type='button';b.className='hcard'+(n===t?' done':'');
+    b.innerHTML=`<b>${esc(T.name)}</b><span>${esc(T.about)}</span><div class="bar"><i style="width:${100*n/t}%"></i></div><div class="meta2"><span>${esc(T.code)}</span><span>${n} of ${t} decided</span></div>`;
+    b.onclick=()=>openType(T.id);grid.appendChild(b)});
+  m.appendChild(box)}
+function endNav(m){const i=TYPES.findIndex(t=>t.id===cur);const nx=TYPES[i+1];const d=document.createElement('div');d.className='endnav';
+  d.innerHTML=`<button type="button" id="e-back">‹ All reports</button>${nx?`<button type="button" id="e-next">Next: ${esc(nx.name)} ›</button>`:''}`;
+  d.querySelector('#e-back').onclick=()=>openType(null);if(nx)d.querySelector('#e-next').onclick=()=>openType(nx.id);m.appendChild(d)}
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);const id=TYPES.some(t=>t.id===h)?h:null;if(id!==cur){cur=id;$('#back').hidden=!id;render()}});
+let fitFn=null;const LOADED=new Set();let renderSeq=0;
+function render(){closeSheet();const m=$('#main');m.innerHTML='';if(view==='c'){renderCompare(m);status();return}
+  if(!cur){fitFn=null;renderHome(m);status();return}
   const T=TYPES.find(t=>t.id===cur);const secs=ALLSECS[T.id];
   const intro=document.createElement('div');intro.className='intro';
-  intro.innerHTML=`<span class="tag ${T.sample[0]}">${esc(T.sample[1])}</span><h2>${esc(T.name)}</h2><p>${esc(T.about)} This is the full report with everything we have, in the order it would print. Use the small strip above each part to keep or remove it.</p><div class="toolbar"><button type="button" id="all-in">Keep every undecided part</button><button type="button" id="clear">Clear my choices for this report</button></div>`;
+  intro.innerHTML=`<span class="tag ${T.sample[0]}">${esc(T.sample[1])}</span><h2>${esc(T.name)}</h2><p>${esc(T.about)} Shown as one document, page by page, as it would export to PDF. Tap ✓ to keep or ✕ to remove each part; ✎ adds a note. Tap a drawing to see it full size.</p>
+  <div class="viewbar"><button type="button" id="v-all" aria-pressed="${!hideRemoved}">Show everything</button><button type="button" id="v-exp" aria-pressed="${hideRemoved}">Preview without removed parts</button><button type="button" id="all-in">Keep every undecided part</button><button type="button" id="clear">Clear my choices</button></div>`;
   m.appendChild(intro);
+  intro.querySelector('#v-all').onclick=()=>{hideRemoved=false;render()};intro.querySelector('#v-exp').onclick=()=>{hideRemoved=true;render()};
   intro.querySelector('#all-in').onclick=()=>{choices[T.id]=choices[T.id]||{};secs.forEach(s=>{const c=choices[T.id][s.id]=choices[T.id][s.id]||{};if(!c.v)c.v='in'});render();queueSave()};
-  intro.querySelector('#clear').onclick=e=>{const b=e.target;if(b.dataset.armed){choices[T.id]={};render();queueSave()}else{b.dataset.armed=1;b.textContent='Tap again to clear';setTimeout(()=>{b.textContent='Clear my choices for this report';delete b.dataset.armed},3000)}};
-  if(T.noBrief){const [w,d]=docShell(T.name,T,T.name);secs.forEach(s=>d.appendChild(part(T,s)));addFoot(d,T,'');m.appendChild(w);status();return}
-  // Brief: header first (it replaces the plain page head), then page 1 items, then the findings table onwards on page 2
-  const bsecs=secs.filter(s=>s.g==='brief');
-  const [bw,bd]=docShell('Brief',T,'Brief');bd.querySelector('.dhead').remove();
-  bsecs.forEach(s=>{if(s.id==='c_findings')brk(bd,'page 2');bd.appendChild(part(T,s))});addFoot(bd,T,'Page 1–2');m.appendChild(bw);
-  // Findings Explained: contents, write-up, charts and drawings, then back pages
-  const [fw,fd]=docShell('Findings Explained',T,'Findings Explained');
-  const fsecs=secs.filter(s=>s.g==='fe'),asecs=secs.filter(s=>s.g==='app');
-  fsecs.forEach((s,i)=>{if(i===2)brk(fd,'charts and drawings');fd.appendChild(part(T,s))});
-  if(asecs.length)brk(fd,'back pages');asecs.forEach(s=>fd.appendChild(part(T,s)));addFoot(fd,T,'Page 1 of n');m.appendChild(fw);
+  intro.querySelector('#clear').onclick=e=>{const b=e.target;if(b.dataset.armed){choices[T.id]={};render();queueSave()}else{b.dataset.armed=1;b.textContent='Tap again to clear';setTimeout(()=>{b.textContent='Clear my choices';delete b.dataset.armed},3000)}};
+  const stack=document.createElement('div');stack.className='stack';const pagesBox=document.createElement('div');pagesBox.className='pages';stack.appendChild(pagesBox);m.appendChild(stack);
+  // load every drawing first so each page is measured at its real size
+  const srcs=[...new Set(ALLSECS[T.id].filter(s=>s.img).map(s=>s.img).concat(ALLSECS[T.id].some(s=>s.id==='c_keyplan')?['keyplan.jpg']:[]))];
+  const ready=srcs.every(s=>LOADED.has(s));
+  if(!ready){const w=document.createElement('p');w.className='empty';w.textContent='Laying out the pages…';m.appendChild(w);const my=++renderSeq;
+    Promise.all(srcs.map(s=>new Promise(res=>{const im=new Image();im.onload=im.onerror=()=>{LOADED.add(s);res()};im.src=s;setTimeout(res,8000)}))).then(()=>{srcs.forEach(s=>LOADED.add(s));if(my===renderSeq&&cur===T.id&&view==='b')render()});return}
+  const pages=paginate(T,pagesBox);endNav(m);
+  fitFn=()=>{const cs=getComputedStyle(m);const w=Math.min(m.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight),820);const s=Math.min(1,w/794);pagesBox.style.transform=`scale(${s})`;stack.style.width=(794*s)+'px';stack.style.height=(pagesBox.scrollHeight*s)+'px';placeControls(T,stack)};
+  requestAnimationFrame(()=>fitFn());
   status()}
+window.addEventListener('resize',()=>{if(fitFn&&view==='b')fitFn()});
 function renderCompare(m){
   const ov=document.createElement('div');
-  ov.innerHTML=`<div class="intro"><h2>Compare choices</h2><p>Everyone's Include / Remove for each section, refreshed every 20 seconds. Pick a report type above to see its sections.</p></div>`;
+  ov.innerHTML=`<div class="intro"><h2>Compare choices</h2><p>Everyone's Include / Remove for each section, refreshed every 20 seconds. Tap a report type to see its parts.</p></div>`;
   const tb=document.createElement('table');tb.className='ov';tb.innerHTML=`<tr><th>Report type</th>${PEOPLE.map(p=>`<th>${p.name}</th>`).join('')}<th>Agreed</th></tr>`+TYPES.map(T=>{const secs=ALLSECS[T.id];const per=PEOPLE.map(p=>{const c=(everyone[p.id]&&everyone[p.id].choices&&everyone[p.id].choices[T.id])||{};return secs.filter(s=>c[s.id]&&c[s.id].v).length});
     const agreed=secs.filter(s=>{const v=PEOPLE.map(p=>{const c=(everyone[p.id]&&everyone[p.id].choices&&everyone[p.id].choices[T.id])||{};return c[s.id]&&c[s.id].v}).filter(Boolean);return v.length===3&&new Set(v).size===1}).length;
     return `<tr><td>${esc(T.name)}</td>${per.map(n=>`<td class="n">${n}/${secs.length}</td>`).join('')}<td class="n">${agreed}</td></tr>`}).join('');
   ov.appendChild(tb);m.appendChild(ov);
+  [...tb.querySelectorAll('tr')].slice(1).forEach((tr,i)=>{tr.style.cursor='pointer';tr.onclick=()=>{cur=TYPES[i].id;$('#back').hidden=false;render()}});
+  if(!cur){const p=document.createElement('p');p.className='empty';p.textContent='Tap a report type in the table to see each part side by side.';m.appendChild(p);return}
   const T=TYPES.find(t=>t.id===cur);const h=document.createElement('h3');h.style.cssText='font-family:var(--f-display);margin:8px 0 0';h.textContent=T.name;m.appendChild(h);
   ALLSECS[T.id].forEach(s=>{const vals=PEOPLE.map(p=>((everyone[p.id]&&everyone[p.id].choices&&everyone[p.id].choices[T.id])||{})[s.id]||{});const vs=vals.map(v=>v.v).filter(Boolean);
     const ag=vs.length<2?'<span class="ag w">Waiting</span>':new Set(vs).size===1?`<span class="ag y">${vs.length===3?'All agree':'Agree so far'}: ${vs[0]==='in'?'Include':'Remove'}</span>`:'<span class="ag s">Split</span>';
     const c=document.createElement('div');c.className='cmp';c.innerHTML=`<b>${esc(s.t)}</b>${ag}<div class="row3">${PEOPLE.map((p,i)=>`<div class="cell ${vals[i].v||''}"><b>${p.name}</b>${vals[i].v==='in'?'Include':vals[i].v==='out'?'Remove':'–'}${vals[i].note?`<i>“${esc(vals[i].note)}”</i>`:''}</div>`).join('')}</div>`;m.appendChild(c)})}
 function openLB(s){$('#lb-cap').textContent=s.t;const b=$('#lb-body');b.innerHTML=`<div class="paper pp"><img src="${esc(s.img)}" alt="" style="display:block;width:100%"></div>`;$('#lb').hidden=false;$('#lb-x').focus()}
+$('#back').onclick=()=>openType(null);
 $('#lb-x').onclick=()=>{$('#lb').hidden=true};document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#lb').hidden=true});
 $('#tab-b').onclick=()=>{view='b';$('#tab-b').setAttribute('aria-pressed','true');$('#tab-c').setAttribute('aria-pressed','false');render()};
 $('#tab-c').onclick=()=>{view='c';$('#tab-c').setAttribute('aria-pressed','true');$('#tab-b').setAttribute('aria-pressed','false');render()};
