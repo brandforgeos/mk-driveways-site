@@ -89,6 +89,17 @@ textarea{min-height:110px;resize:vertical}
 .cline details{margin-top:5px}.cline summary{font-size:13px;color:var(--accent);cursor:pointer}
 .cedit{display:flex;gap:8px;flex-wrap:wrap}.cedit label{flex:1;min-width:80px;font-size:12px}.cedit label.ck{display:flex;align-items:center;gap:6px;flex:0 0 auto;margin-top:22px}
 .cedit input[type=number]{width:100%;font:400 16px Barlow,Arial;padding:8px;border:1px solid var(--line);border-radius:8px}
+.vx{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.vx:first-of-type{border-top:0;padding-top:0;margin-top:6px}
+.vx .vh{display:flex;justify-content:space-between;gap:10px;align-items:center}.vx .vh b{color:var(--ink)}
+.vpair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.vpair figure{margin:0;position:relative}.vpair img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block;background:#EEE;cursor:pointer}
+.vpair figcaption{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.65);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px}
+.vwait{width:100%;aspect-ratio:4/3;border-radius:8px;border:1px dashed #B8BCC0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:14px;padding:10px;background:#FAFAF8}
+.vrounds{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.vrounds button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font:600 13px Barlow,Arial;color:var(--ink);cursor:pointer}
+.vrounds button.on{background:var(--ink);color:#fff;border-color:var(--ink)}.vrounds button.ap{box-shadow:inset 0 0 0 2px var(--ok)}
+.vins{font-size:14px;color:var(--body);margin-top:6px;white-space:pre-wrap}.pill.vok{background:#DCFCE7;color:#166534}.pill.vgo{background:#E8F0FE;color:#1D4ED8}.pill.vchk{background:#FEF3C7;color:#92400E}.pill.vbad{background:#FEE2E2;color:#991B1B}
+.vpick{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.vpick img{width:84px;height:84px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer}.vpick img.on{border-color:var(--accent)}
+@keyframes vspin{to{transform:rotate(360deg)}}.vsp{display:inline-block;width:14px;height:14px;border:2px solid #9DB7F5;border-top-color:transparent;border-radius:50%;animation:vspin .9s linear infinite;vertical-align:-2px;margin-right:6px}
 @media print{header,.noprint{display:none!important}body{background:#fff}.card{border:1px solid #ccc;break-inside:avoid}.cline.changed{background:none}}
 </style>
 </head>
@@ -599,6 +610,128 @@ async function newBrief() {
   }
 }
 
+
+// ---------- before & after visuals for the quote (OpenAI, via Make) ----------
+// A director picks/uploads the before photo, marks it up and says what to change; the photo-real after comes back in
+// about a minute. Mark the after up again and send as many rounds as it takes. Only an approved round goes on the quote.
+const VST = { queued: ['Making it…', 'vgo'], generating: ['Making it…', 'vgo'], ready: ['Ready to check', 'vchk'], approved: ['On the quote ✓', 'vok'], failed: ['Failed', 'vbad'] }
+const vImg = new Map()
+async function vGet(id, col) {
+  const k = id + col; if (vImg.has(k)) return vImg.get(k)
+  const { data } = await sb.from('quote_visuals').select(col).eq('id', id).maybeSingle()
+  const u = data?.[col] ? 'data:image/jpeg;base64,' + data[col] : null
+  if (u) vImg.set(k, u); return u
+}
+async function resizeBig(file) {
+  const src = URL.createObjectURL(file), img = await loadImg(src)
+  const k = Math.min(1, 2048 / Math.max(img.naturalWidth, img.naturalHeight))
+  const cv = document.createElement('canvas'); cv.width = Math.round(img.naturalWidth * k); cv.height = Math.round(img.naturalHeight * k)
+  cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height); URL.revokeObjectURL(src)
+  let q = 0.9, url = cv.toDataURL('image/jpeg', q)
+  while (url.length > 1800000 && q > 0.5) { q -= 0.08; url = cv.toDataURL('image/jpeg', q) }
+  return url
+}
+function vView(src, caption) {
+  const ov = document.createElement('div')
+  ov.setAttribute('style', 'position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;color:#fff')
+  ov.innerHTML = `<img src="${src}" style="max-width:100%;max-height:82vh;border-radius:6px">${caption ? `<div style="margin-top:10px">${esc(caption)}</div>` : ''}<div class="muted" style="margin-top:8px;color:#aaa">Tap anywhere to close</div>`
+  document.body.appendChild(ov); ov.onclick = () => ov.remove()
+}
+// the "send a round" form: mark-up on the image, say what to change
+async function vCompose({ brief, baseUrl, parent = null, sourceFile = null, title = '', heading }) {
+  const photo = { original: baseUrl, marked: null, ops: [], note: '' }
+  const ov = document.createElement('div')
+  ov.setAttribute('style', 'position:fixed;inset:0;z-index:90;background:var(--bg);overflow:auto')
+  const draw = () => {
+    ov.innerHTML = `<header style="position:sticky"><a href="#" id="vx-x" aria-label="Close">‹</a><h1>${esc(heading)}</h1></header><div class="wrap">
+      <div class="card"><img src="${photo.marked || photo.original}" id="vx-img" style="width:100%;border-radius:8px;display:block;cursor:pointer">
+        <div class="acts"><button class="btn ghost small" id="vx-mk">${photo.marked ? '✎ Edit mark-up' : '✎ Mark it up'}</button>${photo.marked ? '<button class="btn ghost small" id="vx-cl">Clear mark-up</button>' : ''}</div>
+        <p class="muted" style="margin-bottom:0">Draw, arrow, box and label where things go — colours are fine, they won't appear in the picture.</p>
+        ${parent ? '' : `<label for="vx-t">What is this view? <span class="muted">(shown on the quote)</span></label><input type="text" id="vx-t" value="${esc(title)}" placeholder="e.g. Front driveway, from the road">`}
+        <label for="vx-i">${parent ? 'What needs changing?' : 'What should the finished job look like?'}</label>
+        <textarea id="vx-i" style="min-height:130px" placeholder="${parent ? 'e.g. Border should be charcoal not grey, make the gravel lighter, keep the hedge on the right' : 'e.g. Silver-grey gravel in a grid, grey block border two blocks wide, granite-effect edging standing 25mm proud, hedge at the entrance removed'}"></textarea>
+        <button class="btn full" id="vx-go">Make the after image</button><div class="err" id="vx-err"></div>
+        <p class="muted">Takes about a minute. You get a notification when it's back. Nothing goes on a quote until a director approves it.</p></div></div>`
+    ov.querySelector('#vx-x').onclick = (e) => { e.preventDefault(); ov.remove() }
+    const mk = async () => { const keep = [ov.querySelector('#vx-i').value, ov.querySelector('#vx-t')?.value]; if (await markup(photo)) { draw(); ov.querySelector('#vx-i').value = keep[0]; const t = ov.querySelector('#vx-t'); if (t) t.value = keep[1] ?? '' } }
+    ov.querySelector('#vx-mk').onclick = mk; ov.querySelector('#vx-img').onclick = mk
+    const cl = ov.querySelector('#vx-cl'); if (cl) cl.onclick = () => { photo.marked = null; photo.ops = []; draw() }
+    ov.querySelector('#vx-go').onclick = async () => {
+      const err = ov.querySelector('#vx-err'), ins = ov.querySelector('#vx-i').value.trim(), t = ov.querySelector('#vx-t')?.value.trim()
+      if (ins.length < 5) { err.textContent = 'Say what you want to see.'; return }
+      if (!parent && !t) { err.textContent = 'Give this view a name, e.g. Front driveway.'; return }
+      const btn = ov.querySelector('#vx-go'); btn.disabled = true; btn.textContent = 'Sending…'
+      const b64 = (u) => u ? u.split(',')[1] : null
+      const { error } = await sb.rpc('qv_request', { p_brief: brief, p_instruction: ins, p_source_file: sourceFile, p_parent: parent,
+        p_base_b64: parent || sourceFile ? null : b64(photo.original), p_marked_b64: b64(photo.marked), p_title: t || null })
+      if (error) { err.textContent = error.message; btn.disabled = false; btn.textContent = 'Make the after image'; return }
+      ov.remove(); vRefresh(brief)
+    }
+  }
+  document.body.appendChild(ov); draw()
+}
+let vTimer = null, vSel = {}
+async function vRefresh(brief) {
+  const box = document.getElementById('visuals'); if (!box) return
+  const { data: rows, error } = await sb.from('quote_visuals').select('id, chain_id, round, status, title, instruction, error, created_at, done_at, approved_at').eq('brief_id', brief).order('created_at')
+  if (error) { box.innerHTML = `<div class="err">${esc(error.message)}</div>`; return }
+  const chains = []; for (const r of rows ?? []) { let c = chains.find((x) => x.id === r.chain_id); if (!c) chains.push(c = { id: r.chain_id, rounds: [] }); c.rounds.push(r) }
+  const busy = (rows ?? []).some((r) => r.status === 'queued' || r.status === 'generating')
+  box.innerHTML = `<h2>Before &amp; after for the quote</h2>
+    ${chains.length ? '' : `<p class="muted" style="margin-top:0">Show the customer their own home finished. Pick a site photo, mark it up and say what you want — a photo-real after image comes back in about a minute. Change it as many times as you like; only the ones you approve go on the quote.</p>`}
+    ${chains.map((c) => {
+      const latest = c.rounds[c.rounds.length - 1], appr = c.rounds.find((r) => r.status === 'approved')
+      const sel = c.rounds.find((r) => r.id === vSel[c.id]) || latest
+      const head = appr ? VST.approved : VST[latest.status]
+      return `<div class="vx" id="vx-${c.id}"><div class="vh"><b>${esc(c.rounds[0].title || 'View')}</b><span class="pill ${head[1]}">${head[0]}</span></div>
+        <div class="vpair"><figure><img data-vimg="${c.rounds[0].id}:base_b64" alt="Before"><figcaption>Before</figcaption></figure>
+          <figure>${sel.status === 'queued' || sel.status === 'generating' ? `<div class="vwait"><span><span class="vsp"></span>Making round ${sel.round}…<br><span style="font-size:12px">about a minute</span></span></div>`
+            : sel.status === 'failed' ? `<div class="vwait" style="color:var(--warn)">${esc(sel.error || 'Failed')}</div>`
+            : `<img data-vimg="${sel.id}:after_b64" alt="After"><figcaption>After · round ${sel.round}${sel.status === 'approved' ? ' ✓' : ''}</figcaption>`}</figure></div>
+        ${c.rounds.length > 1 ? `<div class="vrounds">${c.rounds.map((r) => `<button data-vsel="${c.id}:${r.id}" class="${r.id === sel.id ? 'on' : ''} ${r.status === 'approved' ? 'ap' : ''}">Round ${r.round}${r.status === 'approved' ? ' ✓' : r.status === 'failed' ? ' ✕' : ''}</button>`).join('')}</div>` : ''}
+        <div class="vins"><b>Round ${sel.round}:</b> ${esc(sel.instruction)}</div>
+        <div class="acts">
+          ${sel.status === 'ready' ? `<button class="btn small" style="background:var(--ok)" data-vap="${sel.id}">✓ Use on the quote</button>` : ''}
+          ${sel.status === 'approved' ? `<button class="btn ghost small" data-vun="${sel.id}">Take off the quote</button>` : ''}
+          ${(sel.status === 'ready' || sel.status === 'approved') && !(latest.status === 'queued' || latest.status === 'generating') ? `<button class="btn ghost small" data-vre="${c.id}:${sel.id}">✎ Mark up &amp; change</button>` : ''}
+          ${sel.status === 'failed' ? `<button class="btn small" data-vtry="${sel.id}">Try again</button>` : ''}
+        </div></div>`
+    }).join('')}
+    <button class="btn ghost full" id="vnew">＋ New before &amp; after</button>`
+  box.querySelectorAll('[data-vimg]').forEach(async (im) => { const [id, col] = im.dataset.vimg.split(':'); const u = await vGet(id, col); if (u) { im.src = u; im.onclick = () => vView(u, im.alt) } })
+  box.querySelectorAll('[data-vsel]').forEach((b) => b.onclick = () => { const [c, r] = b.dataset.vsel.split(':'); vSel[c] = r; vRefresh(brief) })
+  box.querySelectorAll('[data-vap]').forEach((b) => b.onclick = async () => {
+    if (!confirm('Use this after image on the quote?\n\nCheck it looks right — scale, materials, colours, and nothing changed that shouldn\'t be. It will be labelled on the quote as an illustration of the finished work.')) return
+    const { error } = await sb.rpc('qv_approve', { p_id: b.dataset.vap }); if (error) return alert(error.message); vRefresh(brief)
+  })
+  box.querySelectorAll('[data-vun]').forEach((b) => b.onclick = async () => { const { error } = await sb.rpc('qv_unapprove', { p_id: b.dataset.vun }); if (error) return alert(error.message); vRefresh(brief) })
+  box.querySelectorAll('[data-vtry]').forEach((b) => b.onclick = async () => { const { error } = await sb.rpc('qv_retry', { p_id: b.dataset.vtry }); if (error) return alert(error.message); vRefresh(brief) })
+  box.querySelectorAll('[data-vre]').forEach((b) => b.onclick = async () => {
+    const [cid, rid] = b.dataset.vre.split(':'), r = (rows ?? []).find((x) => x.id === rid)
+    const u = await vGet(rid, 'after_b64'); if (!u) return
+    vCompose({ brief, baseUrl: u, parent: rid, heading: `${r?.title || 'View'} · round ${(chains.find((c) => c.id === cid)?.rounds.length ?? 1) + 1}` })
+  })
+  document.getElementById('vnew').onclick = () => vPickSource(brief)
+  clearTimeout(vTimer); if (busy) vTimer = setTimeout(() => { if (document.getElementById('visuals')) vRefresh(brief) }, 6000)
+  const want = qs.get('v'); if (want && document.getElementById('vx-' + want)) { document.getElementById('vx-' + want).scrollIntoView({ behavior: 'smooth', block: 'center' }); qs.delete('v') }
+}
+async function vPickSource(brief) {
+  const { data: fs } = await sb.from('quote_brief_files').select('id, data_b64, original_b64, note').eq('brief_id', brief).order('created_at')
+  const ov = document.createElement('div')
+  ov.setAttribute('style', 'position:fixed;inset:0;z-index:90;background:var(--bg);overflow:auto')
+  ov.innerHTML = `<header style="position:sticky"><a href="#" id="vp-x" aria-label="Close">‹</a><h1>Before photo</h1></header><div class="wrap"><div class="card">
+    <h2>Pick the before photo</h2><p class="muted" style="margin-top:0">Best results: a clear, level shot from where the customer would stand, in daylight.</p>
+    ${(fs ?? []).length ? `<div class="vpick">${fs.map((f) => `<img src="data:image/jpeg;base64,${f.original_b64 || f.data_b64}" data-pf="${f.id}" title="${esc(f.note || '')}">`).join('')}</div>` : '<p class="muted">No photos on this brief yet.</p>'}
+    <div class="photo-in" style="margin-top:14px"><label for="vp-up">＋ Upload a new photo</label><input type="file" id="vp-up" accept="image/*"><span class="muted" id="vp-n">Full quality is kept for the best result</span></div></div></div>`
+  document.body.appendChild(ov)
+  ov.querySelector('#vp-x').onclick = (e) => { e.preventDefault(); ov.remove() }
+  ov.querySelectorAll('[data-pf]').forEach((im) => im.onclick = () => { const f = fs.find((x) => x.id === im.dataset.pf); ov.remove(); vCompose({ brief, baseUrl: im.src, sourceFile: f.id, title: '', heading: 'New before & after' }) })
+  ov.querySelector('#vp-up').onchange = async (e) => {
+    const f = e.target.files[0]; if (!f) return; ov.querySelector('#vp-n').textContent = 'Preparing…'
+    try { const u = await resizeBig(f); ov.remove(); vCompose({ brief, baseUrl: u, title: '', heading: 'New before & after' }) } catch { ov.querySelector('#vp-n').textContent = 'Couldn\'t read that photo — try another.' }
+  }
+}
+
 // ---------- one brief ----------
 async function showBrief(id) {
   const [{ data: b, error }, { data: msgs }, { data: files }] = await Promise.all([
@@ -676,6 +809,7 @@ async function showBrief(id) {
     ${checkOpen ? `<div class="card"><h2>Price check</h2>${costSummary(lastC.costing)}
       <button class="btn full" data-check="${lastC.id}">Open the price check</button>
       <p class="muted" style="margin-bottom:0">Every cost line, labour days and source, laid out line by line. Edit or comment on any line, then approve.</p></div>` : ''}
+    <div class="card" id="visuals"><p class="muted">Loading before &amp; after…</p></div>
     <div id="thread">${thread}</div>
     ${open ? `<div class="card" id="qa"><h2>Claude's questions</h2>${lastQ.questions.map((q, i) => `
       <div class="q" data-q="${esc(q.id)}" data-multi="${q.multi ? 1 : 0}"><div class="qt"><span class="qn">${i + 1}.</span>${esc(q.q)}${q.multi ? ' <span class="muted">(pick any)</span>' : ''}</div>
@@ -687,6 +821,7 @@ async function showBrief(id) {
     : b.status !== 'closed' ? `<div class="card"><label for="more" style="margin-top:0">${b.status === 'ready' ? 'Changes for a new revision' : 'Add more detail'}</label><textarea id="more" style="min-height:80px"></textarea>${ph.html}
       <button class="btn full" id="send2">Send to Claude</button><div class="err" id="err"></div></div>` : ''}`
   ph.wire()
+  vRefresh(id)
   app.querySelectorAll('[data-check]').forEach((el) => el.onclick = (e) => { e.preventDefault(); go({ check: el.dataset.check, b: id }) })
   app.querySelectorAll('[data-f]').forEach((el) => el.onclick = () => viewPhoto((files ?? []).find((f) => f.id === el.dataset.f)))
   document.getElementById('back').onclick = (e) => { e.preventDefault(); go({}) }

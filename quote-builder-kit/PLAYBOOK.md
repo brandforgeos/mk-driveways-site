@@ -42,6 +42,14 @@ part of the brief. Never select data_b64/original_b64 through SQL (far too big).
 photo and the message it came with. Read every image. Lewis's mark-up is deliberate: arrows point at things, ↔ lines with
 a label are measurements he has given you (treat as stated dimensions), boxes outline areas, labels are instructions.
 Read the note with each photo. Don't re-ask anything a photo or its note already answers; ask if a mark-up is unclear.
+Before & after visuals: directors make these themselves in the brief's "Before & after for the quote" section (a site
+photo + their mark-up/instructions → a photo-real after image from OpenAI, as many rounds as they like). You never make,
+edit or request visuals. Only ones a director has APPROVED reach you: photos.py writes them to `photos/<brief>/visuals/`
+(`NN-before.jpg`, `NN-after.jpg`, `visuals.json` with each title). Check: `select count(*) from quote_visuals where
+brief_id = '<brief>' and status = 'approved';` — if more than 0, run photos.py even when the brief has no photos.
+Look at each approved after image: if it shows something that contradicts the brief or the approved price (a different
+material, colour, extent, or work that isn't priced), say so in your next question/price-check lead-in — don't drop it
+silently and don't build a quote whose picture promises unpriced work.
 
 Read memory before deciding anything (memory_read): `/topics/rates.md`, `/topics/workmanship.md`, and
 `/areas/rutland-driveways-quotes.md` (RD) or `/areas/mk-driveways.md` (MKD), plus any `/areas/` file that matches this
@@ -101,6 +109,10 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
    - `included` always has "Removal of rock and buried obstructions"; unrecorded services stay in `not_included`.
    - Garage conversions: state exactly which faces are skimmed (see memory rule). Tarmac: don't offer it unless asked.
    - `choices` = things the customer picks on acceptance (colours etc.).
+   - `before_after`: one entry per approved visual, in the order of visuals.json —
+     `{"title": <its title>, "before": "<abs path NN-before.jpg>", "after": "<abs path NN-after.jpg>"}`. Use exactly
+     the approved files and titles; never crop, edit, re-generate or add any other image. No approved visuals → leave it out.
+     Each pair gets its own "Your Home, Finished" page, labelled as an illustration (render.py does the wording).
 4. `python3 ~/hub-kit/quote-builder-kit/render.py spec.json <REF>-<REV>.pdf` → writes the PDF and `<REF>-<REV>.block.json`.
    It refuses to render if any figure fails its checks — fix the spec, never the check.
 5. NUMBER 1 RULE: re-check the whole document. `pdftoppm -r 60 -png` it and look at every page (Read the PNGs): every figure
@@ -140,6 +152,9 @@ where id = '<brief>')`) — his edited figures and line comments are the instruc
 figures (the prices shown there are approved; no extra price-check round unless something contradicts), re-check every
 page, file it, then file the matching build-up. Only ask if a comment is unclear.
 A brief whose quote is filed but has no build-up (`quote_costings` row missing) needs only step 9 for that quote.
+
+If a director approves a new before & after (or takes one off) after a quote is filed and asks for the quote to show it,
+that is a revision: rebuild with the current approved set — prices unchanged unless they say otherwise.
 
 A message from Lewis on a brief that already has a quote = changes. Ask whatever the change needs (price check again if the
 price moves), then build again: qb_ensure_job gives the next revision letter; qb_finish files it and marks the previous

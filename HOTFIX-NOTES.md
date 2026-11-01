@@ -65,3 +65,13 @@ Port into the source: a Quote builder route/screen and a job-page action.
   — grouped lines, sources (Checked / EST / Your rate), live totals and margin, edit + comment, "Save and send changes to
   Claude" (posts the diff on the brief), print. Kit: example-costing.json, costing_check.py, playbook step 9.
 - 2026-11-01: PRICE CHECK IS THE BUILD-UP. quote_brief_messages.costing; public.qb_price_check (run); trigger treats a Claude costing message as 'your turn'. Page: ?check=<msg id>&b=<brief> opens the same line-by-line editor with Approve these prices / Send changes back; the brief shows a Price check card with per-option price, cost and margin. Lewis's reply carries the (edited) build-up in its costing column.
+- 2026-11-01: BEFORE & AFTER VISUALS. Table quote_visuals (rounds chained by chain_id; base/marked/after as base64; status
+  queued→generating→ready|failed, approved = on the quote, one per chain). RPCs (directors): qv_request, qv_approve,
+  qv_unapprove, qv_retry; service only: qv_start, qv_done; private.qv_kick (pg_net → Make webhook in app_secrets.qv_make_hook),
+  private.qv_push, private.qv_sweep (cron qv-sweep, fails anything stuck 10 min). Edge function `qv` (GET: prompt + images +
+  size for the round; POST multipart: the finished image). Make scenario 8301957 "Hub quote visual (OpenAI)" = webhook →
+  GET qv → OpenAI edit image (gpt-image-2.5, high, photo-shaped size, mark-up as a second image) → POST back.
+  qb-photos also returns APPROVED visuals; photos.py writes them to visuals/; render.py "Your Home, Finished" page per
+  pair (spec.before_after); PLAYBOOK updated. Page: "Before & after for the quote" card on each brief (pick/upload photo,
+  mark-up, instructions, rounds, approve / take off / mark up & change / try again). Port into the source with the rest
+  of the quote builder.

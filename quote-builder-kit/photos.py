@@ -9,6 +9,7 @@ Pushes requests/<brief>.json to the qb-outbox branch; the "Quote builder photos"
 brief's photos from the hub (already AES-256-GCM encrypted by the hub) to inbox/<brief>.bin. This waits for that file
 (up to ~6 minutes), decrypts it and writes, per photo, <n>-marked.jpg (Lewis's mark-up, or the photo if none),
 <n>-original.jpg when marked, plus photos.json with each photo's note and which message it came with.
+Director-approved before/after visuals land in visuals/ (NN-before.jpg, NN-after.jpg, visuals.json with each title).
 Then Read each image. The marked copy shows what Lewis drew; his note says what it means.
 """
 import base64, json, os, re, subprocess, sys, time
@@ -63,7 +64,16 @@ def main(brief, out):
             open(o, 'wb').write(base64.b64decode(f['original_b64']))
         meta.append({'n': i, 'file': p, 'original': o, 'marked': f.get('marked'), 'note': f.get('note'), 'message_id': f.get('message_id'), 'name': f.get('name'), 'created_at': f.get('created_at')})
     json.dump(meta, open(os.path.join(out, 'photos.json'), 'w'), indent=1)
-    print(json.dumps(meta, indent=1))
+    # director-APPROVED before/after visuals only (the hub never sends unapproved ones) -> visuals/NN-before.jpg / NN-after.jpg
+    vis = []
+    if data.get('visuals'):
+        vd = os.path.join(out, 'visuals'); os.makedirs(vd, exist_ok=True)
+        for i, v in enumerate(data['visuals'], 1):
+            b = os.path.join(vd, f'{i:02d}-before.jpg'); a = os.path.join(vd, f'{i:02d}-after.jpg')
+            open(b, 'wb').write(base64.b64decode(v['before_b64'])); open(a, 'wb').write(base64.b64decode(v['after_b64']))
+            vis.append({'n': i, 'title': v.get('title'), 'before': b, 'after': a, 'round': v.get('round'), 'approved_at': v.get('approved_at')})
+        json.dump(vis, open(os.path.join(vd, 'visuals.json'), 'w'), indent=1)
+    print(json.dumps({'photos': meta, 'approved_before_after': vis}, indent=1))
 
 
 if __name__ == '__main__':

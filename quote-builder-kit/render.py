@@ -127,7 +127,16 @@ def check(spec):
         probs.append('Customer has no email or mobile')
     if not (spec['job'].get('site_address') or c.get('address')):
         probs.append('No site address')
-    txt = json.dumps(spec).lower()
+    ba = spec.get('before_after') or []
+    if len(ba) > 4:
+        probs.append(f'{len(ba)} before/after pairs — four at most')
+    for i, v in enumerate(ba, 1):
+        if not (v.get('title') or '').strip():
+            probs.append(f'Before/after {i} has no title')
+        for k in ('before', 'after'):
+            if not v.get(k) or not os.path.exists(v[k]):
+                probs.append(f'Before/after {i}: {k} image not found ({v.get(k)})')
+    txt = json.dumps({k: v for k, v in spec.items() if k != 'before_after'}).lower()
     for bad in ('sort code', 'account number', 'iban'):
         if bad in txt:
             probs.append(f'Bank detail wording found ("{bad}") — bank details never go on quotes')
@@ -201,6 +210,19 @@ def build_html(spec):
       <p class="lead">{e(spec.get("intro", ""))}</p>
       {scope}
       {f'<div class="panel"><h3>Your selected finishes</h3><p>{e(spec["finishes"])}</p></div>' if spec.get("finishes") else ''}''')
+
+    # 2b before & after (director-approved visuals only — they come from photos.py's visuals/ folder)
+    for v in spec.get('before_after') or []:
+        try:
+            from PIL import Image
+            with Image.open(v['after']) as im:
+                portrait = im.height > im.width
+        except Exception:
+            portrait = False
+        pair = (f'<div class="ba {"side" if portrait else ""}"><figure><img src="file://{os.path.abspath(v["before"])}"><figcaption>Before</figcaption></figure>'
+                f'<figure><img src="file://{os.path.abspath(v["after"])}"><figcaption>After</figcaption></figure></div>')
+        page(f'''{head("Your Home, Finished", v["title"])}{pair}
+          <p class="small">The after image is an illustration of the finished work, created from a photograph of your property to show the design. The colours, materials, levels and details will be exactly as set out in this proposal.</p>''')
 
     # 3 specification
     stages = spec.get('spec_stages', [])
@@ -306,6 +328,11 @@ def build_html(spec):
     .box{{width:16px;height:16px;background:#fff;border-radius:3px;flex:none}}
     .field label{{display:block;font-size:8.5pt;color:{B["muted"]};margin:8px 0 4px}}
     .fill{{background:#fff;border-radius:4px;height:28px}} .fill.tall{{height:52px}}
+    .ba{{display:flex;flex-direction:column;gap:5mm;margin:2mm 0 4mm}} .ba figure{{margin:0;position:relative}}
+    .ba img{{display:block;width:100%;height:96mm;object-fit:cover;border-radius:8px;border:1px solid {B["line"]}}}
+    .ba.side{{flex-direction:row}} .ba.side figure{{flex:1}} .ba.side img{{height:150mm}}
+    .ba figcaption{{position:absolute;left:4mm;top:4mm;background:rgba(0,0,0,.62);color:#fff;font-weight:500;font-size:8pt;letter-spacing:.18em;text-transform:uppercase;padding:2px 8px;border-radius:4px}}
+    .ba figure:last-child figcaption{{background:{B["accent"]};color:{B["accent_ink"]}}}
     .contact{{position:absolute;left:17mm;right:17mm;bottom:28mm;text-align:center;color:{B["muted"]};font-size:9pt}}
     .contact b{{color:{B["ink"]};font-weight:500}}'''
     return f'<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><style>{css}</style></head><body>{body}</body></html>', total
