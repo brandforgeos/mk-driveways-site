@@ -1,0 +1,666 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Dimensure Report Templates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column of question cards, sticky section bar, sample pages in a scrollable strip above each report's questions. */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --ink:#0e1e3a; --muted:#5a6780; --line:#dbe1ea;
+  --navy:#0e1e3a; --mint:#13b886; --mint-soft:#e3f7ef; --amber:#b7791f; --amber-soft:#fbf0dc; --red:#c2412d; --red-soft:#fbe6e2;
+  --chip:#eef1f6; --sel:#0e1e3a; --sel-ink:#ffffff;
+  --f-display:"Archivo",system-ui,sans-serif; --f-body:"Source Sans 3",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b1322; --surface:#121d31; --ink:#e7edf6; --muted:#97a4ba; --line:#24324b;
+  --navy:#0e1e3a; --mint:#35d6a1; --mint-soft:#11352c; --amber:#e3a94b; --amber-soft:#3a2c12; --red:#ef7b67; --red-soft:#3d1c17;
+  --chip:#1b2840; --sel:#35d6a1; --sel-ink:#07121f; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0b1322; --surface:#121d31; --ink:#e7edf6; --muted:#97a4ba; --line:#24324b;
+  --navy:#0e1e3a; --mint:#35d6a1; --mint-soft:#11352c; --amber:#e3a94b; --amber-soft:#3a2c12; --red:#ef7b67; --red-soft:#3d1c17;
+  --chip:#1b2840; --sel:#35d6a1; --sel-ink:#07121f; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#0e1e3a}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:#0e1e3a;color:#e7edf6}
+header.top .wrap{padding-block:22px 18px;display:flex;flex-direction:column;gap:6px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;letter-spacing:.12em;font-size:15px}
+.brand svg{flex:none}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,5vw,34px);line-height:1.15;margin:6px 0 0;text-wrap:balance}
+.lede{color:#b9c4d6;max-width:62ch;margin:0}
+nav.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.bar .wrap{display:flex;gap:10px;align-items:center;padding-block:10px;flex-wrap:wrap}
+.who{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.who span{font-size:13px;color:var(--muted)}
+.tabs{display:flex;gap:6px;margin-left:auto}
+button{font:inherit;color:inherit;cursor:pointer}
+.pill{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.pill[aria-pressed="true"]{background:var(--sel);color:var(--sel-ink);border-color:var(--sel)}
+.pill:focus-visible,.opt:focus-within,.btn:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.progress{height:4px;background:var(--line)}
+.progress i{display:block;height:100%;background:var(--mint);width:0;transition:width .3s}
+.status{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-block:6px}
+main .wrap{padding-block:18px 60px;display:flex;flex-direction:column;gap:28px}
+.sec-nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.sec-nav a{white-space:nowrap;font-size:13px;text-decoration:none;color:var(--ink);background:var(--chip);border:1px solid var(--line);border-radius:6px;padding:4px 10px}
+.sec-nav a.done{border-color:var(--mint);background:var(--mint-soft)}
+section.part{display:flex;flex-direction:column;gap:14px;scroll-margin-top:110px}
+.part-head{display:flex;flex-direction:column;gap:4px;border-top:3px solid var(--ink);padding-top:12px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mint)}
+h2{font-family:var(--f-display);font-weight:700;font-size:24px;line-height:1.2;margin:0;text-wrap:balance}
+.part-head p{margin:0;color:var(--muted);max-width:68ch}
+.docs{display:flex;flex-direction:column;gap:12px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.doc-h{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.doc-h b{font-family:var(--f-mono);font-size:13px}
+.doc-h .t{font-weight:600}
+.tag{font-size:12px;border-radius:4px;padding:1px 7px;background:var(--chip);color:var(--muted);font-weight:600}
+.tag.real{background:var(--mint-soft);color:var(--mint)}
+.tag.draft{background:var(--amber-soft);color:var(--amber)}
+.tag.test{background:var(--red-soft);color:var(--red)}
+.strip{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.strip button{flex:none;border:1px solid var(--line);background:#fff;padding:0;border-radius:4px;overflow:hidden;position:relative}
+.strip img{display:block;height:150px;width:auto}
+.strip .pg{position:absolute;left:4px;bottom:4px;font-family:var(--f-mono);font-size:11px;background:rgba(14,30,58,.85);color:#fff;border-radius:3px;padding:0 5px}
+.strip .grp{flex:none;align-self:center;font-family:var(--f-mono);font-size:11px;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg)}
+.doc .txt{font-size:14px;color:var(--muted);max-height:220px;overflow:auto;border-left:3px solid var(--line);padding-left:10px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.q.answered{border-color:color-mix(in srgb,var(--mint) 55%,var(--line))}
+.q-h{display:flex;gap:10px;align-items:flex-start}
+.qn{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-top:3px;flex:none;min-width:34px}
+.qt{font-weight:600;min-width:0}
+.qt small{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
+.refs{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.refs button{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line);background:var(--chip);border-radius:4px;padding:1px 6px}
+.opts{display:flex;flex-wrap:wrap;gap:6px;padding-left:44px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:block;border:1px solid var(--line);background:var(--chip);border-radius:6px;padding:6px 12px;font-size:15px}
+.opt input:checked+span{background:var(--sel);color:var(--sel-ink);border-color:var(--sel)}
+.opt.k input:checked+span{background:var(--mint);border-color:var(--mint);color:#04140e}
+.opt.c input:checked+span{background:var(--amber);border-color:var(--amber);color:#1c1204}
+.opt.r input:checked+span{background:var(--red);border-color:var(--red);color:#fff}
+.multi-hint{font-size:12px;color:var(--muted);padding-left:44px;margin-top:-4px}
+.note{padding-left:44px}
+.note summary{font-size:13px;color:var(--muted);cursor:pointer;list-style:none}
+.note summary::-webkit-details-marker{display:none}
+.note summary::before{content:"+ "}
+.note[open] summary::before{content:"– "}
+.note textarea{width:100%;margin-top:6px;min-height:60px;font:inherit;font-size:15px;border:1px solid var(--line);border-radius:6px;padding:8px;background:var(--bg);color:var(--ink);resize:vertical}
+.gate{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.gate h2{font-size:20px}
+.btn{border:0;background:var(--sel);color:var(--sel-ink);border-radius:6px;padding:9px 16px;font-weight:700}
+.empty{color:var(--muted)}
+/* results */
+.r-q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.r-q .qt{font-size:15px}
+.r-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:560px){.r-grid{grid-template-columns:1fr}}
+.r-cell{border:1px solid var(--line);border-radius:6px;padding:8px;font-size:14px;min-width:0;overflow-wrap:anywhere}
+.r-cell b{display:block;font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.r-cell .n{color:var(--muted);font-style:italic;margin-top:4px}
+.agree{font-size:12px;font-weight:700;border-radius:4px;padding:1px 7px;align-self:flex-start}
+.agree.y{background:var(--mint-soft);color:var(--mint)}
+.agree.s{background:var(--amber-soft);color:var(--amber)}
+.agree.w{background:var(--chip);color:var(--muted)}
+.r-sum{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--f-mono);font-size:13px}
+/* lightbox */
+.lb[hidden],.pick[hidden]{display:none}
+.pick{position:fixed;inset:0;z-index:30;background:rgba(6,12,24,.75);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-left,0px))}
+.pick-card{background:var(--surface);color:var(--ink);border-radius:10px;padding:22px;max-width:380px;width:100%;display:flex;flex-direction:column;gap:12px}
+.pick-card h2{font-size:22px}
+.pick-card .row{display:flex;flex-direction:column;gap:8px}
+.pick-card .row button{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:14px;font-size:18px;font-weight:700;text-align:left}
+.pick-card .row button:active{background:var(--sel);color:var(--sel-ink)}
+.lb{position:fixed;inset:0;z-index:20;background:rgba(6,12,24,.92);display:flex;flex-direction:column}
+.lb-bar{display:flex;align-items:center;gap:8px;color:#fff;padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.lb-bar .cap{font-family:var(--f-mono);font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-bar button{background:#1b2840;color:#fff;border:1px solid #33435f;border-radius:6px;padding:6px 12px}
+.lb-img{flex:1;overflow:auto;display:flex;justify-content:center;align-items:flex-start;padding:0 8px calc(16px + env(safe-area-inset-bottom,0px))}
+.lb-img img{max-width:min(100%,1100px);height:auto;background:#fff}
+
+/* specimens: same report shown different ways; paper is always white */
+.spec-note{font-size:14px;color:var(--muted);padding-left:44px;margin-top:-4px}
+.specs{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 8px 44px;scrollbar-width:thin}
+@media (max-width:560px){.specs{padding-left:0}.opts,.note,.multi-hint,.spec-note{padding-left:0}}
+.spec{flex:none;display:flex;flex-direction:column;gap:6px;align-items:flex-start;border:0;background:none;padding:0;text-align:left}
+.spec .lbl{font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--ink)}
+.spec .lbl em{font-style:normal;color:var(--muted);font-weight:400}
+.spec .frame{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#fff;position:relative;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.spec .frame>.sheet{transform-origin:0 0;position:absolute;left:0;top:0}
+.spec .frame>img{display:block;width:100%;height:auto}
+.spec .zoom{font-size:12px;color:var(--muted)}
+.lb-img .sheet-holder{position:relative;flex:none;background:#fff}
+.lb-img .sheet-holder>.sheet{transform-origin:0 0;position:absolute;left:0;top:0}
+/* the paper */
+.sheet{width:794px;background:#fff;color:#1d2433;font-family:"Helvetica Neue",Arial,sans-serif;font-size:12.5px;line-height:1.45;padding:40px 46px 34px;display:flex;flex-direction:column;gap:12px}
+.sheet.page{height:1123px}
+.sheet.narrow{width:560px;padding:22px 22px 20px;font-size:13px}
+.sheet.narrow.page{height:auto}
+.sheet h3{margin:0;font-size:21px;font-weight:700;color:#0e1e3a;line-height:1.2}
+.sheet h4{margin:4px 0 0;font-size:14.5px;font-weight:700;color:#0e1e3a}
+.sheet p{margin:0}
+.sheet ol,.sheet ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:2px}
+.sheet .wm{font-weight:800;letter-spacing:.06em;font-size:19px;color:#0e1e3a}
+.sheet .wm b{color:#13a37a;font-weight:800}
+.sheet .muted{color:#5b6475}
+.sheet .tiny{font-size:10.5px}
+.sheet .box{border:1px solid #dfe3ea;border-radius:6px;padding:10px 12px}
+.sheet .note-g{border-left:3px solid #13a37a;padding:8px 12px;background:#f5faf8}
+.sheet table{border-collapse:collapse;width:100%}
+.sheet th{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#5b6475;text-align:left;border-bottom:1px solid #cfd5df;padding:5px 6px;font-weight:600}
+.sheet td{border-bottom:1px solid #eceff4;padding:6px;vertical-align:top}
+.sheet .foot{margin-top:auto;display:flex;justify-content:space-between;font-size:9.5px;color:#7a8394;border-top:1px solid #eceff4;padding-top:6px;gap:12px}
+.sheet .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sheet .tile{border:1px solid #dfe3ea;border-radius:6px;padding:8px 10px}
+.sheet .tile b{display:block;font-size:24px;line-height:1.1}
+.sheet .tile span{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#5b6475}
+.sheet .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 16px}
+.sheet .grid3 div span{display:block;font-size:10px;color:#5b6475}
+.sheet .dots{border-top:1.5px dotted #b9c1cd}
+.sheet .chip{display:inline-block;font-size:10.5px;font-weight:700;border-radius:10px;padding:1px 8px;white-space:nowrap}
+.sheet .kv{display:grid;grid-template-columns:140px 1fr;gap:6px 14px}
+.sheet .kv>div:nth-child(odd){color:#5b6475}
+.sheet .dot{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:-1px;margin-right:6px}
+.sheet .fig{border:1px solid #dfe3ea}
+.sheet .fig img{display:block;width:100%}
+.sheet .cap{font-size:10.5px;color:#5b6475}
+
+
+/* clickable illustrations: tap a part to include it */
+.cmap-wrap{padding-left:44px;display:flex;flex-direction:column;gap:6px}
+@media (max-width:560px){.cmap-wrap,.thumbs{padding-left:0}}
+.cmap-hint{font-size:13px;color:var(--muted)}
+.cmap-hint b{color:var(--mint)}
+.cmap{border:1px solid var(--line);border-radius:6px;background:#fff;position:relative;overflow:hidden}
+.cmap>.sheet{transform-origin:0 0;position:absolute;left:0;top:0}
+.sheet [data-opt]{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none;position:relative;border-radius:6px;outline:2px dashed #c9d0db;outline-offset:3px;opacity:.38;transition:opacity .15s,background .15s}
+.sheet [data-opt].on{opacity:1;outline:3px solid #13a37a;background:#eefaf5}
+.sheet [data-opt]::after{content:"+ tap to include";position:absolute;top:-11px;right:6px;font-size:11px;font-weight:700;background:#fff;color:#5b6475;border:1px solid #c9d0db;border-radius:10px;padding:1px 8px;opacity:1}
+.sheet [data-opt].on::after{content:"✓ included";background:#13a37a;color:#fff;border-color:#13a37a}
+.sheet .ph{background:#eef1f6;border-radius:4px;height:9px;margin:4px 0}
+.sheet th[data-opt]::after,.sheet td[data-opt]::after{display:none}
+.sheet .colhead{display:block;font-size:10px;font-weight:700;margin-bottom:4px}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding-left:44px;padding-bottom:4px}
+.thumbs button{flex:none;border:1px solid var(--line);background:#fff;border-radius:4px;padding:0;overflow:hidden;position:relative}
+.thumbs img{display:block;height:170px;width:auto}
+.thumbs span{display:block;font-family:var(--f-mono);font-size:10.5px;background:var(--chip);color:var(--ink);padding:2px 6px;white-space:nowrap;text-align:left;border-top:1px solid var(--line)}
+
+@media (prefers-reduced-motion:reduce){.progress i{transition:none}}
+</style>
+
+</head><body>
+<header class="top"><div class="wrap">
+  <div class="brand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#35d6a1" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="7" stroke-dasharray="3 2.2"/><circle cx="12" cy="12" r="1.6" fill="#35d6a1" stroke="none"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>DIMENSURE</div>
+  <h1>Report template questionnaire</h1>
+  <p class="lede">Look at each sample, then tap your answers. Notes are optional on every question. Answers save as you go, so you can stop and come back.</p>
+</div></header>
+
+<nav class="bar" aria-label="Questionnaire controls">
+  <div class="wrap">
+    <div class="who" id="who"><span>Answering as</span></div>
+    <div class="tabs"><button class="pill" id="tab-q" aria-pressed="true">Questions</button><button class="pill" id="tab-r" aria-pressed="false">Compare answers</button></div>
+  </div>
+  <div class="progress"><i id="prog"></i></div>
+  <div class="wrap status" id="status">Not signed in yet</div>
+</nav>
+
+<main><div class="wrap" id="main"></div></main>
+
+<div class="pick" id="pick" hidden role="dialog" aria-modal="true" aria-labelledby="pick-h"><div class="pick-card"><h2 id="pick-h">Who is answering?</h2><p class="empty">Your answers save under your name, so each person fills in their own copy. You can switch at the top later.</p><div class="row" id="pick-row"></div></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Sample page">
+  <div class="lb-bar"><button id="lb-prev" aria-label="Previous page">‹</button><span class="cap" id="lb-cap"></span><button id="lb-next" aria-label="Next page">›</button><button id="lb-x">Close</button></div>
+  <div class="lb-img"><img id="lb-img" alt=""></div>
+</div>
+
+<script>
+const PEOPLE=[{id:'lewis',name:'Lewis'},{id:'robbie',name:'Robbie'},{id:'gian',name:'Gian'}];
+
+// ---------- sample documents ----------
+const D={
+ rf013:{ref:'QC-RF-013-01',t:'Road Formation Quality Check · Whitehouse YZ, Roads 1, 3, 4, 5, 7',tag:['real','Held for review'],parts:[['BR','Brief',3],['FE','Findings Explained',23]]},
+ rf012:{ref:'QC-RF-012-01',t:'Road Formation Quality Check · Roads 3 and 4, part scan (earlier layout)',tag:['draft','Earlier version'],parts:[['BR','Brief',3],['FE','Findings Explained',12]]},
+ pl014:{ref:'QC-PL-014-P45-01',t:'Plot / Oversite Quality Check · Plot 45 Chartwell',tag:['real','Held for review'],parts:[['BR','Brief',2],['FE','Findings Explained',7]]},
+ pl011:{ref:'QC-PL-011-P11-01',t:'Plot / Oversite Quality Check · Plot 11, Wixams R7 trial',tag:['draft','Trial'],parts:[['BR','Brief',2],['FE','Findings Explained',9]]},
+ sub134:{ref:'QC-SUB-016-P134-01',t:'Substructure & Internal Walls Check · Plot 134 Kingston',tag:['real','Approved, rev 2'],parts:[['BR','Brief',3],['FE','Findings Explained',9]]},
+ rd009:{ref:'DA-RD-009-01',t:'Road Levels & Channel Check · Wixams R5',tag:['','Issued to demo company'],parts:[['BR','Brief',2],['FE','Findings Explained',11]]},
+ co003:{ref:'DA-CO-003-01',t:'Design Audit Close-out · demo site (oldest layout)',tag:['','Demo project'],parts:[['BR','Brief',4],['FE','Findings Explained',16]]},
+ cus009:{ref:'DA-CUS-009-01',t:'Custom: Road Strings vs Setting Out · Wixams R5',tag:['','Issued to demo company'],parts:[['BR','Brief',2],['FE','Findings Explained',8]]},
+ sv435:{ref:'SV-435-01',t:'Custom: Stockpile Volumes · drone survey, Whitehouse YZ',tag:['draft','Draft'],parts:[['SV','Single document',2]]},
+ flow009:{ref:'DA-FLOW-009-01',t:'Surface Water Flow Model · Wixams R5 (design levels)',tag:['','Issued to demo company'],shot:'FLOW-009-1.jpg'},
+ flowyz:{ref:'DA-FLOW-7562-YZ-AB-01',t:'Surface Water Flow Model · Whitehouse YZ, kerbs as built',tag:['real','Ready to publish'],shot:'FLOW-YZ-1.jpg'},
+ inf005:{ref:'DA-INF-005-01',t:'Roads & Sewers Design Audit · portal demo',tag:['test','Test file only'],text:'This portal job only holds a one-line transfer test ("Transfer test brief"). There is no finished Roads & Sewers Design Audit in the portal yet. The first real one is the Mulberry trial below.'},
+ mulb:{ref:'Mulberry trial',t:'Roads & Sewers Design Audit · Braintree Road, Great Dunmow (first-ever audit, 20 pages, before the two-document layout)',tag:['real','Trial for Mulberry Homes'],text:'Page 1–3: "Summary of findings" paragraph, then one table of all 31 issues with columns Issue / Priority / Action / Cost if missed (H1–H6, W1–W7, M1–M9, L1–L9).\nPage 4: cost band key ("Low under £2,000 … Very high over £50,000") and "Suggested fixes are for the design team to review".\nPage 4–7: "Falls, crossfall and standing water" table: Location / What happens to the water / Result (Passes, Fails, Risk), then W1–W7 write-ups.\nPage 7–8: "Drawings and standards checked" table (drawing, rev, date, status) and the standards used.\nPage 8–15: High and Medium write-ups. Each has Drawings / What the drawings show / Why it matters / Possible reason / Suggested fix / Cost if missed. Some include small level tables.\nPage 16–17: Low priority as one table (Issue / Drawing / Detail / Suggested fix).\nPage 18–19: "Checks that passed" table.\nPage 19–20: "Questions for the design team" (numbered), "Limits", and a "Sources" list with web links.\nNo graphics or drawing extracts anywhere.'}
+};
+function pagesOf(k){const d=D[k];if(!d.parts)return d.shot?[{src:d.shot,lab:'Screenshot'}]:[];const out=[];const base=d.ref;d.parts.forEach(([code,name,n])=>{for(let i=1;i<=n;i++)out.push({src:`${base}-${code}-${i}.jpg`,lab:`${code==='SV'?'p':code+' p'}${i}`,grp:name})});return out}
+
+// ---------- questions ----------
+const KCR=['Keep as is','Keep, change it','Remove'];
+const YN3=['Yes','No','Not sure'];
+// q: {id, t, s(sub), type:'one'|'many'|'kcr', o:[options], refs:[[doc,'FE',page]]}
+const PARTS=[
+ {id:'gen',eye:'Part 1',h:'All reports',p:'Rules that apply to every report type. Where a question is about looks, every example uses the same report (Road Formation QC-RF-013-01) with the same words and diagrams, so you are only judging the look. Tap an example to see it full size.',docs:[],qs:[
+  {id:'g_layout',t:'Which overall look should every report use?',s:'Same page 1, same words, four looks.',type:'one',spec:'layout',o:['A – Newest (QC reports)','B – Middle (Road Levels / Custom)','C – Oldest (Close-out)','D – Fresh option','None of these']},
+  {id:'g_docs',t:'How many documents per report?',type:'one',o:['Two: Brief + Findings Explained','One document, summary first then detail','Brief only, detail as an appendix','Depends on report type']},
+  {id:'g_brief_len',t:'How long should the Brief be?',type:'one',o:['1 page','2 pages','3–4 pages','As long as it needs']},
+  {id:'g_p1',map:'p1',t:'What goes on page 1 ("At a glance")?',type:'many',o:['Count of findings by priority','Estimated cost exposure (£ range)','Top 5 items to resolve','Questions to answer first','Cost band key','"These are queries for the designer" statement','Small key plan / thumbnail of the site','Pass/fail traffic light summary','Scan / drawing date and what was checked'],refs:[['rf013','BR',1],['pl014','BR',1],['co003','BR',1]]},
+  {id:'g_findings_tbl',t:'"All findings" table in the Brief',type:'kcr',o:KCR,refs:[['rf013','BR',2],['co003','BR',2]]},
+  {id:'g_findings_cols',map:'cols',t:'Which columns in the findings table?',type:'many',o:['ID (H1, M1, L1…)','Priority','Short finding title','Where (road / chainage / plot)','Drawing number','Cost if missed band','Page number in Findings Explained']},
+  {id:'g_priority',t:'Priority labels',s:'Same findings table each time. The mapping of these findings to Fail/Flag or colours is only for illustration.',type:'one',spec:'priority',o:['A – High / Medium / Low','B – Critical / High / Medium / Low','C – Fail / Flag / Pass','D – Coloured dots (red / amber / green)']},
+  {id:'g_cost',t:'Show "Cost if missed" in the findings table?',type:'one',spec:'cost',o:['A – As bands (Low / Medium / High / Very high)','B – As £ ranges','C – Not in the table (Brief key only)','No cost shown anywhere']},
+  {id:'g_writeup',map:'writeup',t:'What does every finding write-up include?',type:'many',o:['Drawing reference','What the drawing shows','What the scan shows (QC only)','Why it matters + standard/clause','Possible reason','Query for the designer to confirm','Cost if missed','A figure for the finding','Site photo where available'],refs:[['rd009','FE',2],['co003','FE',3],['pl014','FE',3]]},
+  {id:'g_wformat',t:'Layout of each finding write-up',s:'Same finding (M1) three ways.',type:'one',spec:'wformat',o:['A – Two columns: label on the left (current QC)','B – Stacked headings (Close-out style)','C – Card with priority stripe']},
+  {id:'g_query',t:'How should we word the ask on each finding?',s:'Same finding, four endings.',type:'one',spec:'ask',o:['A – Query for the designer to confirm (question)','B – Suggested fix (for review)','C – Both: query plus suggested fix','D – Neither, just the finding']},
+  {id:'g_fig',t:'Figures and finding write-ups',type:'one',spec:'fig',o:['A – Figure inside each write-up','B – Write-up points to the plan pages','Mix: inside where it helps, otherwise point to the plans']},
+  {id:'g_method',t:'"How the check was made" page',s:'Road Levels report page 10.',type:'one',o:['Keep in full','One short paragraph only','Remove (keep method private)'],refs:[['rd009','FE',10]]},
+  {id:'g_passed',t:'"Checks that passed" table',type:'one',o:['Full table','One-line summary','Remove'],refs:[['cus009','FE',8],['co003','FE',15]]},
+  {id:'g_dwgs',t:'"Drawings and standards" list',type:'one',o:['Full table with revisions, dates and editions','Short list of drawings only','Remove'],refs:[['co003','FE',16]]},
+  {id:'g_limits',t:'"Limits" (what was not checked / not supplied)',type:'one',o:['Own section in the Brief','Short note in Findings Explained','Both'],refs:[['rf012','BR',3],['co003','BR',4]]},
+  {id:'g_next',t:'"Next steps" section (responses, close-out, revised drawings)',type:'kcr',o:KCR,refs:[['co003','BR',4]]},
+  {id:'g_copy',t:'Copyright and use wording',type:'one',spec:'copy',o:['A – Footer on every page + short section at the end','B – Footer only','C – Own full page at the end']},
+  {id:'g_colour',t:'Colour on plans and heat maps',s:'The same overview plan recoloured. D is what A looks like printed in black and white.',type:'one',spec:'colour',o:['A – Current five-colour scale','B – Red / amber / green','C – Colour-blind safe (blue / cream / brown)','Must also work in black and white (choose a colour too in the note)']},
+  {id:'g_order',t:'Order of Findings Explained',type:'one',o:['Overview graphics first, then findings','Findings first, then graphics and tables','Each finding with its own graphic, tables at the end'],refs:[['rf013','FE',2],['sub134','FE',8]]},
+  {id:'g_tone',t:'Writing style',s:'The same "Why it matters" written three ways.',type:'one',spec:'tone',o:['A – Plain English, short sentences (as now)','B – More technical / shorthand','C – Plain on the Brief, technical in Findings Explained']},
+  {id:'g_contents',t:'Contents table at the start of Findings Explained',type:'kcr',o:KCR,refs:[['co003','FE',1]]},
+ ]},
+ {id:'rf',eye:'Part 2 · as-built',h:'Road Formation Quality Check',p:'Stone and kerbs scanned against the drawings. Two versions: the newest (013) and an earlier layout (012) with different tables.',docs:['rf013','rf012'],qs:[
+  {id:'rf_overview',t:'Whole-site overview plan (sub-base heat map over the drawing)',type:'kcr',o:KCR,refs:[['rf013','FE',2]]},
+  {id:'rf_area',t:'Area sheets (west / south / north-east) with finding labels',type:'kcr',o:KCR,refs:[['rf013','FE',8],['rf013','FE',9]]},
+  {id:'rf_road',t:'Per-road chainage sheets (kerb dots on faded layout)',type:'kcr',o:KCR,refs:[['rf013','FE',11],['rf013','FE',14]]},
+  {id:'rf_road_plan',t:'Per-road level plans for Type 1 and kerbs (012 style)',type:'kcr',o:KCR,refs:[['rf012','FE',6],['rf012','FE',7]]},
+  {id:'rf_mh',t:'Manhole and gully position plot',type:'kcr',o:KCR,refs:[['rf013','FE',18]]},
+  {id:'rf_mh_tbl',t:'Manhole and gully table (offset from drawn position, 300 mm test)',type:'kcr',o:KCR,refs:[['rf013','FE',19]]},
+  {id:'rf_levels',t:'Level tables',type:'one',o:['013 style: sub-base only, kerb-side / centre / kerb-side','012 style: kerb + Type 1, left / centre / right','Both','Remove level tables'],refs:[['rf013','FE',21],['rf012','FE',4],['rf012','FE',5]]},
+  {id:'rf_interval',t:'Level table spacing',type:'one',o:['Every 5 m','Every 10 m','Every 20 m','Only at flagged areas']},
+  {id:'rf_xfall',t:'Crossfall check table (design vs as-built %)',type:'kcr',o:KCR,refs:[['rf012','FE',11]]},
+  {id:'rf_tol',t:'Show tolerances on every sheet (stone +10/−30, kerbs ±10)?',type:'one',o:YN3},
+  {id:'rf_vol',t:'Add a stone volume over/under summary (m³ / tonnes)?',type:'one',o:['Yes','Yes, with £ estimate','No']},
+  {id:'rf_overall',t:'Overall, this report is…',type:'one',o:['Ready as it is','Needs small changes','Needs big changes','Do not offer it']},
+ ]},
+ {id:'rs',eye:'Part 3 · as-built',h:'Road Surfacing Quality Check',p:'No sample yet. Pick what the first one should include.',docs:[],qs:[
+  {id:'rs_base',t:'Base the layout on…',type:'one',o:['Road Formation Quality Check','A new layout','Combine with Road Formation as one report with stages']},
+  {id:'rs_inc',t:'What should it check and show?',type:'many',o:['Layer thickness heat map (binder and surface)','Final levels against design','Kerb upstand after surfacing','Ponding / standing water check','Tonnage over/under laid','£ value of material over/under','Ironwork level to surface','Per-road level tables']},
+  {id:'rs_flow',t:'Offer a flow model on surfacing scans as an add-on?',type:'one',o:YN3},
+ ]},
+ {id:'pl',eye:'Part 4 · as-built',h:'Plot / Oversite Quality Check',p:'Slab and brickwork scanned against the house type drawing. Plot 45 is the newest; Plot 11 is the trial with extra tables.',docs:['pl014','pl011'],qs:[
+  {id:'pl_meas',t:'Measurement overlay (drawn vs built, outside face)',type:'kcr',o:KCR,refs:[['pl014','FE',2],['pl011','FE',2]]},
+  {id:'pl_flat',t:'Floor flatness / level heat map',type:'kcr',o:KCR,refs:[['pl014','FE',3]]},
+  {id:'pl_area',t:'"Floor level by area" table',type:'kcr',o:KCR,refs:[['pl014','FE',4]]},
+  {id:'pl_overlay',t:'Drawing and as-built overlay (pipe and duct positions)',type:'kcr',o:KCR,refs:[['pl014','FE',5],['pl011','FE',6]]},
+  {id:'pl_corner',t:'Outside brickwork corner levels table',type:'kcr',o:KCR,refs:[['pl011','FE',4]]},
+  {id:'pl_dims',t:'Dimension tables',type:'kcr',o:KCR,refs:[['pl011','FE',8]]},
+  {id:'pl_passed',t:'Checks that passed (handing, pipe positions)',type:'kcr',o:KCR,refs:[['pl014','FE',7],['pl011','FE',9]]},
+  {id:'pl_water',t:'Mark the blue water duct separately from drainage on the overlay?',type:'one',o:YN3},
+  {id:'pl_merge',t:'Plot QC and Substructure Check overlap. What should we do?',type:'one',o:['Keep two separate reports','Merge into one Plot QC with optional sections','Plot QC for slab, Substructure for walls only']},
+  {id:'pl_multi',t:'More than one plot in a scan',type:'one',o:['One report per plot (as now)','One report covering all plots','Summary report + one per plot']},
+  {id:'pl_overall',t:'Overall, this report is…',type:'one',o:['Ready as it is','Needs small changes','Needs big changes','Do not offer it']},
+ ]},
+ {id:'sub',eye:'Part 5 · as-built',h:'Substructure & Internal Walls Check',p:'Walls before the floor goes in. Plot 134 is approved at revision 2.',docs:['sub134'],qs:[
+  {id:'sub_out',t:'Measurement overlay, outside brickwork',type:'kcr',o:KCR,refs:[['sub134','FE',2]]},
+  {id:'sub_in',t:'Measurement overlay, inner leaf and internal walls',type:'kcr',o:KCR,refs:[['sub134','FE',3]]},
+  {id:'sub_rect',t:'Dimension rectification sheet (suggested wall adjustments)',s:'Reads close to an instruction. Keep it?',type:'kcr',o:KCR,refs:[['sub134','FE',4]]},
+  {id:'sub_ffl',t:'Levels: FFL against the other plots in the scan',type:'kcr',o:KCR,refs:[['sub134','FE',5]]},
+  {id:'sub_overlay',t:'Drawing and as-built overlay (pipes and ducts)',type:'kcr',o:KCR,refs:[['sub134','FE',6]]},
+  {id:'sub_detail_pos',t:'Finding write-ups are at the back of this one. Where should they go?',type:'one',o:['Front, before the graphics','Back (as now)','Next to each graphic'],refs:[['sub134','FE',8]]},
+  {id:'sub_overall',t:'Overall, this report is…',type:'one',o:['Ready as it is','Needs small changes','Needs big changes','Do not offer it']},
+ ]},
+ {id:'rd',eye:'Part 6 · drawing check',h:'Road Levels & Channel Check',p:'Low points and gully positions worked out from the engineer\'s road strings.',docs:['rd009'],qs:[
+  {id:'rd_fig',t:'Figure on every finding (water held, gully positions)',type:'kcr',o:KCR,refs:[['rd009','FE',2],['rd009','FE',5]]},
+  {id:'rd_lowtbl',t:'Low point table (every low point, nearest gully, yes/no)',type:'kcr',o:KCR,refs:[['rd009','FE',11]]},
+  {id:'rd_pred',t:'"Gully positions predicted from the strings" trial',type:'kcr',o:KCR,refs:[['rd009','FE',11]]},
+  {id:'rd_plan',t:'Add a whole-site plan with every low point marked?',type:'one',o:YN3},
+  {id:'rd_minor',t:'Minor holds (3–8 mm, under 0.5 m²)',type:'one',o:['Report as Low findings','One summary line','Leave out']},
+  {id:'rd_overall',t:'Overall, this report is…',type:'one',o:['Ready as it is','Needs small changes','Needs big changes','Do not offer it']},
+ ]},
+ {id:'inf',eye:'Part 7 · drawing check',h:'Roads & Sewers Design Audit',p:'The main drawing check. The portal only has a test file; the real sample is the Mulberry trial, written before the current layout. Its structure is shown as text.',docs:['inf005','mulb'],qs:[
+  {id:'inf_base',t:'Base the template on…',type:'one',o:['Mulberry trial structure','Close-out / Road Levels layout (current two-document style)','Mix: current layout plus Mulberry\'s water table']},
+  {id:'inf_water',t:'"Falls, crossfall and standing water" table (location / what the water does / pass-fail)',type:'kcr',o:KCR},
+  {id:'inf_lowtbl',t:'Low priority items as one table instead of full write-ups',type:'one',o:['Yes, table','No, full write-ups','Short write-ups']},
+  {id:'inf_qs',t:'Numbered "Questions for the design team" list',type:'kcr',o:KCR},
+  {id:'inf_src',t:'Sources list with web links',type:'one',o:['Keep','Remove (cite standards inline only)']},
+  {id:'inf_extract',t:'Add drawing extracts (cropped bits of the drawing) to findings?',type:'one',o:['Yes, every finding','Where it helps','No']},
+  {id:'inf_where',t:'"Where the water goes" narrative section',type:'kcr',o:KCR,refs:[['co003','FE',14]]},
+  {id:'inf_area',t:'Group findings by…',type:'one',o:['Priority (as now)','Area (roads, drainage, SuDS…)','Drawing']},
+ ]},
+ {id:'co',eye:'Part 8 · drawing check',h:'Design Audit Close-out',p:'Follow-up after the designer responds. This sample is the oldest layout and has no graphics.',docs:['co003'],qs:[
+  {id:'co_status',t:'Status table: every original finding marked Closed / Partially closed / Still open',type:'one',o:['Yes, in the Brief','Yes, in Findings Explained','No']},
+  {id:'co_resp',t:'Show the designer\'s response next to each finding?',type:'one',o:YN3},
+  {id:'co_before',t:'Before / after drawing extracts for closed items?',type:'one',o:['Yes','Only for still-open items','No']},
+  {id:'co_new',t:'New findings from the revised drawings',type:'one',o:['Same report, marked New','Separate section at the end','Separate report']},
+  {id:'co_overall',t:'Overall, this report is…',type:'one',o:['Ready as it is','Needs small changes','Needs big changes','Do not offer it']},
+ ]},
+ {id:'cus',eye:'Part 9',h:'Custom report',p:'Already exists in the portal and has been used twice: a road strings check and a drone stockpile survey. This sets the fixed frame every one-off report keeps.',docs:['cus009','sv435'],qs:[
+  {id:'cus_fixed',map:'cusfixed',t:'Which parts must every custom report keep?',type:'many',o:['Same header and branding','At a glance page','All findings table','Finding write-up format','Limits','Checks that passed','Drawings / information checked','Copyright and use']},
+  {id:'cus_docs',t:'Documents',type:'one',o:['Always Brief + Findings Explained','Always one document','Choose per job']},
+  {id:'cus_ref',t:'Reference numbers',type:'one',o:['All DA-CUS-…','Own short prefix per job (e.g. SV- for stockpiles)','DA-CUS for drawing checks, QC-CUS for scans']},
+  {id:'cus_who',t:'Who can request a custom report in the portal?',type:'one',o:['Team only','Clients too','Clients by message, team sets it up']},
+  {id:'cus_sv',t:'Stockpile volumes',type:'one',o:['Make it a standard report type','Keep as custom','Do not offer']},
+  {id:'cus_sv_layout',t:'Stockpile layout: drone image with volumes table',type:'kcr',o:KCR,refs:[['sv435','SV',1]]},
+  {id:'cus_strings',t:'Road strings vs setting out',type:'one',o:['Make it a standard report type','Keep as custom','Fold into Road Levels & Channel Check']},
+ ]},
+ {id:'flow',eye:'Part 10 · add-on',h:'Surface Water Flow Model',p:'Interactive 3D page. Screenshots below; the model itself opens in a browser.',docs:['flow009','flowyz'],qs:[
+  {id:'fl_feat',map:'flow',t:'Which features should every model have?',type:'many',o:['Rain animation (off / light / heavy)','Gullies coloured working / water standing','"Add gullies at the low points" switch','Drawings under the model, toggles per sheet','Labels (numbers / road names)','Height exaggeration slider','Finding cards with depth, area, litres','"How the model was built" section','Kerbs as-built table']},
+  {id:'fl_kind',t:'Which versions should we offer?',type:'many',o:['From design levels (drawing check)','From kerbs as built (scan)','From finished surface scan']},
+  {id:'fl_deliver',t:'How is it delivered?',type:'one',o:['Portal link only','Link + downloadable file','Link + PDF snapshot']},
+  {id:'fl_report',t:'Should the PDF reports point to the flow model when one exists?',type:'one',o:YN3},
+ ]},
+ {id:'none',eye:'Part 11',h:'Report types with no sample yet',p:'These are set up in the portal but nothing has been produced. Decide whether to keep each one and what to base it on.',docs:[],qs:[
+  {id:'n_drn',t:'Drainage Check',type:'one',o:['Keep, base on Roads & Sewers audit','Fold into Roads & Sewers audit','Drop']},
+  {id:'n_plt',t:'Groundworks Design Audit (plots and foundations)',type:'one',o:['Keep, base on Roads & Sewers audit layout','Keep, base on Plot QC layout','Drop']},
+  {id:'n_fd',t:'Foundations vs Drainage Check',type:'one',o:['Keep as its own report','Fold into Groundworks Design Audit','Drop']},
+  {id:'n_pd',t:'Plot Drawing Check',type:'one',o:['Keep as its own report','Fold into Groundworks Design Audit','Drop']},
+  {id:'n_pkg',t:'Combined Roads & Sewers + Groundworks',type:'one',o:['Keep: one big report','Keep: separate reports sold as a bundle','Drop']},
+  {id:'n_qcdrn',t:'As-built Drainage Check (positions, covers, inverts)',type:'one',o:['Keep','Fold into Road Formation QC','Drop']},
+  {id:'n_fd_fig',t:'For Foundations vs Drainage, which graphics?',type:'many',o:['Plan of every plot with drains in the zone of influence','Section at each clash (45° line)','Table by plot','Traffic light per plot']},
+ ]},
+ {id:'end',eye:'Part 12',h:'Anything else',p:'Last bits. Use the note boxes for anything not covered.',docs:[],qs:[
+  {id:'e_offer',t:'Which report types should we actively sell first?',type:'many',o:['Roads & Sewers Design Audit','Road Levels & Channel Check','Road Formation QC','Road Surfacing QC','Plot / Oversite QC','Substructure Check','Close-out','Flow model add-on','Stockpile volumes']},
+  {id:'e_turn',t:'Turnaround we promise clients',type:'one',o:['Keep portal defaults (2–7 days)','Faster: 1–3 days','Quote per job']},
+  {id:'e_review',t:'Who signs off a report before it goes out?',type:'one',o:['Lewis or Robbie (as now)','Any of Lewis, Robbie, Gian','Two people every time']},
+  {id:'e_other',t:'Anything else to change across all reports?',s:'Tap "Nothing else" or add a note.',type:'one',o:['Nothing else','Yes, see my note']},
+ ]},
+];
+const ALLQ=[];PARTS.forEach(p=>p.qs.forEach(q=>ALLQ.push({...q,part:p.id,ph:p.h})));
+
+
+// ---------- specimens (same QC-RF-013-01 content, different looks) ----------
+const R={title:'Road Formation Quality Check',sub:'Roads 1, 3, 4, 5 and 7 · Type 1 sub-base and kerbs, as built against the drawings · Scans received 28 and 29 October 2026',ref:'QC-RF-013-01',issue:1,date:'29 October 2026',client:'RSB Surveys',project:'Whitehouse Farm Phases Y & Z',site:'Whitehouse Farm Phases Y & Z – Roads 1, 3, 4, 5 and 7',checked:'Scans of 28 and 29 Oct; MJA 3D strings; 7562-402/403 T6',designer:'MJA',
+ glance:'9 findings: 4 medium, 5 low. 2,259 m² of Type 1 sub-base checked against the drawn levels less the 220 mm construction. 59.5% is within +10 / −30 mm. Road 1 is close to the drawing. Roads 3 and 4 sit a steady 10–20 mm high in both stone and kerbs. The Road 5 entrance has been laid without its 100 mm platform raise. The Road 3 mouth at Road 1 is not yet kerbed and its stone is low.',
+ top:['M1 – confirm whether the Road 5 entrance platform is still required before surfacing.','M2 – confirm the level Roads 3 and 4 were set out to, and whether the surfacing follows the kerbs or the drawing.','M3 – confirm how the Road 7 junction was trimmed, and whether the table is to be re-trimmed with the Road 1 channel across the Road 7 mouth.','M4 – confirm the gullies with no plate seen are in place, and whether the gully and manholes away from their drawn positions were moved on purpose.','L3 – check the crossing kerbs are inverted bullnose and flush.'],
+ qs:['Is the 100 mm platform at the Road 5 entrance still required, and are the stone and entrance kerbs to be raised before surfacing? (M1)','What level were the Roads 3 and 4 kerbs and stone set out to? Is the finished road to follow the kerbs as laid or the drawn levels? (M2)','Was the Road 7 junction trimmed with Road 7\'s level carried through the Road 1 table, rather than the Road 1 channel carried across the mouth as drawn? (M3)','Are the gullies at D7, D19, D22, D27, D47 in place, and were D20, D36, D37 moved on purpose? (M4)','Are any of the high or low areas sacrificial or temporary, or are any layers still to come? '],
+ F:[['M1','M','Road 5 entrance: sub-base about 97 mm low – laid to the road level without the 100 mm platform raise',3],['M2','M','Roads 3 and 4: sub-base and kerbs set a steady 10–20 mm above the drawn levels',3],['M3','M','Road 1 raised table at the Road 7 junction: Road 7\'s level carried through the table, and stone high before the ramp',4],['M4','M','Drainage: no plate seen at 5 drawn gullies; 1 gully and 2 manholes well away from their drawn positions',5],['L1','L','Road 7 ch 5–24: stone 21 mm high on average',6],['L2','L','Road 1 ch 342–348: stone low beside the joint to the north-east section',6],['L3','L','Dropped kerbs at the junction crossings stand 17–62 mm above the drawn flush level',6],['L4','L','Short lengths of Road 1 kerb 10–25 mm low',7],['L5','L','Road 3 mouth at Road 1, ch 3–15: kerbs not laid and stone 74 mm low on average',7]],
+ m1:{t:'Road 5 entrance: sub-base about 97 mm low – laid to the road level without the 100 mm platform raise',dwg:'MJA 3D strings (Road 5 table/platform strings, +100 mm), Kerbing Plan 7562-402 T6, Construction Details 7562-200 T4 (typical section through raised table ramp)',
+  scan:'Across the Road 5 entrance, ch 0 to 11, the stone sits on average 97 mm below the sub-base target over 73.5 m². Against the road level without the platform raise, the same stone is within a few millimetres, so it has been laid to the road level and not raised for the platform. The 5 HB2 kerb readings at the entrance are 17 to 113 mm below their drawn top level, and the 5 dropped kerbs at the crossing stand above it (see L3).',
+  why:'The strings raise the Road 5 entrance by 100 mm as a platform. The construction detail carries the full build-up up and over the table, so the sub-base rises with it. Sub-base surface tolerance +10 / −30 mm (MCHW Specification for Highway Works, Series 700, Table 7/1).',
+  why_tech:'Strings: Road 5 entrance +100 mm (platform). 7562-200 T4: full pavement build-up carried over table, so Type 1 formation to rise accordingly. As-built Type 1 −97 mm mean (ch 0–11, 73.5 m²) vs target; within ±5 mm of un-raised road level. SHW Series 700 Table 7/1: +10 / −30 mm.',
+  reason:'The platform raise may be formed later, the platform may have been dropped or changed, or the entrance may have been set out from the road levels rather than the platform strings.',
+  q:'Is the 100 mm platform at the Road 5 entrance still required? If so, are the stone and the entrance kerbs to be raised before surfacing, and to which levels?',
+  fix:'If the platform is still required, raise the Type 1 and reset the five entrance kerbs to the platform strings before surfacing (for the design and site teams to review and confirm).',
+  cost:'Medium (£2,000–£10,000: raising about 74 m² of stone and resetting the entrance kerbs; more if found after surfacing)'},
+ copy:'This report is the property of Dimensure. RSB Surveys is licensed to use it for Whitehouse Farm Phases Y & Z once paid. It may not be copied, altered or shared beyond the project team without Dimensure\'s written consent. Only the issued version under ref QC-RF-013-01, issue 1, is valid. No third party may rely on it.'
+};
+const footTxt=`© 2026 Dimensure. Confidential — issued to ${R.client} for ${R.project}. Ref ${R.ref}, issue ${R.issue}.`;
+const cross='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#13a37a" stroke-width="2" style="vertical-align:-3px"><circle cx="12" cy="12" r="7" stroke-dasharray="3 2.2"/><circle cx="12" cy="12" r="1.6" fill="#13a37a" stroke="none"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>';
+const PRI={M:{w:'Medium',c:'#b7791f',bg:'#fbf0dc'},L:{w:'Low',c:'#3b6ea8',bg:'#e5eef8'}};
+const ol=a=>'<ol>'+a.map(x=>`<li>${esc(x)}</li>`).join('')+'</ol>';
+const tiles=(style)=>{const t=[['9','Findings','#0e1e3a'],['0','High','#c2412d'],['4','Medium','#b7791f'],['5','Low','#3b6ea8']];return `<div class="tiles">${t.map(([n,l,c])=>`<div class="tile" style="${style==='c'?`border-color:${c}`:''}"><b style="color:${c}">${n}</b><span>${l}</span></div>`).join('')}</div>`};
+const expo=`<div class="box"><b>⚠ Potential exposure</b><ul class="tiny" style="margin-top:4px"><li>M1 Road 5 entrance platform – Medium</li><li>M2 Roads 3 and 4 set high – Medium</li><li>M3 Road 1 table at Road 7 – Medium</li><li>M4 Gullies and manholes – Medium</li><li>L1–L5 Local areas, crossing kerbs, Road 3 mouth – Low</li></ul><p class="tiny muted" style="margin-top:4px">Estimated from typical rates, not quotes. High over £10,000 or programme at risk; Medium £2,000–£10,000; Low under £2,000.</p></div>`;
+const qnote=`<div class="note-g tiny">Every finding is a query or observation for the site team and design team to confirm. Anything touching drainage, levels or compliance needs their review and sign-off.</div>`;
+function brief(v){
+ let head='';
+ if(v==='a') head=`<div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="wm">DIMEN<b>SURE</b></div><div style="text-align:right" class="tiny muted">Brief<br>Ref ${R.ref} · Issue ${R.issue} · ${R.date}</div></div><div><h3>${R.title}</h3><p class="tiny muted">${esc(R.sub)}</p></div><h4>At a glance</h4><p>${esc(R.glance)}</p>${expo}`;
+ if(v==='b') head=`<div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="wm" style="font-weight:600;letter-spacing:.14em">DIMEN${cross}SURE</div><div style="text-align:right"><b style="font-size:15px;color:#0e1e3a">${R.title}</b><div class="tiny muted" style="letter-spacing:.1em">ROAD FORMATION QUALITY CHECK · BRIEF</div></div></div><div class="dots"></div><h3>${R.site}</h3><div class="grid3"><div><span>Client</span>${R.client}</div><div><span>Designer</span>${R.designer}</div><div><span>Report date</span>${R.date}</div><div><span>Information checked</span>${R.checked}</div><div><span>Issue</span>Issue ${R.issue}</div><div><span>Report reference</span>${R.ref}</div></div><div class="dots"></div><h4>At a glance</h4>${tiles('b')}<p>${esc(R.glance)}</p>${expo}`;
+ if(v==='c') head=`<div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="wm" style="font-weight:500;letter-spacing:.32em">DIMEN ${cross} SURE</div><div style="text-align:right"><b style="font-size:15px;color:#0e1e3a">${R.title}</b><div class="tiny muted" style="letter-spacing:.32em">B R I E F · A S - B U I L T  C H E C K</div></div></div><h3 style="margin-top:8px">${R.site}</h3><div class="grid3"><div><span>Client</span><b>${R.client}</b></div><div><span>Report reference</span><b>${R.ref}</b></div><div><span>Report date</span><b>${R.date}</b></div><div><span>Information checked</span><b>${R.checked}</b></div><div><span>Project</span><b>${R.project}</b></div><div><span>Issue</span><b>First issue</b></div></div>${tiles('c')}<div class="dots"></div><h4>At a glance</h4><p>${esc(R.glance)}</p>`;
+ if(v==='d') head=`<div style="display:flex;gap:14px;align-items:stretch"><div style="width:4px;background:#13a37a;border-radius:2px"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="wm" style="font-size:16px">${cross} DIMENSURE</div><div class="tiny" style="font-family:monospace;color:#5b6475">${R.ref} · ISSUE ${R.issue} · ${R.date.toUpperCase()}</div></div><div class="tiny" style="letter-spacing:.12em;color:#13a37a;font-weight:700">BRIEF</div><h3 style="font-size:26px">${R.title}</h3><p class="muted">${esc(R.site)} · for ${R.client}</p></div></div><div style="display:grid;grid-template-columns:1.4fr 1fr;gap:14px"><div style="display:flex;flex-direction:column;gap:8px"><h4>At a glance</h4><p>${esc(R.glance)}</p></div><div style="display:flex;flex-direction:column;gap:6px">${[['0','High','#c2412d'],['4','Medium','#b7791f'],['5','Low','#3b6ea8']].map(([n,l,c])=>`<div style="display:flex;align-items:center;gap:10px;border-bottom:1px solid #eceff4;padding:4px 0"><b style="font-size:22px;color:${c};width:28px">${n}</b><span>${l} priority</span></div>`).join('')}<p class="tiny muted">Potential exposure: Medium £2,000–£10,000 each (M1–M4); Low under £2,000 (L1–L5). Estimated, not quotes.</p></div></div>`;
+ return `<div class="sheet page">${head}<h4>Top items to resolve</h4>${ol(R.top)}<h4>Questions to answer first</h4>${ol(R.qs)}${qnote}<div class="foot"><span>${footTxt}</span><span>Page 1 of 3</span></div></div>`;
+}
+function ftable(v){
+ const lab=(p,id)=>{if(v==='a')return `<span class="chip" style="color:${PRI[p].c};background:${PRI[p].bg}">${PRI[p].w}</span>`;
+  if(v==='b')return `<span class="chip" style="color:${PRI[p].c};background:${PRI[p].bg}">${PRI[p].w}</span>`;
+  if(v==='c')return p==='M'?'<span class="chip" style="color:#c2412d;background:#fbe6e2">Fail</span>':'<span class="chip" style="color:#b7791f;background:#fbf0dc">Flag</span>';
+  return p==='M'?'<span class="dot" style="background:#e0a21b"></span>Amber':'<span class="dot" style="background:#2f9e5b"></span>Green'};
+ const key={a:'Priority: High · Medium · Low',b:'Priority: Critical · High · Medium · Low',c:'Result: Fail · Flag · Pass',d:'Red: act before next stage · Amber: confirm · Green: note only'}[v];
+ return `<div class="sheet"><h4>All findings</h4><p class="tiny muted">${key}</p><table><tr><th>ID</th><th>Priority</th><th>Finding</th><th>Page</th></tr>${R.F.slice(0,7).map(([id,p,t,pg])=>`<tr><td><b>${id}</b></td><td>${lab(p,id)}</td><td>${esc(t)}</td><td>${pg}</td></tr>`).join('')}</table></div>`;
+}
+function ctable(v){
+ const cost=p=>v==='a'?(p==='M'?'Medium':'Low'):v==='b'?(p==='M'?'£2,000–£10,000':'Under £2,000'):'';
+ return `<div class="sheet"><h4>All findings</h4><table><tr><th>ID</th><th>Priority</th><th>Finding</th>${v!=='c'?'<th>Cost if missed</th>':''}<th>Page</th></tr>${R.F.slice(0,7).map(([id,p,t,pg])=>`<tr><td><b>${id}</b></td><td><span class="chip" style="color:${PRI[p].c};background:${PRI[p].bg}">${PRI[p].w}</span></td><td>${esc(t)}</td>${v!=='c'?`<td style="white-space:nowrap">${cost(p)}</td>`:''}<td>${pg}</td></tr>`).join('')}</table>${v==='c'?'<p class="tiny muted">Cost bands are explained once on page 1.</p>':v==='a'?'<p class="tiny muted">Bands: Low under £2,000 · Medium £2,000–£10,000 · High £10,000–£50,000 · Very high over £50,000.</p>':''}</div>`;
+}
+function writeup(v,ask,opts={}){
+ const m=R.m1;const tail=ask||'a';
+ const askRows={a:[['Query for the designer to confirm',m.q]],b:[['Suggested fix (for review)',m.fix]],c:[['Query for the designer to confirm',m.q],['Suggested fix (for review)',m.fix]],d:[]}[tail];
+ const rows=[['Drawing',m.dwg],['What the scan shows',m.scan],['Why it matters',opts.why||m.why],['Possible reason',m.reason],...askRows,['Cost if missed',m.cost]];
+ const chip=`<span class="chip" style="color:${PRI.M.c};background:${PRI.M.bg}">Medium</span>`;
+ const fig=opts.fig==='in'?`<div class="fig"><img src="fig-m1-crop.jpg" alt=""></div><p class="cap">Road 5 entrance. Blue: sub-base more than 60 mm low. Squares: kerb tops (blue low, red high).</p>`:opts.fig==='ref'?`<p class="tiny" style="color:#13a37a;font-weight:700">See the overview plan, page 2, and the south area sheet, page 9 (label M1).</p>`:'';
+ let body='';
+ if(v==='a') body=`<div class="box" style="display:flex;flex-direction:column;gap:8px"><b style="font-size:14px;color:#0e1e3a">M1 · ${esc(m.t)} ${chip}</b><div class="kv">${rows.map(([k,t])=>`<div>${k}</div><div>${esc(t)}</div>`).join('')}</div>${fig}</div>`;
+ if(v==='b') body=`<div style="display:flex;flex-direction:column;gap:8px"><div class="tiny" style="letter-spacing:.1em;color:${PRI.M.c};font-weight:700">MEDIUM</div><b style="font-size:15px;color:#0e1e3a">M1 ${esc(m.t)}</b>${rows.map(([k,t])=>`<div><div class="tiny" style="letter-spacing:.1em;color:#5b6475;font-weight:700">${k.toUpperCase()}</div><p>${esc(t)}</p></div>`).join('')}${fig}</div>`;
+ if(v==='c') body=`<div style="border:1px solid #dfe3ea;border-left:6px solid ${PRI.M.c};border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;justify-content:space-between;gap:10px"><b style="font-size:15px;color:#0e1e3a">M1 · ${esc(m.t)}</b>${chip}</div>${rows.map(([k,t])=>`<p><b>${k}.</b> ${esc(t)}</p>`).join('')}${fig}</div>`;
+ return `<div class="sheet">${body}</div>`;
+}
+function copyPage(v){
+ const foot=`<div class="foot"><span>${footTxt}</span><span>Page 23 of 23</span></div>`;
+ const tail=`<h4>Checks that passed</h4><table><tr><th>Check</th><th>Result</th></tr><tr><td>Road 1 sub-base</td><td>82.2% within +10 / −30 mm</td></tr><tr><td>Kerb line positions</td><td>Within about ±50 mm of the drawing</td></tr></table>`;
+ if(v==='a') return `<div class="sheet page">${tail}<div style="margin-top:auto"></div><h4>Copyright &amp; use of this report</h4><p class="tiny">${esc(R.copy)}</p>${foot}</div>`;
+ if(v==='b') return `<div class="sheet page">${tail}${foot}</div>`;
+ return `<div class="sheet page"><h3>Copyright &amp; use of this report</h3><p>${esc(R.copy)}</p><p class="muted">Issued to ${R.client} for ${R.project}. Ref ${R.ref}, issue ${R.issue}, ${R.date}.</p>${foot}</div>`;
+}
+function toneSheet(v){
+ const m=R.m1;
+ if(v==='a') return `<div class="sheet"><h4>Why it matters</h4><p>${esc(m.why)}</p></div>`;
+ if(v==='b') return `<div class="sheet"><h4>Why it matters</h4><p>${esc(m.why_tech)}</p></div>`;
+ return `<div class="sheet"><div class="tiny" style="letter-spacing:.1em;color:#13a37a;font-weight:700">IN THE BRIEF</div><p>The Road 5 entrance has been laid without its 100 mm platform raise. Is the platform still required? (M1)</p><div class="dots"></div><div class="tiny" style="letter-spacing:.1em;color:#13a37a;font-weight:700">IN FINDINGS EXPLAINED</div><p>${esc(m.why_tech)}</p></div>`;
+}
+const SPECS={
+ layout:{w:250,items:[['a','Newest','QC reports'],['b','Middle','Road Levels / Custom'],['c','Oldest','Close-out'],['d','Fresh option','new']].map(([v,n,e])=>({v,n,e,html:()=>brief(v)}))},
+ priority:{w:250,items:[['a','High / Medium / Low'],['b','Critical / High / Medium / Low'],['c','Fail / Flag / Pass'],['d','Coloured dots']].map(([v,n])=>({v,n,html:()=>ftable(v)}))},
+ cost:{w:250,items:[['a','Bands'],['b','£ ranges'],['c','Not in the table']].map(([v,n])=>({v,n,html:()=>ctable(v)}))},
+ wformat:{w:250,items:[['a','Two columns'],['b','Stacked headings'],['c','Card with stripe']].map(([v,n])=>({v,n,html:()=>writeup(v,'a')}))},
+ ask:{w:250,items:[['a','Query'],['b','Suggested fix'],['c','Both'],['d','Neither']].map(([v,n])=>({v,n,html:()=>writeup('a',v)}))},
+ fig:{w:250,items:[['in','A','Figure inside'],['ref','B','Points to plans']].map(([f,n,e])=>({v:f,n,e,html:()=>writeup('a','a',{fig:f})}))},
+ copy:{w:200,items:[['a','Footer + section'],['b','Footer only'],['c','Own page']].map(([v,n])=>({v,n,html:()=>copyPage(v)}))},
+ colour:{w:250,items:[['col-current.jpg','A','Current'],['col-rag.jpg','B','Red / amber / green'],['col-cbsafe.jpg','C','Colour-blind safe'],['col-grey.jpg','D','A printed in black and white']].map(([src,n,e])=>({v:src,n,e,img:src}))},
+ tone:{w:250,items:[['a','Plain'],['b','Technical'],['c','Plain + technical']].map(([v,n])=>({v,n,html:()=>toneSheet(v)}))},
+};
+const letters='ABCDEFG';
+function fitSheet(holder,sheet,width){const s=width/794;sheet.style.transform=`scale(${s})`;const hgt=sheet.offsetHeight*s;holder.style.width=width+'px';holder.style.height=hgt+'px'}
+function specRow(key){
+ const sp=SPECS[key];const row=document.createElement('div');row.className='specs';
+ sp.items.forEach((it,i)=>{const b=document.createElement('button');b.className='spec';b.type='button';
+  const name=`${letters[i]} – ${it.e&&it.n.length<=2?it.e:it.n}`;b.setAttribute('aria-label',`Example ${name}, open full size`);
+  const lbl=document.createElement('span');lbl.className='lbl';lbl.innerHTML=`${letters[i]} <em>${esc(it.e&&it.n.length<=2?it.e:it.n)}</em>`;
+  const fr=document.createElement('div');fr.className='frame';fr.style.width=sp.w+'px';
+  if(it.img){fr.innerHTML=`<img loading="lazy" src="${it.img}" alt="">`}else{fr.innerHTML=it.html();const sh=fr.firstElementChild;requestAnimationFrame(()=>fitSheet(fr,sh,sp.w))}
+  const z=document.createElement('span');z.className='zoom';z.textContent='Tap to enlarge';
+  b.append(lbl,fr,z);b.onclick=()=>openSpec(key,i);row.appendChild(b)});
+ return row;
+}
+
+
+// ---------- clickable illustrations ----------
+const ph=(n,w)=>Array.from({length:n},(_,i)=>`<div class="ph" style="width:${w?w[i%w.length]:90}%"></div>`).join('');
+const MAPS={
+ writeup:()=>{const m=R.m1;const row=(o,k,t)=>`<div data-opt="${esc(o)}" class="kv" style="padding:6px 8px"><div>${k}</div><div>${t}</div></div>`;
+  return `<div class="sheet narrow" style="gap:16px"><b style="font-size:15px;color:#0e1e3a">M1 · ${esc(m.t)} <span class="chip" style="color:${PRI.M.c};background:${PRI.M.bg}">Medium</span></b>
+  ${row('Drawing reference','Drawing',esc(m.dwg))}
+  ${row('What the drawing shows','What the drawing shows','The 3D strings raise the Road 5 entrance by 100 mm as a platform; the kerbing plan shows HB2 kerbs and a dropped crossing at the entrance.')}
+  ${row('What the scan shows (QC only)','What the scan shows',esc(m.scan))}
+  ${row('Why it matters + standard/clause','Why it matters',esc(m.why))}
+  ${row('Possible reason','Possible reason',esc(m.reason))}
+  ${row('Query for the designer to confirm','Query to confirm',esc(m.q))}
+  ${row('Cost if missed','Cost if missed',esc(m.cost))}
+  <div data-opt="A figure for the finding" style="padding:6px 8px"><div class="fig"><img src="fig-m1-crop.jpg" alt=""></div><p class="cap">Figure: Road 5 entrance, sub-base and kerb tops against the drawing.</p></div>
+  <div data-opt="Site photo where available" style="padding:6px 8px"><div style="height:150px;background:#e8ebf0;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#5b6475">Site photo of the Road 5 entrance</div><p class="cap">Photo taken at the scan visit.</p></div></div>`},
+ p1:()=>`<div class="sheet narrow page" style="gap:16px"><div style="display:flex;justify-content:space-between"><div class="wm">DIMEN<b>SURE</b></div><div class="tiny muted" style="text-align:right">Brief<br>Ref ${R.ref} · Issue 1 · ${R.date}</div></div>
+  <div><h3>${R.title}</h3><p class="tiny muted">Roads 1, 3, 4, 5 and 7 · ${R.project}</p></div>
+  <div data-opt="Scan / drawing date and what was checked" style="padding:6px 8px" class="tiny">Scans received 28 and 29 October 2026 · checked against MJA 3D strings, kerbing plan 7562-402/403 T6 and adoption plan 7562-601 rev 5 · 2,259 m² of Type 1</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+   <div data-opt="Count of findings by priority" style="padding:6px">${tiles('c')}</div>
+   <div data-opt="Estimated cost exposure (£ range)" style="padding:8px" class="box"><b>Estimated exposure if missed</b><div style="font-size:22px;font-weight:800;color:#b7791f">£8,000 – £50,000</div><p class="tiny muted">4 medium at £2,000–£10,000, 5 low under £2,000. Typical rates, not quotes.</p></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+   <div data-opt="Small key plan / thumbnail of the site" style="padding:6px"><img src="keyplan.jpg" alt="" style="width:100%;display:block;border:1px solid #dfe3ea"><p class="cap">Key plan – finding labels on the site</p></div>
+   <div data-opt="Pass/fail traffic light summary" style="padding:8px"><b>Sub-base by road</b><table style="margin-top:4px">${[['Road 1','82%'],['Road 3','43%'],['Road 4','45%'],['Road 5','18%'],['Road 7','50%']].map(([r,p])=>`<tr><td>${r}</td><td>${p} within</td><td><span class="dot" style="background:#e0a21b"></span>Flag</td></tr>`).join('')}</table><p class="tiny muted">Pass = 90% of area within +10 / −30 mm.</p></div>
+  </div>
+  <div data-opt="Top 5 items to resolve" style="padding:6px 8px"><h4>Top items to resolve</h4>${ol(R.top.slice(0,5))}</div>
+  <div data-opt="Questions to answer first" style="padding:6px 8px"><h4>Questions to answer first</h4>${ol(R.qs.slice(0,3))}</div>
+  <div data-opt="Cost band key" style="padding:6px 8px" class="tiny muted">Cost bands: Low under £2,000 · Medium £2,000–£10,000 · High £10,000–£50,000 · Very high over £50,000, or adoption / programme at risk.</div>
+  <div data-opt="&quot;These are queries for the designer&quot; statement" style="padding:6px 8px">${qnote}</div>
+  <div class="foot"><span>${footTxt}</span><span>Page 1</span></div></div>`,
+ cols:()=>{const C=[['ID (H1, M1, L1…)','ID',r=>`<b>${r[0]}</b>`],['Priority','Priority',r=>`<span class="chip" style="color:${PRI[r[1]].c};background:${PRI[r[1]].bg}">${PRI[r[1]].w}</span>`],['Short finding title','Finding',r=>esc(r[2])],['Where (road / chainage / plot)','Where',r=>r[3]],['Drawing number','Drawing',r=>r[4]],['Cost if missed band','Cost if missed',r=>r[1]==='M'?'Medium':'Low'],['Page number in Findings Explained','Page',r=>r[5]]];
+  const rows=[['M1','M','Road 5 entrance laid without the 100 mm platform raise','Road 5 ch 0–11','3D strings; 7562-402',3],['M2','M','Roads 3 and 4 set 10–20 mm high','Roads 3 and 4','3D strings; 7562-402/403',3],['M3','M','Road 1 table at the Road 7 junction','Road 1 / Road 7','3D strings; 7562-402',4],['M4','M','Gullies with no plate seen; 3 items off position','Roads 1 and 3','7562-601 rev 5',5],['L1','L','Road 7 stone 21 mm high','Road 7 ch 5–24','3D strings',6]];
+  return `<div class="sheet narrow"><h4>All findings</h4><p class="tiny muted">Tap a column to include or leave it out.</p><table><tr>${C.map(c=>`<th data-opt="${esc(c[0])}"><span class="colhead">${c[1]}</span></th>`).join('')}</tr>${rows.map(r=>`<tr>${C.map(c=>`<td data-opt="${esc(c[0])}">${c[2](r)}</td>`).join('')}</tr>`).join('')}</table></div>`},
+ cusfixed:()=>{const blk=(o,title,inner)=>`<div data-opt="${esc(o)}" style="padding:8px 10px">${title?`<h4 style="margin:0 0 4px">${title}</h4>`:''}${inner}</div>`;
+  return `<div class="sheet narrow" style="gap:16px"><div class="tiny" style="letter-spacing:.1em;color:#5b6475">A ONE-OFF REPORT, E.G. ROAD STRINGS VS SETTING OUT</div>
+  ${blk('Same header and branding','',`<div style="display:flex;justify-content:space-between"><div class="wm">DIMEN<b>SURE</b></div><div class="tiny muted">Ref DA-CUS-009-01 · Issue 1 · 25 October 2026</div></div><h3 style="margin-top:6px">Road Strings vs Setting Out Check</h3>`)}
+  ${blk('At a glance page','At a glance',`<p>Setting-out levels compared with the long sections and 3D strings on roads N1 to N10. One high, two medium and four low findings.</p>`)}
+  ${blk('All findings table','All findings',`<table><tr><th>ID</th><th>Finding</th><th>Page</th></tr><tr><td>H1</td><td>Road N4 setting-out levels up to 235 mm above the long section</td><td>2</td></tr><tr><td>M1</td><td>Road N1: about 17 m of the report not in the strings</td><td>3</td></tr></table>`)}
+  ${blk('Finding write-up format','H1 · Road N4 setting-out levels',`<div class="kv"><div>Drawing reference</div><div>Setting Out report XRP001 rev 0, Appendix E</div><div>Query to confirm</div><div>Which levels govern on Road N4?</div></div>`)}
+  ${blk('Limits','Limits',ph(2,[95,70]))}
+  ${blk('Checks that passed','Checks that passed',`<p class="tiny">3D strings against long sections: 777 levels compared on 14 roads, 747 within 6 mm.</p>`)}
+  ${blk('Drawings / information checked','Information checked',`<p class="tiny">XRP001 rev 0 · ENG-260 Rev A · ENG-540 to ENG-546 · 3D STRINGS.DWG</p>`)}
+  ${blk('Copyright and use','Copyright & use of this report',ph(2,[95,60]))}</div>`},
+ flow:()=>{const b=(o,inner,st='')=>`<div data-opt="${esc(o)}" style="padding:6px 8px;${st}">${inner}</div>`;
+  return `<div class="sheet narrow" style="gap:14px"><div style="background:#0e1e3a;color:#e7edf6;border-radius:4px;padding:8px 12px;font-weight:800;letter-spacing:.1em">DIMENSURE <span style="float:right;font-weight:400;font-size:10px;letter-spacing:.06em">SURFACE WATER FLOW MODEL · DA-FLOW-7562-YZ-AB-01</span></div>
+  <h3>Where the rain will go if the roads are surfaced to the kerbs as built</h3>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px">
+   <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="position:relative"><img src="flow-view.jpg" alt="" style="width:100%;display:block;border:1px solid #dfe3ea;border-radius:4px"></div>
+    ${b('Rain animation (off / light / heavy)','<b class="tiny">RAIN</b><div><span class="chip" style="background:#eef1f6">Off</span> <span class="chip" style="background:#eef1f6">Light</span> <span class="chip" style="background:#0e1e3a;color:#fff">Heavy</span></div>')}
+    ${b('Gullies coloured working / water standing','<span class="dot" style="background:#13a37a"></span>Gully taking water &nbsp; <span class="dot" style="background:#c2412d"></span>Gully with water standing beside it')}
+    ${b('"Add gullies at the low points" switch','<span class="chip" style="background:#0e1e3a;color:#fff">As modelled</span> <span class="chip" style="background:#eef1f6">Add gullies at the low points</span>')}
+    ${b('Drawings under the model, toggles per sheet','<b class="tiny">DRAWINGS UNDER THE MODEL</b><div><span class="chip" style="background:#eef1f6">Kerbing</span> <span class="chip" style="background:#eef1f6">Engineering layout</span> <span class="chip" style="background:#eef1f6">Adoption</span></div>')}
+    ${b('Labels (numbers / road names)','<b class="tiny">LABELS</b><div><span class="chip" style="background:#eef1f6">Off</span> <span class="chip" style="background:#0e1e3a;color:#fff">Numbers only</span> <span class="chip" style="background:#eef1f6">Road names too</span></div>')}
+    ${b('Height exaggeration slider','<b class="tiny">HEIGHT EXAGGERATION ×4</b><div style="height:6px;background:#dfe3ea;border-radius:3px;margin-top:6px;position:relative"><div style="position:absolute;left:30%;top:-4px;width:14px;height:14px;border-radius:50%;background:#13a37a"></div></div>')}
+   </div>
+   <div style="display:flex;flex-direction:column;gap:10px">
+    ${b('Finding cards with depth, area, litres','<div style="border-left:4px solid #c2412d;padding-left:8px"><b>1 · Road 5 ch 0 left</b> <span class="chip" style="background:#fbe6e2;color:#c2412d">23 mm deep</span><p class="tiny">Area 2.3 m² · Held 16 L · Nearest gully 5.1 m</p><p class="tiny">Query to confirm: is a gully needed at this low point?</p></div>')}
+    ${b('Kerbs as-built table','<b class="tiny">KERBS AS BUILT AGAINST THE DRAWING</b><table><tr><th>Road</th><th>Median mm</th></tr><tr><td>Road 1</td><td>−2</td></tr><tr><td>Road 3</td><td>+21</td></tr><tr><td>Road 5</td><td>+26</td></tr></table>')}
+    ${b('"How the model was built" section','<b class="tiny">HOW THE MODEL WAS BUILT, AND ITS LIMITS</b>'+ph(4,[95,80,90,60]))}
+   </div></div></div>`},
+};
+function fitMap(holder,sheet){const w=holder.clientWidth||300;const s=Math.min(1,w/(sheet.offsetWidth||794));sheet.style.transform=`scale(${s})`;holder.style.height=(sheet.offsetHeight*s)+'px'}
+function mapBlock(q,el){
+ const wrap=document.createElement('div');wrap.className='cmap-wrap';
+ wrap.innerHTML=`<div class="cmap-hint"><b>Tap the parts you want in.</b> Tap again to take one out. Tap here or the buttons below, they stay in step.</div>`;
+ const holder=document.createElement('div');holder.className='cmap';holder.innerHTML=MAPS[q.map]();wrap.appendChild(holder);
+ const sheet=holder.firstElementChild;
+ const sync=()=>{const v=(answers[q.id]&&answers[q.id].v)||[];sheet.querySelectorAll('[data-opt]').forEach(n=>n.classList.toggle('on',v.includes(n.dataset.opt)));el.querySelectorAll(`input[name="a_${q.id}"]`).forEach(i=>i.checked=v.includes(i.value))};
+ const toggle=o=>{if(!me){return}const cur=answers[q.id]||{};const s=new Set(cur.v||[]);s.has(o)?s.delete(o):s.add(o);cur.v=[...s];answers[q.id]=cur;sync();el.classList.toggle('answered',hasAns(cur));queueSave()};
+ // a listener on every part (iOS only sends taps to elements that listen), with a guard so one tap toggles once
+ sheet.querySelectorAll('[data-opt]').forEach(n=>{n.setAttribute('role','button');n.tabIndex=0;
+  let last=0,sx=0,sy=0,moved=false;
+  n.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;moved=false},{passive:true});
+  n.addEventListener('touchmove',e=>{const t=e.touches[0];if(Math.abs(t.clientX-sx)>10||Math.abs(t.clientY-sy)>10)moved=true},{passive:true});
+  n.addEventListener('touchend',e=>{if(moved)return;e.preventDefault();last=Date.now();toggle(n.dataset.opt)},{passive:false});
+  n.addEventListener('click',e=>{e.stopPropagation();if(Date.now()-last<600)return;toggle(n.dataset.opt)});
+  n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(n.dataset.opt)}})});
+ el._sync=sync;requestAnimationFrame(()=>{fitMap(holder,sheet);sync()});
+ window.addEventListener('resize',()=>fitMap(holder,sheet));
+ return wrap;
+}
+
+// ---------- state ----------
+let me=null, answers={}, db=null, userNs=null, saveT=null, everyone={}, view='q';
+
+const $=s=>document.querySelector(s);
+const clone=o=>JSON.parse(JSON.stringify(o)); // saved rows arrive read-only; copy before editing
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function renderWho(){const w=$('#who');const p=PEOPLE.find(x=>x.id===me);w.innerHTML=p?`<span>Answering as</span><span class="pill" aria-pressed="true">${esc(p.name)}</span>`:'';}
+function showPick(){const r=$('#pick-row');r.innerHTML='';PEOPLE.forEach(p=>{const b=document.createElement('button');b.type='button';b.textContent=p.name;b.onclick=()=>choose(p.id);r.appendChild(b)});$('#pick').hidden=false}
+function choose(id){$('#pick').hidden=true;me=id;try{localStorage.setItem('dq_who',id)}catch(e){}answers=clone((everyone[id]&&everyone[id].answers)||{});renderWho();render();}
+
+// ---------- render: questions ----------
+function docBlock(k){
+  const d=D[k];const el=document.createElement('div');el.className='doc';
+  el.innerHTML=`<div class="doc-h"><b>${esc(d.ref)}</b><span class="t">${esc(d.t)}</span><span class="tag ${d.tag[0]}">${esc(d.tag[1])}</span></div>`;
+  if(d.text){const t=document.createElement('div');t.className='txt';t.innerHTML=esc(d.text).replace(/\n/g,'<br>');el.appendChild(t);return el}
+  const ps=pagesOf(k);const strip=document.createElement('div');strip.className='strip';let g='';
+  ps.forEach((p,i)=>{if(p.grp&&p.grp!==g){g=p.grp;const s=document.createElement('span');s.className='grp';s.textContent=g;strip.appendChild(s)}
+    const b=document.createElement('button');b.setAttribute('aria-label',`${d.ref} ${p.lab}`);b.innerHTML=`<img loading="lazy" src="${esc(p.src)}" alt=""><span class="pg">${esc(p.lab)}</span>`;b.onclick=()=>openLB(k,i);strip.appendChild(b)});
+  el.appendChild(strip);return el;
+}
+function refIndex(k,code,n){return pagesOf(k).findIndex(p=>p.src===`${D[k].ref}-${code}-${n}.jpg`)}
+function qBlock(q,num){
+  const a=answers[q.id]||{};const el=document.createElement('div');el.className='q'+(hasAns(a)?' answered':'');el.id='q-'+q.id;
+  const refs='';
+  el.innerHTML=`<div class="q-h"><span class="qn">${num}</span><div class="qt">${esc(q.t)}${q.s?`<small>${esc(q.s)}</small>`:''}${refs?`<div class="refs">${refs}</div>`:''}</div></div>`;
+  el.querySelectorAll('.refs button').forEach(b=>b.onclick=()=>openLB(b.dataset.k,refIndex(b.dataset.k,b.dataset.c,+b.dataset.n)));
+  if(q.spec){el.appendChild(specRow(q.spec))}
+  if(q.refs&&q.refs.length&&!q.spec){const th=document.createElement('div');th.className='thumbs';q.refs.forEach(([k,c,n])=>{const i=refIndex(k,c,n);if(i<0)return;const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${D[k].ref} ${c} page ${n}, open full size`);b.innerHTML=`<img loading="lazy" src="${esc(pagesOf(k)[i].src)}" alt=""><span>${esc(D[k].ref)} ${c} p${n}</span>`;b.onclick=()=>openLB(k,i);th.appendChild(b)});el.appendChild(th)}
+  if(q.map){el.appendChild(mapBlock(q,el))}
+  const opts=document.createElement('div');opts.className='opts';opts.setAttribute('role',q.type==='many'?'group':'radiogroup');
+  q.o.forEach((o,i)=>{const lab=document.createElement('label');lab.className='opt'+(q.type==='kcr'?' '+['k','c','r'][i]:'');
+    const inp=document.createElement('input');inp.type=q.type==='many'?'checkbox':'radio';inp.name='a_'+q.id;inp.id=`a_${q.id}_${i}`;inp.value=o;
+    inp.checked=q.type==='many'?(a.v||[]).includes(o):a.v===o;
+    inp.onchange=()=>{if(!me){inp.checked=false;return}const cur=answers[q.id]||{};if(q.type==='many'){const s=new Set(cur.v||[]);inp.checked?s.add(o):s.delete(o);cur.v=[...s]}else cur.v=o;answers[q.id]=cur;if(el._sync)el._sync();el.classList.toggle('answered',hasAns(cur));queueSave()};
+    const sp=document.createElement('span');sp.textContent=o;lab.append(inp,sp);opts.appendChild(lab)});
+  el.appendChild(opts);
+  if(q.type==='many'){const h=document.createElement('div');h.className='multi-hint';h.textContent='Pick as many as you like';el.appendChild(h)}
+  const det=document.createElement('details');det.className='note';if(a.note)det.open=true;
+  det.innerHTML=`<summary>Add a note (optional)</summary>`;const ta=document.createElement('textarea');ta.id='n_'+q.id;ta.value=a.note||'';ta.placeholder='Anything to add or change';
+  ta.oninput=()=>{if(!me){return}const cur=answers[q.id]||{};cur.note=ta.value;answers[q.id]=cur;el.classList.toggle('answered',hasAns(cur));queueSave()};det.appendChild(ta);el.appendChild(det);
+  return el;
+}
+function hasAns(a){return !!(a&&((Array.isArray(a.v)?a.v.length:a.v)||(a.note&&a.note.trim())))}
+function render(){
+  const m=$('#main');m.innerHTML='';
+  if(view==='r'){renderResults(m);return}
+  const nav=document.createElement('div');nav.className='sec-nav';nav.id='secnav';
+  PARTS.forEach(p=>{const a=document.createElement('a');a.href='#'+p.id;a.textContent=p.h;a.dataset.p=p.id;a.onclick=e=>{e.preventDefault();document.getElementById(p.id).scrollIntoView({behavior:'smooth'})};nav.appendChild(a)});
+  m.appendChild(nav);
+  let n=0;
+  PARTS.forEach(p=>{const s=document.createElement('section');s.className='part';s.id=p.id;
+    s.innerHTML=`<div class="part-head"><span class="eyebrow">${esc(p.eye)}</span><h2>${esc(p.h)}</h2><p>${esc(p.p)}</p></div>`;
+    if(p.docs.length){const ds=document.createElement('div');ds.className='docs';p.docs.forEach(k=>ds.appendChild(docBlock(k)));s.appendChild(ds)}
+    p.qs.forEach(q=>{n++;s.appendChild(qBlock(q,n))});
+    m.appendChild(s)});
+  progress();
+}
+function progress(){
+  const done=ALLQ.filter(q=>hasAns(answers[q.id])).length;$('#prog').style.width=(100*done/ALLQ.length)+'%';
+  document.querySelectorAll('#secnav a').forEach(a=>{const qs=PARTS.find(p=>p.id===a.dataset.p).qs;a.classList.toggle('done',qs.every(q=>hasAns(answers[q.id])))});
+  const st=$('#status');if(!db){st.textContent='Loading…'}else if(!me){st.textContent=`Pick your name to start · ${ALLQ.length} questions`}else st.textContent=`${PEOPLE.find(p=>p.id===me).name}: ${done} of ${ALLQ.length} answered`+(saveT?' · saving…':' · saved');
+}
+
+// ---------- saving ----------
+function queueSave(){progress();if(!db||!me)return;clearTimeout(saveT);saveT=setTimeout(save,700);progress()}
+const API='https://ivmdqsxnnstvxcspdmov.supabase.co/rest/v1/rpc/';const ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2bWRxc3hubnN0dnhjc3BkbW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4Mzk4MjYsImV4cCI6MjEwODQxNTgyNn0.ICjJ5k_71mnzfgb1aQuT-rMMaoT2mpFBfvZTzG5R1tE';
+async function rpc(fn,body){const r=await fetch(API+fn,{method:'POST',headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok){let m=r.status;try{m=(await r.json()).message||m}catch(e){}throw {code:m}}return r.json()}
+async function save(){
+  try{await rpc('template_survey_save',{p_code:CODE,p_answers:clone(answers),p_answered:ALLQ.filter(q=>hasAns(answers[q.id])).length,p_total:ALLQ.length});saveT=null;await refresh();progress()}
+  catch(e){saveT=null;$('#status').textContent='Could not save just now ('+(e&&e.code||'error')+'). Your answers are still on screen; change any answer to try again.'}
+}
+
+// ---------- results ----------
+function fmt(q,a){if(!a)return '<span class="empty">No answer</span>';let v=Array.isArray(a.v)?a.v.map(esc).join('<br>'):(a.v?esc(a.v):'<span class="empty">No choice</span>');if(a.note)v+=`<div class="n">“${esc(a.note)}”</div>`;return v}
+function renderResults(m){
+  const head=document.createElement('div');head.className='part-head';
+  const cnt=PEOPLE.map(p=>{const r=everyone[p.id];return `${p.name}: ${r?r.answered+'/'+r.total:'not started'}`}).join(' · ');
+  head.innerHTML=`<span class="eyebrow">Live</span><h2>Compare answers</h2><p>Everyone's choices side by side. Updates as people answer.</p><div class="r-sum">${esc(cnt)}</div>`;m.appendChild(head);
+  if(!db){const e=document.createElement('p');e.className='empty';e.textContent='Sign in to Claude to see saved answers.';m.appendChild(e);return}
+  PARTS.forEach(p=>{const s=document.createElement('section');s.className='part';s.innerHTML=`<div class="part-head"><span class="eyebrow">${esc(p.eye)}</span><h2>${esc(p.h)}</h2></div>`;
+    p.qs.forEach(q=>{const vals=PEOPLE.map(pp=>everyone[pp.id]&&everyone[pp.id].answers&&everyone[pp.id].answers[q.id]);
+      const keys=vals.filter(v=>v&&(Array.isArray(v.v)?v.v.length:v.v)).map(v=>Array.isArray(v.v)?[...v.v].sort().join('|'):v.v);
+      let ag='<span class="agree w">Waiting</span>';if(keys.length>=2)ag=new Set(keys).size===1?(keys.length===3?'<span class="agree y">All agree</span>':'<span class="agree y">Agree so far</span>'):'<span class="agree s">Split</span>';
+      const c=document.createElement('div');c.className='r-q';c.innerHTML=`<div class="qt">${esc(q.t)}</div>${ag}<div class="r-grid">${PEOPLE.map((pp,i)=>`<div class="r-cell"><b>${pp.name}</b>${fmt(q,vals[i])}</div>`).join('')}</div>`;s.appendChild(c)});
+    m.appendChild(s)});
+}
+
+// ---------- lightbox ----------
+let lbK=null,lbI=0;
+let lbSpec=null;
+function openSpec(key,i){lbSpec={key,i};lbK=null;showSpec();$('#lb').hidden=false;$('#lb-x').focus()}
+function showSpec(){const sp=SPECS[lbSpec.key];const it=sp.items[lbSpec.i];const box=$('.lb-img');box.innerHTML='';
+ $('#lb-cap').textContent=`Example ${letters[lbSpec.i]} – ${it.e&&it.n.length<=2?it.e:it.n} (${lbSpec.i+1}/${sp.items.length})`;$('#lb-prev').disabled=lbSpec.i===0;$('#lb-next').disabled=lbSpec.i===sp.items.length-1;
+ if(it.img){const im=document.createElement('img');im.src=it.img;im.alt='';box.appendChild(im)}else{const hd=document.createElement('div');hd.className='sheet-holder';hd.innerHTML=it.html();box.appendChild(hd);requestAnimationFrame(()=>fitSheet(hd,hd.firstElementChild,Math.min(794,box.clientWidth-16)))}
+ box.scrollTop=0}
+function openLB(k,i){lbSpec=null;const ps=pagesOf(k);if(!ps.length||i<0)return;lbK=k;lbI=i;showLB();$('#lb').hidden=false;$('#lb-x').focus()}
+function showLB(){const ps=pagesOf(lbK);const p=ps[lbI];const box=$('.lb-img');if(!$('#lb-img')){box.innerHTML='<img id="lb-img" alt="">'}$('#lb-img').src=p.src;$('#lb-img').alt=`${D[lbK].ref} ${p.lab}`;$('#lb-cap').textContent=`${D[lbK].ref} · ${p.grp||''} ${p.lab} (${lbI+1}/${ps.length})`;$('#lb-prev').disabled=lbI===0;$('#lb-next').disabled=lbI===ps.length-1;$('.lb-img').scrollTop=0}
+$('#lb-prev').onclick=()=>{if(lbSpec){if(lbSpec.i>0){lbSpec.i--;showSpec()}return}if(lbI>0){lbI--;showLB()}};$('#lb-next').onclick=()=>{if(lbSpec){if(lbSpec.i<SPECS[lbSpec.key].items.length-1){lbSpec.i++;showSpec()}return}if(lbI<pagesOf(lbK).length-1){lbI++;showLB()}};
+$('#lb-x').onclick=()=>{$('#lb').hidden=true};
+document.addEventListener('keydown',e=>{if($('#lb').hidden)return;if(e.key==='Escape')$('#lb').hidden=true;if(e.key==='ArrowLeft')$('#lb-prev').click();if(e.key==='ArrowRight')$('#lb-next').click()});
+
+// ---------- tabs ----------
+$('#tab-q').onclick=()=>{view='q';$('#tab-q').setAttribute('aria-pressed','true');$('#tab-r').setAttribute('aria-pressed','false');render()};
+$('#tab-r').onclick=()=>{view='r';$('#tab-r').setAttribute('aria-pressed','true');$('#tab-q').setAttribute('aria-pressed','false');render()};
+
+// ---------- boot ----------
+let CODE=null;try{CODE=new URLSearchParams(location.search).get('k')}catch(e){}
+try{if(CODE)localStorage.setItem('dq_code',CODE);else CODE=localStorage.getItem('dq_code')}catch(e){}
+let loaded=false;
+async function refresh(){const d=await rpc('template_survey_get',{p_code:CODE});everyone=d.responses||{};
+  if(!loaded){loaded=true;me=d.me;db=true;answers=clone((everyone[me]&&everyone[me].answers)||{});renderWho();render();return}
+  if(view==='r')render();else progress()}
+(async()=>{
+  renderWho();
+  if(!CODE){$('#main').innerHTML='<div class="gate"><h2>Use your own link</h2><p class="empty">This questionnaire opens from the personal link Lewis sent you. Open that link and your answers will save under your name.</p></div>';$('#status').textContent='No personal link found';return}
+  $('#status').textContent='Loading…';
+  try{await refresh()}catch(e){$('#main').innerHTML='<div class="gate"><h2>This link is not working</h2><p class="empty">Check you opened the full link Lewis sent you, or ask him for a new one.</p></div>';$('#status').textContent='Link not recognised';return}
+  setInterval(()=>{if(!saveT)refresh().catch(()=>{})},20000);
+})();
+</script>
+
+</body></html>
