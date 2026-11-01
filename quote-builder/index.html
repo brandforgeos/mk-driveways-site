@@ -120,9 +120,10 @@ async function start() {
 }
 function route() {
   clearInterval(timer)
+  if (qs.get('check')) return costing(null, qs.get('check'))
+  if (qs.get('costing')) return costing(qs.get('costing'))
   if (qs.get('b')) return showBrief(qs.get('b'))
   if (qs.get('settings')) return settings()
-  if (qs.get('costing')) return costing(qs.get('costing'))
   if (qs.get('new') || qs.get('job')) return newBrief()
   list()
 }
@@ -344,17 +345,31 @@ function optTotals(o) {
 }
 const clone = (x) => JSON.parse(JSON.stringify(x))
 
-async function costing(quoteId) {
-  const [{ data: c, error }, { data: q }, { data: vers }] = await Promise.all([
-    sb.from('quote_costings').select('*').eq('quote_id', quoteId).maybeSingle(),
-    sb.from('quotes').select('id, ref, revision, status, qb_hold, qb_signed_off_at, job_id').eq('id', quoteId).maybeSingle(),
-    sb.from('quote_costing_versions').select('version, saved_by, note, saved_at').eq('quote_id', quoteId).order('version', { ascending: false }),
-  ])
-  if (error || !c) { app.innerHTML = `<div class="card"><h2>No price build-up yet</h2><p class="muted">Claude adds it when it files the quote.</p><a class="btn ghost" href="?">Back</a></div>`; return }
-  await sb.rpc('qc_open', { p_quote: quoteId })
+async function costing(quoteId, checkMsg = null) {
+  // checkMsg: Claude's price-check message (before the quote exists) — the same editor, with Approve / Send changes
+  let c, q, vers = [], open = false
+  if (checkMsg) {
+    const [{ data: m }, { data: later }] = await Promise.all([
+      sb.from('quote_brief_messages').select('id, brief_id, costing, created_at, brief:quote_briefs(id, status, job:jobs(ref))').eq('id', checkMsg).maybeSingle(),
+      sb.from('quote_brief_messages').select('id').eq('brief_id', qs.get('b')).gt('id', checkMsg).limit(1),
+    ])
+    if (!m?.costing) { app.innerHTML = `<div class="card"><h2>Price check not found</h2><a class="btn ghost" href="?">Back</a></div>`; return }
+    c = { data: m.costing, version: null, updated_at: m.created_at, brief_id: m.brief_id }
+    q = { ref: m.brief?.job?.ref || 'New job', revision: '', status: 'draft' }
+    open = m.brief?.status === 'with_you' && !(later ?? []).length
+  } else {
+    const r = await Promise.all([
+      sb.from('quote_costings').select('*').eq('quote_id', quoteId).maybeSingle(),
+      sb.from('quotes').select('id, ref, revision, status, qb_hold, qb_signed_off_at, job_id').eq('id', quoteId).maybeSingle(),
+      sb.from('quote_costing_versions').select('version, saved_by, note, saved_at').eq('quote_id', quoteId).order('version', { ascending: false }),
+    ])
+    c = r[0].data; q = r[1].data; vers = r[2].data ?? []
+    if (r[0].error || !c) { app.innerHTML = `<div class="card"><h2>No price build-up yet</h2><p class="muted">Claude adds it when it files the quote.</p><a class="btn ghost" href="?">Back</a></div>`; return }
+    await sb.rpc('qc_open', { p_quote: quoteId })
+  }
   const orig = clone(c.data), d = clone(c.data)
   const brief = c.brief_id
-  const editable = q?.status === 'draft'
+  const editable = checkMsg ? open : q?.status === 'draft'
   const names = {}
   const ids = [...new Set((vers ?? []).map((v) => v.saved_by).filter(Boolean))]
   if (ids.length) { const { data: ps } = await sb.from('profiles').select('id, full_name').in('id', ids); for (const p of ps ?? []) names[p.id] = p.full_name }
@@ -362,15 +377,21 @@ async function costing(quoteId) {
   function render() {
     const opts = d.options ?? []
     app.innerHTML = `<div class="card noprint-pad"><div class="muted">Internal — never shown to the customer</div>
-      <h2 style="margin:4px 0">Price build-up · ${esc(q?.ref)} rev ${esc(q?.revision)}</h2>
-      <div class="muted">Version ${c.version}${c.updated_at ? ' · ' + when(c.updated_at) : ''}${d.margin_rule ? ' · ' + esc(d.margin_rule) : ''}</div>
+      <h2 style="margin:4px 0">${checkMsg ? `Price check · ${esc(q?.ref)}` : `Price build-up · ${esc(q?.ref)} rev ${esc(q?.revision)}`}</h2>
+      <div class="muted">${checkMsg ? 'From Claude' : 'Version ' + c.version}${c.updated_at ? ' · ' + when(c.updated_at) : ''}${d.margin_rule ? ' · ' + esc(d.margin_rule) : ''}</div>
+      ${checkMsg ? `<p class="muted" style="margin:8px 0 0">Tap <b>Edit / comment</b> on any line to change it. Totals and margin update as you go. Then approve, or send your changes back.</p>` : ''}
       <div class="acts noprint"><a class="btn ghost small" href="?b=${brief}" id="cb">Back to the brief</a><button class="btn ghost small" id="print">Print / save PDF</button></div></div>
       ${opts.map((o, oi) => optCard(o, oi)).join('')}
       ${d.programme || d.gang_days ? `<div class="card"><h2>Programme</h2>${d.gang_days ? `<p><b>${esc(d.gang_days)} gang days</b></p>` : ''}${d.programme ? `<p style="white-space:pre-wrap">${esc(d.programme)}</p>` : ''}</div>` : ''}
       ${(d.risks ?? []).length || (d.assumptions ?? []).length ? `<div class="card">${(d.risks ?? []).length ? `<h2>Risks priced in</h2><ul>${d.risks.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}${(d.assumptions ?? []).length ? `<h2 style="margin-top:10px">Assumptions</h2><ul>${d.assumptions.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}</div>` : ''}
-      ${editable ? `<div class="card noprint"><label for="gen" style="margin-top:0">General comment for Claude <span class="muted">(optional)</span></label><textarea id="gen" style="min-height:70px">${esc(d._comment || '')}</textarea>
+      ${editable && checkMsg ? `<div class="card noprint"><label for="gen" style="margin-top:0">Comment for Claude <span class="muted">(optional)</span></label><textarea id="gen" style="min-height:70px">${esc(d._comment || '')}</textarea>
+        <button class="btn full" id="approve" style="background:var(--ok)">✓ Approve these prices</button>
+        <button class="btn ghost full" id="send">Send changes back to Claude</button><div class="err" id="err"></div>
+        <p class="muted"><b>Approve</b>: Claude builds the quote at exactly these prices (including any you've changed). <b>Send changes back</b>: Claude re-checks your edits and comments and sends a new price check.</p></div>`
+      : editable ? `<div class="card noprint"><label for="gen" style="margin-top:0">General comment for Claude <span class="muted">(optional)</span></label><textarea id="gen" style="min-height:70px">${esc(d._comment || '')}</textarea>
         <button class="btn full" id="send">Save and send changes to Claude</button><button class="btn ghost full" id="save">Save without sending</button><div class="err" id="err"></div>
-        <p class="muted">Sending posts your changes and comments on the brief; Claude builds the next revision from them. Nothing goes to the customer.</p></div>` : `<div class="card muted">This quote is ${esc(q?.status)}, so the build-up is read-only.</div>`}
+        <p class="muted">Sending posts your changes and comments on the brief; Claude builds the next revision from them. Nothing goes to the customer.</p></div>`
+      : `<div class="card muted">${checkMsg ? 'This price check has already been answered — it’s read-only.' : `This quote is ${esc(q?.status)}, so the build-up is read-only.`}</div>`}
       ${(vers ?? []).length ? `<div class="card noprint"><h2>History</h2>${vers.map((v) => `<div class="muted">v${v.version} · ${esc(v.saved_by ? (names[v.saved_by] || 'A director') : 'Claude')} · ${when(v.saved_at)}${v.note ? ' · ' + esc(v.note) : ''}</div>`).join('')}</div>` : ''}`
     wire()
   }
@@ -437,6 +458,22 @@ async function costing(quoteId) {
       keepOpen(render)
     })
     const gen = document.getElementById('gen'); if (gen) gen.oninput = () => { d._comment = gen.value }
+    const reply = async (approve) => {
+      const err = document.getElementById('err'); err.textContent = ''
+      const summary = diffSummary(), comment = (d._comment || '').trim()
+      if (!approve && !summary && !comment) { err.textContent = 'Nothing has changed — edit a line or add a comment, or tap Approve.'; return }
+      if (approve && !confirm(`Approve at ${(d.options ?? []).map((o) => `${o.name}: ${gbp(o.price)}`).join(', ')}?\n\nClaude will build the quote at exactly these prices. It stays held until you sign it off.`)) return
+      const toSave = clone(d); delete toSave._comment
+      ;(toSave.options ?? []).forEach((o) => { o.lines = (o.lines ?? []).filter((l) => !l.removed) })
+      const body = approve
+        ? `Approved price build-up${summary ? ' — with my changes:\n' + summary : ' as sent.'}${comment ? `\n\nComment: ${comment}` : ''}`
+        : `Price build-up changes (price check) — please re-check and send a new price check:\n${summary || '(no figure changes)'}${comment ? `\n\nComment: ${comment}` : ''}`
+      const { error } = await sb.from('quote_brief_messages').insert({ brief_id: brief, role: 'lewis', body, costing: toSave })
+      if (error) { err.textContent = error.message; return }
+      go({ b: brief })
+    }
+    const ap = document.getElementById('approve')
+    if (ap) { ap.onclick = () => reply(true); document.getElementById('send').onclick = () => reply(false); return }
     const save = async (send) => {
       const err = document.getElementById('err'); err.textContent = ''
       const summary = diffSummary()
@@ -575,7 +612,10 @@ async function showBrief(id) {
   const byMsg = new Map(); for (const f of files ?? []) { const k = f.message_id ?? 0; byMsg.set(k, [...(byMsg.get(k) ?? []), f]) }
   const lastQ = [...(msgs ?? [])].reverse().find((m) => m.role === 'claude' && m.questions?.length)
   const answered = lastQ && (msgs ?? []).some((m) => m.role === 'lewis' && m.id > lastQ.id)
-  const open = b.status === 'with_you' && lastQ && !answered
+  const lastC = [...(msgs ?? [])].reverse().find((m) => m.role === 'claude' && m.costing)
+  const checkOpen = b.status === 'with_you' && lastC && !(msgs ?? []).some((m) => m.id > lastC.id)
+  const open = b.status === 'with_you' && lastQ && !answered && !(lastC && lastC.id > lastQ.id)
+  const costSummary = (cd) => `<div class="csum">${(cd.options ?? []).map((o) => { const t = optTotals(o); return `<div><b>${gbp(t.price)}</b><span>${esc(o.name)}${o.optional ? ' (extra)' : ''} · cost ${gbp(t.cost)} · ${t.margin ?? '—'}%</span></div>` }).join('')}</div>`
 
   const ansText = (m) => {
     if (!m.answers) return ''
@@ -588,6 +628,9 @@ async function showBrief(id) {
   const thread = (msgs ?? []).map((m) => {
     if (m.role === 'claude' && m.questions?.length && m === lastQ && open) return `<div class="msg claude"><div class="who">Claude · ${when(m.created_at)}</div>${m.body ? `<div class="b">${esc(m.body)}</div>` : ''}</div>`
     const qsHtml = m.role === 'claude' && m.questions?.length ? `<div style="margin-top:8px">${m.questions.map((q, i) => `<div>${i + 1}. ${esc(q.q)}</div>`).join('')}</div>` : ''
+    if (m.costing) return `<div class="msg ${m.role}"><div class="who">${m.role === 'claude' ? 'Claude' : 'You'} · ${when(m.created_at)}</div>
+      <div class="b">${esc(m.role === 'claude' ? (m.body || 'Price check') : m.body)}${m.role === 'claude' ? costSummary(m.costing) : ''}
+      <div style="margin-top:8px"><a href="#" data-check="${m.id}" style="color:${m.role === 'claude' ? 'var(--accent)' : '#9CC3FF'};font-weight:600">${m.role === 'claude' ? (m === lastC && checkOpen ? 'Open the price check →' : 'View this price check') : 'View the build-up you sent'}</a></div></div></div>`
     const pics = (byMsg.get(m.id) ?? []).map((f) => `<figure class="tf" data-f="${f.id}"><img src="data:${f.mime || 'image/jpeg'};base64,${f.data_b64}">${f.note ? `<figcaption>${esc(f.note)}</figcaption>` : ''}</figure>`).join('')
     return `<div class="msg ${m.role}"><div class="who">${m.role === 'claude' ? 'Claude' : 'You'} · ${when(m.created_at)}</div>
       <div class="b">${esc(m.body || (m.answers ? 'My answers:' : ''))}${qsHtml}${ansText(m)}</div>${pics ? `<div class="thumbs">${pics}</div>` : ''}</div>`
@@ -596,7 +639,7 @@ async function showBrief(id) {
   const statusBox = {
     with_claude: `With Claude. ${nextRunText()}`,
     building: 'Claude is building the quote now.',
-    with_you: open ? 'Claude has questions — answer them below.' : 'Waiting for you.',
+    with_you: checkOpen ? 'Price check ready — open it, change any line you want, then approve or send changes back.' : open ? 'Claude has questions — answer them below.' : 'Waiting for you.',
     ready: b.quote?.qb_signed_off_at ? 'Signed off — you can now send it from the quote screen. Want changes? Write them below and Claude will do a new revision.' : 'The draft quote is HELD. Open the PDF, check every page and figure, then tap Sign off. Until a director signs it off it cannot be sent and the customer can’t see it. Want changes? Write them below and Claude will do a new revision.',
     closed: 'Closed.',
   }[b.status]
@@ -630,6 +673,9 @@ async function showBrief(id) {
     ${b.error ? `<div class="status with_you"><b>Problem on the last run:</b> ${esc(b.error)}<br><span class="muted">Reply below and Claude picks it up on the next run.</span></div>` : ''}
     <div class="status ${b.status}">${statusBox}</div>
     ${quoteCard}
+    ${checkOpen ? `<div class="card"><h2>Price check</h2>${costSummary(lastC.costing)}
+      <button class="btn full" data-check="${lastC.id}">Open the price check</button>
+      <p class="muted" style="margin-bottom:0">Every cost line, labour days and source, laid out line by line. Edit or comment on any line, then approve.</p></div>` : ''}
     <div id="thread">${thread}</div>
     ${open ? `<div class="card" id="qa"><h2>Claude's questions</h2>${lastQ.questions.map((q, i) => `
       <div class="q" data-q="${esc(q.id)}" data-multi="${q.multi ? 1 : 0}"><div class="qt"><span class="qn">${i + 1}.</span>${esc(q.q)}${q.multi ? ' <span class="muted">(pick any)</span>' : ''}</div>
@@ -641,6 +687,7 @@ async function showBrief(id) {
     : b.status !== 'closed' ? `<div class="card"><label for="more" style="margin-top:0">${b.status === 'ready' ? 'Changes for a new revision' : 'Add more detail'}</label><textarea id="more" style="min-height:80px"></textarea>${ph.html}
       <button class="btn full" id="send2">Send to Claude</button><div class="err" id="err"></div></div>` : ''}`
   ph.wire()
+  app.querySelectorAll('[data-check]').forEach((el) => el.onclick = (e) => { e.preventDefault(); go({ check: el.dataset.check, b: id }) })
   app.querySelectorAll('[data-f]').forEach((el) => el.onclick = () => viewPhoto((files ?? []).find((f) => f.id === el.dataset.f)))
   document.getElementById('back').onclick = (e) => { e.preventDefault(); go({}) }
   const cbt = document.getElementById('costbtn'); if (cbt) cbt.onclick = () => go({ costing: b.quote.id })

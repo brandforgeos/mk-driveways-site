@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Check a price build-up against the quote spec before filing it.
 
-    python3 costing_check.py costing.json spec.json
+    python3 costing_check.py costing.json [spec.json]
+
+Without a spec (the price-check stage) only the lines are checked; with a spec (step 9) prices must match the quote too.
 
 Same maths as the hub (public.qc_totals): line cost = (men x days, or qty) x rate, +20% where "vat": true (rate is ex-VAT
 and the VAT can't be reclaimed). Fails if any option/extra price differs from the spec, if a line has no source, or a
@@ -14,12 +16,17 @@ def line_cost(l):
     return round(q * float(l.get('rate') or 0) * (1.2 if l.get('vat') else 1), 2)
 
 def main(cpath, spath):
-    c, s = json.load(open(cpath)), json.load(open(spath))
+    c = json.load(open(cpath))
     probs, out = [], []
-    sp = sorted((round(float(o['total']), 2), bool(o.get('optional'))) for o in s['options'])
-    cp = sorted((round(float(o['price']), 2), bool(o.get('optional'))) for o in c['options'])
-    if sp != cp:
-        probs.append(f'Build-up prices {cp} != quote prices {sp}')
+    if spath:
+        s = json.load(open(spath))
+        sp = sorted((round(float(o['total']), 2), bool(o.get('optional'))) for o in s['options'])
+        cp = sorted((round(float(o['price']), 2), bool(o.get('optional'))) for o in c['options'])
+        if sp != cp:
+            probs.append(f'Build-up prices {cp} != quote prices {sp}')
+    for o in c['options']:
+        if o.get('price') in (None, ''):
+            probs.append(f"{o.get('name')}: no customer price")
     for o in c['options']:
         if not o.get('lines'):
             probs.append(f"{o['name']}: no cost lines")
@@ -40,6 +47,6 @@ def main(cpath, spath):
         raise SystemExit('CHECK FAILED:\n- ' + '\n- '.join(probs))
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    if len(sys.argv) not in (2, 3):
         raise SystemExit(__doc__)
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2] if len(sys.argv) == 3 else None)

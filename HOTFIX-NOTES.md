@@ -64,3 +64,4 @@ Port into the source: a Quote builder route/screen and a job-page action.
   build-up opened by the signer; trigger quotes_qc_budget fills job_financials budgets on acceptance. Page: ?costing=<quote id>
   — grouped lines, sources (Checked / EST / Your rate), live totals and margin, edit + comment, "Save and send changes to
   Claude" (posts the diff on the brief), print. Kit: example-costing.json, costing_check.py, playbook step 9.
+- 2026-11-01: PRICE CHECK IS THE BUILD-UP. quote_brief_messages.costing; public.qb_price_check (run); trigger treats a Claude costing message as 'your turn'. Page: ?check=<msg id>&b=<brief> opens the same line-by-line editor with Approve these prices / Send changes back; the brief shows a Price check card with per-option price, cost and margin. Lewis's reply carries the (edited) build-up in its costing column.

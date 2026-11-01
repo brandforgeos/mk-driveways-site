@@ -62,11 +62,23 @@ movement, staining, tolerances, delivery/offloading) and raise the ones that cha
 Prices: use Lewis's rates from memory. Any material price he hasn't given you must be checked online (WebSearch/WebFetch)
 for his area, including delivery — no unchecked estimates. If you couldn't check one, say so in the price-check question.
 
-The LAST round before building is always a price check: one question whose text sets out the cost build-up line by line
-(materials with unit rates and where each was checked, labour = men × days × rate, skip/plant, irrecoverable VAT on
-materials while not VAT registered, the 20% on cost per the pricing rule in memory) and the proposed customer price for each
-option and extra. Options: "Go ahead at £X", "Round to £Y", one sensible alternative, and other (type a figure). Only
-build once Lewis has approved a price. If a brief is too thin to even ask sensible questions, ask for the basics (sizes, what the customer wants) as questions — never fail it for that.
+The LAST round before building is always a PRICE CHECK — and it is NOT a text question. It is the build-up itself, as
+separate lines Lewis can edit and comment on in the hub. Never write the cost breakdown as prose in a question or message.
+Write `costing.json` (shape: `example-costing.json`; every rule in step 9 applies — one line per cost item, labour as
+men × days × day rate, `source` checked / given / est with `source_note`, the 20% rule as `target_margin_pct`, the
+proposed customer `price` for each option and extra, `gang_days`, `programme`, `risks`, `assumptions`). Check it with
+`python3 ~/hub-kit/quote-builder-kit/costing_check.py costing.json` (no spec yet at this stage), then send it:
+```sql
+select qb_price_check('<brief>', '<1–3 short sentences: what changed since last round, anything to look at>', '<costing.json>'::jsonb);
+```
+Lewis then either APPROVES (his message starts "Approved price build-up" and carries the approved build-up in its
+`costing` column — possibly with his edits) or SENDS CHANGES ("Price build-up changes (price check)", also with `costing`).
+- Approved: build at exactly the prices in that approved `costing` (read it from his message:
+  `select costing from quote_brief_messages where brief_id = '<brief>' and role = 'lewis' and costing is not null order by id desc limit 1`).
+  Use the same costing (lines marked removed are already taken out) for step 9.
+- Changes: re-check his edits and comments (rates, days, anything that no longer adds up), re-price, and send a new
+  qb_price_check. Only ask a written question if a comment is genuinely unclear.
+Only build once Lewis has approved a price check.
 
 Send questions:
 ```sql
