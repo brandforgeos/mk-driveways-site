@@ -233,7 +233,7 @@ def build_html(spec):
         pair = (f'<div class="ba {"side" if portrait else ""}"><figure><img src="file://{os.path.abspath(v["before"])}"><figcaption>Before</figcaption></figure>'
                 f'<figure><img src="file://{os.path.abspath(v["after"])}"><figcaption>After</figcaption></figure></div>')
         page(f'''{head("Your Home, Finished", v["title"])}{pair}
-          <p class="small">The after image is an illustration of the finished work, created from a photograph of your property to show the design. The colours, materials, levels and details will be exactly as set out in this proposal.</p>''')
+          <p class="small">Image for illustration purposes only. The after image was created from a photograph of your property to show the design; the colours, materials, levels and details of the work are as set out in this proposal.</p>''')
 
     # 3 specification
     stages = spec.get('spec_stages', [])
@@ -245,7 +245,7 @@ def build_html(spec):
     bus = spec.get('buildups', [])
     if bus:
         blocks = ''.join(f'<div class="panel diag"><h3>{e(b["name"])}</h3>{buildup_svg(b, B)}{note(b)}</div>' for b in bus)
-        page(f'{head("Construction Detail", "Build-up")}{blocks}<p class="small">Diagrams are illustrative and not to scale. Colours identify each layer and are consistent across this document.</p>')
+        page(f'{head("Construction Detail", "Build-up")}{blocks}<p class="small">Diagrams are for illustration purposes only and not to scale. Colours identify each layer and are consistent across this document.</p>')
 
     # 5 investment
     def opt_block(o, extra=False):
@@ -270,6 +270,7 @@ def build_html(spec):
         ('Unforeseen conditions', 'Our price allows for the ground conditions we could reasonably expect from our survey. Unrecorded services, or ground that proves unsuitable at formation, are dealt with as a variation agreed with you before any extra work is done.'),
         ('Variations', 'Any change you ask for, or that becomes necessary, is priced and agreed in writing before the work is carried out.'),
         ('Weather', 'Some stages cannot be carried out in heavy rain or frost. Where weather affects the programme we will agree revised dates with you.'),
+        ('Images', 'All images, visuals and diagrams in this proposal are for illustration purposes only. The work is carried out as described in the written specification and price.'),
         ('Validity', f'This proposal is valid until {fmt_date(spec["valid_until"])}. Material prices may need reviewing after that date.'),
     ] + [(t['title'], t['text']) for t in spec.get('terms_extra', [])]
     page(f'''{head("The Detail", "What's Included")}

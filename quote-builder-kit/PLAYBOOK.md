@@ -107,6 +107,9 @@ That puts the brief back with Lewis and notifies his phone. Escape single quotes
    - No bank details, no VAT wording (prices are all-inclusive), no brand names except Vuba (then `guarantee.vuba: true`),
      never who carries out the work or that the same team does the whole job, no measurements you weren't given.
    - `included` always has "Removal of rock and buried obstructions"; unrecorded services stay in `not_included`.
+   - Every quote states that images are for illustration purposes only (Lewis's standing rule, 1 Nov 2026). render.py
+     prints it as the "Images" term on every quote and under every before & after and build-up diagram — never remove
+     or reword it, and never write anything that promises the work will look exactly like a picture.
    - Garage conversions: state exactly which faces are skimmed (see memory rule). Tarmac: don't offer it unless asked.
    - `choices` = things the customer picks on acceptance (colours etc.).
    - `before_after`: one entry per approved visual, in the order of visuals.json —
