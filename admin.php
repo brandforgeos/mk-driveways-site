@@ -624,6 +624,15 @@ elseif ($v === 'lead'):
   <?php if (!empty($l['archived'])): ?><div class="box small" style="border-left:5px solid var(--muted)">Archived <?= h(adm_when($l['archived'])) ?> by <?= h(ucfirst((string)($l['archived_by'] ?? ''))) ?>. <a href="<?= h($A . '?v=archive') ?>">Back to Archive</a></div><?php endif; ?>
   <p><?= adm_badge($STATUS, $l['status']) ?> <span class="small">Ref <?= h($l['ref']) ?> · <?= ($l['source'] ?? '') === 'phone' ? 'added from a phone call' : 'priced online' ?> <?= h(adm_when($l['received'])) ?><?= $price !== null ? ' · £' . (int)$price : '' ?></span></p>
 
+  <?php if (empty($l['phone']) && !in_array($l['status'], ['booked', 'dispatched', 'collected', 'lost'], true)):
+    $mailBody = ($first ? "Hi $first,\n\n" : "Hi,\n\n") . "Thanks for checking your scrap price for {$l['reg']} on our website" . ($price !== null ? " (£" . (int)$price . ")" : '') . ".\n\nIf you'd like to go ahead, just reply with your phone number and the address where the car is, and I'll book in your free collection. We pay by bank transfer when we collect.\n\nGeorge\n{$S['name']}\n{$S['phone']}"; ?>
+  <div class="box" style="border-left:5px solid #e0a100;background:#fff8e6">
+    <b><?= !empty($l['email']) ? 'Customer only asked for the price by email — no phone number yet.' : 'Customer only checked a price — no contact details.' ?></b>
+    <p class="small" style="margin:6px 0 0"><?= !empty($l['email']) ? 'They haven\'t accepted. Email them to ask for their phone number and address, then book it in below.' : 'Nothing to do unless they come back and accept.' ?><?= $l['valid_until'] < date('Y-m-d') ? ' Their price ran out on ' . h(date('j M', strtotime($l['valid_until']))) . '.' : ' Price held until ' . h(date('j M', strtotime($l['valid_until']))) . '.' ?></p>
+    <?php if (!empty($l['email'])): ?><a class="btn go" style="margin-top:10px" href="mailto:<?= h($l['email']) ?>?subject=<?= rawurlencode('Your scrap car ' . $l['reg'] . ' — ' . $S['name']) ?>&amp;body=<?= rawurlencode($mailBody) ?>">Email <?= h($l['email']) ?></a><?php endif; ?>
+  </div>
+  <?php endif; ?>
+
   <div class="steps">
     <div class="on"><b>Priced</b><?= h(adm_when($l['received'])) ?></div>
     <div class="<?= $calls ? 'on' : '' ?>"><b>Called</b><?= $calls ? count($calls) . ' · ' . $by(end($calls)) : 'Not yet' ?></div>
