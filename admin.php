@@ -242,9 +242,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $l = load_lead($T('ref', 20)); if (!$l) adm_go($back, 'Lead not found.', true);
     $already = $l['status'] === 'collected';
     $paid = $T('paid', 10); $l['paid'] = $paid === '' ? null : max(0, (int)round((float)$paid)); $l['pay_ref'] = $T('pay_ref', 100);
+    if (($y = $T('yard_paid', 10)) !== '') $l['yard_paid'] = max(0, (int)round((float)$y));
     $l['status'] = 'collected'; $l['collected_at'] = $l['collected_at'] ?? date('c'); $l['collected_by'] = $l['collected_by'] ?? (isset($OPS[$l['op'] ?? '']) ? 'Driver: ' . $OPS[$l['op']]['name'] : ucfirst($me));
     lead_log($l, $me, ($already ? 'Payment recorded' : 'Marked collected') . ($l['paid'] !== null ? ", paid £{$l['paid']}" : '') . ($l['pay_ref'] !== '' ? " (ref {$l['pay_ref']})" : '') . ($T('note', 500) !== '' ? '. ' . $T('note', 500) : ''), 'collected');
     save_lead($l); adm_go($back, $already ? 'Payment saved.' : 'Marked as collected.');
+  }
+
+  /* what the scrap yard paid George for the car: gives the real yard rate per tonne of kerb weight and his margin */
+  if ($act === 'yard') {
+    $l = load_lead($T('ref', 20)); if (!$l) adm_go($back, 'Lead not found.', true);
+    $y = $T('yard_paid', 10); $l['yard_paid'] = $y === '' ? null : max(0, (int)round((float)$y));
+    lead_log($l, $me, $l['yard_paid'] === null ? 'Yard payment cleared' : "Yard paid £{$l['yard_paid']}", 'note');
+    save_lead($l); adm_go($back, $l['yard_paid'] === null ? 'Yard payment cleared.' : 'Yard payment saved.');
   }
 
   /* a booking taken over the phone (customer never used the website) */
@@ -395,9 +404,9 @@ if ($me && $v === 'export') {
   header('Content-Type: text/csv; charset=utf-8'); header('Content-Disposition: attachment; filename="scrap-car-leads-' . date('Y-m-d') . '.csv"');
   $o = fopen('php://output', 'w'); fwrite($o, "\xEF\xBB\xBF");
   $OPS = operatives($SET);
-  fputcsv($o, ['Ref', 'Received', 'Status', 'Reg', 'Vehicle', 'Postcode', 'Miles', 'Weight kg', 'Weight source', 'Price', 'Agreed price', 'Collection date', 'Collection time', 'Address', 'Driver', 'Booked by', 'Booked at', 'Collected by', 'Collected at', 'Paid', 'Payment ref', 'Name', 'Phone', 'Email', 'Reminders OK', 'Customer note', 'Driver notes', 'Admin notes', 'Archived']);
+  fputcsv($o, ['Ref', 'Received', 'Status', 'Reg', 'Vehicle', 'Postcode', 'Miles', 'Weight kg', 'Weight source', 'Price', 'Agreed price', 'Collection date', 'Collection time', 'Address', 'Driver', 'Booked by', 'Booked at', 'Collected by', 'Collected at', 'Paid', 'Payment ref', 'Name', 'Phone', 'Email', 'Reminders OK', 'Customer note', 'Driver notes', 'Admin notes', 'Archived', 'Yard paid', 'Margin']);
   $cell = fn($x) => is_string($x) && preg_match('/^[=@\t\r]|^[+\-](?![\d\s()]+$)/', $x) ? "'" . $x : $x;   // customer-typed text can't run as a spreadsheet formula
-  foreach (array_merge(adm_leads(), adm_leads('archive')) as $l) fputcsv($o, array_map($cell, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', !empty($l['collect_on']) ? slot_label($l['collect_slot'] ?? 'any') : '', lead_address($l), $OPS[$l['op'] ?? '']['name'] ?? '', $l['booked_by'] ?? '', $l['booked_at'] ?? '', $l['collected_by'] ?? '', $l['collected_at'] ?? '', $l['paid'] ?? '', $l['pay_ref'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['driver_note'] ?? '', $l['admin_note'] ?? '', $l['archived'] ?? '']));
+  foreach (array_merge(adm_leads(), adm_leads('archive')) as $l) fputcsv($o, array_map($cell, [$l['ref'], $l['received'], $l['status'], $l['reg'], vehicle_name($l['vehicle'] ?? null), $l['postcode'], $l['miles'], $l['weight_kg'], $l['weight_source'], $l['price'], $l['final_price'] ?? '', $l['collect_on'] ?? '', !empty($l['collect_on']) ? slot_label($l['collect_slot'] ?? 'any') : '', lead_address($l), $OPS[$l['op'] ?? '']['name'] ?? '', $l['booked_by'] ?? '', $l['booked_at'] ?? '', $l['collected_by'] ?? '', $l['collected_at'] ?? '', $l['paid'] ?? '', $l['pay_ref'] ?? '', $l['name'] ?? '', $l['phone'] ?? '', $l['email'] ?? '', !empty($l['reminders_ok']) ? 'yes' : 'no', $l['collection_note'] ?? '', $l['driver_note'] ?? '', $l['admin_note'] ?? '', $l['archived'] ?? '', $l['yard_paid'] ?? '', isset($l['yard_paid']) && $l['yard_paid'] !== null && $l['status'] === 'collected' ? (int)$l['yard_paid'] - (int)($l['paid'] ?? $l['final_price'] ?? $l['price'] ?? 0) : '']));
   exit;
 }
 
@@ -710,6 +719,7 @@ elseif ($v === 'lead'):
       <label>Amount paid (£)<input type="number" name="paid" min="0" step="1" inputmode="numeric" value="<?= $price !== null ? (int)$price : '' ?>"></label>
       <label>Bank transfer reference<input name="pay_ref" placeholder="Optional"></label>
       <label>Note<input name="note" placeholder="Optional"></label>
+      <label>Yard paid you (£)<input type="number" name="yard_paid" min="0" step="1" inputmode="numeric" placeholder="If known"><span class="hint">What the scrap yard pays you for this car.</span></label>
     </div>
     <button class="btn go" type="submit" style="margin-top:12px">Mark as collected</button>
   </form>
@@ -717,6 +727,11 @@ elseif ($v === 'lead'):
   <div class="box"><h2 style="margin-top:0">Collected</h2><dl class="kv">
     <dt>Collected</dt><dd><?= h((string)($l['collected_by'] ?? '')) ?><?= !empty($l['collected_at']) ? ', ' . h(date('D j M Y, H:i', strtotime($l['collected_at']))) : '' ?></dd>
     <dt>Paid</dt><dd><?= isset($l['paid']) && $l['paid'] !== null ? '£' . (int)$l['paid'] : '–' ?><?= !empty($l['pay_ref']) ? ' (ref ' . h($l['pay_ref']) . ')' : '' ?></dd>
+    <?php $custPaid = $l['paid'] ?? $l['final_price'] ?? $l['price']; $kg = (int)($l['weight_kg'] ?? 0);
+      if (isset($l['yard_paid']) && $l['yard_paid'] !== null): $mg = (int)$l['yard_paid'] - (int)$custPaid; ?>
+    <dt>Yard paid</dt><dd>£<?= (int)$l['yard_paid'] ?><?= $kg ? ' <span class="small">(£' . number_format($l['yard_paid'] / $kg * 1000) . ' per tonne of ' . number_format($kg) . ' kg kerb weight)</span>' : '' ?></dd>
+    <dt>Your margin</dt><dd style="font-weight:700;color:<?= $mg < 0 ? 'var(--red)' : '#1d7a3a' ?>"><?= $mg < 0 ? '−' : '' ?>£<?= abs($mg) ?></dd>
+    <?php endif; ?>
     <?php if (!empty($l['driver_report'])): ?><dt>Driver's note</dt><dd><?= h($l['driver_report']) ?></dd><?php endif; ?>
     <?php if ($ck = $l['collection_check'] ?? null): $yn = fn($b) => $b ? '<span style="color:#1d7a3a">Yes</span>' : '<span style="color:var(--red)">No</span>'; ?>
     <dt>Complete</dt><dd><?= $yn($ck['complete']) ?><?= !$ck['complete'] ? ': ' . h($ck['missing']) : '' ?></dd>
@@ -741,6 +756,11 @@ elseif ($v === 'lead'):
     <button class="btn go" type="submit" style="margin-top:10px">Save payment</button>
   </form>
   <?php endif; ?>
+  <form method="post" action="<?= h($A) ?>" style="margin-top:14px;border-top:1px solid var(--line);padding-top:12px"><?= $hidden ?><input type="hidden" name="act" value="yard"><input type="hidden" name="ref" value="<?= h($l['ref']) ?>">
+    <h2 style="margin-top:0;font-size:17px">What did the yard pay you?</h2>
+    <div class="grid"><label>Yard paid (£)<input type="number" name="yard_paid" min="0" step="1" inputmode="numeric" value="<?= isset($l['yard_paid']) && $l['yard_paid'] !== null ? (int)$l['yard_paid'] : '' ?>"><span class="hint">Shows your real margin, and the Stats page uses it to work out the yard's true rate per tonne.</span></label></div>
+    <button class="btn ghost" type="submit" style="margin-top:10px"><?= isset($l['yard_paid']) && $l['yard_paid'] !== null ? 'Update' : 'Save' ?></button>
+  </form>
   </div>
   <?php endif; ?>
 
@@ -958,6 +978,9 @@ elseif ($v === 'stats'):
   $lost = array_filter($all, fn($l) => $l['status'] === 'lost' && $in($lostAt($l)));
   $paid = array_sum(array_map(fn($l) => (int)($l['paid'] ?? $l['final_price'] ?? $l['price'] ?? 0), $coll));
   $pct = fn($a, $b) => $b ? round($a / $b * 100) . '%' : '–';
+  $cp = fn($l) => (int)($l['paid'] ?? $l['final_price'] ?? $l['price'] ?? 0);
+  $yd = array_filter($coll, fn($l) => isset($l['yard_paid']) && $l['yard_paid'] !== null);
+  $ydYard = array_sum(array_map(fn($l) => (int)$l['yard_paid'], $yd)); $ydPaid = array_sum(array_map($cp, $yd)); $ydKg = array_sum(array_map(fn($l) => (int)($l['weight_kg'] ?? 0), $yd));
   /* breakdown: by day for up to 31 days, otherwise by week (Mon start) */
   $span = (int)round((strtotime("$to 12:00") - strtotime("$from 12:00")) / 86400) + 1; $byWeek = $span > 31;
   $bucket = fn($d) => $byWeek ? date('Y-m-d', strtotime('monday this week', strtotime($d))) : $d;
@@ -987,6 +1010,18 @@ elseif ($v === 'stats'):
     <div class="stat"><b>£<?= number_format($paid) ?></b><span>Paid for collected cars<?= $coll ? '<br>avg £' . number_format($paid / count($coll)) : '' ?></span></div>
   </div>
   <div class="box">
+    <h2 style="margin-top:0">Margin (cars with a yard figure)</h2>
+    <?php if (!$yd): ?><p class="small" style="margin:0">No yard figures yet for these dates. On each collected job, fill in <b>What did the yard pay you?</b> and this shows your real margin and the yard's true rate per tonne.</p>
+    <?php else: $mg = $ydYard - $ydPaid; ?>
+    <div class="stats" style="margin:0">
+      <div class="stat"><b><?= $mg < 0 ? '−' : '' ?>£<?= number_format(abs($mg)) ?></b><span>Margin on <?= count($yd) ?> car<?= count($yd) === 1 ? '' : 's' ?><br>avg £<?= number_format($mg / count($yd)) ?> a car</span></div>
+      <div class="stat"><b>£<?= $ydKg ? number_format($ydYard / $ydKg * 1000) : '–' ?></b><span>Yard's real rate<br>per tonne of kerb weight</span></div>
+      <div class="stat"><b>£<?= $ydKg ? number_format($ydPaid / $ydKg * 1000) : '–' ?></b><span>You paid customers<br>per tonne of kerb weight</span></div>
+    </div>
+    <p class="small" style="margin-bottom:0"><?= count($yd) ?> of <?= count($coll) ?> collected cars have a yard figure. Yard paid £<?= number_format($ydYard) ?>, customers paid £<?= number_format($ydPaid) ?>, <?= number_format($ydKg) ?> kg kerb weight in total.</p>
+    <?php endif; ?>
+  </div>
+  <div class="box">
     <h2 style="margin-top:0">By <?= $byWeek ? 'week' : 'day' ?></h2>
     <table class="ex"><tr><th><?= $byWeek ? 'Week of' : 'Day' ?></th><th>Priced</th><th>Accepted</th><th>Booked</th><th>Collected</th></tr>
     <?php foreach ($rows as $d => $r): ?><tr<?= array_sum($r) ? '' : ' style="color:var(--muted)"' ?>><td><?= h(date($byWeek ? 'j M' : 'D j M', strtotime($d))) ?></td><td><?= $r['p'] ?></td><td><?= $r['a'] ?></td><td><?= $r['b'] ?></td><td><?= $r['c'] ?></td></tr><?php endforeach; ?>
@@ -994,8 +1029,8 @@ elseif ($v === 'stats'):
   </div>
   <?php if ($coll): ?>
   <div class="box"><h2 style="margin-top:0">Collected in these dates</h2>
-    <table><tr><th>Reg</th><th>Collected</th><th class="hide-m">Car</th><th>Paid</th></tr>
-    <?php foreach ($coll as $l): ?><tr><td><a href="<?= h($A . '?v=lead&ref=' . $l['ref']) ?>"><span class="plate"><?= h($l['reg']) ?></span></a></td><td><?= h(date('D j M', strtotime($l['collected_at']))) ?></td><td class="hide-m"><?= h(vehicle_name($l['vehicle'] ?? null)) ?></td><td>£<?= (int)($l['paid'] ?? $l['final_price'] ?? $l['price'] ?? 0) ?></td></tr><?php endforeach; ?></table>
+    <table><tr><th>Reg</th><th>Collected</th><th class="hide-m">Car</th><th>Paid</th><th>Yard</th><th>Margin</th></tr>
+    <?php foreach ($coll as $l): ?><tr><td><a href="<?= h($A . '?v=lead&ref=' . $l['ref']) ?>"><span class="plate"><?= h($l['reg']) ?></span></a></td><td><?= h(date('D j M', strtotime($l['collected_at']))) ?></td><td class="hide-m"><?= h(vehicle_name($l['vehicle'] ?? null)) ?></td><td>£<?= $cp($l) ?></td><td><?= isset($l['yard_paid']) && $l['yard_paid'] !== null ? '£' . (int)$l['yard_paid'] : '–' ?></td><td><?php if (isset($l['yard_paid']) && $l['yard_paid'] !== null): $m = (int)$l['yard_paid'] - $cp($l); ?><span style="color:<?= $m < 0 ? 'var(--red)' : '#1d7a3a' ?>;font-weight:700"><?= $m < 0 ? '−' : '' ?>£<?= abs($m) ?></span><?php else: ?>–<?php endif; ?></td></tr><?php endforeach; ?></table>
   </div>
   <?php endif; ?>
 
