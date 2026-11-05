@@ -542,7 +542,7 @@ input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;min-wi
 </body></html>
 <?php return; endif;
 
-$tabs = ['leads' => 'Leads', 'collections' => 'Collections', 'archive' => 'Archive', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'notify' => 'Notifications', 'settings' => 'Settings'];
+$tabs = ['leads' => 'Leads', 'collections' => 'Collections', 'stats' => 'Stats', 'archive' => 'Archive', 'enquiries' => 'Enquiries', 'rates' => 'Rates', 'notify' => 'Notifications', 'settings' => 'Settings'];
 $tabOn = in_array($v, ['lead', 'new'], true) ? (($v === 'lead' && ($tl = load_lead((string)($_GET['ref'] ?? ''))) && !empty($tl['archived'])) ? 'archive' : 'leads') : $v;
 ?>
 <header class="top">
@@ -927,6 +927,77 @@ elseif ($v === 'archive'):
   <?php endforeach; ?>
   <?php if ($pages > 1): ?><div class="pills"><?php for ($i = 1; $i <= $pages; $i++): ?><a class="<?= $i === $page ? 'on' : '' ?>" href="<?= h($A . '?v=archive&s=' . $st . '&q=' . rawurlencode($q) . '&p=' . $i) ?>"><?= $i ?></a><?php endfor; ?></div><?php endif; ?>
   <p class="small" style="margin-top:18px"><a href="<?= h($A . '?v=export') ?>">Download every lead, including the archive, as a spreadsheet (CSV)</a></p>
+
+<?php
+/* ================= STATS (pick dates; counts what happened in that period, archive included, test leads ignored) ================= */
+elseif ($v === 'stats'):
+  $today = date('Y-m-d'); $dOK = fn($x) => is_string($x) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $x) && strtotime($x);
+  $presets = [
+    'today' => ['Today', $today, $today],
+    'week' => ['This week', date('Y-m-d', strtotime('monday this week')), $today],
+    'lastweek' => ['Last week', date('Y-m-d', strtotime('monday last week')), date('Y-m-d', strtotime('sunday last week'))],
+    'month' => ['This month', date('Y-m-01'), $today],
+    'lastmonth' => ['Last month', date('Y-m-01', strtotime('first day of last month')), date('Y-m-t', strtotime('first day of last month'))],
+    '30' => ['Last 30 days', date('Y-m-d', strtotime('-29 days')), $today],
+    'all' => ['All time', '2026-10-17', $today],
+  ];
+  $pk = (string)($_GET['r'] ?? ''); $from = $dOK($_GET['from'] ?? null) ? (string)$_GET['from'] : null; $to = $dOK($_GET['to'] ?? null) ? (string)$_GET['to'] : null;
+  if ($from && $to) $pk = 'custom'; elseif (!isset($presets[$pk])) $pk = 'month';
+  if ($pk !== 'custom') { $from = $presets[$pk][1]; $to = $presets[$pk][2]; }
+  if ($from > $to) [$from, $to] = [$to, $from];
+  $all = array_values(array_filter(array_merge(adm_leads(), adm_leads('archive')), fn($l) => empty($l['demo'])));
+  $day = fn($iso) => $iso ? date('Y-m-d', strtotime((string)$iso)) : null;
+  $in = fn($iso) => ($d = $day($iso)) !== null && $d >= $from && $d <= $to;
+  $lostAt = function (array $l) { foreach (array_reverse($l['history'] ?? []) as $x) if (str_contains((string)$x['what'], 'Lost')) return $x['at']; return $l['received'] ?? null; };
+  $priced = array_filter($all, fn($l) => $in($l['received'] ?? null));
+  $cars = count(array_unique(array_map(fn($l) => $l['reg'], $priced)));
+  $acc = array_filter($all, fn($l) => !empty($l['accepted']) && $in($l['accepted']));
+  $saved = array_filter($all, fn($l) => !empty($l['saved']) && empty($l['accepted']) && $in($l['saved']));
+  $booked = array_filter($all, fn($l) => !empty($l['booked_at']) && $in($l['booked_at']));
+  $coll = array_filter($all, fn($l) => $l['status'] === 'collected' && $in($l['collected_at'] ?? null));
+  $lost = array_filter($all, fn($l) => $l['status'] === 'lost' && $in($lostAt($l)));
+  $paid = array_sum(array_map(fn($l) => (int)($l['paid'] ?? $l['final_price'] ?? $l['price'] ?? 0), $coll));
+  $pct = fn($a, $b) => $b ? round($a / $b * 100) . '%' : '–';
+  /* breakdown: by day for up to 31 days, otherwise by week (Mon start) */
+  $span = (int)round((strtotime("$to 12:00") - strtotime("$from 12:00")) / 86400) + 1; $byWeek = $span > 31;
+  $bucket = fn($d) => $byWeek ? date('Y-m-d', strtotime('monday this week', strtotime($d))) : $d;
+  $rows = [];
+  for ($d = $from; $d <= $to; $d = date('Y-m-d', strtotime("$d +1 day"))) { $b = $bucket($d); $rows[$b] ??= ['p' => 0, 'a' => 0, 'b' => 0, 'c' => 0]; }   // calendar days, safe across the clock change
+  foreach ($priced as $l) $rows[$bucket($day($l['received']))]['p']++;
+  foreach ($acc as $l) $rows[$bucket($day($l['accepted']))]['a']++;
+  foreach ($booked as $l) $rows[$bucket($day($l['booked_at']))]['b']++;
+  foreach ($coll as $l) $rows[$bucket($day($l['collected_at']))]['c']++;
+  krsort($rows);
+  $q = fn($k) => h($A . '?v=stats&r=' . $k);
+?>
+  <h1>Stats</h1>
+  <div class="pills"><?php foreach ($presets as $k => $p): ?><a class="<?= $pk === $k ? 'on' : '' ?>" href="<?= $q($k) ?>"><?= h($p[0]) ?></a><?php endforeach; ?></div>
+  <form class="search" method="get" action="<?= h($A) ?>" style="flex-wrap:wrap"><input type="hidden" name="v" value="stats">
+    <label style="flex:1;min-width:130px">From<input type="date" name="from" value="<?= h($from) ?>"></label>
+    <label style="flex:1;min-width:130px">To<input type="date" name="to" value="<?= h($to) ?>"></label>
+    <button class="btn" type="submit" style="align-self:flex-end">Show</button></form>
+  <p class="small"><?= h(date('D j M Y', strtotime($from))) ?> to <?= h(date('D j M Y', strtotime($to))) ?>. Counts what happened in these dates, including archived jobs. Test leads are left out.</p>
+  <div class="stats">
+    <div class="stat"><b><?= count($priced) ?></b><span>Price checks<br><?= $cars ?> different cars</span></div>
+    <div class="stat"><b><?= count($acc) ?></b><span>Accepted<br><?= $pct(count($acc), $cars) ?> of cars priced</span></div>
+    <div class="stat"><b><?= count($saved) ?></b><span>Price emailed only<br>(no phone yet)</span></div>
+    <div class="stat"><b><?= count($booked) ?></b><span>Booked in</span></div>
+    <div class="stat"><b><?= count($coll) ?></b><span>Collected<br><?= $pct(count($coll), count($acc)) ?> of accepted</span></div>
+    <div class="stat"><b><?= count($lost) ?></b><span>Lost / declined</span></div>
+    <div class="stat"><b>£<?= number_format($paid) ?></b><span>Paid for collected cars<?= $coll ? '<br>avg £' . number_format($paid / count($coll)) : '' ?></span></div>
+  </div>
+  <div class="box">
+    <h2 style="margin-top:0">By <?= $byWeek ? 'week' : 'day' ?></h2>
+    <table class="ex"><tr><th><?= $byWeek ? 'Week of' : 'Day' ?></th><th>Priced</th><th>Accepted</th><th>Booked</th><th>Collected</th></tr>
+    <?php foreach ($rows as $d => $r): ?><tr<?= array_sum($r) ? '' : ' style="color:var(--muted)"' ?>><td><?= h(date($byWeek ? 'j M' : 'D j M', strtotime($d))) ?></td><td><?= $r['p'] ?></td><td><?= $r['a'] ?></td><td><?= $r['b'] ?></td><td><?= $r['c'] ?></td></tr><?php endforeach; ?>
+    <tr style="font-weight:700"><td>Total</td><td><?= count($priced) ?></td><td><?= count($acc) ?></td><td><?= count($booked) ?></td><td><?= count($coll) ?></td></tr></table>
+  </div>
+  <?php if ($coll): ?>
+  <div class="box"><h2 style="margin-top:0">Collected in these dates</h2>
+    <table><tr><th>Reg</th><th>Collected</th><th class="hide-m">Car</th><th>Paid</th></tr>
+    <?php foreach ($coll as $l): ?><tr><td><a href="<?= h($A . '?v=lead&ref=' . $l['ref']) ?>"><span class="plate"><?= h($l['reg']) ?></span></a></td><td><?= h(date('D j M', strtotime($l['collected_at']))) ?></td><td class="hide-m"><?= h(vehicle_name($l['vehicle'] ?? null)) ?></td><td>£<?= (int)($l['paid'] ?? $l['final_price'] ?? $l['price'] ?? 0) ?></td></tr><?php endforeach; ?></table>
+  </div>
+  <?php endif; ?>
 
 <?php
 /* ================= ENQUIRIES ================= */
