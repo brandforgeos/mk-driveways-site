@@ -110,3 +110,6 @@ looked unchanged, so it looked like nothing happened. Changes:
 - quote-send.js: Send/Cancel lock on first press; confirmation shows the real email address (was "email to 1").
 - DB `public.send_quote`: locks the quote row and refuses a second send of the same quote within 2 minutes.
 Port into the source.
+- ROOT CAUSE: `.cpanel.yml` never copied `quote-send.js` to the live site, so `window.hubSendQuote` didn't exist —
+  Send to customer saved the quote then threw silently. It also 404'd in the service-worker precache (stalling SW updates).
+  `.cpanel.yml` now copies it. Any new top-level file MUST be added to `.cpanel.yml`.
