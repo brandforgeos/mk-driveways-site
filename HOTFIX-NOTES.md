@@ -84,7 +84,7 @@ Port into the source: a Quote builder route/screen and a job-page action.
   p_email_subject, p_email_body) — real director session only, refuses an unsigned held quote, queues the quote_sent text
   and/or email in messages, and only then marks the quote sent. quote-send.js (window.hubSendQuote) shows the exact
   wording (editable) with the customer's number/email, then calls it; errors always shown. Bundle patched (renamed
-  index-7b746705.js → index-f8a6b003.js so phones refresh): editor Send and "Send the link again" call hubSendQuote;
+  index-7b746705.js → index-3ebcc3f5.js so phones refresh): editor Send and "Send the link again" call hubSendQuote;
   nu() no longer calls navigator.share (copy link only). Port into the source.
 - 2026-11-01: QUOTE BUILDER FIXES (from MKD-2026-007).
   Fix 1 revisions = letter + number: private.qb_next_revision (A1; our changes number+1; customer change next letter +1;
@@ -100,3 +100,13 @@ Port into the source: a Quote builder route/screen and a job-page action.
   heading + placement; PLAYBOOK updated (revisions, placement/heading, re-check approved visuals before qb_finish).
 - 2026-11-01: quote-send.js signs the message as the director who MADE the quote (brief creator → quote creator → signer → you) and says so on the sheet.
 - 2026-11-01: MKD is always "MK Driveways & Landscaping" to customers (another company is called MK Driveways): companies.name updated, render.py short name, quote-send.js, assistant (Ask) v2 rules, PLAYBOOK.
+
+## 2026-11-11 — Quote editor "Send to customer" shows what it's doing; no double sends
+Robbie pressed Send on MKD-2026-008: the quote saved but the send sheet never opened (no send_quote call), and the button
+looked unchanged, so it looked like nothing happened. Changes:
+- Quote editor (component with "Thanks for having us round…"): new state `qsS`. Button reads Saving… → Sending… → Sent ✓
+  and is locked while busy; navigates to the quote ~1s after "Sent ✓". If `window.hubSendQuote` isn't loaded it loads
+  /quote-send.js on the spot; if it still can't, or anything throws, a red message says "Nothing has been sent".
+- quote-send.js: Send/Cancel lock on first press; confirmation shows the real email address (was "email to 1").
+- DB `public.send_quote`: locks the quote row and refuses a second send of the same quote within 2 minutes.
+Port into the source.

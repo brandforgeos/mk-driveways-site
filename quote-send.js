@@ -108,7 +108,8 @@
           var useS = canSms && box.querySelector('#qs-s').checked, useE = canEmail && box.querySelector('#qs-e').checked;
           var err = box.querySelector('#qs-err'); err.innerHTML = '';
           if (!useS && !useE) { err.innerHTML = '<div class="e">Tick the text or the email.</div>'; return; }
-          btn.disabled = true; btn.textContent = 'Sending…';
+          if (btn.disabled) return; // one press only
+          btn.disabled = true; btn.textContent = 'Sending…'; box.querySelector('.x').disabled = true;
           call('POST', '/rpc/send_quote', {
             p_quote: q.id,
             p_sms: useS ? box.querySelector('#qs-st').value : null,
@@ -117,11 +118,11 @@
           }).then(function (r) {
             var parts = [];
             if (r && r.sms) parts.push('text to ' + prettyPhone(r.phone));
-            if (r && r.email) parts.push('email to ' + r.email);
+            if (r && r.email) parts.push('email to ' + (r.email_to || 'the customer'));
             box.querySelector('.s').innerHTML = '<h3>Sent ✓</h3><p class="m">Queued through the hub: ' + esc(parts.join(' and ')) + '. It goes out within a minute and shows in the job’s History.</p><div class="r"><button class="p">Done</button></div>';
             box.querySelector('.p').onclick = function () { done(true); };
           }).catch(function (e) {
-            btn.disabled = false; btn.textContent = 'Send';
+            btn.disabled = false; btn.textContent = 'Send'; box.querySelector('.x').disabled = false;
             err.innerHTML = '<div class="e">Not sent: ' + esc(e.message) + '</div>';
             try { console.error('send_quote', e); } catch (x) {}
           });
