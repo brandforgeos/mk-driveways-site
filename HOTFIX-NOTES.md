@@ -113,3 +113,9 @@ Port into the source.
 - ROOT CAUSE: `.cpanel.yml` never copied `quote-send.js` to the live site, so `window.hubSendQuote` didn't exist —
   Send to customer saved the quote then threw silently. It also 404'd in the service-worker precache (stalling SW updates).
   `.cpanel.yml` now copies it. Any new top-level file MUST be added to `.cpanel.yml`.
+
+## 16 Nov 2026 — Sign off from the quote screen
+- New `quote-signoff.js` (loaded from index.html, deployed via .cpanel.yml, precached in sw.js). On /quotes/:id and /quotes/:id/edit,
+  a held, unsigned draft shows a sign-off bar: View PDF (qb_pdf_open + signed URL), £ Build-up (/quote-builder/?costing=id, which
+  records qc_open), ✓ Sign off (rpc qb_sign_off — same database rules as the Quote builder). Never sends anything.
+- quote-builder: the price build-up page's back link goes to the quote when the quote has no brief (imported quotes), instead of `?b=null`.

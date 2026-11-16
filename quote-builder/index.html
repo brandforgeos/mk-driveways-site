@@ -392,7 +392,7 @@ async function costing(quoteId, checkMsg = null) {
       <h2 style="margin:4px 0">${checkMsg ? `Price check · ${esc(q?.ref)}` : `Price build-up · ${esc(q?.ref)} rev ${esc(q?.revision)}`}</h2>
       <div class="muted">${checkMsg ? 'From Claude' : 'Version ' + c.version}${c.updated_at ? ' · ' + when(c.updated_at) : ''}${d.margin_rule ? ' · ' + esc(d.margin_rule) : ''}</div>
       ${checkMsg ? `<p class="muted" style="margin:8px 0 0">Tap <b>Edit / comment</b> on any line to change it. Totals and margin update as you go. Then approve, or send your changes back.</p>` : ''}
-      <div class="acts noprint"><a class="btn ghost small" href="?b=${brief}" id="cb">Back to the brief</a><button class="btn ghost small" id="print">Print / save PDF</button></div></div>
+      <div class="acts noprint">${brief ? `<a class="btn ghost small" href="?b=${brief}" id="cb">Back to the brief</a>` : `<a class="btn ghost small" href="/quotes/${quoteId}/edit">Back to the quote</a>`}<button class="btn ghost small" id="print">Print / save PDF</button></div></div>
       ${opts.map((o, oi) => optCard(o, oi)).join('')}
       ${d.programme || d.gang_days ? `<div class="card"><h2>Programme</h2>${d.gang_days ? `<p><b>${esc(d.gang_days)} gang days</b></p>` : ''}${d.programme ? `<p style="white-space:pre-wrap">${esc(d.programme)}</p>` : ''}</div>` : ''}
       ${(d.risks ?? []).length || (d.assumptions ?? []).length ? `<div class="card">${(d.risks ?? []).length ? `<h2>Risks priced in</h2><ul>${d.risks.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}${(d.assumptions ?? []).length ? `<h2 style="margin-top:10px">Assumptions</h2><ul>${d.assumptions.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}</div>` : ''}
@@ -443,7 +443,7 @@ async function costing(quoteId, checkMsg = null) {
     </div>`
   }
   function wire() {
-    document.getElementById('cb').onclick = (e) => { e.preventDefault(); go({ b: brief }) }
+    { const cbb = document.getElementById('cb'); if (cbb) cbb.onclick = (e) => { e.preventDefault(); go({ b: brief }) } }
     document.getElementById('print').onclick = () => { document.querySelectorAll('details').forEach((x) => x.open = false); print() }
     app.querySelectorAll('input[data-f], textarea[data-f]').forEach((el) => {
       const set = () => {
