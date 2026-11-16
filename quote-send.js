@@ -79,7 +79,9 @@
         var first = (cu.first_name || cu.display_name || '').split(' ')[0] || 'there';
         var me = ((res[1] && res[1][0] && res[1][0].full_name) || '').split(' ')[0] || 'the team';
         var shortName = co.code === 'MKD' ? 'MK Driveways & Landscaping' : 'Rutland Driveways'; // never plain "MK Driveways" — that's another company
-        var link = location.origin + '/q/' + q.public_token;
+        // customer links always go out on the company's own domain, never hub.buildbro.app (it redirects to the hub page)
+        var DOMAIN = { RD: 'https://www.rutlanddriveways.co.uk', MKD: 'https://miltonkeynesdriveways.co.uk' };
+        var link = (DOMAIN[co.code] || location.origin) + '/q/' + q.public_token;
         var what = (q.title || job.title || 'your work').replace(/^./, function (c) { return c.toLowerCase(); });
         var phone = co.phone || '';
 

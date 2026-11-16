@@ -119,3 +119,4 @@ Port into the source.
   a held, unsigned draft shows a sign-off bar: View PDF (qb_pdf_open + signed URL), £ Build-up (/quote-builder/?costing=id, which
   records qc_open), ✓ Sign off (rpc qb_sign_off — same database rules as the Quote builder). Never sends anything.
 - quote-builder: the price build-up page's back link goes to the quote when the quote has no brief (imported quotes), instead of `?b=null`.
+- quote-send.js: the quote link in the text/email now uses the company's own domain (RD www.rutlanddriveways.co.uk, MKD miltonkeynesdriveways.co.uk), which 302s to the hub page. It used location.origin, so links went out as hub.buildbro.app. The bundle still builds /q/, /c/, /v/ links from location.origin in other places (copy-link etc.) — needs porting in source.
