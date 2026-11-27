@@ -84,7 +84,7 @@ Port into the source: a Quote builder route/screen and a job-page action.
   p_email_subject, p_email_body) — real director session only, refuses an unsigned held quote, queues the quote_sent text
   and/or email in messages, and only then marks the quote sent. quote-send.js (window.hubSendQuote) shows the exact
   wording (editable) with the customer's number/email, then calls it; errors always shown. Bundle patched (renamed
-  index-7b746705.js → index-3ebcc3f5.js so phones refresh): editor Send and "Send the link again" call hubSendQuote;
+  index-7b746705.js → index-f0cd40f6.js so phones refresh): editor Send and "Send the link again" call hubSendQuote;
   nu() no longer calls navigator.share (copy link only). Port into the source.
 - 2026-11-01: QUOTE BUILDER FIXES (from MKD-2026-007).
   Fix 1 revisions = letter + number: private.qb_next_revision (A1; our changes number+1; customer change next letter +1;
@@ -120,3 +120,12 @@ Port into the source.
   records qc_open), ✓ Sign off (rpc qb_sign_off — same database rules as the Quote builder). Never sends anything.
 - quote-builder: the price build-up page's back link goes to the quote when the quote has no brief (imported quotes), instead of `?b=null`.
 - quote-send.js: the quote link in the text/email now uses the company's own domain (RD www.rutlanddriveways.co.uk, MKD miltonkeynesdriveways.co.uk), which 302s to the hub page. It used location.origin, so links went out as hub.buildbro.app. The bundle still builds /q/, /c/, /v/ links from location.origin in other places (copy-link etc.) — needs porting in source.
+
+## 2026-11-27 — Receipts: upload from device as well as camera
+Add a receipt / bill screen (`rp`, "Add a receipt or invoice"): the single "Photograph the receipt" button (camera-only,
+`capture="environment"`) is now two side-by-side buttons:
+- **Take a photo** — camera, as before (`accept="image/*"`, `capture="environment"`).
+- **Upload from device** — no `capture`, `multiple`, accepts JPG/PNG/HEIC/HEIF/WEBP/PDF (matches the `receipts`
+  bucket's allowed types). Files over 15 MB (bucket limit) or of other types are skipped with an on-screen message.
+- A muted line under the buttons shows "N files added" / "N saved — add another if needed".
+Port into the source (expense/receipt form component) before the next full build.
